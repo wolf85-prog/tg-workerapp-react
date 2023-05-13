@@ -17,7 +17,7 @@ function App() {
       <ThemeProvider theme={darkTheme}>
           <CssBaseline />
               <Routes>
-                  <Route path={'add-worker'} element={<NewWorker />}/>
+                  <Route index element={<NewWorker />}/>
               </Routes>
       </ThemeProvider>
   );

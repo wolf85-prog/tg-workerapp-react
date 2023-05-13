@@ -1,9 +1,25 @@
 import React from 'react';
+import {useTelegram} from "../../hooks/useTelegram";
+import './Header.css';
 
-const Header = () => {
+const Header = (props) => {
+    const {user, queryId, onClose} = useTelegram();
     return (
-        <div>
-            
+        <div className={'header'}>
+
+            {/* {props.header.icon !== 'false'
+            ? <img src = {briefcase} alt="briefcase"/> : ""
+            } */}
+
+
+            <span className={'title'}>
+                {props.header.title}
+            </span>
+
+            <span className={'username'}>
+                {user?.id}
+            </span>
+            {/* <img className={'btn-close'} onClick={onClose} src={CloseButton}/> */}
         </div>
     );
 };

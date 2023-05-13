@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 0px;
+    margin: 15px 0px 5px 0px;
+}
+
+.title {
+    margin-left: 5px;
+    font-size: 20px;
+}
+
+.btn-close {
+    margin-left: auto;
+}
+
+.username {
+    margin-left: auto;
+}
