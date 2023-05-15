@@ -14,10 +14,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "react": "^18.2.0",
-    "react-contact-number-input": "^1.1.1",
     "react-dom": "^18.2.0",
     "react-input-mask": "^2.0.4",
-    "react-phone-number-input": "^3.2.23",
     "react-router-dom": "^6.11.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
