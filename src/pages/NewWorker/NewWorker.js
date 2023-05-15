@@ -1,11 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from "../../components/Header/Header";
 import './NewWorker.css';
+import Calendar from "../../image/calendar.svg";
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { Stack } from "@mui/material";
+
+import InputMask from 'react-input-mask';
 
 const NewWorker = () => {
+    const [dateborn, setDateborn] = useState('2000-01-01');
+    const [phone, setPhone] = useState();
+
+    const onChangeTime = (e) => {
+        setDateborn(e.target.value)
+    }
+
+    const handlePhone = (e)=>{
+        setPhone(e.target.value)
+    }
+
     return (
         <div className="App">
             <Header header={{title: 'Новый специалист', icon: 'false'}}/>
@@ -32,21 +49,51 @@ const NewWorker = () => {
                 </div>
 
                 {/*Сколько лет*/}
+                {/*Дата начала*/}
                 <div className="text-field text-field_floating">
-                    <RedditTextField fullWidth
-                                     label="Сколько тебе полных лет"
-                                     id="project_name"
-                                     variant="filled"
-                    />
+                    <LocalizationProvider dateAdapter={AdapterDayjs} >
+                        <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
+                            <RedditTextField
+                                id="date"
+                                label="Дата рождения"
+                                type="date"
+                                variant="filled"
+                                value={dateborn}
+                                onChange={onChangeTime}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                            <span className="open-button">
+                              <button type="button"><img src={Calendar} alt='calendar'/></button>
+                            </span>
+                        </Stack>
+                    </LocalizationProvider>
                 </div>
 
-                {/*Сколько лет*/}
+                {/*Номер телефона*/}
                 <div className="text-field text-field_floating">
-                    <RedditTextField fullWidth
+                    {/* <RedditTextField fullWidth
                                      label="Номер телефона"
                                      id="project_name"
                                      variant="filled"
-                    />
+                                     onChange={handlePhone} 
+                                     value={phone}
+                    /> */}
+
+                <InputMask
+                    mask="+7(999) 999-99-99"
+                    disabled={false}
+                    maskChar=" "
+                    onChange={handlePhone} 
+                    value={phone}
+                >
+                    {() => <RedditTextField 
+                                fullWidth 
+                                placeholder='Номер телефона'
+                                id="project_name"
+                                variant="filled"/>}
+                </InputMask>
                 </div>
             </form>
             
@@ -77,5 +124,6 @@ const RedditTextField = styled((props) => (
         },
     },
 }));
+
 
 export default NewWorker;
