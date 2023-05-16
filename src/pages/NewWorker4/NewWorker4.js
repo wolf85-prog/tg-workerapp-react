@@ -78,7 +78,7 @@ const NewWorker2 = () => {
                     <RedditTextField fullWidth
                                      style={{borderRadius: '10px'}}
                                      id="outlined-multiline-flexible"
-                                     label="Прокатные комапнии"
+                                     label="Прокатные компании"
                                      variant="filled"
                                      multiline
                                      rows={4}
