@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {Link} from "react-router-dom";
+import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
-import './NewWorker.css';
+import './NewWorker3.css';
 import Calendar from "../../image/calendar.svg";
 
 import TextField from '@mui/material/TextField';
@@ -13,57 +14,64 @@ import { Stack } from "@mui/material";
 
 import InputMask from 'react-input-mask';
 
-const NewWorker = () => {
+const API_URL = process.env.REACT_APP_API_URL
+
+const NewWorker2 = () => {
+    const {tg, queryId, user} = useTelegram();
+
+    const [worker, setWorker] = useState('');
+    const [dateborn, setDateborn] = useState('2000-01-01');
     const [phone, setPhone] = useState();
 
-    const handlePhone = (e)=>{
-        setPhone(e.target.value)
+    const [isLoading, setIsLoading] = useState(false);
+
+    const onChangeTime = (e) => {
+        setDateborn(e.target.value)
     }
+
 
     return (
         <div className="App">
             <Header header={{title: 'Новый специалист', icon: 'false'}}/>
 
             <form>
-                {/*Фамилия*/}
+                
+
+                {/*Город*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
-                                     label="Фамилия"
+                                     label="Ваш город"
                                      id="worker_name"
                                      variant="filled"
 
                     />
                 </div>
 
-                {/*Имя*/}
+                {/*Сколько лет*/}
+                {/*Дата начала*/}
                 <div className="text-field text-field_floating">
-                    <RedditTextField fullWidth
-                                     label="Имя"
-                                     id="worker_name"
-                                     variant="filled"
-
-                    />
-                </div>          
-
-                {/*Номер телефона*/}
-                <div className="text-field text-field_floating">
-                    <InputMask
-                        mask="+7 (999) 999-99-99"
-                        disabled={false}
-                        maskChar=" "
-                        onChange={handlePhone} 
-                        value={phone}
-                    >
-                        {() => <RedditTextField 
-                                    fullWidth 
-                                    label="Номер телефона"
-                                    id="project_name"
-                                    variant="filled"/>}
-                    </InputMask>
+                    <LocalizationProvider dateAdapter={AdapterDayjs} >
+                        <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
+                            <RedditTextField
+                                id="date"
+                                label="Дата рождения"
+                                type="date"
+                                variant="filled"
+                                value={dateborn}
+                                onChange={onChangeTime}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                            <span className="open-button">
+                              <button type="button"><img src={Calendar} alt='calendar'/></button>
+                            </span>
+                        </Stack>
+                    </LocalizationProvider>
                 </div>
 
-                <Link to={'/add-worker'}><MyButton>Далее</MyButton></Link>
-
+                <Link to={'/add-worker3'}><MyButton>Далее</MyButton></Link>
+                <Link to={'/'}><MyButton>Назад</MyButton></Link>
             </form>
             
         </div>
@@ -95,4 +103,4 @@ const RedditTextField = styled((props) => (
 }));
 
 
-export default NewWorker;
+export default NewWorker2;
