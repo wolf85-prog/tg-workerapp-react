@@ -70,7 +70,7 @@ const NewWorker2 = () => {
                     </LocalizationProvider>
                 </div>
 
-                <Link to={'/add-worker3'}><MyButton>Далее</MyButton></Link>
+                <Link to={'/add-worker4'}><MyButton>Далее</MyButton></Link>
                 <Link to={'/'}><MyButton>Назад</MyButton></Link>
             </form>
             

@@ -73,37 +73,27 @@ const NewWorker2 = () => {
             <form>
                 
 
-                {/*Город*/}
+                {/*Прокатные комапнии*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
-                                     label="Ваш город"
-                                     id="worker_name"
+                                     style={{borderRadius: '10px'}}
+                                     id="outlined-multiline-flexible"
+                                     label="Прокатные комапнии"
                                      variant="filled"
+                                     multiline
+                                     rows={4}
 
                     />
                 </div>
 
-                {/*Сколько лет*/}
-                {/*Дата начала*/}
+                {/*Опыт*/}
                 <div className="text-field text-field_floating">
-                    <LocalizationProvider dateAdapter={AdapterDayjs} >
-                        <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
-                            <RedditTextField
-                                id="date"
-                                label="Дата рождения"
-                                type="date"
-                                variant="filled"
-                                value={dateborn}
-                                onChange={onChangeTime}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />
-                            <span className="open-button">
-                              <button type="button"><img src={Calendar} alt='calendar'/></button>
-                            </span>
-                        </Stack>
-                    </LocalizationProvider>
+                    <RedditTextField fullWidth
+                                     label="Опыт работы"
+                                     id="worker_name"
+                                     variant="filled"
+
+                    />
                 </div>
 
                 <Link to={'/'}><MyButton>Назад</MyButton></Link>
