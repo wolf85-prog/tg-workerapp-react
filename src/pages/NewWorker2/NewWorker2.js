@@ -56,16 +56,46 @@ const NewWorker2 = () => {
                 
 
                 {/*Специализация*/}
+                <div>
+                    <label>
+                        <p
+                            style={{
+                                margin: '20px 5px',
+                                display: 'flex',
+                                fontSize: '14px',
+                                color: '#76A9FF',
+                            }}>Выберите свою специальность</p>
 
-                <div className="text-field text-field_floating">
-                    <CustomSelect
-                        id="category"
-                        title="Категория"
-                        options={categories}
-                        selectedElement={selectedElement}
-                        setSelectedElement={setSelectedElement}
-                        onChange={onCategoriesSelectChange}
-                    />
+                        <div className="text-field text-field_floating">
+                            <CustomSelect
+                                id="category"
+                                title="Категория"
+                                options={categories}
+                                selectedElement={selectedElement}
+                                setSelectedElement={setSelectedElement}
+                                onChange={onCategoriesSelectChange}
+                            />
+                        </div>
+
+                        <div className="text-field text-field_floating">
+                            <CustomSelect
+                                id="model"
+                                title="Специальность"
+                                options={models}
+                                selectedElement={selectedElement}
+                                setSelectedElement={setSelectedElement}
+                            />
+                        </div>
+                    </label>
+
+
+                    <p>
+                        <MyButton
+                            style={{width: "103px", marginBottom: "15px"}}
+                        >Добавить
+                        </MyButton>
+                    </p>
+
                 </div>
                 
                 <Link to={'/add-worker3'}><MyButton>Далее</MyButton></Link>
