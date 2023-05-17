@@ -4,7 +4,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
-import CustomSelect2 from "../../components/UI/CustomSelect2/CustomSelect2";
+import WorkerList from "../../components/WorkerList/WorkerList";
 import './NewWorker2.css';
 import Calendar from "../../image/calendar.svg";
 
@@ -13,6 +13,8 @@ import { alpha, styled } from '@mui/material/styles';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Stack } from "@mui/material";
+
+import specData from "../../data/specData"
 
 import InputMask from 'react-input-mask';
 
@@ -30,6 +32,13 @@ const NewWorker2 = () => {
     //специальности
     const [models, setModels] = useState([]);
 
+    const [modal, setModal] = useState(false)
+    const [showWorkadd, setShowWorkadd] = useState(false)
+    const [showEquipmentadd, setShowEquipmentadd] = useState(false)
+    const [showSpec, setShowSpec] = useState(false)
+    const [showName, setShowName] = useState(false)
+    const [showSubname, setShowSubname] = useState(false)
+
     //select
     const [selectedElement, setSelectedElement] = useState("")
     //select2
@@ -37,7 +46,32 @@ const NewWorker2 = () => {
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const [disabledBtn, setDisabledBtn] = useState(true)
+
+    const [disabled, setDisabled] = useState(true)
+    const [disabled2, setDisabled2] = useState(true)
+
+    //специальности
+    const [workers, setWorkers] = useState([])
+
     
+//----------------------------------------------------------------------------------
+
+    // при первой загрузке приложения выполнится код ниже
+    useEffect(() => {
+
+        // устанавливаем категории
+        if (specData.length > 0 && specData) {
+            setCategories(specData);
+        }
+
+        // и модели из первой категории по умолчанию
+        if (specData.length > 0 && specData[0].models && specData[0].models.length > 0) {
+            setModels(specData[0].models);
+        }
+
+    }, []);
+
     //---------------------------------------------------------------------------------------
 
     // 1. при выборе нового значения в категории
@@ -45,6 +79,60 @@ const NewWorker2 = () => {
 
         setSelectedElement(e.target.options.value);
 
+        // преобразуем выбранное значение опции списка в число - идентификатор категории
+        const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
+        // получаем из массива категорий объект категории по соответствующему идентификатору
+        const category = categories.find(item => item.id === categoryId);
+        const catSelect = category.icon; //capitalizeFirst(category.name);
+        const iconCatSelect = category.icon;
+
+        setWorker({...worker, cat: catSelect, icon: iconCatSelect})
+
+        // выбираем все модели в категории, если таковые есть
+        const models = category.models && category.models.length > 0
+            ? category.models
+            : [{ id: 0, name: 'Нет моделей', items: [] }];
+
+        // меняем модели во втором списке
+        setModels(models);
+
+        setDisabled(false)
+        setShowSpec(true)
+    }
+
+    // 2. выбор специальности
+    const onSpecSelectChange = (e) => {
+        setSelectedElement(e.target.options.value);
+
+        const modelId = parseInt(e.target.options[e.target.selectedIndex].value);
+        const model = models.find(item => item.id === modelId);
+
+        setWorker({...worker, spec: model.name})
+
+        setDisabledBtn(false)
+    }
+
+
+    {/* Добавление работника */}
+    const addNewWorker = (e) => {
+        e.preventDefault();
+
+        // if (worker.cat !== '' || worker.spec !== '') {
+        //     setWorkers([...workers, {...worker, id: Date.now()}])
+        // }
+        // setWorker({cat: '', spec: '', count: 1, icon: ''})
+
+        // setCount(1);
+        // setSelectedElement("");
+
+        setDisabled(true);
+        setShowSpec(false)
+        setDisabledBtn(true);
+    }
+
+    {/* Удаление специальности */}
+    const removeWorker = (worker) => {
+        setWorkers(workers.filter(p => p.id !== worker.id))
     }
 
 
@@ -64,7 +152,8 @@ const NewWorker2 = () => {
                                 display: 'flex',
                                 fontSize: '14px',
                                 color: '#76A9FF',
-                            }}>Выберите свою специальность</p>
+                            }}>Выберите свою специальность
+                        </p>
 
                         <div className="text-field text-field_floating">
                             <CustomSelect
@@ -79,11 +168,13 @@ const NewWorker2 = () => {
 
                         <div className="text-field text-field_floating">
                             <CustomSelect
+                                disabled={disabled}
                                 id="model"
                                 title="Специальность"
                                 options={models}
                                 selectedElement={selectedElement}
                                 setSelectedElement={setSelectedElement}
+                                onChange={onSpecSelectChange}
                             />
                         </div>
                     </label>
@@ -91,12 +182,17 @@ const NewWorker2 = () => {
 
                     <p>
                         <MyButton
+                            disabled={disabledBtn}
                             style={{width: "103px", marginBottom: "15px"}}
+                            onClick={addNewWorker}
                         >Добавить
                         </MyButton>
                     </p>
 
                 </div>
+
+                {/*список работников*/}
+                <WorkerList remove={removeWorker} workers={workers} />
                 
                 <Link to={'/add-worker3'}><MyButton>Далее</MyButton></Link>
                 <Link to={'/'}><MyButton>Назад</MyButton></Link>
