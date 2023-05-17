@@ -62,7 +62,7 @@ const NewWorker = () => {
                     </InputMask>
                 </div>
 
-                <Link to={'/add-worker'}><MyButton>Далее</MyButton></Link>
+                <Link to={'/add-worker'}><MyButton style={{marginBottom: "15px", width: "220px"}}>Далее</MyButton></Link>
 
             </form>
             

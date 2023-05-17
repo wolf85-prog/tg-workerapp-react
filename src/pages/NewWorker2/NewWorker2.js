@@ -183,7 +183,7 @@ const NewWorker2 = () => {
                     <p>
                         <MyButton
                             disabled={disabledBtn}
-                            style={{width: "103px", marginBottom: "15px"}}
+                            style={{marginBottom: "15px", width: "220px"}}
                             onClick={addNewWorker}
                         >Добавить
                         </MyButton>
@@ -194,8 +194,11 @@ const NewWorker2 = () => {
                 {/*список работников*/}
                 <WorkerList remove={removeWorker} workers={workers} />
                 
-                <Link to={'/add-worker3'}><MyButton>Далее</MyButton></Link>
-                <Link to={'/'}><MyButton>Назад</MyButton></Link>
+                <div className='block-buttons'>
+                    <Link to={'/'}><MyButton style={{width: "80px"}}>Назад</MyButton></Link>
+                    <Link to={'/add-worker3'}><MyButton style={{width: "80px"}}>Далее</MyButton></Link> 
+                </div>
+                               
             </form>
             
         </div>
