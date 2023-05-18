@@ -1,16 +1,14 @@
 .header {
-    width: 100%;
+    width: 95%;
     display: flex;
     align-items: center;
-    padding: 15px 0px;
+    padding: 15px 10px;
     position: fixed;
     background-color: #121212;
     z-index: 10;
 }
 
 .title {
-    margin-left: 5px;
-    margin-right: 5px;
     font-size: 20px;
 }
 
