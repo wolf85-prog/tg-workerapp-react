@@ -14,6 +14,7 @@ import Party from "../../image/spec/11_party.svg";
 import {FormControl, InputBase, InputLabel} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {alpha, styled} from "@mui/material/styles";
+import './WorkerItem.css'
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
     'label + &': {
@@ -25,7 +26,6 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
         border: '2px solid #76A9FF',
         fontSize: 16,
-        width: 'auto',
         padding: '10px 12px',
         transition: theme.transitions.create([
             'border-color',
@@ -52,43 +52,6 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-const BootstrapInput2 = styled(InputBase)(({ theme }) => ({
-    'label + &': {
-        marginTop: '21px',//theme.spacing(3),
-    },
-    '& .MuiInputBase-input': {
-        borderRadius: 10,
-        position: 'relative',
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        border: '2px solid #76A9FF',
-        fontSize: 16,
-        textAlign: 'center',
-        width: 'auto',
-        padding: '10px 12px',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        // Use the system font instead of the default Roboto font.
-        fontFamily: [
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            'Roboto',
-            '"Helvetica Neue"',
-            'Arial',
-            'sans-serif',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-        ].join(','),
-        '&:focus': {
-            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
-            borderColor: theme.palette.primary.main,
-        },
-    },
-}));
 
 const WorkerItem = (props) => {
     let image;
@@ -119,9 +82,9 @@ const WorkerItem = (props) => {
 
     return (
         <div className="list_spec">
-            <img style={{marginTop: "21px"}} src={image} alt='icon'/>
+            <img src={image} alt='icon'/>
 
-            <FormControl sx={{marginLeft: '7px', marginBottom: '20px', width: '60%'}} style={{border: '2px, solid, #76A9FF'}} variant="standard">
+            <FormControl sx={{marginLeft: '7px', marginBottom: '20px', width: '75%'}} style={{border: '2px, solid, #76A9FF'}} variant="standard">
                 <InputLabel shrink htmlFor="bootstrap-input" style={{color: '#76A9FF'}}>
                     {props.worker.cat}
                 </InputLabel>
@@ -132,18 +95,8 @@ const WorkerItem = (props) => {
                 />
             </FormControl>
 
-            <FormControl sx={{marginLeft: '5px', width: '45px'}} variant="standard">
-                <InputLabel shrink htmlFor="bootstrap-input2" />
-                <BootstrapInput2
-                    className="inputSpec"
-                    defaultValue=""
-                    id="bootstrap-input2"
-                    value={props.worker.count}
-                />
-            </FormControl>
-
             <DeleteIcon
-                style={{marginBottom: "10px", marginLeft: "0", color: '#76A9FF'}}
+                style={{marginLeft: "0", color: '#76A9FF'}}
                 onClick={() => props.remove(props.worker)}
             />
         </div>

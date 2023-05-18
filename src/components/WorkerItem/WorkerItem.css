@@ -1,3 +1,9 @@
 .inputSpec {
     text-align: left;
 }
+
+.list_spec {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}

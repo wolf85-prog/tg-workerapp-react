@@ -23,7 +23,11 @@ const API_URL = process.env.REACT_APP_API_URL
 const NewWorker2 = () => {
     const {tg, queryId, user} = useTelegram();
 
-    const [worker, setWorker] = useState('');
+    //работник
+    const [worker, setWorker] = useState({id: '', cat: '', spec: '', icon: ''})
+    //специальности
+    const [workers, setWorkers] = useState([])
+
     const [dateborn, setDateborn] = useState('2000-01-01');
     const [phone, setPhone] = useState();
 
@@ -50,9 +54,6 @@ const NewWorker2 = () => {
 
     const [disabled, setDisabled] = useState(true)
     const [disabled2, setDisabled2] = useState(true)
-
-    //специальности
-    const [workers, setWorkers] = useState([])
 
     
 //----------------------------------------------------------------------------------
@@ -117,13 +118,12 @@ const NewWorker2 = () => {
     const addNewWorker = (e) => {
         e.preventDefault();
 
-        // if (worker.cat !== '' || worker.spec !== '') {
-        //     setWorkers([...workers, {...worker, id: Date.now()}])
-        // }
-        // setWorker({cat: '', spec: '', count: 1, icon: ''})
+        if (worker.cat !== '' || worker.spec !== '') {
+            setWorkers([...workers, {...worker, id: Date.now()}])
+        }
+        setWorker({cat: '', spec: '', icon: ''})
 
-        // setCount(1);
-        // setSelectedElement("");
+        setSelectedElement("");
 
         setDisabled(true);
         setShowSpec(false)
