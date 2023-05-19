@@ -1,9 +1,10 @@
 .header {
-    width: 95%;
+    width: 100%;
     display: flex;
     align-items: center;
-    padding: 15px 10px;
+    padding: 15px 20px;
     position: fixed;
+    left: 0;
     background-color: #121212;
     z-index: 10;
 }
