@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewWorker.css';
 import Calendar from "../../image/calendar.svg";
-import Fon from "../../image/logo_03_light.png";
+import Fon from "../../image/logo_01_light.png";
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';

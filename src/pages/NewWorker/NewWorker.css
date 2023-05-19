@@ -1,17 +1,15 @@
 form {
     position: absolute;
-    top: 150px;
+    top: 120px;
     right: 20px;
     left: 20px;
 }
 
 .fon-style {
-    width: 80%;
-    margin-top: 70px;
+    width: 40%;
     opacity: 0.1;
-    padding-left: -50px;
-    margin-left: 260px;
-    height: auto;
+    position: absolute;
+    right: 0;
 }
 
 
