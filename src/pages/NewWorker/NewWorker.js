@@ -32,7 +32,7 @@ const NewWorker = () => {
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
                                      label="Фамилия"
-                                     id="worker_name"
+                                     id="worker_soname"
                                      variant="filled"
 
                     />
@@ -60,7 +60,7 @@ const NewWorker = () => {
                         {() => <RedditTextField 
                                     fullWidth 
                                     label="Номер телефона"
-                                    id="project_name"
+                                    id="worker_phone"
                                     variant="filled"/>}
                     </InputMask>
                 </div>
