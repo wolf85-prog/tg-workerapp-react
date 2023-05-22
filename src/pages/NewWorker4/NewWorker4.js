@@ -14,28 +14,29 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Stack } from "@mui/material";
 
 import InputMask from 'react-input-mask';
+import { useUsersContext } from "./../../contexts/UserContext";
 
 const API_URL = process.env.REACT_APP_API_URL
 
 const NewWorker4 = () => {
     const {tg, queryId, user} = useTelegram();
 
-    const [worker, setWorker] = useState('');
-    const [dateborn, setDateborn] = useState('2000-01-01');
-    const [phone, setPhone] = useState();
+    const { workerFam } = useUsersContext();
+
+    const [companys, setCompanys] = useState('');
+    const [stag, setStag] = useState('');
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const onChangeTime = (e) => {
-        setDateborn(e.target.value)
+    const onChangeStag = (e) => {
+        setStag(e.target.value)
     }
 
 
      //отправка данных в telegram-бот
      const onSendData = useCallback(() => {
         const data = {
-            workername: worker,
-            dateborn,
+            workerfamily: workerFam,
         }
 
         tg.MainButton.hide();
@@ -52,7 +53,7 @@ const NewWorker4 = () => {
         
         setIsLoading(false)
               
-    }, [worker, dateborn])
+    }, [workerFam])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)

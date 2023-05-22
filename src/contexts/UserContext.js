@@ -5,12 +5,14 @@ const UserContext = createContext();
 const useUsersContext = () => useContext(UserContext);
 
 const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(''); 
+	const [workerFam, setWorkerFam] = useState('')
+    const [workerName, setWorkerName] = useState('')
+    const [phone, setPhone] = useState('');
 
     return (
 		<UserContext.Provider value={{ 
-			user, 
-			setUser,
+			workerFam, 
+			setWorkerFam,
 		}}>
 			{children}
 		</UserContext.Provider>

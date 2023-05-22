@@ -21,7 +21,7 @@ import InputMask from 'react-input-mask';
 
 const API_URL = process.env.REACT_APP_API_URL
 
-const NewWorker2 = ({family, name, phone}) => {
+const NewWorker2 = () => {
     const {tg, queryId, user} = useTelegram();
 
     //работник
