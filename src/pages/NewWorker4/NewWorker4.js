@@ -16,6 +16,7 @@ const NewWorker4 = () => {
     const {tg, queryId, user} = useTelegram();
 
     const { workerFam } = useUsersContext();
+    console.log("workerFam: ", workerFam)
 
     const [companys, setCompanys] = useState('');
     const [stag, setStag] = useState('');

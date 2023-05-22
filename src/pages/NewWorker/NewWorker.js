@@ -10,10 +10,14 @@ import { alpha, styled } from '@mui/material/styles';
 
 import InputMask from 'react-input-mask';
 
+import { useUsersContext } from "./../../contexts/UserContext";
+
 const NewWorker = () => {
 
+    const { workerFam, setWorkerFam } = useUsersContext();
+
     //работник
-    const [workerFam, setWorkerFam] = useState('')
+    // const [workerFam, setWorkerFam] = useState('')
     const [workerName, setWorkerName] = useState('')
     const [phone, setPhone] = useState('');
 
