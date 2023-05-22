@@ -68,6 +68,10 @@ const NewWorker4 = () => {
         })
     }, [])
 
+    useEffect(() => {
+        tg.MainButton.show();
+    }, [])
+
     return (
         <div className="App">
             <Header header={{title: 'Новый специалист', icon: 'false'}}/>
