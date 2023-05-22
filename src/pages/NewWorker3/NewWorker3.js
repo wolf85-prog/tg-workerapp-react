@@ -76,7 +76,7 @@ const NewWorker3 = () => {
                 </div>
 
                 <div className='block-buttons'>
-                    <Link to={'/add-worker3'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
+                    <Link to={'/add-worker'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
                     <Link to={'/add-worker4'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link> 
                 </div>
             </form>
