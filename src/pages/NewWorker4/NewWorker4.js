@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewWorker4.css';
 import Calendar from "../../image/calendar.svg";
+import Fon from "../../image/logo_01_light.png";
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
@@ -16,7 +17,7 @@ import InputMask from 'react-input-mask';
 
 const API_URL = process.env.REACT_APP_API_URL
 
-const NewWorker2 = () => {
+const NewWorker4 = () => {
     const {tg, queryId, user} = useTelegram();
 
     const [worker, setWorker] = useState('');
@@ -33,7 +34,7 @@ const NewWorker2 = () => {
      //отправка данных в telegram-бот
      const onSendData = useCallback(() => {
         const data = {
-            projectname: worker,
+            workername: worker,
             dateborn,
         }
 
@@ -70,9 +71,9 @@ const NewWorker2 = () => {
         <div className="App">
             <Header header={{title: 'Новый специалист', icon: 'false'}}/>
 
-            <form>
-                
+            <img src={Fon} alt='' className='fon-style'/>
 
+            <form>
                 {/*Прокатные комапнии*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
@@ -128,4 +129,4 @@ const RedditTextField = styled((props) => (
 }));
 
 
-export default NewWorker2;
+export default NewWorker4;

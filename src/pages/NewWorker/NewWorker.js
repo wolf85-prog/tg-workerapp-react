@@ -3,19 +3,28 @@ import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewWorker.css';
-import Calendar from "../../image/calendar.svg";
 import Fon from "../../image/logo_01_light.png";
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { Stack } from "@mui/material";
 
 import InputMask from 'react-input-mask';
 
 const NewWorker = () => {
-    const [phone, setPhone] = useState();
+
+    //работник
+    const [workerFam, setWorkerFam] = useState('')
+    const [workerName, setWorkerName] = useState('')
+    const [phone, setPhone] = useState('');
+
+
+    const onChangeFamily = (e) => {
+        setWorkerFam(e.target.value)
+    }
+
+    const onChangeName = (e) => {
+        setWorkerName(e.target.value)
+    }
 
     const handlePhone = (e)=>{
         setPhone(e.target.value)
@@ -31,20 +40,22 @@ const NewWorker = () => {
                 {/*Фамилия*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
-                                     label="Фамилия"
-                                     id="worker_soname"
-                                     variant="filled"
-
+                                    label="Фамилия"
+                                    id="worker_soname"
+                                    variant="filled"
+                                    onChange={onChangeFamily}
+                                    value={workerFam}
                     />
                 </div>
 
                 {/*Имя*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
-                                     label="Имя"
-                                     id="worker_name"
-                                     variant="filled"
-
+                                    label="Имя"
+                                    id="worker_name"
+                                    variant="filled"
+                                    onChange={onChangeName}
+                                    value={workerName}
                     />
                 </div>          
 
@@ -65,7 +76,7 @@ const NewWorker = () => {
                     </InputMask>
                 </div>
 
-                <Link to={'/add-worker'}><MyButton style={{marginBottom: "15px", width: "220px"}}>Далее</MyButton></Link>
+                <Link to={'/add-worker'}><MyButton style={{marginBottom: "15px", width: "220px"}} family={workerFam} name={workerName} phone={phone}>Далее</MyButton></Link>
 
             </form>
             

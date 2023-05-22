@@ -21,16 +21,13 @@ import InputMask from 'react-input-mask';
 
 const API_URL = process.env.REACT_APP_API_URL
 
-const NewWorker2 = () => {
+const NewWorker2 = ({family, name, phone}) => {
     const {tg, queryId, user} = useTelegram();
 
     //работник
     const [worker, setWorker] = useState({id: '', cat: '', spec: '', icon: ''})
     //специальности
     const [workers, setWorkers] = useState([])
-
-    const [dateborn, setDateborn] = useState('2000-01-01');
-    const [phone, setPhone] = useState();
 
     //категории
     const [categories, setCategories] = useState([]);

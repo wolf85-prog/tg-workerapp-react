@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewWorker3.css';
 import Calendar from "../../image/calendar.svg";
+import Fon from "../../image/logo_01_light.png";
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
@@ -16,14 +17,17 @@ import InputMask from 'react-input-mask';
 
 const API_URL = process.env.REACT_APP_API_URL
 
-const NewWorker2 = () => {
+const NewWorker3 = () => {
     const {tg, queryId, user} = useTelegram();
 
-    const [worker, setWorker] = useState('');
+    const [city, setCity] = useState('');
     const [dateborn, setDateborn] = useState('2000-01-01');
-    const [phone, setPhone] = useState();
 
     const [isLoading, setIsLoading] = useState(false);
+
+    const onChangeCity = (e) => {
+        setCity(e.target.value)
+    }
 
     const onChangeTime = (e) => {
         setDateborn(e.target.value)
@@ -34,16 +38,17 @@ const NewWorker2 = () => {
         <div className="App">
             <Header header={{title: 'Новый специалист', icon: 'false'}}/>
 
-            <form>
-                
+            <img src={Fon} alt='' className='fon-style'/>
 
+            <form>
                 {/*Город*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
-                                     label="Ваш город"
-                                     id="worker_name"
-                                     variant="filled"
-
+                                    label="Ваш город"
+                                    id="worker_name"
+                                    variant="filled"
+                                    onChange={onChangeCity}
+                                    value={city}
                     />
                 </div>
 
@@ -105,4 +110,4 @@ const RedditTextField = styled((props) => (
 }));
 
 
-export default NewWorker2;
+export default NewWorker3;
