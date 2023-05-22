@@ -4,16 +4,10 @@ import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewWorker4.css';
-import Calendar from "../../image/calendar.svg";
 import Fon from "../../image/logo_01_light.png";
-
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { Stack } from "@mui/material";
 
-import InputMask from 'react-input-mask';
 import { useUsersContext } from "./../../contexts/UserContext";
 
 const API_URL = process.env.REACT_APP_API_URL
@@ -37,6 +31,7 @@ const NewWorker4 = () => {
      const onSendData = useCallback(() => {
         const data = {
             workerfamily: workerFam,
+            queryId,
         }
 
         tg.MainButton.hide();
