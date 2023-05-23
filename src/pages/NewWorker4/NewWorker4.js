@@ -15,13 +15,16 @@ const API_URL = process.env.REACT_APP_API_URL
 const NewWorker4 = () => {
     const {tg, queryId, user} = useTelegram();
 
-    const { workerFam } = useUsersContext();
-    console.log("workerFam: ", workerFam)
+    const { workerFam, workerName, phone, workers, 
+        city, dateborn, companys, setCompanys, stag, setStag } = useUsersContext();
 
-    const [companys, setCompanys] = useState('');
-    const [stag, setStag] = useState('');
+    console.log(workerFam, workerName, phone, workers, city, dateborn)
 
     const [isLoading, setIsLoading] = useState(false);
+
+    const onChangeCompanys = (e) => {
+        setCompanys(e.target.value)
+    }
 
     const onChangeStag = (e) => {
         setStag(e.target.value)
@@ -32,6 +35,13 @@ const NewWorker4 = () => {
      const onSendData = useCallback(() => {
         const data = {
             workerfamily: workerFam,
+            workerName, 
+            phone,
+            worklist: workers,
+            city, 
+            dateborn, 
+            companys, 
+            stag,
             queryId,
         }
 
@@ -49,7 +59,7 @@ const NewWorker4 = () => {
         
         setIsLoading(false)
               
-    }, [workerFam])
+    }, [workerFam, workerName, phone, workers, city, dateborn, companys, stag])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -84,7 +94,8 @@ const NewWorker4 = () => {
                                      variant="filled"
                                      multiline
                                      rows={4}
-
+                                    onChange={onChangeCompanys}
+                                    value={companys}
                     />
                 </div>
 
@@ -94,7 +105,8 @@ const NewWorker4 = () => {
                                      label="Опыт работы"
                                      id="worker_name"
                                      variant="filled"
-
+                                    onChange={onChangeStag}
+                                    value={stag}
                     />
                 </div>
 

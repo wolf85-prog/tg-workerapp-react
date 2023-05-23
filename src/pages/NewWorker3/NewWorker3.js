@@ -13,15 +13,12 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Stack } from "@mui/material";
 
-import InputMask from 'react-input-mask';
+import { useUsersContext } from "./../../contexts/UserContext";
 
 const API_URL = process.env.REACT_APP_API_URL
 
 const NewWorker3 = () => {
-    const {tg, queryId, user} = useTelegram();
-
-    const [city, setCity] = useState('');
-    const [dateborn, setDateborn] = useState('2000-01-01');
+    const {city, setCity, dateborn, setDateborn} = useUsersContext();
 
     const [isLoading, setIsLoading] = useState(false);
 

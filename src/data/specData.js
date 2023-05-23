@@ -2,7 +2,7 @@
 const specData = [
     {
         id: 1,
-        name: 'Специалисты по Звуку',
+        name: 'Звук',
         icon: 'Sound',
         models: [
             {id: 1, name: 'Звукорежиссер',},
@@ -14,7 +14,7 @@ const specData = [
     },
     {
         id: 2,
-        name: 'Специалисты по Свету',
+        name: 'Свет',
         icon: 'Light',
         models: [
             {id: 1, name: 'Художник по свету',},
