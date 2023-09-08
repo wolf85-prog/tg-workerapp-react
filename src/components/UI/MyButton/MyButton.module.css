@@ -8,7 +8,7 @@
     cursor: pointer;
     height: 38px;
     width: 162px;
-
+    position: relative;
     background: #2264D1;
     border-radius: 99px;
 }

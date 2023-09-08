@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewWorker.css';
 import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/gradient.png";
+import FonGrad from "../../image/gradient2.png";
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
@@ -88,6 +88,7 @@ const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true }} {...props}  />
 ))(({ theme }) => ({
     '& .MuiFilledInput-root': {
+        height: '55px',
         border: '2px solid #76A9FF',
         overflow: 'hidden',
         borderRadius: 10,
