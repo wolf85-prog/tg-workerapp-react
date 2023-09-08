@@ -1,13 +1,20 @@
 form {
-    position: absolute;
+    /* position: absolute;
     top: 120px;
     right: 20px;
-    left: 20px;
+    left: 20px; */
+    margin-top: 120px;
 }
 
 .fon-style {
     width: 40%;
     opacity: 0.1;
+    position: absolute;
+    right: 0;
+    top: 70px;
+}
+
+.fon-style2 {
     position: absolute;
     right: 0;
     top: 70px;
