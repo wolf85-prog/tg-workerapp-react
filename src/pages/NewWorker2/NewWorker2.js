@@ -7,6 +7,7 @@ import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 import WorkerList from "../../components/WorkerList/WorkerList";
 import './NewWorker2.css';
 import Fon from "../../image/logo_01_light.png";
+import FonGrad from "../../image/gradient2.png";
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
@@ -128,6 +129,7 @@ const NewWorker2 = () => {
             <Header header={{title: 'Новый специалист', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
+            <img src={FonGrad} alt='' className='fon-style2'/>
 
             <form>
                 {/*Специализация*/}
