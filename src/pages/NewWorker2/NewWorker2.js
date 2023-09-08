@@ -6,28 +6,17 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 import WorkerList from "../../components/WorkerList/WorkerList";
 import './NewWorker2.css';
-import Calendar from "../../image/calendar.svg";
 import Fon from "../../image/logo_01_light.png";
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { Stack } from "@mui/material";
-
 import specData from "../../data/specData"
-
-import InputMask from 'react-input-mask';
+import { useUsersContext } from "./../../contexts/UserContext";
 
 const API_URL = process.env.REACT_APP_API_URL
 
 const NewWorker2 = () => {
-    const {tg, queryId, user} = useTelegram();
-
-    //работник
-    const [worker, setWorker] = useState({id: '', cat: '', spec: '', icon: ''})
-    //специальности
-    const [workers, setWorkers] = useState([])
+    const {worker, setWorker, workers, setWorkers} = useUsersContext();
 
     //категории
     const [categories, setCategories] = useState([]);
@@ -112,15 +101,15 @@ const NewWorker2 = () => {
     }
 
 
-    {/* Добавление работника */}
+    {/* Добавление специальности */}
     const addNewWorker = (e) => {
         e.preventDefault();
 
         if (worker.cat !== '' || worker.spec !== '') {
             setWorkers([...workers, {...worker, id: Date.now()}])
         }
-        setWorker({cat: '', spec: '', icon: ''})
 
+        setWorker({cat: '', spec: '', icon: ''})
         setSelectedElement("");
 
         setDisabled(true);

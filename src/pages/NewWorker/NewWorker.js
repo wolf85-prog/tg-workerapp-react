@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
@@ -15,13 +15,7 @@ import { useUsersContext } from "./../../contexts/UserContext";
 
 const NewWorker = () => {
 
-    const { workerFam, setWorkerFam } = useUsersContext();
-
-    //работник
-    // const [workerFam, setWorkerFam] = useState('')
-    const [workerName, setWorkerName] = useState('')
-    const [phone, setPhone] = useState('');
-
+    const { workerFam, setWorkerFam, workerName, setWorkerName, phone, setPhone } = useUsersContext();
 
     const onChangeFamily = (e) => {
         setWorkerFam(e.target.value)

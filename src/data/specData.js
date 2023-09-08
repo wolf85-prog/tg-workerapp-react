@@ -2,7 +2,7 @@
 const specData = [
     {
         id: 1,
-        name: 'Специалисты по Звуку',
+        name: 'Звук',
         icon: 'Sound',
         models: [
             {id: 1, name: 'Звукорежиссер',},
@@ -14,7 +14,7 @@ const specData = [
     },
     {
         id: 2,
-        name: 'Специалисты по Свету',
+        name: 'Свет',
         icon: 'Light',
         models: [
             {id: 1, name: 'Художник по свету',},
@@ -25,7 +25,7 @@ const specData = [
     },
     {
         id: 3,
-        name: 'Видеоинженеры',
+        name: 'Видео',
         icon: 'Video',
         models: [
             {id: 1, name: 'Инженер VMix',},
@@ -39,7 +39,7 @@ const specData = [
     },
     {
         id: 4,
-        name: 'Пром. Альпинисты',
+        name: 'Риггеры',
         icon: 'Riggers',
         models: [
             {id: 1, name: 'Верхний Риггер',},
@@ -57,7 +57,7 @@ const specData = [
     },
     {
         id: 6,
-        name: 'Техники по граунду',
+        name: 'Граунд',
         icon: 'Stage Ground',
         models: [
             {id: 1, name: 'Риггер [Ground]',},
@@ -87,7 +87,7 @@ const specData = [
     },
     {
         id: 9,
-        name: 'Фотографы',
+        name: 'Фото',
         icon: 'Photo',
         models: [
             {id: 1, name: 'Репортажная съемка',},
@@ -111,7 +111,7 @@ const specData = [
     },   
     {
         id: 11,
-        name: 'Party',
+        name: 'Артисты',
         icon: 'Party',
         models: [
             {id: 1, name: 'Кавер-бенд',},
@@ -125,15 +125,15 @@ const specData = [
     },
     {
         id: 12,
-        name: 'Games',
+        name: 'Игромания',
         icon: 'Games',
         models: [
             {id: 1, name: 'Квесты',},
             {id: 2, name: 'Квизы',},
             {id: 3, name: 'Аниматоры',},
-            {id: 4, name: 'Настольные игры \/ игровые автоматы',},
-            {id: 5, name: 'Пневмокостюмы \/ ростовые куклы',},
-            {id: 6, name: 'Активности \/ аттракционы',},
+            {id: 4, name: 'Настольные игры\/игровые автоматы',},
+            {id: 5, name: 'Пневмокостюмы\/ростовые куклы',},
+            {id: 6, name: 'Активности\/аттракционы',},
         ]
     },
 ];
