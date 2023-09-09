@@ -19,9 +19,62 @@ import { useUsersContext } from "./../../contexts/UserContext";
 const API_URL = process.env.REACT_APP_API_URL
 
 const NewWorker3 = () => {
-    const {city, setCity, dateborn, setDateborn} = useUsersContext();
+    //const {city, setCity, dateborn, setDateborn} = useUsersContext();
+
+    const {tg, queryId, user} = useTelegram();
+
+    const { workerFam, workerName, phone, workers, 
+        city, setCity, dateborn, setDateborn } = useUsersContext();
+
+    console.log(workerFam, workerName, phone, workers, city, dateborn)
 
     const [isLoading, setIsLoading] = useState(false);
+
+    //отправка данных в telegram-бот
+    const onSendData = useCallback(() => {
+        const data = {
+            workerfamily: workerFam,
+            workerName, 
+            phone,
+            worklist: workers,
+            city, 
+            dateborn, 
+            queryId,
+        }
+
+        tg.MainButton.hide();
+        setIsLoading(true)
+
+
+        fetch(API_URL + 'web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        
+        setIsLoading(false)
+              
+    }, [workerFam, workerName, phone, workers, city, dateborn])
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
+
+    useEffect(() => {
+        tg.MainButton.setParams({
+            text: 'Сохранить'
+        })
+    }, [])
+
+    useEffect(() => {
+        tg.MainButton.show();
+    }, [])
+
 
     const onChangeCity = (e) => {
         setCity(e.target.value)
@@ -76,7 +129,7 @@ const NewWorker3 = () => {
 
                 <div className='block-buttons'>
                     <Link to={'/add-worker'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
-                    <Link to={'/add-worker4'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link> 
+                    {/* <Link to={'/add-worker4'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>  */}
                 </div>
             </form>
             
