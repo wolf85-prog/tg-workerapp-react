@@ -193,42 +193,14 @@ const NewWorker = () => {
                 {/*список работников*/}
                 <WorkerList remove={removeWorker} workers={workers} />
                 
-                {/* <div className='block-buttons'>
-                    <Link to={'/add-worker'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link> 
-                 </div> */}
 
-                <Link to={'/add-worker'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>
+                <Link to={'/add-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>
                                
             </form>
             
         </div>
     );
 };
-
-const RedditTextField = styled((props) => (
-    <TextField InputProps={{ disableUnderline: true }} {...props}  />
-))(({ theme }) => ({
-    '& .MuiFilledInput-root': {
-        height: '55px',
-        border: '2px solid #76A9FF',
-        overflow: 'hidden',
-        borderRadius: 10,
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
-        '&.Mui-focused': {
-            backgroundColor: 'transparent',
-            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-            borderColor: theme.palette.primary.main,
-        },
-    },
-}));
 
 
 export default NewWorker;
