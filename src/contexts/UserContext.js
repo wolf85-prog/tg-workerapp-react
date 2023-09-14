@@ -16,7 +16,7 @@ const UserProvider = ({ children }) => {
     const [workers, setWorkers] = useState([])
 
 	const [city, setCity] = useState('');
-    const [dateborn, setDateborn] = useState('2000-01-01');
+    const [dateborn, setDateborn] = useState('');
 
 	const [companys, setCompanys] = useState('');
     const [stag, setStag] = useState('');

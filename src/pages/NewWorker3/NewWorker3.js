@@ -106,12 +106,12 @@ const NewWorker3 = () => {
 
                 {/*Сколько лет*/}
                 {/*Дата начала*/}
-                <div className="text-field text-field_floating">
+                {/* <div className="text-field text-field_floating">
                     <LocalizationProvider dateAdapter={AdapterDayjs} >
                         <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
                             <RedditTextField
                                 id="date"
-                                label="Дата рождения"
+                                label="Год рождения"
                                 type="date"
                                 variant="filled"
                                 value={dateborn}
@@ -125,6 +125,16 @@ const NewWorker3 = () => {
                             </span>
                         </Stack>
                     </LocalizationProvider>
+                </div> */}
+
+                <div className="text-field text-field_floating">
+                    <RedditTextField fullWidth
+                        label="Год рождения"
+                        id="date"
+                        variant="filled"
+                        onChange={onChangeTime}
+                        value={dateborn}
+                    />
                 </div>
 
                 <div className='block-buttons'>
