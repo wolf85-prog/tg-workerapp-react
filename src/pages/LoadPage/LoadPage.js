@@ -3,6 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import './LoadPage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
+import Logo from "../../image/logo_04_light.png";
 
 
 const LoadPage = () => {
@@ -25,6 +26,7 @@ const LoadPage = () => {
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
+            <img src={Logo} alt='' className='fon-style3'/>
             
         </div>
     );

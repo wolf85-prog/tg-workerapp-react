@@ -73,3 +73,26 @@
   border: 2px solid orange;
   font-weight: bold;
 }
+
+.fon-style {
+  width: 40%;
+  opacity: 0.1;
+  position: absolute;
+  right: 0;
+  top: 70px;
+}
+
+.fon-style2 {
+  position: absolute;
+  right: 0;
+  top: 300px;
+  width: 180%;
+}
+
+.fon-style3 {
+  width: 90%;
+  position: absolute;
+  top: 370px;
+  left: 0;
+  margin-left: 25px;
+}
