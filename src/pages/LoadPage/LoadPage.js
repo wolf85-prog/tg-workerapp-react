@@ -16,7 +16,7 @@ const LoadPage = () => {
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        setTimeout(() =>  navigate("/add-worker"), 3000)
+        setTimeout(() =>  navigate("/add-worker"), 5000)
     }, []);
 
 
