@@ -141,7 +141,7 @@ const NewWorker = () => {
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
-            <img src={Logo} alt='' className='fon-style3'/>
+            {/* <img src={Logo} alt='' className='fon-style3'/> */}
 
             <form>
                 {/*Специализация*/}

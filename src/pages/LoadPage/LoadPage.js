@@ -12,11 +12,14 @@ const LoadPage = () => {
 
     const [showNext, setShowNext] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
-    
+    const [showLogo, setShowLogo] = useState(false);
+
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
+        setTimeout(() =>  setShowLogo(true), 2000)
+        setTimeout(() =>  setShowLogo(false), 4000)
         setTimeout(() =>  navigate("/add-worker"), 5000)
     }, []);
 
@@ -26,7 +29,8 @@ const LoadPage = () => {
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
-            <img src={Logo} alt='' className='fon-style3'/>
+            <img src={Logo} alt='' className='fon-style3' style={{display: showLogo ? "block": "none"}}/>
+            
             
         </div>
     );
