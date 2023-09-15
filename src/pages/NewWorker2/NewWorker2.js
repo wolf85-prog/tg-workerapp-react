@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
@@ -17,6 +17,17 @@ const NewWorker2 = () => {
 
     const { workerFam, setWorkerFam, workerName, setWorkerName, phone, setPhone } = useUsersContext();
 
+    const [novalid, setNovalid] = useState(true)
+
+    useEffect(() => {
+        //console.log(phone.length)
+        if (workerFam && workerName && phone.length === 18) {
+            setNovalid(false)
+        } else {
+            setNovalid(true) 
+        }
+    }, [workerFam, workerName, phone]);
+
     const onChangeFamily = (e) => {
         setWorkerFam(e.target.value)
     }
@@ -27,6 +38,7 @@ const NewWorker2 = () => {
 
     const handlePhone = (e)=>{
         setPhone(e.target.value)
+        //console.log(phone.length)
     }
 
     return (
@@ -64,7 +76,7 @@ const NewWorker2 = () => {
                     <InputMask
                         mask="+7 (999) 999-99-99"
                         disabled={false}
-                        maskChar=" "
+                        maskChar=""
                         onChange={handlePhone} 
                         value={phone}
                     >
@@ -78,7 +90,7 @@ const NewWorker2 = () => {
 
                 <div className='block-buttons'>
                     <Link to={'/add-worker'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
-                    <Link to={'/add-worker3'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
+                    <Link to={'/add-worker3'}><MyButton disabled={novalid} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
                 </div>
 
             </form>
