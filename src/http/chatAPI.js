@@ -1,8 +1,8 @@
 import {$host} from "./index";
 
-export const sendMessage = async () =>{
+export const sendMyMessage = async (id) =>{
     try {
-       let response = await $host.get('api/sendmessage');
+       let response = await $host.get(`api/sendmessage/${id}`);
        //console.log(response);
        return response.data;
     } catch (error) {

@@ -8,48 +8,40 @@ import WorkerList from "../../components/WorkerList/WorkerList";
 import './NewWorker.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
-import Logo from "../../image/logo_04_light.png";
 
-import TextField from '@mui/material/TextField';
-import { alpha, styled } from '@mui/material/styles';
+//import TextField from '@mui/material/TextField';
+//import { alpha, styled } from '@mui/material/styles';
 import specData from "../../data/specData"
 import { useUsersContext } from "./../../contexts/UserContext";
+import { sendMyMessage } from '../../http/chatAPI';
 
 const API_URL = process.env.REACT_APP_API_URL
 
 const NewWorker = () => {
     const {worker, setWorker, workers, setWorkers} = useUsersContext();
+    //const {user} = useTelegram();
 
     //категории
     const [categories, setCategories] = useState([]);
     //специальности
     const [models, setModels] = useState([]);
 
-    const [modal, setModal] = useState(false)
-    const [showWorkadd, setShowWorkadd] = useState(false)
-    const [showEquipmentadd, setShowEquipmentadd] = useState(false)
     const [showSpec, setShowSpec] = useState(false)
-    const [showName, setShowName] = useState(false)
-    const [showSubname, setShowSubname] = useState(false)
     const [showNext, setShowNext] = useState(false)
 
     //select
     const [selectedElement, setSelectedElement] = useState("")
-    //select2
-    const [selectedElement2, setSelectedElement2] = useState("")
-
-    const [isLoading, setIsLoading] = useState(false);
-
     const [disabledBtn, setDisabledBtn] = useState(true)
-
     const [disabled, setDisabled] = useState(true)
-    const [disabled2, setDisabled2] = useState(true)
 
     
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
-    useEffect(() => {
+    useEffect(async() => {
+
+        //отправляем в админку сообщение
+        //await sendMyMessage(user?.id)
 
         // устанавливаем категории
         if (specData.length > 0 && specData) {
