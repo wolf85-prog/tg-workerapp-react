@@ -42,6 +42,7 @@ const NewWorker = () => {
 
         //отправляем в админку сообщение
         sendMyMessage(user?.id)
+        //console.log("userId: ", user?.id)
 
         // устанавливаем категории
         if (specData.length > 0 && specData) {
