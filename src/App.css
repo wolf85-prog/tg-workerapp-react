@@ -90,11 +90,24 @@
 }
 
 .fon-style3 {
-  width: 90%;
+  width: 70%;
   position: absolute;
   top: 300px;
   left: 0;
-  margin-left: 25px;
+  margin-left: 60px;
+  animation: showBlock 2s linear forwards;
+}
+
+@keyframes showBlock {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .chevron {
@@ -123,8 +136,8 @@
 
 .chevron3 {
   position: absolute;
-  right: 80px;
-  top: 210px;
+  right: 10px;
+  top: 3px;
   stroke-width: 2px;
   stroke: #76A9FF;
   fill: none;

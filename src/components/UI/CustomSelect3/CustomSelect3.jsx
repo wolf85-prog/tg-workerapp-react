@@ -8,7 +8,7 @@ const CustomSelect = ({id, options, title, onChange, selectedElement, disabled})
 
     return (
         <div>
-            <label htmlFor={id}>
+            <label htmlFor={id} style={{position: 'relative'}}>
                 <select 
                     disabled={disabled} 
                     className={classes.mySelect} 

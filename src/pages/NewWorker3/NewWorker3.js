@@ -48,7 +48,7 @@ const NewWorker3 = () => {
     }, [])
 
     useEffect(() => {
-        setSelectedElement(55);
+        setSelectedElement(2000);
     }, [])
 
     const onDatesSelectChange = (e) => {

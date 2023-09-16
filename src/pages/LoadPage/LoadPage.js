@@ -20,7 +20,7 @@ const LoadPage = () => {
     useEffect(() => {
         setTimeout(() =>  setShowLogo(true), 2000)
         setTimeout(() =>  setShowLogo(false), 4000)
-        setTimeout(() =>  navigate("/add-worker"), 5000)
+        setTimeout(() =>  navigate("/add-worker"), 4500)
     }, []);
 
 

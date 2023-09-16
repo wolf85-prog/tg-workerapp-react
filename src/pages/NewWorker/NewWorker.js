@@ -8,6 +8,7 @@ import WorkerList from "../../components/WorkerList/WorkerList";
 import './NewWorker.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
+//import Logo from "../../image/logo_04_light.png";
 
 //import TextField from '@mui/material/TextField';
 //import { alpha, styled } from '@mui/material/styles';
