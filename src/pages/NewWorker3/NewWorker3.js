@@ -7,6 +7,7 @@ import './NewWorker3.css';
 import Calendar from "../../image/calendar.svg";
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
+import CustomSelect3 from "../../components/UI/CustomSelect3/CustomSelect3";
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
@@ -26,9 +27,34 @@ const NewWorker3 = () => {
     const { workerFam, workerName, phone, workers, 
         city, setCity, dateborn, setDateborn } = useUsersContext();
 
-    console.log(workerFam, workerName, phone, workers, city, dateborn)
+    //console.log(workerFam, workerName, phone, workers, city, dateborn)
 
     const [isLoading, setIsLoading] = useState(false);
+    const [selectedElement, setSelectedElement] = useState("")
+
+    //даты
+    const [dates, setDates] = useState([]);
+    let datesArr = []
+
+    useEffect(() => {
+        for (let i = 1945; i < 2023; i++) { // выведет 0, затем 1, затем 2         
+            const obj = {
+                id: i,
+                name: i,
+            }
+            datesArr.push(obj)
+        }   
+        setDates(datesArr)
+    }, [])
+
+    useEffect(() => {
+        setSelectedElement(55);
+    }, [])
+
+    const onDatesSelectChange = (e) => {
+        setSelectedElement(e.target.options.value);
+        setDateborn(e.target.value)
+    }
 
     //отправка данных в telegram-бот
     const onSendData = useCallback(() => {
@@ -127,7 +153,7 @@ const NewWorker3 = () => {
                     </LocalizationProvider>
                 </div> */}
 
-                <div className="text-field text-field_floating">
+                {/* <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
                         label="Год рождения"
                         id="date"
@@ -135,7 +161,18 @@ const NewWorker3 = () => {
                         onChange={onChangeTime}
                         value={dateborn}
                     />
-                </div>
+                </div> */}
+
+                {/* <div className="text-field text-field_floating"> */}
+                    <CustomSelect3
+                        id="dateborn"
+                        title="Год рождения"
+                        options={dates}
+                        selectedElement={selectedElement}
+                        setSelectedElement={setSelectedElement}
+                        onChange={onDatesSelectChange}
+                     />
+                {/* </div> */}
 
                 <div className='block-buttons'>
                     <Link to={'/add-worker2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
