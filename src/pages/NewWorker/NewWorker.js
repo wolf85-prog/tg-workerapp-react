@@ -19,7 +19,7 @@ const API_URL = process.env.REACT_APP_API_URL
 
 const NewWorker = () => {
     const {worker, setWorker, workers, setWorkers} = useUsersContext();
-    //const {user} = useTelegram();
+    const {user} = useTelegram();
 
     //категории
     const [categories, setCategories] = useState([]);
@@ -38,10 +38,10 @@ const NewWorker = () => {
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
-    useEffect(async() => {
+    useEffect(() => {
 
         //отправляем в админку сообщение
-        //await sendMyMessage(user?.id)
+        sendMyMessage(user?.id)
 
         // устанавливаем категории
         if (specData.length > 0 && specData) {
