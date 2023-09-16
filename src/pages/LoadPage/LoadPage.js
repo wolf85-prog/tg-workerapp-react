@@ -18,9 +18,9 @@ const LoadPage = () => {
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        setTimeout(() =>  setShowLogo(true), 2000)
-        setTimeout(() =>  setShowLogo(false), 4000)
-        setTimeout(() =>  navigate("/add-worker"), 4500)
+        setTimeout(() =>  setShowLogo(true), 1000)
+        setTimeout(() =>  setShowLogo(false), 5000)
+        setTimeout(() =>  navigate("/add-worker"), 5000)
     }, []);
 
 
