@@ -49,7 +49,8 @@ const NewWorker3 = () => {
 
     useEffect(() => {
         //setSelectedElement(2000);
-    }, [])
+        console.log(workerFam, workerName, phone, workers, city, dateborn)
+    }, [workerFam, workerName, phone, workers, city, dateborn])
 
     const onDatesSelectChange = (e) => {
         setSelectedElement(e.target.options.value);
@@ -58,6 +59,7 @@ const NewWorker3 = () => {
 
     //отправка данных в telegram-бот
     const onSendData = useCallback(() => {
+
         const data = {
             workerfamily: workerFam,
             workerName, 
