@@ -168,10 +168,10 @@ const NewWorker = () => {
 
                         <Link to={'/page1'}><ButtonStatus>Профиль</ButtonStatus></Link> 
                         <Link to={'/page2'}><ButtonStatus>Проекты</ButtonStatus></Link>  
-                        {/* <Link to={'/page3'}><ButtonStatus>Смета</ButtonStatus></Link>  
+                        <Link to={'/page3'}><ButtonStatus>Смета</ButtonStatus></Link>  
                         <Link to={'/page4'}><ButtonStatus>Офис</ButtonStatus></Link>  
                         <Link to={'/page5'}><ButtonStatus>Информация</ButtonStatus></Link>  
-                        <Link to={'/page6'}><ButtonStatus>Помощь / FAQ</ButtonStatus></Link>   */}
+                        <Link to={'/page6'}><ButtonStatus>Помощь / FAQ</ButtonStatus></Link>  
                     </div>
                 </form>
             </>
