@@ -160,7 +160,7 @@ const NewWorker = () => {
                                     margin: '20px 5px',
                                     display: 'flex',
                                     fontSize: '14px',
-                                    color: '#76A9FF',
+                                    color: '#2975f5',
                                 }}>Добро пожаловать, ! Вы в команде!
                             </p>    
                         </label>
@@ -184,7 +184,7 @@ const NewWorker = () => {
                                 margin: '20px 5px',
                                 display: 'flex',
                                 fontSize: '14px',
-                                color: '#76A9FF',
+                                color: '#2975f5',
                             }}>Выберите свою специальность
                         </p>
 

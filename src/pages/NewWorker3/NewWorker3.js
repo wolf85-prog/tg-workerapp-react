@@ -191,7 +191,7 @@ const RedditTextField = styled((props) => (
 ))(({ theme }) => ({
     '& .MuiFilledInput-root': {
         height: '55px',
-        border: '2px solid #76A9FF',
+        border: '2px solid #2e7cff',
         overflow: 'hidden',
         borderRadius: 10,
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
