@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
+import ButtonStatus from "../../components/UI/ButtonStatus/ButtonStatus";
 import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 import WorkerList from "../../components/WorkerList/WorkerList";
 import './NewWorker.css';
@@ -145,7 +146,7 @@ const NewWorker = () => {
 
     return (
         <div className="App">
-        {workerhub.length > 0 ? 
+        {workerhub ? 
             <>
                 <Header header={{title: 'Workhub', icon: 'false'}}/>
 
@@ -164,6 +165,13 @@ const NewWorker = () => {
                                 }}>Добро пожаловать, {workerhub[0]?.fio}! Вы в команде!
                             </p>    
                         </label>
+
+                        <Link to={'/page1'}><ButtonStatus>Профиль</ButtonStatus></Link> 
+                        <Link to={'/page2'}><ButtonStatus>Проекты</ButtonStatus></Link>  
+                        {/* <Link to={'/page3'}><ButtonStatus>Смета</ButtonStatus></Link>  
+                        <Link to={'/page4'}><ButtonStatus>Офис</ButtonStatus></Link>  
+                        <Link to={'/page5'}><ButtonStatus>Информация</ButtonStatus></Link>  
+                        <Link to={'/page6'}><ButtonStatus>Помощь / FAQ</ButtonStatus></Link>   */}
                     </div>
                 </form>
             </>
@@ -228,8 +236,7 @@ const NewWorker = () => {
                 <WorkerList remove={removeWorker} workers={workers} />
                 
 
-                <Link to={'/add-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>
-                               
+                <Link to={'/add-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>     
             </form>
             </>
         }

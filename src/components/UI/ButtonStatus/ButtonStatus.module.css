@@ -1,13 +1,13 @@
 .myBtn {
     margin-top: 25px;
-    margin-bottom: 30px;
+    margin-bottom: 0;
     padding: 5px 15px;
     color: #ffffff;
     font-size: 16px;
     cursor: pointer;
     height: 33px;
     width: 162px;
-
+    position: relative;
     background: #2264D1;
     border-radius: 99px;
 }
