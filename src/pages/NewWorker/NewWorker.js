@@ -14,7 +14,7 @@ import FonGrad from "../../image/gradient2.png";
 //import { alpha, styled } from '@mui/material/styles';
 import specData from "../../data/specData"
 import { useUsersContext } from "./../../contexts/UserContext";
-import { sendMyMessage } from '../../http/chatAPI';
+import { sendMyMessage, getWorkerId } from '../../http/chatAPI';
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -35,7 +35,7 @@ const NewWorker = () => {
     const [disabledBtn, setDisabledBtn] = useState(true)
     const [disabled, setDisabled] = useState(true)
 
-    
+    const [workerhub, setWorkerhub] = useState([])
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
@@ -43,7 +43,21 @@ const NewWorker = () => {
 
         //отправляем в админку сообщение
         sendMyMessage(user?.id)
-        //console.log("userId: ", user?.id)
+
+        const fetchData = async() => {
+            const worker = await getWorkerId(user?.id)
+            if (worker.length > 0) {
+                console.log("Вы уже зарегистрированы!")
+            } else {
+                console.log("Зарегистрируйтесь!")
+            }
+
+            console.log("worker: ", worker)
+
+            setWorkerhub(worker)
+        }
+
+        fetchData()
 
         // устанавливаем категории
         if (specData.length > 0 && specData) {
@@ -131,6 +145,30 @@ const NewWorker = () => {
 
     return (
         <div className="App">
+        {workerhub.length > 0 ? 
+            <>
+                <Header header={{title: 'Workhub', icon: 'false'}}/>
+
+                <img src={Fon} alt='' className='fon-style'/>
+                <img src={FonGrad} alt='' className='fon-style2'/>
+
+                <form>
+                    <div>
+                        <label>
+                            <p
+                                style={{
+                                    margin: '20px 5px',
+                                    display: 'flex',
+                                    fontSize: '14px',
+                                    color: '#76A9FF',
+                                }}>Добро пожаловать, ! Вы в команде!
+                            </p>    
+                        </label>
+                    </div>
+                </form>
+            </>
+            :
+            <>
             <Header header={{title: 'Новый специалист', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
@@ -193,7 +231,8 @@ const NewWorker = () => {
                 <Link to={'/add-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>
                                
             </form>
-            
+            </>
+        }
         </div>
     );
 };

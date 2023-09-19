@@ -98,6 +98,15 @@
   animation: showBlock 4s linear forwards;
 }
 
+.fon-style4 {
+  width: 70%;
+  position: absolute;
+  top: 400px;
+  left: 0;
+  margin-left: 60px;
+  animation: showBlock 3s linear forwards;
+}
+
 @keyframes showBlock {
   0% {
     opacity: 0;
