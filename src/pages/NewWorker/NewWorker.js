@@ -161,7 +161,7 @@ const NewWorker = () => {
                                     display: 'flex',
                                     fontSize: '14px',
                                     color: '#2975f5',
-                                }}>Добро пожаловать, ! Вы в команде!
+                                }}>Добро пожаловать, {workerhub[0]?.fio}! Вы в команде!
                             </p>    
                         </label>
                     </div>

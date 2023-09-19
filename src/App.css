@@ -19,6 +19,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  --color-field-border: #2e7cff;
+  --color-field-label: #4a8dff;
+  --color-label: #0863fd;
 }
 
 .App {
