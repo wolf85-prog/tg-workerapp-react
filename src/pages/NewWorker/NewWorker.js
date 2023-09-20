@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
-import ButtonStatus from "../../components/UI/ButtonStatus/ButtonStatus";
 import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 import WorkerList from "../../components/WorkerList/WorkerList";
 import './NewWorker.css';
@@ -20,6 +19,8 @@ import { sendMyMessage, getWorkerId } from '../../http/chatAPI';
 const API_URL = process.env.REACT_APP_API_URL
 
 const NewWorker = () => {
+    const navigate = useNavigate();
+
     const {worker, setWorker, workers, setWorkers} = useUsersContext();
     const {user} = useTelegram();
 
@@ -75,11 +76,8 @@ const NewWorker = () => {
 
 
         setTimeout(() =>  setShowTitle(true), 1000) //Добро пожаловать!
-        setTimeout(() =>  setShowTitle(false), 4000)
 
-        setTimeout(() =>  setShowMenu(true), 4000) // Меню
-
-        //setTimeout(() =>  navigate("/add-worker"), 6000)
+        setTimeout(() =>  navigate("/menu"), 6000)
 
     }, []);
 
@@ -159,13 +157,13 @@ const NewWorker = () => {
         <div className="App">
         {workerhub ? 
             <>
-                <Header header={{title: 'Workhub', icon: 'false'}}/>
+                <Header header={{title: '', icon: 'false'}}/>
 
                 <img src={Fon} alt='' className='fon-style'/>
                 <img src={FonGrad} alt='' className='fon-style2'/>
 
                 <form>
-                    <div style={{marginTop: '350px', display: showTitle ? "block" : "none"}}>
+                    <div style={{marginTop: '350px'}}>
                         
                         <p
                             style={{
@@ -179,14 +177,6 @@ const NewWorker = () => {
                         
                     </div>
                     
-                    <div style={{display: showMenu ? "block" : "none"}}>
-                        <Link to={'/page1'}><ButtonStatus>Профиль</ButtonStatus></Link> 
-                        <Link to={'/page2'}><ButtonStatus>Проекты</ButtonStatus></Link>  
-                        <Link to={'/page3'}><ButtonStatus>Смета</ButtonStatus></Link>  
-                        <Link to={'/page4'}><ButtonStatus>Офис</ButtonStatus></Link>  
-                        <Link to={'/page5'}><ButtonStatus>Информация</ButtonStatus></Link>  
-                        <Link to={'/page6'}><ButtonStatus>Помощь / FAQ</ButtonStatus></Link>  
-                    </div>
                 </form>
             </>
             :

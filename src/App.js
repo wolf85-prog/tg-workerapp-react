@@ -7,8 +7,8 @@ import NewWorker from "./pages/NewWorker/NewWorker";
 import NewWorker2 from "./pages/NewWorker2/NewWorker2";
 import NewWorker3 from "./pages/NewWorker3/NewWorker3";
 import NewWorker4 from "./pages/NewWorker4/NewWorker4";
-
-import Page1 from "./pages/Page1/Page1";
+import MenuPage from './pages/MenuPage/MenuPage';
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import Page2 from "./pages/Page2/Page2";
 import Page3 from "./pages/Page3/Page3";
 import Page4 from "./pages/Page4/Page4";
@@ -29,12 +29,13 @@ function App() {
           <CssBaseline />
               <Routes>
                   <Route index element={<LoadPage />}/>
+                  <Route path={'menu'} element={<MenuPage />}/>
                   <Route path={'add-worker'} element={<NewWorker />}/>
                   <Route path={'add-worker2'} element={<NewWorker2 />}/>
                   <Route path={'add-worker3'} element={<NewWorker3 />}/>
                   <Route path={'add-worker4'} element={<NewWorker4 />}/>
 
-                  <Route path={'page1'} element={<Page1 />}/>
+                  <Route path={'profile'} element={<ProfilePage />}/>
                   <Route path={'page2'} element={<Page2 />}/>
                   <Route path={'page3'} element={<Page3 />}/>
                   <Route path={'page4'} element={<Page4 />}/>

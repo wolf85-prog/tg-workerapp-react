@@ -2,17 +2,15 @@ import React, { useState, useEffect, useCallback } from 'react';
 import {Link} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
-import MyButton from "../../components/UI/MyButton/MyButton";
-import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
-import WorkerList from "../../components/WorkerList/WorkerList";
-import './Page1.css';
+import ButtonStatus from "../../components/UI/ButtonStatus/ButtonStatus";
+import './MenuPage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
 
 
 const API_URL = process.env.REACT_APP_API_URL
 
-const Page1 = () => {
+const MenuPage = () => {
     
 //----------------------------------------------------------------------------------
 
@@ -25,14 +23,23 @@ const Page1 = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Профиль', icon: 'false'}}/>
+            <Header header={{title: 'Workhub', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
+
+            <form>
+                <Link to={'/profile'}><ButtonStatus>Профиль</ButtonStatus></Link> 
+                <Link to={'/page2'}><ButtonStatus>Проекты</ButtonStatus></Link>  
+                <Link to={'/page3'}><ButtonStatus>Смета</ButtonStatus></Link>  
+                <Link to={'/page4'}><ButtonStatus>Офис</ButtonStatus></Link>  
+                <Link to={'/page5'}><ButtonStatus>Информация</ButtonStatus></Link>  
+                <Link to={'/page6'}><ButtonStatus>Помощь / FAQ</ButtonStatus></Link>  
+            </form>
             
         </div>
     );
 };
 
 
-export default Page1;
+export default MenuPage;
