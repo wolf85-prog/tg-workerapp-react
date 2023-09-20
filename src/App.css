@@ -96,17 +96,11 @@
 .fon-style3 {
   width: 70%;
   position: relative;
-  margin-top: 240px;
+  margin-top: 280px;
   /* animation: showBlock 6s linear forwards; */
 }
 
 .fon-style4 {
-  /* width: 40%;
-  position: absolute;
-  top: 40%;
-  margin-right: 75px;
-  right: 0; */
-
   width: 40%;
   position: relative;
   margin-left: 115px;
