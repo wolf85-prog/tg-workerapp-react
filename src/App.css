@@ -97,14 +97,16 @@
   width: 70%;
   position: relative;
   margin-top: 280px;
-  /* animation: showBlock 6s linear forwards; */
+  animation: showBlock 4s linear forwards;
+  animation-delay: 1s;
 }
 
 .fon-style4 {
   width: 40%;
   position: relative;
   margin-left: 115px;
-  /* animation: showBlock 4s linear forwards; */
+  animation: showBlock 4s linear forwards;
+  animation-delay: 1s;
 }
 
 @keyframes showBlock {
