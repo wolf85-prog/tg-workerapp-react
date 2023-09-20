@@ -95,20 +95,22 @@
 
 .fon-style3 {
   width: 70%;
-  position: absolute;
-  top: 300px;
-  left: 0;
-  margin-left: 60px;
-  animation: showBlock 6s linear forwards;
+  position: relative;
+  margin-top: 240px;
+  /* animation: showBlock 6s linear forwards; */
 }
 
 .fon-style4 {
-  width: 40%;
+  /* width: 40%;
   position: absolute;
-  top: 400px;
+  top: 40%;
   margin-right: 75px;
-  right: 0;
-  animation: showBlock 4s linear forwards;
+  right: 0; */
+
+  width: 40%;
+  position: relative;
+  margin-left: 115px;
+  /* animation: showBlock 4s linear forwards; */
 }
 
 @keyframes showBlock {
