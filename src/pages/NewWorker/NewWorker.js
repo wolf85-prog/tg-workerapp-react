@@ -31,6 +31,9 @@ const NewWorker = () => {
     const [showSpec, setShowSpec] = useState(false)
     const [showNext, setShowNext] = useState(false)
 
+    const [showTitle, setShowTitle] = useState(false)
+    const [showMenu, setShowMenu] = useState(false)
+
     //select
     const [selectedElement, setSelectedElement] = useState("")
     const [disabledBtn, setDisabledBtn] = useState(true)
@@ -69,6 +72,14 @@ const NewWorker = () => {
         if (specData.length > 0 && specData[0].models && specData[0].models.length > 0) {
             setModels(specData[0].models);
         }
+
+
+        setTimeout(() =>  setShowTitle(true), 1000) //Добро пожаловать!
+        setTimeout(() =>  setShowTitle(false), 4000)
+
+        setTimeout(() =>  setShowMenu(true), 4000) // Меню
+
+        //setTimeout(() =>  navigate("/add-worker"), 6000)
 
     }, []);
 
@@ -154,18 +165,21 @@ const NewWorker = () => {
                 <img src={FonGrad} alt='' className='fon-style2'/>
 
                 <form>
-                    <div>
-                        <label>
-                            <p
-                                style={{
-                                    margin: '20px 5px',
-                                    display: 'flex',
-                                    fontSize: '14px',
-                                    color: '#2975f5',
-                                }}>Добро пожаловать, {workerhub[0]?.fio}! Вы в команде!
-                            </p>    
-                        </label>
+                    <div style={{marginTop: '350px', display: showTitle ? "block" : "none"}}>
+                        
+                        <p
+                            style={{
+                                margin: '20px 5px',
+                                display: 'flex',
+                                fontSize: '26px',
+                                color: '#2975f5',
+                            }}>Добро пожаловать, {workerhub[0]?.fio}! Вы в команде!
+                        </p>    
 
+                        
+                    </div>
+                    
+                    <div style={{display: showMenu ? "block" : "none"}}>
                         <Link to={'/page1'}><ButtonStatus>Профиль</ButtonStatus></Link> 
                         <Link to={'/page2'}><ButtonStatus>Проекты</ButtonStatus></Link>  
                         <Link to={'/page3'}><ButtonStatus>Смета</ButtonStatus></Link>  
