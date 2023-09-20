@@ -74,8 +74,8 @@ const NewWorker = () => {
             setModels(specData[0].models);
         }
 
-
-        setTimeout(() =>  setShowTitle(true), 1000) //Добро пожаловать!
+        setShowTitle(true) //Добро пожаловать!
+        //setTimeout(() =>  setShowTitle(true), 1000) 
 
         setTimeout(() =>  navigate("/menu"), 6000)
 
@@ -157,8 +157,6 @@ const NewWorker = () => {
         <div className="App">
         {workerhub ? 
             <>
-                <Header header={{title: '', icon: 'false'}}/>
-
                 <img src={Fon} alt='' className='fon-style'/>
                 <img src={FonGrad} alt='' className='fon-style2'/>
 
