@@ -44,15 +44,15 @@ const ProfilePage = () => {
 
             <form>
                 <ol class="bullet">
-                    <li><div class="bullet-title">ФИО</div>Иванов Иван Иванович{workerhub[0]?.fio}</li>
-                    <li><div class="bullet-title">Город</div>Город{workerhub[0]?.city}</li>
-                    <li><div class="bullet-title">Рейтинг</div>Рейтинг</li>
-                    <li><div class="bullet-title">Подкатегории</div>Подкатегории</li>
+                    <li><div class="bullet-title">ФИО</div>{workerhub[0]?.fio}</li>
+                    <li><div class="bullet-title">Город</div>{workerhub[0]?.city}</li>
+                    <li><div class="bullet-title">Рейтинг</div>{workerhub[0]?.reyting}</li>
+                    <li><div class="bullet-title">Подкатегории</div>{workerhub[0]?.spec[0].name}</li>
                     <li><div class="bullet-title">Навык</div>Навык</li>
                     <li><div class="bullet-title">Ставка</div>Ставка</li>
-                    <li><div class="bullet-title">Ранг</div>Ранг</li>
-                    <li><div class="bullet-title">Комтеги</div>Комтеги</li>
-                    <li><div class="bullet-title">Мерч</div>Мерч</li>
+                    <li><div class="bullet-title">Ранг</div>{workerhub[0]?.rank}</li>
+                    <li><div class="bullet-title">Комтеги</div>{workerhub[0]?.comteg}</li>
+                    <li><div class="bullet-title">Мерч</div>{workerhub[0]?.merch}</li>
                 </ol>
             </form>
             

@@ -13,20 +13,26 @@
 .bullet li {
     position: relative;
     margin-bottom: 1.5em;
-    border: 3px solid #CADFCF;
-    padding: 0.6em;
-    border-radius: 4px;
-    background: #FEFEFE;
-    color: #231F20;
-    font-family: "Trebuchet MS", "Lucida Sans";
+    border: 2px solid #405fe9;
+    padding-top: 1.3em;
+    padding-left: 0.6em;
+    border-radius: 10px;
+    background-color: #2A2731;
+    /* color: #231F20; */
+    color: #ffffff;
+    /* font-family: "Trebuchet MS", "Lucida Sans"; */
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    height: calc(3.5rem + 2px);
 }
     
 .bullet-title {
     position: absolute;
-    top: -0.2em;
-    padding-left: 0.4em;
-    padding-right: 0.4em;
+    top: 0.2em;
     font-size: 12px;
-    font-weight: bold;
-    color: #5336fa;
+    font-weight: 400;
+    color: #5372ff;
 }
