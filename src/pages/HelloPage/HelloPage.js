@@ -30,9 +30,9 @@ const HelloPage = () => {
 
             console.log("worker: ", worker[0]?.fio)
 
-            setWorkerhub(worker[0]?.fio)
+            //setWorkerhub(worker[0]?.fio)
 
-            setFio(`Добро пожаловать, ${workerhub.split(' ')[1]} ${workerhub.split(' ')[2]}! Вы в команде!`)
+            setFio(`Добро пожаловать, ${worker[0]?.fio.split(' ')[1]} ${worker[0]?.fio.split(' ')[2]}! Вы в команде!`)
         }
 
         fetchData()
