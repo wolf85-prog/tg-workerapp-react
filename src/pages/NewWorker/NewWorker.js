@@ -55,9 +55,6 @@ const NewWorker = () => {
             setModels(specData[0].models);
         }
 
-
-        setTimeout(() =>  navigate("/menu"), 6000)
-
     }, []);
 
 
