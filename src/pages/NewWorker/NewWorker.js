@@ -14,7 +14,7 @@ import FonGrad from "../../image/gradient2.png";
 //import { alpha, styled } from '@mui/material/styles';
 import specData from "../../data/specData"
 import { useUsersContext } from "./../../contexts/UserContext";
-import { sendMyMessage, getWorkerId } from '../../http/chatAPI';
+import { sendMyMessage } from '../../http/chatAPI';
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -32,15 +32,11 @@ const NewWorker = () => {
     const [showSpec, setShowSpec] = useState(false)
     const [showNext, setShowNext] = useState(false)
 
-    const [showTitle, setShowTitle] = useState(false)
-    const [showMenu, setShowMenu] = useState(false)
-
     //select
     const [selectedElement, setSelectedElement] = useState("")
     const [disabledBtn, setDisabledBtn] = useState(true)
     const [disabled, setDisabled] = useState(true)
 
-    const [workerhub, setWorkerhub] = useState([])
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
@@ -48,21 +44,6 @@ const NewWorker = () => {
 
         //отправляем в админку сообщение
         sendMyMessage(user?.id)
-
-        const fetchData = async() => {
-            const worker = await getWorkerId(user?.id)
-            if (worker.length > 0) {
-                console.log("Вы уже зарегистрированы!")
-            } else {
-                console.log("Зарегистрируйтесь!")
-            }
-
-            console.log("worker: ", worker)
-
-            setWorkerhub(worker)
-        }
-
-        fetchData()
 
         // устанавливаем категории
         if (specData.length > 0 && specData) {
@@ -74,8 +55,6 @@ const NewWorker = () => {
             setModels(specData[0].models);
         }
 
-        setShowTitle(true) //Добро пожаловать!
-        //setTimeout(() =>  setShowTitle(true), 1000) 
 
         setTimeout(() =>  navigate("/menu"), 6000)
 
@@ -155,35 +134,10 @@ const NewWorker = () => {
 
     return (
         <div className="App">
-        {workerhub ? 
-            <>
-                <img src={Fon} alt='' className='fon-style'/>
-                <img src={FonGrad} alt='' className='fon-style2'/>
-
-                <form>
-                    <div style={{marginTop: '350px'}}>
-                        
-                        <p
-                            style={{
-                                margin: '20px 5px',
-                                display: 'flex',
-                                fontSize: '26px',
-                                color: '#2975f5',
-                            }}>Добро пожаловать, {workerhub[0]?.fio}! Вы в команде!
-                        </p>    
-
-                        
-                    </div>
-                    
-                </form>
-            </>
-            :
-            <>
             <Header header={{title: 'Новый специалист', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
-            {/* <img src={Logo} alt='' className='fon-style3'/> */}
 
             <form>
                 {/*Специализация*/}
@@ -240,8 +194,6 @@ const NewWorker = () => {
 
                 <Link to={'/add-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>     
             </form>
-            </>
-        }
         </div>
     );
 };

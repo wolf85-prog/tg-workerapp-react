@@ -19,25 +19,25 @@ const HelloPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [showLogo, setShowLogo] = useState(false);
     const [showLogo2, setShowLogo2] = useState(false);
-    const [workerhub, setWorkerhub] = useState([])
+    const [workerhub, setWorkerhub] = useState("")
     const [fio, setFio] = useState("")
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => {
-            const worker = await getWorkerId(user?.id)
+            const worker = await getWorkerId('805436270')
             if (worker.length > 0) {
-                console.log("Вы уже зарегистрированы!")
+                console.log("Вы уже зарегистрированы!", user?.id)
             } else {
-                console.log("Зарегистрируйтесь!")
+                console.log("Зарегистрируйтесь!", user?.id)
             }
 
             console.log("worker: ", worker)
 
-            setWorkerhub(worker)
+            setWorkerhub(worker[0]?.fio)
 
-            setFio(`Добро пожаловать, ${workerhub[0]?.fio.split(' ')[1]}! Вы в команде!`)
+            setFio(`Добро пожаловать, ${workerhub}! Вы в команде!`)
         }
 
         fetchData()
