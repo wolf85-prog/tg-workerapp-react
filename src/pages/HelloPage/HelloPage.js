@@ -37,7 +37,7 @@ const HelloPage = () => {
 
         fetchData()
 
-        //setTimeout(() =>  navigate("/menu"), 3000)
+        setTimeout(() =>  navigate("/menu"), 3000)
     }, []);
 
 

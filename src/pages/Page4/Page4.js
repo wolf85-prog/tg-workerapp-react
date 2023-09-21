@@ -27,6 +27,7 @@ const Page4 = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
             
+            
         </div>
     );
 };

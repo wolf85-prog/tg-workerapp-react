@@ -9,7 +9,7 @@ import NewWorker3 from "./pages/NewWorker3/NewWorker3";
 import NewWorker4 from "./pages/NewWorker4/NewWorker4";
 import MenuPage from './pages/MenuPage/MenuPage';
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import Page2 from "./pages/Page2/Page2";
+import ProjectPage from "./pages/ProjectPage/ProjectPage";
 import Page3 from "./pages/Page3/Page3";
 import Page4 from "./pages/Page4/Page4";
 import Page5 from "./pages/Page5/Page5";
@@ -38,7 +38,7 @@ function App() {
                   <Route path={'add-worker4'} element={<NewWorker4 />}/>
 
                   <Route path={'profile'} element={<ProfilePage />}/>
-                  <Route path={'page2'} element={<Page2 />}/>
+                  <Route path={'projects'} element={<ProjectPage />}/>
                   <Route path={'page3'} element={<Page3 />}/>
                   <Route path={'page4'} element={<Page4 />}/>
                   <Route path={'page5'} element={<Page5 />}/>

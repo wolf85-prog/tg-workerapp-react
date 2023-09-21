@@ -27,6 +27,18 @@ const Page5 = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
             
+            <form>
+                <div style={{marginTop: '250px'}}>                  
+                    <p
+                        style={{
+                            margin: '20px 5px',
+                            display: 'flex',
+                            fontSize: '26px',
+                            color: '#2975f5',
+                        }}> Страница "Информация" находится в разработке!
+                    </p>         
+                </div>       
+            </form>
         </div>
     );
 };

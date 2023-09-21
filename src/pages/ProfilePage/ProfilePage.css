@@ -4,6 +4,12 @@
     padding-top: 50px;
 }
 
+.form-profile {
+    margin-top: 120px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
 .bullet {
     margin-left: 0;
     list-style: none;
@@ -12,27 +18,30 @@
     
 .bullet li {
     position: relative;
-    margin-bottom: 1.5em;
+    /* margin-bottom: 1.5em;
     border: 2px solid #405fe9;
     padding-top: 1.3em;
     padding-left: 0.6em;
     border-radius: 10px;
     background-color: #2A2731;
-    /* color: #231F20; */
-    color: #ffffff;
+    color: #ffffff; */
     /* font-family: "Trebuchet MS", "Lucida Sans"; */
     font-family: inherit;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    text-align: left;
-    height: calc(3.5rem + 2px);
+    text-align: right;
+    /* height: calc(3.5rem + 2px); */
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
 }
     
 .bullet-title {
-    position: absolute;
+    /* position: absolute;
     top: 0.2em;
     font-size: 12px;
     font-weight: 400;
-    color: #5372ff;
+    color: #5372ff; */
+    text-align: left;
 }
