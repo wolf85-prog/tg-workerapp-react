@@ -20,6 +20,7 @@ const HelloPage = () => {
     const [showLogo, setShowLogo] = useState(false);
     const [showLogo2, setShowLogo2] = useState(false);
     const [workerhub, setWorkerhub] = useState([])
+    const [fio, setFio] = useState("")
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
@@ -35,6 +36,8 @@ const HelloPage = () => {
             console.log("worker: ", worker)
 
             setWorkerhub(worker)
+
+            setFio(`Добро пожаловать, ${workerhub[0]?.fio.split(' ')[1]}! Вы в команде!`)
         }
 
         fetchData()
@@ -57,7 +60,7 @@ const HelloPage = () => {
                             display: 'flex',
                             fontSize: '26px',
                             color: '#2975f5',
-                        }}>Добро пожаловать, {workerhub[0]?.fio}! Вы в команде!
+                        }}> {fio}
                     </p>         
                 </div>       
             </form>
