@@ -14,6 +14,7 @@ import Page3 from "./pages/Page3/Page3";
 import Page4 from "./pages/Page4/Page4";
 import Page5 from "./pages/Page5/Page5";
 import Page6 from "./pages/Page6/Page6";
+import HelloPage from './pages/HelloPage/HelloPage';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <CssBaseline />
               <Routes>
                   <Route index element={<LoadPage />}/>
+                  <Route path={'hello'} element={<HelloPage />}/>
                   <Route path={'menu'} element={<MenuPage />}/>
                   <Route path={'add-worker'} element={<NewWorker />}/>
                   <Route path={'add-worker2'} element={<NewWorker2 />}/>
