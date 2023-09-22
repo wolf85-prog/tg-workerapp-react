@@ -6,88 +6,74 @@
 
 form-smeta {
   margin-top: 80px;
-  margin-left: 30px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-table {
-    border: 1px solid #ccc;
-    border-collapse: collapse;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    table-layout: fixed;
+/* default styling. Nothing to do with freexing first row and column */
+main {display: flex;}
+main > * {border: 1px solid;}
+table {border-collapse: collapse; font-family: helvetica}
+td, th {border:  1px solid;
+      padding: 10px;
+      min-width: 60px;
+      background: black;
+      box-sizing: border-box;
+      text-align: left;
 }
-  
-table caption {
-    font-size: 1.5em;
-    margin: .5em 0 .75em;
+.table-container {
+  position: relative;
+  max-height:  700px;
+  width: 360px;
+  overflow: scroll;
 }
-  
-table tr {
-    background-color: #000000;
-    border: 1px solid #ddd;
-    padding: .35em;
+
+thead th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #212929;
 }
-  
-table th,
-table td {
-    padding: .625em;
-    text-align: center;
+
+thead th:first-child {
+  left: 0;
+  z-index: 3;
 }
-  
-table th {
-    font-size: .85em;
-    letter-spacing: .1em;
-    text-transform: uppercase;
+
+tfoot {
+  position: -webkit-sticky;
+  bottom: 0;
+  z-index: 2;
 }
-  
-@media screen and (max-width: 600px) {
-    table {
-      border: 0;
-    }
-  
-    table caption {
-      font-size: 1.3em;
-    }
-    
-    table thead {
-      border: none;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
-    }
-    
-    table tr {
-      border-bottom: 3px solid #ddd;
-      display: block;
-      margin-bottom: .625em;
-    }
-    
-    table td {
-      border-bottom: 1px solid #ddd;
-      display: block;
-      font-size: .8em;
-      text-align: right;
-    }
-    
-    table td::before {
-      /*
-      * aria-label has no advantage, it won't be read inside a table
-      content: attr(aria-label);
-      */
-      content: attr(data-label);
-      float: left;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-    
-    table td:last-child {
-      border-bottom: 0;
-    }
+
+tfoot td {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  background: hsl(20, 50%, 70%);
 }
-  
+
+tfoot td:first-child {
+  z-index: 3;
+}
+
+tbody {
+  overflow: scroll;
+  height: 200px;
+}
+
+/* MAKE LEFT COLUMN FIXEZ */
+tr > :first-child {
+  position: -webkit-sticky;
+  position: sticky; 
+  background: #212929;
+  left: 0; 
+}
+/* don't do this */
+tr > :first-child {
+  box-shadow: inset 0px 1px black;
+}
+
+
+

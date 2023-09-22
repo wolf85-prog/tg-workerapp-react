@@ -24,11 +24,11 @@ const Page3 = () => {
         <div className="App">
             <Header header={{title: 'Смета', icon: 'false'}}/>
 
-            <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/> 
+            {/* <img src={Fon} alt='' className='fon-style'/>
+            <img src={FonGrad} alt='' className='fon-style2'/>  */}
             
             <form className='form-smeta'>
-                <div>                  
+                                 
                     {/* <p
                         style={{
                             margin: '20px 5px',
@@ -38,7 +38,7 @@ const Page3 = () => {
                         }}> Страница "Сметы" находится в разработке!
                     </p>          */}
 
-                <table>
+                {/* <table>
                 <caption>Страница "Сметы" находится в разработке!</caption>
                 <thead>
                     <tr>
@@ -84,9 +84,49 @@ const Page3 = () => {
                         <td data-label="Дополнительные расходы">1,190</td>
                     </tr>
                 </tbody>
-                </table>
+                </table> */}
 
-                </div>       
+                <div class="table-container">
+                    
+                    <div class="table-horizontal-container">
+                        <table class="unfixed-table">
+                        <thead>
+                            <tr>
+                                <th>Дата</th>
+                                <th>Название проекта</th>
+                                <th>Статус</th>
+                                <th>Часы</th>
+                                <th>Смета</th>
+                                <th>Итого</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>12.09</th>
+                                <td>Проект 1</td>
+                                <td>Монтаж</td>
+                                <td>23:00 - 01:00</td>
+                                <td>5 000,00</td>
+                                <td>5 000,00</td>
+                            </tr>
+                            <tr>
+                                <th>13.09</th>
+                                <td>Проект 2</td>
+                                <td>Монтаж</td>
+                                <td>23:00 - 01:00</td>
+                                <td>5 000,00</td>
+                                <td>5 000,00</td>
+                            </tr>
+                        </tbody>
+                        
+                        {/* <tfoot>
+                            <tr><td>Footer</td><td>Footer</td><td>Footer</td><td>Footer</td><td>Footer</td><td>Footer</td><th>Footer</th><th>Footer</th></tr>
+                        </tfoot> */}
+                        </table>
+                    </div>
+                </div>
+
+                      
             </form>
         </div>
     );
