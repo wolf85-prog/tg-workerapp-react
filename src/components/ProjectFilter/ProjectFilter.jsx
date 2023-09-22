@@ -8,11 +8,11 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
     //console.log('arr_status: ', arr_status)
 
     arr_status.map((item, index) => {
-                        if (item.title === 'All') {
+                        if (item.title === 'Все') {
                             item.color = 'gray';
-                        } else if (item.title === 'OnAir') {
+                        } else if (item.title === 'Новые') {
                             item.color = 'green';
-                        } else if (item.title === 'Ready') {
+                        } else if (item.title === 'Старые') {
                             item.color = 'blue';
                         } else if (item.title === 'Done') {
                             item.color = 'yellow';
@@ -56,7 +56,7 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
                 )}
             </div>
 
-            <div style={{marginBottom: '15px'}}>
+            {/* <div style={{marginBottom: '15px'}}>
                 <SortSelect 
                     value={filter.sort}
                     onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
@@ -68,7 +68,7 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
                         {value: 'time_created', name: 'По дате создания'},
                     ]}
                 /> 
-            </div>
+            </div> */}
         </div>
     );
 };

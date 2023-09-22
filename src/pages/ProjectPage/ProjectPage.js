@@ -22,7 +22,7 @@ const ProjectPage = () => {
 
     const [projects, setProjects] = useState([])
     const [projects2, setProjects2] = useState([])
-    const [status, setStatus] = useState([]);
+    const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
     const [filter, setFilter] = useState({sort: '', query: ''});
     const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query);
 
@@ -42,13 +42,12 @@ const ProjectPage = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Проекты', icon: 'false'}}/>
+            <Header header={{title: 'Мои проекты', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
 
-            <div style={{marginTop: '55px'}}>                  
-                <p className="status_el">статус</p> 
+            <div style={{marginTop: '75px'}}>                  
 
                 <ProjectFilter
                     filter={filter}

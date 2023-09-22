@@ -37,19 +37,19 @@ const HelloPage = () => {
 
         fetchData()
 
-        setTimeout(() =>  navigate("/menu"), 3000)
+        setTimeout(() =>  navigate("/menu"), 4000)
     }, []);
 
 
     return (
         <div className="App">
-            <Header header={{title: 'fghfgh', icon: 'false'}}/>
+            <Header header={{title: '', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
             
             <form>
-                <div style={{marginTop: '250px'}}>                  
+                <div style={{marginTop: '290px'}}>                  
                     <p
                         style={{
                             margin: '20px 5px',

@@ -6,6 +6,7 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 import './ProfilePage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
+import iconStar from "../../image/star2.png";
 
 import { getWorkerId } from '../../http/chatAPI';
 
@@ -37,18 +38,23 @@ const ProfilePage = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Профиль', icon: 'false'}}/>
+            <Header header={{title: 'Мой профиль', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
 
             <form>
                 <ol class="bullet">
-                    <li><div class="bullet-title">ФИО</div>{workerhub[0]?.fio}</li>
+                    <li><div class="bullet-title">Фамилия</div>{workerhub[0]?.fio.split(' ')[0]}</li>
+                    <li><div class="bullet-title">Имя</div>{workerhub[0]?.fio.split(' ')[1]}</li>
+                    <li><div class="bullet-title">Отчество</div>{workerhub[0]?.fio.split(' ')[2]}</li>
                     <li><div class="bullet-title">Город</div>{workerhub[0]?.city}</li>
-                    <li><div class="bullet-title">Рейтинг</div>{workerhub[0]?.reyting}</li>
+                    {/* <li><div class="bullet-title">Рейтинг</div>{workerhub[0]?.reyting}</li> */}
+                    <li><div class="bullet-title">Рейтинг</div>
+                        &#9733;&#9733;&#9733;&#9733;&#9733;  
+                    </li>
                     <li><div class="bullet-title">Специальность</div>{workerhub[0]?.spec[0].name}</li>
-                    <li><div class="bullet-title">Навык</div>Навык</li>
+                    <li><div class="bullet-title">Компетенции</div></li>
                     {/* <li><div class="bullet-title">Ставка</div>Ставка</li> */}
                     <li><div class="bullet-title">Ранг</div>{workerhub[0]?.rank}</li>
                     <li><div class="bullet-title">Замечания</div>{workerhub[0]?.comteg}</li>
