@@ -32,7 +32,7 @@ const MenuPage = () => {
                 <Link to={'/profile'}><ButtonStatus>Профиль</ButtonStatus></Link> 
                 <Link to={'/projects'}><ButtonStatus>Проекты</ButtonStatus></Link>  
                 <Link to={'/page3'}><ButtonStatus>Смета</ButtonStatus></Link>  
-                <Link to={'https://t.me/ULEY_Office_Bot'}><ButtonStatus>Офис</ButtonStatus></Link>  
+                <Link to={'/office'} target='_blank'><ButtonStatus>Офис</ButtonStatus></Link>  
                 <Link to={'/page5'}><ButtonStatus>Информация</ButtonStatus></Link>  
                 <Link to={'/page6'}><ButtonStatus>Помощь / FAQ</ButtonStatus></Link>  
             </form>

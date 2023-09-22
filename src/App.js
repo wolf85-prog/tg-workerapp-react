@@ -43,6 +43,9 @@ function App() {
                   <Route path={'page4'} element={<Page4 />}/>
                   <Route path={'page5'} element={<Page5 />}/>
                   <Route path={'page6'} element={<Page6 />}/>
+                  <Route path={'office'} element={() => {
+                    window.location.href = 'https://t.me/ULEY_Office_Bot'
+                  }}/>
               </Routes>
       </ThemeProvider>
   );

@@ -27,8 +27,8 @@ const Page3 = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
             
-            <form>
-                <div style={{marginTop: '250px'}}>                  
+            <form className='form-smeta'>
+                <div>                  
                     {/* <p
                         style={{
                             margin: '20px 5px',
@@ -39,39 +39,49 @@ const Page3 = () => {
                     </p>          */}
 
                 <table>
-                <caption>Statement Summary</caption>
+                <caption>Страница "Сметы" находится в разработке!</caption>
                 <thead>
                     <tr>
-                    <th scope="col">Account</th>
-                    <th scope="col">Due Date</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Period</th>
+                        <th scope="col">Дата</th>
+                        <th scope="col">Название проекта</th>
+                        <th scope="col">Специальность</th>
+                        <th scope="col">Кол-во часов</th>
+                        <th scope="col">Сумма за проект</th>
+                        <th scope="col">Дополнительные расходы</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                    <td data-label="Account">Visa - 3412</td>
-                    <td data-label="Due Date">04/01/2016</td>
-                    <td data-label="Amount">$1,190</td>
-                    <td data-label="Period">03/01/2016 - 03/31/2016</td>
+                        <td data-label="Дата">04/01/2016</td>
+                        <td data-label="Название проекта">04/01/2016</td>
+                        <td data-label="Специальность">1,190</td>
+                        <td data-label="Кол-во часов">12</td>
+                        <td data-label="Сумма за проект">1,190</td>
+                        <td data-label="Дополнительные расходы">1,190</td>
                     </tr>
                     <tr>
-                    <td scope="row" data-label="Account">Visa - 6076</td>
-                    <td data-label="Due Date">03/01/2016</td>
-                    <td data-label="Amount">$2,443</td>
-                    <td data-label="Period">02/01/2016 - 02/29/2016</td>
+                        <td scope="row" data-label="Дата">04/01/2016</td>
+                        <td data-label="Название проекта">04/01/2016</td>
+                        <td data-label="Специальность">1,190</td>
+                        <td data-label="Кол-во часов">34</td>
+                        <td data-label="Сумма за проект">1,190</td>
+                        <td data-label="Дополнительные расходы">1,190</td>
                     </tr>
                     <tr>
-                    <td scope="row" data-label="Account">Corporate AMEX</td>
-                    <td data-label="Due Date">03/01/2016</td>
-                    <td data-label="Amount">$1,181</td>
-                    <td data-label="Period">02/01/2016 - 02/29/2016</td>
+                        <td scope="row" data-label="Дата">04/01/2016</td>
+                        <td data-label="Название проекта">04/01/2016</td>
+                        <td data-label="Специальность">1,190</td>
+                        <td data-label="Кол-во часов">45</td>
+                        <td data-label="Сумма за проект">1,190</td>
+                        <td data-label="Дополнительные расходы">1,190</td>
                     </tr>
                     <tr>
-                    <td scope="row" data-label="Acount">Visa - 3412</td>
-                    <td data-label="Due Date">02/01/2016</td>
-                    <td data-label="Amount">$842</td>
-                    <td data-label="Period">01/01/2016 - 01/31/2016</td>
+                        <td scope="row" data-label="Дата">04/01/2016</td>
+                        <td data-label="Название проекта">04/01/2016</td>
+                        <td data-label="Специальность">1,190</td>
+                        <td data-label="Кол-во часов">56</td>
+                        <td data-label="Сумма за проект">1,190</td>
+                        <td data-label="Дополнительные расходы">1,190</td>
                     </tr>
                 </tbody>
                 </table>

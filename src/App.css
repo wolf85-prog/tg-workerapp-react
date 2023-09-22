@@ -98,7 +98,7 @@
   width: 70%;
   position: relative;
   margin-top: 262px;
-  animation: showBlock 4s linear forwards;
+  animation: showBlock 5s linear forwards;
   animation-delay: 1s;
 }
 
@@ -106,7 +106,7 @@
   width: 40%;
   position: relative;
   margin-left: 115px;
-  animation: showBlock 4s linear forwards;
+  animation: showBlock 5s linear forwards;
   animation-delay: 1s;
 }
 
