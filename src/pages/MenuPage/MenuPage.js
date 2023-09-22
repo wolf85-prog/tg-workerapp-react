@@ -19,6 +19,10 @@ const MenuPage = () => {
 
     }, []);
 
+    const openInNewTab = (url) => {
+        window.open(url, '_blank', 'noreferrer');
+    };
+
     //---------------------------------------------------------------------------------------
 
     return (
@@ -32,7 +36,7 @@ const MenuPage = () => {
                 <Link to={'/profile'}><ButtonStatus>Профиль</ButtonStatus></Link> 
                 <Link to={'/projects'}><ButtonStatus>Проекты</ButtonStatus></Link>  
                 <Link to={'/page3'}><ButtonStatus>Смета</ButtonStatus></Link>  
-                <Link to={'/office'} target='_blank'><ButtonStatus>Офис</ButtonStatus></Link>  
+                <ButtonStatus role="link" onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</ButtonStatus> 
                 <Link to={'/page5'}><ButtonStatus>Информация</ButtonStatus></Link>  
                 <Link to={'/page6'}><ButtonStatus>Помощь / FAQ</ButtonStatus></Link>  
             </form>
