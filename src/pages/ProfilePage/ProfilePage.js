@@ -53,7 +53,7 @@ const ProfilePage = () => {
                     <li><div class="bullet-title">Рейтинг</div>
                         &#9733;&#9733;&#9733;&#9733;&#9733;  
                     </li>
-                    <li><div class="bullet-title">Специальность</div>{workerhub[0]?.spec.map(worker => worker.name).join('<br/>')}</li>
+                    <li><div class="bullet-title">Специальность</div>{workerhub[0]?.spec.map(worker => worker.name).join('\n\n')}</li>
                     <li><div class="bullet-title">Компетенции</div></li>
                     {/* <li><div class="bullet-title">Ставка</div>Ставка</li> */}
                     <li><div class="bullet-title">Проекты с U.L.E.Y</div>{workerhub[0]?.rank}</li>
