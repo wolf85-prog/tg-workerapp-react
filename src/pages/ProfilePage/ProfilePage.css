@@ -46,3 +46,7 @@
     text-align: left;
     color: #9590a0;
 }
+
+.spec li{
+    float: right;
+}

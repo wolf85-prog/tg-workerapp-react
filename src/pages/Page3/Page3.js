@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import {Link} from "react-router-dom";
-import {useTelegram} from "../../hooks/useTelegram";
+import React, { useEffect } from 'react';
+//import {Link} from "react-router-dom";
+//import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import './Page3.css';
-import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/gradient2.png";
+//import Fon from "../../image/logo_01_light.png";
+//import FonGrad from "../../image/gradient2.png";
 
 
-const API_URL = process.env.REACT_APP_API_URL
+//const API_URL = process.env.REACT_APP_API_URL
 
 const Page3 = () => {
     
