@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import ButtonStatus from "../../components/UI/ButtonStatus/ButtonStatus";
+import MyButton from "../../components/UI/MyButton/MyButton";
 import './MenuPage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
@@ -41,6 +42,7 @@ const MenuPage = () => {
                 <Link to={'/page6'}><ButtonStatus>Помощь / FAQ</ButtonStatus></Link>  
             </form>
             
+            <Link to={'/contacts'}><MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052', marginTop: '130px'}}>Контакты</MyButton></Link> 
         </div>
     );
 };

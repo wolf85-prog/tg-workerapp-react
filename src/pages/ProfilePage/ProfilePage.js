@@ -56,7 +56,7 @@ const ProfilePage = () => {
                     <li><div class="bullet-title">Специальность</div>{workerhub[0]?.spec[0].name}</li>
                     <li><div class="bullet-title">Компетенции</div></li>
                     {/* <li><div class="bullet-title">Ставка</div>Ставка</li> */}
-                    <li><div class="bullet-title">Ранг</div>{workerhub[0]?.rank}</li>
+                    <li><div class="bullet-title">Проекты с U.L.E.Y</div>{workerhub[0]?.rank}</li>
                     <li><div class="bullet-title">Замечания</div>{workerhub[0]?.comteg}</li>
                     <li><div class="bullet-title">Мерч</div>{workerhub[0]?.merch}</li>
                 </ol>

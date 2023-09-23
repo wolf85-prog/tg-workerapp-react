@@ -49,7 +49,7 @@ const HelloPage = () => {
             <img src={FonGrad} alt='' className='fon-style2'/>
             
             <form>
-                <div style={{marginTop: '290px'}}>                  
+                <div style={{marginTop: '300px'}}>                  
                     <p
                         style={{
                             margin: '20px 5px',
