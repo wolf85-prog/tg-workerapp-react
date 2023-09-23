@@ -1,6 +1,7 @@
 .header {
     width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
     position: fixed;
@@ -18,5 +19,5 @@
 }
 
 .username {
-    margin-left: auto;
+    margin-right: 10px;
 }
