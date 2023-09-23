@@ -40,9 +40,10 @@ const MenuPage = () => {
                 <ButtonStatus role="link" onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</ButtonStatus> 
                 <Link to={'/page5'}><ButtonStatus>Информация</ButtonStatus></Link>  
                 <Link to={'/page6'}><ButtonStatus>Помощь / FAQ</ButtonStatus></Link>  
+                <Link to={'/contacts'}><ButtonStatus>Контакты</ButtonStatus></Link>
             </form>
             
-            <Link to={'/contacts'}><MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052', marginTop: '130px'}}>Контакты</MyButton></Link> 
+             
         </div>
     );
 };
