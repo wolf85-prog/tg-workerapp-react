@@ -4,6 +4,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useProjects} from "../../hooks/useProjects"
 import Header from "../../components/Header/Header";
 import './ProjectPage.css';
+import MyButton from "../../components/UI/MyButton/MyButton";
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
 import Loader from "../../components/UI/Loader/Loader";
@@ -60,7 +61,12 @@ const ProjectPage = () => {
                     ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Loader/></div>
                     : <ProjectList posts={sortedAndSearchedPosts} title=""/>
                 }        
-            </div>       
+            </div>   
+
+            <div className='block-buttons'>
+                <Link to={'/menu'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
+                
+            </div>    
             
         </div>
     );

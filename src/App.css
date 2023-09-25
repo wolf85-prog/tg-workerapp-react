@@ -26,10 +26,16 @@
 }
 
 .App {
-  width: 420px;
+  width: 100%;
   font-family: Arial;
   text-align: center;
-  position: relative;
+  /* position: relative; */
+}
+
+.block-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
 }
 
 .white-content {
@@ -85,6 +91,9 @@
   position: absolute;
   right: 0;
   top: 70px;
+
+  height: 600px;
+  object-fit: fill;
 }
 
 .fon-style2 {
@@ -98,7 +107,7 @@
   width: 70%;
   position: relative;
   margin-top: 270px;
-  animation: showBlock 5s linear forwards;
+  /* animation: showBlock 5s linear forwards; */
   animation-delay: 1s;
 }
 
@@ -106,7 +115,7 @@
   width: 40%;
   position: relative;
   margin-left: 115px;
-  animation: showBlock 5s linear forwards;
+  /* animation: showBlock 5s linear forwards; */
   animation-delay: 1s;
 }
 

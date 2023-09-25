@@ -24,7 +24,7 @@ const ProfilePage = () => {
     useEffect(() => {
 
         const fetchData = async() => {
-            const worker = await getWorkerId(user?.id) //user?.id
+            const worker = await getWorkerId('1408579113') //user?.id
 
             console.log("worker: ", worker)
 
@@ -46,7 +46,7 @@ const ProfilePage = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
 
-            <form>
+            <div className='form-profile'>
                 <ol className="bullet">
                     <li><div className="bullet-title">Фамилия</div>{workerhub[0]?.fio.split(' ')[0]}</li>
                     <li><div className="bullet-title">Имя</div>{workerhub[0]?.fio.split(' ')[1]}</li>
@@ -64,7 +64,7 @@ const ProfilePage = () => {
                     <li><div className="bullet-title">Мерч</div><input className='input-style' id="html" type="checkbox" checked="checked"></input></li>
                     <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' ')}</li>
                 </ol>
-            </form>
+            </div>
             
 
             <div className='block-buttons'>
