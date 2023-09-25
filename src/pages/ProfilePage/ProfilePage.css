@@ -1,7 +1,8 @@
 .input-style {
     margin: 0;
-    width: auto;
-    height: auto;
+    width: 25px;
+    height: 25px;
+    accent-color: #fff;
 }
 
 .block-buttons {
@@ -41,6 +42,7 @@
     /* height: calc(3.5rem + 2px); */
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 15px;
 }
     

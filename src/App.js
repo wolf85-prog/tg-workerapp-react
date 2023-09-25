@@ -11,7 +11,7 @@ import MenuPage from './pages/MenuPage/MenuPage';
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ProjectPage from "./pages/ProjectPage/ProjectPage";
 import Page3 from "./pages/Page3/Page3";
-import Page4 from "./pages/Page4/Page4";
+import ContactPage from "./pages/ContactPage/ContactPage";
 import Page5 from "./pages/Page5/Page5";
 import Page6 from "./pages/Page6/Page6";
 import HelloPage from './pages/HelloPage/HelloPage';
@@ -40,7 +40,7 @@ function App() {
                   <Route path={'profile'} element={<ProfilePage />}/>
                   <Route path={'projects'} element={<ProjectPage />}/>
                   <Route path={'page3'} element={<Page3 />}/>
-                  <Route path={'page4'} element={<Page4 />}/>
+                  <Route path={'contacts'} element={<ContactPage />}/>
                   <Route path={'page5'} element={<Page5 />}/>
                   <Route path={'page6'} element={<Page6 />}/>
               </Routes>

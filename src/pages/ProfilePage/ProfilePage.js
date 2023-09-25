@@ -24,7 +24,7 @@ const ProfilePage = () => {
     useEffect(() => {
 
         const fetchData = async() => {
-            const worker = await getWorkerId(user?.id) //user?.id
+            const worker = await getWorkerId('805436270') //user?.id
 
             console.log("worker: ", worker)
 
@@ -48,9 +48,8 @@ const ProfilePage = () => {
 
             <div className='form-profile'>
                 <ol className="bullet">
-                    <li><div className="bullet-title">Фамилия</div>{workerhub[0]?.fio.split(' ')[0]}</li>
-                    <li><div className="bullet-title">Имя</div>{workerhub[0]?.fio.split(' ')[1]}</li>
-                    <li><div className="bullet-title">Отчество</div>{workerhub[0]?.fio.split(' ')[2]}</li>
+                    <li><div className="bullet-title">ФИО</div>{workerhub[0]?.fio.split(' ')[0]}</li>
+                    <li><div className="bullet-title"></div>{workerhub[0]?.fio.split(' ')[1]} {workerhub[0]?.fio.split(' ')[2]}</li>
                     <li><div className="bullet-title">Город</div>{workerhub[0]?.city}</li>
                     <li><div className="bullet-title">Специальность</div>              
                         <table className="table-noborder">{workerhub[0]?.spec.map((worker, index) => index < 5 ? <tr><td key={worker.id}>{worker.name}</td></tr> : '' )}</table>

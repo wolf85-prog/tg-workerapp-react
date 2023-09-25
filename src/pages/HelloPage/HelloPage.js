@@ -32,7 +32,7 @@ const HelloPage = () => {
 
             //setWorkerhub(worker[0]?.fio)
 
-            setFio(`Рады Вас видеть, ${worker[0]?.fio.split(' ')[1]} ${worker[0]?.fio.split(' ')[2]}!`)
+            setFio(`Добро пожаловать на борт, \n ${worker[0]?.fio.split(' ')[1]} ${worker[0]?.fio.split(' ')[2]}!`)
         }
 
         fetchData()
