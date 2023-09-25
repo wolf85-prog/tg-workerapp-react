@@ -26,9 +26,9 @@ input[id="cb1"] {
     display: none;
 }
 
-.block-buttons {
+.block-buttons-profile {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding-top: 20px;
 }
 

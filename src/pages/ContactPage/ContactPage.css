@@ -1,0 +1,12 @@
+.block-buttons-contact {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.form-contact {
+    margin-top: 290px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 200px;
+}
