@@ -56,5 +56,16 @@
 .spec li{
     float: right;
     margin-bottom: 3px;
-    margin-left: 3px;
+    margin-left: 30%;
+}
+
+.table-noborder tr > :first-child {
+    box-shadow: none;
+    background: transparent;
+}
+
+.table-noborder td {
+    border: 0px;
+    float: right;
+    padding: 0;
 }
