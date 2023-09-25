@@ -56,19 +56,17 @@ const ProfilePage = () => {
                     </li>
                     <li><div className="bullet-title">Рейтинг</div>
                         &#9733;&#9733;&#9733;&#9733;&#9733;  
-                    </li>
-                    <li><div className="bullet-title">Компетенции</div></li>
+                    </li>                    
                     <li><div className="bullet-title">Проекты с U.L.E.Y</div>{workerhub[0]?.rank}</li>
+                    <li><div className="bullet-title">Компетенции</div></li>
                     {/* <li><div className="bullet-title">Замечания</div>{workerhub[0]?.comteg.map(item=>item.name).join(' ')}</li> */}
-                    <li><div className="bullet-title">Мерч</div><input className='input-style' id="html" type="checkbox" checked="checked"></input></li>
+                    <li><div className="bullet-title">Мерч</div><input id="cb1" type="checkbox" checked="checked"></input><label for="cb1"></label></li>
                     <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' ')}</li>
                 </ol>
-            </div>
-            
-
-            <div className='block-buttons'>
-                <Link to={'/menu'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
-                <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Внести изменения</MyButton>
+                <div className='block-buttons'>
+                    <Link to={'/menu'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
+                    <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Внести изменения</MyButton>
+                </div>
             </div>
             
         </div>

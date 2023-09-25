@@ -1,6 +1,6 @@
 .block-buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding-top: 20px;
 }
 

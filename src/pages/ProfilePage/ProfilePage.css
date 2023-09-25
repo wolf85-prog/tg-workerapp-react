@@ -1,8 +1,29 @@
-.input-style {
+/* .input-style {
     margin: 0;
     width: 25px;
     height: 25px;
     accent-color: #fff;
+} */
+
+input[id="cb1"] + label {
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    border: 2px solid #bcbcbc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[id="cb1"]:checked + label:after {
+    position: relative;
+    top: -4px;
+    left: -3px;
+    content: '\2714';
+    font-size: 14px;
+}
+
+input[id="cb1"] {
+    display: none;
 }
 
 .block-buttons {
@@ -42,7 +63,7 @@
     /* height: calc(3.5rem + 2px); */
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     margin-bottom: 15px;
 }
     
