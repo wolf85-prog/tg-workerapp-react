@@ -4,9 +4,11 @@ import ProjectWorkList from '../ProjectWorkList/ProjectWorkList';
 
 const ProjectItem = (props) => {
    
-    const statusColor = props.post.status_id == null ? 'gray' : props.post.status_id.color;
-    const dateProject = props.post.time != null ? props.post.time.start : '';
-    const dateProject2 = props.post.time != null ? props.post.time.end : '';
+    const statusColor = props.post.status == null ? 'gray' : props.post.status.color;
+    const dateProject = props.post.date_start != null ? props.post.date_start : '';
+    const dateProject2 = props.post.date_end != null ? props.post.date_end : '';
+
+    console.log("statusColor: ", props.post.status)
 
     const months = {
         0: 'января',
@@ -48,13 +50,13 @@ const ProjectItem = (props) => {
     const formatted2 = `${date2} ${monthName2} ${year}`;
 
 
-    Object.values(props.post.workers).map((worker) =>
-        worker.fio ? count++ : count
-    )
+    // Object.values(props.post.workers).map((worker) =>
+    //     worker.fio ? count++ : count
+    // )
 
-    Object.values(props.post.workers).map((worker2) =>
-        worker2.spec ? count2++ : count2
-    )
+    // Object.values(props.post.workers).map((worker2) =>
+    //     worker2.spec ? count2++ : count2
+    // )
 
     return (
         <div className={`box ${statusColor}`}>
@@ -64,13 +66,13 @@ const ProjectItem = (props) => {
                     {formatted}
                 </div>
 
-                <ProjectWorkList workers={props.post.workers} defould={count}/>
+                {/* <ProjectWorkList workers={props.post.workers} defould={count}/>
 
                 {
                     (props.post.workers.length && count !=0)
                     ? <p><span className="find_span">Найдено {count} из {props.post.workers.length - (props.post.workers.length - count2)}</span></p> 
                     : <p><span className="nofind_span"></span></p>
-                }
+                } */}
                 
 
             </div>
