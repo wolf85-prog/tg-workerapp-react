@@ -9,11 +9,11 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
 
     arr_status.map((item, index) => {
                         if (item.title === 'Все') {
-                            item.color = 'gray';
-                        } else if (item.title === 'Новые') {
                             item.color = 'green';
-                        } else if (item.title === 'Старые') {
+                        } else if (item.title === 'Новые') {
                             item.color = 'blue';
+                        } else if (item.title === 'Старые') {
+                            item.color = 'yellow';
                         } else if (item.title === 'Done') {
                             item.color = 'yellow';
                         } else if (item.title === 'Load') {
@@ -24,8 +24,6 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
                             item.color = 'red';
                         } else if (item.title === 'OnHold') {
                             item.color = 'brown';
-                        } else if (item.title === 'Test') {
-                            item.color = 'gray';
                         } else {
                             item.color = '';
                         }
