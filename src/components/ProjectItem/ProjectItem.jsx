@@ -8,7 +8,7 @@ const ProjectItem = (props) => {
     const dateProject = props.post.date_start != null ? props.post.date_start : '';
     const dateProject2 = props.post.date_end != null ? props.post.date_end : '';
 
-    console.log("statusColor: ", props.post.status)
+    //console.log("statusColor: ", props.post.status)
 
     const months = {
         0: 'января',
