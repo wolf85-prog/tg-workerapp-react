@@ -61,7 +61,8 @@ const ProfilePage = () => {
                     <li><div className="bullet-title">Компетенции</div></li>
                     {/* <li><div className="bullet-title">Замечания</div>{workerhub[0]?.comteg.map(item=>item.name).join(' ')}</li> */}
                     <li><div className="bullet-title">Мерч</div><input id="cb1" type="checkbox" checked="checked"></input><label for="cb1"></label></li>
-                    <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' ')}</li>
+                    {/* <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' ')}</li> */}
+                    <li><div className="bullet-title"></div>Рубашка XL | Жилетка S, Кепка</li>
                 </ol>
                 <div className='block-buttons-profile'>
                     <Link to={'/menu'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
