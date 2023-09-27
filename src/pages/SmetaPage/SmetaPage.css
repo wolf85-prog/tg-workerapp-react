@@ -1,3 +1,10 @@
+.form-smeta {
+    margin-top: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 80px;
+}
+
 .block-smeta {
     position: fixed;
     display: flex;
@@ -5,6 +12,78 @@
     left: 0;
     bottom: 0px;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
     background-color: #161616;
+}
+
+
+/* default styling. Nothing to do with freexing first row and column */
+main {display: flex;}
+main > * {border: 1px solid;}
+table {
+    border-collapse: collapse; 
+    font-family: helvetica;
+    width: 100%;
+}
+
+td, th {border:  1px solid #e2ff7a;
+      padding: 10px;
+      min-width: 60px;
+      background: black;
+      box-sizing: border-box;
+      text-align: center;
+}
+.table-container {
+  position: relative;
+  max-height:  700px;
+  width: 360px;
+  overflow: scroll;
+}
+
+thead th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #212929;
+  text-align: center;
+}
+
+thead th:first-child {
+  left: 0;
+  z-index: 3;
+  text-align: center;
+}
+
+tfoot {
+  position: -webkit-sticky;
+  bottom: 0;
+  z-index: 2;
+}
+
+tfoot td {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  background: hsl(20, 50%, 70%);
+}
+
+tfoot td:first-child {
+  z-index: 3;
+}
+
+tbody {
+  overflow: scroll;
+  height: auto;
+}
+
+/* MAKE LEFT COLUMN FIXEZ */
+tr > :first-child {
+  position: -webkit-sticky;
+  position: sticky; 
+  left: 0; 
+}
+/* don't do this */
+tr > :first-child {
+  box-shadow: inset 0px 1px black;
 }

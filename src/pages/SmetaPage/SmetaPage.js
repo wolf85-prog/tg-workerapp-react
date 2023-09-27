@@ -29,22 +29,99 @@ const SmetaPage = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
             
-            <form>
-            <table class="unfixed-table">
+            <div className='form-smeta'>
+                <table class="unfixed-table">
                     <thead>
                             <tr>
-                                <th>Дата</th>
-                                <th>Проект</th>
+                                <th colspan="2">Дата</th>
+                                <th colspan="2">Проект</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>12.09.2023</td>
-                                <td>Название проекта</td>
+                                <td colspan="2">12.09.2023</td>
+                                <td colspan="2">Название проекта</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"></td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th colspan="2">Специальность</th>
+                                <th colspan="2">Вид работ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">Техник по свету</td>
+                                <td colspan="2">Монтаж</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"></td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th>Начало</th>
+                                <th>Окончание</th>
+                                <th>Часы</th>
+                                <th>Смена</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10:00</td>
+                                <td>18:00</td>
+                                <td>8</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"></td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th>Ставка</th>
+                                <th>Переработка</th>
+                                <th colspan="2">Доп. расходы</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0.00</td>
+                                <td>0.00</td>
+                                <td colspan="2">0.00</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"></td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th>Такси</th>
+                                <th>ГСМ</th>
+                                <th>Общ. транс</th>
+                                <th>Мерч</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0.00</td>
+                                <td>0.00</td>
+                                <td>0.00</td>
+                                <td>0.00</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"></td>
+                            </tr>
+                            <tr>
+                                <td>Итого:</td>
+                                <td colspan="3">0.00</td>
                             </tr>
                         </tbody>                 
-                    </table>       
-            </form>
+                </table>       
+            </div>
 
             <div className='block-smeta'>
                 <MyButton onClick={handleClick} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton>       
