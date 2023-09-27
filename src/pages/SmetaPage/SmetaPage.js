@@ -124,7 +124,7 @@ const SmetaPage = () => {
             </div>
 
             <div className='block-smeta'>
-                <MyButton onClick={handleClick} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton>       
+                <MyButton onClick={handleClick} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton>       
             </div>
         </div>
     );
