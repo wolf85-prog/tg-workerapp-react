@@ -30,7 +30,7 @@ const ProjectItem = (props) => {
     if (dateProject2) {
         d_end = new Date(dateProject2);
         year2 = d_end.getFullYear()
-        date2 = d_end.getDate()
+        date2 = String(d_end.getDate()).padStart(2, "0"); 
         month2 = String(d_end.getMonth()).padStart(2, "0"); 
         chas2 = String(d_end.getHours()).padStart(2, "0"); //d.getHours();
         minut2 = String(d_end.getMinutes()).padStart(2, "0"); //d.getMinutes();
