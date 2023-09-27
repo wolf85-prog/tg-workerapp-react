@@ -44,7 +44,7 @@ const ProjectPage = () => {
     const getProjectData = () => {
         console.log('Get URL: '+ API_URL_PROJECTS_NEW)
         const headers = { 'Content-Type': 'application/json' }
-        fetch(API_URL_PROJECTS_NEW, { headers })
+        fetch(API_URL_PROJECTS_OLD, { headers })
             .then(response => {
                 return response.json()
             })

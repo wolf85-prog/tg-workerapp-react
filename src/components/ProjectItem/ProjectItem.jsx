@@ -8,29 +8,16 @@ const ProjectItem = (props) => {
     const dateProject = props.post.date_start != null ? props.post.date_start : '';
     const dateProject2 = props.post.date_end != null ? props.post.date_end : '';
 
-    //console.log("statusColor: ", props.post.status)
-
-    const months = {
-        0: 'января',
-        1: 'февраля',
-        2: 'марта',
-        3: 'апреля',
-        4: 'мая',
-        5: 'июня',
-        6: 'июля',
-        7: 'августа',
-        8: 'сентября',
-        9: 'октября',
-        10: 'ноября',
-        11: 'декабря',
-      }
     let count = 0;
     let count2 = 0;
+    let d_end, year2, date2, month2, chas2, minut2;
 
     const d = new Date(dateProject);
-    const d_end = new Date(dateProject2);
 
-    const d2 = dateProject != '' ? dateProject.split('T')[1] : '';
+    // console.log("dateProject2: ", dateProject2)
+    // console.log("d_end: ", d_end)
+
+    //const d2 = dateProject != '' ? dateProject.split('T')[1] : '';
 
     //time start
     const year = d.getFullYear()
@@ -38,28 +25,18 @@ const ProjectItem = (props) => {
     const date = String(d.getDate()).padStart(2, "0"); 
     const chas = String(d.getHours()).padStart(2, "0"); //d.getHours();
     const minut = String(d.getMinutes()).padStart(2, "0"); //d.getMinutes();
-    const monthName = months[d.getMonth()];      
-    
-    const formatted = (d2) ? `${date}.${month}.${year} ${chas}:${minut}` : `${date}.${month}.${year}`;
-    
-    const formattedyear = (d2) ? `${date} ${monthName} ${year} ${chas}:${minut}` : `${date} ${monthName} ${year}`;
 
     //time end
-    const year2 = d_end.getFullYear()
-    const date2 = d_end.getDate()
-    const chas2 = String(d_end.getHours()).padStart(2, "0"); //d.getHours();
-    const minut2 = String(d_end.getMinutes()).padStart(2, "0"); //d.getMinutes();
-    const monthName2 = months[d_end.getMonth()];       
-    const formatted2 = `${date2} ${monthName2} ${year}`;
+    if (dateProject2) {
+        d_end = new Date(dateProject2);
+        year2 = d_end.getFullYear()
+        date2 = d_end.getDate()
+        month2 = String(d_end.getMonth()).padStart(2, "0"); 
+        chas2 = String(d_end.getHours()).padStart(2, "0"); //d.getHours();
+        minut2 = String(d_end.getMinutes()).padStart(2, "0"); //d.getMinutes();
+    } 
 
-
-    // Object.values(props.post.workers).map((worker) =>
-    //     worker.fio ? count++ : count
-    // )
-
-    // Object.values(props.post.workers).map((worker2) =>
-    //     worker2.spec ? count2++ : count2
-    // )
+    const formatted = (d_end) ? `${date}.${month}.${year} ${chas}:${minut} - ${date2}.${month2}.${year2} ${chas2}:${minut2}` : `${date}.${month}.${year} ${chas}:${minut}`;
 
     return (
         <div className={`box ${statusColor}`}>
