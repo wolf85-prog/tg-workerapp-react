@@ -1,4 +1,4 @@
-.block-menu {
+.block-info {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -9,14 +9,10 @@
     background-color: #161616;
 }
 
-.status_el{
-    padding-left: 25px;
-}
-
-.project-list {
-    margin-top: 75px;
-    /* margin-left: 0px;
-    margin-right: 25px; */
-    z-index: 2;
+.menu-form {
     position: relative;
+    z-index: 5;
+    margin-top: 80px;
+    margin-left: 25px;
+    margin-right: 25px;
 }

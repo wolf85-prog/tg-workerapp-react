@@ -12,9 +12,10 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ProjectPage from "./pages/ProjectPage/ProjectPage";
 import Page3 from "./pages/Page3/Page3";
 import ContactPage from "./pages/ContactPage/ContactPage";
-import Page5 from "./pages/Page5/Page5";
+import SmetaPage from "./pages/SmetaPage/SmetaPage";
 import Page6 from "./pages/Page6/Page6";
 import HelloPage from './pages/HelloPage/HelloPage';
+import InfoPage from './pages/InfoPage/InfoPage';
 
 function App() {
 
@@ -39,9 +40,10 @@ function App() {
 
                   <Route path={'profile'} element={<ProfilePage />}/>
                   <Route path={'projects'} element={<ProjectPage />}/>
+                  <Route path={'smeta'} element={<SmetaPage />}/>
                   <Route path={'page3'} element={<Page3 />}/>
                   <Route path={'contacts'} element={<ContactPage />}/>
-                  <Route path={'page5'} element={<Page5 />}/>
+                  <Route path={'info'} element={<InfoPage />}/>
                   <Route path={'page6'} element={<Page6 />}/>
               </Routes>
       </ThemeProvider>

@@ -85,9 +85,8 @@ const ProjectPage = () => {
 
             </div>   
 
-            <div className='block-buttons'>
-                <Link to={'/menu'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
-                
+            <div className='block-menu'>
+                <Link to={'/menu'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>       
             </div>    
             
         </div>

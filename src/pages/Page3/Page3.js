@@ -151,10 +151,7 @@ const Page3 = () => {
                                 <td>5 000,00</td>
                             </tr>
                         </tbody>
-                        
-                        {/* <tfoot>
-                            <tr><td>Footer</td><td>Footer</td><td>Footer</td><td>Footer</td><td>Footer</td><td>Footer</td><th>Footer</th><th>Footer</th></tr>
-                        </tfoot> */}
+                    
                         </table>
                     </div>
                 </div>

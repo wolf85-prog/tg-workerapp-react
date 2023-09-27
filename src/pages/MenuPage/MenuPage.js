@@ -38,7 +38,7 @@ const MenuPage = () => {
                 <Link to={'/projects'}><ButtonStatus>Проекты</ButtonStatus></Link>  
                 <Link to={'/page3'}><ButtonStatus>Смета</ButtonStatus></Link>  
                 <ButtonStatus role="link" onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</ButtonStatus> 
-                <Link to={'/page5'}><ButtonStatus>Информация</ButtonStatus></Link>  
+                <Link to={'/info'}><ButtonStatus>Информация</ButtonStatus></Link>  
                 <Link to={'/stavki'}><ButtonStatus>Ставки</ButtonStatus></Link>
                 <Link to={'/page6'}><ButtonStatus>Помощь / FAQ</ButtonStatus></Link>  
                 <Link to={'/contacts'}><ButtonStatus>Контакты</ButtonStatus></Link>

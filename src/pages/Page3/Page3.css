@@ -61,7 +61,6 @@ tbody {
 tr > :first-child {
   position: -webkit-sticky;
   position: sticky; 
-  background: #212929;
   left: 0; 
 }
 /* don't do this */
