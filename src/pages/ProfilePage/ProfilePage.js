@@ -6,7 +6,7 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 import './ProfilePage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
-//import iconStar from "../../image/star2.png";
+import iconCheck from "../../image/check.png";
 
 import { getWorkerId } from '../../http/chatAPI';
 
@@ -60,7 +60,7 @@ const ProfilePage = () => {
                     <li><div className="bullet-title">Проекты с U.L.E.Y</div>{workerhub[0]?.rank}</li>
                     <li><div className="bullet-title">Компетенции</div></li>
                     {/* <li><div className="bullet-title">Замечания</div>{workerhub[0]?.comteg.map(item=>item.name).join(' ')}</li> */}
-                    <li><div className="bullet-title">Мерч</div><input id="cb1" type="checkbox" checked="checked"></input><label for="cb1"></label></li>
+                    <li><div className="bullet-title">Мерч</div><img src={iconCheck} alt=''/></li>
                     {/* <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' ')}</li> */}
                     <li><div className="bullet-title"></div>Рубашка XL | Жилетка S, Кепка</li>
                 </ol>
