@@ -16,7 +16,9 @@ const ProjectPage = () => {
     const {user} = useTelegram();
 
     const API_URL = process.env.REACT_APP_API_URL;
-    const API_URL_PROJECTS = API_URL + 'api/projects/';
+    const API_URL_PROJECTS_ALL = API_URL + 'api/projectall/';
+    const API_URL_PROJECTS_NEW = API_URL + 'api/projectsnew/';
+    const API_URL_PROJECTS_OLD = API_URL + 'api/projectsold/';
     const API_URL_BLOCKS = API_URL + 'blocks/';
     const API_URL_DATABASE = API_URL + 'database/';
 
@@ -40,9 +42,9 @@ const ProjectPage = () => {
 
     //1
     const getProjectData = () => {
-        console.log('Get URL: '+ API_URL_PROJECTS)
+        console.log('Get URL: '+ API_URL_PROJECTS_NEW)
         const headers = { 'Content-Type': 'application/json' }
-        fetch(API_URL_PROJECTS, { headers })
+        fetch(API_URL_PROJECTS_NEW, { headers })
             .then(response => {
                 return response.json()
             })

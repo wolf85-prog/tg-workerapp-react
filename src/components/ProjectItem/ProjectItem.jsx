@@ -34,11 +34,14 @@ const ProjectItem = (props) => {
 
     //time start
     const year = d.getFullYear()
-    const date = d.getDate()
+    const month = String(d.getMonth()).padStart(2, "0"); 
+    const date = String(d.getDate()).padStart(2, "0"); 
     const chas = String(d.getHours()).padStart(2, "0"); //d.getHours();
     const minut = String(d.getMinutes()).padStart(2, "0"); //d.getMinutes();
     const monthName = months[d.getMonth()];      
-    const formatted = (d2) ? `${date} ${monthName} ${year} ${chas}:${minut}` : `${date} ${monthName} ${year}`;
+    
+    const formatted = (d2) ? `${date}.${month}.${year} ${chas}:${minut}` : `${date}.${month}.${year}`;
+    
     const formattedyear = (d2) ? `${date} ${monthName} ${year} ${chas}:${minut}` : `${date} ${monthName} ${year}`;
 
     //time end
@@ -64,6 +67,9 @@ const ProjectItem = (props) => {
                 <div className="post_title">{props.post.title}</div>
                 <div className="subscribe">
                     {formatted}
+                </div>
+                <div style={{fontSize: '14px'}}>
+                    300.00 рублей х 10 часов = 3 000.00 руб.
                 </div>
 
                 {/* <ProjectWorkList workers={props.post.workers} defould={count}/>
