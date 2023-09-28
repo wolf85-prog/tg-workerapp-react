@@ -48,7 +48,7 @@ const NewWorker2 = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
 
-            <form>
+            <div className='form-new2'>
                 {/*Фамилия*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
@@ -88,12 +88,12 @@ const NewWorker2 = () => {
                     </InputMask>
                 </div>
 
-                <div className='block-buttons'>
+                <div className='block-buttons-new2'>
                     <Link to={'/add-worker'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
                     <Link to={'/add-worker3'}><MyButton disabled={novalid} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
                 </div>
 
-            </form>
+            </div>
             
         </div>
     );
