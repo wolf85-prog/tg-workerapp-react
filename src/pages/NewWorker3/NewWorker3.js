@@ -120,7 +120,7 @@ const NewWorker3 = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
 
-            <form>
+            <div className='form-new3'>
                 {/*Город*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
@@ -176,11 +176,11 @@ const NewWorker3 = () => {
                      />
                 {/* </div> */}
 
-                <div className='block-buttons'>
+                <div className='block-buttons-new3'>
                     <Link to={'/add-worker2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
                     {/* <Link to={'/add-worker4'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>  */}
                 </div>
-            </form>
+            </div>
             
         </div>
     );

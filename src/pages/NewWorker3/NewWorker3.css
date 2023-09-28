@@ -1,0 +1,19 @@
+.block-buttons-new3 {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+    position: relative;
+    z-index: 6;
+}
+
+.form-new3 {
+    /* position: absolute;
+    top: 120px;
+    right: 20px;
+    left: 20px; */
+    margin-top: 120px;
+    margin-left: 30px;
+    margin-right: 30px;
+    position: relative;
+    z-index: 6;
+}
