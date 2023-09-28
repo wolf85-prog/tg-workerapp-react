@@ -21,23 +21,28 @@ const HelloPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => {
-            const worker = await getWorkerId(user?.id)
+            const worker = await getWorkerId('805436270') //'805436270' user?.id
             if (worker.length > 0) {
                 console.log("Вы уже зарегистрированы!", user?.id)
+
+                setFio(`Добро пожаловать на борт, \n ${worker[0]?.fio.split(' ')[1]} ${worker[0]?.fio.split(' ')[2]}!`)
+
+                setTimeout(() =>  navigate("/menu"), 4000)
             } else {
                 console.log("Зарегистрируйтесь!", user?.id)
+                navigate("/add-worker")
             }
 
-            console.log("worker: ", worker[0]?.fio)
+            //console.log("worker: ", worker[0]?.fio)
 
             //setWorkerhub(worker[0]?.fio)
 
-            setFio(`Добро пожаловать на борт, \n ${worker[0]?.fio.split(' ')[1]} ${worker[0]?.fio.split(' ')[2]}!`)
+            
         }
 
         fetchData()
 
-        setTimeout(() =>  navigate("/menu"), 4000)
+        
     }, []);
 
 
