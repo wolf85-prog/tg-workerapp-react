@@ -43,7 +43,7 @@ const SmetaPage = () => {
                                 <td colspan="2">Название проекта</td>
                             </tr>
                             <tr>
-                                <td colspan="4"></td>
+                                <td colspan="4" style={{padding: '10px'}}></td>
                             </tr>
                         </tbody>
                         <thead>
@@ -58,7 +58,7 @@ const SmetaPage = () => {
                                 <td colspan="2">Монтаж</td>
                             </tr>
                             <tr>
-                                <td colspan="4"></td>
+                                <td colspan="4" style={{padding: '10px'}}></td>
                             </tr>
                         </tbody>
                         <thead>
@@ -77,7 +77,7 @@ const SmetaPage = () => {
                                 <td>10</td>
                             </tr>
                             <tr>
-                                <td colspan="4"></td>
+                                <td colspan="4" style={{padding: '10px'}}></td>
                             </tr>
                         </tbody>
                         <thead>
@@ -94,7 +94,7 @@ const SmetaPage = () => {
                                 <td colspan="2">0.00</td>
                             </tr>
                             <tr>
-                                <td colspan="4"></td>
+                                <td colspan="4" style={{padding: '10px'}}></td>
                             </tr>
                         </tbody>
                         <thead>
@@ -113,14 +113,81 @@ const SmetaPage = () => {
                                 <td>0.00</td>
                             </tr>
                             <tr>
-                                <td colspan="4"></td>
+                                <td colspan="4" style={{padding: '10px'}}></td>
                             </tr>
                             <tr>
                                 <td>Итого:</td>
                                 <td colspan="3">0.00</td>
                             </tr>
                         </tbody>                 
-                </table>       
+                </table> 
+<br/>
+                <table class="unfixed-table">
+                    
+                    <thead>
+                        <tr>    
+                            <th style={{textAlign: 'left', width: '135px'}}>Дата</th>
+                            <td colspan="2">12.09.2023</td>
+                        </tr>  
+                        
+                        <tr>
+                            <th style={{textAlign: 'left', width: '135px'}}>Проект</th>
+                            <td colspan="2">Название проекта</td>
+                        </tr>
+                        <tr>
+                            <th style={{textAlign: 'left', width: '135px'}}>Специальность</th>
+                            <td colspan="2">Оператор световой пушки</td>
+                        </tr>
+                        <tr>
+                            <th style={{textAlign: 'left', width: '135px'}}>Вид работ</th>
+                            <td colspan="2">Шиномонтаж</td>
+                        </tr>
+                        <tr>
+                            <th style={{textAlign: 'left', width: '135px'}}>Интервал</th>
+                            <td>12:00</td>
+                            <td>18:00</td>
+                        </tr>
+                        <tr>
+                            <th style={{textAlign: 'left', width: '135px'}}>Часы</th>
+                            <td colspan="2">6</td>
+                        </tr>
+                        <tr>
+                            <th style={{textAlign: 'left', width: '135px'}}>Смена</th>
+                            <td colspan="2">10</td>
+                        </tr>
+                        <tr>
+                            <th style={{textAlign: 'left', width: '135px'}}>Ставка</th>
+                            <td colspan="2">0.00</td>
+                        </tr>
+                        <tr>
+                            <th style={{textAlign: 'left', width: '135px'}}>Переработка</th>
+                            <td colspan="2">0.00</td>
+                        </tr>
+                        <tr>
+                            <th style={{textAlign: 'left', width: '135px'}}>Доп. расходы</th>
+                            <td colspan="2">0.00</td>
+                        </tr>
+                        <tr>
+                            <th style={{textAlign: 'left', width: '135px'}}>Такси / ГСМ</th>
+                            <td colspan="2">0.00</td>
+                        </tr>
+                        <tr>
+                            <th style={{textAlign: 'left', width: '135px'}}>Общ. транспорт</th>
+                            <td colspan="2">0.00</td>
+                        </tr>
+                        <tr>
+                            <th style={{textAlign: 'left', width: '135px'}}>Мерч</th>
+                            <td colspan="2">0.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style={{padding: '10px'}}></td>
+                        </tr>
+                        <tr>
+                            <td style={{textAlign: 'left', width: '135px'}}>Итого</td>
+                            <td colspan="2">0.00</td>
+                        </tr>
+                    </thead>
+                </table>      
             </div>
 
             <div className='block-smeta'>
