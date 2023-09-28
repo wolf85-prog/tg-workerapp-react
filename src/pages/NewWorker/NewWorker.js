@@ -136,7 +136,7 @@ const NewWorker = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
 
-            <form>
+            <div className='form-new1'>
                 {/*Специализация*/}
                 <div>
                     <label>
@@ -190,7 +190,7 @@ const NewWorker = () => {
                 
 
                 <Link to={'/add-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>     
-            </form>
+            </div>
         </div>
     );
 };

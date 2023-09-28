@@ -21,7 +21,7 @@ const HelloPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => {
-            const worker = await getWorkerId('805436270') //'805436270' user?.id
+            const worker = await getWorkerId('6143011220') //'805436270' user?.id
             if (worker.length > 0) {
                 console.log("Вы уже зарегистрированы!", user?.id)
 
