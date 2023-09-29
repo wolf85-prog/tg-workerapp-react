@@ -16,6 +16,8 @@ import { getProjectsAll, getProjectsNew, getProjectsOld, getBlockId, getDatabase
 const ProjectPage = () => {
     const {user} = useTelegram();
     const location = useLocation()
+    const specId= location.state?.specId
+    console.log(specId)
     // const API_URL = process.env.REACT_APP_API_URL;
     // const API_URL_PROJECTS_ALL = API_URL + 'api/projectall/';
     // const API_URL_PROJECTS_NEW = API_URL + 'api/projectsnew/';
@@ -58,33 +60,42 @@ const ProjectPage = () => {
     // }
 
     const fetch = async() => {
-        const projects = await getProjectsAll() 
+        const data = await getProjectsAll() 
 
+        let count = 0;
         let arrProjects = [];
         let databaseBlock;
 
-        projects.map(async(project) => {
+        console.log("data: ", data)
+
+        data.map(async(project, index) => {
             const blockId = await getBlockId(project.id);
+            console.log("blockId: ", index + 1, blockId)
             if (blockId) { 
-                databaseBlock = await getDatabase(blockId);  
+                databaseBlock = await getDatabase(blockId); 
+                console.log("databaseBlock: ", index + 1, databaseBlock) 
                 
                 //если бд ноушена доступна
-                if (databaseBlock) {
-                    databaseBlock.map((db) => {
-                        //if (db.fio === '') { 
-                            // const obj = {
-                            //     title: value.spec,
-        
-                            // }
-                            // arrProjects.push(obj) 
-                        // }
-                    })
-                }                   
+                // if (databaseBlock) {
+                //     databaseBlock.map((db) => {
+                //         if (db.fio === specId) { 
+                //             count++
+                //         }
+                //     })
+                //     if (count > 0)
+                //         arrProjects.push(project) 
+                // }                   
             } else {
                 console.log("База данных не найдена! Проект ID: " + project.title)
             }   
         })
         
+        console.log("arrProjects: ", arrProjects)
+        setProjects(arrProjects);
+        setIsPostsLoading(false);
+        
+        setProjects(data);
+        setIsPostsLoading(false);
     }
 
     
