@@ -28,8 +28,8 @@ const ProjectPage = () => {
     const [projects, setProjects] = useState([])
     const [projects2, setProjects2] = useState([])
     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
-    const [filter, setFilter] = useState({sort: '', query: ''});
-    const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query);
+    const [filter, setFilter] = useState('');
+    //const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query);
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
     const arr_status = [] 
@@ -40,27 +40,32 @@ const ProjectPage = () => {
     useEffect(() => {
         console.log('start')
         setIsPostsLoading(true); 
-        fetch() 
+
+        if (filter === 'Все') {
+           fetch('Все')  
+        } else if (filter === 'Новые') {
+            fetch('Новые') 
+        } else if (filter === 'Старые') {
+            fetch('Старые') 
+        }
+        
                        
-    },[])
+    },[filter])
 
-    //1
-    // const getProjectData = () => {
-    //     //console.log('Get URL: '+ API_URL_PROJECTS_NEW)
-    //     const headers = { 'Content-Type': 'application/json' }
-    //     fetch(API_URL_PROJECTS_NEW, { headers })
-    //         .then(response => {
-    //             return response.json()
-    //         })
-    //         .then(data => {
-    //             console.log("------ post: ", data)
-    //             setProjects(data);
-    //             setIsPostsLoading(false); 
-    //         })
-    // }
+    let data
 
-    const fetch = async() => {
-        const data = await getProjectsAll() 
+    const fetch = async(filter) => {
+        if (filter === 'Все') {
+            console.log('Все')
+            data = await getProjectsAll()  
+         } else if (filter === 'Новые') {
+            console.log('Новые')
+            data = await getProjectsNew() 
+         } else if (filter === 'Старые') {
+            console.log('Старые')
+            data = await getProjectsOld() 
+         }
+        
 
         let count = 0;
         let arrProjects = [];
@@ -70,32 +75,36 @@ const ProjectPage = () => {
 
         data.map(async(project, index) => {
             const blockId = await getBlockId(project.id);
-            console.log("blockId: ", index + 1, blockId)
+            //console.log("blockId: ", index + 1, blockId)
             if (blockId) { 
                 databaseBlock = await getDatabase(blockId); 
-                console.log("databaseBlock: ", index + 1, databaseBlock) 
+                //console.log("databaseBlock: ", index + 1, databaseBlock) 
                 
                 //если бд ноушена доступна
-                // if (databaseBlock) {
-                //     databaseBlock.map((db) => {
-                //         if (db.fio === specId) { 
-                //             count++
-                //         }
-                //     })
-                //     if (count > 0)
-                //         arrProjects.push(project) 
-                // }                   
+                if (databaseBlock.length > 0) {
+                    databaseBlock.map((db) => {
+                        //if (db?.fio_id != 'undefined') {
+                            console.log(db?.fio_id)
+                            if (db?.fio_id === specId) { 
+                                count++
+                            } 
+                        //}
+                        
+                    })
+                    if (count > 0)
+                        arrProjects.push(project) 
+                }                   
             } else {
                 console.log("База данных не найдена! Проект ID: " + project.title)
             }   
         })
         
-        console.log("arrProjects: ", arrProjects)
-        setProjects(arrProjects);
-        setIsPostsLoading(false);
+        setTimeout(() => {
+            console.log("arrProjects: ", arrProjects)
+            setProjects(arrProjects);
+            setIsPostsLoading(false);
+        }, 30000);
         
-        setProjects(data);
-        setIsPostsLoading(false);
     }
 
     
