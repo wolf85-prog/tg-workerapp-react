@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import './HelloPage.css';
 import Fon from "../../image/logo_01_light.png";
@@ -14,7 +14,6 @@ const HelloPage = () => {
     const {user} = useTelegram();
     const navigate = useNavigate();
 
-    const [workerhub, setWorkerhub] = useState("")
     const [fio, setFio] = useState("")
 //----------------------------------------------------------------------------------
 
@@ -27,23 +26,19 @@ const HelloPage = () => {
 
                 setFio(`Добро пожаловать на борт, \n ${worker[0]?.fio.split(' ')[1]} ${worker[0]?.fio.split(' ')[2]}!`)
 
-                setTimeout(() =>  navigate("/menu"), 4000)
+                setTimeout(() => navigate("/menu", {
+                    state: {
+                      spec: worker[0]?.id,
+                    }}), 4000)
             } else {
                 console.log("Зарегистрируйтесь!", user?.id)
                 navigate("/add-worker")
             }
-
-            //console.log("worker: ", worker[0]?.fio)
-
-            //setWorkerhub(worker[0]?.fio)
-
-            
         }
 
         fetchData()
-
-        
-    }, []);
+     
+    });
 
 
     return (
@@ -60,7 +55,7 @@ const HelloPage = () => {
                             margin: '20px 5px',
                             display: 'flex',
                             fontSize: '26px',
-                            color: '#2975f5',
+                            color: '#ffffff',
                         }}> {fio}
                     </p>         
                 </div>       

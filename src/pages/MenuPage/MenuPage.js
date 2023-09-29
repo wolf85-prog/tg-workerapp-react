@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import {Link} from "react-router-dom";
-import {useTelegram} from "../../hooks/useTelegram";
+import React, { useEffect } from 'react';
+import {Link, useLocation} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import ButtonStatus from "../../components/UI/ButtonStatus/ButtonStatus";
-import MyButton from "../../components/UI/MyButton/MyButton";
 import './MenuPage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
@@ -12,7 +10,10 @@ import FonGrad from "../../image/gradient2.png";
 const API_URL = process.env.REACT_APP_API_URL
 
 const MenuPage = () => {
-    
+    const location = useLocation()
+
+    const specId= location.state?.spec
+    console.log("specId: ", specId)
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
@@ -35,7 +36,7 @@ const MenuPage = () => {
 
             <div className='menu-form'>
                 <Link to={'/profile'}><ButtonStatus>Профиль</ButtonStatus></Link> 
-                <Link to={'/projects'}><ButtonStatus>Проекты</ButtonStatus></Link>  
+                <Link to={'/projects'} state={{specId}}><ButtonStatus>Проекты</ButtonStatus></Link>  
                 <Link to={'/page3'}><ButtonStatus>Смета</ButtonStatus></Link>  
                 <ButtonStatus role="link" onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</ButtonStatus> 
                 <Link to={'/info'}><ButtonStatus>Информация</ButtonStatus></Link>  

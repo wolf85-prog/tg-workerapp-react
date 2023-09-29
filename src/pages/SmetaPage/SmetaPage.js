@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import {Link, useNavigate} from "react-router-dom";
-import {useTelegram} from "../../hooks/useTelegram";
+import React, { useEffect } from 'react';
+import {useNavigate} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './SmetaPage.css';
@@ -187,7 +186,9 @@ const SmetaPage = () => {
                             <td colspan="2">0.00</td>
                         </tr>
                     </thead>
-                </table>      
+                </table> 
+
+                <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Подтверждаю</MyButton>      
             </div>
 
             <div className='block-smeta'>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useProjects} from "../../hooks/useProjects"
 import Header from "../../components/Header/Header";
@@ -10,17 +10,18 @@ import FonGrad from "../../image/gradient2.png";
 import Loader from "../../components/UI/Loader/Loader";
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
+import { getProjectsAll, getProjectsNew, getProjectsOld, getBlockId, getDatabase } from '../../http/chatAPI';
 
 
 const ProjectPage = () => {
     const {user} = useTelegram();
-
-    const API_URL = process.env.REACT_APP_API_URL;
-    const API_URL_PROJECTS_ALL = API_URL + 'api/projectall/';
-    const API_URL_PROJECTS_NEW = API_URL + 'api/projectsnew/';
-    const API_URL_PROJECTS_OLD = API_URL + 'api/projectsold/';
-    const API_URL_BLOCKS = API_URL + 'blocks/';
-    const API_URL_DATABASE = API_URL + 'database/';
+    const location = useLocation()
+    // const API_URL = process.env.REACT_APP_API_URL;
+    // const API_URL_PROJECTS_ALL = API_URL + 'api/projectall/';
+    // const API_URL_PROJECTS_NEW = API_URL + 'api/projectsnew/';
+    // const API_URL_PROJECTS_OLD = API_URL + 'api/projectsold/';
+    // const API_URL_BLOCKS = API_URL + 'blocks/';
+    // const API_URL_DATABASE = API_URL + 'database/';
 
     const [projects, setProjects] = useState([])
     const [projects2, setProjects2] = useState([])
@@ -36,24 +37,57 @@ const ProjectPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         console.log('start')
-        setIsPostsLoading(true);  
-        getProjectData()                 
+        setIsPostsLoading(true); 
+        fetch() 
+                       
     },[])
 
     //1
-    const getProjectData = () => {
-        console.log('Get URL: '+ API_URL_PROJECTS_NEW)
-        const headers = { 'Content-Type': 'application/json' }
-        fetch(API_URL_PROJECTS_OLD, { headers })
-            .then(response => {
-                return response.json()
-            })
-            .then(data => {
-                console.log("------ post: ", data)
-                setProjects(data);
-                setIsPostsLoading(false); 
-            })
+    // const getProjectData = () => {
+    //     //console.log('Get URL: '+ API_URL_PROJECTS_NEW)
+    //     const headers = { 'Content-Type': 'application/json' }
+    //     fetch(API_URL_PROJECTS_NEW, { headers })
+    //         .then(response => {
+    //             return response.json()
+    //         })
+    //         .then(data => {
+    //             console.log("------ post: ", data)
+    //             setProjects(data);
+    //             setIsPostsLoading(false); 
+    //         })
+    // }
+
+    const fetch = async() => {
+        const projects = await getProjectsAll() 
+
+        let arrProjects = [];
+        let databaseBlock;
+
+        projects.map(async(project) => {
+            const blockId = await getBlockId(project.id);
+            if (blockId) { 
+                databaseBlock = await getDatabase(blockId);  
+                
+                //если бд ноушена доступна
+                if (databaseBlock) {
+                    databaseBlock.map((db) => {
+                        //if (db.fio === '') { 
+                            // const obj = {
+                            //     title: value.spec,
+        
+                            // }
+                            // arrProjects.push(obj) 
+                        // }
+                    })
+                }                   
+            } else {
+                console.log("База данных не найдена! Проект ID: " + project.title)
+            }   
+        })
+        
     }
+
+    
 
     //---------------------------------------------------------------------------------------
 
