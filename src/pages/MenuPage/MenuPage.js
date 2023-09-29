@@ -12,7 +12,7 @@ const API_URL = process.env.REACT_APP_API_URL
 const MenuPage = () => {
     const location = useLocation()
 
-    const specId= location.state?.spec
+    const specId = location.state?.spec
     console.log("specId: ", specId)
 //----------------------------------------------------------------------------------
 

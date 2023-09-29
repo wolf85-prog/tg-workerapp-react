@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './SmetaPage.css';
@@ -8,7 +8,9 @@ import FonGrad from "../../image/gradient2.png";
 
 
 const SmetaPage = () => {
-    
+    const location = useLocation()
+
+    const projNumber= location.state?.proj
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
@@ -29,6 +31,8 @@ const SmetaPage = () => {
             <img src={FonGrad} alt='' className='fon-style2'/> 
             
             <div className='form-smeta'>
+                
+                {projNumber % 2 === 0 ?
                 <table class="unfixed-table">
                     <thead>
                             <tr>
@@ -120,7 +124,7 @@ const SmetaPage = () => {
                             </tr>
                         </tbody>                 
                 </table> 
-<br/>
+                :
                 <table class="unfixed-table">
                     
                     <thead>
@@ -187,7 +191,7 @@ const SmetaPage = () => {
                         </tr>
                     </thead>
                 </table> 
-
+                }
                 <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Подтверждаю</MyButton>      
             </div>
 

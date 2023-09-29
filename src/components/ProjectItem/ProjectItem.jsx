@@ -35,7 +35,11 @@ const ProjectItem = (props) => {
     const formattime = `${chas}:${minut}`
 
     const onShowProject = () => {
-        navigate('/smeta')
+        navigate('/smeta', {
+            state: {
+              proj: props.number,
+            }
+        })
     }
 
     return (

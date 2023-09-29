@@ -17,6 +17,7 @@ const ProjectPage = () => {
     const {user} = useTelegram();
     const location = useLocation()
     const specId= location.state?.specId
+    console.log(specId)
 
     const [projects, setProjects] = useState([])
     const [projects2, setProjects2] = useState([])
