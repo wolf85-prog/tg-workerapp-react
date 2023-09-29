@@ -17,18 +17,11 @@ const ProjectPage = () => {
     const {user} = useTelegram();
     const location = useLocation()
     const specId= location.state?.specId
-    console.log(specId)
-    // const API_URL = process.env.REACT_APP_API_URL;
-    // const API_URL_PROJECTS_ALL = API_URL + 'api/projectall/';
-    // const API_URL_PROJECTS_NEW = API_URL + 'api/projectsnew/';
-    // const API_URL_PROJECTS_OLD = API_URL + 'api/projectsold/';
-    // const API_URL_BLOCKS = API_URL + 'blocks/';
-    // const API_URL_DATABASE = API_URL + 'database/';
 
     const [projects, setProjects] = useState([])
     const [projects2, setProjects2] = useState([])
     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
-    const [filter, setFilter] = useState('');
+    const [filter, setFilter] = useState('Новые');
     //const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query);
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
@@ -103,7 +96,7 @@ const ProjectPage = () => {
             console.log("arrProjects: ", arrProjects)
             setProjects(arrProjects);
             setIsPostsLoading(false);
-        }, 30000);
+        }, 20000);
         
     }
 
