@@ -54,11 +54,11 @@ const ProjectPage = () => {
             setIsPostsLoading(false);
          } else if (filter === 'Новые') {
             console.log('Новые')
-            setProjects2(projects) 
+            setProjects2(projects.filter(item => item.spec.id === specId)) 
             setIsPostsLoading(false);
          } else if (filter === 'Старые') {
             console.log('Старые')
-            setProjects2(projects) 
+            setProjects2([]) 
             setIsPostsLoading(false);
          }
         
