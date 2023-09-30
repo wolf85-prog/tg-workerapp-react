@@ -10,7 +10,7 @@ import FonGrad from "../../image/gradient2.png";
 import Loader from "../../components/UI/Loader/Loader";
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
-import { getProjectsAll, getProjectsNew, getProjectsOld, getBlockId, getDatabase } from '../../http/chatAPI';
+import { useUsersContext } from "../../contexts/UserContext"
 
 
 const ProjectPage = () => {
@@ -19,10 +19,11 @@ const ProjectPage = () => {
     const specId= location.state?.specId
     console.log(specId)
 
-    const [projects, setProjects] = useState([])
+    const { projects} = useUsersContext();
+
     const [projects2, setProjects2] = useState([])
     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
-    const [filter, setFilter] = useState('Новые');
+    const [filter, setFilter] = useState('Все');
     //const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query);
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
@@ -46,58 +47,26 @@ const ProjectPage = () => {
                        
     },[filter])
 
-    let data
-
     const fetch = async(filter) => {
         if (filter === 'Все') {
             console.log('Все')
-            data = await getProjectsAll()  
+            setProjects2(projects) 
+            setIsPostsLoading(false);
          } else if (filter === 'Новые') {
             console.log('Новые')
-            data = await getProjectsNew() 
+            setProjects2(projects) 
+            setIsPostsLoading(false);
          } else if (filter === 'Старые') {
             console.log('Старые')
-            data = await getProjectsOld() 
+            setProjects2(projects) 
+            setIsPostsLoading(false);
          }
         
-
-        let count = 0;
-        let arrProjects = [];
-        let databaseBlock;
-
-        console.log("data: ", data)
-
-        data.map(async(project, index) => {
-            const blockId = await getBlockId(project.id);
-            //console.log("blockId: ", index + 1, blockId)
-            if (blockId) { 
-                databaseBlock = await getDatabase(blockId); 
-                //console.log("databaseBlock: ", index + 1, databaseBlock) 
-                
-                //если бд ноушена доступна
-                if (databaseBlock.length > 0) {
-                    databaseBlock.map((db) => {
-                        //if (db?.fio_id != 'undefined') {
-                            console.log(db?.fio_id)
-                            if (db?.fio_id === specId) { 
-                                count++
-                            } 
-                        //}
-                        
-                    })
-                    if (count > 0)
-                        arrProjects.push(project) 
-                }                   
-            } else {
-                console.log("База данных не найдена! Проект ID: " + project.title)
-            }   
-        })
-        
-        setTimeout(() => {
-            console.log("arrProjects: ", arrProjects)
-            setProjects(arrProjects);
-            setIsPostsLoading(false);
-        }, 20000);
+        // setTimeout(() => {
+        //     console.log("arrProjects: ", arrProjects)
+        //     setProjects(arrProjects);
+        //     setIsPostsLoading(false);
+        // }, 20000);
         
     }
 
