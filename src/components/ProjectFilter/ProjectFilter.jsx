@@ -34,7 +34,8 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
     const onChangeFilter = (e) => {
         e.preventDefault();
         
-        setFilter(e.target.value)
+        //setFilter(e.target.value)
+        setFilter({...filter, query: e.target.value})
     } 
 
     //filter.sort

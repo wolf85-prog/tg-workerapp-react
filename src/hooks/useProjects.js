@@ -19,16 +19,34 @@ export const useSortedPosts = (posts, sort) => {
     return sortedPosts;
 }
 
-export const useProjects = (posts2, sort, query) => {
+export const useProjects = (posts2, sort, query, specId) => {
     const sortedPosts = useSortedPosts(posts2, sort);
+    console.log("query: ", query)
+    console.log("specId: ", specId)
+    //console.log("context projects: ", posts2)
 
     const sortedAndSearchedPosts = useMemo(() => {
 
         if (query != '') {
-            if (query == 'All') {
+            if (query === 'Все') {
+                console.log("filter all")
                 return sortedPosts; //posts2; 
             }
-            return sortedPosts.filter(post => (post.status_id != null ? post.status_id.name : '') === query)  //post2
+
+            if (query === 'Новые') {
+                return sortedPosts.filter(post => (post.status != null ? post.status.name : '') === "Load" ||
+                                        (post.status != null ? post.status.name : '') === "Ready" ||
+                                        (post.status != null ? post.status.name : '') === "OnAir")          //post2 
+            }
+
+            if (query === 'Старые') {
+                console.log(sortedPosts.filter(post => ((post.status != null ? post.status.name : '') === "Done" ||
+                (post.status != null ? post.status.name : '') === "Wasted") && post.spec.find(item => item.id === specId)))
+                
+                return sortedPosts.filter(post => ((post.status != null ? post.status.name : '') === "Done" ||
+                                        (post.status != null ? post.status.name : '') === "Wasted") && post.spec.find(item => item.id === specId)) //post2      
+            }
+            
         }
         return sortedPosts; //posts2 
 

@@ -23,8 +23,9 @@ const ProjectPage = () => {
 
     const [projects2, setProjects2] = useState([])
     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
-    const [filter, setFilter] = useState('Все');
-    //const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query);
+    //const [filter, setFilter] = useState('Все');
+    const [filter, setFilter] = useState({sort: '', query: 'Все'});
+    const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query, specId);
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
     const arr_status = [] 
@@ -36,37 +37,19 @@ const ProjectPage = () => {
         console.log('start')
         setIsPostsLoading(true); 
 
-        if (filter === 'Все') {
-           fetch('Все')  
-        } else if (filter === 'Новые') {
-            fetch('Новые') 
-        } else if (filter === 'Старые') {
-            fetch('Старые') 
-        }
-        
-                       
-    },[filter])
+        fetch()                      
+    }, [projects])
 
-    const fetch = async(filter) => {
-        if (filter === 'Все') {
-            console.log('Все')
-            setProjects2(projects) 
-            setIsPostsLoading(false);
-         } else if (filter === 'Новые') {
-            console.log('Новые')
-            setProjects2(projects.filter(item => item.spec.id === specId)) 
-            setIsPostsLoading(false);
-         } else if (filter === 'Старые') {
-            console.log('Старые')
-            setProjects2([]) 
-            setIsPostsLoading(false);
-         }
+    const fetch = async(filter) => {  
         
-        // setTimeout(() => {
-        //     console.log("arrProjects: ", arrProjects)
-        //     setProjects(arrProjects);
-        //     setIsPostsLoading(false);
-        // }, 20000);
+        setProjects2(projects) 
+
+        
+        setTimeout(() => {
+            console.log("projects: ", projects)
+            //setProjects2(projects);
+            setIsPostsLoading(false);
+        }, 5000);
         
     }
 
@@ -97,7 +80,7 @@ const ProjectPage = () => {
                 
                 {isPostsLoading
                     ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Loader/></div>
-                    : <ProjectList posts={projects} title=""/>
+                    : <ProjectList posts={sortedAndSearchedPosts} title=""/>
                 }
 
             </div>   
