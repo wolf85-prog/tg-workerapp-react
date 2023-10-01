@@ -30,13 +30,13 @@ export const useProjects = (posts2, sort, query, specId) => {
         if (query != '') {
             if (query === 'Все') {
                 console.log("filter all")
-                return sortedPosts; //posts2; 
+                return sortedPosts.filter(post=> post.spec.find(item => item.id === specId)); //posts2; 
             }
 
             if (query === 'Новые') {
-                return sortedPosts.filter(post => (post.status != null ? post.status.name : '') === "Load" ||
+                return sortedPosts.filter(post => ((post.status != null ? post.status.name : '') === "Load" ||
                                         (post.status != null ? post.status.name : '') === "Ready" ||
-                                        (post.status != null ? post.status.name : '') === "OnAir")          //post2 
+                                        (post.status != null ? post.status.name : '') === "OnAir") && post.spec.find(item => item.id === specId))        //post2 
             }
 
             if (query === 'Старые') {
