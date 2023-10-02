@@ -5,7 +5,7 @@ import SortSelect from "../UI/SortSelect/SortSelect";
 
 const ProjectFilter = ({filter, setFilter, arr_status}) => {
 
-    //console.log('arr_status: ', arr_status)
+    const [buttonPress, setButtonPress] = useState(false);
 
     arr_status.map((item, index) => {
                         if (item.title === 'Все') {
@@ -36,6 +36,9 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
         
         //setFilter(e.target.value)
         setFilter({...filter, query: e.target.value})
+
+        setButtonPress(true)
+        console.log("Кнопка нажата: ", true)
     } 
 
     //filter.sort
@@ -51,7 +54,7 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
             <div className='buttons_status'>
 
                 {arr_status.map((item, index) =>
-                    <ButtonStatus className={`btn-status ${item.color}-btn`} onClick={onChangeFilter} key={index+1} value={item.title}>{item.title}</ButtonStatus>     
+                    <ButtonStatus className={`btn-status ${item.color}-btn`} style={{borderColor: buttonPress ? '#fff' : ''}} onClick={onChangeFilter} key={index+1} value={item.title}>{item.title}</ButtonStatus>     
                 )}
             </div>
 
