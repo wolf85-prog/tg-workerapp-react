@@ -34,7 +34,7 @@ const ProjectPage = () => {
         console.log('start')
         setIsPostsLoading(true); 
 
-        //fetch()                      
+        fetch()                      
     }, [])
 
     const fetch = async() => {
@@ -45,7 +45,7 @@ const ProjectPage = () => {
             console.log("projects: ", projects)
             setProjects2(projects);
             setIsPostsLoading(false);
-        }, 5000);
+        }, 1000);
         
     }
 

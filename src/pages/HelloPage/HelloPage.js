@@ -5,7 +5,7 @@ import './HelloPage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
 import Loader from "../../components/UI/Loader/Loader";
-import { getWorkerId } from '../../http/chatAPI';
+import { getWorkerId, getProjectsAll, getBlockId, getDatabase } from '../../http/chatAPI';
 import Header from '../../components/Header/Header';
 import { useUsersContext } from "../../contexts/UserContext"
 
@@ -17,8 +17,94 @@ const HelloPage = () => {
 
     const [fio, setFio] = useState("")
 
-    const { setSpecId } = useUsersContext();
+    const { setSpecId, setProjects, projects } = useUsersContext();
+    const [isPostsLoading, setIsPostsLoading] = useState(false);
 //----------------------------------------------------------------------------------
+
+    useEffect(() => {
+        const fetchDataProjects = async () => {
+            console.log("projects contex: ", projects)
+
+            if (projects.length === 0) {
+                //setIsPostsLoading(true)
+                let response = await getProjectsAll()  ;
+                console.log("projects size: ", response.length)
+
+                const arrayProject = []
+                const arrayBlock = []
+                let count = 0;
+                let databaseBlock;
+
+                response.map(async (project, index) => {
+                    const arraySpec = []
+                    const blockId = await getBlockId(project.id);
+
+                    if (blockId) { 
+                        databaseBlock = await getDatabase(blockId); 
+                        
+                        //если бд ноушена доступна
+                        if (databaseBlock.length > 0) {
+                            databaseBlock.map((db) => {
+                                if (db.fio_id) {
+                                    const newSpec = {
+                                        id: db?.fio_id,
+                                    }
+                                    arraySpec.push(newSpec)
+                                }
+                            })
+
+                            const newProject = {
+                                id: project.id,
+                                title: project.title,
+                                date_start: project.date_start,
+                                date_end: project.date_end,
+                                status: project.status,
+                                spec: arraySpec,
+                            }
+                
+                            arrayProject.push(newProject)
+
+
+                            const worker = await getWorkerId(user?.id) //'805436270' user?.id
+ 
+
+                            if (index === response.length - 1) {
+
+                                if (worker.length > 0) {
+                                    console.log("Вы уже зарегистрированы!", user?.id)
+                    
+                                    setFio(`Добро пожаловать на борт, \n ${worker[0]?.fio.split(' ')[1]} ${worker[0]?.fio.split(' ')[2]}!`)
+                    
+                                    setSpecId(worker[0]?.id)
+
+                                    setTimeout(()=>{
+                                        //setIsPostsLoading(false)
+                                        console.log("arrayProject: ", arrayProject)
+                                        setProjects(arrayProject) 
+                                    }, 2000)
+                    
+                                    setTimeout(() => navigate("/menu"), 4000)
+    
+                                } else {
+                                    console.log("Зарегистрируйтесь!", user?.id)
+                                    navigate("/add-worker")
+                                }
+            
+                                 
+                            }
+                        }                   
+                    } else {
+                        console.log("База данных не найдена! Проект ID: " + project.title)
+                    }	  
+                })
+            }
+            
+        }
+
+
+        fetchDataProjects()
+
+    },[])
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
@@ -44,7 +130,7 @@ const HelloPage = () => {
             }
         }
 
-        fetchData()
+        //fetchData()
      
     });
 
