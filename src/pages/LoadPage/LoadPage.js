@@ -22,10 +22,10 @@ const LoadPage = () => {
         setTimeout(() =>  setShowLogo(true), 1000) //U.L.E.Y.
         setTimeout(() =>  setShowLogo2(true), 2000) // WORKHUB
 
-        setTimeout(() =>  setShowLogo(false), 6000)
-        setTimeout(() =>  setShowLogo2(false), 6000)
+        setTimeout(() =>  setShowLogo(false), 8000)
+        setTimeout(() =>  setShowLogo2(false), 8000)
 
-        setTimeout(() =>  navigate("/hello"), 6000)
+        setTimeout(() =>  navigate("/hello"), 8000)
     }, []);
 
 

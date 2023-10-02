@@ -4,7 +4,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import './HelloPage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
-
+import Loader from "../../components/UI/Loader/Loader";
 import { getWorkerId } from '../../http/chatAPI';
 import Header from '../../components/Header/Header';
 
@@ -19,8 +19,9 @@ const HelloPage = () => {
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        const fetchData = async() => {
+        const fetchData = async() => { 
             const worker = await getWorkerId(user?.id) //'805436270' user?.id
+
             if (worker.length > 0) {
                 console.log("Вы уже зарегистрированы!", user?.id)
 
@@ -49,15 +50,18 @@ const HelloPage = () => {
             <img src={FonGrad} alt='' className='fon-style2'/>
             
             <form>
-                <div style={{marginTop: '330px'}}>                  
-                    <p
-                        style={{
-                            margin: '20px 5px',
-                            display: 'flex',
-                            fontSize: '26px',
-                            color: '#ffffff',
-                        }}> {fio}
-                    </p>         
+                <div style={{marginTop: '330px'}}>  
+                    {!fio
+                        ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Loader/></div>
+                        : <p style={{
+                                margin: '20px 5px',
+                                display: 'flex',
+                                fontSize: '26px',
+                                color: '#ffffff',
+                            }}> {fio}
+                        </p>  
+                    }                
+                           
                 </div>       
             </form>
         </div>

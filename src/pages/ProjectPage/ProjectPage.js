@@ -24,7 +24,7 @@ const ProjectPage = () => {
     const [projects2, setProjects2] = useState([])
     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
     //const [filter, setFilter] = useState('Все');
-    const [filter, setFilter] = useState({sort: '', query: 'Все'});
+    const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
     const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query, specId);
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);

@@ -6,10 +6,9 @@ export const useSortedPosts = (posts, sort) => {
     const sortedPosts = useMemo(() => {
         if (sort) {
             return [...posts].sort((a, b) => {
-                
                 var dateA = new Date(a[sort]), dateB = new Date(b[sort])
                                 
-                //dateA-dateB  //сортировка по возрастающей дате     
+                //return dateA-dateB  //сортировка по возрастающей дате     
                 return dateB-dateA  //сортировка по убывающей дате  
             })
         }
