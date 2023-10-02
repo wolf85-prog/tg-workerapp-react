@@ -54,7 +54,7 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
             <div className='buttons_status'>
 
                 {arr_status.map((item, index) =>
-                    <ButtonStatus className={`btn-status ${item.color}-btn`} style={{borderColor: buttonPress ? '#fff' : ''}} onClick={onChangeFilter} key={index+1} value={item.title}>{item.title}</ButtonStatus>     
+                    <ButtonStatus className={`btn-status ${item.color}-btn`} onClick={onChangeFilter} key={index+1} value={item.title}>{item.title}</ButtonStatus>     
                 )}
             </div>
 
