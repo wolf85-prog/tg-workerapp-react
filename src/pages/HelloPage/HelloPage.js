@@ -7,6 +7,7 @@ import FonGrad from "../../image/gradient2.png";
 import Loader from "../../components/UI/Loader/Loader";
 import { getWorkerId } from '../../http/chatAPI';
 import Header from '../../components/Header/Header';
+import { useUsersContext } from "../../contexts/UserContext"
 
 
 const HelloPage = () => {
@@ -15,22 +16,28 @@ const HelloPage = () => {
     const navigate = useNavigate();
 
     const [fio, setFio] = useState("")
+
+    const { setSpecId } = useUsersContext();
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' user?.id
+            const worker = await getWorkerId('1408579113') //'805436270' user?.id
 
             if (worker.length > 0) {
                 console.log("Вы уже зарегистрированы!", user?.id)
 
                 setFio(`Добро пожаловать на борт, \n ${worker[0]?.fio.split(' ')[1]} ${worker[0]?.fio.split(' ')[2]}!`)
 
-                setTimeout(() => navigate("/menu", {
-                    state: {
-                      spec: worker[0]?.id,
-                    }}), 4000)
+                setSpecId(worker[0]?.id)
+
+                setTimeout(() => navigate("/menu"), 4000)
+
+                    // setTimeout(() => navigate("/menu", {
+                    //     state: {
+                    //       spec: worker[0]?.id,
+                    //     }}), 4000)
             } else {
                 console.log("Зарегистрируйтесь!", user?.id)
                 navigate("/add-worker")

@@ -24,6 +24,8 @@ const UserProvider = ({ children }) => {
 
 	const [projects, setProjects] = useState([]);
 
+	const [specId, setSpecId] = useState('');
+
 	useEffect(() => {
 		const fetchData = async () => {
 			let response = await getProjectsAll()  ;
@@ -61,18 +63,22 @@ const UserProvider = ({ children }) => {
 							status: project.status,
 							spec: arraySpec,
 						}
+
+						console.log(newProject)
 			
 					 	arrayProject.push(newProject)
 					}                   
 				} else {
 					console.log("База данных не найдена! Проект ID: " + project.title)
-				}		
+				}	
+				setProjects(arrayProject)
+				
 			})
 
-			setTimeout(() => {
-				setProjects(arrayProject)
-				console.log("projects: ", arrayProject)
-			}, 10000)	
+			//setTimeout(() => {
+				//setProjects(arrayProject)
+				//console.log("arrayProject: ", arrayProject)
+			//}, 15000)	
 		}
 
 		fetchData()
@@ -99,6 +105,8 @@ const UserProvider = ({ children }) => {
 			stag, 
 			setStag,
 			projects,
+			specId,
+			setSpecId,
 		}}>
 			{children}
 		</UserContext.Provider>

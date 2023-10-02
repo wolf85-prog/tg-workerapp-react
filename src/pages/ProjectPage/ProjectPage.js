@@ -15,11 +15,8 @@ import { useUsersContext } from "../../contexts/UserContext"
 
 const ProjectPage = () => {
     const {user} = useTelegram();
-    const location = useLocation()
-    const specId= location.state?.specId
-    console.log(specId)
 
-    const { projects} = useUsersContext();
+    const { projects, specId} = useUsersContext();
 
     const [projects2, setProjects2] = useState([])
     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
@@ -37,17 +34,16 @@ const ProjectPage = () => {
         console.log('start')
         setIsPostsLoading(true); 
 
-        fetch()                      
-    }, [projects])
+        //fetch()                      
+    }, [])
 
-    const fetch = async(filter) => {  
+    const fetch = async() => {
         
-        setProjects2(projects) 
-
+        //setProjects2(projects) 
         
         setTimeout(() => {
             console.log("projects: ", projects)
-            //setProjects2(projects);
+            setProjects2(projects);
             setIsPostsLoading(false);
         }, 5000);
         

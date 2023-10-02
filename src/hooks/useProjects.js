@@ -38,10 +38,7 @@ export const useProjects = (posts2, sort, query, specId) => {
                                         (post.status != null ? post.status.name : '') === "OnAir") && post.spec.find(item => item.id === specId))        //post2 
             }
 
-            if (query === 'Старые') {
-                console.log(sortedPosts.filter(post => ((post.status != null ? post.status.name : '') === "Done" ||
-                (post.status != null ? post.status.name : '') === "Wasted") && post.spec.find(item => item.id === specId)))
-                
+            if (query === 'Старые') {         
                 return sortedPosts.filter(post => ((post.status != null ? post.status.name : '') === "Done" ||
                                         (post.status != null ? post.status.name : '') === "Wasted") && post.spec.find(item => item.id === specId)) //post2      
             }
