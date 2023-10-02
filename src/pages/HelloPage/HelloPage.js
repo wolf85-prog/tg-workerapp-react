@@ -30,7 +30,7 @@ const HelloPage = () => {
                 let response = await getProjectsAll();
                 console.log("projects size: ", response.length)
 
-                const worker = await getWorkerId(user?.id)  //'805436270' user?.id
+                const worker = await getWorkerId('1408579113')  //'805436270' user?.id
 
                 const arrayProject = []
                 const arrayBlock = []
@@ -82,7 +82,7 @@ const HelloPage = () => {
                                             //setIsPostsLoading(false)
                                             console.log("arrayProject: ", arrayProject)
                                             setProjects(arrayProject) 
-                                        }, 2000)
+                                        }, 3000)
                         
                                         setTimeout(() => navigate("/menu"), 4000)
         
