@@ -25,7 +25,7 @@ const SmetaPage = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Смета', icon: 'false'}}/>
+            <Header header={{title: 'Моя смета', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
@@ -193,7 +193,7 @@ const SmetaPage = () => {
                 </table> 
                 {/* } */}
                 <div className='block2'>
-                    <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Подтверждаю</MyButton>      
+                    <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Подтвердить</MyButton>      
                     <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Оставить комментарий</MyButton>
                 </div>
                     
