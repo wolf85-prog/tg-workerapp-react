@@ -12,7 +12,7 @@ import { getProjectsAll, getBlockId, getDatabase } from '../../http/chatAPI';
 
 const MenuPage = () => {
 
-    const { setSpecId, setProjects, projects } = useUsersContext();
+    const { setProjects, projects } = useUsersContext();
     const [isPostsLoading, setIsPostsLoading] = useState(false);
 //----------------------------------------------------------------------------------
 
@@ -95,7 +95,7 @@ const MenuPage = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
             {isPostsLoading ?
-            <div style={{display: 'flex', justifyContent: 'center', marginTop: '330px'}}><Loader/></div>
+            <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
             :<div className='menu-form'>
                 <Link to={'/profile'}><ButtonStatus>Профиль</ButtonStatus></Link> 
                 <Link to={'/projects'}><ButtonStatus>Проекты</ButtonStatus></Link>  
