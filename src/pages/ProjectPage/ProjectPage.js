@@ -33,12 +33,13 @@ const ProjectPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         console.log('start')
-
+        setIsPostsLoading(true)
+        
         const fetchDataProjects = async () => {
             console.log("projects contex: ", projects)
-            setIsPostsLoading(true)
             
-            if (projects.length === 0) {
+            if (projects.length === 0) {         
+                console.log("Начинаю загружать проекты...")
                 let response = await getProjectsAll();
                 console.log("projects size: ", response.length)
 
@@ -83,6 +84,7 @@ const ProjectPage = () => {
                                         setIsPostsLoading(false)
                                         console.log("arrayProject: ", arrayProject)
                                         setProjects2(arrayProject) 
+                                        setProjects(arrayProject) 
                                     }, 3000)    
                                 }
                             }                   
@@ -90,8 +92,13 @@ const ProjectPage = () => {
                             console.log("База данных не найдена! Проект ID: " + project.title)
                         }	  
                     })
-                }    
-            }    
+                }   
+            }  else {
+                console.log("Проекты уже загружены!")
+                setIsPostsLoading(false)
+                console.log("arrayProject: ", projects)
+                setProjects2(projects) 
+            }   
         }
 
 

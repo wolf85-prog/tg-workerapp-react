@@ -32,7 +32,7 @@ const SmetaPage = () => {
             
             <div className='form-smeta'>
                 
-                {projNumber % 2 === 0 ?
+                {/* {projNumber % 2 === 0 ?
                 <table class="unfixed-table">
                     <thead>
                             <tr>
@@ -124,7 +124,7 @@ const SmetaPage = () => {
                             </tr>
                         </tbody>                 
                 </table> 
-                :
+                : */}
                 <table class="unfixed-table">
                     
                     <thead>
@@ -191,8 +191,9 @@ const SmetaPage = () => {
                         </tr>
                     </thead>
                 </table> 
-                }
+                {/* } */}
                 <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Подтверждаю</MyButton>      
+                <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Оставить комментарий</MyButton>    
             </div>
 
             <div className='block-smeta'>
