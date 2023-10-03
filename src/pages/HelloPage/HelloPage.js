@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate} from "react-router-dom";
-import {useTelegram} from "../../hooks/useTelegram";
+import { useNavigate } from "react-router-dom";
+import { useTelegram } from "../../hooks/useTelegram";
 import './HelloPage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";

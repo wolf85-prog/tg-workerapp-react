@@ -5,19 +5,36 @@ import ButtonStatus from "../../components/UI/ButtonStatus/ButtonStatus";
 import './MenuPage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
-import Loader from "../../components/UI/Loader/Loader";
+import { useNavigate } from "react-router-dom";
+import { useTelegram } from "../../hooks/useTelegram";
 import { useUsersContext } from "../../contexts/UserContext"
+import { getWorkerId } from '../../http/chatAPI';
 
 const MenuPage = () => {
+    const {user} = useTelegram();
+    const navigate = useNavigate();
 
     const { setProjects, projects } = useUsersContext();
-    const [isPostsLoading, setIsPostsLoading] = useState(false);
+    const { setSpecId } = useUsersContext();
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        
-    }, []);
+        const fetchData = async() => { 
+            const worker = await getWorkerId(user?.id) //'805436270' user?.id
+
+            if (worker.length > 0) {
+
+                setSpecId(worker[0]?.id)
+
+            } else {
+                console.log("Зарегистрируйтесь!", user?.id)
+                navigate("/add-worker")
+            }
+        }
+
+        fetchData()   
+    });
 
     const openInNewTab = (url) => {
         window.open(url, '_blank', 'noreferrer');
