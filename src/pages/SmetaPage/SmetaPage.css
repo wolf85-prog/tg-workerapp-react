@@ -5,6 +5,13 @@
     margin-bottom: 80px;
 }
 
+.block2 {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 7;
+}
+
 .block-smeta {
     position: fixed;
     display: flex;
@@ -19,7 +26,7 @@
 
 /* default styling. Nothing to do with freexing first row and column */
 .unfixed-table {
-    background: #000000;
+    /* background: #000000; */
 }
 
 main {display: flex;}

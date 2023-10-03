@@ -130,7 +130,7 @@ const SmetaPage = () => {
                     <thead>
                         <tr>    
                             <th style={{textAlign: 'left', width: '135px'}}>Дата</th>
-                            <td colspan="2">12.09.2023</td>
+                            <td colspan="2">31.12.2023</td>
                         </tr>  
                         
                         <tr>
@@ -143,7 +143,7 @@ const SmetaPage = () => {
                         </tr>
                         <tr>
                             <th style={{textAlign: 'left', width: '135px'}}>Вид работ</th>
-                            <td colspan="2">Шиномонтаж</td>
+                            <td colspan="2">Монтаж</td>
                         </tr>
                         <tr>
                             <th style={{textAlign: 'left', width: '135px'}}>Интервал</th>
@@ -192,8 +192,11 @@ const SmetaPage = () => {
                     </thead>
                 </table> 
                 {/* } */}
-                <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Подтверждаю</MyButton>      
-                <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Оставить комментарий</MyButton>    
+                <div className='block2'>
+                    <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Подтверждаю</MyButton>      
+                    <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Оставить комментарий</MyButton>
+                </div>
+                    
             </div>
 
             <div className='block-smeta'>
