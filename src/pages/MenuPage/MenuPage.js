@@ -7,8 +7,6 @@ import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
 import Loader from "../../components/UI/Loader/Loader";
 import { useUsersContext } from "../../contexts/UserContext"
-import { getProjectsAll, getBlockId, getDatabase } from '../../http/chatAPI';
-
 
 const MenuPage = () => {
 
@@ -18,68 +16,7 @@ const MenuPage = () => {
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        const fetchDataProjects = async () => {
-            console.log("projects contex: ", projects)
-
-            if (projects.length === 0) {
-                setIsPostsLoading(true)
-                let response = await getProjectsAll();
-                console.log("projects size: ", response.length)
-
-                const arrayProject = []
-                const arrayBlock = []
-                let count = 0;
-                let databaseBlock;
-
-                if (response.length !== 0) {
-
-                    response.map(async (project, index) => {
-                        const arraySpec = []
-                        const blockId = await getBlockId(project.id);
-
-                        if (blockId) { 
-                            databaseBlock = await getDatabase(blockId); 
-                            
-                            //если бд ноушена доступна
-                            if (databaseBlock.length > 0) {
-                                databaseBlock.map((db) => {
-                                    if (db.fio_id) {
-                                        const newSpec = {
-                                            id: db?.fio_id,
-                                        }
-                                        arraySpec.push(newSpec)
-                                    }
-                                })
-
-                                const newProject = {
-                                    id: project.id,
-                                    title: project.title,
-                                    date_start: project.date_start,
-                                    date_end: project.date_end,
-                                    status: project.status,
-                                    spec: arraySpec,
-                                }
-                                console.log(newProject)
-                                arrayProject.push(newProject)
-
-                                if (index === response.length - 1) {
-                                    setTimeout(()=>{
-                                        setIsPostsLoading(false)
-                                        console.log("arrayProject: ", arrayProject)
-                                        setProjects(arrayProject) 
-                                    }, 3000)    
-                                }
-                            }                   
-                        } else {
-                            console.log("База данных не найдена! Проект ID: " + project.title)
-                        }	  
-                    })
-                }    
-            }    
-        }
-
-
-        fetchDataProjects()
+        
     }, []);
 
     const openInNewTab = (url) => {
@@ -94,9 +31,7 @@ const MenuPage = () => {
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
-            {isPostsLoading ?
-            <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
-            :<div className='menu-form'>
+            <div className='menu-form'>
                 <Link to={'/profile'}><ButtonStatus>Профиль</ButtonStatus></Link> 
                 <Link to={'/projects'}><ButtonStatus>Проекты</ButtonStatus></Link>  
                 <Link to={'/page3'}><ButtonStatus>Смета</ButtonStatus></Link>  
@@ -106,7 +41,6 @@ const MenuPage = () => {
                 <Link to={'/page6'}><ButtonStatus>Помощь / FAQ</ButtonStatus></Link>  
                 <Link to={'/contacts'}><ButtonStatus>Контакты</ButtonStatus></Link>
             </div>
-            }
              
         </div>
     );

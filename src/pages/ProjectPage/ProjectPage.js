@@ -11,12 +11,13 @@ import Loader from "../../components/UI/Loader/Loader";
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 import { useUsersContext } from "../../contexts/UserContext"
+import { getProjectsAll, getBlockId, getDatabase } from '../../http/chatAPI';
 
 
 const ProjectPage = () => {
     const {user} = useTelegram();
 
-    const { projects, specId} = useUsersContext();
+    const { projects, setProjects, specId} = useUsersContext();
 
     const [projects2, setProjects2] = useState([])
     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
@@ -32,20 +33,80 @@ const ProjectPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         console.log('start')
-        setIsPostsLoading(true); 
 
-        fetch()                      
+        const fetchDataProjects = async () => {
+            console.log("projects contex: ", projects)
+            setIsPostsLoading(true)
+            
+            if (projects.length === 0) {
+                let response = await getProjectsAll();
+                console.log("projects size: ", response.length)
+
+                const arrayProject = []
+                const arrayBlock = []
+                let count = 0;
+                let databaseBlock;
+
+                if (response.length !== 0) {
+
+                    response.map(async (project, index) => {
+                        const arraySpec = []
+                        const blockId = await getBlockId(project.id);
+
+                        if (blockId) { 
+                            databaseBlock = await getDatabase(blockId); 
+                            
+                            //если бд ноушена доступна
+                            if (databaseBlock.length > 0) {
+                                databaseBlock.map((db) => {
+                                    if (db.fio_id) {
+                                        const newSpec = {
+                                            id: db?.fio_id,
+                                        }
+                                        arraySpec.push(newSpec)
+                                    }
+                                })
+
+                                const newProject = {
+                                    id: project.id,
+                                    title: project.title,
+                                    date_start: project.date_start,
+                                    date_end: project.date_end,
+                                    status: project.status,
+                                    spec: arraySpec,
+                                }
+                                console.log(newProject)
+                                arrayProject.push(newProject)
+
+                                if (index === response.length - 1) {
+                                    setTimeout(()=>{
+                                        setIsPostsLoading(false)
+                                        console.log("arrayProject: ", arrayProject)
+                                        setProjects2(arrayProject) 
+                                    }, 3000)    
+                                }
+                            }                   
+                        } else {
+                            console.log("База данных не найдена! Проект ID: " + project.title)
+                        }	  
+                    })
+                }    
+            }    
+        }
+
+
+        fetchDataProjects()                    
     }, [])
 
     const fetch = async() => {
         
         //setProjects2(projects) 
         
-        setTimeout(() => {
-            console.log("projects: ", projects)
-            setProjects2(projects);
-            setIsPostsLoading(false);
-        }, 1000);
+        // setTimeout(() => {
+        //     console.log("projects: ", projects)
+        //     setProjects2(projects);
+        //     setIsPostsLoading(false);
+        // }, 1000);
         
     }
 
@@ -75,7 +136,7 @@ const ProjectPage = () => {
                 }         */}
                 
                 {isPostsLoading
-                    ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Loader/></div>
+                    ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
                     : <ProjectList posts={sortedAndSearchedPosts} title=""/>
                 }
 

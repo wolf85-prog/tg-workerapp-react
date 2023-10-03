@@ -12,6 +12,10 @@
     font-size: 14px;
 }
 
+.buttonPress {
+    border-color: #fff!important;
+}
+
 .red-btn {
     background: #C8372D;
     border: 1px solid #C8372D;
