@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './SmetaPage.css';
 import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/gradient2.png";
+import FonGrad from "../../image/BlueLine1.png";
 
 
 const SmetaPage = () => {

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTelegram } from "../../hooks/useTelegram";
 import './HelloPage.css';
 import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/gradient2.png";
+import FonGrad from "../../image/BlueLine1.png";
 import Loader from "../../components/UI/Loader/Loader";
 import { getWorkerId } from '../../http/chatAPI';
 import Header from '../../components/Header/Header';
