@@ -7,6 +7,7 @@ import './ProfilePage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
 import iconCheck from "../../image/check.png";
+import Loader from "../../components/UI/Loader/Loader";
 
 import { getWorkerId } from '../../http/chatAPI';
 
@@ -24,7 +25,7 @@ const ProfilePage = () => {
     useEffect(() => {
 
         const fetchData = async() => {
-            const worker = await getWorkerId(user?.id) //user?.id
+            const worker = await getWorkerId('805436270') //user?.id
 
             console.log("worker: ", worker)
 
@@ -46,6 +47,9 @@ const ProfilePage = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
 
+            {/* {workerhub.length > 0
+                    ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div> 
+            :*/}
             <div className='form-profile'>
                 <ol className="bullet">
                     <li><div className="bullet-title">ФИО</div>{workerhub[0]?.fio.split(' ')[0]}</li>
@@ -69,6 +73,7 @@ const ProfilePage = () => {
                     <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Внести изменения</MyButton>
                 </div>
             </div>
+            {/* } */}
             
         </div>
     );
