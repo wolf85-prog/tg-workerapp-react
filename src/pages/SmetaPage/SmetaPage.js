@@ -193,8 +193,8 @@ const SmetaPage = () => {
                 </table> 
                 {/* } */}
                 <div className='block2'>
-                    <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Подтвердить</MyButton>      
                     <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Оставить комментарий</MyButton>
+                    <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Подтвердить смету</MyButton>          
                 </div>
                     
             </div>
