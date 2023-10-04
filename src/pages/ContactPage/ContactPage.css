@@ -5,8 +5,12 @@
 }
 
 .form-contact {
-    margin-top: 290px;
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-top: 240px;
+    margin-left: 65px;
+    margin-right: 65px;
     margin-bottom: 200px;
+}
+
+.btns {
+    margin: 5%;
 }

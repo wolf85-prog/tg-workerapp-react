@@ -121,6 +121,15 @@
   animation-delay: 1s;
 }
 
+.welcomStyle {
+  margin: 20px 5px;
+  display: flex;
+  font-size: 26px;
+  color: #ffffff;
+  animation: showBlock 3s linear forwards;
+  /* animation-delay: 1s; */
+}
+
 @keyframes showBlock {
   0% {
     opacity: 0;
@@ -132,6 +141,8 @@
     opacity: 0;
   }
 }
+
+
 
 .chevron {
   position: relative;

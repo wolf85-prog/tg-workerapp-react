@@ -27,10 +27,10 @@ const HelloPage = () => {
                 console.log("Вы уже зарегистрированы!", user?.id)
 
                 setFio(`Добро пожаловать на борт, \n ${worker[0]?.fio.split(' ')[1]} ${worker[0]?.fio.split(' ')[2]}!`)
-
+ 
                 setSpecId(worker[0]?.id)
 
-                //setTimeout(() => navigate("/menu"), 4000)
+                setTimeout(() => navigate("/menu"), 4000)
 
             } else {
                 console.log("Зарегистрируйтесь!", user?.id)
@@ -50,19 +50,14 @@ const HelloPage = () => {
             <img src={FonGrad} alt='' className='fon-style2'/>
             
             <form>
-                {/* <div style={{marginTop: '330px'}}>  
+                <div style={{marginTop: '330px'}}>  
                     {!fio
                         ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
-                        : <p style={{
-                                margin: '20px 5px',
-                                display: 'flex',
-                                fontSize: '26px',
-                                color: '#ffffff',
-                            }}> {fio}
+                        : <p className='welcomStyle'> {fio}
                         </p>  
                     }                
                            
-                </div>        */}
+                </div>       
             </form>
         </div>
     );
