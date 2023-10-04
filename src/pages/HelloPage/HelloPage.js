@@ -21,7 +21,7 @@ const HelloPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' user?.id
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id
 
             if (worker.length > 0) {
                 console.log("Вы уже зарегистрированы!", user?.id)
@@ -47,7 +47,7 @@ const HelloPage = () => {
             <Header header={{title: '', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/>
+            {/* <img src={FonGrad} alt='' className='fon-style2'/> */}
             
             <form>
                 <div style={{marginTop: '330px'}}>  

@@ -33,7 +33,7 @@ const LoadPage = () => {
         <div className="App">
 
             <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/>
+            {/* <img src={FonGrad} alt='' className='fon-style2'/> */}
             <img src={Logo} alt='' className='fon-style3' style={{visibility: showLogo ? "visible": "hidden"}}/>
             <img src={Logo2} alt='' className='fon-style4' style={{visibility: showLogo2 ? "visible": "hidden"}}/>
             {/* <img src={Logo} alt='' className='fon-style3' />

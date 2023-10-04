@@ -23,6 +23,10 @@ const ContactPage = () => {
 
     }, []);
 
+    const openInNewTab = (url) => {
+        window.open(url, '_blank', 'noreferrer');
+    };
+
     //---------------------------------------------------------------------------------------
 
     return (
@@ -33,10 +37,10 @@ const ContactPage = () => {
             <img src={FonGrad} alt='' className='fon-style2'/> 
             
             <div className="form-contact">
-                <img src={btnContact2} width='75' className='btns' alt=''/>
-                <img src={btnContact1} width='75' className='btns' alt=''/>
-                <img src={btnContact4} width='75' className='btns' alt=''/>
-                <img src={btnContact3} width='75' className='btns' alt=''/>
+                <a href="tel:+74995001411"><img src={btnContact2} width='90' className='btns' alt=''/></a>
+                <a href="mailto:u.l.e.y@mail.ru"><img src={btnContact1} width='90' className='btns' alt=''/></a>
+                <img src={btnContact4} onClick={() => openInNewTab('https://uley.team/')} width='90' className='btns' alt=''/>
+                <img src={btnContact3} onClick={() => openInNewTab('https://vk.com/uley.team')} width='90' className='btns' alt=''/>
 
                 <div className='block-buttons-contact'>
                     <Link to={'/menu'}><MyButton style={{marginTop: '100px', width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
