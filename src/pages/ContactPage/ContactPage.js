@@ -37,8 +37,8 @@ const ContactPage = () => {
             <img src={FonGrad} alt='' className='fon-style2'/> 
             
             <div className="form-contact">
-                <a href="tel:+74995001411"><img src={btnContact2} width='90' className='btns' alt=''/></a>
-                <a href="mailto:u.l.e.y@mail.ru"><img src={btnContact1} width='90' className='btns' alt=''/></a>
+                <img src={btnContact2} onClick={() => openInNewTab('tel:+74995001411')}  width='90' className='btns' alt=''/>
+                <img src={btnContact1} onClick={() => openInNewTab('mailto:u.l.e.y@mail.ru')}  width='90' className='btns' alt=''/>
                 <img src={btnContact4} onClick={() => openInNewTab('https://uley.team/')} width='90' className='btns' alt=''/>
                 <img src={btnContact3} onClick={() => openInNewTab('https://vk.com/uley.team')} width='90' className='btns' alt=''/>
 
