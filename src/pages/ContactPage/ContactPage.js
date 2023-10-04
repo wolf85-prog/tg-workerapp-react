@@ -29,11 +29,11 @@ const ContactPage = () => {
             <img src={FonGrad} alt='' className='fon-style2'/> 
             
             <div className="form-contact">
-                <h1>+7 (499) 500-14-11</h1>
-                <h1>u.l.e.y@mail.ru</h1>
+                {/* <h1>+7 (499) 500-14-11</h1>
+                <h1>u.l.e.y@mail.ru</h1> */}
 
                 <div className='block-buttons-contact'>
-                    <Link to={'/menu'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
+                    <Link to={'/menu'}><MyButton style={{marginTop: '330px', width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
                 </div>
             </div>
             

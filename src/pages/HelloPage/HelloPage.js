@@ -21,7 +21,7 @@ const HelloPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' user?.id
+            const worker = await getWorkerId('805436270') //'805436270' user?.id
 
             if (worker.length > 0) {
                 console.log("Вы уже зарегистрированы!", user?.id)
@@ -30,7 +30,7 @@ const HelloPage = () => {
 
                 setSpecId(worker[0]?.id)
 
-                setTimeout(() => navigate("/menu"), 4000)
+                //setTimeout(() => navigate("/menu"), 4000)
 
             } else {
                 console.log("Зарегистрируйтесь!", user?.id)
@@ -50,7 +50,7 @@ const HelloPage = () => {
             <img src={FonGrad} alt='' className='fon-style2'/>
             
             <form>
-                <div style={{marginTop: '330px'}}>  
+                {/* <div style={{marginTop: '330px'}}>  
                     {!fio
                         ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
                         : <p style={{
@@ -62,7 +62,7 @@ const HelloPage = () => {
                         </p>  
                     }                
                            
-                </div>       
+                </div>        */}
             </form>
         </div>
     );
