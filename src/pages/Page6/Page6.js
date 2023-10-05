@@ -36,7 +36,7 @@ const Page6 = () => {
                             display: 'flex',
                             fontSize: '26px',
                             color: '#fff',
-                        }}> Страница "FAQ" находится в разработке!
+                        }}> Страница в разработке!
                     </p>         
                 </div> 
                 <div className='block-buttons-contact'>

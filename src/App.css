@@ -88,7 +88,7 @@
 .fon-style {
   width: 40%;
   opacity: 0.1;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 70px;
   z-index: 1;
@@ -97,7 +97,7 @@
 }
 
 .fon-style2 {
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   width: 100%;
@@ -107,7 +107,7 @@
 }
 
 .fon-style22 {
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   width: 100%;

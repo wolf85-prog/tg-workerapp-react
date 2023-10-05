@@ -36,7 +36,7 @@ const StavkiPage = () => {
                             display: 'flex',
                             fontSize: '26px',
                             color: '#fff',
-                        }}> Страница "Моя ставка" находится в разработке!
+                        }}> Страница в разработке!
                     </p>         
                 </div> 
                 <div className='block-buttons-contact'>

@@ -128,25 +128,17 @@ const ProjectPage = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
 
-            <div className="project-list">                  
+            <ProjectFilter
+                filter={filter}
+                setFilter={setFilter}
+                arr_status={status}
+            />
 
-                <ProjectFilter
-                    filter={filter}
-                    setFilter={setFilter}
-                    arr_status={status}
-                />
-
-
-                {/* {isPostsLoading
-                    ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Loader/></div>
-                    : <ProjectList posts={sortedAndSearchedPosts} title=""/>
-                }         */}
-                
+            <div className="project-list">                   
                 {isPostsLoading
                     ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
                     : <ProjectList posts={sortedAndSearchedPosts} title=""/>
                 }
-
             </div>   
 
             <div className='block-menu'>

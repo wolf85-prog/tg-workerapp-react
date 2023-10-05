@@ -44,7 +44,7 @@ table {
 
 td, th {border:  1px solid #e2ff7a;
       padding: 0 10px;
-      min-width: 70px;
+      /* min-width: 70px; */
       /* background: black; */
       box-sizing: border-box;
       text-align: center;

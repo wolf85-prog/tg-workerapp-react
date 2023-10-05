@@ -50,27 +50,10 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
 
 
     return (
-        <div>
-            <div className='buttons_status'>
-
-                {arr_status.map((item, index) =>
+        <div className='buttons_status'>
+            {arr_status.map((item, index) =>
                     <ButtonStatus className={`btn-status ${item.color}-btn`} onClick={onChangeFilter} key={index+1} value={item.title}>{item.title}</ButtonStatus>     
-                )}
-            </div>
-
-            {/* <div style={{marginBottom: '15px'}}>
-                <SortSelect 
-                    value={filter.sort}
-                    onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
-                    disabled={false}
-                    id="sort"
-                    defaultValue="Сортировка"
-                    options={[
-                        {value: 'time_start', name: 'По дате мероприятия'},
-                        {value: 'time_created', name: 'По дате создания'},
-                    ]}
-                /> 
-            </div> */}
+            )}
         </div>
     );
 };
