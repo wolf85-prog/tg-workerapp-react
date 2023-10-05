@@ -7,9 +7,10 @@
 
 .block2 {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   position: relative;
   z-index: 7;
+  margin: 2px 10px;
 }
 
 .block-smeta {
@@ -17,10 +18,10 @@
     display: flex;
     justify-content: center;
     left: 0;
-    bottom: 0px;
+    bottom: 20px;
     width: 100%;
     z-index: 3;
-    background-color: #161616;
+    /* background-color: #161616; */
 }
 
 
@@ -43,7 +44,7 @@ table {
 
 td, th {border:  1px solid #e2ff7a;
       padding: 0 10px;
-      min-width: 60px;
+      min-width: 70px;
       /* background: black; */
       box-sizing: border-box;
       text-align: center;
@@ -72,23 +73,6 @@ thead th:first-child {
   text-align: center;
 }
 
-tfoot {
-  position: -webkit-sticky;
-  bottom: 0;
-  z-index: 2;
-}
-
-tfoot td {
-  position: sticky;
-  bottom: 0;
-  z-index: 2;
-  background: hsl(20, 50%, 70%);
-}
-
-tfoot td:first-child {
-  z-index: 3;
-}
-
 tbody {
   overflow: scroll;
   height: auto;
@@ -99,8 +83,4 @@ tr > :first-child {
   position: -webkit-sticky;
   position: sticky; 
   left: 0; 
-}
-/* don't do this */
-tr > :first-child {
-  /* box-shadow: inset 0px 1px black; */
 }

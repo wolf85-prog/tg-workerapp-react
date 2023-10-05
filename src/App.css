@@ -99,10 +99,13 @@
 .fon-style2 {
   position: absolute;
   right: 0;
-  top: 300px;
-  width: 150%;
-
-  /* opacity: 0.6; */
+  top: 0;
+  width: 100%;
+  opacity: 0.4;
+  height: 850px;
+  animation: showBlock2 3s linear forwards;
+  /* animation-delay: 1s; */
+  margin-top: -100px;
 }
 
 .fon-style3 {
@@ -126,7 +129,7 @@
   display: flex;
   font-size: 26px;
   color: #ffffff;
-  animation: showBlock 3s linear forwards;
+  animation: showBlock 5s linear forwards;
   /* animation-delay: 1s; */
 }
 
@@ -139,6 +142,15 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes showBlock2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.4;
   }
 }
 

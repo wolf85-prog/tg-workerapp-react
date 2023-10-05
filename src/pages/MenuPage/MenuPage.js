@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import ButtonStatus from "../../components/UI/ButtonStatus/ButtonStatus";
 import './MenuPage.css';
 import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/gradient2.png";
+import FonGrad from "../../image/BlueLine1.png";
 import { useNavigate } from "react-router-dom";
 import { useTelegram } from "../../hooks/useTelegram";
 import { useUsersContext } from "../../contexts/UserContext"
@@ -21,7 +21,7 @@ const MenuPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' user?.id
+            const worker = await getWorkerId('1408579113') //'805436270' user?.id
 
             if (worker.length > 0) {
 
