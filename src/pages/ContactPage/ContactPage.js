@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header";
 import './ContactPage.css';
 import MyButton from "../../components/UI/MyButton/MyButton";
 import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/gradient2.png";
+import FonGrad from "../../image/BlueLine1.png";
 
 import btnContact1 from "../../image/Workhub[E-mail].png";
 import btnContact2 from "../../image/Workhub[Phone].png";

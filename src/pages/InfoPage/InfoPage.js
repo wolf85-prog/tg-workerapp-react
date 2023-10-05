@@ -6,7 +6,7 @@ import ButtonStatus from "../../components/UI/ButtonStatus/ButtonStatus";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './InfoPage.css';
 import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/gradient2.png";
+import FonGrad from "../../image/BlueLine1.png";
 
 
 const InfoPage = () => {

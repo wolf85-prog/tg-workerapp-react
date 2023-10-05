@@ -47,7 +47,7 @@ const MenuPage = () => {
             <Header header={{title: 'Меню', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/> 
+            <img src={FonGrad} alt='' className='fon-style22'/> 
             <div className='menu-form'>
                 <Link to={'/profile'}><ButtonStatus>Профиль</ButtonStatus></Link> 
                 <Link to={'/projects'}><ButtonStatus>Проекты</ButtonStatus></Link>  

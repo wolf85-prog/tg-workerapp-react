@@ -101,11 +101,21 @@
   right: 0;
   top: 0;
   width: 100%;
-  opacity: 0.4;
+  opacity: 0.2;
   height: 850px;
+  margin-top: -100px;
+}
+
+.fon-style22 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  opacity: 0.2;
+  height: 850px;
+  margin-top: -100px;
   animation: showBlock2 3s linear forwards;
   /* animation-delay: 1s; */
-  margin-top: -100px;
 }
 
 .fon-style3 {

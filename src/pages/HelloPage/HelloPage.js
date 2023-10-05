@@ -30,7 +30,7 @@ const HelloPage = () => {
  
                 setSpecId(worker[0]?.id)
 
-                setTimeout(() => navigate("/menu"), 4000)
+                setTimeout(() => navigate("/menu"), 5000)
 
             } else {
                 console.log("Зарегистрируйтесь!", user?.id)

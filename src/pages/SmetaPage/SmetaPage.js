@@ -197,7 +197,7 @@ const SmetaPage = () => {
                         Подтвердить смету
                     </MyButton>
                     <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>
-                        Вопрос по проекту
+                        Запросить информацию по смете
                     </MyButton>          
                 </div>
                     

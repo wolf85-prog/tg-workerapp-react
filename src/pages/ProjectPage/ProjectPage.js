@@ -6,7 +6,7 @@ import Header from "../../components/Header/Header";
 import './ProjectPage.css';
 import MyButton from "../../components/UI/MyButton/MyButton";
 import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/gradient2.png";
+import FonGrad from "../../image/BlueLine1.png";
 import Loader from "../../components/UI/Loader/Loader";
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
