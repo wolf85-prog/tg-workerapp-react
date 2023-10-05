@@ -16,6 +16,7 @@ import SmetaPage from "./pages/SmetaPage/SmetaPage";
 import Page6 from "./pages/Page6/Page6";
 import HelloPage from './pages/HelloPage/HelloPage';
 import InfoPage from './pages/InfoPage/InfoPage';
+import StavkiPage from './pages/StavkiPage/StavkiPage';
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
                   <Route path={'contacts'} element={<ContactPage />}/>
                   <Route path={'info'} element={<InfoPage />}/>
                   <Route path={'page6'} element={<Page6 />}/>
+                  <Route path={'stavki'} element={<StavkiPage />}/>
               </Routes>
       </ThemeProvider>
   );

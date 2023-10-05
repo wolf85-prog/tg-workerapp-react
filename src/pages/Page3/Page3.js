@@ -6,9 +6,8 @@ import './Page3.css';
 import MyButton from "../../components/UI/MyButton/MyButton";
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/BlueLine1.png";
-import check from "../../image/check2.png";
-import check2 from "../../image/check3.png";
-import uncheck from "../../image/uncheck.png";
+import check2 from "../../image/check2.png";
+import uncheck2 from "../../image/uncheck2.png";
 
 //const API_URL = process.env.REACT_APP_API_URL
 
@@ -96,16 +95,15 @@ const Page3 = () => {
                         <thead>
                             <tr>
                                 <th style={{background: '#000', height:'45px', zIndex: '15'}}>Дата</th>
-                                <th style={{minWidth: '150px'}}>Проект</th>
+                                <th style={{minWidth: '200px'}}>Проект</th>
                                 <th style={{minWidth: '150px'}}>Вид работ</th>
-                                <th style={{minWidth: '100px'}}>Старт</th>
-                                <th style={{minWidth: '100px'}}>Стоп</th>
-                                <th style={{minWidth: '100px'}}>Ставка</th>
+                                <th style={{minWidth: '50px'}}>Старт</th>
+                                <th style={{minWidth: '50px'}}>Стоп</th>
+                                <th style={{minWidth: '80px'}}>Ставка</th>
                                 <th style={{minWidth: '100px'}}>Переработка</th>
-                                <th style={{minWidth: '100px'}}>Доп. расходы</th>
+                                <th style={{minWidth: '120px'}}>Доп. расходы</th>
                                 <th style={{minWidth: '100px'}}>Итого</th>
-                                <th style={{minWidth: '30px'}}>Статус</th>
-                                <th style={{minWidth: '100px'}}>Комментарий</th>
+                                <th style={{minWidth: '25px'}}></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -119,8 +117,7 @@ const Page3 = () => {
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
-                                <td><img src={check} width='25' style={{verticalAlign: 'middle'}} alt=''/></td>
-                                <td></td>
+                                <td><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
                             </tr>
                             <tr>
                                 <th style={{background: '#000'}}>13.09</th>
@@ -132,34 +129,7 @@ const Page3 = () => {
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
-                                <td><img src={check2} width='25' style={{verticalAlign: 'middle'}} alt=''/></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th style={{background: '#000'}}>12.09</th>
-                                <td>Проект 1</td>
-                                <td>Монтаж</td>
-                                <td>23:00</td>
-                                <td>01:00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td><img src={uncheck} width='25' style={{verticalAlign: 'middle'}} alt=''/></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th style={{background: '#000'}}>13.09</th>
-                                <td>Проект 2</td>
-                                <td>Монтаж</td>
-                                <td>23:00</td>
-                                <td>01:00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td></td>
-                                <td></td>
+                                <td><img src={uncheck2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
                             </tr>
                             <tr>
                                 <th style={{background: '#000'}}>12.09</th>
@@ -172,7 +142,6 @@ const Page3 = () => {
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
                                 <td></td>
-                                <td></td>
                             </tr>
                             <tr>
                                 <th style={{background: '#000'}}>13.09</th>
@@ -185,13 +154,35 @@ const Page3 = () => {
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <th style={{background: '#000'}}>12.09</th>
+                                <td>Проект 1</td>
+                                <td>Монтаж</td>
+                                <td>23:00</td>
+                                <td>01:00</td>
+                                <td>10 000,00</td>
+                                <td>10 000,00</td>
+                                <td>10 000,00</td>
+                                <td>10 000,00</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th style={{background: '#000'}}>13.09</th>
+                                <td>Проект 2</td>
+                                <td>Монтаж</td>
+                                <td>23:00</td>
+                                <td>01:00</td>
+                                <td>10 000,00</td>
+                                <td>10 000,00</td>
+                                <td>10 000,00</td>
+                                <td>10 000,00</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th colSpan={8}></th>
                                 {/* <td>Сумма:</td> */}
                                 <td>60 000,00</td>
-                                <td></td>
                                 <td></td>
                             </tr>
                         </tbody>
