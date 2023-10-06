@@ -55,7 +55,7 @@ const MenuPage = () => {
                 <ButtonStatus role="link" onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</ButtonStatus> 
                 <Link to={'/stavki'}><ButtonStatus>Ставки</ButtonStatus></Link>
                 <Link to={'/info'}><ButtonStatus>Информация</ButtonStatus></Link>   
-                <Link to={'/page6'}><ButtonStatus>FAQ</ButtonStatus></Link>  
+                <Link to={'/faq'}><ButtonStatus>FAQ</ButtonStatus></Link>  
                 <Link to={'/contacts'}><ButtonStatus>Контакты</ButtonStatus></Link>
             </div>
              

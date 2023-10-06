@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     left: 0;
-    bottom: 0px;
+    bottom: 25px;
     width: 100%;
     z-index: 2;
     /* background-color: #161616; */
@@ -19,4 +19,7 @@
     margin-right: 25px; */
     z-index: 2;
     position: relative;
+    box-sizing:border-box;
+    height:550px;
+    overflow:auto;
 }

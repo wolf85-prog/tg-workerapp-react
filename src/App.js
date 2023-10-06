@@ -16,6 +16,7 @@ import SmetaPage from "./pages/SmetaPage/SmetaPage";
 import FaqPage from "./pages/FaqPage/FaqPage";
 import HelloPage from './pages/HelloPage/HelloPage';
 import InfoPage from './pages/InfoPage/InfoPage';
+import InfoPage1 from './pages/InfoPage1/InfoPage1';
 import StavkiPage from './pages/StavkiPage/StavkiPage';
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
                   <Route path={'page3'} element={<Page3 />}/>
                   <Route path={'contacts'} element={<ContactPage />}/>
                   <Route path={'info'} element={<InfoPage />}/>
+                  <Route path={'info1'} element={<InfoPage1 />}/>
                   <Route path={'faq'} element={<FaqPage />}/>
                   <Route path={'stavki'} element={<StavkiPage />}/>
               </Routes>

@@ -29,16 +29,15 @@ const StavkiPage = () => {
             <img src={FonGrad} alt='' className='fon-style2'/> 
             
             <form>
-                <div style={{marginTop: '250px'}}>                  
+                <div style={{marginTop: '100px', textAlign: 'left', paddingLeft: '15px',}}>                  
                     <p
                         style={{
                             margin: '20px 5px',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            fontSize: '26px',
+                            fontSize: '24px',
                             color: '#fff',
-                        }}> Страница в разработке!
-                    </p>         
+                        }}> Моя специальность:
+                    </p> 
+                    <MyButton style={{width: "250px", background: '#3f4052', border: '1px solid #3f4052'}}>...</MyButton>        
                 </div> 
                 <div className='block-buttons-contact'>
                     <Link to={'/menu'}><MyButton style={{marginTop: '100px', width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>

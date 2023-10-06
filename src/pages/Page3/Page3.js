@@ -31,64 +31,102 @@ const Page3 = () => {
             
             <div className='form-smeta'>
                                  
-                    {/* <p
-                        style={{
-                            margin: '20px 5px',
-                            display: 'flex',
-                            fontSize: '26px',
-                            color: '#2975f5',
-                        }}> Страница "Сметы" находится в разработке!
-                    </p>          */}
+            <div id="table-scroll" class="table-scroll">
+                <div class="table-wrap">
+                    <table class="main-table">
+                    <thead>
+                        <tr>
+                        <th class="fixed-side" scope="col" style={{minWidth: '60px', background: '#000', height:'45px', zIndex: '15'}}>Дата</th>
+                            <th scope="col" style={{minWidth: '200px'}}>Проект</th>
+                            <th scope="col" style={{minWidth: '150px'}}>Вид работ</th>
+                            <th scope="col" style={{minWidth: '60px'}}>Старт</th>
+                            <th scope="col" style={{minWidth: '60px'}}>Стоп</th>
+                            <th scope="col" style={{minWidth: '100px'}}>Ставка</th>
+                            <th scope="col" style={{minWidth: '100px'}}>Переработка</th>
+                            <th scope="col" style={{minWidth: '120px'}}>Доп. расходы</th>
+                            <th scope="col" style={{minWidth: '100px'}}>Итого</th>
+                            <th scope="col" style={{padding: 0}}></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th class="fixed-side">12.09</th>
+                        <td>Проект 1</td>
+                            <td>Монтаж</td>
+                            <td>23:00</td>
+                            <td>01:00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td style={{padding: '4px'}}><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
+                        </tr>
+                        <tr>
+                        <th class="fixed-side">13.09</th>
+                        <td>Проект 1</td>
+                            <td>Монтаж</td>
+                            <td>23:00</td>
+                            <td>01:00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td style={{padding: '4px'}}><img src={uncheck2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
+                        </tr>
+                        <tr>
+                            <th class="fixed-side">12.09</th>
+                            <td>Проект 1</td>
+                            <td>Монтаж</td>
+                            <td>23:00</td>
+                            <td>01:00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td style={{padding: 0}}></td>
+                        </tr>
+                        <tr>
+                        <th class="fixed-side">13.09</th>
+                        <td>Проект 1</td>
+                            <td>Монтаж</td>
+                            <td>23:00</td>
+                            <td>01:00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td style={{padding: 0}}></td>
+                        </tr>
+                        <tr>
+                        <th class="fixed-side">12.09</th>
+                        <td>Проект 1</td>
+                            <td>Монтаж</td>
+                            <td>23:00</td>
+                            <td>01:00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td style={{padding: 0}}></td>
+                        </tr>
+                        <tr>
+                        <th class="fixed-side">13.09</th>
+                        <td>Проект 1</td>
+                            <td>Монтаж</td>
+                            <td>23:00</td>
+                            <td>01:00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td>10 000,00</td>
+                            <td style={{padding: 0}}></td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                </div>
 
-                {/* <table>
-                <caption>Страница "Сметы" находится в разработке!</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Дата</th>
-                        <th scope="col">Название проекта</th>
-                        <th scope="col">Специальность</th>
-                        <th scope="col">Кол-во часов</th>
-                        <th scope="col">Сумма за проект</th>
-                        <th scope="col">Дополнительные расходы</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-label="Дата">04/01/2016</td>
-                        <td data-label="Название проекта">04/01/2016</td>
-                        <td data-label="Специальность">1,190</td>
-                        <td data-label="Кол-во часов">12</td>
-                        <td data-label="Сумма за проект">1,190</td>
-                        <td data-label="Дополнительные расходы">1,190</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" data-label="Дата">04/01/2016</td>
-                        <td data-label="Название проекта">04/01/2016</td>
-                        <td data-label="Специальность">1,190</td>
-                        <td data-label="Кол-во часов">34</td>
-                        <td data-label="Сумма за проект">1,190</td>
-                        <td data-label="Дополнительные расходы">1,190</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" data-label="Дата">04/01/2016</td>
-                        <td data-label="Название проекта">04/01/2016</td>
-                        <td data-label="Специальность">1,190</td>
-                        <td data-label="Кол-во часов">45</td>
-                        <td data-label="Сумма за проект">1,190</td>
-                        <td data-label="Дополнительные расходы">1,190</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" data-label="Дата">04/01/2016</td>
-                        <td data-label="Название проекта">04/01/2016</td>
-                        <td data-label="Специальность">1,190</td>
-                        <td data-label="Кол-во часов">56</td>
-                        <td data-label="Сумма за проект">1,190</td>
-                        <td data-label="Дополнительные расходы">1,190</td>
-                    </tr>
-                </tbody>
-                </table> */}
-
-                <div class="table1-container">
+                {/* <div class="table1-container">
                     
                     <div class="table-horizontal-container">
                         <table class="smeta-all-table">
@@ -103,7 +141,7 @@ const Page3 = () => {
                                 <th style={{minWidth: '100px'}}>Переработка</th>
                                 <th style={{minWidth: '120px'}}>Доп. расходы</th>
                                 <th style={{minWidth: '100px'}}>Итого</th>
-                                <th></th>
+                                <th style={{padding: 0}}></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -117,7 +155,7 @@ const Page3 = () => {
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
-                                <td><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
+                                <td style={{padding: 0}}><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
                             </tr>
                             <tr>
                                 <th style={{background: '#000'}}>13.09</th>
@@ -129,7 +167,7 @@ const Page3 = () => {
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
-                                <td><img src={uncheck2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
+                                <td style={{padding: 0}}><img src={uncheck2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
                             </tr>
                             <tr>
                                 <th style={{background: '#000'}}>12.09</th>
@@ -141,7 +179,7 @@ const Page3 = () => {
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
-                                <td></td>
+                                <td style={{padding: 0}}></td>
                             </tr>
                             <tr>
                                 <th style={{background: '#000'}}>13.09</th>
@@ -153,7 +191,7 @@ const Page3 = () => {
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
-                                <td></td>
+                                <td style={{padding: 0}}></td>
                             </tr>
                             <tr>
                                 <th style={{background: '#000'}}>12.09</th>
@@ -165,7 +203,7 @@ const Page3 = () => {
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
-                                <td></td>
+                                <td style={{padding: 0}}></td>
                             </tr>
                             <tr>
                                 <th style={{background: '#000'}}>13.09</th>
@@ -177,11 +215,10 @@ const Page3 = () => {
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
                                 <td>10 000,00</td>
-                                <td></td>
+                                <td style={{padding: 0}}></td>
                             </tr>
                             <tr>
                                 <th colSpan={8}></th>
-                                {/* <td>Сумма:</td> */}
                                 <td>60 000,00</td>
                                 <td></td>
                             </tr>
@@ -189,7 +226,7 @@ const Page3 = () => {
                     
                         </table>
                     </div>
-                </div>
+                </div> */}
 
                 <div className='block2'>
                     <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>
