@@ -34,6 +34,7 @@ const StavkiPage = () => {
                         style={{
                             margin: '20px 5px',
                             display: 'flex',
+                            justifyContent: 'center',
                             fontSize: '26px',
                             color: '#fff',
                         }}> Страница в разработке!

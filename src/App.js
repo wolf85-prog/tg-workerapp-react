@@ -13,7 +13,7 @@ import ProjectPage from "./pages/ProjectPage/ProjectPage";
 import Page3 from "./pages/Page3/Page3";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import SmetaPage from "./pages/SmetaPage/SmetaPage";
-import Page6 from "./pages/Page6/Page6";
+import FaqPage from "./pages/FaqPage/FaqPage";
 import HelloPage from './pages/HelloPage/HelloPage';
 import InfoPage from './pages/InfoPage/InfoPage';
 import StavkiPage from './pages/StavkiPage/StavkiPage';
@@ -45,7 +45,7 @@ function App() {
                   <Route path={'page3'} element={<Page3 />}/>
                   <Route path={'contacts'} element={<ContactPage />}/>
                   <Route path={'info'} element={<InfoPage />}/>
-                  <Route path={'page6'} element={<Page6 />}/>
+                  <Route path={'faq'} element={<FaqPage />}/>
                   <Route path={'stavki'} element={<StavkiPage />}/>
               </Routes>
       </ThemeProvider>

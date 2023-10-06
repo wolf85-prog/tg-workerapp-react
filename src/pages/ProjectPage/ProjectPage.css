@@ -6,7 +6,7 @@
     bottom: 0px;
     width: 100%;
     z-index: 2;
-    background-color: #161616;
+    /* background-color: #161616; */
 }
 
 .status_el{
@@ -14,7 +14,7 @@
 }
 
 .project-list {
-    margin-top: 75px;
+    margin-top: 125px;
     /* margin-left: 0px;
     margin-right: 25px; */
     z-index: 2;

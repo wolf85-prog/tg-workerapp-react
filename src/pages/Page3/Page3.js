@@ -94,16 +94,16 @@ const Page3 = () => {
                         <table class="smeta-all-table">
                         <thead>
                             <tr>
-                                <th style={{minWidth: '50px', background: '#000', height:'45px', zIndex: '15'}}>Дата</th>
+                                <th style={{minWidth: '60px', background: '#000', height:'45px', zIndex: '15'}}>Дата</th>
                                 <th style={{minWidth: '200px'}}>Проект</th>
                                 <th style={{minWidth: '150px'}}>Вид работ</th>
-                                <th style={{minWidth: '50px'}}>Старт</th>
-                                <th style={{minWidth: '50px'}}>Стоп</th>
+                                <th style={{minWidth: '60px'}}>Старт</th>
+                                <th style={{minWidth: '60px'}}>Стоп</th>
                                 <th style={{minWidth: '100px'}}>Ставка</th>
                                 <th style={{minWidth: '100px'}}>Переработка</th>
                                 <th style={{minWidth: '120px'}}>Доп. расходы</th>
                                 <th style={{minWidth: '100px'}}>Итого</th>
-                                <th style={{minWidth: '5px'}}></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>

@@ -19,3 +19,7 @@ thead th {
     text-align: center;
     font-weight: 400;
   }
+
+  td, th {
+    padding: 0;
+  }

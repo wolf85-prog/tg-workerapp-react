@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import {Link} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
-import './Page6.css';
+import './FaqPage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/BlueLine1.png";
 import MyButton from "../../components/UI/MyButton/MyButton";
@@ -10,7 +10,7 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 
 const API_URL = process.env.REACT_APP_API_URL
 
-const Page6 = () => {
+const FaqPage = () => {
     
 //----------------------------------------------------------------------------------
 
@@ -34,6 +34,7 @@ const Page6 = () => {
                         style={{
                             margin: '20px 5px',
                             display: 'flex',
+                            justifyContent: 'center',
                             fontSize: '26px',
                             color: '#fff',
                         }}> Страница в разработке!
@@ -48,4 +49,4 @@ const Page6 = () => {
 };
 
 
-export default Page6;
+export default FaqPage;
