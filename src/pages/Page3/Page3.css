@@ -1,7 +1,21 @@
+.form-smeta-page3 {
+  margin-top: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  z-index: 2;
+  position: relative;
+  box-sizing:border-box;
+  height:450px;
+  overflow:auto;
+}
+
 .block-buttons-page3 {
-    position: fixed;
+    /* position: fixed;
     bottom: 25px;
-    margin-left: 40%;
+    margin-left: 40%; */
+
+    margin-bottom: 30px;
 }
 
 /* .smeta-all-table {

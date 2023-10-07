@@ -29,7 +29,7 @@ const Page3 = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
             
-            <div className='form-smeta'>
+            <div className='form-smeta-page3'>
                                  
             <div id="table-scroll" class="table-scroll">
                 <div class="table-wrap">
