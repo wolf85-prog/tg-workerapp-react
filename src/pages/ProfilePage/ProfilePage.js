@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './ProfilePage.css';
 import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/BlueLine2.png";
+import FonGrad from "../../image/BlueLine3.png";
 import iconCheck from "../../image/check.png";
 import iconUnCheck from "../../image/uncheck.png";
 //import Loader from "../../components/UI/Loader/Loader";
@@ -26,7 +26,7 @@ const ProfilePage = () => {
     useEffect(() => {
 
         const fetchData = async() => {
-            const worker = await getWorkerId(user?.id) //user?.id
+            const worker = await getWorkerId('1408579113') //user?.id
 
             console.log("worker: ", worker)
 

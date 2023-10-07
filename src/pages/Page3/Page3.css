@@ -3,11 +3,11 @@
   margin-left: 20px;
   margin-right: 20px;
 
-  z-index: 2;
+  /* z-index: 2;
   position: relative;
   box-sizing:border-box;
   height:465px;
-  overflow:auto;
+  overflow:auto; */
 }
 
 .block-buttons-page3 {

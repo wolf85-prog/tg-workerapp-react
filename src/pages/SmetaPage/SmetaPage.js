@@ -5,6 +5,7 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 import './SmetaPage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/BlueLine1.png";
+import Banner from "../../image/BannerWorkhub.png";
 
 
 const SmetaPage = () => {
@@ -99,6 +100,9 @@ const SmetaPage = () => {
                     </thead>
                 </table> 
                 {/* } */}
+
+                <img style={{marginTop: '10px', position: 'relative', zIndex: '6' }} src={Banner} alt='' width='100%' />
+
                 <div className='block2'>
                     <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>
                         Подтвердить смету
