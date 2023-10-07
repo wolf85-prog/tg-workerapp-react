@@ -1,14 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import {Link} from "react-router-dom";
-import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import './InfoPage1.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/BlueLine1.png";
 import MyButton from "../../components/UI/MyButton/MyButton";
 
-
-const API_URL = process.env.REACT_APP_API_URL
 
 const InfoPage1 = () => {
     

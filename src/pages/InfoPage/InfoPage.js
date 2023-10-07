@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import {Link} from "react-router-dom";
-import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import ButtonStatus from "../../components/UI/ButtonStatus/ButtonStatus";
 import MyButton from "../../components/UI/MyButton/MyButton";
@@ -17,10 +16,6 @@ const InfoPage = () => {
     useEffect(() => {
 
     }, []);
-
-    const openInNewTab = (url) => {
-        window.open(url, '_blank', 'noreferrer');
-    };
 
     //---------------------------------------------------------------------------------------
 

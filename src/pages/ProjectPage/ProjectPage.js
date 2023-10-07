@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import {Link, useLocation} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import {Link} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useProjects} from "../../hooks/useProjects"
 import Header from "../../components/Header/Header";
@@ -15,7 +15,7 @@ import { getProjectsAll, getBlockId, getDatabase } from '../../http/chatAPI';
 
 
 const ProjectPage = () => {
-    const {user} = useTelegram();
+    //const {user} = useTelegram();
 
     const { projects, setProjects, specId} = useUsersContext();
 

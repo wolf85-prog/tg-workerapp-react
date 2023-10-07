@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import {Link} from "react-router-dom";
-import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import './ContactPage.css';
 import MyButton from "../../components/UI/MyButton/MyButton";
@@ -11,8 +10,6 @@ import btnContact1 from "../../image/Workhub[E-mail].png";
 import btnContact2 from "../../image/Workhub[Phone].png";
 import btnContact3 from "../../image/Workhub[Vk].png";
 import btnContact4 from "../../image/Workhub[Web].png";
-
-const API_URL = process.env.REACT_APP_API_URL
 
 const ContactPage = () => {
     

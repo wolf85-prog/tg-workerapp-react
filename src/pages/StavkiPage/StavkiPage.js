@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
-import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import './StavkiPage.css';
 import Fon from "../../image/logo_01_light.png";
@@ -21,11 +20,6 @@ const StavkiPage = () => {
     }, []);
 
     const handleClick = (e) => {
-        e.preventDefault();
-        showTable ? setShowTable(false) : setShowTable(true)
-    }
-
-    const handleClick2 = (e) => {
         e.preventDefault();
         showTable ? setShowTable(false) : setShowTable(true)
     }

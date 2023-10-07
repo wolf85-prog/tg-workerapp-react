@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {useNavigate, useLocation} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './SmetaPage.css';
@@ -8,9 +8,9 @@ import FonGrad from "../../image/BlueLine1.png";
 
 
 const SmetaPage = () => {
-    const location = useLocation()
+    //const location = useLocation()
 
-    const projNumber= location.state?.proj
+    //const projNumber= location.state?.proj
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже

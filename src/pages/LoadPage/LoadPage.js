@@ -11,8 +11,6 @@ const LoadPage = () => {
 
     const navigate = useNavigate();
 
-    const [showNext, setShowNext] = useState(false)
-    const [isLoading, setIsLoading] = useState(false);
     const [showLogo, setShowLogo] = useState(false);
     const [showLogo2, setShowLogo2] = useState(false);
 //----------------------------------------------------------------------------------
