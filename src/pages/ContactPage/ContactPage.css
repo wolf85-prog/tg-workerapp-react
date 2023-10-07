@@ -2,7 +2,9 @@
     display: flex;
     justify-content: center;
     padding-top: 20px;
-    margin-bottom: 30px;
+    position: fixed;
+    bottom: 30px;
+    margin-left: 40%;
 }
 
 .form-contact {
