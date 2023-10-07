@@ -122,7 +122,7 @@ const Page3 = () => {
                             <td style={{padding: 0}}></td>
                         </tr>
                         <tr>
-                            <td>Итого</td>
+                            <td></td>
                             <td colSpan={7}></td>
                             {/* <td></td>
                             <td></td>
@@ -138,108 +138,6 @@ const Page3 = () => {
                     </table>
                 </div>
                 </div>
-
-                {/* <div class="table1-container">
-                    
-                    <div class="table-horizontal-container">
-                        <table class="smeta-all-table">
-                        <thead>
-                            <tr>
-                                <th style={{minWidth: '60px', background: '#000', height:'45px', zIndex: '15'}}>Дата</th>
-                                <th style={{minWidth: '200px'}}>Проект</th>
-                                <th style={{minWidth: '150px'}}>Вид работ</th>
-                                <th style={{minWidth: '60px'}}>Старт</th>
-                                <th style={{minWidth: '60px'}}>Стоп</th>
-                                <th style={{minWidth: '100px'}}>Ставка</th>
-                                <th style={{minWidth: '100px'}}>Переработка</th>
-                                <th style={{minWidth: '120px'}}>Доп. расходы</th>
-                                <th style={{minWidth: '100px'}}>Итого</th>
-                                <th style={{padding: 0}}></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th style={{background: '#000'}}>12.09</th>
-                                <td>Проект 1</td>
-                                <td>Монтаж</td>
-                                <td>23:00</td>
-                                <td>01:00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td style={{padding: 0}}><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
-                            </tr>
-                            <tr>
-                                <th style={{background: '#000'}}>13.09</th>
-                                <td>Проект 2</td>
-                                <td>Монтаж</td>
-                                <td>23:00</td>
-                                <td>01:00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td style={{padding: 0}}><img src={uncheck2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
-                            </tr>
-                            <tr>
-                                <th style={{background: '#000'}}>12.09</th>
-                                <td>Проект 1</td>
-                                <td>Монтаж</td>
-                                <td>23:00</td>
-                                <td>01:00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td style={{padding: 0}}></td>
-                            </tr>
-                            <tr>
-                                <th style={{background: '#000'}}>13.09</th>
-                                <td>Проект 2</td>
-                                <td>Монтаж</td>
-                                <td>23:00</td>
-                                <td>01:00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td style={{padding: 0}}></td>
-                            </tr>
-                            <tr>
-                                <th style={{background: '#000'}}>12.09</th>
-                                <td>Проект 1</td>
-                                <td>Монтаж</td>
-                                <td>23:00</td>
-                                <td>01:00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td style={{padding: 0}}></td>
-                            </tr>
-                            <tr>
-                                <th style={{background: '#000'}}>13.09</th>
-                                <td>Проект 2</td>
-                                <td>Монтаж</td>
-                                <td>23:00</td>
-                                <td>01:00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td style={{padding: 0}}></td>
-                            </tr>
-                            <tr>
-                                <th colSpan={8}></th>
-                                <td>60 000,00</td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    
-                        </table>
-                    </div>
-                </div> */}
 
                 <div className='block2'>
                     <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>
