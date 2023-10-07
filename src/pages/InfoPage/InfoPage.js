@@ -31,7 +31,7 @@ const InfoPage = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
 
-            <div className='menu-form'>
+            <div className='menu-form-info'>
                 <Link to={'/info1'}><ButtonStatus>С чего начать</ButtonStatus></Link> 
                 <Link to={'/'}><ButtonStatus>Первый проект</ButtonStatus></Link>  
                 <Link to={'/'}><ButtonStatus>Чат проекта</ButtonStatus></Link>  

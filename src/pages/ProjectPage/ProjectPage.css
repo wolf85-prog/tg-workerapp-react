@@ -15,8 +15,6 @@
 
 .project-list {
     margin-top: 125px;
-    /* margin-left: 0px;
-    margin-right: 25px; */
     z-index: 2;
     position: relative;
     box-sizing:border-box;

@@ -242,7 +242,7 @@ const Page3 = () => {
                       
             </div>
 
-            <div className='block-buttons'>
+            <div className='block-buttons-page3'>
                 <Link to={'/menu'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
             </div>
         </div>

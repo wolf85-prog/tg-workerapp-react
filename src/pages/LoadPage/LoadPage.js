@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import {useNavigate} from "react-router-dom";
 import './LoadPage.css';
 import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/gradient2.png";
+//import FonGrad from "../../image/gradient2.png";
 import Logo from "../../image/logo_04_light.png";
 import Logo2 from "../../image/workhub.png";
 

@@ -1,0 +1,22 @@
+.container {
+    margin-top: 70px;
+    z-index: 2;
+    position: relative;
+    box-sizing:border-box;
+    height:500px;
+    overflow:auto;
+}
+
+.text-info1 {
+    /* margin: 20px 5px; */
+    text-align: left;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 25px 25px;
+}
+
+.block-buttons-info1 {
+    position: fixed;
+    bottom: 25px;
+    margin-left: 40%;
+}

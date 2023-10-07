@@ -2,7 +2,12 @@
     margin-top: 110px;
     margin-left: 20px;
     margin-right: 20px;
-    margin-bottom: 80px;
+
+    z-index: 2;
+    position: relative;
+    box-sizing:border-box;
+    height:500px;
+    overflow:auto;
 }
 
 .block2 {
@@ -14,14 +19,15 @@
 }
 
 .block-smeta {
-    position: fixed;
+    /* position: fixed; */
     display: flex;
     justify-content: center;
-    left: 0;
-    bottom: 25px;
+    /* left: 0;
+    bottom: 25px; */
     width: 100%;
     z-index: 3;
     /* background-color: #161616; */
+    margin-bottom: 30px;
 }
 
 
@@ -42,12 +48,13 @@ table {
     position: relative;
 }
 
-td, th {border:  1px solid #e2ff7a;
-      padding: 0 10px;
-      /* min-width: 70px; */
-      /* background: black; */
-      box-sizing: border-box;
-      text-align: center;
+td, th {
+  border:  2px solid #e2ff7a;
+  padding: 0 10px;
+  /* min-width: 70px; */
+  /* background: black; */
+  box-sizing: border-box;
+  text-align: center;
 }
 .table-container {
   position: relative;

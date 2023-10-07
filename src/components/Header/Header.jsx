@@ -3,7 +3,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import './Header.css';
 
 const Header = (props) => {
-    const {user, queryId, onClose} = useTelegram();
+    const {user} = useTelegram();
     return (
         <div className={'header'}>
 

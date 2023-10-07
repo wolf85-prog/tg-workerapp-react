@@ -41,12 +41,10 @@ const ContactPage = () => {
                 <img src={btnContact1} onClick={() => openInNewTab('mailto:u.l.e.y@mail.ru')}  width='90' className='btns' alt=''/>
                 <img src={btnContact4} onClick={() => openInNewTab('https://uley.team/')} width='90' className='btns' alt=''/>
                 <img src={btnContact3} onClick={() => openInNewTab('https://vk.com/uley.team')} width='90' className='btns' alt=''/>
-
-                <div className='block-buttons-contact'>
+            </div>
+            <div className='block-buttons-contact'>
                     <Link to={'/menu'}><MyButton style={{marginTop: '100px', width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
                 </div>
-            </div>
-            
         </div>
     );
 };

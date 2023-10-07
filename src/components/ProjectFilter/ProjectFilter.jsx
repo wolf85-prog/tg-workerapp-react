@@ -1,7 +1,7 @@
-import React, {useMemo, useState} from 'react';
+import React, {useState} from 'react';
 import './ProjectFilter.css';
 import ButtonStatus from "../UI/ButtonStatus/ButtonStatus";
-import SortSelect from "../UI/SortSelect/SortSelect";
+//import SortSelect from "../UI/SortSelect/SortSelect";
 
 const ProjectFilter = ({filter, setFilter, arr_status}) => {
 
@@ -42,11 +42,11 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
     } 
 
     //filter.sort
-    const sortPost = (selectedSort) => {
-        setFilter({...filter, sort: selectedSort})
-        //selectedSort => setFilter({...filter, sort: selectedSort})
-        //console.log(selectedSort)
-    }
+    // const sortPost = (selectedSort) => {
+    //     setFilter({...filter, sort: selectedSort})
+    //     //selectedSort => setFilter({...filter, sort: selectedSort})
+    //     //console.log(selectedSort)
+    // }
 
 
     return (
