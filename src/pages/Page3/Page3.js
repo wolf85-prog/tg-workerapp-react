@@ -50,8 +50,8 @@ const Page3 = () => {
                     </thead>
                     <tbody>
                         <tr>
-                        <th class="fixed-side">12.09</th>
-                        <td>Проект 1</td>
+                            <th class="fixed-side">12.09</th>
+                            <td>Проект 1</td>
                             <td>Монтаж</td>
                             <td>23:00</td>
                             <td>01:00</td>
@@ -62,8 +62,8 @@ const Page3 = () => {
                             <td style={{padding: '4px'}}><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
                         </tr>
                         <tr>
-                        <th class="fixed-side">13.09</th>
-                        <td>Проект 1</td>
+                            <th class="fixed-side">13.09</th>
+                            <td>Проект 1</td>
                             <td>Монтаж</td>
                             <td>23:00</td>
                             <td>01:00</td>
@@ -86,8 +86,8 @@ const Page3 = () => {
                             <td style={{padding: 0}}></td>
                         </tr>
                         <tr>
-                        <th class="fixed-side">13.09</th>
-                        <td>Проект 1</td>
+                            <th class="fixed-side">13.09</th>
+                            <td>Проект 1</td>
                             <td>Монтаж</td>
                             <td>23:00</td>
                             <td>01:00</td>
@@ -98,8 +98,8 @@ const Page3 = () => {
                             <td style={{padding: 0}}></td>
                         </tr>
                         <tr>
-                        <th class="fixed-side">12.09</th>
-                        <td>Проект 1</td>
+                            <th class="fixed-side">12.09</th>
+                            <td>Проект 1</td>
                             <td>Монтаж</td>
                             <td>23:00</td>
                             <td>01:00</td>
@@ -110,8 +110,8 @@ const Page3 = () => {
                             <td style={{padding: 0}}></td>
                         </tr>
                         <tr>
-                        <th class="fixed-side">13.09</th>
-                        <td>Проект 1</td>
+                            <th class="fixed-side">13.09</th>
+                            <td>Проект 1</td>
                             <td>Монтаж</td>
                             <td>23:00</td>
                             <td>01:00</td>
@@ -120,6 +120,19 @@ const Page3 = () => {
                             <td>10 000,00</td>
                             <td>10 000,00</td>
                             <td style={{padding: 0}}></td>
+                        </tr>
+                        <tr>
+                            <td>Итого</td>
+                            <td colSpan={7}></td>
+                            {/* <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td> */}
+                            <td>60 000,00</td>
+                            <td></td>
                         </tr>
                     </tbody>
                     </table>

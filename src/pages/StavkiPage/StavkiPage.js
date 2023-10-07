@@ -9,6 +9,7 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 import TreugolDown from "../../image/treugol.png";
 import TreugolUp from "../../image/treugol2.png";
 import Table1 from "../../image/tab_helper.png";
+import stagehands from "../../image/spec/7_stagehands.svg";
 
 const StavkiPage = () => {
     const [showTable, setShowTable] = useState(false)
@@ -47,16 +48,22 @@ const StavkiPage = () => {
                             color: '#fff',
                         }}> Моя специальность:
                     </p> 
-                    <MyButton onClick={handleClick} style={{width: "250px", 
+                    <div style={{display: 'flex', justifyContent: 'flex-start'}}>
+                        <img src={stagehands} alt=''/>
+                        <MyButton onClick={handleClick} style={{width: "250px", 
                                 background: '#3f4052', 
                                 border: '1px solid #3f4052',
-                                display: 'flex', 
+                                display: 'flex',
+                                margin: '0 20px', 
                                 justifyContent: 'space-around', 
-                                alignItems: 'center'}}>
-                        Помощник / Грузчик {showTable ? <img src={TreugolUp} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>
-                                                    : <img src={TreugolDown} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>}
-                    </MyButton> 
-                    {showTable ? <img src={Table1} alt='' width='95%' /> : '' }   
+                                alignItems: 'center',
+                                zIndex: '6'}}>
+                            Помощник / Грузчик {showTable ? <img src={TreugolUp} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>
+                                                        : <img src={TreugolDown} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>}
+                        </MyButton>
+                    </div>
+                     
+                    {showTable ? <img className='table-image' src={Table1} alt='' width='95%' /> : '' }   
                 </div> 
                 <div className='block-buttons-stavki'>
                     <Link to={'/menu'}><MyButton style={{marginTop: '100px', width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
