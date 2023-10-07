@@ -26,7 +26,7 @@ const ProfilePage = () => {
     useEffect(() => {
 
         const fetchData = async() => {
-            const worker = await getWorkerId('1408579113') //user?.id
+            const worker = await getWorkerId(user?.id) //user?.id
 
             console.log("worker: ", worker)
 
