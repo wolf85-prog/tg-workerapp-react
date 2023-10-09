@@ -57,7 +57,7 @@ const ProfilePage = () => {
                     <li><div className="bullet-title"></div>{workerhub[0]?.fio.split(' ')[1]} {workerhub[0]?.fio.split(' ')[2]}</li>
                     <li><div className="bullet-title">Город</div>{workerhub[0]?.city}</li>
                     <li><div className="bullet-title">Специальность</div>              
-                        <table className="table-noborder">{workerhub[0]?.spec.map((worker, index) => index < 8 ? <tr><td key={worker.id}>{worker.name}</td></tr> : '' )}</table>
+                        <table className="table-noborder">{workerhub[0]?.spec.map((worker, index) => index < 8 ? <tr key={worker.id}><td>{worker.name}</td></tr> : '' )}</table>
                     </li>
                     <li><div className="bullet-title">Рейтинг</div>
                         &#9733;&#9733;&#9733;&#9733;&#9733;  
