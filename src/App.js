@@ -18,6 +18,7 @@ import HelloPage from './pages/HelloPage/HelloPage';
 import InfoPage from './pages/InfoPage/InfoPage';
 import InfoPage1 from './pages/InfoPage1/InfoPage1';
 import StavkiPage from './pages/StavkiPage/StavkiPage';
+import ProcessPage from './pages/ProcessPage/ProcessPage';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
                   <Route path={'add-worker2'} element={<NewWorker2 />}/>
                   <Route path={'add-worker3'} element={<NewWorker3 />}/>
                   <Route path={'add-worker4'} element={<NewWorker4 />}/>
+                  <Route path={'process'} element={<ProcessPage />}/>
 
                   <Route path={'profile'} element={<ProfilePage />}/>
                   <Route path={'projects'} element={<ProjectPage />}/>
