@@ -16,7 +16,7 @@ const NewWorker4 = () => {
     const {tg, queryId, user} = useTelegram();
 
     const { workerFam, workerName, phone, workers, 
-        city, dateborn, companys, setCompanys, stag, setStag } = useUsersContext();
+        city, dateborn, companys, setCompanys, stag, setStag, setFlag } = useUsersContext();
 
     console.log(workerFam, workerName, phone, workers, city, dateborn)
 
@@ -48,6 +48,7 @@ const NewWorker4 = () => {
         tg.MainButton.hide();
         setIsLoading(true)
 
+        setFlag("ONLY_REG")
 
         fetch(API_URL + 'web-data', {
             method: 'POST',

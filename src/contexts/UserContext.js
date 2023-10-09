@@ -26,6 +26,9 @@ const UserProvider = ({ children }) => {
 
 	const [specId, setSpecId] = useState('');
 
+	//статус регистрации
+	const [flag, setFlag] = useState("NOREG") // NOREG, ONLY_REG, REG
+
     return (
 		<UserContext.Provider value={{ 
 			workerFam, 
@@ -50,6 +53,8 @@ const UserProvider = ({ children }) => {
 			setProjects,
 			specId,
 			setSpecId,
+			flag, 
+			setFlag
 		}}>
 			{children}
 		</UserContext.Provider>

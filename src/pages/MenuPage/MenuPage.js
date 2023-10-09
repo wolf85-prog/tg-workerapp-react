@@ -15,8 +15,9 @@ const MenuPage = () => {
     const navigate = useNavigate();
 
     const { setProjects, projects } = useUsersContext();
-    const { setSpecId } = useUsersContext();
-//----------------------------------------------------------------------------------
+    const { setSpecId, flag } = useUsersContext();
+
+ //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
@@ -24,12 +25,20 @@ const MenuPage = () => {
             const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id
 
             if (worker.length > 0) {
-
+                //зарегистрирован
                 setSpecId(worker[0]?.id)
 
-            } else {
-                console.log("Зарегистрируйтесь!", user?.id)
-                navigate("/add-worker")
+            } else  {
+                if (flag === 'ONLY_REG') {
+                    //только что зарегистрирован
+                    console.log("Только что зарегистировался", user?.id, flag)
+                    navigate("/process")
+                } 
+                else if (flag === 'NOREG') {
+                    //не зарегистрирован
+                    console.log("Зарегистрируйтесь!", user?.id)
+                    navigate("/add-worker")
+                }
             }
         }
 
@@ -48,6 +57,7 @@ const MenuPage = () => {
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style22'/> 
+
             <div className='menu-form'>
                 <Link to={'/profile'}><ButtonStatus>Профиль</ButtonStatus></Link> 
                 <Link to={'/projects'}><ButtonStatus>Проекты</ButtonStatus></Link>  
