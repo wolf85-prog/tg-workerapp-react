@@ -26,6 +26,7 @@ const MenuPage = () => {
 
             if (worker.length > 0) {
                 //зарегистрирован
+                console.log("Зарегистирован", "REG")
                 setSpecId(worker[0]?.id)
 
             } else  {

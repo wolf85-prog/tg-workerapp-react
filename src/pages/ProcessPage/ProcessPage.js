@@ -21,13 +21,12 @@ const ProcessPage = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'FAQ', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/> 
             
             <form>
-                <div style={{marginTop: '250px'}}>                  
+                <div style={{marginTop: '350px'}}>                  
                     <p
                         style={{
                             margin: '20px 5px',
@@ -35,12 +34,9 @@ const ProcessPage = () => {
                             justifyContent: 'center',
                             fontSize: '26px',
                             color: '#fff',
-                        }}> Идет обработка...
+                        }}> Пожалуйста, подождите! Процесс регистрации не завершен... 
                     </p>         
                 </div> 
-                <div className='block-buttons-contact'>
-                    <Link to={'/menu'}><MyButton style={{marginTop: '100px', width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
-                </div>
             </form>         
         </div>
     );
