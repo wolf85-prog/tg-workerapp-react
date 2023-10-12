@@ -15,6 +15,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Stack } from "@mui/material";
 
 import { useUsersContext } from "../../contexts/UserContext";
+import axios from 'axios';
 
 const NewPassport3 = () => {
 
@@ -49,6 +50,57 @@ const NewPassport3 = () => {
     const handleEmail = (e)=>{
         setPasEmail(e.target.value)
     }
+
+    //-------------------------------------------
+
+    // On file upload (click the upload button)
+    const onFileUpload = () => {
+ 
+        // Create an object of formData
+        // const formData = new FormData();
+ 
+        // // Update the formData object
+        // formData.append(
+        //     "myFile",
+        //     this.state.selectedFile,
+        //     this.state.selectedFile.name
+        // );
+ 
+        // // Details of the uploaded file
+        // console.log(this.state.selectedFile);
+ 
+        // // Request made to the backend api
+        // // Send formData object
+        // axios.post("api/uploadfile", formData);
+    };
+ 
+    // File content to be displayed after
+    // file upload is complete
+    const fileData = () => {
+        // if (this.state.selectedFile) {
+        //     return (
+        //         <div>
+        //             <h2>File Details:</h2>
+        //             <p>File Name: {this.state.selectedFile.name}</p>
+ 
+        //             <p>File Type: {this.state.selectedFile.type}</p>
+ 
+        //             <p>
+        //                 Last Modified:{" "}
+        //                 {this.state.selectedFile.lastModifiedDate.toDateString()}
+        //             </p>
+ 
+        //         </div>
+        //     );
+        // } else {
+        //     return (
+        //         <div>
+        //             <br />
+        //             <h4>Choose before Pressing the Upload button</h4>
+        //         </div>
+        //     );
+        // }
+    };
 
     return (
         <div className="App">
@@ -89,7 +141,15 @@ const NewPassport3 = () => {
                                     onChange={handleEmail}
                                     value={pasEmail}
                     />
-                </div>          
+                </div> 
+
+                <form>
+                    <h3>Загрузить фото</h3>
+                    <input type="file" />
+                    <button type="submit">Добавить</button>
+                </form>
+
+                {/* <MyButton style={{ background: '#3f4052', border: '1px solid #3f4052'}}>Добавить фото</MyButton>          */}
 
                 <div className='block-buttons-new2'>
                     <Link to={'/add-passport2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
