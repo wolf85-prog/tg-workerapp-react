@@ -2,95 +2,97 @@ import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
-import './NewWorker2.css';
+import './NewPassport3.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
-
 import InputMask from 'react-input-mask';
+import Calendar from "../../image/calendar.svg";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { Stack } from "@mui/material";
 
 import { useUsersContext } from "../../contexts/UserContext";
 
-const NewWorker2 = () => {
+const NewPassport3 = () => {
 
-    const { workerFam, setWorkerFam, workerName, setWorkerName, phone, setPhone } = useUsersContext();
+    const { 
+        pasPlaceborn, 
+		setPasPlaceborn,
+		pasAdress, 
+		setPasAdress,
+		pasEmail, 
+		setPasEmail,
+    } = useUsersContext();
 
     const [novalid, setNovalid] = useState(true)
 
-    useEffect(() => {
-        //console.log(phone.length)
-        if (workerFam && workerName && phone.length === 18) {
-            setNovalid(false)
-        } else {
-            setNovalid(true) 
-        }
-    }, [workerFam, workerName, phone]);
+    // useEffect(() => {
+    //     //console.log(phone.length)
+    //     if (workerFam && workerName && phone.length === 18) {
+    //         setNovalid(false)
+    //     } else {
+    //         setNovalid(true) 
+    //     }
+    // }, [workerFam, workerName, phone]);
 
-    const onChangeFamily = (e) => {
-        setWorkerFam(e.target.value)
+    const handlePlaceborn = (e)=>{
+        setPasPlaceborn(e.target.value)
     }
 
-    const onChangeName = (e) => {
-        setWorkerName(e.target.value)
+    const handleAdress = (e)=>{
+        setPasAdress(e.target.value)
     }
 
-    const handlePhone = (e)=>{
-        setPhone(e.target.value)
-        //console.log(phone.length)
+    const handleEmail = (e)=>{
+        setPasEmail(e.target.value)
     }
 
     return (
         <div className="App">
-            <Header header={{title: 'Новый специалист', icon: 'false'}}/>
+            <Header header={{title: 'Паспортные данные', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
 
             <div className='form-new2'>
-                {/*Фамилия*/}
+                {/*Место рождения*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
-                                    label="Фамилия"
+                                    label="Место рождения"
                                     id="worker_soname"
                                     variant="filled"
-                                    onChange={onChangeFamily}
-                                    value={workerFam}
+                                    onChange={handlePlaceborn}
+                                    value={pasPlaceborn}
                     />
                 </div>
 
-                {/*Имя*/}
+                {/*Адрес*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
-                                    label="Имя"
+                                    label="Адрес регистрации"
                                     id="worker_name"
                                     variant="filled"
-                                    onChange={onChangeName}
-                                    value={workerName}
+                                    onChange={handleAdress}
+                                    value={pasAdress}
+                    />
+                </div> 
+
+                {/*Email*/}
+                <div className="text-field text-field_floating">
+                    <RedditTextField fullWidth
+                                    label="Email"
+                                    id="worker_name"
+                                    variant="filled"
+                                    onChange={handleEmail}
+                                    value={pasEmail}
                     />
                 </div>          
 
-                {/*Номер телефона*/}
-                <div className="text-field text-field_floating">
-                    <InputMask
-                        mask="+7 (999) 999-99-99"
-                        disabled={false}
-                        maskChar=""
-                        onChange={handlePhone} 
-                        value={phone}
-                    >
-                        {() => <RedditTextField 
-                                    fullWidth 
-                                    label="Номер телефона"
-                                    id="worker_phone"
-                                    variant="filled"/>}
-                    </InputMask>
-                </div>
-
                 <div className='block-buttons-new2'>
-                    <Link to={'/add-worker'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
-                    <Link to={'/add-worker3'}><MyButton disabled={novalid} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
+                    <Link to={'/add-passport2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
                 </div>
 
             </div>
@@ -125,4 +127,4 @@ const RedditTextField = styled((props) => (
 }));
 
 
-export default NewWorker2;
+export default NewPassport3;

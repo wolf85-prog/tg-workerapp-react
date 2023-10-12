@@ -57,14 +57,6 @@ const NewPassport = () => {
     }
 
 
-    // useEffect(() => {
-    //     if (workers.length > 0) {
-    //         setShowNext(true)
-    //     } else {
-    //         setShowNext(false)
-    //     }
-    // }, [workers])
-
     //---------------------------------------------------------------------------------------
 
 

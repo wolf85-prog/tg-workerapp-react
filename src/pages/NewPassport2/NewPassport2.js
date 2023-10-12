@@ -66,13 +66,26 @@ const NewPassport2 = () => {
             <div className='form-new2'>
                 {/*Серия и номер*/}
                 <div className="text-field text-field_floating">
-                    <RedditTextField fullWidth
+                    {/* <RedditTextField fullWidth
                                     label="Серия и номер"
-                                    id="worker_soname"
+                                    id="pas_number"
                                     variant="filled"
                                     onChange={handleNumber}
                                     value={pasNumber}
-                    />
+                    /> */}
+                    <InputMask
+                        mask=" / "
+                        disabled={false}
+                        maskChar="_"
+                        onChange={handleNumber} 
+                        value={pasNumber}
+                    >
+                        {() => <RedditTextField 
+                                    fullWidth 
+                                    label="Серия и номер"
+                                    id="pas_number"
+                                    variant="filled"/>}
+                    </InputMask>
                 </div>
 
                 {/*Дата выдачи*/}
@@ -80,7 +93,7 @@ const NewPassport2 = () => {
                     <LocalizationProvider dateAdapter={AdapterDayjs} >
                         <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
                             <RedditTextField
-                                id="date"
+                                id="pas_date"
                                 label="Дата выдачи"
                                 type="date"
                                 variant="filled"
@@ -101,7 +114,7 @@ const NewPassport2 = () => {
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
                                     label="Кем выдан"
-                                    id="worker_name"
+                                    id="pas_kem"
                                     variant="filled"
                                     onChange={handleKem}
                                     value={pasKem}
@@ -111,7 +124,7 @@ const NewPassport2 = () => {
                 {/*Код подразделения*/}
                 <div className="text-field text-field_floating">
                     <InputMask
-                        mask="+7 (999) 999-99-99"
+                        mask="000-000"
                         disabled={false}
                         maskChar=""
                         onChange={handleKod} 
@@ -119,15 +132,15 @@ const NewPassport2 = () => {
                     >
                         {() => <RedditTextField 
                                     fullWidth 
-                                    label="Номер телефона"
-                                    id="worker_phone"
+                                    label="Код подразделения"
+                                    id="pas_kod"
                                     variant="filled"/>}
                     </InputMask>
                 </div>
 
                 <div className='block-buttons-new2'>
                     <Link to={'/add-passport'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
-                    <Link to={'/add-passport3'}><MyButton disabled={novalid} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
+                    <Link to={'/add-passport3'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
                 </div>
 
             </div>

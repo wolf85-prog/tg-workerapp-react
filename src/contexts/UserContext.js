@@ -38,6 +38,9 @@ const UserProvider = ({ children }) => {
 	const [pasDate, setPasDate] = useState('');
 	const [pasKem, setPasKem] = useState('');
 	const [pasKod, setPasKod] = useState('');
+	const [pasPlaceborn, setPasPlaceborn] = useState('');
+	const [pasAdress, setPasAdress] = useState('');
+	const [pasEmail, setPasEmail] = useState('');
 
     return (
 		<UserContext.Provider value={{ 
@@ -80,7 +83,13 @@ const UserProvider = ({ children }) => {
 			pasKem, 
 			setPasKem,
 			pasKod, 
-			setPasKod
+			setPasKod,
+			pasPlaceborn, 
+			setPasPlaceborn,
+			pasAdress, 
+			setPasAdress,
+			pasEmail, 
+			setPasEmail,
 		}}>
 			{children}
 		</UserContext.Provider>
