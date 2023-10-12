@@ -29,6 +29,16 @@ const UserProvider = ({ children }) => {
 	//статус регистрации
 	const [flag, setFlag] = useState("NOREG") // NOREG, ONLY_REG, REG
 
+	//passport
+	const [pasFam, setPasFam] = useState('')
+    const [pasName, setPasName] = useState('')
+	const [pasSoname, setPasSoname] = useState('')
+    const [pasDateborn, setPasDateborn] = useState('');
+	const [pasNumber, setPasNumber] = useState('');
+	const [pasDate, setPasDate] = useState('');
+	const [pasKem, setPasKem] = useState('');
+	const [pasKod, setPasKod] = useState('');
+
     return (
 		<UserContext.Provider value={{ 
 			workerFam, 
@@ -54,7 +64,23 @@ const UserProvider = ({ children }) => {
 			specId,
 			setSpecId,
 			flag, 
-			setFlag
+			setFlag,
+			pasFam, 
+			setPasFam,
+    		pasName, 
+			setPasName,
+			pasSoname, 
+			setPasSoname,
+    		pasDateborn, 
+			setPasDateborn,
+			pasNumber, 
+			setPasNumber,
+			pasDate, 
+			setPasDate,
+			pasKem, 
+			setPasKem,
+			pasKod, 
+			setPasKod
 		}}>
 			{children}
 		</UserContext.Provider>

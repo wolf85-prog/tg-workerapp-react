@@ -19,6 +19,8 @@ import InfoPage from './pages/InfoPage/InfoPage';
 import InfoPage1 from './pages/InfoPage1/InfoPage1';
 import StavkiPage from './pages/StavkiPage/StavkiPage';
 import ProcessPage from './pages/ProcessPage/ProcessPage';
+import NewPassport from './pages/NewPassport/NewPassport';
+import NewPassport2 from './pages/NewPassport2/NewPassport2';
 
 function App() {
 
@@ -41,6 +43,11 @@ function App() {
                   <Route path={'add-worker3'} element={<NewWorker3 />}/>
                   <Route path={'add-worker4'} element={<NewWorker4 />}/>
                   <Route path={'process'} element={<ProcessPage />}/>
+
+                  <Route path={'add-passport'} element={<NewPassport />}/>
+                  <Route path={'add-passport2'} element={<NewPassport2 />}/>
+                  {/* <Route path={'add-passport3'} element={<NewPassport3 />}/>
+                  <Route path={'add-passport4'} element={<NewPassport4 />}/> */}
 
                   <Route path={'profile'} element={<ProfilePage />}/>
                   <Route path={'projects'} element={<ProjectPage />}/>
