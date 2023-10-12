@@ -74,9 +74,9 @@ const NewPassport2 = () => {
                                     value={pasNumber}
                     /> */}
                     <InputMask
-                        mask=" / "
+                        mask="9999/999999 "
                         disabled={false}
-                        maskChar="_"
+                        maskChar=""
                         onChange={handleNumber} 
                         value={pasNumber}
                     >
@@ -124,7 +124,7 @@ const NewPassport2 = () => {
                 {/*Код подразделения*/}
                 <div className="text-field text-field_floating">
                     <InputMask
-                        mask="000-000"
+                        mask="999-999"
                         disabled={false}
                         maskChar=""
                         onChange={handleKod} 
