@@ -138,6 +138,7 @@ const NewPassport3 = () => {
 			pasAdress, 
 			pasEmail, 
             queryId,
+            user,
         }
 
         tg.MainButton.hide();
