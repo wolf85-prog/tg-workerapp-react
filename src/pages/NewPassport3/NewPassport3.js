@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewPassport3.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
+import {useTelegram} from "../../hooks/useTelegram";
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
@@ -19,13 +20,32 @@ import axios from 'axios';
 
 const NewPassport3 = () => {
 
+    const API_URL = process.env.REACT_APP_API_URL
+    const {tg, queryId, user} = useTelegram();
+
     const { 
-        pasPlaceborn, 
-		setPasPlaceborn,
-		pasAdress, 
-		setPasAdress,
-		pasEmail, 
-		setPasEmail,
+        pasFam, 
+			setPasFam,
+    		pasName, 
+			setPasName,
+			pasSoname, 
+			setPasSoname,
+    		pasDateborn, 
+			setPasDateborn,
+			pasNumber, 
+			setPasNumber,
+			pasDate, 
+			setPasDate,
+			pasKem, 
+			setPasKem,
+			pasKod, 
+			setPasKod,
+			pasPlaceborn, 
+			setPasPlaceborn,
+			pasAdress, 
+			setPasAdress,
+			pasEmail, 
+			setPasEmail,
     } = useUsersContext();
 
     const [novalid, setNovalid] = useState(true)
@@ -101,6 +121,57 @@ const NewPassport3 = () => {
         //     );
         // }
     };
+
+
+    //отправка данных в telegram-бот
+    const onSendData = useCallback(() => {
+        const data = {
+            pasFam, 
+    		pasName, 
+			pasSoname, 
+    		pasDateborn, 
+			pasNumber, 
+			pasDate, 
+			pasKem, 
+			pasKod, 
+			pasPlaceborn, 
+			pasAdress, 
+			pasEmail, 
+            queryId,
+        }
+
+        tg.MainButton.hide();
+        
+        //setIsLoading(true)
+        
+        fetch(API_URL + 'web-passport', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        
+        //setIsLoading(false)
+              
+    }, [pasFam, pasName, pasSoname, pasDateborn, pasNumber, pasDate, pasKem, pasKod, pasPlaceborn, pasAdress, pasEmail, ])
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
+
+    useEffect(() => {
+        tg.MainButton.setParams({
+            text: 'Сохранить'
+        })
+    }, [])
+
+    useEffect(() => {
+        tg.MainButton.show();
+    }, [])
 
     return (
         <div className="App">
