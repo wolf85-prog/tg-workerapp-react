@@ -6,17 +6,11 @@ import './NewPassport3.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/gradient2.png";
 import {useTelegram} from "../../hooks/useTelegram";
-
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
-import InputMask from 'react-input-mask';
-import Calendar from "../../image/calendar.svg";
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { Stack } from "@mui/material";
-
+import { uploadFile } from './../../http/chatAPI';
 import { useUsersContext } from "../../contexts/UserContext";
-import axios from 'axios';
+import uploadImg from "./../../image/iconUpload.png";
 
 const NewPassport3 = () => {
 
@@ -49,15 +43,33 @@ const NewPassport3 = () => {
     } = useUsersContext();
 
     const [novalid, setNovalid] = useState(true)
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [selectedName, setSelectedName] = useState("");
+    const [image, setImage]= useState("");
 
-    // useEffect(() => {
-    //     //console.log(phone.length)
-    //     if (workerFam && workerName && phone.length === 18) {
-    //         setNovalid(false)
-    //     } else {
-    //         setNovalid(true) 
-    //     }
-    // }, [workerFam, workerName, phone]);
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setSelectedFile(file);
+        setSelectedName(file.name);
+        // Additional validation logic
+    };
+
+    function handleSubmit(e) {
+        e.preventDefault()
+
+        const uploadImage = async () => {
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+            formData.append('fileName', selectedName);
+
+            let response = await uploadFile(formData);
+            console.log("response: ", response.data.path)
+
+            setImage(response.data.path.split('.team')[1]);
+        }
+        
+        uploadImage();
+    }
 
     const handlePlaceborn = (e)=>{
         setPasPlaceborn(e.target.value)
@@ -72,55 +84,6 @@ const NewPassport3 = () => {
     }
 
     //-------------------------------------------
-
-    // On file upload (click the upload button)
-    const onFileUpload = () => {
- 
-        // Create an object of formData
-        // const formData = new FormData();
- 
-        // // Update the formData object
-        // formData.append(
-        //     "myFile",
-        //     this.state.selectedFile,
-        //     this.state.selectedFile.name
-        // );
- 
-        // // Details of the uploaded file
-        // console.log(this.state.selectedFile);
- 
-        // // Request made to the backend api
-        // // Send formData object
-        // axios.post("api/uploadfile", formData);
-    };
- 
-    // File content to be displayed after
-    // file upload is complete
-    const fileData = () => {
-        // if (this.state.selectedFile) {
-        //     return (
-        //         <div>
-        //             <h2>File Details:</h2>
-        //             <p>File Name: {this.state.selectedFile.name}</p>
- 
-        //             <p>File Type: {this.state.selectedFile.type}</p>
- 
-        //             <p>
-        //                 Last Modified:{" "}
-        //                 {this.state.selectedFile.lastModifiedDate.toDateString()}
-        //             </p>
- 
-        //         </div>
-        //     );
-        // } else {
-        //     return (
-        //         <div>
-        //             <br />
-        //             <h4>Choose before Pressing the Upload button</h4>
-        //         </div>
-        //     );
-        // }
-    };
 
 
     //отправка данных в telegram-бот
@@ -139,11 +102,11 @@ const NewPassport3 = () => {
 			pasEmail, 
             queryId,
             user,
+            image
         }
 
         tg.MainButton.hide();
         
-        //setIsLoading(true)
         
         fetch(API_URL + 'web-passport', {
             method: 'POST',
@@ -153,9 +116,8 @@ const NewPassport3 = () => {
             body: JSON.stringify(data)
         })
         
-        //setIsLoading(false)
               
-    }, [pasFam, pasName, pasSoname, pasDateborn, pasNumber, pasDate, pasKem, pasKod, pasPlaceborn, pasAdress, pasEmail, ])
+    }, [pasFam, pasName, pasSoname, pasDateborn, pasNumber, pasDate, pasKem, pasKod, pasPlaceborn, pasAdress, pasEmail, image ])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -215,11 +177,11 @@ const NewPassport3 = () => {
                     />
                 </div> 
 
-                <form>
-                    <h3>Загрузить фото</h3>
-                    <input type="file" />
-                    <button type="submit">Добавить</button>
-                </form>
+                <div className="file-upload">
+                    <p>{selectedName || "Фото селфи"}</p><img src={uploadImg} alt="upload" width={30} height={30} />
+                    <input type="file" onChange={handleFileChange}/>
+                </div>
+                <MyButton style={{marginBottom: "15px", width: "150px"}} onClick={handleSubmit}>Отправить</MyButton>
 
                 {/* <MyButton style={{ background: '#3f4052', border: '1px solid #3f4052'}}>Добавить фото</MyButton>          */}
 

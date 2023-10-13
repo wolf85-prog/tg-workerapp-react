@@ -70,3 +70,17 @@ export const getDatabase = async (id) =>{
         console.log("error while calling getDatabase api", error.message);
     }
 }
+
+//file
+export const uploadFile = async (data) =>{
+    try {
+        return await $host.post(`api/file/upload`, data, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        });
+    } catch (error) {
+        console.log("error while calling uploadFile api",error.message);
+        
+    }
+}
