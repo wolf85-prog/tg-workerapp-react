@@ -6,6 +6,7 @@ import './FaqPage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/BlueLine1.png";
 import MyButton from "../../components/UI/MyButton/MyButton";
+import FonFrame from "../../image/Frame1.png";
 
 
 const API_URL = process.env.REACT_APP_API_URL
@@ -25,10 +26,12 @@ const FaqPage = () => {
         <div className="App">
             <Header header={{title: 'FAQ', icon: 'false'}}/>
 
-            <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/> 
+            <img src={FonFrame} alt=''/>
+
+            {/* <img src={Fon} alt='' className='fon-style'/>
+            <img src={FonGrad} alt='' className='fon-style2'/>  */}
             
-            <form>
+            {/* <form>
                 <div style={{marginTop: '250px'}}>                  
                     <p
                         style={{
@@ -43,7 +46,7 @@ const FaqPage = () => {
                 <div className='block-buttons-contact'>
                     <Link to={'/menu'}><MyButton style={{marginTop: '100px', width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
                 </div>
-            </form>         
+            </form>          */}
         </div>
     );
 };
