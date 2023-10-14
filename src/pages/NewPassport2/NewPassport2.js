@@ -31,10 +31,13 @@ const NewPassport2 = () => {
 
     const [novalid, setNovalid] = useState(true)
 
+    const [error1, setError1] = useState(false)
+
     useEffect(() => {
-        if (pasNumber.length === 12 && pasDate && pasKem && pasKod.length === 7) {
+        if (pasNumber.length === 11 && pasDate && pasKem && pasKod.length === 7) {
             setNovalid(false)
-        } else {
+        } else if (pasNumber.length !== 11) {
+            setError1(true)
             setNovalid(true) 
         }
     }, [pasNumber, pasDate, pasKem, pasKod]);
