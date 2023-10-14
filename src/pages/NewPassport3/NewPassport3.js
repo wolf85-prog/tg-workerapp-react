@@ -15,6 +15,7 @@ import uploadImg from "./../../image/iconUpload.png";
 const NewPassport3 = () => {
 
     const API_URL = process.env.REACT_APP_API_URL
+    const API_URL_HOST = process.env.REACT_APP_HOST
     const {tg, queryId, user} = useTelegram();
 
     const { 
@@ -66,7 +67,7 @@ const NewPassport3 = () => {
               let response = await uploadFile(data);
               console.log("response: ", response.data.path)
     
-              setImage(response.data.path.split('.team')[1]);
+              setImage(API_URL_HOST + response.data.path.split('.team')[1]);
               //сообщение с ссылкой на файл
               //console.log(host + response.data.path)
               //setValue(host + response.data.path)

@@ -1,4 +1,4 @@
-import {$host} from "./index";
+import {$host, $host_upload} from "./index";
 
 export const sendMyMessage = async (id) =>{
     try {
@@ -74,7 +74,7 @@ export const getDatabase = async (id) =>{
 //file
 export const uploadFile = async (data) =>{
     try {
-        return await $host.post(`api/file/upload`, data, {
+        return await $host_upload.post(`api/file/upload`, data, {
             headers: {
                 'content-type': 'multipart/form-data'
             }

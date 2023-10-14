@@ -1,10 +1,14 @@
 import axios from "axios";
 
 const $host = axios.create({
-    baseURL: process.env.REACT_APP_API_URL_UPLOAD
+    baseURL: process.env.REACT_APP_API_URL
+})
+
+const $host_upload = axios.create({
+    baseURL: process.env.REACT_APP_API_URL
 })
 
 
 export {
-    $host,
+    $host, $host_upload,
 }
