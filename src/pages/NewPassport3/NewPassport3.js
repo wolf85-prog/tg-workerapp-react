@@ -47,29 +47,40 @@ const NewPassport3 = () => {
     const [selectedName, setSelectedName] = useState("");
     const [image, setImage]= useState("");
 
+    useEffect(() => {
+        if (pasPlaceborn && pasAdress && pasEmail && image) {
+            setNovalid(false)
+        } else {
+            setNovalid(true) 
+        }
+    }, [pasPlaceborn, pasAdress, pasEmail, image]);
+
+    useEffect(() => {
+        const getImage = async () => {
+            if (selectedFile) {
+              console.log("file:", selectedFile)
+              const data = new FormData();
+              data.append("name", selectedName);
+              data.append("photo", selectedFile);
+              
+              let response = await uploadFile(data);
+              console.log("response: ", response.data.path)
+    
+              setImage(response.data.path.split('.team')[1]);
+              //сообщение с ссылкой на файл
+              //console.log(host + response.data.path)
+              //setValue(host + response.data.path)
+            }
+        }
+        getImage();
+    }, [selectedFile])
+
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         setSelectedFile(file);
         setSelectedName(file.name);
         // Additional validation logic
     };
-
-    function handleSubmit(e) {
-        e.preventDefault()
-
-        const uploadImage = async () => {
-            const formData = new FormData();
-            formData.append('file', selectedFile);
-            formData.append('fileName', selectedName);
-
-            let response = await uploadFile(formData);
-            console.log("response: ", response.data.path)
-
-            setImage(response.data.path.split('.team')[1]);
-        }
-        
-        uploadImage();
-    }
 
     const handlePlaceborn = (e)=>{
         setPasPlaceborn(e.target.value)
@@ -128,7 +139,7 @@ const NewPassport3 = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Сохранить'
+            text: 'Отправить анкету'
         })
     }, [])
 
@@ -138,7 +149,7 @@ const NewPassport3 = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Паспортные данные', icon: 'false'}}/>
+            <Header header={{title: 'Моя анкета', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
@@ -178,12 +189,10 @@ const NewPassport3 = () => {
                 </div> 
 
                 <div className="file-upload">
-                    <p>{selectedName || "Фото селфи"}</p><img src={uploadImg} alt="upload" width={30} height={30} />
+                    <p>{selectedName || "Фото для аккредитации"}</p><img src={uploadImg} alt="upload" width={30} height={30} />
                     <input type="file" onChange={handleFileChange}/>
                 </div>
-                <MyButton style={{marginBottom: "15px", width: "150px"}} onClick={handleSubmit}>Отправить</MyButton>
-
-                {/* <MyButton style={{ background: '#3f4052', border: '1px solid #3f4052'}}>Добавить фото</MyButton>          */}
+                {/* <MyButton style={{marginBottom: "15px", width: "150px"}} onClick={handleSubmit}>Отправить</MyButton> */}
 
                 <div className='block-buttons-new2'>
                     <Link to={'/add-passport2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>

@@ -31,14 +31,13 @@ const NewPassport2 = () => {
 
     const [novalid, setNovalid] = useState(true)
 
-    // useEffect(() => {
-    //     //console.log(phone.length)
-    //     if (workerFam && workerName && phone.length === 18) {
-    //         setNovalid(false)
-    //     } else {
-    //         setNovalid(true) 
-    //     }
-    // }, [workerFam, workerName, phone]);
+    useEffect(() => {
+        if (pasNumber.length === 12 && pasDate && pasKem && pasKod.length === 7) {
+            setNovalid(false)
+        } else {
+            setNovalid(true) 
+        }
+    }, [pasNumber, pasDate, pasKem, pasKod]);
 
     const handleNumber = (e)=>{
         setPasNumber(e.target.value)
@@ -58,7 +57,7 @@ const NewPassport2 = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Паспортные данные', icon: 'false'}}/>
+            <Header header={{title: 'Моя анкета', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
@@ -74,7 +73,7 @@ const NewPassport2 = () => {
                                     value={pasNumber}
                     /> */}
                     <InputMask
-                        mask="9999/999999 "
+                        mask="9999 999999"
                         disabled={false}
                         maskChar=""
                         onChange={handleNumber} 
@@ -140,7 +139,7 @@ const NewPassport2 = () => {
 
                 <div className='block-buttons-new2'>
                     <Link to={'/add-passport'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
-                    <Link to={'/add-passport3'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
+                    <Link to={'/add-passport3'}><MyButton disabled={novalid} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
                 </div>
 
             </div>

@@ -31,14 +31,14 @@ const NewPassport = () => {
 
     const [novalid, setNovalid] = useState(true)
 
-    // useEffect(() => {
-    //     //console.log(phone.length)
-    //     if (workerFam && workerName && phone.length === 18) {
-    //         setNovalid(false)
-    //     } else {
-    //         setNovalid(true) 
-    //     }
-    // }, [pasFam, pasName, pasDateborn]);
+    useEffect(() => {
+        //console.log(phone.length)
+        if (pasFam && pasName && pasDateborn) {
+            setNovalid(false)
+        } else {
+            setNovalid(true) 
+        }
+    }, [pasFam, pasName, pasDateborn]);
 
     const onChangeFamily = (e) => {
         setPasFam(e.target.value)
@@ -62,7 +62,7 @@ const NewPassport = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Паспортные данные', icon: 'false'}}/>
+            <Header header={{title: 'Моя анкета', icon: 'false'}}/>
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
@@ -142,7 +142,7 @@ const NewPassport = () => {
                 </div> */}
 
                 <div className='block-buttons-new2'>
-                    <Link to={'/add-passport2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
+                    <Link to={'/add-passport2'}><MyButton disabled={novalid} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
                 </div>
 
             </div>
