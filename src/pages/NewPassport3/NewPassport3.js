@@ -75,6 +75,7 @@ const NewPassport3 = () => {
         getImage();
     }, [selectedFile])
 
+    {/* Добавление файла */}
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         setSelectedFile(file);
@@ -190,7 +191,7 @@ const NewPassport3 = () => {
 
                 <div className="file-upload">
                     <p>{selectedName || "Фото для аккредитации"}</p><img src={uploadImg} alt="upload" width={30} height={30} />
-                    <input type="file" name="photo" onChange={(e) => handleFileChange(e)}/>
+                    <input type="file" name="photo" onChange={handleFileChange}/>
                 </div>
                 {/* <MyButton style={{marginBottom: "15px", width: "150px"}} onClick={handleSubmit}>Отправить</MyButton> */}
 
