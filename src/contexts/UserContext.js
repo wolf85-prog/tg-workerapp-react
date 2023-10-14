@@ -33,9 +33,9 @@ const UserProvider = ({ children }) => {
 	const [pasFam, setPasFam] = useState('')
     const [pasName, setPasName] = useState('')
 	const [pasSoname, setPasSoname] = useState('')
-    const [pasDateborn, setPasDateborn] = useState('');
+    const [pasDateborn, setPasDateborn] = useState('2000-01-01');
 	const [pasNumber, setPasNumber] = useState('');
-	const [pasDate, setPasDate] = useState('');
+	const [pasDate, setPasDate] = useState('2000-01-01');
 	const [pasKem, setPasKem] = useState('');
 	const [pasKod, setPasKod] = useState('');
 	const [pasPlaceborn, setPasPlaceborn] = useState('');
