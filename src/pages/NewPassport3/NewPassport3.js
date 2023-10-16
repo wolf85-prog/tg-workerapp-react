@@ -195,9 +195,13 @@ const NewPassport3 = () => {
     }, [])
 
     useEffect(() => {
-        if (!novalid)
-        tg.MainButton.show();
-    }, [])
+        if (!novalid) {
+            tg.MainButton.show();
+        } else {
+            tg.MainButton.hide();
+        }
+        
+    }, [novalid])
 
     return (
         <div className="App">
