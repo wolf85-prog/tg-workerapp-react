@@ -31,13 +31,31 @@ const NewPassport2 = () => {
 
     const [novalid, setNovalid] = useState(true)
 
-    const [error1, setError1] = useState(false)
+    const [numDirty, setNumDirty] = useState(false)
+    const [kemDirty, setKemDirty] = useState(false)
+    const [kodDirty, setKodDirty] = useState(false)
+    const [numError, setNumError] = useState("Поле не может быть пустым")
+    const [kemError, setKemError] = useState("Поле не может быть пустым")
+    const [kodError, setKodError] = useState("Поле не может быть пустым")
+
+    const blurHandler = (e) => {
+        switch (e.target.name) {
+            case 'num':
+                setNumDirty(true)
+                break
+            case 'kem':
+                setKemDirty(true)
+                break
+            case 'kod':
+                setKodDirty(true)
+                break
+        }
+    }
 
     useEffect(() => {
         if (pasNumber.length === 11 && pasDate && pasKem && pasKod.length === 7) {
             setNovalid(false)
         } else if (pasNumber.length !== 11) {
-            setError1(true)
             setNovalid(true) 
         }
     }, [pasNumber, pasDate, pasKem, pasKod]);
@@ -65,8 +83,9 @@ const NewPassport2 = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
 
-            <div className='form-new2'>
+            <form><div className='form-new2'>
                 {/*Серия и номер*/}
+                {(numDirty && numError && !pasNumber) && <div style={{color: 'red'}}>{numError}</div>}
                 <div className="text-field text-field_floating">
                     {/* <RedditTextField fullWidth
                                     label="Серия и номер"
@@ -85,6 +104,7 @@ const NewPassport2 = () => {
                         {() => <RedditTextField 
                                     fullWidth 
                                     label="Серия и номер"
+                                    name='num'
                                     id="pas_number"
                                     variant="filled"/>}
                     </InputMask>
@@ -113,10 +133,12 @@ const NewPassport2 = () => {
                 </div>
 
                 {/*Кем выдан*/}
+                {(kemDirty && kemError && !pasKem) && <div style={{color: 'red'}}>{kemError}</div>}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
                                     label="Кем выдан"
                                     id="pas_kem"
+                                    name='kem'
                                     variant="filled"
                                     onChange={handleKem}
                                     value={pasKem}
@@ -124,6 +146,7 @@ const NewPassport2 = () => {
                 </div>          
 
                 {/*Код подразделения*/}
+                {(kodDirty && kodError && !pasKod) && <div style={{color: 'red'}}>{kodError}</div>}
                 <div className="text-field text-field_floating">
                     <InputMask
                         mask="999-999"
@@ -135,6 +158,7 @@ const NewPassport2 = () => {
                         {() => <RedditTextField 
                                     fullWidth 
                                     label="Код подразделения"
+                                    name='kod'
                                     id="pas_kod"
                                     variant="filled"/>}
                     </InputMask>
@@ -142,11 +166,11 @@ const NewPassport2 = () => {
 
                 <div className='block-buttons-new2'>
                     <Link to={'/add-passport'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
-                    <Link to={'/add-passport3'}><MyButton disabled={novalid} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
+                    <Link to={'/add-passport3'}><MyButton type='submit' disabled={novalid} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
                 </div>
 
             </div>
-            
+            </form>
         </div>
     );
 };
