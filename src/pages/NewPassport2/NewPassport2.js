@@ -93,6 +93,7 @@ const NewPassport2 = () => {
             {(error && pasNumber !== 11 || !pasDate || !pasKem || pasKod !== 7) && 
                 <div style={{
                     color: 'red', 
+                    fontSize: '18px',
                     position: 'absolute', 
                     left: '0', 
                     top: '70px', 

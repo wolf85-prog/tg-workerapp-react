@@ -213,6 +213,7 @@ const NewPassport3 = () => {
             {(error && !pasPlaceborn || !pasAdress || !pasEmail) && 
                 <div style={{
                     color: 'red', 
+                    fontSize: '18px',
                     position: 'absolute', 
                     left: '0', 
                     top: '70px', 

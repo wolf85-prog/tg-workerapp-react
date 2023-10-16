@@ -104,6 +104,7 @@ const NewPassport = () => {
             {(famError && !pasFam || !pasName || !pasDateborn) && 
             <div style={{
                 color: 'red', 
+                fontSize: '18px',
                 position: 'absolute', 
                 left: '0', 
                 top: '70px', 
