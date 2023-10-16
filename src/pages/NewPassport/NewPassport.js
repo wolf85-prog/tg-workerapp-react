@@ -34,18 +34,37 @@ const NewPassport = () => {
     const [famDirty, setFamDirty] = useState(false)
     const [nameDirty, setNameDirty] = useState(false)
     const [datebornDirty, setDatebornDirty] = useState(false)
-    const [famError, setFamError] = useState("Поле Фамилия не может быть пустым")
-    const [nameError, setNameError] = useState("Поле Имя не может быть пустым")
-    const [dateError, setDateError] = useState("Поле Дата рождения не может быть пустым")
+    const [famError, setFamError] = useState("")
 
-    useEffect(() => {
-        //console.log(phone.length)
+    // useEffect(() => {
+    //     //console.log(phone.length)
+    //     if (pasFam && pasName && pasDateborn) {
+    //         setNovalid(false)
+    //         setFamError('')
+    //     } else {
+    //         setNovalid(true) 
+    //         setFamError('Есть не заполненные поля!')
+    //         if (!pasFam) setFamDirty(true)
+    //         if (!pasName) setNameDirty(true)
+    //         if (!pasDateborn) setDatebornDirty(true)
+    //     }
+    // }, [pasFam, pasName, pasDateborn]);
+
+    const pressNext = () => {      
         if (pasFam && pasName && pasDateborn) {
-            setNovalid(false)
+            console.log('да')
+
+            navigate('/add-passport2')
+
         } else {
+            console.log('нет')
             setNovalid(true) 
+            setFamError('Заполните выделенные поля!')
+            if (!pasFam) setFamDirty(true)
+            if (!pasName) setNameDirty(true)
+            if (!pasDateborn) setDatebornDirty(true)
         }
-    }, [pasFam, pasName, pasDateborn]);
+    }
 
     const onChangeFamily = (e) => {
         setPasFam(e.target.value)
@@ -71,20 +90,6 @@ const NewPassport = () => {
     }
 
 
-    const blurHandler = (e) => {
-        switch (e.target.name) {
-            case 'fam':
-                setFamDirty(true)
-                break
-            case 'name':
-                setNameDirty(true)
-                break
-            case 'date':
-                setDatebornDirty(true)
-                break
-        }
-    }
-
 
     //---------------------------------------------------------------------------------------
 
@@ -95,12 +100,13 @@ const NewPassport = () => {
 
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
+  
+            {(famError && !pasFam) && <div style={{color: 'red', position: 'absolute', left: '0', top: '70px', right: '0', marginLeft: 'auto', marginRight: 'auto'}}>{famError}</div>}
 
-            <form><div className='form-new2'>
+            <div className='form-new2'>    
                 
                 {/*Фамилия*/}
-                {(famDirty && famError && !pasFam) && <div style={{color: 'red'}}>{famError}</div>}
-                <div className="text-field text-field_floating">
+                <div className="text-field text-field_floating" style={{border: famDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
                     <RedditTextField fullWidth
                                     label="Фамилия"
                                     name='fam'
@@ -108,14 +114,11 @@ const NewPassport = () => {
                                     variant="filled"
                                     onChange={onChangeFamily}
                                     value={pasFam}
-                                    onBlur={e => blurHandler(e)}
-                                    onClick={() => setFamDirty(false)}
                     />
                 </div>           
 
                 {/*Имя*/}
-                {(nameDirty && nameError && !pasName) && <div style={{color: 'red'}}>{nameError}</div>} 
-                <div className="text-field text-field_floating">
+                <div className="text-field text-field_floating" style={{border: nameDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
                     <RedditTextField fullWidth
                                     label="Имя"
                                     id="pas_name"
@@ -123,8 +126,6 @@ const NewPassport = () => {
                                     variant="filled"
                                     onChange={onChangeName}
                                     value={pasName}
-                                    onBlur={e => blurHandler(e)}
-                                    onClick={() => setNameDirty(false)}
                     />
                 </div> 
                 
@@ -137,13 +138,15 @@ const NewPassport = () => {
                                     variant="filled"
                                     onChange={onChangeSoname}
                                     value={pasSoname}
+                                    InputLabelProps={{
+                                        istyle: true,
+                                    }}
                     />
                 </div>        
 
                 {/*Сколько лет*/}
                 {/*Дата начала*/}
-                {(datebornDirty && dateError) && <div style={{color: 'red'}}>{dateError}</div>}
-                <div className="text-field text-field_floating">
+                <div className="text-field text-field_floating" style={{border: datebornDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
                     <LocalizationProvider dateAdapter={AdapterDayjs} >
                         <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
                             <RedditTextField
@@ -167,11 +170,11 @@ const NewPassport = () => {
                 
 
                 <div className='block-buttons-new2'>
-                    <Link to={'/add-passport2'}><MyButton type='submit' disabled={novalid} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
+                    <MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton>
+                    {/* <Link to={'/add-passport2'}><MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link> */}
                 </div>
 
             </div>
-            </form>
 
         </div>
     );
@@ -183,6 +186,7 @@ const RedditTextField = styled((props) => (
     '& .MuiFilledInput-root': {
         height: '55px',
         border: '2px solid #2e7cff',
+        // border: '2px solid ' + istyle ? '#2e7cff' : '#b50808',
         overflow: 'hidden',
         borderRadius: 10,
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',

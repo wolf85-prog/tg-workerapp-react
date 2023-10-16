@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewPassport2.css';
@@ -18,6 +18,8 @@ import { useUsersContext } from "../../contexts/UserContext";
 
 const NewPassport2 = () => {
 
+    const navigate = useNavigate();
+
     const { 
         pasNumber, 
 		setPasNumber,
@@ -34,31 +36,36 @@ const NewPassport2 = () => {
     const [numDirty, setNumDirty] = useState(false)
     const [kemDirty, setKemDirty] = useState(false)
     const [kodDirty, setKodDirty] = useState(false)
-    const [numError, setNumError] = useState("Поле не может быть пустым")
-    const [kemError, setKemError] = useState("Поле не может быть пустым")
-    const [kodError, setKodError] = useState("Поле не может быть пустым")
 
-    const blurHandler = (e) => {
-        switch (e.target.name) {
-            case 'num':
-                setNumDirty(true)
-                break
-            case 'kem':
-                setKemDirty(true)
-                break
-            case 'kod':
-                setKodDirty(true)
-                break
+    const [error, setError] = useState("")
+
+
+    const pressNext = () => {      
+        if (pasNumber.length === 11 && pasKem && pasKod) {
+            console.log('да')
+            navigate('/add-passport3')
+
+        } else {
+            console.log('нет')
+            setNovalid(true) 
+            setError('Заполните выделенные поля!')
+            if (pasNumber.length !== 11) setNumDirty(true)
+            if (!pasKem) setKemDirty(true)
+            if (!pasKod) setKodDirty(true)
         }
     }
 
-    useEffect(() => {
-        if (pasNumber.length === 11 && pasDate && pasKem && pasKod.length === 7) {
-            setNovalid(false)
-        } else if (pasNumber.length !== 11) {
-            setNovalid(true) 
-        }
-    }, [pasNumber, pasDate, pasKem, pasKod]);
+    // useEffect(() => {
+    //     if (pasNumber.length === 11 && pasDate && pasKem && pasKod.length === 7) {
+    //         setNovalid(false)
+    //         setError('')
+    //     } else {
+    //         setError('Заполните выделенные поля!')
+    //         if (pasNumber.length !== 11) setNumDirty(true)
+    //         if (!pasKem) setKemDirty(true)
+    //         if (!pasKod) setKodDirty(true)
+    //     }
+    // }, [pasNumber, pasDate, pasKem, pasKod]);
 
     const handleNumber = (e)=>{
         setPasNumber(e.target.value)
@@ -83,10 +90,11 @@ const NewPassport2 = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
 
-            <form><div className='form-new2'>
+            {(error && !pasNumber) && <div style={{color: 'red', position: 'absolute', left: '0', top: '70px', right: '0', marginLeft: 'auto', marginRight: 'auto'}}>{error}</div>}
+
+            <div className='form-new2'>
                 {/*Серия и номер*/}
-                {(numDirty && numError && !pasNumber) && <div style={{color: 'red'}}>{numError}</div>}
-                <div className="text-field text-field_floating">
+                <div className="text-field text-field_floating" style={{border: numDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
                     {/* <RedditTextField fullWidth
                                     label="Серия и номер"
                                     id="pas_number"
@@ -133,8 +141,7 @@ const NewPassport2 = () => {
                 </div>
 
                 {/*Кем выдан*/}
-                {(kemDirty && kemError && !pasKem) && <div style={{color: 'red'}}>{kemError}</div>}
-                <div className="text-field text-field_floating">
+                <div className="text-field text-field_floating" style={{border: kemDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
                     <RedditTextField fullWidth
                                     label="Кем выдан"
                                     id="pas_kem"
@@ -146,8 +153,7 @@ const NewPassport2 = () => {
                 </div>          
 
                 {/*Код подразделения*/}
-                {(kodDirty && kodError && !pasKod) && <div style={{color: 'red'}}>{kodError}</div>}
-                <div className="text-field text-field_floating">
+                <div className="text-field text-field_floating" style={{border: kodDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
                     <InputMask
                         mask="999-999"
                         disabled={false}
@@ -166,11 +172,10 @@ const NewPassport2 = () => {
 
                 <div className='block-buttons-new2'>
                     <Link to={'/add-passport'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
-                    <Link to={'/add-passport3'}><MyButton type='submit' disabled={novalid} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
+                    <MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton>
                 </div>
 
             </div>
-            </form>
         </div>
     );
 };
