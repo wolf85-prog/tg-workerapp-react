@@ -115,20 +115,30 @@ const NewPassport = () => {
             <div className='form-new2'>    
                 
                 {/*Фамилия*/}
-                <div className="text-field text-field_floating" style={{border: famDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
-                    <RedditTextField fullWidth
+                <div className="text-field text-field_floating">
+                    {famDirty ? <RedditTextFieldNovalid 
+                                    fullWidth
                                     label="Фамилия"
                                     name='fam'
                                     id="pas_family"
                                     variant="filled"
                                     onChange={onChangeFamily}
                                     value={pasFam}
-                    />
+                                />
+                                :<RedditTextField fullWidth
+                                    label="Фамилия"
+                                    name='fam'
+                                    id="pas_family"
+                                    variant="filled"
+                                    onChange={onChangeFamily}
+                                    value={pasFam}
+                                />}
                 </div>           
 
                 {/*Имя*/}
-                <div className="text-field text-field_floating" style={{border: nameDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
-                    <RedditTextField fullWidth
+                <div className="text-field text-field_floating">
+                    {nameDirty ? <RedditTextFieldNovalid 
+                                    fullWidth
                                     label="Имя"
                                     id="pas_name"
                                     name='name'
@@ -136,6 +146,15 @@ const NewPassport = () => {
                                     onChange={onChangeName}
                                     value={pasName}
                     />
+                                :<RedditTextField 
+                                    fullWidth
+                                    label="Имя"
+                                    id="pas_name"
+                                    name='name'
+                                    variant="filled"
+                                    onChange={onChangeName}
+                                    value={pasName}
+                                />}
                 </div> 
                 
 
@@ -195,7 +214,31 @@ const RedditTextField = styled((props) => (
     '& .MuiFilledInput-root': {
         height: '55px',
         border: '2px solid #2e7cff',
-        // border: '2px solid ' + istyle ? '#2e7cff' : '#b50808',
+        overflow: 'hidden',
+        borderRadius: 10,
+        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
+        transition: theme.transitions.create([
+            'border-color',
+            'background-color',
+            'box-shadow',
+        ]),
+        '&:hover': {
+            backgroundColor: 'transparent',
+        },
+        '&.Mui-focused': {
+            backgroundColor: 'transparent',
+            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+            borderColor: theme.palette.primary.main,
+        },
+    },
+}));
+
+const RedditTextFieldNovalid = styled((props) => (
+    <TextField InputProps={{ disableUnderline: true }} {...props}  />
+))(({ theme }) => ({
+    '& .MuiFilledInput-root': {
+        height: '55px',
+        border: '2px solid #b50808',
         overflow: 'hidden',
         borderRadius: 10,
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',

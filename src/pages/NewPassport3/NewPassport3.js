@@ -65,18 +65,34 @@ const NewPassport3 = () => {
     const pressNext = () => {      
         if (pasPlaceborn && pasAdress && pasEmail) {
             console.log('да')
-
+            setPlaceDirty(false)
+            setAddressDirty(false)  
+            setEmailDirty(false)   
             setNovalid(false)
 
         } else {
-            console.log('нет')
+            if (!pasPlaceborn) {
+                setError('Заполните выделенные поля!')
+                setPlaceDirty(true) 
+            } else {
+                setPlaceDirty(false)   
+            } 
+
+            if (!pasAdress) {
+                setError('Заполните выделенные поля!')
+                setAddressDirty(true)
+            } else {
+                setAddressDirty(false)  
+            }
+
+            if (!pasEmail) {
+                setError('Заполните выделенные поля!')
+                setEmailDirty(true)
+            } else {
+                setEmailDirty(false)  
+            }
+
             setNovalid(true) 
-
-            setError('Заполните выделенные поля!')
-
-            if (!pasPlaceborn) setPlaceDirty(true)
-            if (!pasAdress) setAddressDirty(true)
-            if (!pasEmail) setEmailDirty(true)
         }
     }
 
@@ -205,36 +221,61 @@ const NewPassport3 = () => {
 
             <div className='form-new2'>
                 {/*Место рождения*/}
-                <div className="text-field text-field_floating" style={{border: placeDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
-                    <RedditTextField fullWidth
+                <div className="text-field text-field_floating">
+                    {placeDirty ? <RedditTextFieldNovalid 
+                                    fullWidth
                                     label="Место рождения"
                                     id="worker_soname"
                                     variant="filled"
                                     onChange={handlePlaceborn}
                                     value={pasPlaceborn}
-                    />
+                                />
+                                :<RedditTextField 
+                                    fullWidth
+                                    label="Место рождения"
+                                    id="worker_soname"
+                                    variant="filled"
+                                    onChange={handlePlaceborn}
+                                    value={pasPlaceborn}
+                                />}
                 </div>
 
                 {/*Адрес*/}
-                <div className="text-field text-field_floating" style={{border: addressDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
-                    <RedditTextField fullWidth
+                <div className="text-field text-field_floating">
+                    {addressDirty ? <RedditTextFieldNovalid
+                                    fullWidth
                                     label="Адрес регистрации"
                                     id="worker_name"
                                     variant="filled"
                                     onChange={handleAdress}
                                     value={pasAdress}
                     />
+                    :<RedditTextField fullWidth
+                                    label="Адрес регистрации"
+                                    id="worker_name"
+                                    variant="filled"
+                                    onChange={handleAdress}
+                                    value={pasAdress}
+                    />}
                 </div> 
 
                 {/*Email*/}
-                <div className="text-field text-field_floating" style={{border: emailDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
-                    <RedditTextField fullWidth
+                <div className="text-field text-field_floating">
+                    {emailDirty ? <RedditTextFieldNovalid 
+                                    fullWidth
                                     label="Email"
                                     id="worker_name"
                                     variant="filled"
                                     onChange={handleEmail}
                                     value={pasEmail}
                     />
+                    :<RedditTextField fullWidth
+                                    label="Email"
+                                    id="worker_name"
+                                    variant="filled"
+                                    onChange={handleEmail}
+                                    value={pasEmail}
+                    />}
                 </div> 
 
                 <div className="file-upload">
@@ -260,6 +301,31 @@ const RedditTextField = styled((props) => (
     '& .MuiFilledInput-root': {
         height: '55px',
         border: '2px solid #2e7cff',
+        overflow: 'hidden',
+        borderRadius: 10,
+        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
+        transition: theme.transitions.create([
+            'border-color',
+            'background-color',
+            'box-shadow',
+        ]),
+        '&:hover': {
+            backgroundColor: 'transparent',
+        },
+        '&.Mui-focused': {
+            backgroundColor: 'transparent',
+            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+            borderColor: theme.palette.primary.main,
+        },
+    },
+}));
+
+const RedditTextFieldNovalid = styled((props) => (
+    <TextField InputProps={{ disableUnderline: true }} {...props}  />
+))(({ theme }) => ({
+    '& .MuiFilledInput-root': {
+        height: '55px',
+        border: '2px solid #b50808',
         overflow: 'hidden',
         borderRadius: 10,
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',

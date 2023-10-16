@@ -38,23 +38,31 @@ const NewPassport2 = () => {
     const [error, setError] = useState("")
 
 
-    const pressNext = () => {      
+    const pressNext = () => {   
+        console.log("pasKod: ", pasKod.length)   
         if (pasNumber.length === 11 && pasKem && pasKod.length === 7) {
             console.log('да')
             navigate('/add-passport3')
-
-        } else {
-            if (pasNumber.length === 0 || pasKem.length === 0 || pasKod.length === 0)
-            setError('Заполните выделенные поля!')
-            
-            else if (pasNumber.length !== 11) {
+        } else {          
+            if (pasNumber.length !== 11) {
+                setError('Заполните выделенные поля!')
                 setNumDirty(true) 
-                setError('Некоректно заполнено серия или номер')
+            } else {
+                setNumDirty(false)   
+            } 
+
+            if (!pasKem) {
+                setError('Заполните выделенные поля!')
+                setKemDirty(true)
+            } else {
+                setNumDirty(false)  
             }
-            else if (!pasKem) setKemDirty(true)
-            else if (pasKod.length !== 7) {
+
+            if (pasKod.length !== 7) {
+                setError('Заполните выделенные поля!')
                 setKodDirty(true)
-                setError('Некоректно заполнен код подразделения')
+            } else {
+                setKodDirty(false)  
             }
         }
     }
@@ -97,14 +105,7 @@ const NewPassport2 = () => {
 
             <div className='form-new2'>
                 {/*Серия и номер*/}
-                <div className="text-field text-field_floating" style={{border: numDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
-                    {/* <RedditTextField fullWidth
-                                    label="Серия и номер"
-                                    id="pas_number"
-                                    variant="filled"
-                                    onChange={handleNumber}
-                                    value={pasNumber}
-                    /> */}
+                <div className="text-field text-field_floating">
                     <InputMask
                         mask="9999 999999"
                         disabled={false}
@@ -112,7 +113,14 @@ const NewPassport2 = () => {
                         onChange={handleNumber} 
                         value={pasNumber}
                     >
-                        {() => <RedditTextField 
+                        {() => numDirty? 
+                                <RedditTextFieldNovalid 
+                                    fullWidth 
+                                    label="Серия и номер"
+                                    name='num'
+                                    id="pas_number"
+                                    variant="filled"/>
+                                :<RedditTextField
                                     fullWidth 
                                     label="Серия и номер"
                                     name='num'
@@ -144,8 +152,9 @@ const NewPassport2 = () => {
                 </div>
 
                 {/*Кем выдан*/}
-                <div className="text-field text-field_floating" style={{border: kemDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
-                    <RedditTextField fullWidth
+                <div className="text-field text-field_floating">
+                    {kemDirty ?
+                    <RedditTextFieldNovalid fullWidth
                                     label="Кем выдан"
                                     id="pas_kem"
                                     name='kem'
@@ -153,10 +162,18 @@ const NewPassport2 = () => {
                                     onChange={handleKem}
                                     value={pasKem}
                     />
+                    :<RedditTextField fullWidth
+                                    label="Кем выдан"
+                                    id="pas_kem"
+                                    name='kem'
+                                    variant="filled"
+                                    onChange={handleKem}
+                                    value={pasKem}
+                    />}
                 </div>          
 
                 {/*Код подразделения*/}
-                <div className="text-field text-field_floating" style={{border: kodDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
+                <div className="text-field text-field_floating">
                     <InputMask
                         mask="999-999"
                         disabled={false}
@@ -164,7 +181,14 @@ const NewPassport2 = () => {
                         onChange={handleKod} 
                         value={pasKod}
                     >
-                        {() => <RedditTextField 
+                        {() => kodDirty ?
+                                <RedditTextFieldNovalid 
+                                    fullWidth 
+                                    label="Код подразделения"
+                                    name='kod'
+                                    id="pas_kod"
+                                    variant="filled"/>
+                                :<RedditTextField 
                                     fullWidth 
                                     label="Код подразделения"
                                     name='kod'
@@ -188,7 +212,32 @@ const RedditTextField = styled((props) => (
 ))(({ theme }) => ({
     '& .MuiFilledInput-root': {
         height: '55px',
-        border: '2px solid #2e7cff',
+        border: '2px solid #2e7cff', //#b50808
+        overflow: 'hidden',
+        borderRadius: 10,
+        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
+        transition: theme.transitions.create([
+            'border-color',
+            'background-color',
+            'box-shadow',
+        ]),
+        '&:hover': {
+            backgroundColor: 'transparent',
+        },
+        '&.Mui-focused': {
+            backgroundColor: 'transparent',
+            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+            borderColor: theme.palette.primary.main,
+        },
+    },
+}));
+
+const RedditTextFieldNovalid = styled((props) => (
+    <TextField InputProps={{ disableUnderline: true }} {...props}  />
+))(({ theme }) => ({
+    '& .MuiFilledInput-root': {
+        height: '55px',
+        border: '2px solid #b50808',
         overflow: 'hidden',
         borderRadius: 10,
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
