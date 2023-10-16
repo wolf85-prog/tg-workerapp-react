@@ -43,20 +43,42 @@ const NewPassport3 = () => {
 			setPasEmail,
     } = useUsersContext();
 
-    //console.log("image: ", image)
-
     const [novalid, setNovalid] = useState(true)
     const [selectedFile, setSelectedFile] = useState(null);
     const [selectedName, setSelectedName] = useState("");
     const [image, setImage]= useState("");
 
+    const [placeDirty, setPlaceDirty] = useState(false)
+    const [addressDirty, setAddressDirty] = useState(false)
+    const [emailDirty, setEmailDirty] = useState(false)
+
+    const [error, setError] = useState("")
+
     useEffect(() => {
-        if (pasPlaceborn && pasAdress && pasEmail && image) {
+        if (pasPlaceborn && pasAdress && pasEmail) {
             setNovalid(false)
         } else {
             setNovalid(true) 
         }
-    }, [pasPlaceborn, pasAdress, pasEmail, image]);
+    }, [pasPlaceborn, pasAdress, pasEmail]);
+
+    const pressNext = () => {      
+        if (pasPlaceborn && pasAdress && pasEmail) {
+            console.log('да')
+
+            setNovalid(false)
+
+        } else {
+            console.log('нет')
+            setNovalid(true) 
+
+            setError('Заполните выделенные поля!')
+
+            if (!pasPlaceborn) setPlaceDirty(true)
+            if (!pasAdress) setAddressDirty(true)
+            if (!pasEmail) setEmailDirty(true)
+        }
+    }
 
     useEffect(() => {
         const getImage = async () => {
@@ -157,6 +179,7 @@ const NewPassport3 = () => {
     }, [])
 
     useEffect(() => {
+        if (!novalid)
         tg.MainButton.show();
     }, [])
 
@@ -167,9 +190,22 @@ const NewPassport3 = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
 
+            {(error && !pasPlaceborn || !pasAdress || !pasEmail) && 
+                <div style={{
+                    color: 'red', 
+                    position: 'absolute', 
+                    left: '0', 
+                    top: '70px', 
+                    right: '0', 
+                    marginLeft: 'auto', 
+                    marginRight: 'auto'}}>
+                        {error}
+                </div>
+            }
+
             <div className='form-new2'>
                 {/*Место рождения*/}
-                <div className="text-field text-field_floating">
+                <div className="text-field text-field_floating" style={{border: placeDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
                     <RedditTextField fullWidth
                                     label="Место рождения"
                                     id="worker_soname"
@@ -180,7 +216,7 @@ const NewPassport3 = () => {
                 </div>
 
                 {/*Адрес*/}
-                <div className="text-field text-field_floating">
+                <div className="text-field text-field_floating" style={{border: addressDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
                     <RedditTextField fullWidth
                                     label="Адрес регистрации"
                                     id="worker_name"
@@ -191,7 +227,7 @@ const NewPassport3 = () => {
                 </div> 
 
                 {/*Email*/}
-                <div className="text-field text-field_floating">
+                <div className="text-field text-field_floating" style={{border: emailDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
                     <RedditTextField fullWidth
                                     label="Email"
                                     id="worker_name"
@@ -209,6 +245,7 @@ const NewPassport3 = () => {
 
                 <div className='block-buttons-new2'>
                     <Link to={'/add-passport2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
+                    <MyButton onClick={pressNext} style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Сохранить</MyButton>
                 </div>
 
             </div>

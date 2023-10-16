@@ -101,7 +101,16 @@ const NewPassport = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
   
-            {(famError && !pasFam) && <div style={{color: 'red', position: 'absolute', left: '0', top: '70px', right: '0', marginLeft: 'auto', marginRight: 'auto'}}>{famError}</div>}
+            {(famError && !pasFam || !pasName || !pasDateborn) && 
+            <div style={{
+                color: 'red', 
+                position: 'absolute', 
+                left: '0', 
+                top: '70px', 
+                right: '0', 
+                marginLeft: 'auto', 
+                marginRight: 'auto'}}>{famError}
+            </div>}
 
             <div className='form-new2'>    
                 

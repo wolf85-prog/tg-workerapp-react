@@ -31,8 +31,6 @@ const NewPassport2 = () => {
 		setPasKod
     } = useUsersContext();
 
-    const [novalid, setNovalid] = useState(true)
-
     const [numDirty, setNumDirty] = useState(false)
     const [kemDirty, setKemDirty] = useState(false)
     const [kodDirty, setKodDirty] = useState(false)
@@ -41,31 +39,25 @@ const NewPassport2 = () => {
 
 
     const pressNext = () => {      
-        if (pasNumber.length === 11 && pasKem && pasKod) {
+        if (pasNumber.length === 11 && pasKem && pasKod.length === 7) {
             console.log('да')
             navigate('/add-passport3')
 
         } else {
-            console.log('нет')
-            setNovalid(true) 
+            if (pasNumber.length === 0 || pasKem.length === 0 || pasKod.length === 0)
             setError('Заполните выделенные поля!')
-            if (pasNumber.length !== 11) setNumDirty(true)
-            if (!pasKem) setKemDirty(true)
-            if (!pasKod) setKodDirty(true)
+            
+            else if (pasNumber.length !== 11) {
+                setNumDirty(true) 
+                setError('Некоректно заполнено серия или номер')
+            }
+            else if (!pasKem) setKemDirty(true)
+            else if (pasKod.length !== 7) {
+                setKodDirty(true)
+                setError('Некоректно заполнен код подразделения')
+            }
         }
     }
-
-    // useEffect(() => {
-    //     if (pasNumber.length === 11 && pasDate && pasKem && pasKod.length === 7) {
-    //         setNovalid(false)
-    //         setError('')
-    //     } else {
-    //         setError('Заполните выделенные поля!')
-    //         if (pasNumber.length !== 11) setNumDirty(true)
-    //         if (!pasKem) setKemDirty(true)
-    //         if (!pasKod) setKodDirty(true)
-    //     }
-    // }, [pasNumber, pasDate, pasKem, pasKod]);
 
     const handleNumber = (e)=>{
         setPasNumber(e.target.value)
@@ -90,7 +82,18 @@ const NewPassport2 = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
 
-            {(error && !pasNumber) && <div style={{color: 'red', position: 'absolute', left: '0', top: '70px', right: '0', marginLeft: 'auto', marginRight: 'auto'}}>{error}</div>}
+            {(error && pasNumber !== 11 || !pasDate || !pasKem || pasKod !== 7) && 
+                <div style={{
+                    color: 'red', 
+                    position: 'absolute', 
+                    left: '0', 
+                    top: '70px', 
+                    right: '0', 
+                    marginLeft: 'auto', 
+                    marginRight: 'auto'}}>
+                        {error}
+                </div>
+            }
 
             <div className='form-new2'>
                 {/*Серия и номер*/}
