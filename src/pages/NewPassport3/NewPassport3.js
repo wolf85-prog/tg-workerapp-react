@@ -43,7 +43,7 @@ const NewPassport3 = () => {
 			setPasEmail,
     } = useUsersContext();
 
-    console.log("pasDateborn: ", pasDateborn)
+    //console.log("image: ", image)
 
     const [novalid, setNovalid] = useState(true)
     const [selectedFile, setSelectedFile] = useState(null);
@@ -71,7 +71,7 @@ const NewPassport3 = () => {
     
               setImage(API_URL_HOST + response.data.path.split('.team')[1]);
               //сообщение с ссылкой на файл
-              //console.log(host + response.data.path)
+              console.log(API_URL_HOST + response.data.path.split('.team')[1])
               //setValue(host + response.data.path)
             }
         }
