@@ -43,6 +43,8 @@ const NewPassport3 = () => {
 			setPasEmail,
     } = useUsersContext();
 
+    console.log("pasDateborn: ", pasDateborn)
+
     const [novalid, setNovalid] = useState(true)
     const [selectedFile, setSelectedFile] = useState(null);
     const [selectedName, setSelectedName] = useState("");
