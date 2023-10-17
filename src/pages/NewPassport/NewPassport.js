@@ -32,7 +32,7 @@ const NewPassport = () => {
     const [famDirty, setFamDirty] = useState(false)
     const [nameDirty, setNameDirty] = useState(false)
     const [datebornDirty, setDatebornDirty] = useState(false)
-    const [famError, setFamError] = useState("")
+    const [error, setError] = useState("")
 
     const pressNext = () => {      
         if (pasFam && pasName && pasDateborn !== '2000-01-01') {
@@ -43,12 +43,33 @@ const NewPassport = () => {
         } else {
             console.log('нет')
 
-            setFamError('Заполните выделенные поля!')
-            if (!pasFam) setFamDirty(true)
-            if (!pasName) setNameDirty(true)
-            if (!pasDateborn || pasDateborn === '2000-01-01') {
-                setDatebornDirty(true)
+            if (!pasFam) {
+                setError('Заполните выделенные поля!')
+                setFamDirty(true) 
+            } else {
+                setFamDirty(false)   
             }
+
+            if (!pasName) {
+                setError('Заполните выделенные поля!')
+                setNameDirty(true) 
+            } else {
+                setNameDirty(false)   
+            }
+
+            if (!pasDateborn || pasDateborn === '2000-01-01') {
+                setError('Заполните выделенные поля!')
+                setDatebornDirty(true) 
+            } else {
+                setDatebornDirty(false)   
+            }
+
+            // setError('Заполните выделенные поля!')
+            // if (!pasFam) setFamDirty(true)
+            // if (!pasName) setNameDirty(true)
+            // if (!pasDateborn || pasDateborn === '2000-01-01') {
+            //     setDatebornDirty(true)
+            // }
         }
     }
 
@@ -87,7 +108,7 @@ const NewPassport = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
   
-            {(famError && !pasFam || !pasName || pasDateborn === '2000-01-01') && 
+            {(error && !pasFam || !pasName || pasDateborn === '2000-01-01') && 
             <div style={{
                 color: 'red', 
                 fontSize: '18px',
@@ -96,7 +117,7 @@ const NewPassport = () => {
                 top: '70px', 
                 right: '0', 
                 marginLeft: 'auto', 
-                marginRight: 'auto'}}>{famError}
+                marginRight: 'auto'}}>{error}
             </div>}
 
             <div className='form-new2'>    

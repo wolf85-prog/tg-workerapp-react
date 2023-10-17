@@ -54,13 +54,13 @@ const NewPassport3 = () => {
 
     const [error, setError] = useState("")
 
-    useEffect(() => {
-        if (pasPlaceborn && pasAdress && pasEmail) {
-            setNovalid(false)
-        } else {
-            setNovalid(true) 
-        }
-    }, [pasPlaceborn, pasAdress, pasEmail]);
+    // useEffect(() => {
+    //     if (pasPlaceborn && pasAdress && pasEmail) {
+    //         setNovalid(false)
+    //     } else {
+    //         setNovalid(true) 
+    //     }
+    // }, [pasPlaceborn, pasAdress, pasEmail]);
 
     const pressNext = () => {      
         if (pasPlaceborn && pasAdress && pasEmail) {
