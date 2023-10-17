@@ -22,6 +22,7 @@ import ProcessPage from './pages/ProcessPage/ProcessPage';
 import NewPassport from './pages/NewPassport/NewPassport';
 import NewPassport2 from './pages/NewPassport2/NewPassport2';
 import NewPassport3 from './pages/NewPassport3/NewPassport3';
+import AnketaPage from './pages/AnketaPage/AnketaPage';
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
                   <Route path={'add-worker4'} element={<NewWorker4 />}/>
                   <Route path={'process'} element={<ProcessPage />}/>
 
+                  <Route path={'anketa'} element={<AnketaPage />}/>
                   <Route path={'add-passport'} element={<NewPassport />}/>
                   <Route path={'add-passport2'} element={<NewPassport2 />}/>
                   <Route path={'add-passport3'} element={<NewPassport3 />}/>
