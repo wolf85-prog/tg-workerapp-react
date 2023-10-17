@@ -29,40 +29,26 @@ const NewPassport = () => {
         pasDateborn, setPasDateborn 
     } = useUsersContext();
 
-    const [novalid, setNovalid] = useState(true)
-
     const [famDirty, setFamDirty] = useState(false)
     const [nameDirty, setNameDirty] = useState(false)
     const [datebornDirty, setDatebornDirty] = useState(false)
     const [famError, setFamError] = useState("")
 
-    // useEffect(() => {
-    //     //console.log(phone.length)
-    //     if (pasFam && pasName && pasDateborn) {
-    //         setNovalid(false)
-    //         setFamError('')
-    //     } else {
-    //         setNovalid(true) 
-    //         setFamError('Есть не заполненные поля!')
-    //         if (!pasFam) setFamDirty(true)
-    //         if (!pasName) setNameDirty(true)
-    //         if (!pasDateborn) setDatebornDirty(true)
-    //     }
-    // }, [pasFam, pasName, pasDateborn]);
-
     const pressNext = () => {      
-        if (pasFam && pasName && pasDateborn) {
+        if (pasFam && pasName && pasDateborn !== '2000-01-01') {
             console.log('да')
 
             navigate('/add-passport2')
 
         } else {
             console.log('нет')
-            setNovalid(true) 
+
             setFamError('Заполните выделенные поля!')
             if (!pasFam) setFamDirty(true)
             if (!pasName) setNameDirty(true)
-            if (!pasDateborn) setDatebornDirty(true)
+            if (!pasDateborn || pasDateborn === '2000-01-01') {
+                setDatebornDirty(true)
+            }
         }
     }
 
@@ -101,7 +87,7 @@ const NewPassport = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
   
-            {(famError && !pasFam || !pasName || !pasDateborn) && 
+            {(famError && !pasFam || !pasName || pasDateborn === '2000-01-01') && 
             <div style={{
                 color: 'red', 
                 fontSize: '18px',
@@ -175,10 +161,10 @@ const NewPassport = () => {
 
                 {/*Сколько лет*/}
                 {/*Дата начала*/}
-                <div className="text-field text-field_floating" style={{border: datebornDirty ? '2px solid #b50808' : '', borderRadius: '10px'}}>
+                <div className="text-field text-field_floating">
                     <LocalizationProvider dateAdapter={AdapterDayjs} >
                         <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
-                            <RedditTextField
+                            {datebornDirty ? <RedditTextFieldNovalid
                                 id="date"
                                 label="Дата рождения"
                                 name='date'
@@ -190,6 +176,18 @@ const NewPassport = () => {
                                     shrink: true,
                                 }}
                             />
+                            :<RedditTextField
+                                id="date"
+                                label="Дата рождения"
+                                name='date'
+                                type="date"
+                                variant="filled"
+                                value={pasDateborn}
+                                onChange={onChangeTime}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />}
                             <span className="open-button">
                               <button type="button"><img src={Calendar} alt='calendar'/></button>
                             </span>

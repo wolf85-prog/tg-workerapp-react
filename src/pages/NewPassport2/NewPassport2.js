@@ -32,18 +32,22 @@ const NewPassport2 = () => {
     } = useUsersContext();
 
     const [numDirty, setNumDirty] = useState(false)
+    const [dateDirty, setDateDirty] = useState(false)
     const [kemDirty, setKemDirty] = useState(false)
     const [kodDirty, setKodDirty] = useState(false)
 
     const [error, setError] = useState("")
 
 
-    const pressNext = () => {   
-        console.log("pasKod: ", pasKod.length)   
-        if (pasNumber.length === 11 && pasKem && pasKod.length === 7) {
+    const pressNext = () => {  
+
+        console.log("dateDirty: ", dateDirty)
+
+        if (pasNumber.length === 11 && pasDate !== '2000-01-01' && pasKem && pasKod.length === 7) {
             console.log('да')
             navigate('/add-passport3')
-        } else {          
+        } else {  
+            console.log("нет")        
             if (pasNumber.length !== 11) {
                 setError('Заполните выделенные поля!')
                 setNumDirty(true) 
@@ -51,11 +55,17 @@ const NewPassport2 = () => {
                 setNumDirty(false)   
             } 
 
-            if (!pasKem) {
+            if (!pasDate || pasDate === '2000-01-01') {
+                setDateDirty(true)
+            } else {
+                setDateDirty(false)
+            }
+
+            if (pasKem.length === 0) {
                 setError('Заполните выделенные поля!')
                 setKemDirty(true)
             } else {
-                setNumDirty(false)  
+                setKemDirty(false)  
             }
 
             if (pasKod.length !== 7) {
@@ -90,7 +100,7 @@ const NewPassport2 = () => {
             <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style2'/>
 
-            {(error && pasNumber !== 11 || !pasDate || !pasKem || pasKod !== 7) && 
+            {(error && pasNumber !== 11 || pasDate === '2000-01-01' || !pasKem || pasKod.length !==7) && 
                 <div style={{
                     color: 'red', 
                     fontSize: '18px',
@@ -114,7 +124,7 @@ const NewPassport2 = () => {
                         onChange={handleNumber} 
                         value={pasNumber}
                     >
-                        {() => numDirty? 
+                        {() => numDirty ? 
                                 <RedditTextFieldNovalid 
                                     fullWidth 
                                     label="Серия и номер"
@@ -134,7 +144,7 @@ const NewPassport2 = () => {
                 <div className="text-field text-field_floating">
                     <LocalizationProvider dateAdapter={AdapterDayjs} >
                         <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
-                            <RedditTextField
+                            {dateDirty ? <RedditTextFieldNovalid
                                 id="pas_date"
                                 label="Дата выдачи"
                                 type="date"
@@ -145,6 +155,17 @@ const NewPassport2 = () => {
                                     shrink: true,
                                 }}
                             />
+                            :<RedditTextField
+                                id="pas_date"
+                                label="Дата выдачи"
+                                type="date"
+                                variant="filled"
+                                value={pasDate}
+                                onChange={handleDate}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />}
                             <span className="open-button">
                               <button type="button"><img src={Calendar} alt='calendar'/></button>
                             </span>
