@@ -6,6 +6,7 @@ import './SmetaPage.css';
 import Fon from "../../image/logo_01_light.png";
 import FonGrad from "../../image/BlueLine1.png";
 import Banner from "../../image/BannerWorkhub.png";
+import FonTest from "../../image/back4.jpg";
 
 
 const SmetaPage = () => {
@@ -28,8 +29,10 @@ const SmetaPage = () => {
         <div className="App">
             <Header header={{title: 'Моя смета', icon: 'false'}}/>
 
-            <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/> 
+            {/* <img src={Fon} alt='' className='fon-style'/>
+            <img src={FonGrad} alt='' className='fon-style2'/>  */}
+
+            <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} /> 
             
             <div className='form-smeta'>
 

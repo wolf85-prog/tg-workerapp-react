@@ -12,6 +12,7 @@ import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 import { useUsersContext } from "../../contexts/UserContext"
 import { getProjectsAll, getBlockId, getDatabase } from '../../http/chatAPI';
+import FonTest from "../../image/back4.jpg";
 
 
 const ProjectPage = () => {
@@ -125,8 +126,9 @@ const ProjectPage = () => {
         <div className="App">
             <Header header={{title: 'Мои проекты', icon: 'false'}}/>
 
-            <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/> 
+            {/* <img src={Fon} alt='' className='fon-style'/>
+            <img src={FonGrad} alt='' className='fon-style2'/>  */}
+            <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} /> 
 
             <ProjectFilter
                 filter={filter}

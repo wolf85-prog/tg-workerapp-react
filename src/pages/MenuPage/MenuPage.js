@@ -10,6 +10,8 @@ import { useTelegram } from "../../hooks/useTelegram";
 import { useUsersContext } from "../../contexts/UserContext"
 import { getWorkerId } from '../../http/chatAPI';
 
+import FonTest from "../../image/back4.jpg";
+
 const MenuPage = () => {
     const {user} = useTelegram();
     const navigate = useNavigate();
@@ -22,7 +24,7 @@ const MenuPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId('1853131218') //'805436270' '1408579113' user?.id
+            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id
 
             if (worker.length > 0) {
                 //зарегистрирован
@@ -56,8 +58,10 @@ const MenuPage = () => {
         <div className="App">
             <Header header={{title: 'Меню', icon: 'false'}}/>
 
-            <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style22'/> 
+            {/* <img src={Fon} alt='' className='fon-style'/>
+            <img src={FonGrad} alt='' className='fon-style22'/>  */}
+            <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} /> 
+            
 
             <div className='menu-form'>
                 <Link to={'/profile'}><ButtonStatus>Профиль</ButtonStatus></Link> 

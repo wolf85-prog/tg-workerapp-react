@@ -6,6 +6,8 @@ import Fon from "../../image/logo_01_light.png";
 import Logo from "../../image/logo_04_light.png";
 import Logo2 from "../../image/workhub.png";
 
+import FonTest from "../../image/back3.jpg";
+
 
 const LoadPage = () => {
 
@@ -30,12 +32,14 @@ const LoadPage = () => {
     return (
         <div className="App">
 
-            <img src={Fon} alt='' className='fon-style'/>
+            {/* <img src={Fon} alt='' className='fon-style'/> */}
             {/* <img src={FonGrad} alt='' className='fon-style2'/> */}
+
+            <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} />
+
             <img src={Logo} alt='' className='fon-style3' style={{visibility: showLogo ? "visible": "hidden"}}/>
             <img src={Logo2} alt='' className='fon-style4' style={{visibility: showLogo2 ? "visible": "hidden"}}/>
-            {/* <img src={Logo} alt='' className='fon-style3' />
-            <img src={Logo2} alt='' className='fon-style4' /> */}
+
         </div>
     );
 };

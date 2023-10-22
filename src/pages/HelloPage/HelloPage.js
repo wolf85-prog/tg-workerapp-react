@@ -9,6 +9,11 @@ import { getWorkerId } from '../../http/chatAPI';
 import Header from '../../components/Header/Header';
 import { useUsersContext } from "../../contexts/UserContext"
 
+//import FonTest from "../../image/back1.jpg";
+//import FonTest from "../../image/back2.jpg";
+import FonTest from "../../image/back3.jpg";
+
+
 const HelloPage = () => {
 
     const {user} = useTelegram();
@@ -21,7 +26,7 @@ const HelloPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId('1853131218') //'805436270' '1408579113' user?.id
+            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id
 
             if (worker.length > 0) {
                 console.log("Вы уже зарегистрированы!", user?.id)
@@ -46,8 +51,9 @@ const HelloPage = () => {
         <div className="App">
             <Header header={{title: '', icon: 'false'}}/>
 
-            <img src={Fon} alt='' className='fon-style'/>
-            {/* <img src={FonGrad} alt='' className='fon-style2'/> */}
+            {/* <img src={Fon} alt='' className='fon-style'/> */}
+
+            <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} />
             
             <form>
                 <div style={{marginTop: '330px'}}>  

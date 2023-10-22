@@ -24,6 +24,7 @@ import Trucks from "../../image/spec/8_trucks.svg";
 import Catering from "../../image/spec/9_catering.svg";
 import Photo from "../../image/spec/10_photo.svg";
 import Party from "../../image/spec/11_party.svg";
+import FonTest from "../../image/back4.jpg";
 
 const StavkiPage = () => {
     const [showTable, setShowTable] = useState(false)
@@ -101,8 +102,10 @@ const StavkiPage = () => {
         <div className="App">
             <Header header={{title: 'Моя ставка', icon: 'false'}}/>
 
-            <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/> 
+            {/* <img src={Fon} alt='' className='fon-style'/>
+            <img src={FonGrad} alt='' className='fon-style2'/>  */}
+
+            <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} /> 
             
             <form>
                 <div style={{marginTop: '100px', textAlign: 'left', paddingLeft: '15px',}}>                  

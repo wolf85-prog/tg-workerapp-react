@@ -11,6 +11,7 @@ import iconUnCheck from "../../image/uncheck.png";
 //import Loader from "../../components/UI/Loader/Loader";
 
 import { getWorkerId } from '../../http/chatAPI';
+import FonTest from "../../image/back4.jpg";
 
 
 //const API_URL = process.env.REACT_APP_API_URL
@@ -45,8 +46,10 @@ const ProfilePage = () => {
         <div className="App">
             <Header header={{title: 'Мой профиль', icon: 'false'}}/>
 
-            <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/> 
+            {/* <img src={Fon} alt='' className='fon-style'/>
+            <img src={FonGrad} alt='' className='fon-style2'/>  */}
+
+            <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} /> 
 
             {/* {workerhub.length > 0
                     ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div> 

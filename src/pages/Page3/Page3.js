@@ -10,6 +10,8 @@ import check2 from "../../image/check2.png";
 import uncheck2 from "../../image/uncheck2.png";
 import banner2 from "../../image/BannerWorkhub2.png";
 
+import FonTest from "../../image/back4.jpg";
+
 //const API_URL = process.env.REACT_APP_API_URL
 
 const Page3 = () => {
@@ -27,8 +29,10 @@ const Page3 = () => {
         <div className="App">
             <Header header={{title: 'Моя смета', icon: 'false'}}/>
 
-            <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/> 
+            {/* <img src={Fon} alt='' className='fon-style'/>
+            <img src={FonGrad} alt='' className='fon-style2'/>  */}
+
+            <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} /> 
             
             <div className='form-smeta-page3'>
                                  
