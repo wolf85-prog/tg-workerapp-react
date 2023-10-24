@@ -43,7 +43,7 @@ const NewWorker = () => {
     useEffect(() => {
 
         //отправляем в админку сообщение
-        sendMyMessage(user?.id)
+        //sendMyMessage(user?.id)
 
         // устанавливаем категории
         if (specData.length > 0 && specData) {

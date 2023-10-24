@@ -35,12 +35,12 @@ const MenuPage = () => {
                 if (flag === 'ONLY_REG') {
                     //только что зарегистрирован
                     console.log("Только что зарегистировался", user?.id, flag)
-                    navigate("/process")
+                    //navigate("/process")
                 } 
                 else if (flag === 'NOREG') {
                     //не зарегистрирован
                     console.log("Зарегистрируйтесь!", user?.id)
-                    navigate("/add-worker")
+                    //navigate("/add-worker")
                 }
             }
         }

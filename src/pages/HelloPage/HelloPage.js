@@ -11,7 +11,9 @@ import { useUsersContext } from "../../contexts/UserContext"
 
 //import FonTest from "../../image/back1.jpg";
 //import FonTest from "../../image/back2.jpg";
-import FonTest from "../../image/back3.jpg";
+
+import FonTest01 from "../../image/background/Background 1.0 _ 320 х 568.png";
+import FonTest1 from "../../image/background/Background 2.0 _ 320 х 568.png";
 
 
 const HelloPage = () => {
@@ -26,7 +28,7 @@ const HelloPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id
+            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id
 
             if (worker.length > 0) {
                 console.log("Вы уже зарегистрированы!", user?.id)
@@ -39,7 +41,7 @@ const HelloPage = () => {
 
             } else {
                 console.log("Зарегистрируйтесь!", user?.id)
-                navigate("/add-worker")
+                //navigate("/add-worker")
             }
         }
 
@@ -53,7 +55,8 @@ const HelloPage = () => {
 
             {/* <img src={Fon} alt='' className='fon-style'/> */}
 
-            <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} />
+            <img src={FonTest01} alt='' className='fon-style0' />
+            <img src={FonTest1} alt='' className='fon-style0' />
             
             <form>
                 <div style={{marginTop: '330px'}}>  

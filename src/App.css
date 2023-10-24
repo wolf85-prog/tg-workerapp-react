@@ -149,6 +149,14 @@
   animation-delay: 1s;
 }
 
+.fon-style0 {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  animation: showBlock3 3s linear forwards;
+  animation-delay: 1s;
+}
+
 .welcomStyle {
   margin: 20px 5px;
   display: flex;
@@ -176,6 +184,15 @@
   }
   100% {
     opacity: 0.3;
+  }
+}
+
+@keyframes showBlock3 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
