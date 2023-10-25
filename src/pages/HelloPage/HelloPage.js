@@ -55,7 +55,7 @@ const HelloPage = () => {
 
             {/* <img src={Fon} alt='' className='fon-style'/> */}
 
-            <img src={FonTest01} alt='' className='fon-style0' />
+            <img src={FonTest01} alt='' style={{width:"100%", position: 'absolute', left: '0'}} />
             <img src={FonTest1} alt='' className='fon-style0' />
             
             <form>
