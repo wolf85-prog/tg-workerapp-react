@@ -8,13 +8,25 @@ import FonGrad from "../../image/BlueLine1.png";
 import { useNavigate } from "react-router-dom";
 import { useTelegram } from "../../hooks/useTelegram";
 import { useUsersContext } from "../../contexts/UserContext"
+import { useResize } from './../../hooks/useResize';
 import { getWorkerId } from '../../http/chatAPI';
 
-import FonTest from "../../image/back4.jpg";
+import FonTest01 from "../../image/background/Background 1.0 _ 320 х 568.png";
+import FonTest02 from "../../image/background/Background 1.0 _ 375 х 598.png";
+import FonTest03 from "../../image/background/Background 1.0 _ 414 х 658.png";
+
+import FonTest11 from "../../image/background/Background 2.0 _ 320 х 568.png";
+import FonTest12 from "../../image/background/Background 2.0 _ 375 х 598.png";
+import FonTest13 from "../../image/background/Background 2.0 _ 414 х 658.png";
+
+import FonTest21 from "../../image/background/Background 3.0 _ 320 х 568.png";
+import FonTest22 from "../../image/background/Background 3.0 _ 375 х 598.png";
+import FonTest23 from "../../image/background/Background 3.0 _ 414 х 658.png";
 
 const MenuPage = () => {
     const {user} = useTelegram();
     const navigate = useNavigate();
+    const { width, isScreenSm, isScreenMd, isScreenLg, } = useResize();
 
     const { setProjects, projects } = useUsersContext();
     const { setSpecId, flag } = useUsersContext();
@@ -35,12 +47,12 @@ const MenuPage = () => {
                 if (flag === 'ONLY_REG') {
                     //только что зарегистрирован
                     console.log("Только что зарегистировался", user?.id, flag)
-                    //navigate("/process")
+                    navigate("/process")
                 } 
                 else if (flag === 'NOREG') {
                     //не зарегистрирован
                     console.log("Зарегистрируйтесь!", user?.id)
-                    //navigate("/add-worker")
+                    navigate("/add-worker")
                 }
             }
         }
@@ -60,7 +72,18 @@ const MenuPage = () => {
 
             {/* <img src={Fon} alt='' className='fon-style'/>
             <img src={FonGrad} alt='' className='fon-style22'/>  */}
-            <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} /> 
+            {/* <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} />  */}
+
+            {/* темный фон */}
+            <img src={isScreenLg ? FonTest03 : (isScreenMd ? FonTest02 : FonTest01)} alt='' style={{width:"100%", position: 'absolute', left: '0'}} />
+            
+            {/* фон с градиентом */}
+            <img src={isScreenLg ? FonTest13 : (isScreenMd ? FonTest12 : FonTest11)} alt='' style={{width:"100%", position: 'absolute', left: '0'}} />
+            
+
+            {/* фон с градиентом */}
+            <img src={isScreenLg ? FonTest23 : (isScreenMd ? FonTest22 : FonTest21)} alt='' className='fon-style0' />
+        
             
 
             <div className='menu-form'>

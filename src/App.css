@@ -153,8 +153,8 @@
   width: 100%;
   position: absolute;
   left: 0;
-  animation: showBlock3 3s linear forwards;
-  animation-delay: 1s;
+  animation: showBlock3 3s ease;
+  /* animation-delay: 1s; */
 }
 
 .welcomStyle {
@@ -162,6 +162,7 @@
   display: flex;
   font-size: 26px;
   color: #ffffff;
+  justify-content: center;
   animation: showBlock 5s linear forwards;
   /* animation-delay: 1s; */
 }
@@ -173,9 +174,9 @@
   50% {
     opacity: 1;
   }
-  100% {
+  /* 100% {
     opacity: 0;
-  }
+  } */
 }
 
 @keyframes showBlock2 {
