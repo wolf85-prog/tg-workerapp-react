@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useTelegram } from "../../hooks/useTelegram";
 import { useResize } from './../../hooks/useResize';
 import './HelloPage.css';
-import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/BlueLine1.png";
 import Loader from "../../components/UI/Loader/Loader";
 import { getWorkerId } from '../../http/chatAPI';
 import Header from '../../components/Header/Header';
@@ -13,14 +11,17 @@ import { useUsersContext } from "../../contexts/UserContext"
 //import FonTest from "../../image/back1.jpg";
 //import FonTest from "../../image/back2.jpg";
 
-import FonTest01 from "../../image/background/Background 1.0 _ 320 х 568.png";
-import FonTest02 from "../../image/background/Background 1.0 _ 375 х 598.png";
-import FonTest03 from "../../image/background/Background 1.0 _ 414 х 658.png";
+// import FonTest01 from "../../image/background/Background 1.0 _ 320 х 568.png";
+// import FonTest02 from "../../image/background/Background 1.0 _ 375 х 598.png";
+// import FonTest03 from "../../image/background/Background 1.0 _ 414 х 658.png";
 
-import FonTest11 from "../../image/background/Background 2.0 _ 320 х 568.png";
-import FonTest12 from "../../image/background/Background 2.0 _ 375 х 598.png";
-import FonTest13 from "../../image/background/Background 2.0 _ 414 х 658.png";
+// import FonTest11 from "../../image/background/Background 2.0 _ 320 х 568.png";
+// import FonTest12 from "../../image/background/Background 2.0 _ 375 х 598.png";
+// import FonTest13 from "../../image/background/Background 2.0 _ 414 х 658.png";
 
+import Fon from "../../image/layers/ULEY_triangle.png";
+import FonGradTop from "../../image/layers/upper_red.png";
+import FonGradBottom from "../../image/layers/lower_blue.png";
 
 const HelloPage = () => {
 
@@ -61,10 +62,16 @@ const HelloPage = () => {
             <Header header={{title: '', icon: 'false'}}/>
 
             {/* темный фон */}
-            <img src={isScreenLg ? FonTest03 : (isScreenMd ? FonTest02 : FonTest01)} alt='' style={{width:"100%", position: 'absolute', left: '0'}} />
+            {/* <img src={isScreenLg ? FonTest03 : (isScreenMd ? FonTest02 : FonTest01)} alt='' style={{width:"100%", position: 'absolute', left: '0'}} /> */}
             
             {/* фон с градиентом */}
-            <img src={isScreenLg ? FonTest13 : (isScreenMd ? FonTest12 : FonTest11)} alt='' className='fon-style0' />
+            {/* <img src={isScreenLg ? FonTest13 : (isScreenMd ? FonTest12 : FonTest11)} alt='' className='fon-style0' /> */}
+
+
+            <img src={Fon} alt='' className='fon-style' />
+
+            <img src={FonGradTop} alt='' className='fon-style2' />
+            <img src={FonGradBottom} alt='' className='fon-style21' />
             
             <form>
                 <div style={{marginTop: '330px'}}>  

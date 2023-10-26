@@ -3,8 +3,6 @@ import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import ButtonStatus from "../../components/UI/ButtonStatus/ButtonStatus";
 import './MenuPage.css';
-import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/BlueLine1.png";
 import { useNavigate } from "react-router-dom";
 import { useTelegram } from "../../hooks/useTelegram";
 import { useUsersContext } from "../../contexts/UserContext"
@@ -22,6 +20,10 @@ import FonTest13 from "../../image/background/Background 2.0 _ 414 х 658.png";
 import FonTest21 from "../../image/background/Background 3.0 _ 320 х 568.png";
 import FonTest22 from "../../image/background/Background 3.0 _ 375 х 598.png";
 import FonTest23 from "../../image/background/Background 3.0 _ 414 х 658.png";
+
+import Fon from "../../image/layers/ULEY_triangle.png";
+import FonGradTop from "../../image/layers/upper_red_corner_menu.png";
+import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
 const MenuPage = () => {
     const {user} = useTelegram();
@@ -70,22 +72,12 @@ const MenuPage = () => {
         <div className="App">
             <Header header={{title: 'Меню', icon: 'false'}}/>
 
-            {/* <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style22'/>  */}
-            {/* <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} />  */}
 
-            {/* темный фон */}
-            <img src={isScreenLg ? FonTest03 : (isScreenMd ? FonTest02 : FonTest01)} alt='' style={{width:"100%", position: 'absolute', left: '0'}} />
-            
-            {/* фон с градиентом */}
-            <img src={isScreenLg ? FonTest13 : (isScreenMd ? FonTest12 : FonTest11)} alt='' style={{width:"100%", position: 'absolute', left: '0'}} />
-            
+            <img src={Fon} alt='' className='fon-style' />
 
-            {/* фон с градиентом */}
-            <img src={isScreenLg ? FonTest23 : (isScreenMd ? FonTest22 : FonTest21)} alt='' className='fon-style0' />
-        
-            
-
+            <img src={FonGradTop} alt='' className='fon-style2' />
+            <img src={FonGradBottom} alt='' className='fon-style21' />
+           
             <div className='menu-form'>
                 <Link to={'/profile'}><ButtonStatus>Профиль</ButtonStatus></Link> 
                 <Link to={'/projects'}><ButtonStatus>Проекты</ButtonStatus></Link>  

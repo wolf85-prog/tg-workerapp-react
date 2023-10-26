@@ -86,8 +86,7 @@
 }
 
 .fon-style {
-  width: 40%;
-  opacity: 0.1;
+  width: auto;
   position: fixed;
   right: 0;
   top: 70px;
@@ -98,19 +97,18 @@
 
 .fon-style2 {
   position: fixed;
-  /* right: 0;
+  right: 0;
   top: 0;
   width: 100%;
-  opacity: 0.3;
-  height: 850px;
-  margin-top: -100px; */
+  height: auto;
+}
 
-  right: -155px;
-  top: 0;
-  width: 150%;
-  opacity: 0.3;
-  height: 150%;
-  margin-top: -250px;
+.fon-style21 {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
 }
 
 .fon-style22 {

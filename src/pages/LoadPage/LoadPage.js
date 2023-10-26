@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react';
 import {useNavigate} from "react-router-dom";
 import { useResize } from './../../hooks/useResize';
 import './LoadPage.css';
-import Fon from "../../image/logo_01_light.png";
-//import FonGrad from "../../image/gradient2.png";
+
+import Fon from "../../image/layers/ULEY_triangle.png";
 import Logo from "../../image/logo_04_light.png";
 import Logo2 from "../../image/workhub.png";
 
-// import FonTest from "../../image/back3.jpg";
 
-import FonTest01 from "../../image/background/Background 1.0 _ 320 х 568.png";
-import FonTest02 from "../../image/background/Background 1.0 _ 375 х 598.png";
-import FonTest03 from "../../image/background/Background 1.0 _ 414 х 658.png";
+// import FonTest01 from "../../image/background/Background 1.0 _ 320 х 568.png";
+// import FonTest02 from "../../image/background/Background 1.0 _ 375 х 598.png";
+// import FonTest03 from "../../image/background/Background 1.0 _ 414 х 658.png";
 
 const LoadPage = () => {
 
@@ -43,7 +42,8 @@ const LoadPage = () => {
     return (
         <div className="App">
 
-            <img src={isScreenLg ? FonTest03 : (isScreenMd ? FonTest02 : FonTest01)} alt='' style={{width:"100%", position: 'absolute', left: '0'}} />
+            {/* <img src={isScreenLg ? FonTest03 : (isScreenMd ? FonTest02 : FonTest01)} alt='' style={{width:"100%", position: 'absolute', left: '0'}} /> */}
+            <img src={Fon} alt='' className='fon-style' />
 
             <img src={Logo} alt='' className='fon-style3' style={{visibility: showLogo ? "visible": "hidden"}}/>
             <img src={Logo2} alt='' className='fon-style4' style={{visibility: showLogo2 ? "visible": "hidden"}}/>
