@@ -95,24 +95,24 @@
 }
 
 .fon-style {
-  width: auto;
+  width: 60%;
   position: fixed;
   right: 0;
   top: 70px;
   z-index: 1;
-  height: 600px;
+  /* height: 600px; */
   object-fit: fill;
   animation: showGradMenu 4s linear forwards;
   animation-delay: 1s;
 }
 
 .fon-style-full {
-  width: auto;
+  width: 60%;
   position: fixed;
   right: 0;
   top: 70px;
   z-index: 1;
-  height: 600px;
+  /* height: 600px; */
   object-fit: fill;
 }
 
@@ -146,7 +146,7 @@
   width: 100%;
   height: auto;
   animation: showGradMenu 3s linear forwards;
-  animation-delay: 1s;
+  /* animation-delay: 1s; */
 }
 
 /* градиент меню низ */
@@ -154,10 +154,10 @@
   position: fixed;
   right: 0;
   bottom: 0;
-  width: 120%;
+  width: 140%;
   height: auto;
   animation: showGradMenu 3s linear forwards;
-  animation-delay: 1s;
+  /* animation-delay: 1s; */
 }
 
 

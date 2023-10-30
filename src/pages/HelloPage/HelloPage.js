@@ -22,6 +22,7 @@ const HelloPage = () => {
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
+    const [showLogo3, setShowLogo3] = useState(false);
 
     const [fio, setFio] = useState("")
     const { setSpecId } = useUsersContext();
@@ -53,6 +54,7 @@ const HelloPage = () => {
     useEffect(() => {
         setTimeout(() =>  setShowGrad(true), 1000) //градиент верх
         setTimeout(() =>  setShowGrad2(true), 1000) // градиент низ
+        setTimeout(() =>  setShowLogo3(true), 1000)
         //setTimeout(() =>  setShowFio(true), 2000) // градиент низ
     })
 
@@ -63,7 +65,9 @@ const HelloPage = () => {
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
-            <img src={Fon} alt='' className='fon-style-full' />
+            {/* <img src={Fon} alt='' className='fon-style-full' /> */}
+
+            <img src={Fon} alt='' className='fon-style' style={{visibility: showLogo3 ? "visible": "hidden"}}/>
 
             <img src={FonGradTop} alt='' className='fon-style2' style={{visibility: showGrad ? "visible": "hidden"}} />
             <img src={FonGradBottom} alt='' className='fon-style21' style={{visibility: showGrad2 ? "visible": "hidden"}} />

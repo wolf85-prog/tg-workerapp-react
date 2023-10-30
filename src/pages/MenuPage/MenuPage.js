@@ -59,8 +59,8 @@ const MenuPage = () => {
     });
 
     useEffect(() => {
-        setTimeout(() =>  setShowGrad(true), 1000) //градиент верх
-        setTimeout(() =>  setShowGrad2(true), 1000) // градиент низ
+        setTimeout(() =>  setShowGrad(true), 500) //градиент верх
+        setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
     })
 
     const openInNewTab = (url) => {
@@ -81,9 +81,9 @@ const MenuPage = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
            
             <div className='menu-form'>               
-                <Link to={'/profile'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Профиль</button></Link>
-                <Link to={'/projects'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Проекты</button></Link>
-                <Link to={'/page3'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Смета</button></Link>
+                <Link to={'/profile'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Профиль</button></Link>
+                <Link to={'/projects'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Проекты</button></Link>
+                <Link to={'/page3'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Смета</button></Link>
                 <button role="link" class="image-button"  style={{ backgroundImage: `url(${ButtonsMenu2})`}} onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</button> 
                 <Link to={'/stavki'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Ставки</button></Link>
                 <Link to={'/info'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Информация</button></Link>
@@ -91,9 +91,9 @@ const MenuPage = () => {
                 <Link to={'/contacts'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Контакты</button></Link>           
             </div>
 
-            <div style={{display: 'flex', justifyContent: 'flex-end', padding: '15px 20px'}}>
+            <div style={{display: 'flex', justifyContent: 'flex-end', padding: '20px 20px'}}>
                 <div></div>
-                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px'}} />
+                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '25%'}} />
             </div>
             
              
