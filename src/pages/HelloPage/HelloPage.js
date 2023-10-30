@@ -8,17 +8,8 @@ import { getWorkerId } from '../../http/chatAPI';
 import Header from '../../components/Header/Header';
 import { useUsersContext } from "../../contexts/UserContext"
 
-//import FonTest from "../../image/back1.jpg";
-//import FonTest from "../../image/back2.jpg";
 
-// import FonTest01 from "../../image/background/Background 1.0 _ 320 х 568.png";
-// import FonTest02 from "../../image/background/Background 1.0 _ 375 х 598.png";
-// import FonTest03 from "../../image/background/Background 1.0 _ 414 х 658.png";
-
-// import FonTest11 from "../../image/background/Background 2.0 _ 320 х 568.png";
-// import FonTest12 from "../../image/background/Background 2.0 _ 375 х 598.png";
-// import FonTest13 from "../../image/background/Background 2.0 _ 414 х 658.png";
-
+import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/layers/ULEY_triangle.png";
 import FonGradTop from "../../image/layers/upper_red.png";
 import FonGradBottom from "../../image/layers/lower_blue.png";
@@ -28,6 +19,9 @@ const HelloPage = () => {
     const {user} = useTelegram();
     const navigate = useNavigate();
     const { width, isScreenSm, isScreenMd, isScreenLg, } = useResize();
+
+    const [showGrad, setShowGrad] = useState(false)
+    const [showGrad2, setShowGrad2] = useState(false)
 
     const [fio, setFio] = useState("")
     const { setSpecId } = useUsersContext();
@@ -56,22 +50,23 @@ const HelloPage = () => {
         fetchData()   
     });
 
+    useEffect(() => {
+        setTimeout(() =>  setShowGrad(true), 1000) //градиент верх
+        setTimeout(() =>  setShowGrad2(true), 1000) // градиент низ
+        //setTimeout(() =>  setShowFio(true), 2000) // градиент низ
+    })
+
 
     return (
         <div className="App">
             <Header header={{title: '', icon: 'false'}}/>
 
             {/* темный фон */}
-            {/* <img src={isScreenLg ? FonTest03 : (isScreenMd ? FonTest02 : FonTest01)} alt='' style={{width:"100%", position: 'absolute', left: '0'}} /> */}
-            
-            {/* фон с градиентом */}
-            {/* <img src={isScreenLg ? FonTest13 : (isScreenMd ? FonTest12 : FonTest11)} alt='' className='fon-style0' /> */}
-
-
+            <img src={BlackFon} alt='' className='fon-black' />
             <img src={Fon} alt='' className='fon-style' />
 
-            <img src={FonGradTop} alt='' className='fon-style2' />
-            <img src={FonGradBottom} alt='' className='fon-style21' />
+            <img src={FonGradTop} alt='' className='fon-style2' style={{visibility: showGrad ? "visible": "hidden"}} />
+            <img src={FonGradBottom} alt='' className='fon-style21' style={{visibility: showGrad2 ? "visible": "hidden"}} />
             
             <form>
                 <div style={{marginTop: '330px'}}>  

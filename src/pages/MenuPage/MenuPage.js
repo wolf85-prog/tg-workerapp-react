@@ -9,21 +9,13 @@ import { useUsersContext } from "../../contexts/UserContext"
 import { useResize } from './../../hooks/useResize';
 import { getWorkerId } from '../../http/chatAPI';
 
-import FonTest01 from "../../image/background/Background 1.0 _ 320 х 568.png";
-import FonTest02 from "../../image/background/Background 1.0 _ 375 х 598.png";
-import FonTest03 from "../../image/background/Background 1.0 _ 414 х 658.png";
-
-import FonTest11 from "../../image/background/Background 2.0 _ 320 х 568.png";
-import FonTest12 from "../../image/background/Background 2.0 _ 375 х 598.png";
-import FonTest13 from "../../image/background/Background 2.0 _ 414 х 658.png";
-
-import FonTest21 from "../../image/background/Background 3.0 _ 320 х 568.png";
-import FonTest22 from "../../image/background/Background 3.0 _ 375 х 598.png";
-import FonTest23 from "../../image/background/Background 3.0 _ 414 х 658.png";
-
+import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/layers/ULEY_triangle.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
+
+import ButtonsMenu from "../../image/buttons/button_for_menu.png"
+import smallMenu from "../../image/layers/ULEY text.png"
 
 const MenuPage = () => {
     const {user} = useTelegram();
@@ -32,6 +24,9 @@ const MenuPage = () => {
 
     const { setProjects, projects } = useUsersContext();
     const { setSpecId, flag } = useUsersContext();
+
+    const [showGrad, setShowGrad] = useState(false)
+    const [showGrad2, setShowGrad2] = useState(false)
 
  //----------------------------------------------------------------------------------
 
@@ -62,6 +57,11 @@ const MenuPage = () => {
         fetchData()   
     });
 
+    useEffect(() => {
+        setTimeout(() =>  setShowGrad(true), 1000) //градиент верх
+        setTimeout(() =>  setShowGrad2(true), 1000) // градиент низ
+    })
+
     const openInNewTab = (url) => {
         window.open(url, '_blank', 'noreferrer');
     };
@@ -72,22 +72,26 @@ const MenuPage = () => {
         <div className="App">
             <Header header={{title: 'Меню', icon: 'false'}}/>
 
-
+            {/* темный фон */}
+            <img src={BlackFon} alt='' className='fon-black' />
             <img src={Fon} alt='' className='fon-style' />
 
-            <img src={FonGradTop} alt='' className='fon-style2' />
-            <img src={FonGradBottom} alt='' className='fon-style21' />
+            <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
+            <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
            
-            <div className='menu-form'>
-                <Link to={'/profile'}><ButtonStatus>Профиль</ButtonStatus></Link> 
-                <Link to={'/projects'}><ButtonStatus>Проекты</ButtonStatus></Link>  
-                <Link to={'/page3'}><ButtonStatus>Смета</ButtonStatus></Link>  
-                <ButtonStatus role="link" onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</ButtonStatus> 
-                <Link to={'/stavki'}><ButtonStatus>Ставки</ButtonStatus></Link>
-                <Link to={'/info'}><ButtonStatus>Информация</ButtonStatus></Link>   
-                <Link to={'/faq'}><ButtonStatus>FAQ</ButtonStatus></Link>  
-                <Link to={'/contacts'}><ButtonStatus>Контакты</ButtonStatus></Link>
+            <div className='menu-form'>               
+                <Link to={'/profile'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Профиль</button></Link>
+                <Link to={'/projects'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Проекты</button></Link>
+                <Link to={'/page3'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Смета</button></Link>
+                <button role="link" class="image-button"  style={{ backgroundImage: `url(${ButtonsMenu})`}} onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</button> 
+                <Link to={'/stavki'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Ставки</button></Link>
+                <Link to={'/info'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Информация</button></Link>
+                <Link to={'/faq'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>FAQ</button></Link>
+                <Link to={'/contacts'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Контакты</button></Link>           
             </div>
+
+            <div style={{display: 'flex', justifyContent: 'flex-end'}}><img src={smallMenu} alt='' style={{position: 'relative', marginRight: '45px'}} /></div>
+            
              
         </div>
     );

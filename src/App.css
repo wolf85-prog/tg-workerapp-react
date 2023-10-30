@@ -85,6 +85,15 @@
   font-weight: bold;
 }
 
+.fon-black {
+  width: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 0;
+  height: 100%;
+}
+
 .fon-style {
   width: auto;
   position: fixed;
@@ -95,21 +104,50 @@
   object-fit: fill;
 }
 
+/* градиент верх */
 .fon-style2 {
   position: fixed;
   right: 0;
   top: 0;
   width: 100%;
   height: auto;
+  animation: showLabel 5s linear forwards;
+  animation-delay: 1s;
 }
 
+/* градиент низ */
 .fon-style21 {
   position: fixed;
   right: 0;
   bottom: 0;
   width: 100%;
   height: auto;
+  animation: showLabel 5s linear forwards;
+  animation-delay: 1s;
 }
+
+/* градиент меню верх */
+.fon-style-menu {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  animation: showGradMenu 3s linear forwards;
+  animation-delay: 1s;
+}
+
+/* градиент меню верх */
+.fon-style-menu2 {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  animation: showGradMenu 3s linear forwards;
+  animation-delay: 1s;
+}
+
 
 .fon-style22 {
   position: fixed;
@@ -134,8 +172,8 @@
 .fon-style3 {
   width: 280px; 
   position: relative;
-  margin-top: 270px;
-  animation: showBlock 6s linear forwards;
+  margin-top: 280px;
+  animation: showLabel 6s linear forwards;
   animation-delay: 1s;
 }
 
@@ -143,7 +181,7 @@
   width: 150px;
   position: relative;
   margin-left: 125px;
-  animation: showBlock 6s linear forwards;
+  animation: showLabel 6s linear forwards;
   animation-delay: 1s;
 }
 
@@ -161,8 +199,30 @@
   font-size: 26px;
   color: #ffffff;
   justify-content: center;
-  animation: showBlock 5s linear forwards;
-  /* animation-delay: 1s; */
+  animation: showFio 4s linear forwards;
+  animation-delay: 1s;
+}
+
+@keyframes showLabel {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+@keyframes showGradMenu {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes showBlock {
@@ -192,6 +252,15 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes showFio {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
