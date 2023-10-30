@@ -15,6 +15,7 @@ import FonGradTop from "../../image/layers/upper_red_corner_menu.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
 import ButtonsMenu from "../../image/buttons/button_for_menu.png"
+import ButtonsMenu2 from "../../image/buttons/button_for_menu2.png"
 import smallMenu from "../../image/layers/ULEY text.png"
 
 const MenuPage = () => {
@@ -83,14 +84,17 @@ const MenuPage = () => {
                 <Link to={'/profile'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Профиль</button></Link>
                 <Link to={'/projects'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Проекты</button></Link>
                 <Link to={'/page3'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Смета</button></Link>
-                <button role="link" class="image-button"  style={{ backgroundImage: `url(${ButtonsMenu})`}} onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</button> 
-                <Link to={'/stavki'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Ставки</button></Link>
-                <Link to={'/info'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Информация</button></Link>
-                <Link to={'/faq'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>FAQ</button></Link>
-                <Link to={'/contacts'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Контакты</button></Link>           
+                <button role="link" class="image-button"  style={{ backgroundImage: `url(${ButtonsMenu2})`}} onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</button> 
+                <Link to={'/stavki'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Ставки</button></Link>
+                <Link to={'/info'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Информация</button></Link>
+                {/* <Link to={'/faq'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>FAQ</button></Link> */}
+                <Link to={'/contacts'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Контакты</button></Link>           
             </div>
 
-            <div style={{display: 'flex', justifyContent: 'flex-end'}}><img src={smallMenu} alt='' style={{position: 'relative', marginRight: '45px'}} /></div>
+            <div style={{display: 'flex', justifyContent: 'flex-end', padding: '15px 20px'}}>
+                <div></div>
+                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px'}} />
+            </div>
             
              
         </div>

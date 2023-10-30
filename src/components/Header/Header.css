@@ -12,6 +12,7 @@
 
 .title {
     font-size: 20px;
+    margin-left: 5px;
 }
 
 .btn-close {
@@ -19,5 +20,5 @@
 }
 
 .username {
-    margin-right: 10px;
+    margin-right: 5px;
 }
