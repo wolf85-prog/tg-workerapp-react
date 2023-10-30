@@ -19,6 +19,7 @@ import FonTest from "../../image/back4.jpg";
 
 import btnMenu from "../../image/layers/icon_menu.png";
 import btnChange from "../../image/buttons/button_change.png";
+import smallMenu from "../../image/layers/ULEY text.png"
 
 
 //const API_URL = process.env.REACT_APP_API_URL
@@ -86,13 +87,22 @@ const ProfilePage = () => {
                     <li><div className="bullet-title">Мерч</div><img src={workerhub[0]?.merch.length > 0 ? iconCheck : iconUnCheck} alt='' width='25px' height='25px'/></li>
                     <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' | ')}</li>
                 </ol>
+
+                {/* small uley */}
+                <div style={{display: 'flex', justifyContent: 'flex-end', padding: '20px 20px', position: 'fixed', bottom: '85px', right: '0'}}>
+                    <div></div>
+                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px'}} />
+                </div>
+
                 <div className='block-buttons-profile'>
                     <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
                     {/* <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Внести изменения</MyButton> */}
-                    <button class="image-button" style={{ backgroundImage: `url(${btnChange})`}}>Внести изменения</button>
+                    <button class="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Внести изменения</button>
                 </div>
             </div>
             {/* } */}
+
+            
             
         </div>
     );
