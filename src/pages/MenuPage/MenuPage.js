@@ -14,7 +14,6 @@ import Fon from "../../image/layers/ULEY_triangle.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
-import ButtonsMenu from "../../image/buttons/button_for_menu.png"
 import ButtonsMenu2 from "../../image/buttons/button_for_menu2.png"
 import smallMenu from "../../image/layers/ULEY text.png"
 
@@ -34,7 +33,7 @@ const MenuPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id
+            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id
 
             if (worker.length > 0) {
                 //зарегистрирован

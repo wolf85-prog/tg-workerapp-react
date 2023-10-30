@@ -31,7 +31,7 @@ const HelloPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id
+            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id
 
             if (worker.length > 0) {
                 console.log("Вы уже зарегистрированы!", user?.id)
@@ -55,7 +55,6 @@ const HelloPage = () => {
         setTimeout(() =>  setShowGrad(true), 1000) //градиент верх
         setTimeout(() =>  setShowGrad2(true), 1000) // градиент низ
         setTimeout(() =>  setShowLogo3(true), 1000)
-        //setTimeout(() =>  setShowFio(true), 2000) // градиент низ
     })
 
 

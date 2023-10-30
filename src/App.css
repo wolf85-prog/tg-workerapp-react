@@ -96,9 +96,9 @@
 
 .fon-style {
   width: 60%;
-  position: fixed;
+  position: absolute;
   right: 0;
-  top: 70px;
+  top: 25%;
   z-index: 1;
   /* height: 600px; */
   object-fit: fill;
@@ -154,7 +154,7 @@
   position: fixed;
   right: 0;
   bottom: 0;
-  width: 140%;
+  width: 700px;
   height: auto;
   animation: showGradMenu 3s linear forwards;
   /* animation-delay: 1s; */
