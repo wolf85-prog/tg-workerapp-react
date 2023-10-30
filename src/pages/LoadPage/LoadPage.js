@@ -25,8 +25,6 @@ const LoadPage = () => {
         setTimeout(() =>  setShowLogo(true), 1000) //U.L.E.Y.
         setTimeout(() =>  setShowLogo2(true), 2000) // WORKHUB
 
-        //setTimeout(() =>  setShowLogo3(true), 3000) // треуголники
-
         setTimeout(() =>  setShowLogo(false), 7000)
         setTimeout(() =>  setShowLogo2(false), 7000)
 
@@ -39,7 +37,6 @@ const LoadPage = () => {
     return (
         <div className="App" style={{display: 'flex', height: '100vh'}}>
             <img src={BlackFon} alt='' className='fon-black' />
-            {/* <img src={Fon} alt='' className='fon-style' style={{visibility: showLogo3 ? "visible": "hidden"}}/> */}
 
             <div style={{position: 'relative', margin: 'auto', zIndex: '10'}}>
                 <img src={Logo} alt='' className='fon-style3' style={{visibility: showLogo ? "visible": "hidden"}}/>
