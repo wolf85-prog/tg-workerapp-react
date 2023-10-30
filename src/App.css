@@ -106,6 +106,16 @@
   animation-delay: 1s;
 }
 
+.fon-style-full {
+  width: auto;
+  position: fixed;
+  right: 0;
+  top: 70px;
+  z-index: 1;
+  height: 600px;
+  object-fit: fill;
+}
+
 /* градиент верх */
 .fon-style2 {
   position: fixed;

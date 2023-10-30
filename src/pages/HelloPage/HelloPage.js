@@ -63,7 +63,7 @@ const HelloPage = () => {
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
-            <img src={Fon} alt='' className='fon-style' />
+            <img src={Fon} alt='' className='fon-style-full' />
 
             <img src={FonGradTop} alt='' className='fon-style2' style={{visibility: showGrad ? "visible": "hidden"}} />
             <img src={FonGradBottom} alt='' className='fon-style21' style={{visibility: showGrad2 ? "visible": "hidden"}} />
