@@ -98,7 +98,8 @@
   width: 60%;
   position: absolute;
   right: 0;
-  top: 25%;
+  top: 0;
+  margin-top: 25%;
   z-index: 1;
   /* height: 600px; */
   object-fit: fill;
@@ -108,9 +109,10 @@
 
 .fon-style-full {
   width: 60%;
-  position: fixed;
+  position: absolute;
   right: 0;
-  top: 70px;
+  top: 0;
+  margin-top: 25%;
   z-index: 1;
   /* height: 600px; */
   object-fit: fill;

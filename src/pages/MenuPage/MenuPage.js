@@ -74,6 +74,7 @@ const MenuPage = () => {
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
+            
             <img src={Fon} alt='' className='fon-style-full' />
 
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
@@ -86,7 +87,6 @@ const MenuPage = () => {
                 <button role="link" class="image-button"  style={{ backgroundImage: `url(${ButtonsMenu2})`}} onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</button> 
                 <Link to={'/stavki'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Ставки</button></Link>
                 <Link to={'/info'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Информация</button></Link>
-                {/* <Link to={'/faq'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu})`}}>FAQ</button></Link> */}
                 <Link to={'/contacts'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Контакты</button></Link>           
             </div>
 
