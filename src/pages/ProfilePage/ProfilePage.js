@@ -38,7 +38,7 @@ const ProfilePage = () => {
     useEffect(() => {
 
         const fetchData = async() => {
-            const worker = await getWorkerId(user?.id) //user?.id
+            const worker = await getWorkerId('805436270') //user?.id
 
             console.log("worker: ", worker)
 
@@ -87,17 +87,19 @@ const ProfilePage = () => {
                     <li><div className="bullet-title">Мерч</div><img src={workerhub[0]?.merch.length > 0 ? iconCheck : iconUnCheck} alt='' width='25px' height='25px'/></li>
                     <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' | ')}</li>
                 </ol>
-
-                {/* small uley */}
-                <div style={{display: 'flex', justifyContent: 'flex-end', padding: '20px 20px', position: 'fixed', bottom: '85px', right: '0'}}>
-                    <div></div>
-                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px'}} />
+                <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
+                    <button class="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Внести изменения</button>
                 </div>
 
-                <div className='block-buttons-profile'>
+                {/* small uley */}
+                {/* <div style={{position: 'absolute', right: '0', top: '650px'}}>
+                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '130px'}} />
+                </div> */}
+
+                <div className='block-buttons-profile' style={{position: 'absolute', right: '0', top: '650px'}}>
                     <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
                     {/* <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Внести изменения</MyButton> */}
-                    <button class="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Внести изменения</button>
+                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '130px'}} />
                 </div>
             </div>
             {/* } */}

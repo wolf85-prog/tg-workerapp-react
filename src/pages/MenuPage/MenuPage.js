@@ -11,7 +11,7 @@ import { getWorkerId } from '../../http/chatAPI';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/layers/ULEY_triangle.png";
-import FonGradTop from "../../image/layers/upper_red_corner_menu.png";
+import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
 import ButtonsMenu2 from "../../image/buttons/button_for_menu2.png"
@@ -49,7 +49,7 @@ const MenuPage = () => {
                 else if (flag === 'NOREG') {
                     //не зарегистрирован
                     console.log("Зарегистрируйтесь!", user?.id)
-                    navigate("/add-worker")
+                    //navigate("/add-worker")
                 }
             }
         }
@@ -75,7 +75,9 @@ const MenuPage = () => {
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
             
-            <img src={Fon} alt='' className='fon-style-full' />
+            <div style={{display: 'flex', height: '100vh', position: 'absolute', right: '0'}}>
+                <img src={Fon} alt='' className='fon-style-full' />
+            </div>
 
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
@@ -90,9 +92,8 @@ const MenuPage = () => {
                 <Link to={'/contacts'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Контакты</button></Link>           
             </div>
 
-            <div style={{display: 'flex', justifyContent: 'flex-end', padding: '20px 20px'}}>
-                <div></div>
-                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '25%'}} />
+            <div style={{position: 'absolute', right: '0', top: '650px'}}>
+                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '130px'}} />
             </div>
             
              

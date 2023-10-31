@@ -95,11 +95,8 @@
 }
 
 .fon-style {
-  width: 60%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin-top: 25%;
+  position: relative;
+  margin: auto;
   z-index: 1;
   /* height: 600px; */
   object-fit: fill;
@@ -108,11 +105,8 @@
 }
 
 .fon-style-full {
-  width: 60%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin-top: 25%;
+  position: relative;
+  margin: auto;
   z-index: 1;
   /* height: 600px; */
   object-fit: fill;
@@ -159,7 +153,6 @@
   width: 700px;
   height: auto;
   animation: showGradMenu 3s linear forwards;
-  /* animation-delay: 1s; */
 }
 
 
@@ -180,7 +173,6 @@
   margin-top: -250px;
 
   animation: showBlock2 3s linear forwards;
-  /* animation-delay: 1s; */
 }
 
 .fon-style3 {

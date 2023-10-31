@@ -11,7 +11,7 @@ import { useUsersContext } from "../../contexts/UserContext"
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/layers/ULEY_triangle.png";
-import FonGradTop from "../../image/layers/upper_red.png";
+import FonGradTop from "../../image/layers/upper_red2.png";
 import FonGradBottom from "../../image/layers/lower_blue.png";
 
 const HelloPage = () => {
@@ -59,14 +59,17 @@ const HelloPage = () => {
 
 
     return (
-        <div className="App">
+        <div className="App" >
             <Header header={{title: '', icon: 'false'}}/>
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
             {/* <img src={Fon} alt='' className='fon-style-full' /> */}
 
-            <img src={Fon} alt='' className='fon-style' style={{visibility: showLogo3 ? "visible": "hidden"}}/>
+            <div style={{display: 'flex', height: '100vh', position: 'absolute', right: '0'}}>
+                <img src={Fon} alt='' className='fon-style' style={{visibility: showLogo3 ? "visible": "hidden"}}/>
+            </div>
+            
 
             <img src={FonGradTop} alt='' className='fon-style2' style={{visibility: showGrad ? "visible": "hidden"}} />
             <img src={FonGradBottom} alt='' className='fon-style21' style={{visibility: showGrad2 ? "visible": "hidden"}} />
