@@ -64,7 +64,10 @@ const ProfilePage = () => {
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
-            <img src={Fon} alt='' className='fon-style-full' />
+            
+            <div style={{display: 'flex', height: '100vh', position: 'absolute', right: '0'}}>
+                <img src={Fon} alt='' className='fon-style-full' />
+            </div>
 
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
