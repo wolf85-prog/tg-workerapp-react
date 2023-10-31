@@ -4,15 +4,20 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useProjects} from "../../hooks/useProjects"
 import Header from "../../components/Header/Header";
 import './ProjectPage.css';
-import MyButton from "../../components/UI/MyButton/MyButton";
-import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/BlueLine1.png";
+
 import Loader from "../../components/UI/Loader/Loader";
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 import { useUsersContext } from "../../contexts/UserContext"
 import { getProjectsAll, getBlockId, getDatabase } from '../../http/chatAPI';
-import FonTest from "../../image/back4.jpg";
+
+import BlackFon from "../../image/background/Background_black_600X800.png";
+import Fon from "../../image/layers/ULEY_triangle.png";
+import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
+import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
+
+import btnMenu from "../../image/layers/icon_menu.png";
+import smallMenu from "../../image/layers/ULEY text.png"
 
 
 const ProjectPage = () => {
@@ -24,7 +29,10 @@ const ProjectPage = () => {
     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
     //const [filter, setFilter] = useState('Все');
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
-    const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query, specId);
+    const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query, specId); //specId
+
+    const [showGrad, setShowGrad] = useState(false)
+    const [showGrad2, setShowGrad2] = useState(false)
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
     const arr_status = [] 
@@ -86,7 +94,7 @@ const ProjectPage = () => {
                                         console.log("arrayProject: ", arrayProject)
                                         setProjects2(arrayProject) 
                                         setProjects(arrayProject) 
-                                    }, 3000)    
+                                    }, 20000)    
                                 }
                             }                   
                         } else {
@@ -118,7 +126,10 @@ const ProjectPage = () => {
         
     }
 
-    
+    useEffect(() => {
+        setTimeout(() =>  setShowGrad(true), 500) //градиент верх
+        setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
+    })
 
     //---------------------------------------------------------------------------------------
 
@@ -126,9 +137,16 @@ const ProjectPage = () => {
         <div className="App">
             <Header header={{title: 'Мои проекты', icon: 'false'}}/>
 
-            {/* <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/>  */}
-            <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} /> 
+            {/* темный фон */}
+            <img src={BlackFon} alt='' className='fon-black' />
+            
+            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
+                <img src={Fon} alt='' className='fon-style-full' />
+            </div>
+
+            <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
+            <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
+           
 
             <ProjectFilter
                 filter={filter}
@@ -143,9 +161,11 @@ const ProjectPage = () => {
                 }
             </div>   
 
-            <div className='block-menu'>
-                <Link to={'/menu'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>       
-            </div>    
+
+            <div className='block-menu' style={{position: 'absolute', right: '0', top: '650px'}}>
+                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
+                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
+            </div>   
             
         </div>
     );

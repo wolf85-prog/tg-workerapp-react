@@ -1,12 +1,21 @@
 .block-menu {
-    position: fixed;
+    /* position: fixed;
     display: flex;
     justify-content: center;
     left: 0;
     bottom: 25px;
     width: 100%;
-    z-index: 2;
+    z-index: 2; */
     /* background-color: #161616; */
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 2;
 }
 
 .status_el{

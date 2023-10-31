@@ -49,7 +49,7 @@ const MenuPage = () => {
                 else if (flag === 'NOREG') {
                     //не зарегистрирован
                     console.log("Зарегистрируйтесь!", user?.id)
-                    //navigate("/add-worker")
+                    navigate("/add-worker")
                 }
             }
         }
@@ -75,7 +75,7 @@ const MenuPage = () => {
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
             
-            <div style={{display: 'flex', height: '100vh', position: 'absolute', right: '0'}}>
+            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
                 <img src={Fon} alt='' className='fon-style-full' />
             </div>
 
@@ -93,7 +93,7 @@ const MenuPage = () => {
             </div>
 
             <div style={{position: 'absolute', right: '0', top: '650px'}}>
-                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '130px'}} />
+                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
             </div>
             
              

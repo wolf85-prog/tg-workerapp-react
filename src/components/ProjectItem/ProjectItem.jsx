@@ -2,6 +2,8 @@ import React from 'react';
 import './ProjectItem.css';
 import {useNavigate} from "react-router-dom";
 
+import backgroundProject from './../../image/background/bacground_project.png'
+
 const ProjectItem = (props) => {
 
     const navigate = useNavigate();
@@ -45,7 +47,7 @@ const ProjectItem = (props) => {
     }
 
     return (
-        <div className={`box ${statusColor}`} onClick={onShowProject}>
+        <div className={`box ${statusColor}`} onClick={onShowProject} style={{ backgroundImage: `linear-gradient(#000000, #3d413e)` }}>
             <div className="post__content">
                 <div className="post_title">{props.post.title}</div>
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>

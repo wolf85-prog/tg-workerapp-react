@@ -15,10 +15,9 @@ import iconUnCheck from "../../image/uncheck.png";
 //import Loader from "../../components/UI/Loader/Loader";
 
 import { getWorkerId } from '../../http/chatAPI';
-import FonTest from "../../image/back4.jpg";
 
 import btnMenu from "../../image/layers/icon_menu.png";
-import btnChange from "../../image/buttons/button_change.png";
+import btnChange from "../../image/buttons/button_for_menu2.png"
 import smallMenu from "../../image/layers/ULEY text.png"
 
 
@@ -38,7 +37,7 @@ const ProfilePage = () => {
     useEffect(() => {
 
         const fetchData = async() => {
-            const worker = await getWorkerId('805436270') //user?.id
+            const worker = await getWorkerId(user?.id) //user?.id
 
             console.log("worker: ", worker)
 
@@ -94,15 +93,9 @@ const ProfilePage = () => {
                     <button class="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Внести изменения</button>
                 </div>
 
-                {/* small uley */}
-                {/* <div style={{position: 'absolute', right: '0', top: '650px'}}>
-                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '130px'}} />
-                </div> */}
-
                 <div className='block-buttons-profile' style={{position: 'absolute', right: '0', top: '650px'}}>
                     <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
-                    {/* <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Внести изменения</MyButton> */}
-                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '130px'}} />
+                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
                 </div>
             </div>
             {/* } */}
