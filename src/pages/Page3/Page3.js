@@ -135,7 +135,7 @@ const Page3 = () => {
                     </div>
                 </div>
 
-                {/* <img style={{marginTop: '10px', position: 'relative', zIndex: '6' }} src={banner2} alt='' width='100%' /> */}
+                <img style={{marginTop: '10px', position: 'relative', zIndex: '6' }} src={banner} alt='' width='100%' />
 
                 <div className='block2'>
                     <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>
