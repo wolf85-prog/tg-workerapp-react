@@ -9,6 +9,7 @@ import FonGrad from "../../image/BlueLine1.png";
 import check2 from "../../image/check2.png";
 import uncheck2 from "../../image/uncheck2.png";
 import banner2 from "../../image/BannerWorkhub2.png";
+import banner from "../../image/BannerWorkhub3.png";
 
 import FonTest from "../../image/back4.jpg";
 
@@ -38,10 +39,10 @@ const Page3 = () => {
                                  
                 <div id="table-scroll" class="table-scroll">
                     <div class="table-wrap">
-                        <table class="main-table">
+                        <table class="main-table" id="table">
                         <thead>
                             <tr>
-                            <th class="fixed-side" scope="col" style={{minWidth: '60px', background: '#000', height:'45px', zIndex: '15'}}>Дата</th>
+                            <th class="fixed-side" scope="col" style={{minWidth: '60px', height:'45px', zIndex: '15'}}>Дата</th>
                                 <th scope="col" style={{minWidth: '200px'}}>Проект</th>
                                 <th scope="col" style={{minWidth: '150px'}}>Вид работ</th>
                                 <th scope="col" style={{minWidth: '60px'}}>Старт</th>
@@ -55,7 +56,7 @@ const Page3 = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <th class="fixed-side">12.09</th>
+                                <td class="fixed-side">12.09</td>
                                 <td>Проект 1</td>
                                 <td>Монтаж</td>
                                 <td>23:00</td>
@@ -67,7 +68,7 @@ const Page3 = () => {
                                 <td style={{padding: '4px'}}><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
                             </tr>
                             <tr>
-                                <th class="fixed-side">13.09</th>
+                                <td class="fixed-side">13.09</td>
                                 <td>Проект 1</td>
                                 <td>Монтаж</td>
                                 <td>23:00</td>
@@ -79,7 +80,7 @@ const Page3 = () => {
                                 <td style={{padding: '4px'}}><img src={uncheck2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
                             </tr>
                             <tr>
-                                <th class="fixed-side">12.09</th>
+                                <td class="fixed-side">12.09</td>
                                 <td>Проект 1</td>
                                 <td>Монтаж</td>
                                 <td>23:00</td>
@@ -91,7 +92,7 @@ const Page3 = () => {
                                 <td style={{padding: 0}}></td>
                             </tr>
                             <tr>
-                                <th class="fixed-side">13.09</th>
+                                <td class="fixed-side">13.09</td>
                                 <td>Проект 1</td>
                                 <td>Монтаж</td>
                                 <td>23:00</td>
@@ -103,7 +104,7 @@ const Page3 = () => {
                                 <td style={{padding: 0}}></td>
                             </tr>
                             <tr>
-                                <th class="fixed-side">12.09</th>
+                                <td class="fixed-side">12.09</td>
                                 <td>Проект 1</td>
                                 <td>Монтаж</td>
                                 <td>23:00</td>
@@ -115,7 +116,7 @@ const Page3 = () => {
                                 <td style={{padding: 0}}></td>
                             </tr>
                             <tr>
-                                <th class="fixed-side">13.09</th>
+                                <td class="fixed-side">13.09</td>
                                 <td>Проект 1</td>
                                 <td>Монтаж</td>
                                 <td>23:00</td>
@@ -126,18 +127,15 @@ const Page3 = () => {
                                 <td>10 000,00</td>
                                 <td style={{padding: 0}}></td>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td colSpan={7}></td>
-                                <td>60 000,00</td>
-                                <td></td>
-                            </tr>
+                            {/* <tr>
+                                <td colSpan={10} style={{padding: '0'}}><img src={banner} alt='' width='300px'/></td>
+                            </tr> */}
                         </tbody>
                         </table>
                     </div>
                 </div>
 
-                <img style={{marginTop: '10px', position: 'relative', zIndex: '6' }} src={banner2} alt='' width='100%' />
+                {/* <img style={{marginTop: '10px', position: 'relative', zIndex: '6' }} src={banner2} alt='' width='100%' /> */}
 
                 <div className='block2'>
                     <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>

@@ -5,7 +5,7 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 import './SmetaPage.css';
 // import Fon from "../../image/logo_01_light.png";
 // import FonGrad from "../../image/BlueLine1.png";
-// import Banner from "../../image/BannerWorkhub.png";
+import Banner from "../../image/BannerWorkhub3.png";
 // import FonTest from "../../image/back4.jpg";
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
@@ -60,77 +60,80 @@ const SmetaPage = () => {
             
             <div className='form-smeta'>
 
-                {/* <table class="unfixed-table">
-                    
-                    <thead>
-                        <tr>    
-                            <th style={{textAlign: 'left', width: '135px'}}>Дата</th>
-                            <td colspan="2">31.12.2023</td>
-                        </tr>  
-                        
+            <table class="c-tbl" id="table">
+                <thead><tr>
+                    <th style={{width: '135px'}}>Дата</th><th colspan="2" className='th-inline'>31.12.2023</th></tr>
+                </thead>
+                <tbody>
+                     
                         <tr>
-                            <th style={{textAlign: 'left', width: '135px'}}>Проект</th>
+                            <td style={{width: '135px', color: '#494747'}}>Проект</td>
                             <td colspan="2">Название проекта</td>
                         </tr>
                         <tr>
-                            <th style={{textAlign: 'left', width: '135px'}}>Специальность</th>
+                            <td style={{width: '135px', color: '#494747'}}>Специальность</td>
                             <td colspan="2">Оператор световой пушки</td>
                         </tr>
                         <tr>
-                            <th style={{textAlign: 'left', width: '135px'}}>Вид работ</th>
+                            <td style={{width: '135px', color: '#494747'}}>Вид работ</td>
                             <td colspan="2">Монтаж</td>
                         </tr>
                         <tr>
-                            <th style={{textAlign: 'left', width: '135px'}}>Интервал</th>
+                            <td style={{width: '135px', color: '#494747'}}>Интервал</td>
                             <td>12:00</td>
                             <td>18:00</td>
                         </tr>
                         <tr>
-                            <th style={{textAlign: 'left', width: '135px'}}>Часы</th>
+                            <td style={{width: '135px', color: '#494747'}}>Часы</td>
                             <td colspan="2">6</td>
                         </tr>
                         <tr>
-                            <th style={{textAlign: 'left', width: '135px'}}>Смена</th>
+                            <td style={{width: '135px', color: '#494747'}}>Смена</td>
                             <td colspan="2">10</td>
                         </tr>
                         <tr>
-                            <th style={{textAlign: 'left', width: '135px'}}>Ставка</th>
+                            <td style={{width: '135px', color: '#494747'}}>Ставка</td>
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>
-                            <th style={{textAlign: 'left', width: '135px'}}>Переработка</th>
+                            <td style={{width: '135px', color: '#494747'}}>Переработка</td>
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>
-                            <th style={{textAlign: 'left', width: '135px'}}>Доп. расходы</th>
+                            <td style={{width: '135px', color: '#494747'}}>Доп. расходы</td>
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>
-                            <th style={{textAlign: 'left', width: '135px'}}>Такси / ГСМ</th>
+                            <td style={{width: '135px', color: '#494747'}}>Такси / ГСМ</td>
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>
-                            <th style={{textAlign: 'left', width: '135px'}}>Общ. транспорт</th>
+                            <td style={{width: '135px', color: '#494747'}}>Общ. транспорт</td>
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>
-                            <th style={{textAlign: 'left', width: '135px'}}>Мерч</th>
+                            <td style={{width: '135px', color: '#494747'}}>Мерч</td>
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>
                             <td colspan="4" style={{padding: '10px'}}></td>
                         </tr>
                         <tr>
-                            <td style={{textAlign: 'left', width: '135px'}}>Итого</td>
+                            <td style={{width: '135px'}}>Итого</td>
                             <td colspan="2">0.00</td>
                         </tr>
-                    </thead>
-                </table>  */}
+                        <tr>
+                            <td colspan="3" style={{padding: '0'}}><img src={Banner} alt='' width='100%'/></td>
+                        </tr>
+                </tbody>
+            </table>
+
+               
 
                 {/* <img style={{marginTop: '10px', position: 'relative', zIndex: '6' }} src={Banner} alt='' width='100%' /> */}
 
 
-                <img src={TablePng} alt='' width='100%'/>
+                {/* <img src={TablePng} alt='' width='100%'/> */}
 
                 <div className='block2'>
                     <MyButton style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
