@@ -56,7 +56,7 @@ const StavkiPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => {
-            const worker = await getWorkerId(user?.id) //user?.id '1408579113'
+            const worker = await getWorkerId('1408579113') //user?.id '1408579113'
 
             console.log("worker: ", worker)
 

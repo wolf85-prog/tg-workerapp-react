@@ -161,9 +161,9 @@ const Page3 = () => {
                       
             </div>
 
-            <div className='block-menu' style={{marginBottom: '25px'}}>
+            <div className='block-buttons-page3'>
                 <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
-                <img src={smallMenu} alt='' style={{position: 'relative', width: '120px'}} />
+                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
             </div>
 
         </div>
