@@ -60,8 +60,6 @@ const StavkiPage = () => {
         const fetchData = async() => {
             const worker = await getWorkerId(user?.id) //user?.id '1408579113'
 
-            console.log("worker: ", worker)
-
             setWorkerhub(worker)
 
             worker[0]?.spec.map((work)=>{
@@ -132,8 +130,8 @@ const StavkiPage = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
             
-            <form>
-                <div style={{marginTop: '100px', textAlign: 'left', paddingLeft: '15px',}}>                  
+            <div className='form-stavka'>
+                <div style={{marginTop: '100px', textAlign: 'left'}}>                  
                     <p
                         style={{
                             margin: '20px 5px',
@@ -145,18 +143,6 @@ const StavkiPage = () => {
                     {specs.map((worker, index) => index < 5 ? 
                         //worker.name 
                         <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '15px'}}>
-                            {/* <img src={worker.icon} alt=''/> */}
-                            {/* <MyButton onClick={handleClick} style={{width: "100%", 
-                                    background: '#006095', 
-                                    border: '1px solid #006095',
-                                    display: 'flex',
-                                    margin: '0 20px', 
-                                    justifyContent: 'space-between', 
-                                    alignItems: 'center',
-                                    zIndex: '6'}}>
-                                    {worker.name} {showTable ? <img src={TreugolUp} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>
-                                                            : <img src={TreugolDown} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>}
-                            </MyButton> */}
                             <button class="button-stavki" style={{ 
                                                             backgroundImage: `url(${ButtonStavka})`,
                                                             display: 'flex',
@@ -166,7 +152,7 @@ const StavkiPage = () => {
                                                             padding: '15px',
                                                             zIndex: '6'}} 
                                     onClick={handleClick} >
-                                        <img src={worker.icon} alt='' width={35}/>
+                                        <img src={worker.icon} alt='' width={30}/>
                                         {worker.name} 
                                         {showTable ? <img src={TreugolUp} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>
                                         : <img src={TreugolDown} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>}
@@ -174,20 +160,15 @@ const StavkiPage = () => {
                         </div>
                         : '' 
                     )}
-
                     
                      
                     {showTable ? <img className='table-image' src={Table1} alt='' width='95%' /> : '' }   
                 </div> 
+            </div> 
 
-                {/* <div className='block-buttons-stavki'>
-                    <Link to={'/menu'}><MyButton style={{marginTop: '100px', width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
-                </div> */}
-            </form> 
-
-            <div className='block-buttons-stavki' style={{}}>
+            <div className='footer-block' >
                 <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
-                <img src={smallMenu} alt='' style={{position: 'relative', width: '120px'}} />
+                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
             </div>        
         </div>
     );

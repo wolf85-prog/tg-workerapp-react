@@ -47,7 +47,7 @@ const ProjectItem = (props) => {
     }
 
     return (
-        <div className={`box ${statusColor}`} onClick={onShowProject} style={{ backgroundImage: `linear-gradient(#000000, #3d413e)` }}>
+        <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
             <div className="post__content">
                 <div className="post_title">{props.post.title}</div>
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>

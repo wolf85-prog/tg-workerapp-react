@@ -44,6 +44,12 @@ input[id="cb1"] {
     margin-top: 80px;
     margin-left: 20px;
     margin-right: 20px;
+
+    z-index: 2;
+    position: relative;
+    box-sizing: border-box;
+    height: 78vh;
+    overflow: auto;
 }
 
 .bullet {

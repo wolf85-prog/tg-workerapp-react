@@ -304,3 +304,17 @@
   stroke-linejoin: round;
   pointer-events: none;
 }
+
+
+.footer-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  padding-top: 15px;
+  margin-bottom: 25px;
+}

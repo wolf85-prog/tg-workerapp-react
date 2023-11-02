@@ -1,9 +1,22 @@
+.form-stavka{
+    margin-top: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    z-index: 2;
+    position: relative;
+    box-sizing:border-box;
+    height: 78vh;
+    overflow:auto;
+}
+
 .block-buttons-stavki {
     display: flex;
     justify-content: space-between;
     position: relative;
     padding: 0 20px;
 }
+
 .table-image {
     margin-top: 20px;
     position: relative;
@@ -11,8 +24,8 @@
 }
 
 .button-stavki {
-    width: 300px;
-    height: 55px;
+    width: 90%;
+    height: 60px;
     border: none;
     background-size: cover;
     background-color: transparent;

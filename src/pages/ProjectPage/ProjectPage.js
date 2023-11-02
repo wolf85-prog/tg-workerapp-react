@@ -161,16 +161,10 @@ const ProjectPage = () => {
                 }
             </div>   
 
-
-            <div className='block-menu' style={{position: 'absolute', right: '0', top: '650px'}}>
+            <div className='footer-block'>
                 <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
             </div>  
-
-            {/* <div className='block-menu'>
-                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
-                <img src={smallMenu} alt='' style={{position: 'relative', width: '120px'}} />
-            </div>  */}
             
         </div>
     );

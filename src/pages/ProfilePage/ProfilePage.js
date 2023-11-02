@@ -92,25 +92,13 @@ const ProfilePage = () => {
                 <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
                     <button class="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Внести изменения</button>
                 </div>
-
-                {/* <div className='block-buttons-profile' style={{position: 'absolute', right: '0', top: '650px'}}>
-                    <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
-                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
-                </div> */}
-
-                <div className='block-buttons-profile' style={{}}>
-                    <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
-                    <img src={smallMenu} alt='' style={{position: 'relative', width: '120px'}} />
-                </div>
-                
-                {/* <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
-                    
-                </div> */}
-
             </div>
             {/* } */}
 
-            
+            <div className='footer-block'>
+                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
+                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
+            </div>
             
         </div>
     );
