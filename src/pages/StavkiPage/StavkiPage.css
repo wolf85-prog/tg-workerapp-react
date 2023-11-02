@@ -1,9 +1,8 @@
 .block-buttons-stavki {
     display: flex;
     justify-content: space-between;
-    position: fixed;
-    bottom: 25px;
-    margin-left: 40%;
+    position: relative;
+    padding: 0 20px;
 }
 .table-image {
     margin-top: 20px;
