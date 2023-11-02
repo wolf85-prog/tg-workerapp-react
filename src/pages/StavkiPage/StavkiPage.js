@@ -5,30 +5,32 @@ import Header from "../../components/Header/Header";
 import './StavkiPage.css';
 
 import MyButton from "../../components/UI/MyButton/MyButton";
-import TreugolDown from "../../image/treugol.png";
-import TreugolUp from "../../image/treugol2.png";
+import TreugolDown from "../../image/buttons/treug_down.png";
+import TreugolUp from "../../image/buttons/treug_up.png";
 import Table1 from "../../image/tab_helper.png";
 import stagehands from "../../image/spec/7_stagehands.svg";
 import { getWorkerId } from '../../http/chatAPI';
 import specData from "../../data/specData"
 
-import Sound from "../../image/spec/1_sound.svg";
-import Riggers from "../../image/spec/2_riggers.svg";
-import Production from "../../image/spec/3_production.svg";
-import StageGround from "../../image/spec/4_stage_ground.svg";
-import Video from "../../image/spec/5_video.svg";
-import Light from "../../image/spec/6_light.svg";
-import Stagehands from "../../image/spec/7_stagehands.svg";
-import Trucks from "../../image/spec/8_trucks.svg";
-import Catering from "../../image/spec/9_catering.svg";
-import Photo from "../../image/spec/10_photo.svg";
-import Party from "../../image/spec/11_party.svg";
+import Sound from "../../image/spec/1_sound.png";
+import Riggers from "../../image/spec/2_riggers.png";
+import Production from "../../image/spec/3_production.png";
+import StageGround from "../../image/spec/4_stage_ground.png";
+import Video from "../../image/spec/5_video.png";
+import Light from "../../image/spec/6_light.png";
+import Stagehands from "../../image/spec/7_stagehands.png";
+import Trucks from "../../image/spec/8_trucks.png";
+import Catering from "../../image/spec/9_catering.png";
+import Photo from "../../image/spec/10_photo.png";
+import Party from "../../image/spec/11_party.png";
 
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
+
+import ButtonStavka from "../../image/buttons/button_stavka.png"
 
 
 import btnMenu from "../../image/layers/icon_menu.png";
@@ -56,7 +58,7 @@ const StavkiPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => {
-            const worker = await getWorkerId('1408579113') //user?.id '1408579113'
+            const worker = await getWorkerId(user?.id) //user?.id '1408579113'
 
             console.log("worker: ", worker)
 
@@ -142,9 +144,9 @@ const StavkiPage = () => {
                     
                     {specs.map((worker, index) => index < 5 ? 
                         //worker.name 
-                        <div style={{display: 'flex', justifyContent: 'flex-start', marginBottom: '15px'}}>
-                            <img src={worker.icon} alt=''/>
-                            <MyButton onClick={handleClick} style={{width: "100%", 
+                        <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '15px'}}>
+                            {/* <img src={worker.icon} alt=''/> */}
+                            {/* <MyButton onClick={handleClick} style={{width: "100%", 
                                     background: '#006095', 
                                     border: '1px solid #006095',
                                     display: 'flex',
@@ -154,7 +156,21 @@ const StavkiPage = () => {
                                     zIndex: '6'}}>
                                     {worker.name} {showTable ? <img src={TreugolUp} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>
                                                             : <img src={TreugolDown} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>}
-                            </MyButton>
+                            </MyButton> */}
+                            <button class="button-stavki" style={{ 
+                                                            backgroundImage: `url(${ButtonStavka})`,
+                                                            display: 'flex',
+                                                            margin: '0 20px', 
+                                                            justifyContent: 'space-between', 
+                                                            alignItems: 'center',
+                                                            padding: '15px',
+                                                            zIndex: '6'}} 
+                                    onClick={handleClick} >
+                                        <img src={worker.icon} alt='' width={35}/>
+                                        {worker.name} 
+                                        {showTable ? <img src={TreugolUp} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>
+                                        : <img src={TreugolDown} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>}
+                            </button>
                         </div>
                         : '' 
                     )}
