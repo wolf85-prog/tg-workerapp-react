@@ -60,7 +60,7 @@ const SmetaPage = () => {
 
             <table class="c-tbl" id="table">
                 <thead><tr>
-                    <th style={{width: '120px'}}>Дата</th><th colspan="2" className='th-inline'>31.12.2023</th></tr>
+                    <th>Дата</th><th colspan="2" className='th-inline'>31.12.2023</th></tr>
                 </thead>
                 <tbody>
                      
@@ -117,7 +117,7 @@ const SmetaPage = () => {
                             <td colspan="4" style={{padding: '10px'}}></td>
                         </tr>
                         <tr>
-                            <td style={{width: '120px'}}>Итого</td>
+                            <td>Итого</td>
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>
