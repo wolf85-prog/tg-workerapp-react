@@ -66,7 +66,8 @@ const HelloPage = () => {
             <img src={BlackFon} alt='' className='fon-black' />
             {/* <img src={Fon} alt='' className='fon-style-full' /> */}
 
-            <div style={{display: 'flex', height: '100vh', position: 'absolute', right: '0'}}>
+            {/* треугольники */}
+            <div style={{display: 'flex', height: '100vh', position: 'absolute', right: '0', opacity: '0.95'}}>
                 <img src={Fon} alt='' className='fon-style' style={{visibility: showLogo3 ? "visible": "hidden"}}/>
             </div>
             

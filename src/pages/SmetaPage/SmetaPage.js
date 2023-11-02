@@ -8,7 +8,7 @@ import Banner from "../../image/BannerWorkhub3.png";
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
-import FonGradTop from "../../image/layers/upper_red_corner_menu.png";
+import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
 import TablePng from "../../image/table_with_text.png"
@@ -60,64 +60,64 @@ const SmetaPage = () => {
 
             <table class="c-tbl" id="table">
                 <thead><tr>
-                    <th style={{width: '135px'}}>Дата</th><th colspan="2" className='th-inline'>31.12.2023</th></tr>
+                    <th style={{width: '120px'}}>Дата</th><th colspan="2" className='th-inline'>31.12.2023</th></tr>
                 </thead>
                 <tbody>
                      
                         <tr>
-                            <td style={{width: '135px', color: '#494747'}}>Проект</td>
+                            <td className='th-left'>Проект</td>
                             <td colspan="2">Название проекта</td>
                         </tr>
                         <tr>
-                            <td style={{width: '135px', color: '#494747'}}>Специальность</td>
-                            <td colspan="2">Оператор световой пушки</td>
+                            <td className='th-left'>Специальность</td>
+                            <td colspan="2">---</td>
                         </tr>
                         <tr>
-                            <td style={{width: '135px', color: '#494747'}}>Вид работ</td>
-                            <td colspan="2">Монтаж</td>
+                            <td className='th-left'>Вид работ</td>
+                            <td colspan="2">---</td>
                         </tr>
                         <tr>
-                            <td style={{width: '135px', color: '#494747'}}>Интервал</td>
-                            <td>12:00</td>
-                            <td>18:00</td>
+                            <td className='th-left'>Интервал</td>
+                            <td>00:00</td>
+                            <td>00:00</td>
                         </tr>
                         <tr>
-                            <td style={{width: '135px', color: '#494747'}}>Часы</td>
-                            <td colspan="2">6</td>
+                            <td className='th-left'>Часы</td>
+                            <td colspan="2">0</td>
                         </tr>
                         <tr>
-                            <td style={{width: '135px', color: '#494747'}}>Смена</td>
-                            <td colspan="2">10</td>
+                            <td className='th-left'>Смена</td>
+                            <td colspan="2">0</td>
                         </tr>
                         <tr>
-                            <td style={{width: '135px', color: '#494747'}}>Ставка</td>
+                            <td className='th-left'>Ставка</td>
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>
-                            <td style={{width: '135px', color: '#494747'}}>Переработка</td>
+                            <td className='th-left'>Переработка</td>
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>
-                            <td style={{width: '135px', color: '#494747'}}>Доп. расходы</td>
+                            <td className='th-left'>Доп. расходы</td>
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>
-                            <td style={{width: '135px', color: '#494747'}}>Такси / ГСМ</td>
+                            <td className='th-left'>Такси / ГСМ</td>
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>
-                            <td style={{width: '135px', color: '#494747'}}>Общ. транспорт</td>
+                            <td className='th-left'>Общ. транспорт</td>
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>
-                            <td style={{width: '135px', color: '#494747'}}>Мерч</td>
+                            <td className='th-left'>Мерч</td>
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>
                             <td colspan="4" style={{padding: '10px'}}></td>
                         </tr>
                         <tr>
-                            <td style={{width: '135px'}}>Итого</td>
+                            <td style={{width: '120px'}}>Итого</td>
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>

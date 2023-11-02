@@ -53,7 +53,7 @@ const ProjectItem = (props) => {
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>
                 <div>Начало: <span className="subscribe">{formattime}</span> </div>
                 <div style={{fontSize: '14px'}}>
-                    300.00 рублей х 10 часов = 3 000.00 руб.
+                    0.00 рублей х 10 часов = 0 000.00 рублей
                 </div>
             </div>
         </div>

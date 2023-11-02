@@ -1,12 +1,12 @@
 .form-smeta {
-    margin-top: 110px;
+    margin-top: 80px;
     margin-left: 20px;
     margin-right: 20px;
 
     z-index: 2;
     position: relative;
     box-sizing:border-box;
-    height:500px;
+    height: 550px;
     overflow:auto;
 }
 
@@ -44,6 +44,11 @@
 }
 
 :where(.c-tbl) {
+  font-family: Tahoma, Geneva, sans-serif;
+  /* margin: 25px 0; */
+  font-size: 0.9em;
+  font-family: sans-serif;
+
   border-collapse: separate;
   border-spacing: 0;
   table-layout: auto;
@@ -103,4 +108,9 @@
   border-inline-start-width: 0;
   border-block-color: #494747;
   color: #fff;
+}
+
+.th-left {
+  width: 120px;
+  color: #494747;
 }
