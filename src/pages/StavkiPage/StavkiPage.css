@@ -1,4 +1,6 @@
 .block-buttons-stavki {
+    display: flex;
+    justify-content: space-between;
     position: fixed;
     bottom: 25px;
     margin-left: 40%;

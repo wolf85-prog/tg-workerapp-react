@@ -3,8 +3,7 @@ import {Link} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import './StavkiPage.css';
-import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/BlueLine1.png";
+
 import MyButton from "../../components/UI/MyButton/MyButton";
 import TreugolDown from "../../image/treugol.png";
 import TreugolUp from "../../image/treugol2.png";
@@ -24,7 +23,16 @@ import Trucks from "../../image/spec/8_trucks.svg";
 import Catering from "../../image/spec/9_catering.svg";
 import Photo from "../../image/spec/10_photo.svg";
 import Party from "../../image/spec/11_party.svg";
-import FonTest from "../../image/back4.jpg";
+
+
+import BlackFon from "../../image/background/Background_black_600X800.png";
+import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
+import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
+import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
+
+
+import btnMenu from "../../image/layers/icon_menu.png";
+import smallMenu from "../../image/layers/ULEY text.png"
 
 const StavkiPage = () => {
     const [showTable, setShowTable] = useState(false)
@@ -33,12 +41,22 @@ const StavkiPage = () => {
     const [specs, setSpecs] = useState([])
 
     let arraySpec = []
+
+    const [showGrad, setShowGrad] = useState(false)
+    const [showGrad2, setShowGrad2] = useState(false)
+//----------------------------------------------------------------------------------
+
+    // при первой загрузке приложения выполнится код ниже
+    useEffect(() => {
+        setTimeout(() =>  setShowGrad(true), 500) //градиент верх
+        setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
+    }, []);
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => {
-            const worker = await getWorkerId('1408579113') //user?.id
+            const worker = await getWorkerId(user?.id) //user?.id '1408579113'
 
             console.log("worker: ", worker)
 
@@ -102,10 +120,15 @@ const StavkiPage = () => {
         <div className="App">
             <Header header={{title: 'Моя ставка', icon: 'false'}}/>
 
-            {/* <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/>  */}
+            {/* темный фон */}
+            <img src={BlackFon} alt='' className='fon-black' />
+            
+            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
+                <img src={Fon} alt='' className='fon-style-full' />
+            </div>
 
-            <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} /> 
+            <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
+            <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
             
             <form>
                 <div style={{marginTop: '100px', textAlign: 'left', paddingLeft: '15px',}}>                  
@@ -140,10 +163,16 @@ const StavkiPage = () => {
                      
                     {showTable ? <img className='table-image' src={Table1} alt='' width='95%' /> : '' }   
                 </div> 
-                <div className='block-buttons-stavki'>
+
+                {/* <div className='block-buttons-stavki'>
                     <Link to={'/menu'}><MyButton style={{marginTop: '100px', width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
-                </div>
-            </form>         
+                </div> */}
+            </form> 
+
+            <div className='block-buttons-stavki' style={{}}>
+                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
+                <img src={smallMenu} alt='' style={{position: 'relative', width: '120px'}} />
+            </div>        
         </div>
     );
 };

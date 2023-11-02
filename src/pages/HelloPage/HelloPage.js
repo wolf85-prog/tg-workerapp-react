@@ -10,7 +10,7 @@ import { useUsersContext } from "../../contexts/UserContext"
 
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
-import Fon from "../../image/layers/ULEY_triangle.png";
+import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red2.png";
 import FonGradBottom from "../../image/layers/lower_blue.png";
 

@@ -16,6 +16,16 @@
     left: 0;
     width: 100%;
     z-index: 2;
+    margin-bottom: 25px;
+
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    position: relative;
+    margin-bottom: 25px; */
 }
 
 .status_el{

@@ -6,7 +6,7 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 import './ProfilePage.css';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
-import Fon from "../../image/layers/ULEY_triangle.png";
+import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
@@ -93,10 +93,20 @@ const ProfilePage = () => {
                     <button class="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Внести изменения</button>
                 </div>
 
-                <div className='block-buttons-profile' style={{position: 'absolute', right: '0', top: '650px'}}>
+                {/* <div className='block-buttons-profile' style={{position: 'absolute', right: '0', top: '650px'}}>
                     <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
                     <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
+                </div> */}
+
+                <div className='block-buttons-profile' style={{}}>
+                    <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
+                    <img src={smallMenu} alt='' style={{position: 'relative', width: '120px'}} />
                 </div>
+                
+                {/* <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
+                    
+                </div> */}
+
             </div>
             {/* } */}
 

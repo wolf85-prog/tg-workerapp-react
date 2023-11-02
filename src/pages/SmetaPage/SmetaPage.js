@@ -3,13 +3,11 @@ import {useNavigate} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './SmetaPage.css';
-// import Fon from "../../image/logo_01_light.png";
-// import FonGrad from "../../image/BlueLine1.png";
+
 import Banner from "../../image/BannerWorkhub3.png";
-// import FonTest from "../../image/back4.jpg";
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
-import Fon from "../../image/layers/ULEY_triangle.png";
+import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 

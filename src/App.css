@@ -98,7 +98,7 @@
   position: relative;
   margin: auto;
   z-index: 1;
-  /* height: 600px; */
+  height: 90vh;
   object-fit: fill;
   animation: showGradMenu 4s linear forwards;
   animation-delay: 1s;
@@ -108,7 +108,7 @@
   position: relative;
   margin: auto;
   z-index: 1;
-  /* height: 600px; */
+  height: 90vh;
   object-fit: fill;
 }
 

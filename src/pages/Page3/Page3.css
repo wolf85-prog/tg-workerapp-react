@@ -44,6 +44,12 @@
     margin:auto;
     border-collapse:separate;
     border-spacing:0;
+    border-radius: 10px;
+    background-image: linear-gradient(45deg, black, transparent);
+    
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 0.9em;
+    font-family: sans-serif;
   }
 
   .table-scroll th, .table-scroll td {

@@ -12,7 +12,7 @@ import { useUsersContext } from "../../contexts/UserContext"
 import { getProjectsAll, getBlockId, getDatabase } from '../../http/chatAPI';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
-import Fon from "../../image/layers/ULEY_triangle.png";
+import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
@@ -165,7 +165,12 @@ const ProjectPage = () => {
             <div className='block-menu' style={{position: 'absolute', right: '0', top: '650px'}}>
                 <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
-            </div>   
+            </div>  
+
+            {/* <div className='block-menu'>
+                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
+                <img src={smallMenu} alt='' style={{position: 'relative', width: '120px'}} />
+            </div>  */}
             
         </div>
     );

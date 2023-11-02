@@ -10,7 +10,7 @@ import { useResize } from './../../hooks/useResize';
 import { getWorkerId } from '../../http/chatAPI';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
-import Fon from "../../image/layers/ULEY_triangle.png";
+import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
@@ -82,17 +82,20 @@ const MenuPage = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
            
-            <div className='menu-form'>               
-                <Link to={'/profile'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Профиль</button></Link>
-                <Link to={'/projects'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Проекты</button></Link>
-                <Link to={'/page3'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Смета</button></Link>
-                <button role="link" class="image-button"  style={{ backgroundImage: `url(${ButtonsMenu2})`}} onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</button> 
-                <Link to={'/stavki'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Ставки</button></Link>
-                <Link to={'/info'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Информация</button></Link>
-                <Link to={'/contacts'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Контакты</button></Link>           
+            <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
+                <div className='menu-form'>               
+                    <Link to={'/profile'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Профиль</button></Link>
+                    <Link to={'/projects'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Проекты</button></Link>
+                    <Link to={'/page3'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Смета</button></Link>
+                    <button role="link" class="image-button"  style={{ backgroundImage: `url(${ButtonsMenu2})`}} onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</button> 
+                    <Link to={'/stavki'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Ставки</button></Link>
+                    <Link to={'/info'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Информация</button></Link>
+                    <Link to={'/contacts'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Контакты</button></Link>           
+                </div>
             </div>
+            
 
-            <div style={{position: 'absolute', right: '0', top: '650px'}}>
+            <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
             </div>
             

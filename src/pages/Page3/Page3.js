@@ -1,27 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from "react-router-dom";
 //import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import './Page3.css';
 import MyButton from "../../components/UI/MyButton/MyButton";
-import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/BlueLine1.png";
+
+import BlackFon from "../../image/background/Background_black_600X800.png";
+import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
+import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
+import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
+
 import check2 from "../../image/check2.png";
 import uncheck2 from "../../image/uncheck2.png";
-import banner2 from "../../image/BannerWorkhub2.png";
 import banner from "../../image/BannerWorkhub3.png";
 
-import FonTest from "../../image/back4.jpg";
+import btnMenu from "../../image/layers/icon_menu.png";
+import smallMenu from "../../image/layers/ULEY text.png"
 
-//const API_URL = process.env.REACT_APP_API_URL
 
 const Page3 = () => {
-    
+    const [showGrad, setShowGrad] = useState(false)
+    const [showGrad2, setShowGrad2] = useState(false)
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-
+        setTimeout(() =>  setShowGrad(true), 500) //градиент верх
+        setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
     }, []);
 
     //---------------------------------------------------------------------------------------
@@ -30,13 +35,17 @@ const Page3 = () => {
         <div className="App">
             <Header header={{title: 'Моя смета', icon: 'false'}}/>
 
-            {/* <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/>  */}
-
-            <img src={FonTest} alt='' style={{width:"100%", position: 'absolute', left: '0'}} /> 
+            {/* темный фон */}
+            <img src={BlackFon} alt='' className='fon-black' />
             
-            <div className='form-smeta-page3'>
-                                 
+            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
+                <img src={Fon} alt='' className='fon-style-full' />
+            </div>
+
+            <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
+            <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
+            
+            <div className='form-smeta-page3'>                                
                 <div id="table-scroll" class="table-scroll">
                     <div class="table-wrap">
                         <table class="main-table" id="table">
@@ -138,22 +147,25 @@ const Page3 = () => {
                 <img style={{marginTop: '10px', position: 'relative', zIndex: '6' }} src={banner} alt='' width='100%' />
 
                 <div className='block2'>
-                    <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>
+
+                    <MyButton style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
                         Подтвердить смету
                     </MyButton>
-                    <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>
+                    <MyButton style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
                         Запросить информацию по смете
-                    </MyButton>  
-                    <MyButton style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>
-                        Выставить счет
-                    </MyButton>        
+                    </MyButton>
+                    <MyButton style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
+                    Выставить счет
+                    </MyButton>         
                 </div>
                       
             </div>
 
-            <div className='block-buttons-page3'>
-                <Link to={'/menu'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Меню</MyButton></Link>
+            <div className='block-menu' style={{marginBottom: '25px'}}>
+                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
+                <img src={smallMenu} alt='' style={{position: 'relative', width: '120px'}} />
             </div>
+
         </div>
     );
 };
