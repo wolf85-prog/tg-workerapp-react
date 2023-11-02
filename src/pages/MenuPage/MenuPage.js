@@ -33,7 +33,7 @@ const MenuPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id
+            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id
 
             if (worker.length > 0) {
                 //зарегистрирован
@@ -75,7 +75,7 @@ const MenuPage = () => {
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
             
-            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0', opacity: '0.95'}}>
+            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
                 <img src={Fon} alt='' className='fon-style-full' />
             </div>
 

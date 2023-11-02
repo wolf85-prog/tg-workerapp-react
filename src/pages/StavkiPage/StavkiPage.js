@@ -37,7 +37,7 @@ import btnMenu from "../../image/layers/icon_menu.png";
 import smallMenu from "../../image/layers/ULEY text.png"
 
 const StavkiPage = () => {
-    const [showTable, setShowTable] = useState(false)
+    const [showTable, setShowTable] = useState([false, false, false, false, false])
     const {user} = useTelegram();
     const [workerhub, setWorkerhub] = useState([])
     const [specs, setSpecs] = useState([])
@@ -58,7 +58,7 @@ const StavkiPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => {
-            const worker = await getWorkerId(user?.id) //user?.id '1408579113'
+            const worker = await getWorkerId('1408579113') //user?.id '1408579113'
 
             setWorkerhub(worker)
 
@@ -109,9 +109,21 @@ const StavkiPage = () => {
         fetchData()
     }, []);
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        showTable ? setShowTable(false) : setShowTable(true)
+    const handleClick = (ind) => {
+        console.log(ind, showTable)
+
+        if (showTable[ind]) {
+            showTable[ind] = false 
+            console.log(ind, showTable[ind])
+        }
+        else {
+            showTable[ind] = true 
+            console.log(ind, showTable[ind])
+        }
+
+        //showTable[ind] ? setShowTable(false) : setShowTable(true)
+
+        //setShowTable(showTable[ind])
     }
 
     //---------------------------------------------------------------------------------------
@@ -151,18 +163,19 @@ const StavkiPage = () => {
                                                             alignItems: 'center',
                                                             padding: '15px',
                                                             zIndex: '6'}} 
-                                    onClick={handleClick} >
+                                    onClick={()=>handleClick(index)} >
                                         <img src={worker.icon} alt='' width={30}/>
                                         {worker.name} 
-                                        {showTable ? <img src={TreugolUp} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>
+                                        {showTable[index] ? <img src={TreugolUp} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>
                                         : <img src={TreugolDown} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>}
                             </button>
+                            <br/>
+                             
                         </div>
                         : '' 
                     )}
                     
-                     
-                    {showTable ? <img className='table-image' src={Table1} alt='' width='95%' /> : '' }   
+                      
                 </div> 
             </div> 
 
