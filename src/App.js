@@ -23,6 +23,7 @@ import NewPassport from './pages/NewPassport/NewPassport';
 import NewPassport2 from './pages/NewPassport2/NewPassport2';
 import NewPassport3 from './pages/NewPassport3/NewPassport3';
 import AnketaPage from './pages/AnketaPage/AnketaPage';
+import NewStavka from './pages/NewStavka/NewStavka';
 
 function App() {
 
@@ -60,6 +61,8 @@ function App() {
                   <Route path={'info1'} element={<InfoPage1 />}/>
                   <Route path={'faq'} element={<FaqPage />}/>
                   <Route path={'stavki'} element={<StavkiPage />}/>
+
+                  <Route path={'add-stavka'} element={<NewStavka />}/>
               </Routes>
       </ThemeProvider>
   );
