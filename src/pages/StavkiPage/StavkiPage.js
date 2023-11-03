@@ -121,7 +121,6 @@ const StavkiPage = () => {
             console.log(ind, showTable[ind])
         }
 
-
         setShowTable(showTable)
     }
 
