@@ -17,7 +17,7 @@ import smallMenu from "../../image/layers/ULEY text.png"
 //import TextField from '@mui/material/TextField';
 //import { alpha, styled } from '@mui/material/styles';
 import specData from "../../data/specData"
-import { useUsersContext } from "./../../contexts/UserContext";
+import { useUsersContext } from "../../contexts/UserContext";
 import { sendMyMessage } from '../../http/chatAPI';
 
 const API_URL = process.env.REACT_APP_API_URL

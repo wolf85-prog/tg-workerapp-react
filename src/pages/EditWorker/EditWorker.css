@@ -1,0 +1,13 @@
+.block-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+}
+
+.form-new1 {
+    margin-top: 120px;
+    margin-left: 30px;
+    margin-right: 20px;
+    position: relative;
+    z-index: 6;
+}

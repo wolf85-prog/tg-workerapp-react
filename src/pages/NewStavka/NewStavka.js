@@ -10,7 +10,6 @@ import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
-import ButtonsMenu2 from "../../image/buttons/button_for_menu2.png"
 import smallMenu from "../../image/layers/ULEY text.png"
 
 import TextField from '@mui/material/TextField';

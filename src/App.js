@@ -24,6 +24,8 @@ import NewPassport2 from './pages/NewPassport2/NewPassport2';
 import NewPassport3 from './pages/NewPassport3/NewPassport3';
 import AnketaPage from './pages/AnketaPage/AnketaPage';
 import NewStavka from './pages/NewStavka/NewStavka';
+import EditWorker from './pages/EditWorker/EditWorker';
+import EditWorker2 from './pages/EditWorker2/EditWorker2';
 
 function App() {
 
@@ -63,6 +65,9 @@ function App() {
                   <Route path={'stavki'} element={<StavkiPage />}/>
 
                   <Route path={'add-stavka'} element={<NewStavka />}/>
+
+                  <Route path={'edit-worker'} element={<EditWorker />}/>
+                  <Route path={'edit-worker2'} element={<EditWorker2 />}/>
               </Routes>
       </ThemeProvider>
   );

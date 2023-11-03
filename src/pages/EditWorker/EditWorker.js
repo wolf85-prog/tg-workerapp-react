@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 import WorkerList from "../../components/WorkerList/WorkerList";
-import './NewWorker.css';
+import './EditWorker.css';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
@@ -17,12 +17,12 @@ import smallMenu from "../../image/layers/ULEY text.png"
 //import TextField from '@mui/material/TextField';
 //import { alpha, styled } from '@mui/material/styles';
 import specData from "../../data/specData"
-import { useUsersContext } from "./../../contexts/UserContext";
+import { useUsersContext } from "../../contexts/UserContext";
 import { sendMyMessage } from '../../http/chatAPI';
 
 const API_URL = process.env.REACT_APP_API_URL
 
-const NewWorker = () => {
+const EditWorker = () => {
     const navigate = useNavigate();
 
     const [showGrad, setShowGrad] = useState(false)
@@ -219,4 +219,4 @@ const NewWorker = () => {
 };
 
 
-export default NewWorker;
+export default EditWorker;

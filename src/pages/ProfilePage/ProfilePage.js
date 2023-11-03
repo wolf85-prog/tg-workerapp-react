@@ -90,7 +90,7 @@ const ProfilePage = () => {
                     <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' | ')}</li>
                 </ol>
                 <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
-                    <button class="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Внести изменения</button>
+                    <Link to={'/edit-worker'}><button class="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Внести изменения</button></Link>
                 </div>
             </div>
             {/* } */}
