@@ -141,7 +141,7 @@
   top: -30px;
   width: 100%;
   height: auto;
-  animation: showGradMenu 3s linear forwards;
+  animation: showGradMenu 5s linear forwards;
   /* animation-delay: 1s; */
 }
 
@@ -152,7 +152,7 @@
   bottom: 0;
   width: 700px;
   height: auto;
-  animation: showGradMenu 3s linear forwards;
+  animation: showGradMenu 5s linear forwards;
 }
 
 

@@ -121,9 +121,8 @@ const StavkiPage = () => {
             console.log(ind, showTable[ind])
         }
 
-        //showTable[ind] ? setShowTable(false) : setShowTable(true)
 
-        //setShowTable(showTable[ind])
+        setShowTable(showTable)
     }
 
     //---------------------------------------------------------------------------------------
@@ -143,7 +142,7 @@ const StavkiPage = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
             
             <div className='form-stavka'>
-                <div style={{marginTop: '100px', textAlign: 'left'}}>                  
+                <div style={{marginTop: '50px', textAlign: 'left'}}>                  
                     <p
                         style={{
                             margin: '20px 5px',
@@ -154,8 +153,8 @@ const StavkiPage = () => {
                     
                     {specs.map((worker, index) => index < 5 ? 
                         //worker.name 
-                        <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '15px'}}>
-                            <button class="button-stavki" style={{ 
+                        <div key={index} style={{display: 'flex', justifyContent: 'space-around', marginBottom: '15px'}}>
+                            <button className="button-stavki" style={{ 
                                                             backgroundImage: `url(${ButtonStavka})`,
                                                             display: 'flex',
                                                             margin: '0 20px', 
@@ -163,14 +162,14 @@ const StavkiPage = () => {
                                                             alignItems: 'center',
                                                             padding: '15px',
                                                             zIndex: '6'}} 
-                                    onClick={()=>handleClick(index)} >
+                                    onClick={()=>handleClick(index)}>
                                         <img src={worker.icon} alt='' width={30}/>
                                         {worker.name} 
                                         {showTable[index] ? <img src={TreugolUp} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>
                                         : <img src={TreugolDown} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>}
                             </button>
                             <br/>
-                             
+                            <img className='table-image' src={Table1} alt='' width='95%'  style={{display: showTable[index] ? "block" : "none"}}/>
                         </div>
                         : '' 
                     )}
