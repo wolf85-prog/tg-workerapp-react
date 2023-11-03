@@ -4,7 +4,6 @@ import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import './StavkiPage.css';
 
-import MyButton from "../../components/UI/MyButton/MyButton";
 import TreugolDown from "../../image/buttons/treug_down.png";
 import TreugolUp from "../../image/buttons/treug_up.png";
 import Table1 from "../../image/tab_helper.png";
@@ -31,7 +30,7 @@ import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
 import ButtonStavka from "../../image/buttons/button_stavka.png"
-
+import ButtonStavka2 from "../../image/buttons/button_stavka2.png"
 
 import btnMenu from "../../image/layers/icon_menu.png";
 import smallMenu from "../../image/layers/ULEY text.png"
@@ -109,19 +108,15 @@ const StavkiPage = () => {
         fetchData()
     }, []);
 
+
     const handleClick = (ind) => {
         console.log(ind, showTable)
 
-        if (showTable[ind]) {
-            showTable[ind] = false 
-            console.log(ind, showTable[ind])
-        }
-        else {
-            showTable[ind] = true 
-            console.log(ind, showTable[ind])
-        }
+        setShowTable(prevShownTable => ({
+            ...prevShownTable,
+            [ind]: !prevShownTable[ind]
+          }));
 
-        setShowTable(showTable)
     }
 
     //---------------------------------------------------------------------------------------
@@ -152,25 +147,85 @@ const StavkiPage = () => {
                     
                     {specs.map((worker, index) => index < 5 ? 
                         //worker.name 
-                        <div key={index} style={{display: 'flex', justifyContent: 'space-around', marginBottom: '15px'}}>
-                            <button className="button-stavki" style={{ 
-                                                            backgroundImage: `url(${ButtonStavka})`,
+                        <div key={index} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                            <div className="button-stavki" style={{ 
+                                                            backgroundImage: `url(${showTable[index] ? ButtonStavka2 : ButtonStavka})`,
                                                             display: 'flex',
                                                             margin: '0 20px', 
                                                             justifyContent: 'space-between', 
                                                             alignItems: 'center',
-                                                            padding: '15px',
+                                                            padding: '10px 25px',
                                                             zIndex: '6'}} 
                                     onClick={()=>handleClick(index)}>
                                         <img src={worker.icon} alt='' width={30}/>
                                         {worker.name} 
                                         {showTable[index] ? <img src={TreugolUp} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>
                                         : <img src={TreugolDown} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>}
-                            </button>
+                            </div>
                             <br/>
-                            <img className='table-image' src={Table1} alt='' width='95%'  style={{display: showTable[index] ? "block" : "none"}}/>
+                            {showTable[index] ? 
+                            // <img className='table-image' src={Table1} alt='' width='95%'/> 
+                            <div style={{marginBottom:'20px', marginTop: '-40px'}}>
+                                <table class="table-spec" id="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Моя ставка</th><th>400.00</th><th>руб./час</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Условия</td>
+                                                <td>Минималка</td>
+                                                <td>Ставка</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ночные проекты</td>
+                                                <td>4 часа</td>
+                                                <td>2400.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Москва</td>
+                                                <td>6 часов</td>
+                                                <td>2400.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Московская область</td>
+                                                <td>8 часов</td>
+                                                <td>2400.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Проекты на улице</td>
+                                                <td>4 часа</td>
+                                                <td>2400.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Переработки</td>
+                                                <td>10%</td>
+                                                <td>15%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Смена до 10 часов</td>
+                                                <td>400</td>
+                                                <td>руб./час</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Смена до 10 часов</td>
+                                                <td>600</td>
+                                                <td>руб./час</td>
+                                            </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            : null}
                         </div>
-                        : '' 
+                        : null 
                     )}
                     
                       

@@ -18,9 +18,10 @@
 }
 
 .table-image {
-    margin-top: 20px;
+    margin-top: -40px;
     position: relative;
     z-index: 6;
+    margin-bottom: 20px;
 }
 
 .button-stavki {
@@ -30,7 +31,80 @@
     background-size: cover;
     background-color: transparent;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
     margin-bottom: 20px;
 }
+
+
+:where(.table-spec) {
+    font-family: Tahoma, Geneva, sans-serif;
+    /* margin: 25px 0; */
+    font-size: 0.75em;
+    font-family: sans-serif;
+  
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: auto;
+    width: 99.9%;
+  }
+  
+  :where(.table-spec thead th) {
+    /* background-color: #494747; */
+    border-style: solid;
+    border-block-start-width: 1px;
+    border-inline-end-width: 1px;
+    border-block-end-width: 1px;
+    border-inline-start-width: 1px;
+    color: #494747;
+    padding-block: 0.6ch;
+    padding-inline: 2ch;
+  }
+  
+  :where(.table-spec td) {
+    background-color: transparent;
+    border-color: #494747;
+    border-style: solid;
+    border-block-start-width: 0;
+    border-inline-end-width: 1px;
+    border-block-end-width: 1px;
+    border-inline-start-width: 0;
+    padding-block: 0.6ch;
+    padding-inline:	2ch;
+  }
+  
+  /* Because of `border-collapse: separate`, we need to  */
+  :where(.table-spec tr td:first-of-type) {
+    border-inline-start-width: 1px;
+  }
+  /* For header-cells, we set the `border-color` of the first and last border to it's `background-color` */
+  :where(.table-spec tr th:last-of-type) {
+    border-inline-color: #494747;
+  }
+  :where(.table-spec tr th:first-of-type) {
+    border-inline-start-color: #494747;
+  }
+  /* Set `border-radius` on first and last rows, on first and last cell */
+  :where(.table-spec thead th:first-of-type) {
+    border-start-start-radius: 0.5rem;
+  }
+  :where(.table-spec thead th:last-of-type) {
+    border-start-end-radius: 0.5rem;
+  }
+  :where(.table-spec tbody tr:last-of-type td:first-of-type) {
+    border-end-start-radius: 0.5rem;
+  }
+  :where(.table-spec tr:last-of-type td:last-of-type) {
+    border-end-end-radius: 0.5rem;
+  }
+  
+  .th-inline {
+    border-inline-start-width: 0;
+    border-block-color: #494747;
+    color: #fff;
+  }
+  
+  .th-left {
+    width: 144px;
+    color: #494747;
+  }
