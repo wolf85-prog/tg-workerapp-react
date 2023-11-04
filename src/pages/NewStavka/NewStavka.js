@@ -47,7 +47,7 @@ const NewStavka = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Новая ставка', icon: 'false'}}/>
+            <Header header={{title: 'Альтернативная ставка', icon: 'false'}}/>
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
