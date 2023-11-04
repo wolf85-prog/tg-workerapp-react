@@ -169,7 +169,8 @@ const StavkiPage = () => {
                                 <table class="table-spec" id="table">
                                     <thead>
                                         <tr>
-                                            <th style={{height: '60px'}}>Моя ставка</th><th>400.00</th><th>руб./час</th>
+                                            <th style={{textAlign: 'center', height: '60px'}}>Моя ставка</th>
+                                            <th style={{textAlign: 'center'}}>400.00</th><th>руб./час</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -177,47 +178,47 @@ const StavkiPage = () => {
                                                 <td colspan="3"></td>
                                             </tr>
                                             <tr>
-                                                <td>Условия</td>
+                                                <td >Условия</td>
                                                 <td>Минималка</td>
                                                 <td>Ставка</td>
                                             </tr>
                                             <tr>
                                                 <td>Ночные проекты</td>
-                                                <td>4 часа</td>
-                                                <td>2400.00</td>
+                                                <td style={{textAlign: 'center'}}>4 часа</td>
+                                                <td style={{textAlign: 'center'}}>2 400.00</td>
                                             </tr>
                                             <tr>
                                                 <td>Москва</td>
-                                                <td>6 часов</td>
-                                                <td>2400.00</td>
+                                                <td style={{textAlign: 'center'}}>6 часов</td>
+                                                <td style={{textAlign: 'center'}}>2 400.00</td>
                                             </tr>
                                             <tr>
                                                 <td>Московская область</td>
-                                                <td>8 часов</td>
-                                                <td>2400.00</td>
+                                                <td style={{textAlign: 'center'}}>8 часов</td>
+                                                <td style={{textAlign: 'center'}}>2 400.00</td>
                                             </tr>
                                             <tr>
                                                 <td>Проекты на улице</td>
-                                                <td>4 часа</td>
-                                                <td>2400.00</td>
+                                                <td style={{textAlign: 'center'}}>4 часа</td>
+                                                <td style={{textAlign: 'center'}}>2 400.00</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3"></td>
                                             </tr>
                                             <tr>
                                                 <td>Переработки</td>
-                                                <td>10%</td>
-                                                <td>15%</td>
+                                                <td style={{textAlign: 'center'}}>10%</td>
+                                                <td style={{textAlign: 'center'}}>15%</td>
                                             </tr>
                                             <tr>
                                                 <td>Смена до 10 часов</td>
-                                                <td>400</td>
-                                                <td>руб./час</td>
+                                                <td style={{textAlign: 'center'}}>400</td>
+                                                <td style={{textAlign: 'center'}}>руб./час</td>
                                             </tr>
                                             <tr>
                                                 <td>Смена до 10 часов</td>
-                                                <td>600</td>
-                                                <td>руб./час</td>
+                                                <td style={{textAlign: 'center'}}>600</td>
+                                                <td style={{textAlign: 'center'}}>руб./час</td>
                                             </tr>
 
                                     </tbody>
