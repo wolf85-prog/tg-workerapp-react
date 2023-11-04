@@ -165,11 +165,11 @@ const StavkiPage = () => {
                             <br/>
                             {showTable[index] ? 
                             // <img className='table-image' src={Table1} alt='' width='95%'/> 
-                            <div style={{marginBottom:'20px', marginTop: '-40px'}}>
+                            <div style={{marginBottom:'20px', marginTop: '-48px', width: '88%'}}>
                                 <table class="table-spec" id="table">
                                     <thead>
                                         <tr>
-                                            <th>Моя ставка</th><th>400.00</th><th>руб./час</th>
+                                            <th style={{height: '60px'}}>Моя ставка</th><th>400.00</th><th>руб./час</th>
                                         </tr>
                                     </thead>
                                     <tbody>
