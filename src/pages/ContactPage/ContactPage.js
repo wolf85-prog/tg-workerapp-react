@@ -19,6 +19,11 @@ import btnContact4 from "../../image/buttons/contact[Web].png";
 const ContactPage = () => {
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
+
+    const [showButton1, setShowButton1] = useState(false)
+    const [showButton2, setShowButton2] = useState(false)
+    const [showButton3, setShowButton3] = useState(false)
+    const [showButton4, setShowButton4] = useState(false)
     
 //----------------------------------------------------------------------------------
 
@@ -26,6 +31,11 @@ const ContactPage = () => {
     useEffect(() => {
         setTimeout(() =>  setShowGrad(true), 500) //градиент верх
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
+
+        setTimeout(() =>  setShowButton1(true), 1000) // градиент низ
+        setTimeout(() =>  setShowButton2(true), 2000) // градиент низ
+        setTimeout(() =>  setShowButton3(true), 3000) // градиент низ
+        setTimeout(() =>  setShowButton4(true), 4000) // градиент низ
     });
 
     const openInNewTab = (url) => {
@@ -50,10 +60,10 @@ const ContactPage = () => {
             
             <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
                 <div className="form-contact">
-                    <img src={btnContact2} onClick={() => openInNewTab('tel:+74995001411')}  width='90' className='btns' alt=''/>
-                    <img src={btnContact1} onClick={() => openInNewTab('mailto:u.l.e.y@mail.ru')}  width='90' className='btns' alt=''/>
-                    <img src={btnContact4} onClick={() => openInNewTab('https://uley.team/')} width='90' className='btns' alt=''/>
-                    <img src={btnContact3} onClick={() => openInNewTab('https://vk.com/uley.team')} width='90' className='btns' alt=''/>
+                    <img src={btnContact2} onClick={() => openInNewTab('tel:+74995001411')}  width='90' className='btns' alt='' style={{visibility: showButton1 ? "visible": "hidden"}}/>
+                    <img src={btnContact1} onClick={() => openInNewTab('mailto:u.l.e.y@mail.ru')}  width='90' className='btns' alt='' style={{visibility: showButton2 ? "visible": "hidden"}}/>
+                    <img src={btnContact4} onClick={() => openInNewTab('https://uley.team/')} width='90' className='btns' alt='' style={{visibility: showButton3 ? "visible": "hidden"}}/>
+                    <img src={btnContact3} onClick={() => openInNewTab('https://vk.com/uley.team')} width='90' className='btns' alt='' style={{visibility: showButton4 ? "visible": "hidden"}}/>
                 </div>
             </div>
 
