@@ -20,7 +20,6 @@ const InfoPage = () => {
     const [showGrad2, setShowGrad2] = useState(false)
     const [modal, setModal] = useState(false)
 
-    const teh = 'Функция находится в разработке'
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
@@ -78,13 +77,9 @@ const InfoPage = () => {
             </div>
 
             <MyModal visible={modal} setVisible={setModal}>
-                    <h2><b>Информация</b></h2>
-                    <hr/>
-                    <br/>
-                    {teh}
-                    <br/>
-                    <br/>
-                    <MyButton onClick={clickButton}>ОК</MyButton>
+                <h3>Функция находится в разработке</h3>
+                <br/>
+                <MyButton style={{width: '200px', background: '#141414', border: '#141414'}} onClick={clickButton}>ЖДУ С НЕТЕРПЕНИЕМ</MyButton>
             </MyModal>
         </div>
     );

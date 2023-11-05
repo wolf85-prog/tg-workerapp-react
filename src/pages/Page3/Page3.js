@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import './Page3.css';
 import MyButton from "../../components/UI/MyButton/MyButton";
+import MyModal from "../../components/MyModal/MyModal";
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
@@ -21,6 +22,7 @@ import smallMenu from "../../image/layers/ULEY text.png"
 const Page3 = () => {
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
+    const [modal, setModal] = useState(false)
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
@@ -28,6 +30,15 @@ const Page3 = () => {
         setTimeout(() =>  setShowGrad(true), 500) //градиент верх
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
     });
+
+    {/* Закрыть */}
+    const clickButton = () => {
+        setModal(false)
+    }
+
+    const showPopup = () => {
+        setModal(true)
+    }
 
     //---------------------------------------------------------------------------------------
 
@@ -46,6 +57,7 @@ const Page3 = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
             
             <div className='form-smeta-page3'>                                
+                
                 <div id="table-scroll" class="table-scroll">
                     <div class="table-wrap">
                         <table class="main-table" id="table">
@@ -142,19 +154,20 @@ const Page3 = () => {
                         </tbody>
                         </table>
                     </div>
+                    <img className='style-banner' src={banner} alt='' width='100%' />
+
                 </div>
 
-                <img style={{marginTop: '10px', position: 'relative', zIndex: '6' }} src={banner} alt='' width='100%' />
-
+                
                 <div className='block2'>
 
-                    <MyButton style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
+                    <MyButton onClick={showPopup} style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
                         Подтвердить смету
                     </MyButton>
-                    <MyButton style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
+                    <MyButton onClick={showPopup} style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
                         Запросить информацию по смете
                     </MyButton>
-                    <MyButton style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
+                    <MyButton onClick={showPopup} style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
                     Выставить счет
                     </MyButton>         
                 </div>
@@ -165,6 +178,12 @@ const Page3 = () => {
                 <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
             </div>
+
+            <MyModal visible={modal} setVisible={setModal}>
+                <h3>Функция находится в разработке</h3>
+                <br/>
+                <MyButton style={{width: '200px', background: '#141414', border: '#141414'}} onClick={clickButton}>ЖДУ С НЕТЕРПЕНИЕМ</MyButton>
+            </MyModal>
 
         </div>
     );

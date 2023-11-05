@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
+import MyModal from "../../components/MyModal/MyModal";
 import './SmetaPage.css';
 
 import Banner from "../../image/BannerWorkhub3.png";
@@ -21,7 +22,8 @@ const SmetaPage = () => {
     //const location = useLocation()
 
     //const projNumber= location.state?.proj
-
+    
+    const [modal, setModal] = useState(false)
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
 //----------------------------------------------------------------------------------
@@ -38,6 +40,16 @@ const SmetaPage = () => {
         setTimeout(() =>  setShowGrad(true), 500) //градиент верх
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
     })
+
+    {/* Закрыть */}
+    const clickButton = () => {
+        setModal(false)
+
+    }
+
+    const showPopup = () => {
+        setModal(true)
+    }
 
     //---------------------------------------------------------------------------------------
 
@@ -134,10 +146,10 @@ const SmetaPage = () => {
                 {/* <img src={TablePng} alt='' width='100%'/> */}
 
                 <div className='block2'>
-                    <MyButton style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
+                    <MyButton onClick={showPopup} style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
                         Подтвердить смету
                     </MyButton>
-                    <MyButton style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
+                    <MyButton onClick={showPopup} style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
                         Запросить информацию по смете
                     </MyButton>  
                     {/* <button class="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Подтвердить смету</button>
@@ -151,6 +163,13 @@ const SmetaPage = () => {
                 <img src={btnMenu} alt='' onClick={handleClick} />
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
             </div>
+
+
+            <MyModal visible={modal} setVisible={setModal}>
+                <h3>Функция находится в разработке</h3>
+                <br/>
+                <MyButton style={{width: '200px', background: '#141414', border: '#141414'}} onClick={clickButton}>ЖДУ С НЕТЕРПЕНИЕМ</MyButton>
+            </MyModal>
         </div>
     );
 };

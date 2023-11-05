@@ -94,7 +94,9 @@ const ProjectPage = () => {
                                         console.log("arrayProject: ", arrayProject)
                                         setProjects2(arrayProject) 
                                         setProjects(arrayProject) 
-                                    }, 20000)    
+
+                                        //localStorage.setItem('projects', sortedAndSearchedPosts);
+                                    }, 10000)    
                                 }
                             }                   
                         } else {
@@ -129,6 +131,9 @@ const ProjectPage = () => {
     useEffect(() => {
         setTimeout(() =>  setShowGrad(true), 500) //градиент верх
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
+
+        //const rememberMe = localStorage.getItem('projects');
+        //console.log("rememberMe: ", rememberMe)
     })
 
     //---------------------------------------------------------------------------------------

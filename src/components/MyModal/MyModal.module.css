@@ -5,15 +5,18 @@
     right: 0;
     left: 0;
     display: none;
-    background: rgba(0,0,0, 0.5);
+    background: rgba(0,0,0, 0.5);  
+    z-index: 15;
 }
 
 .myModalContent {
     padding: 25px;
-    background: white;
+    background: #272727;
     border-radius: 16px;
     min-width: 250px;
-    color: #000;
+    color: #fff;
+    position: relative;
+    z-index: 15;
 }
 
 .myModal.active {

@@ -11,12 +11,12 @@ import stagehands from "../../image/spec/7_stagehands.svg";
 import { getWorkerId } from '../../http/chatAPI';
 import specData from "../../data/specData"
 
-import Sound from "../../image/spec/1_sound.png";
+import Sound from "../../image/spec/1_sound2.png";
 import Riggers from "../../image/spec/2_riggers.png";
 import Production from "../../image/spec/3_production.png";
 import StageGround from "../../image/spec/4_stage_ground.png";
 import Video from "../../image/spec/5_video.png";
-import Light from "../../image/spec/6_light.png";
+import Light from "../../image/spec/6_light2.png";
 import Stagehands from "../../image/spec/7_stagehands.png";
 import Trucks from "../../image/spec/8_trucks.png";
 import Catering from "../../image/spec/9_catering.png";
@@ -167,58 +167,59 @@ const StavkiPage = () => {
                             // <img className='table-image' src={Table1} alt='' width='95%'/> 
                             <div style={{marginBottom:'20px', marginTop: '-48px', width: '88%'}}>
                                 <table class="table-spec" id="table">
-                                    <thead>
-                                        <tr>
-                                            <th style={{textAlign: 'center', height: '60px'}}>Моя ставка</th>
-                                            <th style={{textAlign: 'center'}}>400.00</th><th>руб./час</th>
-                                        </tr>
-                                    </thead>
                                     <tbody>
+                                        <tr>
+                                            <td className='title-gray' style={{verticalAlign: 'bottom', height: '60px'}}>Моя ставка</td>
+                                            <td style={{verticalAlign: 'bottom'}}>400.00</td>
+                                            <td style={{verticalAlign: 'bottom'}}>руб./час</td>
+                                        </tr>
+                                    {/* </thead> */}
+                                    {/* <tbody> */}
                                             <tr>
-                                                <td colspan="3"></td>
+                                                <td style={{height: '25px'}} colspan="3"></td>
                                             </tr>
                                             <tr>
-                                                <td >Условия</td>
-                                                <td>Минималка</td>
-                                                <td>Ставка</td>
+                                                <td className='title-gray'>Условия</td>
+                                                <td className='title-gray'>Минималка</td>
+                                                <td className='title-gray'>Ставка</td>
                                             </tr>
                                             <tr>
-                                                <td>Ночные проекты</td>
-                                                <td style={{textAlign: 'center'}}>4 часа</td>
-                                                <td style={{textAlign: 'center'}}>2 400.00</td>
+                                                <td className='title-gray'>Ночные проекты</td>
+                                                <td>4 часа</td>
+                                                <td>2 400.00</td>
                                             </tr>
                                             <tr>
-                                                <td>Москва</td>
-                                                <td style={{textAlign: 'center'}}>6 часов</td>
-                                                <td style={{textAlign: 'center'}}>2 400.00</td>
+                                                <td className='title-gray'>Москва</td>
+                                                <td>6 часов</td>
+                                                <td>2 400.00</td>
                                             </tr>
                                             <tr>
-                                                <td>Московская область</td>
-                                                <td style={{textAlign: 'center'}}>8 часов</td>
-                                                <td style={{textAlign: 'center'}}>2 400.00</td>
+                                                <td className='title-gray'>Московская область</td>
+                                                <td>8 часов</td>
+                                                <td>2 400.00</td>
                                             </tr>
                                             <tr>
-                                                <td>Проекты на улице</td>
-                                                <td style={{textAlign: 'center'}}>4 часа</td>
-                                                <td style={{textAlign: 'center'}}>2 400.00</td>
+                                                <td className='title-gray'>Проекты на улице</td>
+                                                <td>4 часа</td>
+                                                <td>2 400.00</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="3"></td>
+                                                <td style={{height: '25px'}} colspan="3"></td>
                                             </tr>
                                             <tr>
-                                                <td>Переработки</td>
-                                                <td style={{textAlign: 'center'}}>10%</td>
-                                                <td style={{textAlign: 'center'}}>15%</td>
+                                                <td className='title-gray'>Переработки</td>
+                                                <td>10%</td>
+                                                <td>15%</td>
                                             </tr>
                                             <tr>
-                                                <td>Смена до 10 часов</td>
-                                                <td style={{textAlign: 'center'}}>400</td>
-                                                <td style={{textAlign: 'center'}}>руб./час</td>
+                                                <td className='title-gray'>Смена до 10 часов</td>
+                                                <td>400</td>
+                                                <td>руб./час</td>
                                             </tr>
                                             <tr>
-                                                <td>Смена до 10 часов</td>
-                                                <td style={{textAlign: 'center'}}>600</td>
-                                                <td style={{textAlign: 'center'}}>руб./час</td>
+                                                <td className='title-gray'>Смена до 10 часов</td>
+                                                <td>600</td>
+                                                <td>руб./час</td>
                                             </tr>
 
                                     </tbody>
