@@ -46,6 +46,9 @@ const ProjectPage = () => {
         
         const fetchDataProjects = async () => {
             console.log("projects contex: ", projects)
+
+            const projs = projects.length > 0 ? localStorage.getItem('projects') : '';
+            console.log("projs: ", projs)
             
             if (projects.length === 0) {         
                 console.log("Начинаю загружать проекты...")
@@ -95,7 +98,7 @@ const ProjectPage = () => {
                                         setProjects2(arrayProject) 
                                         setProjects(arrayProject) 
 
-                                        //localStorage.setItem('projects', sortedAndSearchedPosts);
+                                        localStorage.setItem('projects', arrayProject);
                                     }, 10000)    
                                 }
                             }                   

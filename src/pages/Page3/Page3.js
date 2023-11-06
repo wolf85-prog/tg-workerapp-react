@@ -17,7 +17,7 @@ import banner from "../../image/BannerWorkhub3.png";
 
 import btnMenu from "../../image/layers/icon_menu.png";
 import smallMenu from "../../image/layers/ULEY text.png"
-
+import BackModal from "../../image/background/bacground_modal.png"
 
 const Page3 = () => {
     const [showGrad, setShowGrad] = useState(false)
@@ -38,6 +38,9 @@ const Page3 = () => {
 
     const showPopup = () => {
         setModal(true)
+        setTimeout(()=> {
+            setModal(false)
+        }, 1300)
     }
 
     //---------------------------------------------------------------------------------------
@@ -180,9 +183,7 @@ const Page3 = () => {
             </div>
 
             <MyModal visible={modal} setVisible={setModal}>
-                <h3>Функция находится в разработке</h3>
-                <br/>
-                <MyButton style={{width: '200px', background: '#141414', border: '#141414'}} onClick={clickButton}>ЖДУ С НЕТЕРПЕНИЕМ</MyButton>
+                <img src={BackModal} alt=''/>
             </MyModal>
 
         </div>

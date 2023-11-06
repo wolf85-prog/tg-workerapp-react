@@ -17,6 +17,7 @@ import TablePng from "../../image/table_with_text.png"
 import btnMenu from "../../image/layers/icon_menu.png";
 import btnChange from "../../image/buttons/button_change.png";
 import smallMenu from "../../image/layers/ULEY text.png"
+import BackModal from "../../image/background/bacground_modal.png"
 
 const SmetaPage = () => {
     //const location = useLocation()
@@ -49,6 +50,9 @@ const SmetaPage = () => {
 
     const showPopup = () => {
         setModal(true)
+        setTimeout(()=> {
+            setModal(false)
+        }, 1300)
     }
 
     //---------------------------------------------------------------------------------------
@@ -166,9 +170,7 @@ const SmetaPage = () => {
 
 
             <MyModal visible={modal} setVisible={setModal}>
-                <h3>Функция находится в разработке</h3>
-                <br/>
-                <MyButton style={{width: '200px', background: '#141414', border: '#141414'}} onClick={clickButton}>ЖДУ С НЕТЕРПЕНИЕМ</MyButton>
+                <img src={BackModal} alt=''/>
             </MyModal>
         </div>
     );

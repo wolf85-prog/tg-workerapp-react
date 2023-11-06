@@ -15,6 +15,8 @@ import ButtonsInfo from "../../image/buttons/button_info.png"
 import btnMenu from "../../image/layers/icon_menu.png";
 import smallMenu from "../../image/layers/ULEY text.png"
 
+import BackModal from "../../image/background/bacground_modal.png"
+
 const InfoPage = () => {
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
@@ -38,6 +40,9 @@ const InfoPage = () => {
 
     const showPopup = () => {
         setModal(true)
+        setTimeout(()=> {
+            setModal(false)
+        }, 1300)
     }
     //---------------------------------------------------------------------------------------
 
@@ -77,9 +82,7 @@ const InfoPage = () => {
             </div>
 
             <MyModal visible={modal} setVisible={setModal}>
-                <h3>Функция находится в разработке</h3>
-                <br/>
-                <MyButton style={{width: '200px', background: '#141414', border: '#141414'}} onClick={clickButton}>ЖДУ С НЕТЕРПЕНИЕМ</MyButton>
+                <img src={BackModal} alt=''/>
             </MyModal>
         </div>
     );
