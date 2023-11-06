@@ -5,8 +5,15 @@ import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './EditWorker2.css';
 import Calendar from "../../image/calendar.svg";
-import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/gradient2.png";
+
+import BlackFon from "../../image/background/Background_black_600X800.png";
+import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
+import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
+import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
+
+import btnMenu from "../../image/layers/icon_menu.png";
+import smallMenu from "../../image/layers/ULEY text.png"
+
 import CustomSelect3 from "../../components/UI/CustomSelect3/CustomSelect3";
 
 import TextField from '@mui/material/TextField';
@@ -21,13 +28,15 @@ const API_URL = process.env.REACT_APP_API_URL
 
 const EditWorker2 = () => {
     //const {city, setCity, dateborn, setDateborn} = useUsersContext();
+    const [showGrad, setShowGrad] = useState(false)
+    const [showGrad2, setShowGrad2] = useState(false)
+    const [modal, setModal] = useState(false)
 
     const {tg, queryId, user} = useTelegram();
 
     const { workerFam, workerName, phone, workers, 
         city, setCity, dateborn, setDateborn } = useUsersContext();
 
-    //console.log(workerFam, workerName, phone, workers, city, dateborn)
 
     const [isLoading, setIsLoading] = useState(false);
     const [selectedElement, setSelectedElement] = useState("")
@@ -51,6 +60,11 @@ const EditWorker2 = () => {
         //setSelectedElement(2000);
         console.log(workerFam, workerName, phone, workers, city, dateborn)
     }, [workerFam, workerName, phone, workers, city, dateborn])
+
+    useEffect(() => {
+        setTimeout(() =>  setShowGrad(true), 500) //градиент верх
+        setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
+    });
 
     const onDatesSelectChange = (e) => {
         setSelectedElement(e.target.options.value);
@@ -117,8 +131,15 @@ const EditWorker2 = () => {
         <div className="App">
             <Header header={{title: 'Новый специалист', icon: 'false'}}/>
 
-            <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/>
+            {/* темный фон */}
+            <img src={BlackFon} alt='' className='fon-black' />
+            
+            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
+                <img src={Fon} alt='' className='fon-style-full' />
+            </div>
+
+            <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
+            <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
             <div className='form-new3'>
                 {/*Город*/}
@@ -143,9 +164,10 @@ const EditWorker2 = () => {
                      />
                 {/* </div> */}
 
-                <div className='block-buttons-new3'>
-                    <Link to={'/edit-worker2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
-                    {/* <Link to={'/add-worker4'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>  */}
+
+                <div className='footer-block' style={{bottom: '0'}}>
+                    <Link to={'/edit-worker'}><img src={btnMenu} alt='' /></Link>
+                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
                 </div>
             </div>
             
