@@ -209,7 +209,7 @@ const EditWorker = () => {
                 <WorkerList remove={removeWorker} workers={workers} />
                 
 
-                <Link to={'/edit-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>     
+                <Link to={'/edit-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Сохранить</MyButton></Link>     
             </div>
 
             <div className='footer-block' style={{bottom: '0'}}>

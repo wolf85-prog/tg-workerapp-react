@@ -17,3 +17,13 @@
     position: relative;
     z-index: 6;
 }
+
+.saveStyle {
+    margin: 20px 25px;
+    display: flex;
+    font-size: 26px;
+    color: #ffffff;
+    justify-content: center;
+    z-index: 10;
+    position: relative;
+  }

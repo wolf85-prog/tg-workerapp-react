@@ -64,7 +64,7 @@ const ProfilePage = () => {
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
             
-            <div style={{display: 'flex', height: '100vh', position: 'absolute', right: '0'}}>
+            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0', opacity: '0.6'}}>
                 <img src={Fon} alt='' className='fon-style-full' />
             </div>
 

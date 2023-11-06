@@ -100,7 +100,6 @@
   z-index: 1;
   height: 90vh;
   object-fit: fill;
-  opacity: 0.5;
   animation: showGradMenu 4s linear forwards;
   animation-delay: 1s;
 }
@@ -111,7 +110,15 @@
   z-index: 1;
   height: 90vh;
   object-fit: fill;
-  opacity: 0.5;
+  opacity: 0.6;
+}
+
+.fon-style-full2 {
+  position: relative;
+  margin: auto;
+  z-index: 1;
+  height: 90vh;
+  object-fit: fill;
 }
 
 /* градиент верх */
@@ -121,6 +128,7 @@
   top: -50px;
   width: 100%;
   height: auto;
+  z-index: 1;
   animation: showLabel 5s linear forwards;
   animation-delay: 1s;
 }
@@ -132,6 +140,7 @@
   bottom: -50px;
   width: 100%;
   height: auto;
+  z-index: 1;
   animation: showLabel 5s linear forwards;
   animation-delay: 1s;
 }
@@ -152,7 +161,7 @@
   position: fixed;
   right: 0;
   bottom: 0;
-  width: 100%;
+  width: 130%;
   height: auto;
   animation: showGradMenu 5s linear forwards;
 }

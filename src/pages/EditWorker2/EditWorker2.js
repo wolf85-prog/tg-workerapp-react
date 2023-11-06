@@ -129,7 +129,7 @@ const EditWorker2 = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Новый специалист', icon: 'false'}}/>
+            <Header header={{title: '', icon: 'false'}}/>
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
@@ -141,35 +141,18 @@ const EditWorker2 = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
-            <div className='form-new3'>
-                {/*Город*/}
-                <div className="text-field text-field_floating">
-                    <RedditTextField fullWidth
-                                    label="Ваш город"
-                                    id="worker_name"
-                                    variant="filled"
-                                    onChange={onChangeCity}
-                                    value={city}
-                    />
-                </div>
+                
+            <form>
+                <div style={{marginTop: '330px'}}>  
+                    <p className='saveStyle'> Ваши изменения в обработке!</p>        
+                </div>       
+            </form>
 
-                {/* <div className="text-field text-field_floating"> */}
-                    <CustomSelect3
-                        id="dateborn"
-                        title="Год рождения"
-                        options={dates}
-                        selectedElement={selectedElement}
-                        setSelectedElement={setSelectedElement}
-                        onChange={onDatesSelectChange}
-                     />
-                {/* </div> */}
-
-
-                <div className='footer-block' style={{bottom: '0'}}>
-                    <Link to={'/edit-worker'}><img src={btnMenu} alt='' /></Link>
-                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
-                </div>
+            <div className='footer-block' style={{bottom: '0'}}>
+                <Link to={'/profile'}><img src={btnMenu} alt='' /></Link>
+                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
             </div>
+
             
         </div>
     );
