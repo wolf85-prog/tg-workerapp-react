@@ -10,7 +10,11 @@ import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
+import btnMenu from "../../image/layers/icon_menu.png";
 import smallMenu from "../../image/layers/ULEY text.png"
+
+import enterSumma from "../../image/buttons/enter_summa.png"
+import buttonSend from "../../image/buttons/button_send_predlog.png"
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
@@ -47,7 +51,7 @@ const NewStavka = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Альтернативная ставка', icon: 'false'}}/>
+            <Header header={{title: 'Моё предложение', icon: 'false'}}/>
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
@@ -59,60 +63,48 @@ const NewStavka = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
-            <div className='form-new1'>
+            <div style={{display: 'flex', height: '100vh', position: 'fixed', width: '100%'}}>
+                <div className='form-edit-stavka'>
 
-                {/*Номер телефона*/}
-                <div className="text-field text-field_floating">
-                    <InputMask
-                        mask="9999.99"
-                        disabled={false}
-                        maskChar=""
-                        onChange={()=>console.log('sdf')} 
-                    >
-                        {() => <RedditTextField 
-                                    fullWidth 
-                                    label="Сумма"
-                                    id="worker_phone"
-                                    variant="filled"/>}
-                    </InputMask>
+                    {/*Номер телефона*/}
+                    {/* <div className="text-field text-field_floating">
+                        <InputMask
+                            mask="9999.99"
+                            disabled={false}
+                            maskChar=""
+                            onChange={()=>console.log('sdf')} 
+                        >
+                            {() => <RedditTextField 
+                                        fullWidth 
+                                        label="Сумма"
+                                        id="worker_phone"
+                                        variant="filled"/>}
+                        </InputMask>
+                    </div> */}
+
+                    <div className="edit-send" style={{ backgroundImage: `url(${enterSumma})`}}>
+                        <InputMask
+                            mask="9999.00"
+                            disabled={false}
+                            maskChar=""
+                            onChange={()=>console.log('sdf')} 
+                            placeholder='Впишите сюда сумму'
+                        >
+            
+                        </InputMask>
+                    </div>
+        
+                    <button className="button-send" style={{ backgroundImage: `url(${buttonSend})`}}>Отправить предложение</button>
                 </div>
-
-                
-
-                <MyButton style={{marginBottom: "15px", width: "220px"}}>Сохранить</MyButton>    
             </div>
 
-            <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
-                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
+            <div className='footer-block' style={{bottom: '0'}}>
+                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
+                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
             </div>
         </div>
     );
 };
-
-const RedditTextField = styled((props) => (
-    <TextField InputProps={{ disableUnderline: true }} {...props}  />
-))(({ theme }) => ({
-    '& .MuiFilledInput-root': {
-        height: '55px',
-        border: '2px solid #2e7cff',
-        overflow: 'hidden',
-        borderRadius: 10,
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
-        '&.Mui-focused': {
-            backgroundColor: 'transparent',
-            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-            borderColor: theme.palette.primary.main,
-        },
-    },
-}));
 
 
 export default NewStavka;

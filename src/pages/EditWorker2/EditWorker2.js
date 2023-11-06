@@ -132,39 +132,6 @@ const EditWorker2 = () => {
                     />
                 </div>
 
-                {/*Сколько лет*/}
-                {/*Дата начала*/}
-                {/* <div className="text-field text-field_floating">
-                    <LocalizationProvider dateAdapter={AdapterDayjs} >
-                        <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
-                            <RedditTextField
-                                id="date"
-                                label="Год рождения"
-                                type="date"
-                                variant="filled"
-                                value={dateborn}
-                                onChange={onChangeTime}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />
-                            <span className="open-button">
-                              <button type="button"><img src={Calendar} alt='calendar'/></button>
-                            </span>
-                        </Stack>
-                    </LocalizationProvider>
-                </div> */}
-
-                {/* <div className="text-field text-field_floating">
-                    <RedditTextField fullWidth
-                        label="Год рождения"
-                        id="date"
-                        variant="filled"
-                        onChange={onChangeTime}
-                        value={dateborn}
-                    />
-                </div> */}
-
                 {/* <div className="text-field text-field_floating"> */}
                     <CustomSelect3
                         id="dateborn"
@@ -177,7 +144,7 @@ const EditWorker2 = () => {
                 {/* </div> */}
 
                 <div className='block-buttons-new3'>
-                    <Link to={'/add-worker2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
+                    <Link to={'/edit-worker2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
                     {/* <Link to={'/add-worker4'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>  */}
                 </div>
             </div>

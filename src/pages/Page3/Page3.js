@@ -151,9 +151,12 @@ const Page3 = () => {
                                 <td>10 000,00</td>
                                 <td style={{padding: 0}}></td>
                             </tr>
-                            {/* <tr>
-                                <td colSpan={10} style={{padding: '0'}}><img src={banner} alt='' width='300px'/></td>
-                            </tr> */}
+                            <tr>
+                                <td colSpan={7} style={{padding: '0'}}></td>
+                                <td style={{padding: '0'}}>Итого:</td>
+                                <td style={{padding: '0'}}></td>
+                                <td style={{padding: '0'}}></td>
+                            </tr>
                         </tbody>
                         </table>
                     </div>
