@@ -33,7 +33,7 @@ const MenuPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id
 
             if (worker.length > 0) {
                 //зарегистрирован
@@ -58,7 +58,7 @@ const MenuPage = () => {
     });
 
     useEffect(() => {
-        setTimeout(() =>  setShowGrad(true), 500) //градиент верх
+        setTimeout(() =>  setShowGrad(true), 1500) //градиент верх
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
     })
 

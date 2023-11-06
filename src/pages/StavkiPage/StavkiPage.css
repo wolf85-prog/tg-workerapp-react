@@ -99,16 +99,11 @@
     border-end-end-radius: 0.5rem;
   }
   
-  .th-inline {
+  /* .th-inline {
     border-inline-start-width: 0;
     border-block-color: #494747;
     color: #fff;
-  }
-  
-  .th-left {
-    width: 144px;
-    color: #494747;
-  }
+  } */
 
   .title-gray {
     color: #a38888;

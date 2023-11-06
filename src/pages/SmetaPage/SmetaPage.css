@@ -66,14 +66,14 @@
   border-inline-end-width: 1px;
   border-block-end-width: 1px;
   border-inline-start-width: 1px;
-  color: #494747;
+  color: #797979;
   padding-block: 0.6ch;
   padding-inline: 2ch;
 }
 
 :where(.c-tbl td) {
   background-color: transparent;
-  border-color: #494747;
+  border-color: #797979;
   border-style: solid;
   border-block-start-width: 0;
   border-inline-end-width: 1px;
@@ -89,10 +89,10 @@
 }
 /* For header-cells, we set the `border-color` of the first and last border to it's `background-color` */
 :where(.c-tbl tr th:last-of-type) {
-  border-inline-color: #494747;
+  border-inline-color: #797979;
 }
 :where(.c-tbl tr th:first-of-type) {
-  border-inline-start-color: #494747;
+  border-inline-start-color: #797979;
 }
 /* Set `border-radius` on first and last rows, on first and last cell */
 :where(.c-tbl thead th:first-of-type) {
@@ -110,11 +110,11 @@
 
 .th-inline {
   border-inline-start-width: 0;
-  border-block-color: #494747;
+  border-block-color: #797979;
   color: #fff;
 }
 
 .th-left {
   width: 144px;
-  color: #494747;
+  color: #797979;
 }

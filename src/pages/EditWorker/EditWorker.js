@@ -12,6 +12,7 @@ import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
+import btnMenu from "../../image/layers/icon_menu.png";
 import smallMenu from "../../image/layers/ULEY text.png"
 
 //import TextField from '@mui/material/TextField';
@@ -208,11 +209,12 @@ const EditWorker = () => {
                 <WorkerList remove={removeWorker} workers={workers} />
                 
 
-                <Link to={'/add-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>     
+                <Link to={'/edit-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>     
             </div>
 
-            <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
-                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
+            <div className='footer-block' style={{bottom: '0'}}>
+                <Link to={'/profile'}><img src={btnMenu} alt='' /></Link>
+                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
             </div>
         </div>
     );

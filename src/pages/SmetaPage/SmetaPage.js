@@ -133,7 +133,7 @@ const SmetaPage = () => {
                             <td colspan="2">0.00</td>
                         </tr>
                         <tr>
-                            <td colspan="3" style={{padding: '0'}}><img src={Banner} alt='' width='100%'/></td>
+                            <td colspan="3" style={{padding: '0 3px'}}><img src={Banner} alt='' width='100%'/></td>
                         </tr>
                 </tbody>
             </table>
