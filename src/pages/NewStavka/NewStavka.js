@@ -37,7 +37,7 @@ const NewStavka = () => {
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
 
-    const [summaStavki, setSummaStavki] = useState(0)
+    const [summaStavki, setSummaStavki] = useState()
 
 //----------------------------------------------------------------------------------
 
@@ -49,6 +49,10 @@ const NewStavka = () => {
 
     const changeSummaStavki = (e) => {
         setSummaStavki(e.target.value)
+    }
+
+    const sendStavka = () => {
+        console.log("Ставка: ", summaStavki)
     }
 
 
@@ -112,42 +116,23 @@ const NewStavka = () => {
             <div style={{display: 'flex', height: '100vh', position: 'fixed', width: '100%'}}>
                 <div className='form-edit-stavka'>
 
-                    {/*Номер телефона*/}
-                    {/* <div className="text-field text-field_floating">
-                        <InputMask
-                            mask="9999.99"
-                            disabled={false}
-                            maskChar=""
-                            onChange={()=>console.log('sdf')} 
-                        >
-                            {() => <RedditTextField 
-                                        fullWidth 
-                                        label="Сумма"
-                                        id="worker_phone"
-                                        variant="filled"/>}
-                        </InputMask>
-                    </div> */}
-
                     <div className="edit-send" style={{ backgroundImage: `url(${enterSumma})`}}>
                         <InputMask
                             mask="9999.00"
                             disabled={false}
                             maskChar=""
-                            onChange={()=>changeSummaStavki()} 
+                            value={summaStavki}
+                            onChange={changeSummaStavki} 
                             placeholder='Впишите сюда сумму'
                         >
             
                         </InputMask>
                     </div>
         
-                    <button className="button-send" style={{ backgroundImage: `url(${buttonSend})`}}>Отправить предложение</button>
+                    {/* <button onClick={sendStavka} className="button-send" style={{ backgroundImage: `url(${buttonSend})`}}>Отправить предложение</button> */}
                 </div>
             </div>
 
-            <div className='footer-block' style={{bottom: '0'}}>
-                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
-                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
-            </div>
         </div>
     );
 };
