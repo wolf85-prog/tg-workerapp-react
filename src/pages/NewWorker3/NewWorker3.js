@@ -11,6 +11,8 @@ import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
+import formCity from "../../image/newspec/form_city.png"
+import btnBackNext from "../../image/newspec/button_back.png"
 import smallMenu from "../../image/layers/ULEY text.png"
 
 import CustomSelect3 from "../../components/UI/CustomSelect3/CustomSelect3";
@@ -22,6 +24,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Stack } from "@mui/material";
 
 import { useUsersContext } from "./../../contexts/UserContext";
+import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -140,10 +143,8 @@ const NewWorker3 = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
-
-            <div className='form-new3'>
                 {/*Город*/}
-                <div className="text-field text-field_floating">
+                {/* <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
                                     label="Ваш город"
                                     id="worker_name"
@@ -151,26 +152,42 @@ const NewWorker3 = () => {
                                     onChange={onChangeCity}
                                     value={city}
                     />
-                </div>
+                </div> */}
 
-
-
-                {/* <div className="text-field text-field_floating"> */}
-                    <CustomSelect3
+                    {/* <CustomSelect3
                         id="dateborn"
                         title="Год рождения"
                         options={dates}
                         selectedElement={selectedElement}
                         setSelectedElement={setSelectedElement}
                         onChange={onDatesSelectChange}
-                     />
-                {/* </div> */}
+                     /> */}
 
-                <div className='block-buttons-new3'>
-                    <Link to={'/add-worker2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
-                    {/* <Link to={'/add-worker4'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>  */}
-                </div>
-            </div>
+                <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
+
+                    <div className='form-new-worker3' style={{ backgroundImage: `url(${formCity})`}}>               
+                        <input
+                            className='input-style-city'
+                            onChange={()=>console.log('sdf')} 
+                            placeholder='Ваш город'
+                        /> 
+
+                        <NewSelect2
+                            id="dateborn"
+                            // title="Год рождения"
+                            options={dates}
+                            selectedElement={selectedElement}
+                            setSelectedElement={setSelectedElement}
+                            onChange={onDatesSelectChange}
+                        /> 
+
+                         <div className='block-buttons-new3'>
+                            {/* <Link to={'/add-worker2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link> */}
+                            {/* <Link to={'/add-worker4'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>  */}
+                            <Link to={'/add-worker2'}><button class="image-button-next" style={{backgroundImage: `url(${btnBackNext})`}}>Назад</button></Link>
+                        </div>                 
+                    </div>   
+                </div>            
 
             <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />

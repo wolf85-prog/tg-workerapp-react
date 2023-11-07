@@ -167,9 +167,9 @@ const NewWorker = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
-            <div className='form-wraper'>
+            {/* <div className='form-wraper'> */}
                 {/*Специализация*/}
-                <label style={{marginBottom: '-70px'}}>
+                {/* <label style={{marginBottom: '-70px'}}>
                         <p
                             style={{
                                 margin: '20px 5px',
@@ -179,31 +179,9 @@ const NewWorker = () => {
                                 color: '#fff',
                             }}>Выберите свою специальность
                         </p>
+                </label> */}
 
-                        {/* <div className="text-field text-field_floating">
-                            <CustomSelect
-                                id="category"
-                                title="Категория"
-                                options={categories}
-                                selectedElement={selectedElement}
-                                setSelectedElement={setSelectedElement}
-                                onChange={onCategoriesSelectChange}
-                            />
-                        </div>
-
-                        <div className="text-field text-field_floating">
-                            <CustomSelect
-                                disabled={disabled}
-                                id="model"
-                                title="Специальность"
-                                options={models}
-                                selectedElement={selectedElement}
-                                setSelectedElement={setSelectedElement}
-                                onChange={onSpecSelectChange}
-                            />
-                        </div>     */}
-                </label>
-
+            <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
 
                 <div className='form-new-worker1' style={{ backgroundImage: `url(${formCategory})`}}>       
                     <NewSelect
@@ -223,8 +201,7 @@ const NewWorker = () => {
                         selectedElement={selectedElement}
                         setSelectedElement={setSelectedElement}
                         onChange={onSpecSelectChange}
-                    /> 
-                     
+                    />                   
                 </div>
 
 

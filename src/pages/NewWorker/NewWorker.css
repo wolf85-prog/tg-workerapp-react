@@ -24,6 +24,12 @@
     cursor: pointer;
     text-align: left;
     position: relative;
+
+    position: relative;
+    z-index: 5;
+    margin: auto;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 .image-button-add {

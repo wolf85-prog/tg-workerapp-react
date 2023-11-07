@@ -12,8 +12,37 @@
     right: 20px;
     left: 20px; */
     margin-top: 120px;
-    margin-left: 30px;
-    margin-right: 30px;
+    /* margin-left: 30px;
+    margin-right: 30px; */
     position: relative;
     z-index: 6;
+}
+
+.form-new-worker3 {
+    width: 450px;
+    height: 366px;
+    border: none;
+    background-size: cover;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+
+    position: relative;
+    z-index: 5;
+    margin: auto;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.input-style-city {
+    width: 270px;
+    margin: 0 0;
+    border: none;
+    height: 38px;
+    background-color: transparent;
+    margin-top: 115px;
+    margin-left: 60px;
+    padding: 0 10px;
+    color: #fff;
 }

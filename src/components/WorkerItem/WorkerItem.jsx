@@ -1,15 +1,16 @@
 import React from 'react';
-import Sound from "../../image/spec/1_sound.svg";
-import Riggers from "../../image/spec/2_riggers.svg";
-import Production from "../../image/spec/3_production.svg";
-import StageGround from "../../image/spec/4_stage_ground.svg";
-import Video from "../../image/spec/5_video.svg";
-import Light from "../../image/spec/6_light.svg";
-import Stagehands from "../../image/spec/7_stagehands.svg";
-import Trucks from "../../image/spec/8_trucks.svg";
-import Catering from "../../image/spec/9_catering.svg";
-import Photo from "../../image/spec/10_photo.svg";
-import Party from "../../image/spec/11_party.svg";
+
+import Sound from "../../image/layers/icons/SOUND.png";
+import Riggers from "../../image/layers/icons/RIGGERS.png";
+import Production from "../../image/layers/icons/PRODUCTION.png"
+import StageGround from "../../image/layers/icons/STAGEGROUND.png";
+import Video from "../../image/layers/icons/VIDEO.png";
+import Light from "../../image/layers/icons/LIGHT.png";
+import Stagehands from "../../image/layers/icons/STAGEHANDS.png";
+import Trucks from "../../image/layers/icons/TRUCKS.png";
+import Catering from "../../image/layers/icons/CATERING.png";
+import Photo from "../../image/layers/icons/PHOTO.png";
+import Party from "../../image/layers/icons/PARTY.png";
 
 import {FormControl, InputBase, InputLabel} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
