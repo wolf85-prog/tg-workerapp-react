@@ -32,11 +32,12 @@ const API_URL = process.env.REACT_APP_API_URL
 
 const NewStavka = () => {
     const navigate = useNavigate();
-
-    const {user} = useTelegram();
+    const {tg, queryId, user} = useTelegram();
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
+
+    const [summaStavki, setSummaStavki] = useState(0)
 
 //----------------------------------------------------------------------------------
 
@@ -46,6 +47,51 @@ const NewStavka = () => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
     })
 
+    const changeSummaStavki = (e) => {
+        setSummaStavki(e.target.value)
+    }
+
+
+    //отправка данных в telegram-бот
+    const onSendData = useCallback(() => {
+        const data = {
+            summaStavki,
+            queryId,
+        }
+
+        tg.MainButton.hide();
+        // setIsLoading(true)
+
+        // setFlag("ONLY_REG")
+
+        fetch(API_URL + 'web-stavka', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        
+        // setIsLoading(false)
+              
+    }, [summaStavki])
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
+
+    useEffect(() => {
+        tg.MainButton.setParams({
+            text: 'Отправить предложение'
+        })
+    }, [])
+
+    useEffect(() => {
+        tg.MainButton.show();
+    }, [])
 
     //---------------------------------------------------------------------------------------
 
@@ -87,7 +133,7 @@ const NewStavka = () => {
                             mask="9999.00"
                             disabled={false}
                             maskChar=""
-                            onChange={()=>console.log('sdf')} 
+                            onChange={()=>changeSummaStavki()} 
                             placeholder='Впишите сюда сумму'
                         >
             
