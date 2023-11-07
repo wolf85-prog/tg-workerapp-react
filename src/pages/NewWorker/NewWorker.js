@@ -168,20 +168,15 @@ const NewWorker = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
             {/* <div className='form-wraper'> */}
-                {/*Специализация*/}
-                {/* <label style={{marginBottom: '-70px'}}>
-                        <p
-                            style={{
-                                margin: '20px 5px',
-                                display: 'flex',
-                                justifyContent: 'center',
-                                fontSize: '18px',
-                                color: '#fff',
-                            }}>Выберите свою специальность
-                        </p>
-                </label> */}
+            
+            {/*Специализация*/}
+            <label style={{position: 'absolute', top: '190px', left: '80px'}}>
+                <p style={{fontSize: '18px', color: '#fff'}}>
+                    Выберите свою специальность
+                </p>
+            </label>
 
-            <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
+            <div style={{display: 'flex', flexDirection: 'column', height: '100vh', position: 'fixed'}}>
 
                 <div className='form-new-worker1' style={{ backgroundImage: `url(${formCategory})`}}>       
                     <NewSelect
@@ -201,26 +196,21 @@ const NewWorker = () => {
                         selectedElement={selectedElement}
                         setSelectedElement={setSelectedElement}
                         onChange={onSpecSelectChange}
-                    />                   
+                    />
+
+                    <button 
+                        disabled={disabledBtn}
+                        class="image-button-add" 
+                        style={{ backgroundImage: `url(${btnSave})`}}
+                        onClick={addNewWorker}
+                    >
+                        Добавить
+                    </button>
+
                 </div>
 
 
-                <button 
-                    disabled={disabledBtn}
-                    class="image-button-add" 
-                    style={{ backgroundImage: `url(${btnSave})`}}
-                    onClick={addNewWorker}
-                >
-                    Добавить
-                </button>
-                    {/* <p>
-                        <MyButton
-                            disabled={disabledBtn}
-                            style={{marginBottom: "15px", width: "150px"}}
-                            onClick={addNewWorker}
-                        >Добавить
-                        </MyButton>
-                    </p> */}
+                
 
 
                 {/*список работников*/}

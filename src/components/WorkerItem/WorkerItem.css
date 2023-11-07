@@ -4,9 +4,11 @@
 
 .list_spec {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    margin-top: 15px;
+    margin-top: -95px;
+    position: relative;
+    z-index: 15;
 }
 
 .form-new-spec {

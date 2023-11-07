@@ -24,8 +24,6 @@
     cursor: pointer;
     text-align: left;
     position: relative;
-
-    position: relative;
     z-index: 5;
     margin: auto;
     margin-left: 25px;
@@ -41,7 +39,11 @@
     color: #ffffff;
     font-size: 16px;
     cursor: pointer;
-    margin-bottom: 20px;
+
+    position: relative;
+    z-index: 15;
+    margin-top: 70px;
+    margin-left: 102px;
 }
 
 .image-button-next {
