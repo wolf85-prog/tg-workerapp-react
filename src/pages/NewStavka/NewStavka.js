@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
@@ -30,7 +30,8 @@ import { sendMyMessage } from '../../http/chatAPI';
 
 const API_URL = process.env.REACT_APP_API_URL
 
-const NewStavka = () => {
+const NewStavka = (props) => {
+    const { id } = useParams();
     const navigate = useNavigate();
     const {tg, queryId, user} = useTelegram();
 
@@ -38,6 +39,7 @@ const NewStavka = () => {
     const [showGrad2, setShowGrad2] = useState(false)
 
     const [summaStavki, setSummaStavki] = useState()
+    const [pretendentId, setPretendentId] = useState('')
 
 //----------------------------------------------------------------------------------
 
@@ -45,6 +47,8 @@ const NewStavka = () => {
     useEffect(() => {
         setTimeout(() =>  setShowGrad(true), 500) //градиент верх
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
+
+        setPretendentId(id)
     })
 
     const changeSummaStavki = (e) => {
@@ -60,6 +64,7 @@ const NewStavka = () => {
     const onSendData = useCallback(() => {
         const data = {
             summaStavki,
+            pretendentId,
             queryId,
         }
 
@@ -78,7 +83,7 @@ const NewStavka = () => {
         
         // setIsLoading(false)
               
-    }, [summaStavki])
+    }, [summaStavki, pretendentId])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)

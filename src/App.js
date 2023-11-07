@@ -64,7 +64,7 @@ function App() {
                   <Route path={'faq'} element={<FaqPage />}/>
                   <Route path={'stavki'} element={<StavkiPage />}/>
 
-                  <Route path={'add-stavka'} element={<NewStavka />}/>
+                  <Route path={'add-stavka/:id'} element={<NewStavka />}/>
 
                   <Route path={'edit-worker'} element={<EditWorker />}/>
                   <Route path={'edit-worker2'} element={<EditWorker2 />}/>
