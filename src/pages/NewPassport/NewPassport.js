@@ -4,8 +4,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewPassport.css';
-import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/gradient2.png";
+
 import { useUsersContext } from "../../contexts/UserContext";
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
@@ -14,6 +13,13 @@ import Calendar from "../../image/calendar.svg";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Stack } from "@mui/material";
+
+import BlackFon from "../../image/background/Background_black_600X800.png";
+import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
+import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
+import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
+
+import smallMenu from "../../image/layers/ULEY text.png"
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -33,6 +39,15 @@ const NewPassport = () => {
     const [nameDirty, setNameDirty] = useState(false)
     const [datebornDirty, setDatebornDirty] = useState(false)
     const [error, setError] = useState("")
+
+    const [showGrad, setShowGrad] = useState(false)
+    const [showGrad2, setShowGrad2] = useState(false)
+
+
+    useEffect(() => {
+        setTimeout(() =>  setShowGrad(true), 500) //градиент верх
+        setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
+    })
 
     const pressNext = () => {      
         if (pasFam && pasName && pasDateborn !== '2000-01-01') {
@@ -105,8 +120,15 @@ const NewPassport = () => {
         <div className="App">
             <Header header={{title: 'Моя анкета', icon: 'false'}}/>
 
-            <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/>
+            {/* темный фон */}
+            <img src={BlackFon} alt='' className='fon-black' />
+            
+            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
+                <img src={Fon} alt='' className='fon-style-full' />
+            </div>
+
+            <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
+            <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
   
             {(error && !pasFam || !pasName || pasDateborn === '2000-01-01') && 
             <div style={{
@@ -219,7 +241,10 @@ const NewPassport = () => {
 
                 <div className='block-buttons-new2'>
                     <MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton>
-                    {/* <Link to={'/add-passport2'}><MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link> */}
+                </div>
+
+                <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
+                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
                 </div>
 
             </div>

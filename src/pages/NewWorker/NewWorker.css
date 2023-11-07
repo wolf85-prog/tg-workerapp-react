@@ -49,6 +49,8 @@
     cursor: pointer;
     margin-bottom: 20px;
     margin-top: 25px; 
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .select-style {

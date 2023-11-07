@@ -1,6 +1,6 @@
 .block-buttons-new2 {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     padding-top: 50px;
     position: relative;
     z-index: 6;

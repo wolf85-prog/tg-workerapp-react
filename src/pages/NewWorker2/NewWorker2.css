@@ -1,7 +1,7 @@
 .block-buttons-new2 {
     display: flex;
-    justify-content: space-around;
-    padding-top: 50px;
+    justify-content: center;
+    padding-top: 30px;
     position: relative;
     z-index: 6;
 }
@@ -12,7 +12,7 @@
 }
 
 .form-new-worker2 {
-    width: 370px;
+    width: 450px;
     height: 366px;
     border: none;
     background-size: cover;
@@ -20,6 +20,45 @@
     color: #ffffff;
     font-size: 15px;
     cursor: pointer;
+
+    position: relative;
+    z-index: 5;
+    margin: auto;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.input-style {
+    width: 270px;
+    margin: 0 0;
+    border: none;
+    height: 38px;
+    background-color: transparent;
+    margin-top: 115px;
+    padding: 0 10px;
+    color: #fff;
+}
+
+.input-style2 {
+    width: 270px;
+    margin: 0 0;
+    border: none;
+    height: 38px;
+    background-color: transparent;
+    margin-top: 25px;
+    padding: 0 10px;
+    color: #fff;
+}
+
+.input-style3 {
+    width: 270px;
+    margin: 0 0;
+    border: none;
+    height: 38px;
+    background-color: transparent;
+    margin-top: 23px;
+    padding: 0 10px;
+    color: #fff;
 }
 
 .text-field_floating {

@@ -71,7 +71,8 @@ const NewWorker2 = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
 
-            <div className='form-wraper2'>
+            <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
+                
                 {/*Фамилия*/}
                 {/* <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
@@ -111,14 +112,44 @@ const NewWorker2 = () => {
                     </InputMask>
                 </div> */}
 
-                <div className='form-new-worker2' style={{ backgroundImage: `url(${formFio})`}}></div>
+                <div className='form-new-worker2' style={{ backgroundImage: `url(${formFio})`}}>
+                    {/* Фамилия */}
+                    <input
+                        className='input-style'
+                        onChange={()=>console.log('sdf')} 
+                        placeholder='Фамилия'
+                    />
 
-                <div className='block-buttons-new2'>
-                    <Link to={'/add-worker'}><button class="image-button-next" style={{backgroundImage: `url(${btnBackNext})`}}>Назад</button></Link>
-                    <Link to={'/add-worker3'}><button class="image-button-next" disabled={novalid} style={{backgroundImage: `url(${btnBackNext})`}}>Далее</button></Link>
+                    {/* Имя */}
+                    <input
+                        className='input-style2'
+                        onChange={()=>console.log('sdf')} 
+                        placeholder='Имя'
+                    />
+
+                    {/* Номер телефона */}
+                    <InputMask
+                        mask="+7 (999) 999-99-99"
+                        disabled={false}
+                        maskChar=""
+                        onChange={handlePhone} 
+                        value={phone}
+                        placeholder='Номер телефона'
+                        className='input-style3'
+                    >
+                    </InputMask>
+
+                    <div className='block-buttons-new2'>
+                        <Link to={'/add-worker'}><button class="image-button-next" style={{backgroundImage: `url(${btnBackNext})`}}>Назад</button></Link>
+                        <Link to={'/add-worker3'}><button class="image-button-next" disabled={novalid} style={{backgroundImage: `url(${btnBackNext})`}}>Далее</button></Link>
+                    </div>
                 </div>
 
-            </div>
+            </div>   
+
+            
+
+            
 
             <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
