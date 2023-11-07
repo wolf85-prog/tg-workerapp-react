@@ -11,6 +11,9 @@ import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
 import smallMenu from "../../image/layers/ULEY text.png"
 
+import btnBackNext from "../../image/newspec/button_back.png"
+import formFio from "../../image/newspec/forma_fio.png"
+
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
 
@@ -68,9 +71,9 @@ const NewWorker2 = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
 
-            <div className='form-new2'>
+            <div className='form-wraper2'>
                 {/*Фамилия*/}
-                <div className="text-field text-field_floating">
+                {/* <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
                                     label="Фамилия"
                                     id="worker_soname"
@@ -78,10 +81,10 @@ const NewWorker2 = () => {
                                     onChange={onChangeFamily}
                                     value={workerFam}
                     />
-                </div>
+                </div> */}
 
                 {/*Имя*/}
-                <div className="text-field text-field_floating">
+                {/* <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
                                     label="Имя"
                                     id="worker_name"
@@ -89,10 +92,10 @@ const NewWorker2 = () => {
                                     onChange={onChangeName}
                                     value={workerName}
                     />
-                </div>          
+                </div>           */}
 
                 {/*Номер телефона*/}
-                <div className="text-field text-field_floating">
+                {/* <div className="text-field text-field_floating">
                     <InputMask
                         mask="+7 (999) 999-99-99"
                         disabled={false}
@@ -106,11 +109,13 @@ const NewWorker2 = () => {
                                     id="worker_phone"
                                     variant="filled"/>}
                     </InputMask>
-                </div>
+                </div> */}
+
+                <div className='form-new-worker2' style={{ backgroundImage: `url(${formFio})`}}></div>
 
                 <div className='block-buttons-new2'>
-                    <Link to={'/add-worker'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
-                    <Link to={'/add-worker3'}><MyButton disabled={novalid} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>
+                    <Link to={'/add-worker'}><button class="image-button-next" style={{backgroundImage: `url(${btnBackNext})`}}>Назад</button></Link>
+                    <Link to={'/add-worker3'}><button class="image-button-next" disabled={novalid} style={{backgroundImage: `url(${btnBackNext})`}}>Далее</button></Link>
                 </div>
 
             </div>

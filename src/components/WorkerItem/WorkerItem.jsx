@@ -16,6 +16,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import {alpha, styled} from "@mui/material/styles";
 import './WorkerItem.css'
 
+import formSpec from "../../image/newspec/form_spec.png"
+import iconDel from "../../image/newspec/icon_del.png"
+import iconSound from "../../image/newspec/icon_sound.png"
+
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
     'label + &': {
         marginTop: '21px',//theme.spacing(3),
@@ -82,9 +86,9 @@ const WorkerItem = (props) => {
 
     return (
         <div className="list_spec">
-            <img src={image} alt='icon'/>
+            
 
-            <FormControl sx={{marginLeft: '7px', marginBottom: '20px', width: '75%'}} style={{border: '2px, solid, #76A9FF'}} variant="standard">
+            {/* <FormControl sx={{marginLeft: '7px', marginBottom: '20px', width: '75%'}} style={{border: '2px, solid, #76A9FF'}} variant="standard">
                 <InputLabel shrink htmlFor="bootstrap-input" style={{color: '#76A9FF'}}>
                     {props.worker.cat}
                 </InputLabel>
@@ -93,12 +97,18 @@ const WorkerItem = (props) => {
                     id="bootstrap-input"
                     value={props.worker.spec}
                 />
-            </FormControl>
+            </FormControl> */}
 
-            <DeleteIcon
+            <div className='form-new-spec' style={{ backgroundImage: `url(${formSpec})`}}>
+                <img src={iconSound} alt='icon' style={{ marginLeft: '-55px', marginRight: '25px'}}/>
+                {props.worker.spec}</div>
+
+            {/* <DeleteIcon
                 style={{marginLeft: "5px", color: '#76A9FF', position: 'relative'}}
                 onClick={() => props.remove(props.worker)}
-            />
+            /> */}
+
+            <img src={iconDel} alt='icon' onClick={() => props.remove(props.worker)}/>
         </div>
     );
 };

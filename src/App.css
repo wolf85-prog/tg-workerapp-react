@@ -325,6 +325,18 @@
   pointer-events: none;
 }
 
+.chevron-new {
+  position: relative;
+  right: 35px;
+  bottom: -4px;
+  stroke-width: 2px;
+  stroke: #76A9FF;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
 
 .footer-block {
   display: flex;

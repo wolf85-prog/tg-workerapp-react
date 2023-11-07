@@ -14,11 +14,23 @@ import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
 import smallMenu from "../../image/layers/ULEY text.png"
 
+import btnBack from "../../image/newspec/button_back.png"
+import btnSave from "../../image/newspec/button_save.png"
+import formCategory from "../../image/newspec/form_category.png"
+import formSpec from "../../image/newspec/form_spec.png"
+import formFio from "../../image/newspec/forma_fio.png"
+import iconDel from "../../image/newspec/icon_del.png"
+import iconSound from "../../image/newspec/icon_sound.png"
+import tringlDown from "../../image/newspec/tringl_down.png"
+
+
 //import TextField from '@mui/material/TextField';
 //import { alpha, styled } from '@mui/material/styles';
 import specData from "../../data/specData"
 import { useUsersContext } from "./../../contexts/UserContext";
 import { sendMyMessage } from '../../http/chatAPI';
+import NewSelect from '../../components/UI/NewSelect/NewSelect';
+import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -155,20 +167,20 @@ const NewWorker = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
-            <div className='form-new1'>
+            <div className='form-wraper'>
                 {/*Специализация*/}
-                <div>
-                    <label>
+                <label style={{marginBottom: '-70px'}}>
                         <p
                             style={{
                                 margin: '20px 5px',
                                 display: 'flex',
-                                fontSize: '14px',
-                                color: '#2975f5',
+                                justifyContent: 'center',
+                                fontSize: '18px',
+                                color: '#fff',
                             }}>Выберите свою специальность
                         </p>
 
-                        <div className="text-field text-field_floating">
+                        {/* <div className="text-field text-field_floating">
                             <CustomSelect
                                 id="category"
                                 title="Категория"
@@ -189,26 +201,56 @@ const NewWorker = () => {
                                 setSelectedElement={setSelectedElement}
                                 onChange={onSpecSelectChange}
                             />
-                        </div>
-                    </label>
+                        </div>     */}
+                </label>
 
 
-                    <p>
+                <div className='form-new-worker1' style={{ backgroundImage: `url(${formCategory})`}}>       
+                    <NewSelect
+                        id="category"
+                        // title="Категория"
+                        options={categories}
+                        selectedElement={selectedElement}
+                        setSelectedElement={setSelectedElement}
+                        onChange={onCategoriesSelectChange}
+                    />  
+
+                    <NewSelect2
+                        disabled={disabled}
+                        id="model"
+                        //title="Специальность"
+                        options={models}
+                        selectedElement={selectedElement}
+                        setSelectedElement={setSelectedElement}
+                        onChange={onSpecSelectChange}
+                    /> 
+                     
+                </div>
+
+
+                <button 
+                    disabled={disabledBtn}
+                    class="image-button-add" 
+                    style={{ backgroundImage: `url(${btnSave})`}}
+                    onClick={addNewWorker}
+                >
+                    Добавить
+                </button>
+                    {/* <p>
                         <MyButton
                             disabled={disabledBtn}
                             style={{marginBottom: "15px", width: "150px"}}
                             onClick={addNewWorker}
                         >Добавить
                         </MyButton>
-                    </p>
+                    </p> */}
 
-                </div>
 
                 {/*список работников*/}
                 <WorkerList remove={removeWorker} workers={workers} />
                 
-
-                <Link to={'/add-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>     
+                <Link to={'/add-worker2'}><button class="image-button-next" style={{ backgroundImage: `url(${btnBack})`, marginBottom: "15px", visibility: showNext ? "visible" : "hidden"}}>Далее</button></Link>
+                {/* <Link to={'/add-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>      */}
             </div>
 
             <div style={{position: 'fixed', bottom: '25px', right: '0'}}>

@@ -7,3 +7,17 @@
     justify-content: flex-start;
     align-items: center;
 }
+
+.form-new-spec {
+    width: 270px;
+    height: 50px;
+    border: none;
+    background-size: cover;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
