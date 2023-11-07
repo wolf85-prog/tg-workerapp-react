@@ -2,8 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
-import MyButton from "../../components/UI/MyButton/MyButton";
-import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
+
 import WorkerList from "../../components/WorkerList/WorkerList";
 import './NewWorker.css';
 
@@ -17,11 +16,8 @@ import smallMenu from "../../image/layers/ULEY text.png"
 import btnBack from "../../image/newspec/button_back.png"
 import btnSave from "../../image/newspec/button_save.png"
 import formCategory from "../../image/newspec/form_category.png"
-import formSpec from "../../image/newspec/form_spec.png"
-import formFio from "../../image/newspec/forma_fio.png"
-import iconDel from "../../image/newspec/icon_del.png"
-import iconSound from "../../image/newspec/icon_sound.png"
-import tringlDown from "../../image/newspec/tringl_down.png"
+import NewSelect from '../../components/UI/NewSelect/NewSelect';
+import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
 
 
 //import TextField from '@mui/material/TextField';
@@ -29,8 +25,7 @@ import tringlDown from "../../image/newspec/tringl_down.png"
 import specData from "../../data/specData"
 import { useUsersContext } from "./../../contexts/UserContext";
 import { sendMyMessage } from '../../http/chatAPI';
-import NewSelect from '../../components/UI/NewSelect/NewSelect';
-import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
+
 
 const API_URL = process.env.REACT_APP_API_URL
 

@@ -104,11 +104,6 @@ const WorkerItem = (props) => {
                 <img src={iconSound} alt='icon' style={{ marginLeft: '-55px', marginRight: '25px', width: '45px'}}/>
                 {props.worker.spec}</div>
 
-            {/* <DeleteIcon
-                style={{marginLeft: "5px", color: '#76A9FF', position: 'relative'}}
-                onClick={() => props.remove(props.worker)}
-            /> */}
-
             <img src={iconDel} alt='icon' onClick={() => props.remove(props.worker)} style={{marginLeft: '10px'}}/>
         </div>
     );

@@ -15,6 +15,12 @@ import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 import btnMenu from "../../image/layers/icon_menu.png";
 import smallMenu from "../../image/layers/ULEY text.png"
 
+import btnBack from "../../image/newspec/button_back.png"
+import btnSave from "../../image/newspec/button_save.png"
+import formCategory from "../../image/newspec/form_category.png"
+import NewSelect from '../../components/UI/NewSelect/NewSelect';
+import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
+
 //import TextField from '@mui/material/TextField';
 //import { alpha, styled } from '@mui/material/styles';
 import specData from "../../data/specData"
@@ -144,7 +150,7 @@ const EditWorker = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Новый специалист', icon: 'false'}}/>
+            <Header header={{title: 'Новая специальность', icon: 'false'}}/>
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
@@ -156,8 +162,7 @@ const EditWorker = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
-            <div className='form-new1'>
-                {/*Специализация*/}
+            {/* <div className='form-new1'>
                 <div>
                     <label>
                         <p
@@ -205,11 +210,64 @@ const EditWorker = () => {
 
                 </div>
 
+                <WorkerList remove={removeWorker} workers={workers} />           
+
+                <Link to={'/edit-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Сохранить</MyButton></Link>     
+            </div> */}
+
+
+            {/*Специализация*/}
+            <label style={{position: 'absolute', top: '190px', left: '80px'}}>
+                <p style={{fontSize: '18px', color: '#fff'}}>
+                    Выберите свою специальность
+                </p>
+            </label>
+
+            <div style={{display: 'flex', flexDirection: 'column', height: '100vh', position: 'fixed'}}>
+
+                <div className='form-new-worker1' style={{ backgroundImage: `url(${formCategory})`}}>       
+                    <NewSelect
+                        id="category"
+                        // title="Категория"
+                        options={categories}
+                        selectedElement={selectedElement}
+                        setSelectedElement={setSelectedElement}
+                        onChange={onCategoriesSelectChange}
+                    />  
+
+                    <NewSelect2
+                        disabled={disabled}
+                        id="model"
+                        //title="Специальность"
+                        options={models}
+                        selectedElement={selectedElement}
+                        setSelectedElement={setSelectedElement}
+                        onChange={onSpecSelectChange}
+                    />
+
+                    <button 
+                        disabled={disabledBtn}
+                        class="image-button-add" 
+                        style={{ backgroundImage: `url(${btnSave})`}}
+                        onClick={addNewWorker}
+                    >
+                        Добавить
+                    </button>
+
+                </div>
+
+
                 {/*список работников*/}
                 <WorkerList remove={removeWorker} workers={workers} />
                 
-
-                <Link to={'/edit-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Сохранить</MyButton></Link>     
+                <Link to={'/edit-worker2'}>
+                    <button 
+                        class="image-button-next" 
+                        style={{ backgroundImage: `url(${btnBack})`, marginBottom: "65px", visibility: showNext ? "visible" : "hidden"}}
+                    >
+                        Сохранить
+                    </button>
+                </Link>
             </div>
 
             <div className='footer-block' style={{bottom: '0'}}>
