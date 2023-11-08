@@ -1,16 +1,14 @@
 .mySelect {
-    margin-top: 115px;
-    margin-left: 65px;
     position: relative;
-    min-width: 270px;
+    min-width: 215px;
     -webkit-appearance: none;
-    padding: 10px 40px 10px 12px;
+    padding: 5px 25px 5px 10px;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     background: #2e2e2e;
     cursor: pointer;
     font-family: inherit;
-    font-size: 16px;
+    font-size: 12px;
     transition: all 150ms ease;
     color: #fff;
 }

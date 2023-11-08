@@ -162,38 +162,39 @@ const NewWorker = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
-            {/* <div className='form-wraper'> */}
             
             {/*Специализация*/}
-            <label style={{position: 'absolute', top: '190px', left: '80px'}}>
+            {/* <label style={{}}>
                 <p style={{fontSize: '18px', color: '#fff'}}>
                     Выберите свою специальность
                 </p>
-            </label>
+            </label> */}
 
-            <div style={{display: 'flex', flexDirection: 'column', height: '100vh', position: 'fixed'}}>
-
+            <div style={{display: 'flex', justifyContent: 'center', height: '75vh'}}>
                 <div className='form-new-worker1' style={{ backgroundImage: `url(${formCategory})`}}>   
-                    <p style={{position: 'absolute', top: '90px', left: '65px', fontSize: '14px'}}>Категория</p>    
-                    <NewSelect
-                        id="category"
-                        // title="Категория"
-                        options={categories}
-                        selectedElement={selectedElement}
-                        setSelectedElement={setSelectedElement}
-                        onChange={onCategoriesSelectChange}
-                    />  
+                    <p style={{position: 'absolute', top: '70px', left: '50px', fontSize: '14px'}}>Категория</p>    
+                    <div style={{position: 'absolute', top: '96px', left: '51px'}}>
+                       <NewSelect
+                            id="category"
+                            options={categories}
+                            selectedElement={selectedElement}
+                            setSelectedElement={setSelectedElement}
+                            onChange={onCategoriesSelectChange}
+                        /> 
+                    </div>
+                      
 
-                    <p style={{position: 'absolute', top: '165px', left: '65px', fontSize: '14px'}}>Специальность</p>   
-                    <NewSelect2
-                        disabled={disabled}
-                        id="model"
-                        //title="Специальность"
-                        options={models}
-                        selectedElement={selectedElement}
-                        setSelectedElement={setSelectedElement}
-                        onChange={onSpecSelectChange}
-                    />
+                    <p style={{position: 'absolute', top: '130px', left: '50px', fontSize: '14px'}}>Специальность</p>   
+                    <div style={{position: 'absolute', top: '155px', left: '51px'}}>
+                        <NewSelect
+                            disabled={disabled}
+                            id="model"
+                            options={models}
+                            selectedElement={selectedElement}
+                            setSelectedElement={setSelectedElement}
+                            onChange={onSpecSelectChange}
+                        />
+                    </div>
 
                     <button 
                         disabled={disabledBtn}
@@ -205,19 +206,38 @@ const NewWorker = () => {
                     </button>
 
                 </div>
-
+                
+                
 
                 
 
 
                 {/*список работников*/}
-                {/* <div style={{zIndex: '2', position: 'relative', boxSizing: 'border-box', height: '150px', overflow: 'auto'}}> */}
+                <div style={{
+                    position: 'fixed', 
+                    bottom: '80px', 
+                    boxSizing: 'border-box', 
+                    height: '140px', 
+                    overflow: 'auto',
+                    zIndex: 20,
+                }}>
                     <WorkerList remove={removeWorker} workers={workers} />
-                {/* </div> */}
-                
-                
-                <Link to={'/add-worker2'}><button className="image-button-next" style={{ backgroundImage: `url(${btnBack})`, marginBottom: "15px", visibility: showNext ? "visible" : "hidden"}}>Далее</button></Link>
-                {/* <Link to={'/add-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>      */}
+   
+                </div>
+
+                <div style={{
+                    position: 'fixed', 
+                    bottom: '10px', 
+                    zIndex: 20,}}>
+                    <Link to={'/add-worker2'}>
+                        <button 
+                            className="image-button-next" 
+                            style={{ backgroundImage: `url(${btnBack})`, marginBottom: "15px", visibility: showNext ? "visible" : "hidden"}}>
+                                Далее
+                        </button>
+                    </Link>
+                </div>
+                 
             </div>
 
             <div style={{position: 'fixed', bottom: '25px', right: '0'}}>

@@ -87,24 +87,12 @@ const WorkerItem = (props) => {
 
     return (
         <div className="list_spec">
-            
-
-            {/* <FormControl sx={{marginLeft: '7px', marginBottom: '20px', width: '75%'}} style={{border: '2px, solid, #76A9FF'}} variant="standard">
-                <InputLabel shrink htmlFor="bootstrap-input" style={{color: '#76A9FF'}}>
-                    {props.worker.cat}
-                </InputLabel>
-                <BootstrapInput
-                    defaultValue=""
-                    id="bootstrap-input"
-                    value={props.worker.spec}
-                />
-            </FormControl> */}
 
             <div className='form-new-spec' style={{ backgroundImage: `url(${formSpec})`}}>
-                <img src={iconSound} alt='icon' style={{ marginLeft: '-55px', marginRight: '25px', width: '45px'}}/>
+                <img src={image} alt='icon' style={{ marginLeft: '-55px', marginRight: '25px', width: '40px'}}/>
                 {props.worker.spec}</div>
 
-            <img src={iconDel} alt='icon' onClick={() => props.remove(props.worker)} style={{marginLeft: '10px'}}/>
+            <img src={iconDel} alt='icon' onClick={() => props.remove(props.worker)} style={{marginLeft: '5px', width: '5%'}}/>
         </div>
     );
 };
