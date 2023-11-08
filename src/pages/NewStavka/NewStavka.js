@@ -103,7 +103,12 @@ const NewStavka = () => {
     }, [])
 
     useEffect(() => {
-        tg.MainButton.show();
+        if (summaStavki) {
+           tg.MainButton.show(); 
+        } else {
+            tg.MainButton.hide();  
+        }
+        
     }, [])
 
     //---------------------------------------------------------------------------------------
@@ -127,7 +132,7 @@ const NewStavka = () => {
 
                     <div className="edit-send" style={{ backgroundImage: `url(${enterSumma})`}}>
                         <InputMask
-                            mask="9999.00"
+                            mask="9 999.00"
                             disabled={false}
                             maskChar=""
                             value={summaStavki}
