@@ -211,7 +211,7 @@ const NewWorker = () => {
                 {/*список работников*/}
                 <WorkerList remove={removeWorker} workers={workers} />
                 
-                <Link to={'/add-worker2'}><button class="image-button-next" style={{ backgroundImage: `url(${btnBack})`, marginBottom: "15px", visibility: showNext ? "visible" : "hidden"}}>Далее</button></Link>
+                <Link to={'/add-worker2'}><button className="image-button-next" style={{ backgroundImage: `url(${btnBack})`, marginBottom: "15px", visibility: showNext ? "visible" : "hidden"}}>Далее</button></Link>
                 {/* <Link to={'/add-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>      */}
             </div>
 

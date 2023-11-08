@@ -40,6 +40,9 @@ const NewStavka = (props) => {
 
     const [summaStavki, setSummaStavki] = useState()
     const [pretendentId, setPretendentId] = useState('')
+    const [pretendentId2, setPretendentId2] = useState('')
+
+    const pretId = props.match.params.id
 
 //----------------------------------------------------------------------------------
 
@@ -49,6 +52,7 @@ const NewStavka = (props) => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
 
         setPretendentId(id)
+        setPretendentId2(pretId)
     })
 
     const changeSummaStavki = (e) => {
@@ -65,6 +69,7 @@ const NewStavka = (props) => {
         const data = {
             summaStavki,
             pretendentId,
+            pretendentId2,
             queryId,
         }
 
