@@ -68,7 +68,7 @@ const NewStavka = () => {
     const onSendData = useCallback(() => {
         const data = {
             summaStavki,
-            pretendentId,
+            id,
             queryId,
         }
 
@@ -87,7 +87,7 @@ const NewStavka = () => {
         
         // setIsLoading(false)
               
-    }, [summaStavki, pretendentId])
+    }, [summaStavki, id])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
