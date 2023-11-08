@@ -30,7 +30,7 @@ import { sendMyMessage } from '../../http/chatAPI';
 
 const API_URL = process.env.REACT_APP_API_URL
 
-const NewStavka = (props) => {
+const NewStavka = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const {tg, queryId, user} = useTelegram();
@@ -39,10 +39,9 @@ const NewStavka = (props) => {
     const [showGrad2, setShowGrad2] = useState(false)
 
     const [summaStavki, setSummaStavki] = useState()
-    const [pretendentId, setPretendentId] = useState('')
-    const [pretendentId2, setPretendentId2] = useState('')
+    const [pretendentId, setPretendentId] = useState()
 
-    const pretId = props.match.params.id
+    //const pretId = props.match.params.id
 
 //----------------------------------------------------------------------------------
 
@@ -51,8 +50,9 @@ const NewStavka = (props) => {
         setTimeout(() =>  setShowGrad(true), 500) //градиент верх
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
 
+        console.log("id: ", id)
+
         setPretendentId(id)
-        setPretendentId2(pretId)
     })
 
     const changeSummaStavki = (e) => {
@@ -69,7 +69,6 @@ const NewStavka = (props) => {
         const data = {
             summaStavki,
             pretendentId,
-            pretendentId2,
             queryId,
         }
 
@@ -88,7 +87,7 @@ const NewStavka = (props) => {
         
         // setIsLoading(false)
               
-    }, [summaStavki, pretendentId, pretendentId2])
+    }, [summaStavki, pretendentId])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
