@@ -164,14 +164,17 @@ const NewWorker = () => {
 
             
             {/*Специализация*/}
-            {/* <label style={{}}>
-                <p style={{fontSize: '18px', color: '#fff'}}>
+            {/* <label style={{position: 'absolute', top: '100px'}}>
+                <p style={{fontSize: '17px', color: '#fff'}}>
                     Выберите свою специальность
                 </p>
             </label> */}
 
             <div style={{display: 'flex', justifyContent: 'center', height: '75vh'}}>
                 <div className='form-new-worker1' style={{ backgroundImage: `url(${formCategory})`}}>   
+                    <p style={{marginBottom: '-45px', marginTop: '25px', fontSize: '17px', color: '#fff'}}>
+                        Выберите свою специальность
+                    </p>
                     <p style={{position: 'absolute', top: '70px', left: '50px', fontSize: '14px'}}>Категория</p>    
                     <div style={{position: 'absolute', top: '96px', left: '51px'}}>
                        <NewSelect
