@@ -143,35 +143,18 @@ const NewWorker3 = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
-                {/*Город*/}
-                {/* <div className="text-field text-field_floating">
-                    <RedditTextField fullWidth
-                                    label="Ваш город"
-                                    id="worker_name"
-                                    variant="filled"
-                                    onChange={onChangeCity}
-                                    value={city}
-                    />
-                </div> */}
-
-                    {/* <CustomSelect3
-                        id="dateborn"
-                        title="Год рождения"
-                        options={dates}
-                        selectedElement={selectedElement}
-                        setSelectedElement={setSelectedElement}
-                        onChange={onDatesSelectChange}
-                     /> */}
-
                 <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
 
                     <div className='form-new-worker3' style={{ backgroundImage: `url(${formCity})`}}>               
+                        {/*Город*/}
                         <input
                             className='input-style-city'
-                            onChange={()=>console.log('sdf')} 
                             placeholder='Ваш город'
+                            id="worker_name"
+                            onChange={onChangeCity}
+                            value={city}
                         /> 
-
+                        {/*Год рождения*/}
                         <NewSelect2
                             id="dateborn"
                             // title="Год рождения"
