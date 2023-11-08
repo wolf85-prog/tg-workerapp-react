@@ -11,7 +11,7 @@ import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
-import formCity from "../../image/newspec/form_city.png"
+import formCity from "../../image/newspec/form_category.png"
 import btnBackNext from "../../image/newspec/button_back.png"
 import smallMenu from "../../image/layers/ULEY text.png"
 
@@ -155,6 +155,7 @@ const NewWorker3 = () => {
                             value={city}
                         /> 
                         {/*Год рождения*/}
+                        <p style={{position: 'absolute', top: '185px', left: '70px', fontSize: '14px'}}>Год рождения</p>  
                         <NewSelect2
                             id="dateborn"
                             // title="Год рождения"

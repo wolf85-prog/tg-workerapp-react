@@ -12,7 +12,7 @@
 }
 
 .form-new-spec {
-    width: 260px;
+    width: 290px;
     height: 50px;
     border: none;
     background-size: cover;
@@ -21,7 +21,8 @@
     font-size: 15px;
     cursor: pointer;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    padding-bottom: 2px;
+    /* padding-bottom: 2px; */
+    padding-left: 70px;
 }

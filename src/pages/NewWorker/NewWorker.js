@@ -173,7 +173,8 @@ const NewWorker = () => {
 
             <div style={{display: 'flex', flexDirection: 'column', height: '100vh', position: 'fixed'}}>
 
-                <div className='form-new-worker1' style={{ backgroundImage: `url(${formCategory})`}}>       
+                <div className='form-new-worker1' style={{ backgroundImage: `url(${formCategory})`}}>   
+                    <p style={{position: 'absolute', top: '90px', left: '65px', fontSize: '14px'}}>Категория</p>    
                     <NewSelect
                         id="category"
                         // title="Категория"
@@ -183,6 +184,7 @@ const NewWorker = () => {
                         onChange={onCategoriesSelectChange}
                     />  
 
+                    <p style={{position: 'absolute', top: '165px', left: '65px', fontSize: '14px'}}>Специальность</p>   
                     <NewSelect2
                         disabled={disabled}
                         id="model"
@@ -209,7 +211,10 @@ const NewWorker = () => {
 
 
                 {/*список работников*/}
-                <WorkerList remove={removeWorker} workers={workers} />
+                {/* <div style={{zIndex: '2', position: 'relative', boxSizing: 'border-box', height: '150px', overflow: 'auto'}}> */}
+                    <WorkerList remove={removeWorker} workers={workers} />
+                {/* </div> */}
+                
                 
                 <Link to={'/add-worker2'}><button className="image-button-next" style={{ backgroundImage: `url(${btnBack})`, marginBottom: "15px", visibility: showNext ? "visible" : "hidden"}}>Далее</button></Link>
                 {/* <Link to={'/add-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Далее</MyButton></Link>      */}
