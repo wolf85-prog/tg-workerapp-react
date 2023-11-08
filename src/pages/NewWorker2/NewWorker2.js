@@ -72,59 +72,25 @@ const NewWorker2 = () => {
 
 
             <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
-                
-                {/*Фамилия*/}
-                {/* <div className="text-field text-field_floating">
-                    <RedditTextField fullWidth
-                                    label="Фамилия"
-                                    id="worker_soname"
-                                    variant="filled"
-                                    onChange={onChangeFamily}
-                                    value={workerFam}
-                    />
-                </div> */}
-
-                {/*Имя*/}
-                {/* <div className="text-field text-field_floating">
-                    <RedditTextField fullWidth
-                                    label="Имя"
-                                    id="worker_name"
-                                    variant="filled"
-                                    onChange={onChangeName}
-                                    value={workerName}
-                    />
-                </div>           */}
-
-                {/*Номер телефона*/}
-                {/* <div className="text-field text-field_floating">
-                    <InputMask
-                        mask="+7 (999) 999-99-99"
-                        disabled={false}
-                        maskChar=""
-                        onChange={handlePhone} 
-                        value={phone}
-                    >
-                        {() => <RedditTextField 
-                                    fullWidth 
-                                    label="Номер телефона"
-                                    id="worker_phone"
-                                    variant="filled"/>}
-                    </InputMask>
-                </div> */}
 
                 <div className='form-new-worker2' style={{ backgroundImage: `url(${formFio})`}}>
                     {/* Фамилия */}
                     <input
                         className='input-style'
-                        onChange={()=>console.log('sdf')} 
                         placeholder='Фамилия'
+                        id="worker_soname"
+                        variant="filled"
+                        onChange={onChangeFamily}
+                        value={workerFam}
                     />
 
                     {/* Имя */}
                     <input
                         className='input-style2'
-                        onChange={()=>console.log('sdf')} 
                         placeholder='Имя'
+                        id="worker_name"
+                        onChange={onChangeName}
+                        value={workerName}
                     />
 
                     {/* Номер телефона */}
