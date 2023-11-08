@@ -88,7 +88,7 @@ const NewStavka = (props) => {
         
         // setIsLoading(false)
               
-    }, [summaStavki, pretendentId])
+    }, [summaStavki, pretendentId, pretendentId2])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
