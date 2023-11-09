@@ -166,11 +166,11 @@ const EditWorker = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
             
             {/* белый градиент */}
-            <div  style={{display: 'flex', height: '90vh', position: 'absolute', zIndex: '2'}}>
+            <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
                 <img src={FonGradWhite} alt='' className='fon-style-white'/>
             </div>
             
-            <div style={{display: 'flex', height: '85vh', padding: '0 25px', overflow: 'auto'}}>
+            <div style={{display: 'flex', height: '100vh', padding: '0 25px', overflow: 'auto'}}>
 
                 {/* Чёрная плашка */}
                 <div className='form-edit-worker1'> 
@@ -180,8 +180,8 @@ const EditWorker = () => {
                     </p>
                     
 
-                    <p style={{position: 'absolute', top: '12px', fontSize: '14px'}}>Категория</p>    
-                    <div style={{position: 'relative', marginTop: '45px'}}>
+                    <p style={{position: 'absolute', top: '6px', left: '25px', fontSize: '14px'}}>Категория</p>    
+                    <div style={{position: 'relative', marginTop: '38px', marginLeft: '25px', marginRight: '25px'}}>
                        <NewSelect
                             id="category"
                             options={categories}
@@ -191,8 +191,8 @@ const EditWorker = () => {
                         /> 
                     </div> 
 
-                    <p style={{position: 'absolute', top: '90px', fontSize: '14px'}}>Специальность</p>   
-                    <div style={{position: 'relative', marginTop: '40px'}}>
+                    <p style={{position: 'absolute', top: '80px', left: '25px', fontSize: '14px'}}>Специальность</p>   
+                    <div style={{position: 'relative', marginTop: '40px', marginLeft: '25px', marginRight: '25px'}}>
                         <NewSelect
                             disabled={disabled}
                             id="model"
@@ -228,6 +228,7 @@ const EditWorker = () => {
                     <div style={{
                             position: 'fixed', 
                             bottom: '20px', 
+                            left: '15%',
                             zIndex: '20',
                             width: '70%',
                         }}>
