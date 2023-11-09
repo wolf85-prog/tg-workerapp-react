@@ -25,6 +25,7 @@ import { Stack } from "@mui/material";
 
 import { useUsersContext } from "./../../contexts/UserContext";
 import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
+import NewSelect from '../../components/UI/NewSelect/NewSelect';
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -143,32 +144,35 @@ const NewWorker3 = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
-                <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
+                <div style={{display: 'flex', height: '100vh'}}>
 
                     <div className='form-new-worker3' style={{ backgroundImage: `url(${formCity})`}}>               
                         {/*Город*/}
-                        <input
-                            className='input-style-city'
-                            placeholder='Ваш город'
-                            id="worker_name"
-                            onChange={onChangeCity}
-                            value={city}
-                        /> 
+                        <div style={{position: 'absolute', top: '100px', left: '54px'}}>
+                            <input
+                                className='input-style-city'
+                                placeholder='Ваш город'
+                                id="worker_name"
+                                onChange={onChangeCity}
+                                value={city}
+                            /> 
+                        </div>
+                        
                         {/*Год рождения*/}
-                        <p style={{position: 'absolute', top: '185px', left: '70px', fontSize: '14px'}}>Год рождения</p>  
-                        <NewSelect2
-                            id="dateborn"
-                            // title="Год рождения"
-                            options={dates}
-                            selectedElement={selectedElement}
-                            setSelectedElement={setSelectedElement}
-                            onChange={onDatesSelectChange}
-                        /> 
+                        <p style={{position: 'absolute', top: '135px', left: '54px', fontSize: '14px'}}>Год рождения</p>  
+                        <div style={{position: 'absolute', top: '160px', left: '54px'}}>
+                            <NewSelect2
+                                id="dateborn"
+                                options={dates}
+                                selectedElement={selectedElement}
+                                setSelectedElement={setSelectedElement}
+                                onChange={onDatesSelectChange}
+                            />
+                        </div>
+                         
 
-                         <div className='block-buttons-new3'>
-                            {/* <Link to={'/add-worker2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link> */}
-                            {/* <Link to={'/add-worker4'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton></Link>  */}
-                            <Link to={'/add-worker2'}><button class="image-button-next" style={{backgroundImage: `url(${btnBackNext})`}}>Назад</button></Link>
+                        <div className='block-buttons-worknew3'>
+                            <Link to={'/add-worker2'}><button class="image-button-next3" style={{backgroundImage: `url(${btnBackNext})`}}>Назад</button></Link>
                         </div>                 
                     </div>   
                 </div>            

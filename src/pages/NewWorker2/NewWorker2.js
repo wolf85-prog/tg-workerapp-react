@@ -71,43 +71,51 @@ const NewWorker2 = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
 
-            <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
+            <div style={{display: 'flex', height: '100vh'}}>
 
                 <div className='form-new-worker2' style={{ backgroundImage: `url(${formFio})`}}>
                     {/* Фамилия */}
-                    <input
-                        className='input-style'
-                        placeholder='Фамилия'
-                        id="worker_soname"
-                        variant="filled"
-                        onChange={onChangeFamily}
-                        value={workerFam}
-                    />
+                    <div style={{position: 'absolute', top: '86px', left: '68px'}}>
+                        <input
+                            className='input-style'
+                            placeholder='Фамилия'
+                            id="worker_soname"
+                            variant="filled"
+                            onChange={onChangeFamily}
+                            value={workerFam}
+                        />
+                    </div>
 
                     {/* Имя */}
-                    <input
-                        className='input-style2'
-                        placeholder='Имя'
-                        id="worker_name"
-                        onChange={onChangeName}
-                        value={workerName}
-                    />
+                    <div style={{position: 'absolute', top: '132px', left: '68px'}}>
+                       <input
+                            className='input-style'
+                            placeholder='Имя'
+                            id="worker_name"
+                            onChange={onChangeName}
+                            value={workerName}
+                        /> 
+                    </div>
+                    
 
                     {/* Номер телефона */}
-                    <InputMask
-                        mask="+7 (999) 999-99-99"
-                        disabled={false}
-                        maskChar=""
-                        onChange={handlePhone} 
-                        value={phone}
-                        placeholder='Номер телефона'
-                        className='input-style3'
-                    >
-                    </InputMask>
+                    <div style={{position: 'absolute', top: '178px', left: '68px'}}>
+                        <InputMask
+                            mask="+7 (999) 999-99-99"
+                            disabled={false}
+                            maskChar=""
+                            onChange={handlePhone} 
+                            value={phone}
+                            placeholder='Номер телефона'
+                            className='input-style'
+                        >
+                        </InputMask>
+                    </div>
+                    
 
-                    <div className='block-buttons-new2'>
-                        <Link to={'/add-worker'}><button class="image-button-next" style={{backgroundImage: `url(${btnBackNext})`}}>Назад</button></Link>
-                        <Link to={'/add-worker3'}><button class="image-button-next" style={{backgroundImage: `url(${btnBackNext})`}}>Далее</button></Link>
+                    <div className='block-buttons-worknew2'>
+                        <Link to={'/add-worker'}><button class="image-button-next2" style={{backgroundImage: `url(${btnBackNext})`}}>Назад</button></Link>
+                        <Link to={'/add-worker3'}><button class="image-button-next2" style={{backgroundImage: `url(${btnBackNext})`}}>Далее</button></Link>
                         {/* <Link to={'/add-worker3'}><button class="image-button-next" disabled={novalid} style={{backgroundImage: `url(${btnBackNext})`}}>Далее</button></Link> */}
                     </div>
                 </div>

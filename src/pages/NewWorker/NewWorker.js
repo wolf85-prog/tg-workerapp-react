@@ -162,15 +162,8 @@ const NewWorker = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
-            
-            {/*Специализация*/}
-            {/* <label style={{position: 'absolute', top: '100px'}}>
-                <p style={{fontSize: '17px', color: '#fff'}}>
-                    Выберите свою специальность
-                </p>
-            </label> */}
-
             <div style={{display: 'flex', justifyContent: 'center', height: '75vh'}}>
+                
                 <div className='form-new-worker1' style={{ backgroundImage: `url(${formCategory})`}}>   
                     <p style={{marginBottom: '-45px', marginTop: '25px', fontSize: '17px', color: '#fff'}}>
                         Выберите свою специальность
@@ -211,9 +204,6 @@ const NewWorker = () => {
                 </div>
                 
                 
-
-                
-
 
                 {/*список работников*/}
                 <div style={{
