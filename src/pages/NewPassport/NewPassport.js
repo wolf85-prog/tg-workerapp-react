@@ -19,6 +19,9 @@ import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
+import btnNextSend from "../../image/newpassport/button_next_send.png"
+import formPassport from "../../image/newpassport/form_passport.png"
+
 import smallMenu from "../../image/layers/ULEY text.png"
 
 const API_URL = process.env.REACT_APP_API_URL
@@ -142,11 +145,11 @@ const NewPassport = () => {
                 marginRight: 'auto'}}>{error}
             </div>}
 
-            <div className='form-new2'>    
+            <div style={{display: 'flex', height: '100vh'}}>    
                 
-                {/*Фамилия*/}
-                <div className="text-field text-field_floating">
-                    {famDirty ? <RedditTextFieldNovalid 
+                
+                <div className='form-new-passport' style={{ backgroundImage: `url(${formPassport})`}}>
+                    {/* {famDirty ? <RedditTextFieldNovalid 
                                     fullWidth
                                     label="Фамилия"
                                     name='fam'
@@ -162,11 +165,70 @@ const NewPassport = () => {
                                     variant="filled"
                                     onChange={onChangeFamily}
                                     value={pasFam}
-                                />}
+                                />} */}
+                    {/*Фамилия*/}
+                    <div style={{position: 'absolute', top: '86px', left: '64px'}}>
+                        <input
+                            className='input-style'
+                            placeholder='Фамилия'
+                            name='fam'
+                            id="pas_family"
+                            onChange={onChangeFamily}
+                            value={pasFam}
+                        />  
+                    </div> 
+
+                    {/* Имя */}
+                    <div style={{position: 'absolute', top: '132px', left: '64px'}}>
+                       <input
+                            className='input-style'
+                            placeholder='Имя'
+                            id="pas_name"
+                            name='name'
+                            onChange={onChangeName}
+                            value={pasName}
+                        /> 
+                    </div>   
+
+                    {/* Отчество */}
+                    <div style={{position: 'absolute', top: '178px', left: '64px'}}>
+                       <input
+                            className='input-style'
+                            placeholder='Отчество'
+                            id="pas_soname"
+                            onChange={onChangeSoname}
+                            value={pasSoname}
+                        /> 
+                    </div> 
+
+                    {/* Дата начала */}
+                    <div style={{position: 'absolute', top: '224px', left: '64px'}}>
+                       <input
+                            className='input-style'
+                            placeholder=''
+                            id="date"
+                            name='date'
+                            type="date"
+                            value={pasDateborn}
+                            onChange={onChangeTime}
+                        /> 
+                    </div>     
+
+                    <div className='block-buttons-newpas1'>
+                        {/* <MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton> */}
+                        <button 
+                            // disabled={disabledBtn}
+                            class="image-button-pas" 
+                            style={{ backgroundImage: `url(${btnNextSend})`}}
+                            onClick={pressNext}
+                        >
+                            Далее
+                        </button>
+                    </div>
                 </div>           
 
                 {/*Имя*/}
-                <div className="text-field text-field_floating">
+                {/* <div className="text-field text-field_floating">
                     {nameDirty ? <RedditTextFieldNovalid 
                                     fullWidth
                                     label="Имя"
@@ -185,11 +247,11 @@ const NewPassport = () => {
                                     onChange={onChangeName}
                                     value={pasName}
                                 />}
-                </div> 
+                </div>  */}
                 
 
                 {/*Отчество*/}
-                <div className="text-field text-field_floating">
+                {/* <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
                                     label="Отчество"
                                     id="pas_soname"
@@ -200,11 +262,11 @@ const NewPassport = () => {
                                         istyle: true,
                                     }}
                     />
-                </div>        
+                </div>         */}
 
                 {/*Сколько лет*/}
                 {/*Дата начала*/}
-                <div className="text-field text-field_floating">
+                {/* <div className="text-field text-field_floating">
                     <LocalizationProvider dateAdapter={AdapterDayjs} >
                         <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
                             {datebornDirty ? <RedditTextFieldNovalid
@@ -236,19 +298,16 @@ const NewPassport = () => {
                             </span>
                         </Stack>
                     </LocalizationProvider>
-                </div>
+                </div> */}
                 
 
-                <div className='block-buttons-new2'>
-                    <MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton>
-                </div>
-
-                <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
-                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
-                </div>
+                
 
             </div>
-
+            
+            <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
+                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
+            </div>
         </div>
     );
 };
