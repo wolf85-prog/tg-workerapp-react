@@ -208,12 +208,11 @@ const NewWorker = () => {
                     position: 'fixed', 
                     bottom: '80px', 
                     boxSizing: 'border-box', 
-                    height: '140px', 
+                    height: '120px', 
                     overflow: 'auto',
                     zIndex: 20,
                 }}>
                     <WorkerList remove={removeWorker} workers={workers} />
-   
                 </div>
 
                 {/* Далее */}

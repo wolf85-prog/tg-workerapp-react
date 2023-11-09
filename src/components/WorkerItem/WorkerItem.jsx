@@ -92,7 +92,7 @@ const WorkerItem = (props) => {
                 <img src={image} alt='icon' style={{ marginLeft: '-55px', marginRight: '5px', width: '40px'}}/>
                 {props.worker.spec}</div>
 
-            <img src={iconDel} alt='icon' onClick={() => props.remove(props.worker)} style={{marginLeft: '10px', width: '5%'}}/>
+            <img src={iconDel} alt='icon' onClick={() => props.remove(props.worker)} style={{marginLeft: '20px', width: '5%'}}/>
         </div>
     );
 };

@@ -180,8 +180,8 @@ const EditWorker = () => {
                     </p>
                     
 
-                    <p style={{position: 'absolute', top: '6px', left: '25px', fontSize: '14px'}}>Категория</p>    
-                    <div style={{position: 'relative', marginTop: '38px', marginLeft: '25px', marginRight: '25px'}}>
+                    <p style={{position: 'absolute', top: '8px', left: '30px', fontSize: '14px'}}>Категория</p>    
+                    <div style={{position: 'relative', marginTop: '41px', marginLeft: '30px', marginRight: '30px'}}>
                        <NewSelect
                             id="category"
                             options={categories}
@@ -191,8 +191,8 @@ const EditWorker = () => {
                         /> 
                     </div> 
 
-                    <p style={{position: 'absolute', top: '80px', left: '25px', fontSize: '14px'}}>Специальность</p>   
-                    <div style={{position: 'relative', marginTop: '40px', marginLeft: '25px', marginRight: '25px'}}>
+                    <p style={{position: 'absolute', top: '80px', left: '30px', fontSize: '14px'}}>Специальность</p>   
+                    <div style={{position: 'relative', marginTop: '34px', marginLeft: '30px', marginRight: '30px'}}>
                         <NewSelect
                             disabled={disabled}
                             id="model"
@@ -227,12 +227,12 @@ const EditWorker = () => {
                     {/* Далее */}
                     <div style={{
                             position: 'fixed', 
-                            bottom: '20px', 
+                            bottom: '13px', 
                             left: '15%',
                             zIndex: '20',
                             width: '70%',
                         }}>
-                        <Link to={'/add-worker2'}>
+                        <Link to={'/edit-worker2'}>
                             <button 
                                 className="image-button-edit" 
                                 style={{ backgroundImage: `url(${btnSave})`, marginBottom: "15px", visibility: showNext ? "visible" : "hidden"}}>
