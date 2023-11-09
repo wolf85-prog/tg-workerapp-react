@@ -218,15 +218,15 @@ const EditWorker = () => {
 
             {/*Специализация*/}
 
-            <div style={{display: 'flex', height: '85vh'}}>
-
+            <div style={{display: 'flex', height: '85vh', padding: '0 25px'}}>
+                 
                 <div className='form-edit-worker1'>       
                     <p style={{marginTop: '-35px', fontSize: '17px', color: '#fff'}}>
                         Выберите свою специальность
-                    </p> 
+                    </p>
 
-                    <p style={{position: 'absolute', top: '3px', fontSize: '14px'}}>Категория</p>    
-                    <div style={{position: 'relative', marginTop: '35px'}}>
+                    <p style={{position: 'absolute', top: '12px', fontSize: '14px'}}>Категория</p>    
+                    <div style={{position: 'relative', marginTop: '45px'}}>
                        <NewSelect
                             id="category"
                             options={categories}
@@ -236,7 +236,7 @@ const EditWorker = () => {
                         /> 
                     </div> 
 
-                    <p style={{position: 'absolute', top: '75px', fontSize: '14px'}}>Специальность</p>   
+                    <p style={{position: 'absolute', top: '90px', fontSize: '14px'}}>Специальность</p>   
                     <div style={{position: 'relative', marginTop: '40px'}}>
                         <NewSelect
                             disabled={disabled}
