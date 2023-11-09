@@ -11,3 +11,18 @@
     position: relative;
     z-index: 6;
 }
+
+.form-edit-worker1 {
+    width: 80%;
+    height: 250px;
+    border-radius: 10px;
+    background-color: #463636;
+    color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+    z-index: 5;
+    margin: auto;
+    text-align: center;
+    padding: 0 25px;
+}

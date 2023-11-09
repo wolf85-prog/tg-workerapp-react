@@ -18,7 +18,6 @@ import Calendar from "../../image/calendar.svg";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Stack } from "@mui/material";
-
 import { useUsersContext } from "../../contexts/UserContext";
 
 const NewPassport2 = () => {
@@ -133,6 +132,69 @@ const NewPassport2 = () => {
                         {error}
                 </div>
             }
+
+<div style={{display: 'flex', height: '100vh'}}>    
+                
+                
+                {/* <div className='form-new-passport' style={{ backgroundImage: `url(${formPassport})`}}>
+                    
+                    <div style={{position: 'absolute', top: '86px', left: '64px'}}>
+                        
+                    </div> 
+
+
+                    <div style={{position: 'absolute', top: '132px', left: '64px'}}>
+                       <input
+                            className='input-style'
+                            placeholder='Имя'
+                            id="pas_name"
+                            name='name'
+                            onChange={onChangeName}
+                            value={pasName}
+                        /> 
+                    </div>   
+
+
+                    <div style={{position: 'absolute', top: '178px', left: '64px'}}>
+                       <input
+                            className='input-style'
+                            placeholder='Отчество'
+                            id="pas_soname"
+                            onChange={onChangeSoname}
+                            value={pasSoname}
+                        /> 
+                    </div> 
+
+
+                    <div style={{position: 'absolute', top: '224px', left: '64px'}}>
+                       <input
+                            className='input-style'
+                            placeholder=''
+                            id="date"
+                            name='date'
+                            type="date"
+                            value={pasDateborn}
+                            onChange={onChangeTime}
+                        /> 
+                    </div>     
+
+                    <div className='block-buttons-newpas1'>
+                        <button 
+                            // disabled={disabledBtn}
+                            class="image-button-pas" 
+                            style={{ backgroundImage: `url(${btnNextSend})`}}
+                            onClick={pressNext}
+                        >
+                            Далее
+                        </button>
+                    </div>
+                </div>         */}
+
+            </div>
+            
+            <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
+                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
+            </div>
 
             <div className='form-new2'>
                 {/*Серия и номер*/}

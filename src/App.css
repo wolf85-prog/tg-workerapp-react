@@ -326,10 +326,10 @@
 }
 
 .chevron-new {
-  position: relative;
+  position: absolute;
   width: 18px;
   right: 24px;
-  bottom: -4px;
+  bottom: 6px;
   stroke-width: 2px;
   stroke: #76A9FF;
   fill: none;

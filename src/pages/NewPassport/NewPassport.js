@@ -149,23 +149,7 @@ const NewPassport = () => {
                 
                 
                 <div className='form-new-passport' style={{ backgroundImage: `url(${formPassport})`}}>
-                    {/* {famDirty ? <RedditTextFieldNovalid 
-                                    fullWidth
-                                    label="Фамилия"
-                                    name='fam'
-                                    id="pas_family"
-                                    variant="filled"
-                                    onChange={onChangeFamily}
-                                    value={pasFam}
-                                />
-                                :<RedditTextField fullWidth
-                                    label="Фамилия"
-                                    name='fam'
-                                    id="pas_family"
-                                    variant="filled"
-                                    onChange={onChangeFamily}
-                                    value={pasFam}
-                                />} */}
+                    
                     {/*Фамилия*/}
                     <div style={{position: 'absolute', top: '86px', left: '64px'}}>
                         <input
@@ -225,7 +209,25 @@ const NewPassport = () => {
                             Далее
                         </button>
                     </div>
-                </div>           
+                </div>  
+
+                {/* {famDirty ? <RedditTextFieldNovalid 
+                                    fullWidth
+                                    label="Фамилия"
+                                    name='fam'
+                                    id="pas_family"
+                                    variant="filled"
+                                    onChange={onChangeFamily}
+                                    value={pasFam}
+                                />
+                                :<RedditTextField fullWidth
+                                    label="Фамилия"
+                                    name='fam'
+                                    id="pas_family"
+                                    variant="filled"
+                                    onChange={onChangeFamily}
+                                    value={pasFam}
+                                />} */}         
 
                 {/*Имя*/}
                 {/* <div className="text-field text-field_floating">

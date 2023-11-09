@@ -217,57 +217,31 @@ const EditWorker = () => {
 
 
             {/*Специализация*/}
-            <label style={{position: 'absolute', top: '190px', left: '80px'}}>
+            {/* <label style={{position: 'absolute', top: '190px', left: '80px'}}>
                 <p style={{fontSize: '18px', color: '#fff'}}>
                     Выберите свою специальность
                 </p>
-            </label>
+            </label> */}
 
-            <div style={{display: 'flex', flexDirection: 'column', height: '100vh', position: 'fixed'}}>
+            <div style={{display: 'flex', height: '100vh'}}>
 
-                <div className='form-new-worker1' style={{ backgroundImage: `url(${formCategory})`}}>       
-                    <NewSelect
-                        id="category"
-                        // title="Категория"
-                        options={categories}
-                        selectedElement={selectedElement}
-                        setSelectedElement={setSelectedElement}
-                        onChange={onCategoriesSelectChange}
-                    />  
+                <div className='form-edit-worker1'>       
+                    <p style={{marginTop: '-35px', fontSize: '17px', color: '#fff'}}>
+                        Выберите свою специальность
+                    </p> 
 
-                    <NewSelect2
-                        disabled={disabled}
-                        id="model"
-                        //title="Специальность"
-                        options={models}
-                        selectedElement={selectedElement}
-                        setSelectedElement={setSelectedElement}
-                        onChange={onSpecSelectChange}
-                    />
-
-                    <button 
-                        disabled={disabledBtn}
-                        class="image-button-add" 
-                        style={{ backgroundImage: `url(${btnSave})`}}
-                        onClick={addNewWorker}
-                    >
-                        Добавить
-                    </button>
+                    <p style={{position: 'absolute', top: '70px', left: '50px', fontSize: '14px'}}>Категория</p>    
+                    <div style={{position: 'relative', marginTop: '35px'}}>
+                       <NewSelect
+                            id="category"
+                            options={categories}
+                            selectedElement={selectedElement}
+                            setSelectedElement={setSelectedElement}
+                            onChange={onCategoriesSelectChange}
+                        /> 
+                    </div> 
 
                 </div>
-
-
-                {/*список работников*/}
-                <WorkerList remove={removeWorker} workers={workers} />
-                
-                <Link to={'/edit-worker2'}>
-                    <button 
-                        class="image-button-next" 
-                        style={{ backgroundImage: `url(${btnBack})`, marginBottom: "65px", visibility: showNext ? "visible" : "hidden"}}
-                    >
-                        Сохранить
-                    </button>
-                </Link>
             </div>
 
             <div className='footer-block' style={{bottom: '0'}}>
