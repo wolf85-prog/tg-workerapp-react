@@ -166,64 +166,10 @@ const EditWorker = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
-            {/* <div className='form-new1'>
-                <div>
-                    <label>
-                        <p
-                            style={{
-                                margin: '20px 5px',
-                                display: 'flex',
-                                fontSize: '14px',
-                                color: '#2975f5',
-                            }}>Выберите свою специальность
-                        </p>
-
-                        <div className="text-field text-field_floating">
-                            <CustomSelect
-                                id="category"
-                                title="Категория"
-                                options={categories}
-                                selectedElement={selectedElement}
-                                setSelectedElement={setSelectedElement}
-                                onChange={onCategoriesSelectChange}
-                            />
-                        </div>
-
-                        <div className="text-field text-field_floating">
-                            <CustomSelect
-                                disabled={disabled}
-                                id="model"
-                                title="Специальность"
-                                options={models}
-                                selectedElement={selectedElement}
-                                setSelectedElement={setSelectedElement}
-                                onChange={onSpecSelectChange}
-                            />
-                        </div>
-                    </label>
-
-
-                    <p>
-                        <MyButton
-                            disabled={disabledBtn}
-                            style={{marginBottom: "15px", width: "150px"}}
-                            onClick={addNewWorker}
-                        >Добавить
-                        </MyButton>
-                    </p>
-
-                </div>
-
-                <WorkerList remove={removeWorker} workers={workers} />           
-
-                <Link to={'/edit-worker2'}><MyButton style={{marginBottom: "15px", width: "220px", visibility: showNext ? "visible" : "hidden"}}>Сохранить</MyButton></Link>     
-            </div> */}
-
-
-            {/*Специализация*/}
-
-            <div style={{display: 'flex', height: '85vh', padding: '0 25px'}}>
-                <div className='form-edit-worker1'>       
+            
+            <div style={{display: 'flex', height: '85vh', padding: '0 25px', overflow: 'auto'}}>
+                <div className='form-edit-worker1'> 
+                    {/*Специализация*/}      
                     <p style={{marginTop: '-35px', fontSize: '17px', color: '#fff'}}>
                         Выберите свою специальность
                     </p>
@@ -264,7 +210,7 @@ const EditWorker = () => {
                     <div style={{
                         boxSizing: 'border-box', 
                         height: '140px', 
-                        overflow: 'auto',
+                        // overflow: 'auto',
                         zIndex: 20,
                         paddingTop: '40px',
                     }}>
