@@ -218,6 +218,7 @@ const NewWorker = () => {
    
                 </div>
 
+                {/* Далее */}
                 <div style={{
                     position: 'fixed', 
                     bottom: '10px', 

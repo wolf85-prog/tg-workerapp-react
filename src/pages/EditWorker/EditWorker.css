@@ -14,9 +14,9 @@
 
 .form-edit-worker1 {
     width: 80%;
-    height: 250px;
+    height: 150px;
     border-radius: 10px;
-    background-color: #463636;
+    background-color: #000000;
     color: #ffffff;
     font-size: 15px;
     cursor: pointer;
@@ -25,4 +25,18 @@
     margin: auto;
     text-align: center;
     padding: 0 25px;
+}
+
+.image-button-edit {
+    position: relative;
+    z-index: 15;
+    margin-top: 30px;
+    width: 200px;
+    height: 36px;
+    border: none;
+    background-size: cover;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer; 
 }
