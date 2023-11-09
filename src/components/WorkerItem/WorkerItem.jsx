@@ -88,7 +88,7 @@ const WorkerItem = (props) => {
     return (
         <div className="list_spec">
 
-            <div className='form-new-spec' style={{ backgroundImage: `url(${formSpec})`}}>
+            <div className='form-new-spec'>
                 <img src={image} alt='icon' style={{ marginLeft: '-55px', marginRight: '25px', width: '40px'}}/>
                 {props.worker.spec}</div>
 
