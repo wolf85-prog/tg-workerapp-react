@@ -11,7 +11,6 @@ import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
-import formCity from "../../image/newspec/form_category.png"
 import btnBackNext from "../../image/newspec/button_back.png"
 import smallMenu from "../../image/layers/ULEY text.png"
 
@@ -146,7 +145,7 @@ const NewWorker3 = () => {
 
                 <div style={{display: 'flex', height: '100vh'}}>
 
-                    <div className='form-new-worker3' style={{ backgroundImage: `url(${formCity})`}}>               
+                    <div className='form-new-worker3'>               
                         {/*Город*/}
                         <div style={{position: 'absolute', top: '100px', left: '54px'}}>
                             <input

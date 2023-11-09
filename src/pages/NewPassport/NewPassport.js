@@ -20,7 +20,6 @@ import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
 import btnNextSend from "../../image/newpassport/button_next_send.png"
-import formPassport from "../../image/newpassport/form_passport.png"
 
 import smallMenu from "../../image/layers/ULEY text.png"
 
@@ -148,7 +147,7 @@ const NewPassport = () => {
             <div style={{display: 'flex', height: '100vh'}}>    
                 
                 
-                <div className='form-new-passport' style={{ backgroundImage: `url(${formPassport})`}}>
+                <div className='form-new-passport'>
                     
                     {/*Фамилия*/}
                     <div style={{position: 'absolute', top: '86px', left: '64px'}}>

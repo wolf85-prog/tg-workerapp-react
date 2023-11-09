@@ -12,7 +12,6 @@ import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 import smallMenu from "../../image/layers/ULEY text.png"
 
 import btnBackNext from "../../image/newspec/button_back.png"
-import formFio from "../../image/newspec/forma_fio.png"
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
@@ -73,7 +72,7 @@ const NewWorker2 = () => {
 
             <div style={{display: 'flex', height: '100vh'}}>
 
-                <div className='form-new-worker2' style={{ backgroundImage: `url(${formFio})`}}>
+                <div className='form-new-worker2'>
                     {/* Фамилия */}
                     <div style={{position: 'absolute', top: '86px', left: '68px'}}>
                         <input

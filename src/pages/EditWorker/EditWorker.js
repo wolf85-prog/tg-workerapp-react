@@ -12,14 +12,14 @@ import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
+import FonGradWhite from "../../image/layers/grad_white.png";
+
 import btnMenu from "../../image/layers/icon_menu.png";
 import smallMenu from "../../image/layers/ULEY text.png"
 
 import btnBack from "../../image/newspec/button_back.png"
 import btnSave from "../../image/newspec/button_save.png"
-import formCategory from "../../image/newspec/form_category.png"
 import NewSelect from '../../components/UI/NewSelect/NewSelect';
-import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
 
 //import TextField from '@mui/material/TextField';
 //import { alpha, styled } from '@mui/material/styles';
@@ -156,7 +156,11 @@ const EditWorker = () => {
             <img src={BlackFon} alt='' className='fon-black' />
             
             <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
-                <img src={Fon} alt='' className='fon-style-full' />
+                <img src={Fon} alt='' className='fon-style-full' />    
+            </div>
+
+            <div  style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
+                <img src={FonGradWhite} alt='' className='fon-style-white'/>
             </div>
 
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
@@ -219,7 +223,6 @@ const EditWorker = () => {
             {/*Специализация*/}
 
             <div style={{display: 'flex', height: '85vh', padding: '0 25px'}}>
-                 
                 <div className='form-edit-worker1'>       
                     <p style={{marginTop: '-35px', fontSize: '17px', color: '#fff'}}>
                         Выберите свою специальность

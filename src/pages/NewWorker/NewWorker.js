@@ -15,9 +15,7 @@ import smallMenu from "../../image/layers/ULEY text.png"
 
 import btnBack from "../../image/newspec/button_back.png"
 import btnSave from "../../image/newspec/button_save.png"
-import formCategory from "../../image/newspec/form_category.png"
 import NewSelect from '../../components/UI/NewSelect/NewSelect';
-import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
 
 
 //import TextField from '@mui/material/TextField';
@@ -164,7 +162,7 @@ const NewWorker = () => {
 
             <div style={{display: 'flex', justifyContent: 'center', height: '75vh'}}>
                 
-                <div className='form-new-worker1' style={{ backgroundImage: `url(${formCategory})`}}>   
+                <div className='form-new-worker1'>   
                     <p style={{marginBottom: '-45px', marginTop: '25px', fontSize: '17px', color: '#fff'}}>
                         Выберите свою специальность
                     </p>
