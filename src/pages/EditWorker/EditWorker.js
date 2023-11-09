@@ -21,6 +21,8 @@ import btnBack from "../../image/newspec/button_back.png"
 import btnSave from "../../image/newspec/button_save.png"
 import NewSelect from '../../components/UI/NewSelect/NewSelect';
 
+import Forma from "../../image/newspec/forma.png";
+
 //import TextField from '@mui/material/TextField';
 //import { alpha, styled } from '@mui/material/styles';
 import specData from "../../data/specData"
@@ -155,24 +157,28 @@ const EditWorker = () => {
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
             
+            {/* треугольники */}
             <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
                 <img src={Fon} alt='' className='fon-style-full' />    
             </div>
 
-            <div  style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
-                <img src={FonGradWhite} alt='' className='fon-style-white'/>
-            </div>
-
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
-
+            
+            {/* белый градиент */}
+            <div  style={{display: 'flex', height: '90vh', position: 'absolute', zIndex: '2'}}>
+                <img src={FonGradWhite} alt='' className='fon-style-white'/>
+            </div>
             
             <div style={{display: 'flex', height: '85vh', padding: '0 25px', overflow: 'auto'}}>
+
+                {/* Чёрная плашка */}
                 <div className='form-edit-worker1'> 
                     {/*Специализация*/}      
                     <p style={{marginTop: '-35px', fontSize: '17px', color: '#fff'}}>
                         Выберите свою специальность
                     </p>
+                    
 
                     <p style={{position: 'absolute', top: '12px', fontSize: '14px'}}>Категория</p>    
                     <div style={{position: 'relative', marginTop: '45px'}}>
@@ -227,9 +233,9 @@ const EditWorker = () => {
                         }}>
                         <Link to={'/add-worker2'}>
                             <button 
-                                className="image-button-next" 
-                                style={{ backgroundImage: `url(${btnBack})`, marginBottom: "15px", visibility: showNext ? "visible" : "hidden"}}>
-                                    Далее
+                                className="image-button-edit" 
+                                style={{ backgroundImage: `url(${btnSave})`, marginBottom: "15px", visibility: showNext ? "visible" : "hidden"}}>
+                                    Сохранить
                             </button>
                         </Link>
                     </div>

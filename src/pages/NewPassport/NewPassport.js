@@ -19,6 +19,7 @@ import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
+import FonGradWhite from "../../image/layers/grad_white.png";
 import btnNextSend from "../../image/newpassport/button_next_send.png"
 
 import smallMenu from "../../image/layers/ULEY text.png"
@@ -144,15 +145,20 @@ const NewPassport = () => {
                 marginRight: 'auto'}}>{error}
             </div>}
 
-            <div style={{display: 'flex', height: '100vh'}}>    
+            {/* белый градиент */}
+            <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
+                <img src={FonGradWhite} alt='' className='fon-style-white'/>
+            </div>
+
+            <div style={{display: 'flex', height: '100vh', padding: '0 25px', overflow: 'auto'}}>            
                 
-                
+                {/* Чёрная плашка */}
                 <div className='form-new-passport'>
                     
                     {/*Фамилия*/}
-                    <div style={{position: 'absolute', top: '86px', left: '64px'}}>
+                    <div style={{position: 'relative', marginTop: '30px'}}>
                         <input
-                            className='input-style'
+                            className='input-style2'
                             placeholder='Фамилия'
                             name='fam'
                             id="pas_family"
@@ -162,32 +168,30 @@ const NewPassport = () => {
                     </div> 
 
                     {/* Имя */}
-                    <div style={{position: 'absolute', top: '132px', left: '64px'}}>
-                       <input
-                            className='input-style'
-                            placeholder='Имя'
-                            id="pas_name"
-                            name='name'
-                            onChange={onChangeName}
-                            value={pasName}
-                        /> 
-                    </div>   
+                    <input
+                        className='input-style2'
+                        placeholder='Имя'
+                        id="pas_name"
+                        name='name'
+                        onChange={onChangeName}
+                        value={pasName}
+                    /> 
 
                     {/* Отчество */}
-                    <div style={{position: 'absolute', top: '178px', left: '64px'}}>
+                    {/* <div style={{position: 'absolute', top: '178px', left: '64px'}}> */}
                        <input
-                            className='input-style'
+                            className='input-style2'
                             placeholder='Отчество'
                             id="pas_soname"
                             onChange={onChangeSoname}
                             value={pasSoname}
                         /> 
-                    </div> 
+                    {/* </div>  */}
 
                     {/* Дата начала */}
-                    <div style={{position: 'absolute', top: '224px', left: '64px'}}>
+                    {/* <div style={{position: 'absolute', top: '224px', left: '64px'}}> */}
                        <input
-                            className='input-style'
+                            className='input-style2'
                             placeholder=''
                             id="date"
                             name='date'
@@ -195,9 +199,9 @@ const NewPassport = () => {
                             value={pasDateborn}
                             onChange={onChangeTime}
                         /> 
-                    </div>     
+                    {/* </div>      */}
 
-                    <div className='block-buttons-newpas1'>
+                    {/* <div className='block-buttons-newpas1'> */}
                         {/* <MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton> */}
                         <button 
                             // disabled={disabledBtn}
@@ -207,7 +211,7 @@ const NewPassport = () => {
                         >
                             Далее
                         </button>
-                    </div>
+                    {/* </div> */}
                 </div>  
 
                 {/* {famDirty ? <RedditTextFieldNovalid 

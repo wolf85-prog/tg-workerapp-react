@@ -352,12 +352,15 @@
   margin-bottom: 25px;
 }
 
-.fon-style-white{
-  margin: auto;
-  z-index: 20;
-  height: 400px;
-  object-fit: fill;
-  width: 150%;
-  opacity: 0.8;
+.input-style {
   position: relative;
+  z-index: 25;
+  width: 196px;
+  margin: 0 0;
+  border: none;
+  height: 26px;
+  background-color: #2e2e2e;
+  padding: 0 10px;
+  color: #fff;
+  border-radius: 5px;
 }

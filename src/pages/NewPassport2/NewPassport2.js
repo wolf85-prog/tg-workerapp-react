@@ -8,8 +8,9 @@ import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
-
+import FonGradWhite from "../../image/layers/grad_white.png";
 import smallMenu from "../../image/layers/ULEY text.png"
+import btnNextSend from "../../image/newpassport/button_next_send.png"
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
@@ -133,8 +134,79 @@ const NewPassport2 = () => {
                 </div>
             }
 
-<div style={{display: 'flex', height: '100vh'}}>    
-                
+            {/* белый градиент */}
+            <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
+                <img src={FonGradWhite} alt='' className='fon-style-white'/>
+            </div>
+
+            <div style={{display: 'flex', height: '100vh', padding: '0 25px', overflow: 'auto'}}>            
+                {/* Чёрная плашка */}
+                <div className='form-new-passport'>
+                    
+                    {/*Серия и номер*/}
+                    <div style={{position: 'relative', marginTop: '30px'}}>
+                        <InputMask
+                            className='input-style2'
+                            mask="9999 999999"
+                            disabled={false}
+                            maskChar=""
+                            onChange={handleNumber} 
+                            value={pasNumber}
+                            placeholder='Серия и номер'
+                        >  
+                        </InputMask>
+                    </div> 
+
+                    {/* Дата выдачи */}
+                    <input
+                        className='input-style2'
+                        placeholder='Дата выдачи'
+                        id="pas_date"
+                        label="Дата выдачи"
+                        type="date"
+                        value={pasDate}
+                        onChange={handleDate}
+                    /> 
+
+                    {/* Кем выдан */}
+                    {/* <div style={{position: 'absolute', top: '178px', left: '64px'}}> */}
+                       <input
+                            className='input-style2'
+                            placeholder="Кем выдан"
+                            id="pas_kem"
+                            name='kem'
+                            onChange={handleKem}
+                            value={pasKem}
+                        /> 
+                    {/* </div>  */}
+
+                    {/* Код подразделения */}
+                    {/* <div style={{position: 'absolute', top: '224px', left: '64px'}}> */}
+                        <InputMask
+                            mask="999-999"
+                            disabled={false}
+                            className='input-style2'
+                            placeholder='Код подразделения'
+                            maskChar=""
+                            onChange={handleKod} 
+                            value={pasKod}
+                        />
+
+                    {/* </div>      */}
+
+                    {/* <div className='block-buttons-newpas1'> */}
+                        {/* <MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton> */}
+                        <button 
+                            // disabled={disabledBtn}
+                            class="image-button-pas" 
+                            style={{ backgroundImage: `url(${btnNextSend})`}}
+                            onClick={pressNext}
+                        >
+                            Далее
+                        </button>
+                    {/* </div> */}
+                </div>
+            </div>    
                 
                 {/* <div className='form-new-passport' style={{ backgroundImage: `url(${formPassport})`}}>
                     
@@ -190,14 +262,9 @@ const NewPassport2 = () => {
                     </div>
                 </div>         */}
 
-            </div>
             
-            <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
-                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
-            </div>
 
-            <div className='form-new2'>
-                {/*Серия и номер*/}
+            {/* <div className='form-new2'>
                 <div className="text-field text-field_floating">
                     <InputMask
                         mask="9999 999999"
@@ -220,10 +287,9 @@ const NewPassport2 = () => {
                                     id="pas_number"
                                     variant="filled"/>}
                     </InputMask>
-                </div>
+                </div> */}
 
-                {/*Дата выдачи*/}
-                <div className="text-field text-field_floating">
+                {/* <div className="text-field text-field_floating">
                     <LocalizationProvider dateAdapter={AdapterDayjs} >
                         <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
                             {dateDirty ? <RedditTextFieldNovalid
@@ -253,10 +319,9 @@ const NewPassport2 = () => {
                             </span>
                         </Stack>
                     </LocalizationProvider>
-                </div>
+                </div> */}
 
-                {/*Кем выдан*/}
-                <div className="text-field text-field_floating">
+                {/* <div className="text-field text-field_floating">
                     {kemDirty ?
                     <RedditTextFieldNovalid fullWidth
                                     label="Кем выдан"
@@ -274,10 +339,9 @@ const NewPassport2 = () => {
                                     onChange={handleKem}
                                     value={pasKem}
                     />}
-                </div>          
+                </div>           */}
 
-                {/*Код подразделения*/}
-                <div className="text-field text-field_floating">
+                {/* <div className="text-field text-field_floating">
                     <InputMask
                         mask="999-999"
                         disabled={false}
@@ -299,18 +363,17 @@ const NewPassport2 = () => {
                                     id="pas_kod"
                                     variant="filled"/>}
                     </InputMask>
-                </div>
+                </div> */}
 
-                <div className='block-buttons-new2'>
+                {/* <div className='block-buttons-new2'>
                     <Link to={'/add-passport'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
                     <MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton>
-                </div>
+                </div> */}
 
                 <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
                     <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
                 </div>
 
-            </div>
         </div>
     );
 };

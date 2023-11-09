@@ -2,26 +2,29 @@
     width: 100%;
 
     text-align: center;
-    padding: 10px;
+    padding: 0 10px;
     position: relative;
     cursor: pointer;
     color: #000;
 
-    height: 55px;
-    border: 2px solid #2e7cff;
+    height: 38px;
     overflow: hidden;
     border-radius: 10px;
-    background-color: #2A2731;
+    background-color: #2e2e2e;
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    border-radius: 10px;
+    margin-bottom: 20px;
   }
 
+
   .file-upload p {
-    font-size: 1rem;
-    color: #c6c1cd;
+    font-size: 12px;
+    color: #8f8e91;
     font-weight: 400;
   }
   .file-upload input {

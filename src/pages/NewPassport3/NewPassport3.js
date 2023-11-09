@@ -8,6 +8,8 @@ import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
+import FonGradWhite from "../../image/layers/grad_white.png";
+import btnNextSend from "../../image/newpassport/button_next_send.png"
 
 import smallMenu from "../../image/layers/ULEY text.png"
 import {useTelegram} from "../../hooks/useTelegram";
@@ -245,8 +247,75 @@ const NewPassport3 = () => {
                 </div>
             }
 
-            <div className='form-new2'>
-                {/*Место рождения*/}
+            {/* белый градиент */}
+            <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
+                <img src={FonGradWhite} alt='' className='fon-style-white'/>
+            </div>
+
+            <div style={{display: 'flex', height: '100vh', padding: '0 25px', overflow: 'auto'}}>            
+                
+                {/* Чёрная плашка */}
+                <div className='form-new-passport'>
+                    
+                    {/*Место рождения*/}
+                    <div style={{position: 'relative', marginTop: '30px'}}>
+                        <input
+                            className='input-style2'
+                            placeholder='Место рождения'
+                            id="worker_soname"
+                            variant="filled"
+                            onChange={handlePlaceborn}
+                            value={pasPlaceborn}
+                        />  
+                    </div> 
+
+                    {/* Адрес регистрации */}
+                    <input
+                        className='input-style2'
+                        placeholder='Адрес регистрации'
+                        id="worker_name"
+                        variant="filled"
+                        onChange={handleAdress}
+                        value={pasAdress}
+                    /> 
+
+                    {/* Email */}
+                    {/* <div style={{position: 'absolute', top: '178px', left: '64px'}}> */}
+                       <input
+                            className='input-style2'
+                            placeholder='Email'
+                            id="worker_name"
+                            variant="filled"
+                            onChange={handleEmail}
+                            value={pasEmail}
+                        /> 
+                    {/* </div>  */}
+
+                    {/* Фото для аккредитации */}
+                    {/* <div style={{position: 'absolute', top: '224px', left: '64px'}}> */}
+                    <div className="file-upload">
+                    <p>{selectedName || "Фото для аккредитации"}</p><img src={uploadImg} alt="upload" width={30} height={30} />
+                       <input
+                            type="file" 
+                            name="photo" 
+                            onChange={handleFileChange}
+                        /> 
+                    </div>     
+
+                    {/* <div className='block-buttons-newpas1'> */}
+                        {/* <MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton> */}
+                        <button 
+                            // disabled={disabledBtn}
+                            class="image-button-pas" 
+                            style={{ backgroundImage: `url(${btnNextSend})`}}
+                            onClick={pressNext}
+                        >
+                            Отправить анкету
+                        </button>
+                    {/* </div> */}
+                </div>
+
+            {/* <div className='form-new2'>
                 <div className="text-field text-field_floating">
                     {placeDirty ? <RedditTextFieldNovalid 
                                     fullWidth
@@ -266,7 +335,6 @@ const NewPassport3 = () => {
                                 />}
                 </div>
 
-                {/*Адрес*/}
                 <div className="text-field text-field_floating">
                     {addressDirty ? <RedditTextFieldNovalid
                                     fullWidth
@@ -285,7 +353,6 @@ const NewPassport3 = () => {
                     />}
                 </div> 
 
-                {/*Email*/}
                 <div className="text-field text-field_floating">
                     {emailDirty ? <RedditTextFieldNovalid 
                                     fullWidth
@@ -307,13 +374,13 @@ const NewPassport3 = () => {
                 <div className="file-upload">
                     <p>{selectedName || "Фото для аккредитации"}</p><img src={uploadImg} alt="upload" width={30} height={30} />
                     <input type="file" name="photo" onChange={handleFileChange}/>
-                </div>
+                </div> */}
                 {/* <MyButton style={{marginBottom: "15px", width: "150px"}} onClick={handleSubmit}>Отправить</MyButton> */}
 
-                <div className='block-buttons-new2'>
+                {/* <div className='block-buttons-new2'>
                     <Link to={'/add-passport2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
                     <MyButton onClick={pressNext} style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Сохранить</MyButton>
-                </div>
+                </div> */}
 
                 <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
                     <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
@@ -325,55 +392,6 @@ const NewPassport3 = () => {
     );
 };
 
-const RedditTextField = styled((props) => (
-    <TextField InputProps={{ disableUnderline: true }} {...props}  />
-))(({ theme }) => ({
-    '& .MuiFilledInput-root': {
-        height: '55px',
-        border: '2px solid #2e7cff',
-        overflow: 'hidden',
-        borderRadius: 10,
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
-        '&.Mui-focused': {
-            backgroundColor: 'transparent',
-            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-            borderColor: theme.palette.primary.main,
-        },
-    },
-}));
-
-const RedditTextFieldNovalid = styled((props) => (
-    <TextField InputProps={{ disableUnderline: true }} {...props}  />
-))(({ theme }) => ({
-    '& .MuiFilledInput-root': {
-        height: '55px',
-        border: '2px solid #b50808',
-        overflow: 'hidden',
-        borderRadius: 10,
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
-        '&.Mui-focused': {
-            backgroundColor: 'transparent',
-            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-            borderColor: theme.palette.primary.main,
-        },
-    },
-}));
 
 
 export default NewPassport3;
