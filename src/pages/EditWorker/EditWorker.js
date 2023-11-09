@@ -34,11 +34,12 @@ const API_URL = process.env.REACT_APP_API_URL
 const EditWorker = () => {
     const navigate = useNavigate();
 
+    const {tg, queryId, user} = useTelegram();
+
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
 
     const {worker, setWorker, workers, setWorkers} = useUsersContext();
-    const {user} = useTelegram();
 
     //категории
     const [categories, setCategories] = useState([]);
@@ -150,6 +151,45 @@ const EditWorker = () => {
     }
 
 
+    //отправка данных в telegram-бот
+    const onSendData = useCallback(() => {
+
+        const data = {
+            worklist: workers, 
+            queryId,
+        }
+
+        tg.MainButton.hide();
+
+        fetch(API_URL + 'web-addspec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+              
+    }, [ workers ])
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
+
+    useEffect(() => {
+        tg.MainButton.setParams({
+            text: 'Сохранить',
+            color: '#797979'
+        })
+    }, [])
+
+    useEffect(() => {
+        tg.MainButton.show();
+    }, [])
+
+
     return (
         <div className="App">
             <Header header={{title: 'Новая специальность', icon: 'false'}}/>
@@ -170,7 +210,7 @@ const EditWorker = () => {
                 <img src={FonGradWhite} alt='' className='fon-style-white'/>
             </div>
             
-            <div style={{display: 'flex', height: '100vh', padding: '0 25px'}}>
+            <div style={{display: 'flex', height: '100vh', padding: '0 25px', overflow: 'auto', marginBottom: '150px'}}>
 
                 {/* Чёрная плашка */}
                 <div className='form-edit-worker1'> 
@@ -216,7 +256,7 @@ const EditWorker = () => {
                     <div style={{
                         boxSizing: 'border-box', 
                         height: '140px', 
-                        overflow: 'auto',
+                        //overflow: 'auto',
                         zIndex: 20,
                         paddingTop: '40px',
                     }}>
@@ -225,7 +265,7 @@ const EditWorker = () => {
                     </div>
 
                     {/* Далее */}
-                    <div style={{
+                    {/* <div style={{
                             position: 'fixed', 
                             bottom: '13px', 
                             left: '15%',
@@ -239,7 +279,7 @@ const EditWorker = () => {
                                     Сохранить
                             </button>
                         </Link>
-                    </div>
+                    </div> */}
                 
                 </div>
 
