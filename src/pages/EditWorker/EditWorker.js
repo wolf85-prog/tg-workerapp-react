@@ -181,7 +181,7 @@ const EditWorker = () => {
     useEffect(() => {
         tg.MainButton.setParams({
             text: 'Сохранить',
-            color: '#2e2e2e'
+            color: '#000000'
         })
     }, [])
 
