@@ -170,7 +170,7 @@ const EditWorker = () => {
                 <img src={FonGradWhite} alt='' className='fon-style-white'/>
             </div>
             
-            <div style={{display: 'flex', height: '100vh', padding: '0 25px', overflow: 'auto'}}>
+            <div style={{display: 'flex', height: '100vh', padding: '0 25px'}}>
 
                 {/* Чёрная плашка */}
                 <div className='form-edit-worker1'> 
@@ -216,7 +216,7 @@ const EditWorker = () => {
                     <div style={{
                         boxSizing: 'border-box', 
                         height: '140px', 
-                        // overflow: 'auto',
+                        overflow: 'auto',
                         zIndex: 20,
                         paddingTop: '40px',
                     }}>
