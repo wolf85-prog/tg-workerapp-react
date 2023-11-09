@@ -11,6 +11,7 @@ import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 import FonGradWhite from "../../image/layers/grad_white.png";
 import smallMenu from "../../image/layers/ULEY text.png"
 import btnNextSend from "../../image/newpassport/button_next_send.png"
+import btnBack from "../../image/newpassport/icon_back.png"
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
@@ -370,63 +371,18 @@ const NewPassport2 = () => {
                     <MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton>
                 </div> */}
 
-                <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
+                {/* <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
                     <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
+                </div> */}
+
+                <div className='footer-block' style={{position: 'fixed', bottom: '25px', right: '0'}}>
+                    <Link to={'/add-passport'}><img src={btnBack} alt='' /></Link>
+                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
                 </div>
 
         </div>
     );
 };
-
-const RedditTextField = styled((props) => (
-    <TextField InputProps={{ disableUnderline: true }} {...props}  />
-))(({ theme }) => ({
-    '& .MuiFilledInput-root': {
-        height: '55px',
-        border: '2px solid #2e7cff', //#b50808
-        overflow: 'hidden',
-        borderRadius: 10,
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
-        '&.Mui-focused': {
-            backgroundColor: 'transparent',
-            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-            borderColor: theme.palette.primary.main,
-        },
-    },
-}));
-
-const RedditTextFieldNovalid = styled((props) => (
-    <TextField InputProps={{ disableUnderline: true }} {...props}  />
-))(({ theme }) => ({
-    '& .MuiFilledInput-root': {
-        height: '55px',
-        border: '2px solid #b50808',
-        overflow: 'hidden',
-        borderRadius: 10,
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
-        '&.Mui-focused': {
-            backgroundColor: 'transparent',
-            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-            borderColor: theme.palette.primary.main,
-        },
-    },
-}));
 
 
 export default NewPassport2;

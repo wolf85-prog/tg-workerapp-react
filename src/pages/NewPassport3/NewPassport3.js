@@ -10,6 +10,7 @@ import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 import FonGradWhite from "../../image/layers/grad_white.png";
 import btnNextSend from "../../image/newpassport/button_next_send.png"
+import btnBack from "../../image/newpassport/icon_back.png"
 
 import smallMenu from "../../image/layers/ULEY text.png"
 import {useTelegram} from "../../hooks/useTelegram";
@@ -382,8 +383,13 @@ const NewPassport3 = () => {
                     <MyButton onClick={pressNext} style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Сохранить</MyButton>
                 </div> */}
 
-                <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
+                {/* <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
                     <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
+                </div> */}
+
+                <div className='footer-block' style={{position: 'fixed', bottom: '25px', right: '0'}}>
+                    <Link to={'/add-passport2'}><img src={btnBack} alt='' /></Link>
+                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
                 </div>
 
             </div>
