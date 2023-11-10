@@ -38,7 +38,7 @@ const NewWorker3 = () => {
     const { workerFam, workerName, phone, workers, 
         city, setCity, dateborn, setDateborn } = useUsersContext();
 
-    //console.log(workerFam, workerName, phone, workers, city, dateborn)
+    console.log(workerFam, workerName, phone, workers, city, dateborn)
 
     const [isLoading, setIsLoading] = useState(false);
     const [selectedElement, setSelectedElement] = useState("")

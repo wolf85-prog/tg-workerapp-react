@@ -156,6 +156,7 @@ const EditWorker = () => {
 
         const data = {
             worklist: workers, 
+            user,
             queryId,
         }
 
@@ -169,7 +170,7 @@ const EditWorker = () => {
             body: JSON.stringify(data)
         })
               
-    }, [ workers ])
+    }, [ workers, user ])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
