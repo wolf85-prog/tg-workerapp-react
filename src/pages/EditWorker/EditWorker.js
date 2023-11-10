@@ -211,11 +211,11 @@ const EditWorker = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
             
             {/* белый градиент */}
-            <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
+            <div  style={{display: 'flex', height: '95vh', position: 'absolute', zIndex: '2'}}>
                 <img src={FonGradWhite} alt='' className='fon-style-white'/>
             </div>
             
-            <div style={{display: 'flex', height: '100vh', padding: '0 25px', overflow: 'auto', marginBottom: '150px'}}>
+            <div style={{display: 'flex', height: '95vh', padding: '0 25px', overflow: 'auto', marginBottom: '150px'}}>
 
                 {/* Чёрная плашка */}
                 <div className='form-edit-worker1'> 
