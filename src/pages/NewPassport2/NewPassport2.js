@@ -121,7 +121,7 @@ const NewPassport2 = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
-            {(error && pasNumber !== 11 || pasDate === '2000-01-01' || !pasKem || pasKod.length !==7) && 
+            {/* {(error && pasNumber !== 11 || pasDate === '2000-01-01' || !pasKem || pasKod.length !==7) && 
                 <div style={{
                     color: 'red', 
                     fontSize: '18px',
@@ -133,17 +133,27 @@ const NewPassport2 = () => {
                     marginRight: 'auto'}}>
                         {error}
                 </div>
-            }
+            } */}
 
             {/* белый градиент */}
             <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
                 <img src={FonGradWhite} alt='' className='fon-style-white'/>
             </div>
 
+            {/* Предупреждение */}
+            <div style={{
+                        visibility: (error && pasNumber !== 11 || pasDate === '2000-01-01' || !pasKem || pasKod.length !==7) ? 'visible' : 'hidden',
+                        color: 'red', 
+                        fontSize: '18px',
+                        position: 'absolute',
+                        top: '220px',
+                        width: '100%',
+                    }}>{error}
+            </div>
+
             <div style={{display: 'flex', height: '100vh', padding: '0 25px', overflow: 'auto'}}>            
                 {/* Чёрная плашка */}
                 <div className='form-new-passport'>
-                    
                     {/*Серия и номер*/}
                     <div style={{position: 'relative', marginTop: '30px'}}>
                         <InputMask
@@ -154,12 +164,13 @@ const NewPassport2 = () => {
                             onChange={handleNumber} 
                             value={pasNumber}
                             placeholder='Серия и номер'
+                            style={{border: numDirty ? '1px solid #ff0000' : ''}}
                         >  
                         </InputMask>
                     </div> 
 
                     {/* Дата выдачи */}
-                    <input
+                    {/* <input
                         className='input-style2'
                         placeholder='Дата выдачи'
                         id="pas_date"
@@ -167,7 +178,20 @@ const NewPassport2 = () => {
                         type="date"
                         value={pasDate}
                         onChange={handleDate}
-                    /> 
+                        style={{border: dateDirty ? '1px solid #ff0000' : ''}}
+                    />  */}
+                    <InputMask
+                        mask="99.99.9999"
+                        disabled={false}
+                        maskChar=""
+                        onChange={handleDate}
+                        style={{border: dateDirty ? '1px solid #ff0000' : ''}}
+                        className='input-style2'
+                        placeholder='Дата выдачи'
+                        id="pas_date"
+                        name='pas_date'
+                    >
+                    </InputMask>
 
                     {/* Кем выдан */}
                     {/* <div style={{position: 'absolute', top: '178px', left: '64px'}}> */}
@@ -178,6 +202,7 @@ const NewPassport2 = () => {
                             name='kem'
                             onChange={handleKem}
                             value={pasKem}
+                            style={{border: kemDirty ? '1px solid #ff0000' : ''}}
                         /> 
                     {/* </div>  */}
 
@@ -191,6 +216,7 @@ const NewPassport2 = () => {
                             maskChar=""
                             onChange={handleKod} 
                             value={pasKod}
+                            style={{border: kodDirty ? '1px solid #ff0000' : ''}}
                         />
 
                     {/* </div>      */}

@@ -132,28 +132,27 @@ const NewPassport = () => {
 
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
-  
-            {(error && !pasFam || !pasName || pasDateborn === '2000-01-01') && 
-            <div style={{
-                color: 'red', 
-                fontSize: '18px',
-                position: 'absolute', 
-                left: '0', 
-                top: '70px', 
-                right: '0', 
-                marginLeft: 'auto', 
-                marginRight: 'auto'}}>{error}
-            </div>}
 
             {/* белый градиент */}
             <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
                 <img src={FonGradWhite} alt='' className='fon-style-white'/>
             </div>
 
+            {/* Предупреждение */}
+            <div style={{
+                        visibility: (error && !pasFam || !pasName || pasDateborn === '2000-01-01') ? 'visible' : 'hidden',
+                        color: 'red', 
+                        fontSize: '18px',    
+                        position: 'absolute',
+                        top: '220px',
+                        width: '100%',
+                    }}>{error}
+            </div>
+
             <div style={{display: 'flex', height: '100vh', padding: '0 25px', overflow: 'auto'}}>            
                 
                 {/* Чёрная плашка */}
-                <div className='form-new-passport'>
+                <div className='form-new-passport'>  
                     
                     {/*Фамилия*/}
                     <div style={{position: 'relative', marginTop: '30px'}}>
@@ -164,6 +163,7 @@ const NewPassport = () => {
                             id="pas_family"
                             onChange={onChangeFamily}
                             value={pasFam}
+                            style={{border: famDirty ? '1px solid #ff0000' : ''}}
                         />  
                     </div> 
 
@@ -175,34 +175,43 @@ const NewPassport = () => {
                         name='name'
                         onChange={onChangeName}
                         value={pasName}
+                        style={{border: nameDirty ? '1px solid #ff0000' : ''}}
                     /> 
 
                     {/* Отчество */}
-                    {/* <div style={{position: 'absolute', top: '178px', left: '64px'}}> */}
-                       <input
-                            className='input-style2'
-                            placeholder='Отчество'
-                            id="pas_soname"
-                            onChange={onChangeSoname}
-                            value={pasSoname}
-                        /> 
-                    {/* </div>  */}
+                    <input
+                        className='input-style2'
+                        placeholder='Отчество'
+                        id="pas_soname"
+                        onChange={onChangeSoname}
+                        value={pasSoname}
+                    /> 
 
                     {/* Дата начала */}
                     {/* <div style={{position: 'absolute', top: '224px', left: '64px'}}> */}
-                       <input
+                       {/* <input
                             className='input-style2'
                             placeholder='Дата рождения'
                             id="date"
                             name='date'
-                            type="date"
-                            value={pasDateborn}
+                            // type="date"
+                            // value={pasDateborn}
                             onChange={onChangeTime}
-                        /> 
+                        />  */}
+                        <InputMask
+                            mask="99.99.9999"
+                            disabled={false}
+                            maskChar=""
+                            onChange={onChangeTime} 
+                            className='input-style2'
+                            placeholder='Дата рождения'
+                            id="date"
+                            name='date'
+                        >
+                        </InputMask>
                     {/* </div>      */}
 
                     {/* <div className='block-buttons-newpas1'> */}
-                        {/* <MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton> */}
                         <button 
                             // disabled={disabledBtn}
                             class="image-button-pas" 
@@ -214,60 +223,7 @@ const NewPassport = () => {
                     {/* </div> */}
                 </div>  
 
-                {/* {famDirty ? <RedditTextFieldNovalid 
-                                    fullWidth
-                                    label="Фамилия"
-                                    name='fam'
-                                    id="pas_family"
-                                    variant="filled"
-                                    onChange={onChangeFamily}
-                                    value={pasFam}
-                                />
-                                :<RedditTextField fullWidth
-                                    label="Фамилия"
-                                    name='fam'
-                                    id="pas_family"
-                                    variant="filled"
-                                    onChange={onChangeFamily}
-                                    value={pasFam}
-                                />} */}         
 
-                {/*Имя*/}
-                {/* <div className="text-field text-field_floating">
-                    {nameDirty ? <RedditTextFieldNovalid 
-                                    fullWidth
-                                    label="Имя"
-                                    id="pas_name"
-                                    name='name'
-                                    variant="filled"
-                                    onChange={onChangeName}
-                                    value={pasName}
-                    />
-                                :<RedditTextField 
-                                    fullWidth
-                                    label="Имя"
-                                    id="pas_name"
-                                    name='name'
-                                    variant="filled"
-                                    onChange={onChangeName}
-                                    value={pasName}
-                                />}
-                </div>  */}
-                
-
-                {/*Отчество*/}
-                {/* <div className="text-field text-field_floating">
-                    <RedditTextField fullWidth
-                                    label="Отчество"
-                                    id="pas_soname"
-                                    variant="filled"
-                                    onChange={onChangeSoname}
-                                    value={pasSoname}
-                                    InputLabelProps={{
-                                        istyle: true,
-                                    }}
-                    />
-                </div>         */}
 
                 {/*Сколько лет*/}
                 {/*Дата начала*/}

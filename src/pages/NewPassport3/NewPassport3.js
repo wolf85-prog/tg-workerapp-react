@@ -234,7 +234,7 @@ const NewPassport3 = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
-            {(error && !pasPlaceborn || !pasAdress || !pasEmail) && 
+            {/* {(error && !pasPlaceborn || !pasAdress || !pasEmail) && 
                 <div style={{
                     color: 'red', 
                     fontSize: '18px',
@@ -246,11 +246,22 @@ const NewPassport3 = () => {
                     marginRight: 'auto'}}>
                         {error}
                 </div>
-            }
+            } */}
 
             {/* белый градиент */}
             <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
                 <img src={FonGradWhite} alt='' className='fon-style-white'/>
+            </div>
+
+            {/* Предупреждение */}
+            <div style={{
+                        visibility: (error && !pasPlaceborn || !pasAdress || !pasEmail) ? 'visible' : 'hidden',
+                        color: 'red', 
+                        fontSize: '18px',
+                        position: 'absolute',
+                        top: '220px',
+                        width: '100%',
+                    }}>{error}
             </div>
 
             <div style={{display: 'flex', height: '100vh', padding: '0 25px', overflow: 'auto'}}>            
@@ -267,6 +278,7 @@ const NewPassport3 = () => {
                             variant="filled"
                             onChange={handlePlaceborn}
                             value={pasPlaceborn}
+                            style={{border: placeDirty ? '1px solid #ff0000' : ''}}
                         />  
                     </div> 
 
@@ -278,6 +290,7 @@ const NewPassport3 = () => {
                         variant="filled"
                         onChange={handleAdress}
                         value={pasAdress}
+                        style={{border: addressDirty ? '1px solid #ff0000' : ''}}
                     /> 
 
                     {/* Email */}
@@ -289,6 +302,7 @@ const NewPassport3 = () => {
                             variant="filled"
                             onChange={handleEmail}
                             value={pasEmail}
+                            style={{border: emailDirty ? '1px solid #ff0000' : ''}}
                         /> 
                     {/* </div>  */}
 
@@ -316,66 +330,8 @@ const NewPassport3 = () => {
                     {/* </div> */}
                 </div>
 
-            {/* <div className='form-new2'>
-                <div className="text-field text-field_floating">
-                    {placeDirty ? <RedditTextFieldNovalid 
-                                    fullWidth
-                                    label="Место рождения"
-                                    id="worker_soname"
-                                    variant="filled"
-                                    onChange={handlePlaceborn}
-                                    value={pasPlaceborn}
-                                />
-                                :<RedditTextField 
-                                    fullWidth
-                                    label="Место рождения"
-                                    id="worker_soname"
-                                    variant="filled"
-                                    onChange={handlePlaceborn}
-                                    value={pasPlaceborn}
-                                />}
-                </div>
 
-                <div className="text-field text-field_floating">
-                    {addressDirty ? <RedditTextFieldNovalid
-                                    fullWidth
-                                    label="Адрес регистрации"
-                                    id="worker_name"
-                                    variant="filled"
-                                    onChange={handleAdress}
-                                    value={pasAdress}
-                    />
-                    :<RedditTextField fullWidth
-                                    label="Адрес регистрации"
-                                    id="worker_name"
-                                    variant="filled"
-                                    onChange={handleAdress}
-                                    value={pasAdress}
-                    />}
-                </div> 
-
-                <div className="text-field text-field_floating">
-                    {emailDirty ? <RedditTextFieldNovalid 
-                                    fullWidth
-                                    label="Email"
-                                    id="worker_name"
-                                    variant="filled"
-                                    onChange={handleEmail}
-                                    value={pasEmail}
-                    />
-                    :<RedditTextField fullWidth
-                                    label="Email"
-                                    id="worker_name"
-                                    variant="filled"
-                                    onChange={handleEmail}
-                                    value={pasEmail}
-                    />}
-                </div> 
-
-                <div className="file-upload">
-                    <p>{selectedName || "Фото для аккредитации"}</p><img src={uploadImg} alt="upload" width={30} height={30} />
-                    <input type="file" name="photo" onChange={handleFileChange}/>
-                </div> */}
+                
                 {/* <MyButton style={{marginBottom: "15px", width: "150px"}} onClick={handleSubmit}>Отправить</MyButton> */}
 
                 {/* <div className='block-buttons-new2'>
