@@ -192,7 +192,7 @@ const NewPassport = () => {
                     {/* <div style={{position: 'absolute', top: '224px', left: '64px'}}> */}
                        <input
                             className='input-style2'
-                            placeholder=''
+                            placeholder='Дата рождения'
                             id="date"
                             name='date'
                             type="date"

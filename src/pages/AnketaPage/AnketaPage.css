@@ -1,0 +1,23 @@
+.image-button-anketa {
+    width: 320px;
+    height: 47px;
+    border: none;
+    background-size: cover;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.image-button-anketa2 {
+    width: 320px;
+    height: 35px;
+    border: none;
+    background-size: cover;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}

@@ -9,7 +9,11 @@ import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
+import btnMenu from "../../image/layers/icon_menu.png";
 import smallMenu from "../../image/layers/ULEY text.png"
+
+import btnApplyCancel from "../../image/newpassport/button_apply.png"
+import btnInfo from "../../image/newpassport/button_info.png"
 
 import MyButton from "../../components/UI/MyButton/MyButton";
 
@@ -69,13 +73,13 @@ const AnketaPage = () => {
             
             <form>
                 {/* page1 */}
-                <div style={{marginTop: '250px', display: showPage1 ? "block" : 'none', position: 'relative', zIndex: '10'}}>                  
+                <div style={{marginTop: '200px', display: showPage1 ? "block" : 'none', position: 'relative', zIndex: '10'}}>                  
                     <p
                         style={{
-                            margin: '20px 5px',
+                            margin: '20px 25px',
                             display: 'flex',
                             justifyContent: 'center',
-                            fontSize: '20px',
+                            fontSize: '18px',
                             color: '#fff',
                         }}> Добрый день.
                         На связи автоматическая система U.L.E.Y | Workhub.
@@ -86,49 +90,53 @@ const AnketaPage = () => {
                     </p> 
 
                     <div>
-                        <MyButton onClick={pagePassport} style={{width: "80%", background: '#3f4052', border: '1px solid #3f4052'}}>Согласен предоставить персональные данные</MyButton>
-                        <MyButton onClick={page3} style={{width: "80%", background: '#3f4052', border: '1px solid #3f4052'}}>Отказываюсь от предоставления данных и участия в проектах</MyButton>
-                        <MyButton onClick={page2} style={{width: "80%", background: '#3f4052', border: '1px solid #3f4052'}}>Пояснения</MyButton>  
+                        <button onClick={pagePassport} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Согласен предоставить персональные данные</button>
+                        <button onClick={page3} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Отказываюсь от предоставления данных и участия в проектах</button>
+                        <button onClick={page2} class="image-button-anketa2" style={{ backgroundImage: `url(${btnInfo})`}}>Пояснения</button>
                     </div>      
                 </div>
 
                  {/* page2  */}
-                 <div style={{marginTop: '250px', display: showPage3 ? "block" : 'none', position: 'relative', zIndex: '10'}}>                  
-                    <p
-                        style={{
-                            margin: '20px 5px',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            fontSize: '20px',
-                            color: '#fff',
-                        }}> Ваш отказ принят.
-                        До встречи на следующем проекте!
-                    </p>      
+                 <div style={{display: showPage3 ? "block" : 'none', position: 'relative', zIndex: '10'}}>                  
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '100vh', margin: '0px 25px'}}> 
+                        <p
+                            style={{
+                                fontSize: '20px',
+                                color: '#fff',
+                            }}> Ваш отказ принят. 
+                        </p>  
+                        <p style={{
+                                fontSize: '20px',
+                                color: '#fff',
+                            }}>До встречи на следующем проекте!
+                        </p>  
+                    </div>  
                 </div>
 
                  {/* page3  */}
-                 <div style={{marginTop: '250px', display: showPage2 ? "block" : 'none', position: 'relative', zIndex: '10'}}>                  
+                 <div style={{marginTop: '200px', display: showPage2 ? "block" : 'none', position: 'relative', zIndex: '10'}}>                  
                     <p
                         style={{
-                            margin: '20px 5px',
+                            margin: '20px 25px',
                             display: 'flex',
                             justifyContent: 'center',
-                            fontSize: '20px',
+                            fontSize: '18px',
                             color: '#fff',
                         }}> Иногда заказчики требуют персональные данные  специалистов приглашенных на проект, 
                         в этом случае участие в нем возможно только после предоставления необходимых данных.
                     </p> 
 
                     <div>
-                        <MyButton onClick={pagePassport} style={{width: "80%", background: '#3f4052', border: '1px solid #3f4052'}}>Согласен предоставить персональные данные</MyButton>
-                        <MyButton onClick={page3} style={{width: "80%", background: '#3f4052', border: '1px solid #3f4052'}}>Отказываюсь от предоставления данных и участия в проектах</MyButton> 
+                        <button onClick={pagePassport} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Согласен предоставить персональные данные</button>
+                        <button onClick={page3} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Отказываюсь от предоставления данных и участия в проектах</button>
                     </div>      
                 </div>
             </form>   
 
-            <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
-                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
-            </div>      
+            <div className='footer-block' style={{bottom: '0'}}>
+                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
+                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
+            </div>     
         </div>
     );
 };
