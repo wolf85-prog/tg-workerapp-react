@@ -137,7 +137,7 @@ const NewStavka = () => {
                             maskChar=""
                             value={summaStavki}
                             onChange={changeSummaStavki} 
-                            placeholder='Впишите сюда сумму'
+                            placeholder='Впиши сюда сумму'
                         >
             
                         </InputMask>
