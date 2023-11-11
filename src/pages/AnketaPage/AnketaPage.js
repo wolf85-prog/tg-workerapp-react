@@ -83,15 +83,11 @@ const AnketaPage = () => {
                             color: '#fff',
                         }}> Добрый день.
                         На связи автоматическая система U.L.E.Y | Workhub.
-                        
-                        Для участия в предстоящем проекте необходимо предоставить паспортные данные.
-                        
-                        Продолжив, ты соглашаешся предоставить персональные данные исключительно для передачи их заказчику.
                     </p> 
 
                     <div>
                         <button onClick={pagePassport} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Согласен предоставить персональные данные</button>
-                        <button onClick={page3} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Отказываюсь от предоставления данных и участия в проектах</button>
+                        <button onClick={page3} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Отказываюсь от предоставления данных и участия в проекте</button>
                         <button onClick={page2} class="image-button-anketa2" style={{ backgroundImage: `url(${btnInfo})`}}>Пояснения</button>
                     </div>      
                 </div>
@@ -122,13 +118,12 @@ const AnketaPage = () => {
                             justifyContent: 'center',
                             fontSize: '18px',
                             color: '#fff',
-                        }}> Иногда заказчики требуют персональные данные  специалистов приглашенных на проект, 
-                        в этом случае участие в нем возможно только после предоставления необходимых данных.
+                        }}> Служба безопасности требует предоставить информацию о специалистах приглашенных на проект, в этом случае участие возможно только после предоставления персональных данных.
                     </p> 
 
                     <div>
                         <button onClick={pagePassport} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Согласен предоставить персональные данные</button>
-                        <button onClick={page3} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Отказываюсь от предоставления данных и участия в проектах</button>
+                        <button onClick={page3} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Отказываюсь от предоставления данных и участия в проекте</button>
                     </div>      
                 </div>
             </form>   

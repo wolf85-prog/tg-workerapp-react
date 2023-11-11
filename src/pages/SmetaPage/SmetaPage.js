@@ -17,7 +17,7 @@ import TablePng from "../../image/table_with_text.png"
 import btnMenu from "../../image/layers/icon_menu.png";
 import btnChange from "../../image/buttons/button_change.png";
 import smallMenu from "../../image/layers/ULEY text.png"
-import BackModal from "../../image/background/bacground_modal.png"
+import BackModal from "../../image/background/background_modal.png"
 
 const SmetaPage = () => {
     //const location = useLocation()
@@ -170,6 +170,9 @@ const SmetaPage = () => {
 
 
             <MyModal visible={modal} setVisible={setModal}>
+                <p style={{position: 'absolute', width: '100%', top: '25%'}}>
+                    Функция находится в разработке
+                </p>
                 <img src={BackModal} alt=''/>
             </MyModal>
         </div>
