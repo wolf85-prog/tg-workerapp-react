@@ -215,7 +215,7 @@ const EditWorker = () => {
                 <img src={FonGradWhite} alt='' className='fon-style-white'/>
             </div>
             
-            <div style={{display: 'flex', height: 'calc(100vh - 65px)', padding: '0 25px', overflow: 'auto', marginBottom: '150px'}}>
+            <div style={{display: 'flex', height: 'calc(100vh - 65px)', padding: '0 25px', overflow: 'auto'}}>
 
                 {/* Чёрная плашка */}
                 <div className='form-edit-worker1'> 
