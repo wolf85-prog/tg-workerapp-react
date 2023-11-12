@@ -185,6 +185,7 @@ const NewPassport2 = () => {
                         disabled={false}
                         maskChar=""
                         onChange={handleDate}
+                        value={pasDate}
                         style={{border: dateDirty ? '1px solid #ff0000' : ''}}
                         className='input-style2'
                         placeholder='Дата выдачи'
