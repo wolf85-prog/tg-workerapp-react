@@ -10,6 +10,7 @@ import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
+import FonGradWhite from "../../image/layers/grad_white.png";
 
 import btnBackNext from "../../image/newspec/button_back.png"
 import smallMenu from "../../image/layers/ULEY text.png"
@@ -143,38 +144,43 @@ const NewWorker3 = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
-                <div style={{display: 'flex', height: '100vh'}}>
+            {/* белый градиент */}
+            <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
+                <img src={FonGradWhite} alt='' className='fon-style-white'/>
+            </div>
 
-                    <div className='form-new-worker3'>               
-                        {/*Город*/}
-                        <div style={{position: 'absolute', top: '100px', left: '54px'}}>
-                            <input
-                                className='input-style-city'
-                                placeholder='Ваш город'
-                                id="worker_name"
-                                onChange={onChangeCity}
-                                value={city}
-                            /> 
-                        </div>
+            <div style={{display: 'flex', height: '100vh'}}>
+
+                <div className='form-new-worker3'>               
+                    {/*Город*/}
+                    <div style={{position: 'relative', marginTop: '41px', marginLeft: '30px', marginRight: '30px'}}>
+                        <input
+                            className='input-style-city'
+                            placeholder='Ваш город'
+                            id="worker_name"
+                            onChange={onChangeCity}
+                            value={city}
+                        /> 
+                    </div>
                         
-                        {/*Год рождения*/}
-                        <p style={{position: 'absolute', top: '135px', left: '54px', fontSize: '14px'}}>Год рождения</p>  
-                        <div style={{position: 'absolute', top: '160px', left: '54px'}}>
-                            <NewSelect2
-                                id="dateborn"
-                                options={dates}
-                                selectedElement={selectedElement}
-                                setSelectedElement={setSelectedElement}
-                                onChange={onDatesSelectChange}
-                            />
-                        </div>
+                    {/*Год рождения*/}
+                    <p style={{position: 'absolute', top: '80px', left: '30px', fontSize: '14px'}}>Год рождения</p>   
+                    <div style={{position: 'relative', marginTop: '34px', marginLeft: '30px', marginRight: '30px'}}>
+                        <NewSelect2
+                            id="dateborn"
+                            options={dates}
+                            selectedElement={selectedElement}
+                            setSelectedElement={setSelectedElement}
+                            onChange={onDatesSelectChange}
+                        />
+                    </div>
                          
 
-                        <div className='block-buttons-worknew3'>
-                            <Link to={'/add-worker2'}><button class="image-button-next3" style={{backgroundImage: `url(${btnBackNext})`}}>Назад</button></Link>
-                        </div>                 
-                    </div>   
-                </div>            
+                    <div className='block-buttons-worknew3'>
+                        <Link to={'/add-worker2'}><button class="image-button-next3" style={{backgroundImage: `url(${btnBackNext})`}}>Назад</button></Link>
+                    </div>                 
+                </div>   
+            </div>            
 
             <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />

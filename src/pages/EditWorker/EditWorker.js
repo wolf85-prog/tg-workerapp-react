@@ -2,8 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
-import MyButton from "../../components/UI/MyButton/MyButton";
-import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
+
 import WorkerList from "../../components/WorkerList/WorkerList";
 import './EditWorker.css';
 
@@ -17,7 +16,6 @@ import FonGradWhite from "../../image/layers/grad_white.png";
 import btnMenu from "../../image/layers/icon_menu.png";
 import smallMenu from "../../image/layers/ULEY text.png"
 
-import btnBack from "../../image/newspec/button_back.png"
 import btnSave from "../../image/newspec/button_save.png"
 import NewSelect from '../../components/UI/NewSelect/NewSelect';
 
@@ -223,7 +221,6 @@ const EditWorker = () => {
                     <p style={{marginTop: '-35px', fontSize: '17px', color: '#fff'}}>
                         Выберите свою специальность
                     </p>
-                    
 
                     <p style={{position: 'absolute', top: '8px', left: '30px', fontSize: '14px'}}>Категория</p>    
                     <div style={{position: 'relative', marginTop: '41px', marginLeft: '30px', marginRight: '30px'}}>
@@ -261,7 +258,6 @@ const EditWorker = () => {
                     <div style={{
                         boxSizing: 'border-box', 
                         height: '140px', 
-                        //overflow: 'auto',
                         zIndex: 20,
                         paddingTop: '40px',
                     }}>
@@ -287,7 +283,6 @@ const EditWorker = () => {
                     </div> */}
                 
                 </div>
-
                 
             </div>
 

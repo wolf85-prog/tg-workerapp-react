@@ -8,13 +8,12 @@ import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
+import FonGradWhite from "../../image/layers/grad_white.png";
 
+import btnMenu from "../../image/layers/icon_menu.png";
 import smallMenu from "../../image/layers/ULEY text.png"
 
 import btnBackNext from "../../image/newspec/button_back.png"
-
-import TextField from '@mui/material/TextField';
-import { alpha, styled } from '@mui/material/styles';
 
 import InputMask from 'react-input-mask';
 
@@ -69,14 +68,18 @@ const NewWorker2 = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
+            {/* белый градиент */}
+            <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
+                <img src={FonGradWhite} alt='' className='fon-style-white'/>
+            </div>
 
-            <div style={{display: 'flex', height: '100vh'}}>
+            <div style={{display: 'flex', height: '100vh', padding: '0 25px'}}>
 
                 <div className='form-new-worker2'>
                     {/* Фамилия */}
-                    <div style={{position: 'absolute', top: '86px', left: '68px'}}>
+                    <div style={{position: 'relative', marginTop: '25px', marginLeft: '30px', marginRight: '30px'}}>
                         <input
-                            className='input-style'
+                            className='input-style2'
                             placeholder='Фамилия'
                             id="worker_soname"
                             variant="filled"
@@ -86,9 +89,9 @@ const NewWorker2 = () => {
                     </div>
 
                     {/* Имя */}
-                    <div style={{position: 'absolute', top: '132px', left: '68px'}}>
+                    <div style={{position: 'relative', marginTop: '5px', marginLeft: '30px', marginRight: '30px'}}>
                        <input
-                            className='input-style'
+                            className='input-style2'
                             placeholder='Имя'
                             id="worker_name"
                             onChange={onChangeName}
@@ -98,15 +101,15 @@ const NewWorker2 = () => {
                     
 
                     {/* Номер телефона */}
-                    <div style={{position: 'absolute', top: '178px', left: '68px'}}>
+                    <div style={{position: 'relative', marginTop: '5px', marginLeft: '30px', marginRight: '30px'}}>
                         <InputMask
+                            className='input-style2'
                             mask="+7 (999) 999-99-99"
                             disabled={false}
                             maskChar=""
                             onChange={handlePhone} 
                             value={phone}
                             placeholder='Номер телефона'
-                            className='input-style'
                         >
                         </InputMask>
                     </div>
@@ -129,30 +132,30 @@ const NewWorker2 = () => {
     );
 };
 
-const RedditTextField = styled((props) => (
-    <TextField InputProps={{ disableUnderline: true }} {...props}  />
-))(({ theme }) => ({
-    '& .MuiFilledInput-root': {
-        height: '55px',
-        border: '2px solid #2e7cff',
-        overflow: 'hidden',
-        borderRadius: 10,
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
-        '&.Mui-focused': {
-            backgroundColor: 'transparent',
-            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-            borderColor: theme.palette.primary.main,
-        },
-    },
-}));
+// const RedditTextField = styled((props) => (
+//     <TextField InputProps={{ disableUnderline: true }} {...props}  />
+// ))(({ theme }) => ({
+//     '& .MuiFilledInput-root': {
+//         height: '55px',
+//         border: '2px solid #2e7cff',
+//         overflow: 'hidden',
+//         borderRadius: 10,
+//         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
+//         transition: theme.transitions.create([
+//             'border-color',
+//             'background-color',
+//             'box-shadow',
+//         ]),
+//         '&:hover': {
+//             backgroundColor: 'transparent',
+//         },
+//         '&.Mui-focused': {
+//             backgroundColor: 'transparent',
+//             boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+//             borderColor: theme.palette.primary.main,
+//         },
+//     },
+// }));
 
 
 export default NewWorker2;
