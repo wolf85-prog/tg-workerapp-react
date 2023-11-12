@@ -202,6 +202,7 @@ const NewPassport = () => {
                             mask="99.99.9999"
                             disabled={false}
                             maskChar=""
+                            value={pasDateborn}
                             onChange={onChangeTime} 
                             className='input-style2'
                             placeholder='Дата рождения'
