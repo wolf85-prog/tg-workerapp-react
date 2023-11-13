@@ -94,14 +94,14 @@ const AnketaPage = () => {
                             fontSize: '18px',
                             color: '#fff',
                         }}>
-                        <p> Добрый день, {workerName}  </p> 
+                        <p> Добрый день, {workerName}.</p> 
                         <p>На связи система U.L.E.Y | Workhub.</p>
                     </div>
 
                     <div>
                         <button onClick={pagePassport} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Согласен предоставить персональные данные</button>
                         <button onClick={page3} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Отказываюсь от предоставления данных и участия в проекте</button>
-                        <button onClick={page2} class="image-button-anketa2" style={{ backgroundImage: `url(${btnInfo})`}}>Пояснения</button>
+                        <button onClick={page2} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Пояснения</button>
                     </div>      
                 </div>
 
