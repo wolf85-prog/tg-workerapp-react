@@ -74,16 +74,17 @@ const AnketaPage = () => {
             <form>
                 {/* page1 */}
                 <div style={{marginTop: '200px', display: showPage1 ? "block" : 'none', position: 'relative', zIndex: '10'}}>                  
-                    <p
-                        style={{
+                    <div style={{
                             margin: '20px 25px',
                             display: 'flex',
                             justifyContent: 'center',
+                            flexDirection: 'column',
                             fontSize: '18px',
                             color: '#fff',
-                        }}> Добрый день.
-                        На связи автоматическая система U.L.E.Y | Workhub.
-                    </p> 
+                        }}>
+                        <p> Добрый день,   </p> 
+                        <p>На связи система U.L.E.Y | Workhub.</p>
+                    </div>
 
                     <div>
                         <button onClick={pagePassport} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Согласен предоставить персональные данные</button>

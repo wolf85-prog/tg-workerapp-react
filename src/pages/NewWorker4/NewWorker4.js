@@ -71,7 +71,8 @@ const NewWorker4 = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Сохранить'
+            text: 'Сохранить',
+            color: '#000000' //'#2e2e2e'
         })
     }, [])
 
