@@ -82,6 +82,9 @@ const InfoPage = () => {
             </div>
 
             <MyModal visible={modal} setVisible={setModal}>
+                <p style={{position: 'absolute', width: '100%', top: '25%'}}>
+                    Функция находится в разработке
+                </p>
                 <img src={BackModal} alt=''/>
             </MyModal>
         </div>
