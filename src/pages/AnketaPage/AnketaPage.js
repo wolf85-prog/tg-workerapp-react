@@ -85,7 +85,7 @@ const AnketaPage = () => {
             
             <div style={{display: 'flex', height: '100vh'}}>
                 {/* page1 */}
-                <div style={{display: showPage1 ? "block" : 'none', position: 'relative', zIndex: '10', height: '100px', margin: 'auto'}}>                  
+                <div style={{display: showPage1 ? "block" : 'none', position: 'relative', zIndex: '10', height: '270px', margin: 'auto'}}>                  
                     <div style={{
                             margin: '20px 25px',
                             display: 'flex',
@@ -123,7 +123,7 @@ const AnketaPage = () => {
                 </div>
 
                  {/* page3  */}
-                 <div style={{display: showPage2 ? "block" : 'none', position: 'relative', zIndex: '10', height: '210px', margin: 'auto'}}>                  
+                 <div style={{display: showPage2 ? "block" : 'none', position: 'relative', zIndex: '10', height: '270px', margin: 'auto'}}>                  
                     <p
                         style={{
                             margin: '20px 25px',
