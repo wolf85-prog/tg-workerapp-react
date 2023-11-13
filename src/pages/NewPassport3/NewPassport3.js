@@ -174,6 +174,34 @@ const NewPassport3 = () => {
             setEmailDirty(false)   
             setNovalid(false)
 
+            const data = {
+                pasFam, 
+                pasName, 
+                pasSoname, 
+                pasDateborn, 
+                pasNumber, 
+                pasDate, 
+                pasKem, 
+                pasKod, 
+                pasPlaceborn, 
+                pasAdress, 
+                pasEmail, 
+                queryId,
+                user,
+                image
+            }
+
+            tg.MainButton.hide();
+            
+            
+            fetch(API_URL + 'web-passport', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+
         } else {
             if (!pasPlaceborn) {
                 setError('Заполните выделенные поля!')
@@ -198,34 +226,6 @@ const NewPassport3 = () => {
 
             setNovalid(true) 
         }
-
-        const data = {
-            pasFam, 
-    		pasName, 
-			pasSoname, 
-    		pasDateborn, 
-			pasNumber, 
-			pasDate, 
-			pasKem, 
-			pasKod, 
-			pasPlaceborn, 
-			pasAdress, 
-			pasEmail, 
-            queryId,
-            user,
-            image
-        }
-
-        tg.MainButton.hide();
-        
-        
-        fetch(API_URL + 'web-passport', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
         
               
     }, [pasFam, pasName, pasSoname, pasDateborn, pasNumber, pasDate, pasKem, pasKod, pasPlaceborn, pasAdress, pasEmail, image ])

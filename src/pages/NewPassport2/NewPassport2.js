@@ -403,7 +403,7 @@ const NewPassport2 = () => {
                     <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
                 </div> */}
 
-                <div className='footer-block' style={{position: 'fixed', bottom: '25px', right: '0'}}>
+                <div className='footer-block' style={{position: 'fixed', bottom: '25px', right: '0', zIndex: '2'}}>
                     <Link to={'/add-passport'}><img src={btnBack} alt='' /></Link>
                     <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
                 </div>
