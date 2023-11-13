@@ -132,7 +132,7 @@ const NewStavka = () => {
 
                     <div className="edit-send" style={{ backgroundImage: `url(${enterSumma})`}}>
                         <InputMask
-                            mask="9 999.00 руб."
+                            mask="9 999.00 рублей"
                             disabled={false}
                             maskChar=""
                             value={summaStavki}
