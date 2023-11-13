@@ -4,6 +4,8 @@ import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import './AnketaPage.css';
 
+import {getWorkerId} from "../../http/chatAPI"
+
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
@@ -19,7 +21,7 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 
 
 const AnketaPage = () => {
-
+    const {user} = useTelegram();
     const navigate = useNavigate();
 
     const [showPage1, setShowPage1] = useState(true)
@@ -28,12 +30,17 @@ const AnketaPage = () => {
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
+
+    const [workerName, setWorkerName] = useState("")
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
-    useEffect(() => {
+    useEffect(async() => {
         setTimeout(() =>  setShowGrad(true), 500) //градиент верх
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
+
+        const fio = await getWorkerId(user?.id)
+        setWorkerName(fio.split(' ')[1])
     })
 
     const pagePassport = () => {
@@ -82,7 +89,7 @@ const AnketaPage = () => {
                             fontSize: '18px',
                             color: '#fff',
                         }}>
-                        <p> Добрый день,   </p> 
+                        <p> Добрый день, {workerName}  </p> 
                         <p>На связи система U.L.E.Y | Workhub.</p>
                     </div>
 
