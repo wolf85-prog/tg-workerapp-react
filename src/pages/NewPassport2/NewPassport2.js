@@ -57,7 +57,7 @@ const NewPassport2 = () => {
 
         console.log("dateDirty: ", dateDirty)
 
-        if (pasNumber.length === 11 && pasDate !== '2000-01-01' && pasKem && pasKod.length === 7) {
+        if (pasNumber.length === 11 && pasDate.length === 10 && pasKem && pasKod.length === 7) {
             console.log('да')
             navigate('/add-passport3')
         } else {  
@@ -69,7 +69,8 @@ const NewPassport2 = () => {
                 setNumDirty(false)   
             } 
 
-            if (!pasDate || pasDate === '2000-01-01') {
+            //if (!pasDate || pasDate === '2000-01-01') {
+            if (pasDate.length !== 10) {
                 setDateDirty(true)
             } else {
                 setDateDirty(false)
@@ -142,11 +143,11 @@ const NewPassport2 = () => {
 
             {/* Предупреждение */}
             <div style={{
-                        visibility: (error && pasNumber !== 11 || pasDate === '2000-01-01' || !pasKem || pasKod.length !==7) ? 'visible' : 'hidden',
+                        visibility: (error && pasNumber.length !== 11 || pasDate === '2000-01-01' || !pasKem || pasKod.length !==7) ? 'visible' : 'hidden',
                         color: 'red', 
                         fontSize: '18px',
                         position: 'absolute',
-                        top: '220px',
+                        top: '180px',
                         width: '100%',
                     }}>{error}
             </div>

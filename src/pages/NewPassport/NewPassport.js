@@ -53,7 +53,7 @@ const NewPassport = () => {
     })
 
     const pressNext = () => {      
-        if (pasFam && pasName && pasDateborn !== '2000-01-01') {
+        if (pasFam && pasName && pasDateborn.length === 10) {
             console.log('да')
 
             navigate('/add-passport2')
@@ -75,7 +75,8 @@ const NewPassport = () => {
                 setNameDirty(false)   
             }
 
-            if (!pasDateborn || pasDateborn === '2000-01-01') {
+            //if (!pasDateborn || pasDateborn === '2000-01-01') {
+            if (pasDateborn.length !== 10) {
                 setError('Заполните выделенные поля!')
                 setDatebornDirty(true) 
             } else {
@@ -140,11 +141,11 @@ const NewPassport = () => {
 
             {/* Предупреждение */}
             <div style={{
-                        visibility: (error && !pasFam || !pasName || pasDateborn === '2000-01-01') ? 'visible' : 'hidden',
+                        visibility: (error && !pasFam || !pasName || pasDateborn.length !== 10) ? 'visible' : 'hidden',
                         color: 'red', 
                         fontSize: '18px',    
                         position: 'absolute',
-                        top: '220px',
+                        top: '180px',
                         width: '100%',
                     }}>{error}
             </div>
@@ -208,6 +209,7 @@ const NewPassport = () => {
                             placeholder='Дата рождения'
                             id="date"
                             name='date'
+                            style={{border: datebornDirty ? '1px solid #ff0000' : ''}}
                         >
                         </InputMask>
                     {/* </div>      */}

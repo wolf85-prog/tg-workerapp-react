@@ -80,7 +80,7 @@ const NewPassport3 = () => {
     // }, [pasPlaceborn, pasAdress, pasEmail]);
 
     const pressNext = () => {      
-        if (pasPlaceborn && pasAdress && pasEmail) {
+        if (pasPlaceborn && pasAdress && pasEmail.includes("@")) {
             console.log('да')
             setPlaceDirty(false)
             setAddressDirty(false)  
@@ -102,7 +102,7 @@ const NewPassport3 = () => {
                 setAddressDirty(false)  
             }
 
-            if (!pasEmail) {
+            if (!pasEmail.includes("@")) {
                 setError('Заполните выделенные поля!')
                 setEmailDirty(true)
             } else {
@@ -167,6 +167,38 @@ const NewPassport3 = () => {
 
     //отправка данных в telegram-бот
     const onSendData = useCallback(() => {
+        if (pasPlaceborn && pasAdress && pasEmail.includes("@")) {
+            console.log('да')
+            setPlaceDirty(false)
+            setAddressDirty(false)  
+            setEmailDirty(false)   
+            setNovalid(false)
+
+        } else {
+            if (!pasPlaceborn) {
+                setError('Заполните выделенные поля!')
+                setPlaceDirty(true) 
+            } else {
+                setPlaceDirty(false)   
+            } 
+
+            if (!pasAdress) {
+                setError('Заполните выделенные поля!')
+                setAddressDirty(true)
+            } else {
+                setAddressDirty(false)  
+            }
+
+            if (!pasEmail.includes("@")) {
+                setError('Заполните выделенные поля!')
+                setEmailDirty(true)
+            } else {
+                setEmailDirty(false)  
+            }
+
+            setNovalid(true) 
+        }
+
         const data = {
             pasFam, 
     		pasName, 
@@ -212,13 +244,13 @@ const NewPassport3 = () => {
     }, [])
 
     useEffect(() => {
-        if (!novalid) {
+        //if (!novalid) {
             tg.MainButton.show();
-        } else {
-            tg.MainButton.hide();
-        }
+       // } else {
+        //tg.MainButton.hide();
+       // }
         
-    }, [novalid])
+    }, [])
 
     return (
         <div className="App">
@@ -259,7 +291,7 @@ const NewPassport3 = () => {
                         color: 'red', 
                         fontSize: '18px',
                         position: 'absolute',
-                        top: '220px',
+                        top: '180px',
                         width: '100%',
                     }}>{error}
             </div>
@@ -317,17 +349,14 @@ const NewPassport3 = () => {
                         /> 
                     </div>     
 
-                    {/* <div className='block-buttons-newpas1'> */}
-                        {/* <MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton> */}
-                        <button 
+                        {/* <button 
                             // disabled={disabledBtn}
                             class="image-button-pas" 
                             style={{ backgroundImage: `url(${btnNextSend})`}}
                             onClick={pressNext}
                         >
                             Отправить анкету
-                        </button>
-                    {/* </div> */}
+                        </button> */}
                 </div>
 
 
