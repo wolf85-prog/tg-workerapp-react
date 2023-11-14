@@ -165,8 +165,8 @@ const StavkiPage = () => {
                             <br/>
                             {showTable[index] ? 
                             // <img className='table-image' src={Table1} alt='' width='95%'/> 
-                            //<div style={{marginBottom:'20px', marginTop: '-48px', width: '88%'}}> 
-                            <div style={{marginBottom:'20px', marginTop: '-48px', width: '77%'}}> 
+                            <div style={{marginBottom:'20px', marginTop: '-48px', width: '320px'}}> 
+                            {/* <div style={{marginBottom:'20px', marginTop: '-48px', width: '77%'}}>  */}
                                 <table class="table-spec" id="table">
                                     <tbody>
                                         <tr>
