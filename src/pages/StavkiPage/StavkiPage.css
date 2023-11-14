@@ -25,8 +25,9 @@
 }
 
 .button-stavki {
-    width: 90%;
-    height: 60px;
+    /* width: 90%;
+    height: 60px; */
+    width: 320px;
     border: none;
     background-size: cover;
     background-color: transparent;
@@ -47,7 +48,8 @@
     border-collapse: separate;
     border-spacing: 0;
     table-layout: auto;
-    width: 99.9%;
+    /* width: 99.9%; */
+    width: 313px;
   }
   
   :where(.table-spec thead th) {
