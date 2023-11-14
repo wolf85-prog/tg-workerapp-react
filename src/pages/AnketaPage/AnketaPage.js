@@ -85,7 +85,7 @@ const AnketaPage = () => {
             
             <div style={{display: 'flex', height: '100vh'}}>
                 {/* page1 */}
-                <div style={{display: showPage1 ? "block" : 'none', position: 'relative', zIndex: '10', height: '270px', margin: 'auto'}}>                  
+                <div style={{display: showPage1 ? "block" : 'none', position: 'relative', zIndex: '10', height: '285px', margin: 'auto'}}>                  
                     <div style={{
                             margin: '20px 25px',
                             display: 'flex',
@@ -106,7 +106,7 @@ const AnketaPage = () => {
                 </div>
 
                  {/* page2  */}
-                 <div style={{display: showPage3 ? "block" : 'none', position: 'relative', zIndex: '10', height: '100px', margin: 'auto'}}>                  
+                 <div style={{display: showPage3 ? "block" : 'none', position: 'relative', zIndex: '10', height: '60px', margin: 'auto'}}>                  
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '0px 25px'}}> 
                         <p
                             style={{
@@ -124,15 +124,18 @@ const AnketaPage = () => {
 
                  {/* page3  */}
                  <div style={{display: showPage2 ? "block" : 'none', position: 'relative', zIndex: '10', height: '270px', margin: 'auto'}}>                  
-                    <p
+                    <div
                         style={{
                             margin: '20px 25px',
                             display: 'flex',
                             justifyContent: 'center',
+                            flexDirection: 'column',
                             fontSize: '18px',
                             color: '#fff',
-                        }}> Служба безопасности требует предоставить информацию о специалистах приглашенных на проект, в этом случае участие возможно только после предоставления персональных данных.
-                    </p> 
+                        }}> 
+                        <p>Служба безопасности </p>
+                        <p>требует предоставить информацию о специалистах приглашенных на проект, в этом случае участие возможно только после предоставления персональных данных.</p>
+                    </div> 
 
                     <div>
                         <button onClick={pagePassport} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Согласен предоставить персональные данные</button>

@@ -244,11 +244,11 @@ const NewPassport3 = () => {
     }, [])
 
     useEffect(() => {
-        //if (!novalid) {
+        if (pasPlaceborn && pasAdress && pasEmail.includes("@")) {
             tg.MainButton.show();
-       // } else {
-        //tg.MainButton.hide();
-       // }
+       } else {
+        tg.MainButton.hide();
+       }
         
     }, [])
 

@@ -56,6 +56,7 @@ const NewStavka = () => {
     })
 
     const changeSummaStavki = (e) => {
+        console.log(e.target.value.length)
         setSummaStavki(e.target.value)
     }
 
