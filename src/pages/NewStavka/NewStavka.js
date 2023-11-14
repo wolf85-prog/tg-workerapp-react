@@ -43,6 +43,10 @@ const NewStavka = () => {
 
     //const pretId = props.match.params.id
 
+
+    const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, "");
+
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
@@ -55,9 +59,15 @@ const NewStavka = () => {
         setPretendentId(id)
     })
 
+
     const changeSummaStavki = (e) => {
-        console.log(e.target.value.length)
-        setSummaStavki(e.target.value)
+        // console.log(e.target.value)
+        // const str = e.target.value
+        // let newStr = ''
+        // if (str.length === 4) {
+        //     newStr = str.split()[0] + " " + str.split()[1] + str.split()[2] + str.split()[3]
+        // }
+        setSummaStavki(addCommas(removeNonNumeric(e.target.value)))
     }
 
     const sendStavka = () => {
@@ -112,6 +122,8 @@ const NewStavka = () => {
         
     }, [summaStavki])
 
+
+
     //---------------------------------------------------------------------------------------
 
     return (
@@ -132,7 +144,7 @@ const NewStavka = () => {
                 <div className='form-edit-stavka'>
 
                     <div className="edit-send" style={{ backgroundImage: `url(${enterSumma})`}}>
-                        <InputMask
+                        {/* <InputMask
                             mask="9 999.00 рублей"
                             disabled={false}
                             maskChar=""
@@ -141,7 +153,18 @@ const NewStavka = () => {
                             placeholder='Впиши сюда сумму'
                         >
             
-                        </InputMask>
+                        </InputMask> */}
+                        <input
+                            value={summaStavki}
+                            onChange={changeSummaStavki} 
+                            placeholder='Впиши сюда сумму'
+                            type='text' 
+                            onKeyPress={(event) => {
+                                if (!/[0-9]/.test(event.key)) {
+                                  event.preventDefault();
+                                }
+                              }}
+                        /> 
                     </div>
         
                     {/* <button onClick={sendStavka} className="button-send" style={{ backgroundImage: `url(${buttonSend})`}}>Отправить предложение</button> */}
