@@ -147,7 +147,7 @@ const NewPassport2 = () => {
                         color: 'red', 
                         fontSize: '18px',
                         position: 'absolute',
-                        top: '180px',
+                        top: 'calc(30vh - 25px)',
                         width: '100%',
                     }}>{error}
             </div>
@@ -156,7 +156,7 @@ const NewPassport2 = () => {
                 {/* Чёрная плашка */}
                 <div className='form-new-passport'>
                     {/*Серия и номер*/}
-                    <div style={{position: 'relative', marginTop: '30px'}}>
+                    <div style={{position: 'relative', marginTop: '30px', marginLeft: '25px', marginRight: '25px'}}>
                         <InputMask
                             className='input-style2'
                             mask="9999 999999"
@@ -181,22 +181,24 @@ const NewPassport2 = () => {
                         onChange={handleDate}
                         style={{border: dateDirty ? '1px solid #ff0000' : ''}}
                     />  */}
-                    <InputMask
-                        mask="99.99.9999"
-                        disabled={false}
-                        maskChar=""
-                        onChange={handleDate}
-                        value={pasDate}
-                        style={{border: dateDirty ? '1px solid #ff0000' : ''}}
-                        className='input-style2'
-                        placeholder='Дата выдачи'
-                        id="pas_date"
-                        name='pas_date'
-                    >
-                    </InputMask>
-
+                    <div style={{marginLeft: '25px', marginRight: '25px'}}>
+                        <InputMask
+                            mask="99.99.9999"
+                            disabled={false}
+                            maskChar=""
+                            onChange={handleDate}
+                            value={pasDate}
+                            style={{border: dateDirty ? '1px solid #ff0000' : ''}}
+                            className='input-style2'
+                            placeholder='Дата выдачи'
+                            id="pas_date"
+                            name='pas_date'
+                        >
+                        </InputMask>
+                    </div>
+                    
                     {/* Кем выдан */}
-                    {/* <div style={{position: 'absolute', top: '178px', left: '64px'}}> */}
+                    <div style={{marginLeft: '25px', marginRight: '25px'}}>
                        <input
                             className='input-style2'
                             placeholder="Кем выдан"
@@ -206,10 +208,10 @@ const NewPassport2 = () => {
                             value={pasKem}
                             style={{border: kemDirty ? '1px solid #ff0000' : ''}}
                         /> 
-                    {/* </div>  */}
+                    </div> 
 
                     {/* Код подразделения */}
-                    {/* <div style={{position: 'absolute', top: '224px', left: '64px'}}> */}
+                    <div style={{marginLeft: '25px', marginRight: '25px'}}>
                         <InputMask
                             mask="999-999"
                             disabled={false}
@@ -221,7 +223,7 @@ const NewPassport2 = () => {
                             style={{border: kodDirty ? '1px solid #ff0000' : ''}}
                         />
 
-                    {/* </div>      */}
+                    </div>     
 
                     {/* <div className='block-buttons-newpas1'> */}
                         {/* <MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton> */}

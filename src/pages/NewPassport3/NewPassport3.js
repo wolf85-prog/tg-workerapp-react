@@ -291,7 +291,7 @@ const NewPassport3 = () => {
                         color: 'red', 
                         fontSize: '18px',
                         position: 'absolute',
-                        top: '180px',
+                        top: 'calc(30vh - 25px)',
                         width: '100%',
                     }}>{error}
             </div>
@@ -302,7 +302,7 @@ const NewPassport3 = () => {
                 <div className='form-new-passport'>
                     
                     {/*Место рождения*/}
-                    <div style={{position: 'relative', marginTop: '30px'}}>
+                    <div style={{position: 'relative', marginTop: '30px', marginLeft: '25px', marginRight: '25px'}}>
                         <input
                             className='input-style2'
                             placeholder='Место рождения'
@@ -315,18 +315,21 @@ const NewPassport3 = () => {
                     </div> 
 
                     {/* Адрес регистрации */}
-                    <input
-                        className='input-style2'
-                        placeholder='Адрес регистрации'
-                        id="worker_name"
-                        variant="filled"
-                        onChange={handleAdress}
-                        value={pasAdress}
-                        style={{border: addressDirty ? '1px solid #ff0000' : ''}}
-                    /> 
+                    <div style={{marginLeft: '25px', marginRight: '25px'}}>
+                        <input
+                            className='input-style2'
+                            placeholder='Адрес регистрации'
+                            id="worker_name"
+                            variant="filled"
+                            onChange={handleAdress}
+                            value={pasAdress}
+                            style={{border: addressDirty ? '1px solid #ff0000' : ''}}
+                        /> 
+                    </div>
+                    
 
                     {/* Email */}
-                    {/* <div style={{position: 'absolute', top: '178px', left: '64px'}}> */}
+                    <div style={{marginLeft: '25px', marginRight: '25px'}}>
                        <input
                             className='input-style2'
                             placeholder='Email'
@@ -336,18 +339,19 @@ const NewPassport3 = () => {
                             value={pasEmail}
                             style={{border: emailDirty ? '1px solid #ff0000' : ''}}
                         /> 
-                    {/* </div>  */}
+                    </div> 
 
                     {/* Фото для аккредитации */}
-                    {/* <div style={{position: 'absolute', top: '224px', left: '64px'}}> */}
-                    <div className="file-upload">
-                    <p>{selectedName || "Фото для аккредитации"}</p><img src={uploadImg} alt="upload" width={30} height={30} />
-                       <input
-                            type="file" 
-                            name="photo" 
-                            onChange={handleFileChange}
-                        /> 
-                    </div>     
+                    <div style={{marginLeft: '25px', marginRight: '25px'}}>
+                        <div className="file-upload">
+                        <p>{selectedName || "Фото для аккредитации"}</p><img src={uploadImg} alt="upload" width={30} height={30} />
+                        <input
+                                type="file" 
+                                name="photo" 
+                                onChange={handleFileChange}
+                            /> 
+                        </div> 
+                    </div>    
 
                         {/* <button 
                             // disabled={disabledBtn}

@@ -145,7 +145,7 @@ const NewPassport = () => {
                         color: 'red', 
                         fontSize: '18px',    
                         position: 'absolute',
-                        top: '180px',
+                        top: 'calc(30vh - 25px)',
                         width: '100%',
                     }}>{error}
             </div>
@@ -154,9 +154,19 @@ const NewPassport = () => {
                 
                 {/* Чёрная плашка */}
                 <div className='form-new-passport'>  
-                    
+                    {/* <p style={{
+                            marginTop: '-35px', 
+                            visibility: (error && !pasFam || !pasName || pasDateborn.length !== 10) ? 'visible' : 'hidden',
+                            color: 'red', 
+                            fontSize: '18px',
+                        }}>
+                        {error}
+                    </p> */}
                     {/*Фамилия*/}
-                    <div style={{position: 'relative', marginTop: '30px'}}>
+                    <div style={{position: 'relative', 
+                            marginTop: '31px', 
+                            marginLeft: '25px', 
+                            marginRight: '25px'}}>
                         <input
                             className='input-style2'
                             placeholder='Фамилия'
@@ -169,24 +179,30 @@ const NewPassport = () => {
                     </div> 
 
                     {/* Имя */}
-                    <input
-                        className='input-style2'
-                        placeholder='Имя'
-                        id="pas_name"
-                        name='name'
-                        onChange={onChangeName}
-                        value={pasName}
-                        style={{border: nameDirty ? '1px solid #ff0000' : ''}}
-                    /> 
+                    <div style={{position: 'relative', marginLeft: '25px', marginRight: '25px'}}>
+                       <input
+                            className='input-style2'
+                            placeholder='Имя'
+                            id="pas_name"
+                            name='name'
+                            onChange={onChangeName}
+                            value={pasName}
+                            style={{border: nameDirty ? '1px solid #ff0000' : ''}}
+                        /> 
+                    </div>
+                     
 
                     {/* Отчество */}
-                    <input
-                        className='input-style2'
-                        placeholder='Отчество'
-                        id="pas_soname"
-                        onChange={onChangeSoname}
-                        value={pasSoname}
-                    /> 
+                    <div style={{position: 'relative', marginLeft: '25px', marginRight: '25px'}}>
+                        <input
+                            className='input-style2'
+                            placeholder='Отчество'
+                            id="pas_soname"
+                            onChange={onChangeSoname}
+                            value={pasSoname}
+                        /> 
+                    </div>
+                    
 
                     {/* Дата начала */}
                     {/* <div style={{position: 'absolute', top: '224px', left: '64px'}}> */}
@@ -199,6 +215,7 @@ const NewPassport = () => {
                             // value={pasDateborn}
                             onChange={onChangeTime}
                         />  */}
+                    <div style={{position: 'relative', marginLeft: '25px', marginRight: '25px'}}>
                         <InputMask
                             mask="99.99.9999"
                             disabled={false}
@@ -212,6 +229,8 @@ const NewPassport = () => {
                             style={{border: datebornDirty ? '1px solid #ff0000' : ''}}
                         >
                         </InputMask>
+                    </div>
+                        
                     {/* </div>      */}
 
                     {/* <div className='block-buttons-newpas1'> */}
