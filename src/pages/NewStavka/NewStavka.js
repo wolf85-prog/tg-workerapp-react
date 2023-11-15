@@ -4,6 +4,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewStavka.css';
+import CurrencyInput from './../../common/CurrencyInput'
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
@@ -44,8 +45,8 @@ const NewStavka = () => {
     //const pretId = props.match.params.id
 
 
-    const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, "");
+    // const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    // const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, "");
 
 //----------------------------------------------------------------------------------
 
@@ -61,13 +62,13 @@ const NewStavka = () => {
 
 
     const changeSummaStavki = (e) => {
-        // console.log(e.target.value)
-        // const str = e.target.value
+        //console.log(e.target.value + ".00 рублей")
+        //const str = e.target.value + ".00 рублей"
         // let newStr = ''
         // if (str.length === 4) {
         //     newStr = str.split()[0] + " " + str.split()[1] + str.split()[2] + str.split()[3]
         // }
-        setSummaStavki(addCommas(removeNonNumeric(e.target.value)))
+        //setSummaStavki(str)// addCommas(removeNonNumeric(str)))
     }
 
     const sendStavka = () => {
@@ -154,17 +155,17 @@ const NewStavka = () => {
                         >         
                         </InputMask> */}
                         
-                        <input
+                        {/* <input
                             value={summaStavki}
                             onChange={changeSummaStavki} 
                             placeholder='Впиши сюда сумму'
                             type='text' 
-                            onKeyPress={(event) => {
-                                if (!/[0-9]/.test(event.key)) {
-                                  event.preventDefault();
-                                }
-                              }}
-                        /> 
+                        />  */}
+
+                        <CurrencyInput 
+                            placeholder='Впиши сюда сумму'
+                            type="text" 
+                        />
                     </div>
         
                     {/* <button onClick={sendStavka} className="button-send" style={{ backgroundImage: `url(${buttonSend})`}}>Отправить предложение</button> */}

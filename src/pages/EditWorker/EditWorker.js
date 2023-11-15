@@ -209,83 +209,86 @@ const EditWorker = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
             
             {/* белый градиент */}
-            <div  style={{display: 'flex', height: 'calc(100vh - 65px)', position: 'absolute', zIndex: '2'}}>
+            <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
                 <img src={FonGradWhite} alt='' className='fon-style-white'/>
+            </div>    
+            
+            <div style={{paddingTop: '45px'}}>
+                <div style={{display: 'flex', height: 'calc(100vh - 105px)', padding: '0 25px', overflow: 'auto'}}>
+
+                    {/* Чёрная плашка */}
+                    <div className='form-edit-worker1'> 
+                        {/*Специализация*/}      
+                        <p style={{marginTop: '-35px', fontSize: '17px', color: '#fff'}}>
+                            Выберите свою специальность
+                        </p>
+
+                        <p style={{position: 'absolute', top: '8px', left: '30px', fontSize: '14px'}}>Категория</p>    
+                        <div style={{position: 'relative', marginTop: '41px', marginLeft: '30px', marginRight: '30px'}}>
+                        <NewSelect
+                                id="category"
+                                options={categories}
+                                selectedElement={selectedElement}
+                                setSelectedElement={setSelectedElement}
+                                onChange={onCategoriesSelectChange}
+                            /> 
+                        </div> 
+
+                        <p style={{position: 'absolute', top: '80px', left: '30px', fontSize: '14px'}}>Специальность</p>   
+                        <div style={{position: 'relative', marginTop: '34px', marginLeft: '30px', marginRight: '30px'}}>
+                            <NewSelect
+                                disabled={disabled}
+                                id="model"
+                                options={models}
+                                selectedElement={selectedElement}
+                                setSelectedElement={setSelectedElement}
+                                onChange={onSpecSelectChange}
+                            />
+                        </div>
+
+                        <button 
+                            disabled={disabledBtn}
+                            class="image-button-edit" 
+                            style={{ backgroundImage: `url(${btnSave})`}}
+                            onClick={addNewWorker}
+                        >
+                            Добавить
+                        </button>
+
+                        {/*список работников*/}
+                        <div style={{
+                            boxSizing: 'border-box', 
+                            height: '140px', 
+                            zIndex: 20,
+                            paddingTop: '40px',
+                        }}>
+                            <WorkerList remove={removeWorker} workers={workers} />
+        
+                        </div>
+
+                        {/* Далее */}
+                        {/* <div style={{
+                                position: 'fixed', 
+                                bottom: '13px', 
+                                left: '15%',
+                                zIndex: '20',
+                                width: '70%',
+                            }}>
+                            <Link to={'/edit-worker2'}>
+                                <button 
+                                    className="image-button-edit" 
+                                    style={{ backgroundImage: `url(${btnSave})`, marginBottom: "15px", visibility: showNext ? "visible" : "hidden"}}>
+                                        Сохранить
+                                </button>
+                            </Link>
+                        </div> */}
+                    
+                    </div>
+                    
+                </div>
+
             </div>
             
-            <div style={{display: 'flex', height: 'calc(100vh - 65px)', padding: '0 25px', overflow: 'auto'}}>
-
-                {/* Чёрная плашка */}
-                <div className='form-edit-worker1'> 
-                    {/*Специализация*/}      
-                    <p style={{marginTop: '-35px', fontSize: '17px', color: '#fff'}}>
-                        Выберите свою специальность
-                    </p>
-
-                    <p style={{position: 'absolute', top: '8px', left: '30px', fontSize: '14px'}}>Категория</p>    
-                    <div style={{position: 'relative', marginTop: '41px', marginLeft: '30px', marginRight: '30px'}}>
-                       <NewSelect
-                            id="category"
-                            options={categories}
-                            selectedElement={selectedElement}
-                            setSelectedElement={setSelectedElement}
-                            onChange={onCategoriesSelectChange}
-                        /> 
-                    </div> 
-
-                    <p style={{position: 'absolute', top: '80px', left: '30px', fontSize: '14px'}}>Специальность</p>   
-                    <div style={{position: 'relative', marginTop: '34px', marginLeft: '30px', marginRight: '30px'}}>
-                        <NewSelect
-                            disabled={disabled}
-                            id="model"
-                            options={models}
-                            selectedElement={selectedElement}
-                            setSelectedElement={setSelectedElement}
-                            onChange={onSpecSelectChange}
-                        />
-                    </div>
-
-                    <button 
-                        disabled={disabledBtn}
-                        class="image-button-edit" 
-                        style={{ backgroundImage: `url(${btnSave})`}}
-                        onClick={addNewWorker}
-                    >
-                        Добавить
-                    </button>
-
-                    {/*список работников*/}
-                    <div style={{
-                        boxSizing: 'border-box', 
-                        height: '140px', 
-                        zIndex: 20,
-                        paddingTop: '40px',
-                    }}>
-                        <WorkerList remove={removeWorker} workers={workers} />
-    
-                    </div>
-
-                    {/* Далее */}
-                    {/* <div style={{
-                            position: 'fixed', 
-                            bottom: '13px', 
-                            left: '15%',
-                            zIndex: '20',
-                            width: '70%',
-                        }}>
-                        <Link to={'/edit-worker2'}>
-                            <button 
-                                className="image-button-edit" 
-                                style={{ backgroundImage: `url(${btnSave})`, marginBottom: "15px", visibility: showNext ? "visible" : "hidden"}}>
-                                    Сохранить
-                            </button>
-                        </Link>
-                    </div> */}
-                
-                </div>
-                
-            </div>
-
             <div className='footer-block' style={{bottom: '0'}}>
                 <Link to={'/profile'}><img src={btnMenu} alt='' /></Link>
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
