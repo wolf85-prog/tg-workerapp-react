@@ -246,11 +246,13 @@ const NewPassport3 = () => {
     useEffect(() => {
         if (pasPlaceborn && pasAdress && pasEmail.includes("@")) {
             tg.MainButton.show();
+            console.log("yes")
        } else {
-        tg.MainButton.hide();
+            tg.MainButton.hide();
+            console.log("no")
        }
         
-    }, [])
+    }, [pasPlaceborn, pasAdress, pasEmail])
 
     return (
         <div className="App">
