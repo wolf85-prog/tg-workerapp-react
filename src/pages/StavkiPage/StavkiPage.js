@@ -151,7 +151,7 @@ const StavkiPage = () => {
                             <div className="button-stavki" style={{ 
                                                             backgroundImage: `url(${showTable[index] ? ButtonStavka2 : ButtonStavka})`,
                                                             display: 'flex',
-                                                            margin: '0 20px', 
+                                                            margin: '0 20px 10px 20px', 
                                                             justifyContent: 'space-between', 
                                                             alignItems: 'center',
                                                             padding: '10px 25px',
@@ -162,7 +162,7 @@ const StavkiPage = () => {
                                         {showTable[index] ? <img src={TreugolUp} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>
                                         : <img src={TreugolDown} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>}
                             </div>
-                            <br/>
+                            
                             {showTable[index] ? 
                             // <img className='table-image' src={Table1} alt='' width='95%'/> 
                             <div style={{marginBottom:'20px', marginTop: '-48px', width: '320px'}}> 
