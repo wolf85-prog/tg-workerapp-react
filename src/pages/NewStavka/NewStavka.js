@@ -62,19 +62,10 @@ const NewStavka = () => {
 
 
     const changeSummaStavki = (e) => {
-        //console.log(e.target.value + ".00 рублей")
-        //const str = e.target.value + ".00 рублей"
-        // let newStr = ''
-        // if (str.length === 4) {
-        //     newStr = str.split()[0] + " " + str.split()[1] + str.split()[2] + str.split()[3]
-        // }
-        //setSummaStavki(str)// addCommas(removeNonNumeric(str)))
-    }
+        console.log(e.target.value)
 
-    const sendStavka = () => {
-        console.log("Ставка: ", summaStavki)
+        setSummaStavki(e.target.value)
     }
-
 
     //отправка данных в telegram-бот
     const onSendData = useCallback(() => {
@@ -85,9 +76,6 @@ const NewStavka = () => {
         }
 
         tg.MainButton.hide();
-        // setIsLoading(true)
-
-        // setFlag("ONLY_REG")
 
         fetch(API_URL + 'web-stavka', {
             method: 'POST',
@@ -97,7 +85,6 @@ const NewStavka = () => {
             body: JSON.stringify(data)
         })
         
-        // setIsLoading(false)
               
     }, [summaStavki, id])
 
@@ -110,7 +97,8 @@ const NewStavka = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Отправить предложение'
+            text: 'Отправить предложение',
+            color: '#000000' //'#2e2e2e'
         })
     }, [])
 
@@ -164,7 +152,9 @@ const NewStavka = () => {
 
                         <CurrencyInput 
                             placeholder='Впиши сюда сумму'
-                            type="text" 
+                            type="text"
+                            value={summaStavki}
+                            onChange={changeSummaStavki}  
                         />
                     </div>
         

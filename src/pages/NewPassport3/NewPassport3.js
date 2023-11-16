@@ -239,7 +239,8 @@ const NewPassport3 = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Отправить анкету'
+            text: 'Отправить анкету',
+            color: '#000000' //'#2e2e2e'
         })
     }, [])
 
