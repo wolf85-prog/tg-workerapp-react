@@ -133,23 +133,6 @@ const NewStavka = () => {
                 <div className='form-edit-stavka'>
 
                     <div className="edit-send" style={{ backgroundImage: `url(${enterSumma})`}}>
-                        {/* <InputMask
-                            mask="99999.00 рублей"
-                            disabled={false}
-                            maskChar=""
-                            value={summaStavki}
-                            onChange={changeSummaStavki} 
-                            placeholder='Впиши сюда сумму'
-                        >         
-                        </InputMask> */}
-                        
-                        {/* <input
-                            value={summaStavki}
-                            onChange={changeSummaStavki} 
-                            placeholder='Впиши сюда сумму'
-                            type='text' 
-                        />  */}
-
                         <CurrencyInput 
                             placeholder='Впиши сюда сумму'
                             type="text"
