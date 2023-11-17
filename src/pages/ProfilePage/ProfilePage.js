@@ -38,11 +38,8 @@ const ProfilePage = () => {
 
         const fetchData = async() => {
             const worker = await getWorkerId(user?.id) //user?.id
-
             console.log("worker: ", worker)
-
             setWorkerhub(worker)
-
             //setSpec(worker[0]?.spec.map(worker => worker.name))
         }
 
@@ -51,8 +48,8 @@ const ProfilePage = () => {
     }, []);
 
     useEffect(() => {
-        setTimeout(() =>  setShowGrad(true), 500) //градиент верх
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
+        setTimeout(() =>  setShowGrad(true), 4500) //градиент верх  
     })
 
     //---------------------------------------------------------------------------------------
@@ -68,7 +65,7 @@ const ProfilePage = () => {
                 <img src={Fon} alt='' className='fon-style-full' />
             </div>
 
-            <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
+            <img src={FonGradTop} alt='' className='fon-style-menu1' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
 

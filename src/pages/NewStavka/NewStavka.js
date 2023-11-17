@@ -52,10 +52,8 @@ const NewStavka = () => {
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        setTimeout(() =>  setShowGrad(true), 500) //градиент верх
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
-
-        console.log("id: ", id)
+        setTimeout(() =>  setShowGrad(true), 4500) //градиент верх 
 
         setPretendentId(id)
     })
@@ -126,7 +124,7 @@ const NewStavka = () => {
                 <img src={Fon} alt='' className='fon-style-full' />
             </div>
 
-            <img src={FonGradTop} alt='' className='fon-style-menu' style={{visibility: showGrad ? "visible": "hidden"}}/>
+            <img src={FonGradTop} alt='' className='fon-style-menu1' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
             <div style={{display: 'flex', height: '100vh', position: 'fixed', width: '100%'}}>
