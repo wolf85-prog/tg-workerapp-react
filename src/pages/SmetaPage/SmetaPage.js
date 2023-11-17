@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import MyModal from "../../components/MyModal/MyModal";
@@ -20,20 +20,45 @@ import smallMenu from "../../image/layers/ULEY text.png"
 import BackModal from "../../image/background/background_modal.png"
 
 const SmetaPage = () => {
-    //const location = useLocation()
+    const location = useLocation()
 
-    //const projNumber= location.state?.proj
+    const projNumber = location.state?.proj
+    const projTitle = location.state?.title
+    const projDate = location.state?.date != null ? location.state?.date : '';
+    const projDate2 = location.state?.date2 != null ? location.state?.date2 : '';
+
+
+    console.log("projNumber: ", projNumber)
+    console.log("projTitle: ", projTitle)
+    console.log("projDate: ", projDate)
     
     const [modal, setModal] = useState(false)
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
 //----------------------------------------------------------------------------------
+    let d_end, year2, date2, month2, chas2, minut2;
+
+    //time start
+    const d = new Date(projDate);
+    const year = d.getFullYear()
+    const month = String(d.getMonth()+1).padStart(2, "0"); 
+    const date = String(d.getDate()).padStart(2, "0"); 
+    const chas = String(d.getHours()).padStart(2, "0"); //d.getHours();
+    const minut = String(d.getMinutes()).padStart(2, "0"); //d.getMinutes();
+
+    //time end
+    if (projDate2) {
+        d_end = new Date(projDate2);
+        year2 = d_end.getFullYear()
+        date2 = String(d_end.getDate()).padStart(2, "0"); 
+        month2 = String(d_end.getMonth()+1).padStart(2, "0"); 
+        chas2 = String(d_end.getHours()).padStart(2, "0"); //d.getHours();
+        minut2 = String(d_end.getMinutes()).padStart(2, "0"); //d.getMinutes();
+    } 
+
+    const formatted = (d_end) ? `${date}.${month}.${year} - ${date2}.${month2}.${year2}` : `${date}.${month}.${year}`;
 
     // при первой загрузке приложения выполнится код ниже
-    useEffect(() => {
-
-    }, []);
-
     const navigate = useNavigate();
     const handleClick = () => navigate(-1);
 
@@ -76,13 +101,13 @@ const SmetaPage = () => {
 
             <table class="c-tbl" id="table">
                 <thead><tr>
-                    <th>Дата</th><th colspan="2" className='th-inline'>31.12.2023</th></tr>
+                    <th>Дата</th><th colspan="2" className='th-inline'>{formatted}</th></tr>
                 </thead>
                 <tbody>
                      
                         <tr>
                             <td className='th-left'>Проект</td>
-                            <td colspan="2">Название проекта</td>
+                            <td colspan="2">{projTitle}</td>
                         </tr>
                         <tr>
                             <td className='th-left'>Специальность</td>

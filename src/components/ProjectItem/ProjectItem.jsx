@@ -6,6 +6,8 @@ import backgroundProject from './../../image/background/bacground_project.png'
 
 const ProjectItem = (props) => {
 
+    console.log("project title: ", props.post.title)
+
     const navigate = useNavigate();
    
     const statusColor = props.post.status == null ? 'gray' : props.post.status.color;
@@ -42,6 +44,9 @@ const ProjectItem = (props) => {
         navigate('/smeta', {
             state: {
               proj: props.number,
+              title: props.post.title,
+              date: props.post.date_start,
+              date2: props.post.date_end
             }
         })
     }
