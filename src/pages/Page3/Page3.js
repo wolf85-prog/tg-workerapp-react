@@ -5,9 +5,11 @@ import Header from "../../components/Header/Header";
 import './Page3.css';
 import MyButton from "../../components/UI/MyButton/MyButton";
 import MyModal from "../../components/MyModal/MyModal";
+import Loader from "../../components/UI/Loader/Loader";
 
 import { useUsersContext } from "../../contexts/UserContext"
 import {useProjects} from "../../hooks/useProjects"
+import { getProjectsAll, getBlockId, getDatabase } from './../../http/chatAPI';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
@@ -29,10 +31,13 @@ const Page3 = () => {
 
     const { projects, setProjects, specId} = useUsersContext();
 
+    const [projects2, setProjects2] = useState([])
+
     const [proj, setProj] = useState([])
+    const [isPostsLoading, setIsPostsLoading] = useState(false);
 
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
-    //const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query, specId); //specId
+    const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query, specId); //specId
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
@@ -49,6 +54,86 @@ const Page3 = () => {
         setProj(proj)
                    
     }, [projects])
+
+    // при первой загрузке приложения выполнится код ниже
+    useEffect(() => {
+            console.log('start')
+            setIsPostsLoading(true)
+            
+            const fetchDataProjects = async () => {
+                console.log("projects contex: ", projects)
+    
+                const projs = projects.length > 0 ? JSON.parse(localStorage.getItem('projects')) : '';
+                console.log("projs: ", projs)
+                
+                if (projects.length === 0) {         
+                    console.log("Начинаю загружать проекты...")
+                    let response = await getProjectsAll();
+                    console.log("projects size: ", response.size)
+    
+                    const arrayProject = []
+                    const arrayBlock = []
+                    let count = 0;
+                    let databaseBlock;
+    
+                    if (response.length !== 0) {
+    
+                        response.map(async (project, index) => {
+                            const arraySpec = []
+                            const blockId = await getBlockId(project.id);
+    
+                            if (blockId) { 
+                                databaseBlock = await getDatabase(blockId); 
+                                
+                                //если бд ноушена доступна
+                                if (databaseBlock.length > 0) {
+                                    databaseBlock.map((db) => {
+                                        if (db.fio_id) {
+                                            const newSpec = {
+                                                id: db?.fio_id,
+                                            }
+                                            arraySpec.push(newSpec)
+                                        }
+                                    })
+    
+                                    const newProject = {
+                                        id: project.id,
+                                        title: project.title,
+                                        date_start: project.date_start,
+                                        date_end: project.date_end,
+                                        status: project.status,
+                                        spec: arraySpec,
+                                    }
+                                    console.log(newProject)
+                                    arrayProject.push(newProject)
+    
+                                    if (index === response.length - 1) {
+                                        setTimeout(()=>{
+                                            setIsPostsLoading(false)
+                                            console.log("arrayProject: ", arrayProject)
+                                            setProjects2(arrayProject) 
+                                            setProjects(arrayProject) 
+    
+                                            localStorage.setItem('projects', JSON.stringify(arrayProject));
+                                        }, 10000)    
+                                    }
+                                }                   
+                            } else {
+                                console.log("База данных не найдена! Проект ID: " + project.title)
+                            }	  
+                        })
+                    }   
+                }  else {
+                    console.log("Проекты уже загружены!")
+                    setIsPostsLoading(false)
+                    console.log("arrayProject: ", projects)
+                    setProjects2(projects) 
+                }   
+            }
+    
+    
+            fetchDataProjects()                    
+    }, [])
 
     {/* Закрыть */}
     const clickButton = () => {
@@ -79,8 +164,9 @@ const Page3 = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
             
             <div className='form-smeta-page3'>                                
-                
-                <div id="table-scroll" class="table-scroll">
+            {isPostsLoading
+                ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
+                : <div id="table-scroll" class="table-scroll">
                     <div class="table-wrap">
                         <table class="main-table" id="table">
                         <thead>
@@ -98,7 +184,7 @@ const Page3 = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {proj.map((item, index) => (
+                        {sortedAndSearchedPosts.map((item, index) => (
                             <tr>
                                 <td class="fixed-side">{index+1}</td>
                                 <td>{item.title}</td>
@@ -111,14 +197,15 @@ const Page3 = () => {
                                 <td>0,00</td>
                                 <td style={{padding: '4px'}}><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
                             </tr>
-                            ))}
+                            ))
+                        }
                         </tbody>
                         </table>
                     </div>
                     <img className='style-banner' src={banner} alt='' width='100%' />
 
                 </div>
-
+                }
                 
                 <div className='block2'>
 
