@@ -41,8 +41,8 @@ const AnketaPage = () => {
         
         const fetch = async() => {
            const worker = await getWorkerId(user?.id) //user?.id '1408579113'
-            console.log(worker[0].fio.split(' ')[1])
-            setWorkerName(worker[0].fio.split(' ')[1]) 
+            console.log(worker[0]?.fio.split(' ')[1])
+            setWorkerName(worker[0]?.fio.split(' ')[1]) 
         }
         
         fetch()      
@@ -123,7 +123,7 @@ const AnketaPage = () => {
                 </div>
 
                  {/* page3  */}
-                 <div style={{display: showPage2 ? "block" : 'none', position: 'relative', zIndex: '10', height: '270px', margin: 'auto'}}>                  
+                 <div style={{display: showPage2 ? "block" : 'none', position: 'relative', zIndex: '10', height: '320px', margin: 'auto'}}>                  
                     <div
                         style={{
                             margin: '20px 25px',
