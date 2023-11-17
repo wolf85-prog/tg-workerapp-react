@@ -6,6 +6,9 @@ import './Page3.css';
 import MyButton from "../../components/UI/MyButton/MyButton";
 import MyModal from "../../components/MyModal/MyModal";
 
+import { useUsersContext } from "../../contexts/UserContext"
+import {useProjects} from "../../hooks/useProjects"
+
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
@@ -23,6 +26,13 @@ const Page3 = () => {
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
     const [modal, setModal] = useState(false)
+
+    const { projects, setProjects, specId} = useUsersContext();
+
+    const [proj, setProj] = useState([])
+
+    const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
+    //const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query, specId); //specId
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
@@ -30,6 +40,15 @@ const Page3 = () => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх  
     });
+
+    // при первой загрузке приложения выполнится код ниже
+    useEffect(() => {
+        console.log(projects)
+        const proj = projects.filter(post=> post.spec.find(item => item.id === specId));  
+        //console.log("proj: ", proj)
+        setProj(proj)
+                   
+    }, [projects])
 
     {/* Закрыть */}
     const clickButton = () => {
@@ -79,84 +98,20 @@ const Page3 = () => {
                             </tr>
                         </thead>
                         <tbody>
+                            {proj.map((item, index) => (
                             <tr>
-                                <td class="fixed-side">12.09</td>
-                                <td>Проект 1</td>
-                                <td>Монтаж</td>
-                                <td>23:00</td>
-                                <td>01:00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
+                                <td class="fixed-side">{index+1}</td>
+                                <td>{item.title}</td>
+                                <td></td>
+                                <td>00:00</td>
+                                <td>00:00</td>
+                                <td>0,00</td>
+                                <td>0,00</td>
+                                <td>0,00</td>
+                                <td>0,00</td>
                                 <td style={{padding: '4px'}}><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
                             </tr>
-                            <tr>
-                                <td class="fixed-side">13.09</td>
-                                <td>Проект 1</td>
-                                <td>Монтаж</td>
-                                <td>23:00</td>
-                                <td>01:00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td style={{padding: '4px'}}><img src={uncheck2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
-                            </tr>
-                            <tr>
-                                <td class="fixed-side">12.09</td>
-                                <td>Проект 1</td>
-                                <td>Монтаж</td>
-                                <td>23:00</td>
-                                <td>01:00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td style={{padding: 0}}></td>
-                            </tr>
-                            <tr>
-                                <td class="fixed-side">13.09</td>
-                                <td>Проект 1</td>
-                                <td>Монтаж</td>
-                                <td>23:00</td>
-                                <td>01:00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td style={{padding: 0}}></td>
-                            </tr>
-                            <tr>
-                                <td class="fixed-side">12.09</td>
-                                <td>Проект 1</td>
-                                <td>Монтаж</td>
-                                <td>23:00</td>
-                                <td>01:00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td style={{padding: 0}}></td>
-                            </tr>
-                            <tr>
-                                <td class="fixed-side">13.09</td>
-                                <td>Проект 1</td>
-                                <td>Монтаж</td>
-                                <td>23:00</td>
-                                <td>01:00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td>10 000,00</td>
-                                <td style={{padding: 0}}></td>
-                            </tr>
-                            <tr>
-                                <td colSpan={7} style={{padding: '0'}}></td>
-                                <td style={{padding: '0'}}>Итого:</td>
-                                <td style={{padding: '0'}}></td>
-                                <td style={{padding: '0'}}></td>
-                            </tr>
+                            ))}
                         </tbody>
                         </table>
                     </div>

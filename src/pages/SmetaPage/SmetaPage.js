@@ -27,7 +27,6 @@ const SmetaPage = () => {
     const projDate = location.state?.date != null ? location.state?.date : '';
     const projDate2 = location.state?.date2 != null ? location.state?.date2 : '';
 
-
     console.log("projNumber: ", projNumber)
     console.log("projTitle: ", projTitle)
     console.log("projDate: ", projDate)
@@ -35,6 +34,7 @@ const SmetaPage = () => {
     const [modal, setModal] = useState(false)
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
+
 //----------------------------------------------------------------------------------
     let d_end, year2, date2, month2, chas2, minut2;
 
