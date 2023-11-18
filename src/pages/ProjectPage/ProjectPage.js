@@ -51,13 +51,13 @@ const ProjectPage = () => {
             let databaseBlock;
             let i = 0;
 
-            const projs = JSON.parse(localStorage.getItem('projects'));
+            const projs = localStorage ? JSON.parse(localStorage.getItem('projects')) : [];
             console.log("projs: ", projs)
             
             if (projs.length === 0) {         
                 console.log("Начинаю загружать проекты...")
                 let response = await getProjectsAll();
-                setIsPostsLoading(false)
+
                 if (response.length !== 0) {
                     console.log("projects: ", response)
 
