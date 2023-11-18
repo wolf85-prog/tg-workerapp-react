@@ -29,7 +29,7 @@ const ProjectPage = () => {
     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
     //const [filter, setFilter] = useState('Все');
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
-    const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query, specId); //specId '1408579113'
+    const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query, specId); //specId '1408579113'
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
@@ -92,6 +92,8 @@ const ProjectPage = () => {
                                 }
                                 arrayProject.push(newProject)
 
+                                setProjects2(arrayProject) 
+
                                 console.log(newProject)
                                 console.log("arrayProject size: ", arrayProject.length )
                             }                   
@@ -104,6 +106,8 @@ const ProjectPage = () => {
                         
                         console.log("arrayProject: ", arrayProject)
                         setProjects2(arrayProject) 
+                        
+
                         //сохраняю в кэш
                         //localStorage.setItem('projects', JSON.stringify(arrayProject));
 
@@ -128,9 +132,9 @@ const ProjectPage = () => {
                             console.log("arr: ", arr)                           
                             setProjects2(arr)
                         }
-
                         setIsPostsLoading(false)
-                    }, 18000)     
+                        
+                    }, 12000)     
 
                 }
                    

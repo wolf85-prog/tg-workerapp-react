@@ -33,7 +33,7 @@ const MenuPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
 
             if (worker.length > 0) {
                 //зарегистрирован
