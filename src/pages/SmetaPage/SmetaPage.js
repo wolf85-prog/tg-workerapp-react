@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {useNavigate, useLocation} from "react-router-dom";
+import { useUsersContext } from "../../contexts/UserContext"
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import MyModal from "../../components/MyModal/MyModal";
@@ -22,14 +23,24 @@ import BackModal from "../../image/background/background_modal.png"
 const SmetaPage = () => {
     const location = useLocation()
 
+    const { specId } = useUsersContext();
+
     const projNumber = location.state?.proj
     const projTitle = location.state?.title
     const projDate = location.state?.date != null ? location.state?.date : '';
     const projDate2 = location.state?.date2 != null ? location.state?.date2 : '';
+    const projVid = location.state?.vid
+    const projSpec = location.state?.spec
+    const projDateMain = location.state?.dateMain
 
     console.log("projNumber: ", projNumber)
     console.log("projTitle: ", projTitle)
     console.log("projDate: ", projDate)
+    console.log("projVid: ", projVid)
+    console.log("projSpec: ", projSpec)
+    console.log("projDateMain: ", projDateMain)
+
+    console.log("specId: ", specId)
     
     const [modal, setModal] = useState(false)
     const [showGrad, setShowGrad] = useState(false)
@@ -39,7 +50,7 @@ const SmetaPage = () => {
     let d_end, year2, date2, month2, chas2, minut2;
 
     //time start
-    const d = new Date(projDate);
+    const d = new Date(projDateMain);
     const year = d.getFullYear()
     const month = String(d.getMonth()+1).padStart(2, "0"); 
     const date = String(d.getDate()).padStart(2, "0"); 
@@ -111,11 +122,11 @@ const SmetaPage = () => {
                         </tr>
                         <tr>
                             <td className='th-left'>Специальность</td>
-                            <td colspan="2">---</td>
+                            <td colspan="2">{projSpec}</td>
                         </tr>
                         <tr>
                             <td className='th-left'>Вид работ</td>
-                            <td colspan="2">---</td>
+                            <td colspan="2">{projVid}</td>
                         </tr>
                         <tr>
                             <td className='th-left'>Интервал</td>

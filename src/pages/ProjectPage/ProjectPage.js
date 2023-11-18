@@ -29,7 +29,7 @@ const ProjectPage = () => {
     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
     //const [filter, setFilter] = useState('Все');
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
-    const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query, specId); //specId
+    const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query, specId); //specId '1408579113'
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
@@ -41,26 +41,25 @@ const ProjectPage = () => {
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        console.log('start')
+        console.log('start specId: ', specId)
         setIsPostsLoading(true)
         
         const fetchDataProjects = async () => {
-            console.log("projects contex: ", projects)
+            const arrayProject = []
+            const arrayBlock = []
+            let count = 0;
+            let databaseBlock;
+            let i = 0;
 
-            const projs = projects.length > 0 ? JSON.parse(localStorage.getItem('projects')) : '';
+            const projs = JSON.parse(localStorage.getItem('projects'));
             console.log("projs: ", projs)
             
-            if (projects.length === 0) {         
+            if (projs.length === 0) {         
                 console.log("Начинаю загружать проекты...")
                 let response = await getProjectsAll();
-                console.log("projects size: ", response.size)
-
-                const arrayProject = []
-                const arrayBlock = []
-                let count = 0;
-                let databaseBlock;
 
                 if (response.length !== 0) {
+                    console.log("projects: ", response)
 
                     response.map(async (project, index) => {
                         const arraySpec = []
@@ -75,6 +74,9 @@ const ProjectPage = () => {
                                     if (db.fio_id) {
                                         const newSpec = {
                                             id: db?.fio_id,
+                                            vid: db?.vid,
+                                            spec: db?.spec,
+                                            date: db?.date,
                                         }
                                         arraySpec.push(newSpec)
                                     }
@@ -86,57 +88,65 @@ const ProjectPage = () => {
                                     date_start: project.date_start,
                                     date_end: project.date_end,
                                     status: project.status,
-                                    spec: arraySpec,
+                                    specs: arraySpec,
                                 }
-                                console.log(newProject)
                                 arrayProject.push(newProject)
 
-                                if (index === response.length - 1) {
-                                    setTimeout(()=>{
-                                        setIsPostsLoading(false)
-                                        console.log("arrayProject: ", arrayProject)
-                                        setProjects2(arrayProject) 
-                                        setProjects(arrayProject) 
-
-                                        localStorage.setItem('projects', JSON.stringify(arrayProject));
-                                    }, 10000)    
-                                }
+                                console.log(newProject)
+                                console.log("arrayProject size: ", arrayProject.length )
                             }                   
                         } else {
                             console.log("База данных не найдена! Проект ID: " + project.title)
                         }	  
                     })
-                }   
-            }  else {
-                console.log("Проекты уже загружены!")
-                setIsPostsLoading(false)
-                console.log("arrayProject: ", projects)
-                setProjects2(projects) 
-            }   
-        }
+                    
+                    setTimeout(()=>{
+                        setIsPostsLoading(false)
+                        console.log("arrayProject: ", arrayProject)
+                        setProjects2(arrayProject) 
+                        //сохраняю в кэш
+                        localStorage.setItem('projects', JSON.stringify(arrayProject));
+                    }, 18000)     
 
+                }
+                   
+            }  else {
+                console.log("Проекты взяты из кэша...")
+
+                if (filter.query === 'Все') {
+                    console.log("filter all")
+                    const arr = projs.filter(post=> post.specs.find(item => item.id === specId)); //posts2; 
+                    console.log("arr: ", arr)  
+                    setProjects2(arr)
+                }
+    
+                if (filter.query === 'Новые') {
+                    const arr = projs.filter(post => ((post.status != null ? post.status.name : '') === "Load" ||
+                                            (post.status != null ? post.status.name : '') === "Ready" ||
+                                            (post.status != null ? post.status.name : '') === "OnAir") && post.specs.find(item => item.id === specId))        //post2 
+                    console.log("arr: ", arr)  
+                    setProjects2(arr)
+                }
+    
+                if (filter.query === 'Старые') {         
+                    const arr = projs.filter(post => ((post.status != null ? post.status.name : '') === "Done" ||
+                                            (post.status != null ? post.status.name : '') === "Wasted") && post.specs.find(item => item.id === specId)) //post2  
+                    console.log("arr: ", arr)                           
+                    setProjects2(arr)
+                }
+                
+                setIsPostsLoading(false)
+            }  
+            
+        }
 
         fetchDataProjects()                    
     }, [])
 
-    const fetch = async() => {
-        
-        //setProjects2(projects) 
-        
-        // setTimeout(() => {
-        //     console.log("projects: ", projects)
-        //     setProjects2(projects);
-        //     setIsPostsLoading(false);
-        // }, 1000);
-        
-    }
 
     useEffect(() => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх  
-
-        //const rememberMe = localStorage.getItem('projects');
-        //console.log("rememberMe: ", rememberMe)
     })
 
     //---------------------------------------------------------------------------------------
@@ -165,7 +175,7 @@ const ProjectPage = () => {
             <div className="project-list">                   
                 {isPostsLoading
                     ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
-                    : <ProjectList posts={sortedAndSearchedPosts} title=""/>
+                    : <ProjectList posts={projects2} title="" worker={specId}/>
                 }
             </div>   
 

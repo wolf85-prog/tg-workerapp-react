@@ -6,7 +6,7 @@ import backgroundProject from './../../image/background/bacground_project.png'
 
 const ProjectItem = (props) => {
 
-    console.log("project title: ", props.post.title)
+    console.log("project title: ", props)
 
     const navigate = useNavigate();
    
@@ -46,7 +46,10 @@ const ProjectItem = (props) => {
               proj: props.number,
               title: props.post.title,
               date: props.post.date_start,
-              date2: props.post.date_end
+              date2: props.post.date_end,
+              vid: props.post.specs[0]?.vid,
+              spec: props.post.specs[0]?.spec,
+              dateMain: props.post.specs[0]?.date,
             }
         })
     }

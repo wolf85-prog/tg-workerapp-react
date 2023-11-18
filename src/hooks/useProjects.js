@@ -20,15 +20,15 @@ export const useSortedPosts = (posts, sort) => {
 
 export const useProjects = (posts2, sort, query, specId) => {
     const sortedPosts = useSortedPosts(posts2, sort);
-    console.log("query: ", query)
-    console.log("specId: ", specId)
+    //console.log("query: ", query)
+    //console.log("specId: ", specId)
     //console.log("context projects: ", posts2)
 
     const sortedAndSearchedPosts = useMemo(() => {
 
         if (query != '') {
             if (query === 'Все') {
-                console.log("filter all")
+                //console.log("filter all")
                 return sortedPosts.filter(post=> post.spec.find(item => item.id === specId)); //posts2; 
             }
 
