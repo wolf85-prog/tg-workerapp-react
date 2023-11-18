@@ -51,10 +51,10 @@ const ProjectPage = () => {
             let databaseBlock;
             let i = 0;
 
-            const projs = localStorage ? JSON.parse(localStorage.getItem('projects')) : [];
-            console.log("projs: ", projs)
+            //const projs = localStorage ? JSON.parse(localStorage.getItem('projects')) : [];
+            //console.log("projs: ", projs)
             
-            if (projs.length === 0) {         
+            //if (projs.length === 0) {         
                 console.log("Начинаю загружать проекты...")
                 let response = await getProjectsAll();
 
@@ -101,42 +101,66 @@ const ProjectPage = () => {
                     })
                     
                     setTimeout(()=>{
-                        setIsPostsLoading(false)
+                        
                         console.log("arrayProject: ", arrayProject)
                         setProjects2(arrayProject) 
                         //сохраняю в кэш
-                        localStorage.setItem('projects', JSON.stringify(arrayProject));
+                        //localStorage.setItem('projects', JSON.stringify(arrayProject));
+
+                        if (filter.query === 'Все') {
+                            console.log("filter all")
+                            const arr = arrayProject.filter(post=> post.specs.find(item => item.id === specId)); //posts2; 
+                            console.log("arr: ", arr)  
+                            setProjects2(arr)
+                        }
+            
+                        if (filter.query === 'Новые') {
+                            const arr = arrayProject.filter(post => ((post.status != null ? post.status.name : '') === "Load" ||
+                                                    (post.status != null ? post.status.name : '') === "Ready" ||
+                                                    (post.status != null ? post.status.name : '') === "OnAir") && post.specs.find(item => item.id === specId))        //post2 
+                            console.log("arr: ", arr)  
+                            setProjects2(arr)
+                        }
+            
+                        if (filter.query === 'Старые') {         
+                            const arr = arrayProject.filter(post => ((post.status != null ? post.status.name : '') === "Done" ||
+                                                    (post.status != null ? post.status.name : '') === "Wasted") && post.specs.find(item => item.id === specId)) //post2  
+                            console.log("arr: ", arr)                           
+                            setProjects2(arr)
+                        }
+
+                        setIsPostsLoading(false)
                     }, 18000)     
 
                 }
                    
-            }  else {
-                console.log("Проекты взяты из кэша...")
+           // }  else {
+                // console.log("Проекты взяты из кэша...")
 
-                if (filter.query === 'Все') {
-                    console.log("filter all")
-                    const arr = projs.filter(post=> post.specs.find(item => item.id === specId)); //posts2; 
-                    console.log("arr: ", arr)  
-                    setProjects2(arr)
-                }
+                // if (filter.query === 'Все') {
+                //     console.log("filter all")
+                //     const arr = projs.filter(post=> post.specs.find(item => item.id === specId)); //posts2; 
+                //     console.log("arr: ", arr)  
+                //     setProjects2(arr)
+                // }
     
-                if (filter.query === 'Новые') {
-                    const arr = projs.filter(post => ((post.status != null ? post.status.name : '') === "Load" ||
-                                            (post.status != null ? post.status.name : '') === "Ready" ||
-                                            (post.status != null ? post.status.name : '') === "OnAir") && post.specs.find(item => item.id === specId))        //post2 
-                    console.log("arr: ", arr)  
-                    setProjects2(arr)
-                }
+                // if (filter.query === 'Новые') {
+                //     const arr = projs.filter(post => ((post.status != null ? post.status.name : '') === "Load" ||
+                //                             (post.status != null ? post.status.name : '') === "Ready" ||
+                //                             (post.status != null ? post.status.name : '') === "OnAir") && post.specs.find(item => item.id === specId))        //post2 
+                //     console.log("arr: ", arr)  
+                //     setProjects2(arr)
+                // }
     
-                if (filter.query === 'Старые') {         
-                    const arr = projs.filter(post => ((post.status != null ? post.status.name : '') === "Done" ||
-                                            (post.status != null ? post.status.name : '') === "Wasted") && post.specs.find(item => item.id === specId)) //post2  
-                    console.log("arr: ", arr)                           
-                    setProjects2(arr)
-                }
+                // if (filter.query === 'Старые') {         
+                //     const arr = projs.filter(post => ((post.status != null ? post.status.name : '') === "Done" ||
+                //                             (post.status != null ? post.status.name : '') === "Wasted") && post.specs.find(item => item.id === specId)) //post2  
+                //     console.log("arr: ", arr)                           
+                //     setProjects2(arr)
+                // }
                 
-                setIsPostsLoading(false)
-            }  
+                //setIsPostsLoading(false)
+            //}  
             
         }
 
