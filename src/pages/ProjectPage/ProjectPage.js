@@ -65,7 +65,7 @@ const ProjectPage = () => {
                         date_start: project.date_start,
                         date_end: project.date_end,
                         status: JSON.parse(project.status),
-                        specs: JSON.parse(arraySpec),
+                        specs: JSON.parse(project.specs),
                     }
                     arrayProject.push(newProject)
                 })
