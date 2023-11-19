@@ -84,3 +84,14 @@ export const uploadFile = async (data) =>{
         
     }
 }
+
+
+export const getProjectsCash = async () =>{
+    try {
+       let response = await $host.get(`api/projectscash`);
+       //console.log(response);
+       return response.data;
+    } catch (error) {
+        console.log("error while calling getProjectsCash api", error.message);
+    }
+}

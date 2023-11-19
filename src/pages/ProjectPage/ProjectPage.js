@@ -9,7 +9,7 @@ import Loader from "../../components/UI/Loader/Loader";
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 import { useUsersContext } from "../../contexts/UserContext"
-import { getProjectsAll, getBlockId, getDatabase } from '../../http/chatAPI';
+import { getProjectsAll, getBlockId, getDatabase, getProjectsCash } from '../../http/chatAPI';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
@@ -29,7 +29,7 @@ const ProjectPage = () => {
     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
     //const [filter, setFilter] = useState('Все');
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
-    const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query, specId); //specId '1408579113'
+    const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query, specId); //specId '1408579113'
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
@@ -56,87 +56,106 @@ const ProjectPage = () => {
             
             //if (projs.length === 0) {         
                 console.log("Начинаю загружать проекты...")
-                let response = await getProjectsAll();
+                const projects = await getProjectsCash();
 
-                if (response.length !== 0) {
-                    console.log("projects: ", response)
+                projects.map((project)=> {
+                    const newProject = {
+                        id: project.id,
+                        title: project.title,
+                        date_start: project.date_start,
+                        date_end: project.date_end,
+                        status: JSON.parse(project.status),
+                        specs: JSON.parse(arraySpec),
+                    }
+                    arrayProject.push(newProject)
+                })
+                
+                setProjects(projects)
 
-                    response.map(async (project, index) => {
-                        const arraySpec = []
-                        const blockId = await getBlockId(project.id);
+                setTimeout(()=> {
+                   setIsPostsLoading(false) 
+                }, 3000)
+                
 
-                        if (blockId) { 
-                            databaseBlock = await getDatabase(blockId); 
+                // if (response.length !== 0) {
+                //     console.log("projects: ", response)
+
+                //     response.map(async (project, index) => {
+                //         const arraySpec = []
+                //         const blockId = await getBlockId(project.id);
+
+                //         if (blockId) { 
+                //             databaseBlock = await getDatabase(blockId); 
                             
-                            //если бд ноушена доступна
-                            if (databaseBlock.length > 0) {
-                                databaseBlock.map((db) => {
-                                    if (db.fio_id) {
-                                        const newSpec = {
-                                            id: db?.fio_id,
-                                            vid: db?.vid,
-                                            spec: db?.spec,
-                                            date: db?.date,
-                                        }
-                                        arraySpec.push(newSpec)
-                                    }
-                                })
+                //             //если бд ноушена доступна
+                //             if (databaseBlock.length > 0) {
+                //                 databaseBlock.map((db) => {
+                //                     if (db.fio_id) {
+                //                         const newSpec = {
+                //                             id: db?.fio_id,
+                //                             vid: db?.vid,
+                //                             spec: db?.spec,
+                //                             date: db?.date,
+                //                         }
+                //                         arraySpec.push(newSpec)
+                //                     }
+                //                 })
 
-                                const newProject = {
-                                    id: project.id,
-                                    title: project.title,
-                                    date_start: project.date_start,
-                                    date_end: project.date_end,
-                                    status: project.status,
-                                    specs: arraySpec,
-                                }
-                                arrayProject.push(newProject)
+                //                 const newProject = {
+                //                     id: project.id,
+                //                     title: project.title,
+                //                     date_start: project.date_start,
+                //                     date_end: project.date_end,
+                //                     status: project.status,
+                //                     specs: arraySpec,
+                //                 }
+                //                 arrayProject.push(newProject)
 
-                                setProjects2(arrayProject) 
+                //                 setProjects2(arrayProject) 
 
-                                console.log(newProject)
-                                console.log("arrayProject size: ", arrayProject.length )
-                            }                   
-                        } else {
-                            console.log("База данных не найдена! Проект ID: " + project.title)
-                        }	  
-                    })
+                //                 console.log(newProject)
+                //                 console.log("arrayProject size: ", arrayProject.length )
+                //             }                   
+                //         } else {
+                //             console.log("База данных не найдена! Проект ID: " + project.title)
+                //         }	  
+                //     })
                     
-                    setTimeout(()=>{
+                //     setTimeout(()=>{
                         
-                        console.log("arrayProject: ", arrayProject)
-                        setProjects2(arrayProject) 
+                //         console.log("arrayProject: ", arrayProject)
+                //         setProjects2(arrayProject) 
                         
 
-                        //сохраняю в кэш
-                        //localStorage.setItem('projects', JSON.stringify(arrayProject));
+                //         //сохраняю в кэш
+                //         //localStorage.setItem('projects', JSON.stringify(arrayProject));
 
-                        if (filter.query === 'Все') {
-                            console.log("filter all")
-                            const arr = arrayProject.filter(post=> post.specs.find(item => item.id === specId)); //posts2; 
-                            console.log("arr: ", arr)  
-                            setProjects2(arr)
-                        }
+                //         if (filter.query === 'Все') {
+                //             console.log("filter all")
+                //             const arr = arrayProject.filter(post=> post.specs.find(item => item.id === specId)); //posts2; 
+                //             console.log("arr: ", arr)  
+                //             setProjects2(arr)
+                //         }
             
-                        if (filter.query === 'Новые') {
-                            const arr = arrayProject.filter(post => ((post.status != null ? post.status.name : '') === "Load" ||
-                                                    (post.status != null ? post.status.name : '') === "Ready" ||
-                                                    (post.status != null ? post.status.name : '') === "OnAir") && post.specs.find(item => item.id === specId))        //post2 
-                            console.log("arr: ", arr)  
-                            setProjects2(arr)
-                        }
+                //         if (filter.query === 'Новые') {
+                //             const arr = arrayProject.filter(post => ((post.status != null ? post.status.name : '') === "Load" ||
+                //                                     (post.status != null ? post.status.name : '') === "Ready" ||
+                //                                     (post.status != null ? post.status.name : '') === "OnAir") && post.specs.find(item => item.id === specId))        //post2 
+                //             console.log("arr: ", arr)  
+                //             setProjects2(arr)
+                //         }
             
-                        if (filter.query === 'Старые') {         
-                            const arr = arrayProject.filter(post => ((post.status != null ? post.status.name : '') === "Done" ||
-                                                    (post.status != null ? post.status.name : '') === "Wasted") && post.specs.find(item => item.id === specId)) //post2  
-                            console.log("arr: ", arr)                           
-                            setProjects2(arr)
-                        }
-                        setIsPostsLoading(false)
+                //         if (filter.query === 'Старые') {         
+                //             const arr = arrayProject.filter(post => ((post.status != null ? post.status.name : '') === "Done" ||
+                //                                     (post.status != null ? post.status.name : '') === "Wasted") && post.specs.find(item => item.id === specId)) //post2  
+                //             console.log("arr: ", arr)                           
+                //             setProjects2(arr)
+                //         }
+                //         setIsPostsLoading(false)
                         
-                    }, 12000)     
+                //     }, 12000)     
 
-                }
+                // }
                    
            // }  else {
                 // console.log("Проекты взяты из кэша...")
@@ -203,7 +222,7 @@ const ProjectPage = () => {
             <div className="project-list">                   
                 {isPostsLoading
                     ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
-                    : <ProjectList posts={projects2} title="" worker={specId}/>
+                    : <ProjectList posts={sortedAndSearchedPosts} title="" worker={specId}/>
                 }
             </div>   
 
