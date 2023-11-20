@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
-import {useTelegram} from "../../hooks/useTelegram";
 import {useProjects} from "../../hooks/useProjects"
 import Header from "../../components/Header/Header";
 import './ProjectPage.css';
@@ -9,7 +8,7 @@ import Loader from "../../components/UI/Loader/Loader";
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 import { useUsersContext } from "../../contexts/UserContext"
-import { getProjectsAll, getBlockId, getDatabase, getProjectsCash } from '../../http/chatAPI';
+import { getProjectsCash } from '../../http/chatAPI';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
@@ -21,13 +20,10 @@ import smallMenu from "../../image/layers/ULEY text.png"
 
 
 const ProjectPage = () => {
-    //const {user} = useTelegram();
 
     const { projects, setProjects, specId} = useUsersContext();
 
-    const [projects2, setProjects2] = useState([])
-    const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
-    //const [filter, setFilter] = useState('Все');
+     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
     const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query, specId); //specId '1408579113'
 
@@ -35,8 +31,7 @@ const ProjectPage = () => {
     const [showGrad2, setShowGrad2] = useState(false)
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
-    const arr_status = [] 
-    const arrayProjects = []
+
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
@@ -46,145 +41,30 @@ const ProjectPage = () => {
         
         const fetchDataProjects = async () => {
             const arrayProject = []
-            const arrayBlock = []
-            let count = 0;
-            let databaseBlock;
-            let i = 0;
-
-            //const projs = localStorage ? JSON.parse(localStorage.getItem('projects')) : [];
-            //console.log("projs: ", projs)
-            
-            //if (projs.length === 0) {         
-                console.log("Начинаю загружать проекты...")
-                const projects = await getProjectsCash();
-
-                projects.map((project)=> {
-                    const newProject = {
-                        id: project.id,
-                        title: project.title,
-                        date_start: project.date_start,
-                        date_end: project.date_end,
-                        status: JSON.parse(project.status),
-                        specs: JSON.parse(project.specs),
-                    }
-                    arrayProject.push(newProject)
-                })
-                
-                setProjects(projects)
-
-                setTimeout(()=> {
-                   setIsPostsLoading(false) 
-                }, 3000)
-                
-
-                // if (response.length !== 0) {
-                //     console.log("projects: ", response)
-
-                //     response.map(async (project, index) => {
-                //         const arraySpec = []
-                //         const blockId = await getBlockId(project.id);
-
-                //         if (blockId) { 
-                //             databaseBlock = await getDatabase(blockId); 
-                            
-                //             //если бд ноушена доступна
-                //             if (databaseBlock.length > 0) {
-                //                 databaseBlock.map((db) => {
-                //                     if (db.fio_id) {
-                //                         const newSpec = {
-                //                             id: db?.fio_id,
-                //                             vid: db?.vid,
-                //                             spec: db?.spec,
-                //                             date: db?.date,
-                //                         }
-                //                         arraySpec.push(newSpec)
-                //                     }
-                //                 })
-
-                //                 const newProject = {
-                //                     id: project.id,
-                //                     title: project.title,
-                //                     date_start: project.date_start,
-                //                     date_end: project.date_end,
-                //                     status: project.status,
-                //                     specs: arraySpec,
-                //                 }
-                //                 arrayProject.push(newProject)
-
-                //                 setProjects2(arrayProject) 
-
-                //                 console.log(newProject)
-                //                 console.log("arrayProject size: ", arrayProject.length )
-                //             }                   
-                //         } else {
-                //             console.log("База данных не найдена! Проект ID: " + project.title)
-                //         }	  
-                //     })
-                    
-                //     setTimeout(()=>{
-                        
-                //         console.log("arrayProject: ", arrayProject)
-                //         setProjects2(arrayProject) 
-                        
-
-                //         //сохраняю в кэш
-                //         //localStorage.setItem('projects', JSON.stringify(arrayProject));
-
-                //         if (filter.query === 'Все') {
-                //             console.log("filter all")
-                //             const arr = arrayProject.filter(post=> post.specs.find(item => item.id === specId)); //posts2; 
-                //             console.log("arr: ", arr)  
-                //             setProjects2(arr)
-                //         }
-            
-                //         if (filter.query === 'Новые') {
-                //             const arr = arrayProject.filter(post => ((post.status != null ? post.status.name : '') === "Load" ||
-                //                                     (post.status != null ? post.status.name : '') === "Ready" ||
-                //                                     (post.status != null ? post.status.name : '') === "OnAir") && post.specs.find(item => item.id === specId))        //post2 
-                //             console.log("arr: ", arr)  
-                //             setProjects2(arr)
-                //         }
-            
-                //         if (filter.query === 'Старые') {         
-                //             const arr = arrayProject.filter(post => ((post.status != null ? post.status.name : '') === "Done" ||
-                //                                     (post.status != null ? post.status.name : '') === "Wasted") && post.specs.find(item => item.id === specId)) //post2  
-                //             console.log("arr: ", arr)                           
-                //             setProjects2(arr)
-                //         }
-                //         setIsPostsLoading(false)
-                        
-                //     }, 12000)     
-
-                // }
                    
-           // }  else {
-                // console.log("Проекты взяты из кэша...")
+            console.log("Начинаю загружать проекты...")
+            const projects = await getProjectsCash();
 
-                // if (filter.query === 'Все') {
-                //     console.log("filter all")
-                //     const arr = projs.filter(post=> post.specs.find(item => item.id === specId)); //posts2; 
-                //     console.log("arr: ", arr)  
-                //     setProjects2(arr)
-                // }
-    
-                // if (filter.query === 'Новые') {
-                //     const arr = projs.filter(post => ((post.status != null ? post.status.name : '') === "Load" ||
-                //                             (post.status != null ? post.status.name : '') === "Ready" ||
-                //                             (post.status != null ? post.status.name : '') === "OnAir") && post.specs.find(item => item.id === specId))        //post2 
-                //     console.log("arr: ", arr)  
-                //     setProjects2(arr)
-                // }
-    
-                // if (filter.query === 'Старые') {         
-                //     const arr = projs.filter(post => ((post.status != null ? post.status.name : '') === "Done" ||
-                //                             (post.status != null ? post.status.name : '') === "Wasted") && post.specs.find(item => item.id === specId)) //post2  
-                //     console.log("arr: ", arr)                           
-                //     setProjects2(arr)
-                // }
+            projects.map((project)=> {
+                const newProject = {
+                    id: project.id,
+                    title: project.title,
+                    date_start: project.dateStart,
+                    date_end: project.dateEnd,
+                    status: JSON.parse(project.status),
+                    specs: JSON.parse(project.specs),
+                }
+                //console.log(newProject)
+                arrayProject.push(newProject)
+            })
+
+            //console.log(arrayProject)
                 
-                //setIsPostsLoading(false)
-            //}  
-            
+            setProjects(arrayProject)
+
+            setTimeout(()=> {
+                setIsPostsLoading(false) 
+            }, 3000)    
         }
 
         fetchDataProjects()                    

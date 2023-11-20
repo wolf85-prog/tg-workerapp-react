@@ -9,7 +9,7 @@ import Loader from "../../components/UI/Loader/Loader";
 
 import { useUsersContext } from "../../contexts/UserContext"
 import {useProjects} from "../../hooks/useProjects"
-import { getProjectsAll, getBlockId, getDatabase } from './../../http/chatAPI';
+import { getProjectsCash } from '../../http/chatAPI';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
@@ -46,93 +46,41 @@ const Page3 = () => {
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх  
     });
 
-    // при первой загрузке приложения выполнится код ниже
-    useEffect(() => {
-        console.log(projects)
-        const proj = projects.filter(post=> post.spec.find(item => item.id === specId));  
-        //console.log("proj: ", proj)
-        setProj(proj)
-                   
-    }, [projects])
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-            console.log('start')
-            setIsPostsLoading(true)
-            
-            const fetchDataProjects = async () => {
-                console.log("projects contex: ", projects)
-    
-                const projs = projects.length > 0 ? JSON.parse(localStorage.getItem('projects')) : '';
-                console.log("projs: ", projs)
+        console.log('start specId: ', specId)
+        setIsPostsLoading(true)
+        
+        const fetchDataProjects = async () => {
+            const arrayProject = []
+                   
+            console.log("Начинаю загружать проекты...")
+            const projects = await getProjectsCash();
+
+            projects.map((project)=> {
+                const newProject = {
+                    id: project.id,
+                    title: project.title,
+                    date_start: project.dateStart,
+                    date_end: project.dateEnd,
+                    status: JSON.parse(project.status),
+                    specs: JSON.parse(project.specs),
+                }
+                //console.log(newProject)
+                arrayProject.push(newProject)
+            })
+
+            //console.log(arrayProject)
                 
-                if (projects.length === 0) {         
-                    console.log("Начинаю загружать проекты...")
-                    let response = await getProjectsAll();
-                    console.log("projects size: ", response.size)
-    
-                    const arrayProject = []
-                    const arrayBlock = []
-                    let count = 0;
-                    let databaseBlock;
-    
-                    if (response.length !== 0) {
-    
-                        response.map(async (project, index) => {
-                            const arraySpec = []
-                            const blockId = await getBlockId(project.id);
-    
-                            if (blockId) { 
-                                databaseBlock = await getDatabase(blockId); 
-                                
-                                //если бд ноушена доступна
-                                if (databaseBlock.length > 0) {
-                                    databaseBlock.map((db) => {
-                                        if (db.fio_id) {
-                                            const newSpec = {
-                                                id: db?.fio_id,
-                                            }
-                                            arraySpec.push(newSpec)
-                                        }
-                                    })
-    
-                                    const newProject = {
-                                        id: project.id,
-                                        title: project.title,
-                                        date_start: project.date_start,
-                                        date_end: project.date_end,
-                                        status: project.status,
-                                        spec: arraySpec,
-                                    }
-                                    console.log(newProject)
-                                    arrayProject.push(newProject)
-    
-                                    if (index === response.length - 1) {
-                                        setTimeout(()=>{
-                                            setIsPostsLoading(false)
-                                            console.log("arrayProject: ", arrayProject)
-                                            setProjects2(arrayProject) 
-                                            setProjects(arrayProject) 
-    
-                                            localStorage.setItem('projects', JSON.stringify(arrayProject));
-                                        }, 10000)    
-                                    }
-                                }                   
-                            } else {
-                                console.log("База данных не найдена! Проект ID: " + project.title)
-                            }	  
-                        })
-                    }   
-                }  else {
-                    console.log("Проекты уже загружены!")
-                    setIsPostsLoading(false)
-                    console.log("arrayProject: ", projects)
-                    setProjects2(projects) 
-                }   
-            }
-    
-    
-            fetchDataProjects()                    
+            setProjects(arrayProject)
+
+            setTimeout(()=> {
+                setIsPostsLoading(false) 
+            }, 3000)    
+        }
+
+        fetchDataProjects()                    
     }, [])
 
     {/* Закрыть */}
