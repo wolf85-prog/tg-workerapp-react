@@ -1,14 +1,39 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import classes from './NewSelect.module.css';
-import {BsChevronDown} from "react-icons/bs";
 import tringlDown from "../../../image/newspec/tringl_down.png"
 
 
 const NewSelect = ({id, options, title, onChange, selectedElement, disabled}) => {
 
+    const [open, setOpen] = useState(false);
+    const [selected, setSelected] = useState(false);
+    const options2 = ["options1", "options2", "options3", "options4", "options2", "options3", "options4", "options2", "options3", "options4"];
+    const [state, setState] = useState({
+        cursor: 0,
+    });
+
+    useEffect(() => {
+        let handler = (e) => {
+          if (!menuRef.current.contains(e.target)) {
+            setOpen(false);
+          }
+        };
+        document.addEventListener("mousedown", handler);
+        return () => {
+          document.removeEventListener("mousedown", handler);
+        };
+      }, []);
+
+    const menuRef = useRef();
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        setOpen(!open);
+    };
+
     return (
         <div>
-            <label htmlFor={id}>
+            {/* <label htmlFor={id}>
                 <select 
                     disabled={disabled} 
                     className={classes.mySelect} 
@@ -23,9 +48,54 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled}) =>
                             </option>
                         )}
                 </select>
-                {/* <BsChevronDown className={'chevron'}/> */}
                 <img src={tringlDown} className={'chevron-new'} alt=''/>
-            </label>
+            </label> */}
+
+            <div className={classes.dropdown}>
+                <div className={classes.dropdownWrapper} ref={menuRef}>
+                <div className={classes.dropdownContainer}>
+                    <div
+                        className={classes.dropdownHeader}
+                        onClick={handleClick}
+                        tabIndex="0"
+                        onChange={onChange}
+                    >
+                        <div className={classes.dropdownTitle}>
+                            {selected ? selected : "default dropdown"}
+                        </div>
+                        <img src={tringlDown} className={'chevron-new'} alt=''/>
+                    </div>
+                </div>
+                {open && (
+                    <ul className={classes.listitem}>
+                    {/* {options2.map((option, i) => (
+                        <li
+                        onClick={() => {
+                            setSelected(option);
+                            setOpen(false);
+                        }}
+                        className={state.cursor === i ? "activeList" : "list-item"}
+                        >
+                        {option}
+                        </li>
+                    ))} */}
+                    {options2.map((option, index) =>
+                        <li 
+                            // key={id + index} 
+                            // value={option.id} 
+                            onClick={() => {
+                                setSelected(option);
+                                setOpen(false);
+                            }}
+                            className={state.cursor === index ? classes.activeList : ""}
+                        >
+                            {option}
+                        </li>
+                    )}
+                    </ul>
+                )}
+                </div>
+            </div>
         </div>
     );
 };

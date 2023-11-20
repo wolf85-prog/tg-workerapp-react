@@ -18,6 +18,7 @@ import smallMenu from "../../image/layers/ULEY text.png"
 
 import btnSave from "../../image/newspec/button_save.png"
 import NewSelect from '../../components/UI/NewSelect/NewSelect';
+import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
 
 import Forma from "../../image/newspec/forma.png";
 
@@ -225,18 +226,18 @@ const EditWorker = () => {
 
                         <p style={{position: 'absolute', top: '8px', left: '30px', fontSize: '14px'}}>Категория</p>    
                         <div style={{position: 'relative', marginTop: '41px', marginLeft: '30px', marginRight: '30px'}}>
-                        <NewSelect
-                                id="category"
-                                options={categories}
-                                selectedElement={selectedElement}
-                                setSelectedElement={setSelectedElement}
-                                onChange={onCategoriesSelectChange}
+                            <NewSelect
+                                    id="category"
+                                    options={categories}
+                                    selectedElement={selectedElement}
+                                    setSelectedElement={setSelectedElement}
+                                    onChange={onCategoriesSelectChange}
                             /> 
                         </div> 
 
                         <p style={{position: 'absolute', top: '80px', left: '30px', fontSize: '14px'}}>Специальность</p>   
                         <div style={{position: 'relative', marginTop: '34px', marginLeft: '30px', marginRight: '30px'}}>
-                            <NewSelect
+                            <NewSelect2
                                 disabled={disabled}
                                 id="model"
                                 options={models}
