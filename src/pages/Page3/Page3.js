@@ -132,7 +132,8 @@ const Page3 = () => {
                             </tr>
                         </thead>
                         <tbody>
-                        {sortedAndSearchedPosts.map((item, index) => (
+                        {sortedAndSearchedPosts.length > 0 ?
+                        sortedAndSearchedPosts.map((item, index) => (
                             <tr>
                                 <td class="fixed-side">{item.specs[0].date.split("T")[0].split('-')[2] + '.' + item.specs[0].date.split("T")[0].split('-')[1] + "." + item.specs[0].date.split("T")[0].split('-')[0]}</td>
                                 <td>{item.title}</td>
@@ -146,7 +147,25 @@ const Page3 = () => {
                                 <td style={{padding: '4px'}}><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
                             </tr>
                             ))
+                        : <tr>
+                            <td class="fixed-side"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style={{padding: '4px'}}><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
+                        </tr>
                         }
+                        <tr>
+                            <td colSpan={7} style={{padding: '0'}}></td>
+                            <td style={{padding: '0'}}>Итого:</td>
+                            <td style={{padding: '0'}}>0,00</td>
+                            <td style={{padding: '0'}}></td>
+                        </tr>
                         </tbody>
                         </table>
                     </div>
