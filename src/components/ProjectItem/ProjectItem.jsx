@@ -6,7 +6,7 @@ import backgroundProject from './../../image/background/bacground_project.png'
 
 const ProjectItem = (props) => {
 
-    console.log("project title: ", props)
+    //console.log("project title: ", props)
 
     const navigate = useNavigate();
    
@@ -18,7 +18,7 @@ const ProjectItem = (props) => {
 
     const d = new Date(dateProject);
 
-    console.log("start: ", d)
+    //console.log("start: ", d)
 
     //time start
     const year = d.getFullYear()
