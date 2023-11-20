@@ -77,7 +77,7 @@ const Page3 = () => {
 
             setTimeout(()=> {
                 setIsPostsLoading(false) 
-            }, 3000)    
+            }, 1000)    
         }
 
         fetchDataProjects()                    
@@ -134,9 +134,9 @@ const Page3 = () => {
                         <tbody>
                         {sortedAndSearchedPosts.map((item, index) => (
                             <tr>
-                                <td class="fixed-side">{index+1}</td>
+                                <td class="fixed-side">{item.specs[0].date.split("T")[0].split('-')[2] + '.' + item.specs[0].date.split("T")[0].split('-')[1] + "." + item.specs[0].date.split("T")[0].split('-')[0]}</td>
                                 <td>{item.title}</td>
-                                <td></td>
+                                <td>{item.specs[0].vid}</td>
                                 <td>00:00</td>
                                 <td>00:00</td>
                                 <td>0,00</td>

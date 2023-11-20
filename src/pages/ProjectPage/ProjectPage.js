@@ -58,13 +58,13 @@ const ProjectPage = () => {
                 arrayProject.push(newProject)
             })
 
-            //console.log(arrayProject)
+            console.log(arrayProject)
                 
             setProjects(arrayProject)
 
             setTimeout(()=> {
                 setIsPostsLoading(false) 
-            }, 3000)    
+            }, 1000)    
         }
 
         fetchDataProjects()                    
