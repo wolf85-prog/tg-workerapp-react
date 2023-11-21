@@ -23,7 +23,7 @@
 
 .dropdownWrapper {
     width: 300px;
-    height: 40px;
+    height: 35px;
     background-color: #202020;
     border-radius: 10px;
     padding: 0 20px;
@@ -54,7 +54,7 @@
     background-color: #202020;
     position: relative;
     border-radius: 10px;
-    z-index: 25;
+    z-index: 105;
     overflow: scroll;
     height: 250px;
 }
@@ -71,5 +71,5 @@ li {
 }
     
 li.activeList {
-    background-color: #ccc;
+    background-color: #555353;
 }

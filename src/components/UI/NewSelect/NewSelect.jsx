@@ -53,47 +53,43 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled}) =>
 
             <div className={classes.dropdown}>
                 <div className={classes.dropdownWrapper} ref={menuRef}>
-                <div className={classes.dropdownContainer}>
-                    <div
-                        className={classes.dropdownHeader}
-                        onClick={handleClick}
-                        tabIndex="0"
-                        onChange={onChange}
-                    >
-                        <div className={classes.dropdownTitle}>
-                            {selected ? selected : "default dropdown"}
+                    <div className={classes.dropdownContainer}>
+                        <div
+                            className={classes.dropdownHeader}
+                            onClick={handleClick}
+                            tabIndex="0"
+                            // onChange={onChange}
+                        >
+                            <div className={classes.dropdownTitle}>
+                                {selected ? selected : ""}
+                            </div>
+                            <img src={tringlDown} className={'chevron-new'} alt=''/>
                         </div>
-                        <img src={tringlDown} className={'chevron-new'} alt=''/>
                     </div>
-                </div>
-                {open && (
-                    <ul className={classes.listitem}>
-                    {/* {options2.map((option, i) => (
-                        <li
-                        onClick={() => {
-                            setSelected(option);
-                            setOpen(false);
-                        }}
-                        className={state.cursor === i ? "activeList" : "list-item"}
-                        >
-                        {option}
-                        </li>
-                    ))} */}
-                    {options2.map((option, index) =>
-                        <li 
-                            // key={id + index} 
-                            // value={option.id} 
-                            onClick={() => {
-                                setSelected(option);
-                                setOpen(false);
-                            }}
-                            className={state.cursor === index ? classes.activeList : ""}
-                        >
-                            {option}
-                        </li>
+                    {open && (
+                        <ul className={classes.listitem}>
+                        {options.map((option, index) =>
+                            <li 
+                                key={id + index} 
+                                value={option.id} 
+                                // onClick={() => {
+                                //     setSelected(option.name);
+                                //     console.log(option.name)
+                                //     setOpen(false);
+                                // }}
+                                onClick={(e)=> {
+                                        onChange(e)
+                                        setSelected(option.name);
+                                        setOpen(false);
+                                    }
+                                }
+                                className={state.cursor === index ? classes.activeList : ""}
+                            >
+                                {option.name}
+                            </li>
+                        )}
+                        </ul>
                     )}
-                    </ul>
-                )}
                 </div>
             </div>
         </div>

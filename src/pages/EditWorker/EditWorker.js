@@ -92,10 +92,12 @@ const EditWorker = () => {
     // 1. при выборе нового значения в категории
     const onCategoriesSelectChange = (e) => {
 
-        setSelectedElement(e.target.options.value);
+        console.log(e.target.value)
+        setSelectedElement(e.target.value);
 
         // преобразуем выбранное значение опции списка в число - идентификатор категории
-        const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
+        //const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
+        const categoryId = e.target.value //parseInt(e.target.value);
         // получаем из массива категорий объект категории по соответствующему идентификатору
         const category = categories.find(item => item.id === categoryId);
         const catSelect = category.icon; //capitalizeFirst(category.name);
@@ -117,9 +119,9 @@ const EditWorker = () => {
 
     // 2. выбор специальности
     const onSpecSelectChange = (e) => {
-        setSelectedElement(e.target.options.value);
+        setSelectedElement(e.target.value);
 
-        const modelId = parseInt(e.target.options[e.target.selectedIndex].value);
+        const modelId = e.target.value //parseInt(e.target.options[e.target.selectedIndex].value);
         const model = models.find(item => item.id === modelId);
 
         setWorker({...worker, spec: model.name})
@@ -237,7 +239,7 @@ const EditWorker = () => {
 
                         <p style={{position: 'absolute', top: '80px', left: '30px', fontSize: '14px'}}>Специальность</p>   
                         <div style={{position: 'relative', marginTop: '34px', marginLeft: '30px', marginRight: '30px'}}>
-                            <NewSelect2
+                            <NewSelect
                                 disabled={disabled}
                                 id="model"
                                 options={models}
