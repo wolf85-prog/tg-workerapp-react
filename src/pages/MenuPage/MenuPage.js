@@ -84,13 +84,13 @@ const MenuPage = () => {
            
             <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
                 <div className='menu-form'>               
-                    <Link to={'/profile'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Профиль</button></Link>
-                    <Link to={'/projects'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Проекты</button></Link>
-                    <Link to={'/page3'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Смета</button></Link>
-                    <button role="link" class="image-button"  style={{ backgroundImage: `url(${ButtonsMenu2})`}} onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</button> 
-                    <Link to={'/stavki'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Ставки</button></Link>
-                    <Link to={'/info'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Информация</button></Link>
-                    <Link to={'/contacts'}><button class="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Контакты</button></Link>           
+                    <Link to={'/profile'}><button className="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Профиль</button></Link>
+                    <Link to={'/projects'}><button className="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Проекты</button></Link>
+                    <Link to={'/page3'}><button className="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Смета</button></Link>
+                    <button role="link" className="image-button"  style={{ backgroundImage: `url(${ButtonsMenu2})`}} onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')}>Офис</button> 
+                    <Link to={'/stavki'}><button className="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Ставки</button></Link>
+                    <Link to={'/info'}><button className="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Информация</button></Link>
+                    <Link to={'/contacts'}><button className="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Контакты</button></Link>           
                 </div>
             </div>
             

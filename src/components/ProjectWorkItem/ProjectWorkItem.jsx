@@ -1,16 +1,28 @@
 import React from 'react';
 import './ProjectWorkItem.css';
-import Sound from "../../image/spec/1_sound.svg";
-import Riggers from "../../image/spec/2_riggers.svg";
-import Production from "../../image/spec/3_production.svg";
-import StageGround from "../../image/spec/4_stage_ground.svg";
-import Video from "../../image/spec/5_video.svg";
-import Light from "../../image/spec/6_light.svg";
-import Stagehands from "../../image/spec/7_stagehands.svg";
-import Trucks from "../../image/spec/8_trucks.svg";
-import Catering from "../../image/spec/9_catering.svg";
-import Photo from "../../image/spec/10_photo.svg";
-import Party from "../../image/spec/11_party.svg";
+// import Sound from "../../image/spec/1_sound.svg";
+// import Riggers from "../../image/spec/2_riggers.svg";
+// import Production from "../../image/spec/3_production.svg";
+// import StageGround from "../../image/spec/4_stage_ground.svg";
+// import Video from "../../image/spec/5_video.svg";
+// import Light from "../../image/spec/6_light.svg";
+// import Stagehands from "../../image/spec/7_stagehands.svg";
+// import Trucks from "../../image/spec/8_trucks.svg";
+// import Catering from "../../image/spec/9_catering.svg";
+// import Photo from "../../image/spec/10_photo.svg";
+// import Party from "../../image/spec/11_party.svg";
+
+import Sound from "../../image/spec/1_sound2.png";
+import Riggers from "../../image/spec/2_riggers.png";
+import Production from "../../image/spec/3_production.png";
+import StageGround from "../../image/spec/4_stage_ground.png";
+import Video from "../../image/spec/5_video.png";
+import Light from "../../image/spec/6_light2.png";
+import Stagehands from "../../image/spec/7_stagehands.png";
+import Trucks from "../../image/spec/8_trucks.png";
+import Catering from "../../image/spec/9_catering.png";
+import Photo from "../../image/spec/10_photo.png";
+import Party from "../../image/spec/11_party.png";
 
 import specData from '../../data/specData';
 

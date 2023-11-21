@@ -2,6 +2,20 @@ import React, { useState, useRef, useEffect } from 'react';
 import classes from './NewSelect.module.css';
 import tringlDown from "../../../image/newspec/tringl_down.png"
 
+import specData from "../../../data/specData"
+
+import Sound from "../../../image/spec/1_sound2.png";
+import Riggers from "../../../image/spec/2_riggers.png";
+import Production from "../../../image/spec/3_production.png";
+import StageGround from "../../../image/spec/4_stage_ground.png";
+import Video from "../../../image/spec/5_video.png";
+import Light from "../../../image/spec/6_light2.png";
+import Stagehands from "../../../image/spec/7_stagehands.png";
+import Trucks from "../../../image/spec/8_trucks.png";
+import Catering from "../../../image/spec/9_catering.png";
+import Photo from "../../../image/spec/10_photo.png";
+import Party from "../../../image/spec/11_party.png";
+
 
 const NewSelect = ({id, options, title, onChange, selectedElement, disabled}) => {
 
@@ -11,6 +25,8 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled}) =>
     const [state, setState] = useState({
         cursor: 0,
     });
+    const [image, setImage] = useState([]);
+    let arraySpec = []
 
     useEffect(() => {
         let handler = (e) => {
@@ -24,6 +40,50 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled}) =>
         };
       }, []);
 
+    useEffect(()=> {
+        console.log("options: ", options)
+        //options.map((item)=>{
+            specData.map((item)=> {
+                //item.models.map((model)=> {
+                    //if (model.name === item.name) {
+                        let image
+                        if (item.icon === 'Sound') {
+                            image = Sound;
+                        } else if (item.icon === 'Riggers') {
+                            image = Riggers;
+                        } else if (item.icon === 'Production') {
+                            image = Production;
+                        } else if (item.icon === 'Stage Ground') {
+                            image = StageGround;
+                        } else if (item.icon === 'Video') {
+                            image = Video;
+                        } else if (item.icon === 'Light') {
+                            image = Light;
+                        } else if (item.icon === 'Stagehands') {
+                            image = Stagehands;
+                        } else if (item.icon === 'Trucks') {
+                            image = Trucks;
+                        } else if (item.icon === 'Catering') {
+                            image = Catering;
+                        } else if (item.icon === 'Photo') {
+                            image = Photo;
+                        } else if (item.icon === 'Party') {
+                            image = Party;
+                        }
+
+                        const newObj = {
+                            icon: image,
+                            name: item.name
+                        }
+                        arraySpec.push(newObj)
+                    //}
+                //})
+            })
+            console.log(arraySpec)
+            setImage(arraySpec)
+        //})
+    },[specData])
+
     const menuRef = useRef();
 
     const handleClick = (e) => {
@@ -33,24 +93,6 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled}) =>
 
     return (
         <div>
-            {/* <label htmlFor={id}>
-                <select 
-                    disabled={disabled} 
-                    className={classes.mySelect} 
-                    id={id} 
-                    value={selectedElement} 
-                    onChange={onChange}
-                >
-                    <option disabled value="">{title}</option>
-                    { options.map((option, index) =>
-                            <option key={id + index} value={option.id} >
-                                {option.name}
-                            </option>
-                        )}
-                </select>
-                <img src={tringlDown} className={'chevron-new'} alt=''/>
-            </label> */}
-
             <div className={classes.dropdown}>
                 <div className={classes.dropdownWrapper} ref={menuRef}>
                     <div className={classes.dropdownContainer}>
@@ -83,8 +125,9 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled}) =>
                                         setOpen(false);
                                     }
                                 }
-                                className={state.cursor === index ? classes.activeList : ""}
+                                className={classes.listyle}
                             >
+                                <img className={option.icon ? classes.imageCat : ""} src={option.icon ? image[index].icon : ""} alt=""/>
                                 {option.name}
                             </li>
                         )}
