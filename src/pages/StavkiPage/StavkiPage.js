@@ -9,17 +9,17 @@ import TreugolUp from "../../image/buttons/treug_up.png";
 import { getWorkerId } from '../../http/chatAPI';
 import specData from "../../data/specData"
 
-import Sound from "../../image/spec/1_sound2.png";
-import Riggers from "../../image/spec/2_riggers.png";
-import Production from "../../image/spec/3_production.png";
-import StageGround from "../../image/spec/4_stage_ground.png";
-import Video from "../../image/spec/5_video.png";
-import Light from "../../image/spec/6_light2.png";
-import Stagehands from "../../image/spec/7_stagehands.png";
-import Trucks from "../../image/spec/8_trucks.png";
-import Catering from "../../image/spec/9_catering.png";
-import Photo from "../../image/spec/10_photo.png";
-import Party from "../../image/spec/11_party.png";
+import Sound from "../../image/layers/icons/SOUND.png";
+import Riggers from "../../image/layers/icons/RIGGERS.png";
+import Production from "../../image/layers/icons/PRODUCTION.png"
+import StageGround from "../../image/layers/icons/STAGEGROUND.png";
+import Video from "../../image/layers/icons/VIDEO.png";
+import Light from "../../image/layers/icons/LIGHT.png";
+import Stagehands from "../../image/layers/icons/STAGEHANDS.png";
+import Trucks from "../../image/layers/icons/TRUCKS.png";
+import Catering from "../../image/layers/icons/CATERING.png";
+import Photo from "../../image/layers/icons/PHOTO.png";
+import Party from "../../image/layers/icons/PARTY.png";
 
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
@@ -55,7 +55,7 @@ const StavkiPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => {
-            const worker = await getWorkerId(user?.id) //user?.id '1408579113'
+            const worker = await getWorkerId('1408579113') //user?.id '1408579113'
 
             setWorkerhub(worker)
 
@@ -152,10 +152,10 @@ const StavkiPage = () => {
                                                             margin: '0 20px 10px 20px', 
                                                             justifyContent: 'space-between', 
                                                             alignItems: 'center',
-                                                            padding: '10px 25px',
+                                                            padding: '10px 22px 10px 15px',
                                                             zIndex: '6'}} 
                                     onClick={()=>handleClick(index)}>
-                                        <img src={worker.icon} alt='' width={30}/>
+                                        <img src={worker.icon} alt='' width={45}/>
                                         {worker.name} 
                                         {showTable[index] ? <img src={TreugolUp} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>
                                         : <img src={TreugolDown} alt='' width={25} style={{position: 'relative', zIndex: '2'}}/>}
