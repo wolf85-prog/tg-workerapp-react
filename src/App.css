@@ -328,7 +328,7 @@
 .chevron-new {
   position: absolute;
   width: 18px;
-  right: 1px;
+  right: 10px;
   bottom: 10px;
   stroke-width: 2px;
   stroke: #76A9FF;
