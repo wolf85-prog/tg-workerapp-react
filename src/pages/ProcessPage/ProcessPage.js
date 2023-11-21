@@ -1,11 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import {Link} from "react-router-dom";
-import {useTelegram} from "../../hooks/useTelegram";
-import Header from "../../components/Header/Header";
+import React, { useEffect } from 'react';
 import './ProcessPage.css';
-import Fon from "../../image/logo_01_light.png";
-import FonGrad from "../../image/BlueLine1.png";
-import MyButton from "../../components/UI/MyButton/MyButton";
 
 
 const ProcessPage = () => {
@@ -21,9 +15,6 @@ const ProcessPage = () => {
 
     return (
         <div className="App">
-
-            <img src={Fon} alt='' className='fon-style'/>
-            <img src={FonGrad} alt='' className='fon-style2'/> 
             
             <form>
                 <div style={{marginTop: '350px'}}>                  

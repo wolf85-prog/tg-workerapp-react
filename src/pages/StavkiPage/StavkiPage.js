@@ -6,8 +6,6 @@ import './StavkiPage.css';
 
 import TreugolDown from "../../image/buttons/treug_down.png";
 import TreugolUp from "../../image/buttons/treug_up.png";
-import Table1 from "../../image/tab_helper.png";
-import stagehands from "../../image/spec/7_stagehands.svg";
 import { getWorkerId } from '../../http/chatAPI';
 import specData from "../../data/specData"
 
