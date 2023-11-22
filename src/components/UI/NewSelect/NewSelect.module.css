@@ -73,6 +73,7 @@
     align-items: center;
     width: 100%;
     border-bottom: 1px solid #202020;
+    justify-content: space-between;
 }
     
 /* li.activeList {

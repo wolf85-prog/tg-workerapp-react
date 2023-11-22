@@ -118,6 +118,7 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled, sho
                     </div>
                     {open && (
                         <ul className={classes.listitem}>
+                        {/* <li value=""></li> */}
                         {options.map((option, index) =>
                             <li 
                                 key={id + index} 
@@ -130,8 +131,10 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled, sho
                                 }
                                 className={classes.listyle}
                             >
+                                
+                                - {option.name}
+
                                 <img className={option.icon ? classes.imageCat : ""} src={option.icon ? image[index].icon : ""} alt=""/>
-                                {option.name}
                             </li>
                         )}
                         </ul>
