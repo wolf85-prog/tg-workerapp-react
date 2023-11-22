@@ -227,7 +227,7 @@ const EditWorker = () => {
                         </p>
 
                         <p style={{position: 'absolute', top: '8px', left: '30px', fontSize: '14px'}}>Категория</p>    
-                        <div style={{position: 'relative', marginTop: '41px', marginLeft: '30px', marginRight: '30px'}}>
+                        <div style={{position: 'relative', marginTop: '44px', marginLeft: '30px', marginRight: '30px'}}>
                             <NewSelect
                                     id="category"
                                     options={categories}

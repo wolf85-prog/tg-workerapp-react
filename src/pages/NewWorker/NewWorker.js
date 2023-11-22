@@ -172,7 +172,7 @@ const NewWorker = () => {
                     </p>
                     
                     <p style={{position: 'absolute', top: '8px', left: '30px', fontSize: '14px'}}>Категория</p>    
-                    <div style={{position: 'relative', marginTop: '41px', marginLeft: '30px', marginRight: '30px'}}>
+                    <div style={{position: 'relative', marginTop: '44px', marginLeft: '30px', marginRight: '30px'}}>
                        <NewSelect
                             id="category"
                             options={categories}
@@ -238,7 +238,7 @@ const NewWorker = () => {
             </div>
 
             <div className='footer-block' style={{bottom: '0'}}>
-                <Link to={'/profile'}><img src={btnMenu} alt='' /></Link>
+                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
             </div>
         </div>
