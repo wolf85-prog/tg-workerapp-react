@@ -21,10 +21,6 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled, sho
 
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(false);
-    const options2 = ["options1", "options2", "options3", "options4", "options2", "options3", "options4", "options2", "options3", "options4"];
-    const [state, setState] = useState({
-        cursor: 0,
-    });
     const [image, setImage] = useState([]);
     let arraySpec = []
 
@@ -132,7 +128,8 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled, sho
                                 className={classes.listyle}
                             >
                                 
-                                - {option.name}
+                                {/* <p>  —  <span style={{marginLeft: '4px'}}> </span> {option.name}</p>  */}
+                                <div>—  <span style={{paddingLeft: '6px'}}> </span>{option.name}</div>
 
                                 <img className={option.icon ? classes.imageCat : ""} src={option.icon ? image[index].icon : ""} alt=""/>
                             </li>
