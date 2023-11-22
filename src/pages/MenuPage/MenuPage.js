@@ -20,7 +20,7 @@ import smallMenu from "../../image/layers/ULEY text.png"
 const MenuPage = () => {
     const {user} = useTelegram();
     const navigate = useNavigate();
-    const { workerhub: worker } = useUsersContext();
+    //const { workerhub: worker } = useUsersContext();
     const { setSpecId, flag } = useUsersContext();
 
     const { width, isScreenSm, isScreenMd, isScreenLg, } = useResize();
@@ -33,14 +33,14 @@ const MenuPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            //const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
-            console.log("worker: ", worker)
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            console.log("worker: ", worker.length)
+
             setTimeout(()=> {      
                 if (worker.length > 0) {
                     //зарегистрирован
                     console.log("Зарегистирован", "REG")
                     setSpecId(worker[0]?.id)
-
                 } else  {
                     if (flag === 'ONLY_REG') {
                         //только что зарегистрирован
@@ -53,11 +53,11 @@ const MenuPage = () => {
                         navigate("/add-worker")
                     }
                 }
-            }, 5000)
+            }, 10000)
         }
 
         fetchData()   
-    });
+    }, []);
 
     useEffect(() => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ

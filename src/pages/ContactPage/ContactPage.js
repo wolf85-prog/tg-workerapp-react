@@ -32,10 +32,10 @@ const ContactPage = () => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх 
 
-        setTimeout(() =>  setShowButton1(true), 1000) // кнопка 1
-        setTimeout(() =>  setShowButton2(true), 2000) // кнопка 2
-        setTimeout(() =>  setShowButton3(true), 3000) // кнопка 3
-        setTimeout(() =>  setShowButton4(true), 4000) // кнопка 4
+        setTimeout(() =>  setShowButton1(true), 500) // кнопка 1
+        setTimeout(() =>  setShowButton2(true), 1500) // кнопка 2
+        setTimeout(() =>  setShowButton3(true), 2500) // кнопка 3
+        setTimeout(() =>  setShowButton4(true), 3500) // кнопка 4
     });
 
     const openInNewTab = (url) => {

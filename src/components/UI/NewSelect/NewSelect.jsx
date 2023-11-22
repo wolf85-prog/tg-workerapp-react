@@ -17,7 +17,7 @@ import Photo from "../../../image/layers/icons/PHOTO.png";
 import Party from "../../../image/layers/icons/PARTY.png";
 
 
-const NewSelect = ({id, options, title, onChange, selectedElement, disabled, showSpec}) => {
+const NewSelect = ({id, options, title, onChange, disabled}) => {
 
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(false);
@@ -37,7 +37,6 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled, sho
       }, []);
 
     useEffect(()=> {
-        console.log("options: ", options)
         //options.map((item)=>{
             specData.map((item, index)=> {
                 //item.models.map((model)=> {
@@ -68,9 +67,6 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled, sho
                             image = Party;
                         }
 
-                        if (item.id === index+1) {
-                            name = item.name
-                        } 
 
                         const newObj = {
                             icon: image,
@@ -107,30 +103,27 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled, sho
                             // onChange={onChange}
                         >
                             <div className={classes.dropdownTitle}>
-                                {selected ? selected : ""}
+                                {selected ? selected : "" }
                             </div>
                             <img src={tringlDown} className={'chevron-new'} alt=''/>
                         </div>
                     </div>
                     {open && (
                         <ul className={classes.listitem}>
-                        {/* <li value=""></li> */}
                         {options.map((option, index) =>
                             <li 
                                 key={id + index} 
                                 value={option.id} 
                                 onClick={(e)=> {
-                                        onChange(e, option.name)
+                                        onChange(e)
                                         setSelected(option.name);
                                         setOpen(false);
                                     }
                                 }
                                 className={classes.listyle}
                             >
-                                
-                                {/* <p>  —  <span style={{marginLeft: '4px'}}> </span> {option.name}</p>  */}
-                                <div>—  <span style={{paddingLeft: '6px'}}> </span>{option.name}</div>
-
+                                {/* <div><span style={{color: '#797979'}}> — </span><span style={{paddingLeft: '8px'}}>{option.name}</span></div> */}
+                                {option.name}
                                 <img className={option.icon ? classes.imageCat : ""} src={option.icon ? image[index].icon : ""} alt=""/>
                             </li>
                         )}

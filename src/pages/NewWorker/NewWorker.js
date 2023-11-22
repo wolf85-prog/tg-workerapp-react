@@ -84,8 +84,9 @@ const NewWorker = () => {
     //---------------------------------------------------------------------------------------
 
     // 1. при выборе нового значения в категории
-    const onCategoriesSelectChange = (e, name) => {
-        setSelectedElement(name)
+    const onCategoriesSelectChange = (e) => {
+        //setSelectedElement(e.target.value);
+        console.log(e.target.value)
 
         // преобразуем выбранное значение опции списка в число - идентификатор категории
         const categoryId = e.target.value //parseInt(e.target.options[e.target.selectedIndex].value);
@@ -105,15 +106,18 @@ const NewWorker = () => {
         setModels(models);
 
         setDisabled(false)
-        setShowSpec(true)
+        // const spec = true
+        // setShowSpec(spec)
+        // console.log(spec)
     }
 
     // 2. выбор специальности
-    const onSpecSelectChange = (e, name) => {
-        console.log(name)
-        setSelectedElement(name);
+    const onSpecSelectChange = (e) => {
+        console.log(e.target.value)
+        //setSelectedElement(e.target.value);
 
         const modelId = e.target.value //parseInt(e.target.options[e.target.selectedIndex].value);
+        //console.log("modelId: ", modelId)
         const model = models.find(item => item.id === modelId);
 
         setWorker({...worker, spec: model.name})
@@ -176,8 +180,8 @@ const NewWorker = () => {
                        <NewSelect
                             id="category"
                             options={categories}
-                            selectedElement={selectedElement}
-                            setSelectedElement={setSelectedElement}
+                            // selectedElement={selectedElement}
+                            // setSelectedElement={setSelectedElement}
                             onChange={onCategoriesSelectChange}
                         /> 
                     </div>
@@ -189,8 +193,8 @@ const NewWorker = () => {
                             disabled={disabled}
                             id="model"
                             options={models}
-                            selectedElement={selectedElement}
-                            setSelectedElement={setSelectedElement}
+                            // selectedElement={selectedElement}
+                            // setSelectedElement={setSelectedElement}
                             onChange={onSpecSelectChange}
                         />
                     </div>

@@ -125,7 +125,7 @@ const specData = [
     },
     {
         id: 12,
-        name: 'Игромания',
+        name: 'Игры',
         icon: 'Games',
         models: [
             {id: 1, name: 'Квесты',},
