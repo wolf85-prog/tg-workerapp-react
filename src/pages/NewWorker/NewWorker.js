@@ -84,10 +84,8 @@ const NewWorker = () => {
     //---------------------------------------------------------------------------------------
 
     // 1. при выборе нового значения в категории
-    const onCategoriesSelectChange = (e) => {
-        //console.log(e.target.key)
-        //setSelectedElement(e.target.value);
-        setSelectedElement(e.target.value)
+    const onCategoriesSelectChange = (e, name) => {
+        setSelectedElement(name)
 
         // преобразуем выбранное значение опции списка в число - идентификатор категории
         const categoryId = e.target.value //parseInt(e.target.options[e.target.selectedIndex].value);
@@ -111,16 +109,15 @@ const NewWorker = () => {
     }
 
     // 2. выбор специальности
-    const onSpecSelectChange = (e) => {
-        
+    const onSpecSelectChange = (e, name) => {
+        console.log(name)
+        setSelectedElement(name);
 
         const modelId = e.target.value //parseInt(e.target.options[e.target.selectedIndex].value);
         const model = models.find(item => item.id === modelId);
 
         setWorker({...worker, spec: model.name})
         
-        //setSelectedElement(model.name);
-
         setDisabledBtn(false)
     }
 

@@ -111,7 +111,7 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled, sho
                             // onChange={onChange}
                         >
                             <div className={classes.dropdownTitle}>
-                                {selectedElement ? selectedElement : ""}
+                                {selected ? selected : ""}
                             </div>
                             <img src={tringlDown} className={'chevron-new'} alt=''/>
                         </div>
@@ -123,7 +123,7 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled, sho
                                 key={id + index} 
                                 value={option.id} 
                                 onClick={(e)=> {
-                                        onChange(e)
+                                        onChange(e, option.name)
                                         setSelected(option.name);
                                         setOpen(false);
                                     }
