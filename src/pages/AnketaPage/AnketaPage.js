@@ -99,9 +99,9 @@ const AnketaPage = () => {
                     </div>
 
                     <div>
-                        <button onClick={pagePassport} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Согласен предоставить персональные данные</button>
-                        <button onClick={page3} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Отказываюсь от предоставления данных и участия в проекте</button>
-                        <button onClick={page2} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Пояснения</button>
+                        <button onClick={pagePassport} className="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Согласен предоставить персональные данные</button>
+                        <button onClick={page3} className="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Отказываюсь от предоставления данных и участия в проекте</button>
+                        <button onClick={page2} className="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Пояснения</button>
                     </div>      
                 </div>
 
@@ -138,8 +138,8 @@ const AnketaPage = () => {
                     </div> 
 
                     <div>
-                        <button onClick={pagePassport} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Согласен предоставить персональные данные</button>
-                        <button onClick={page3} class="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Отказываюсь от предоставления данных и участия в проекте</button>
+                        <button onClick={pagePassport} className="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Согласен предоставить персональные данные</button>
+                        <button onClick={page3} className="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Отказываюсь от предоставления данных и участия в проекте</button>
                     </div>      
                 </div>
             </div>   

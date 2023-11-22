@@ -197,7 +197,7 @@ const NewWorker = () => {
 
                     <button 
                         disabled={disabledBtn}
-                        class="image-button-add" 
+                        className="image-button-add" 
                         style={{ backgroundImage: `url(${btnSave})`}}
                         onClick={addNewWorker}
                     >

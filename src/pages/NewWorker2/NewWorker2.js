@@ -116,9 +116,9 @@ const NewWorker2 = () => {
                     
 
                     <div className='block-buttons-worknew2'>
-                        <Link to={'/add-worker'}><button class="image-button-next2" style={{backgroundImage: `url(${btnBackNext})`}}>Назад</button></Link>
-                        <Link to={'/add-worker3'}><button class="image-button-next2" style={{backgroundImage: `url(${btnBackNext})`}}>Далее</button></Link>
-                        {/* <Link to={'/add-worker3'}><button class="image-button-next" disabled={novalid} style={{backgroundImage: `url(${btnBackNext})`}}>Далее</button></Link> */}
+                        <Link to={'/add-worker'}><button className="image-button-next2" style={{backgroundImage: `url(${btnBackNext})`}}>Назад</button></Link>
+                        <Link to={'/add-worker3'}><button className="image-button-next2" style={{backgroundImage: `url(${btnBackNext})`}}>Далее</button></Link>
+                        {/* <Link to={'/add-worker3'}><button className="image-button-next" disabled={novalid} style={{backgroundImage: `url(${btnBackNext})`}}>Далее</button></Link> */}
                     </div>
                 </div>
 

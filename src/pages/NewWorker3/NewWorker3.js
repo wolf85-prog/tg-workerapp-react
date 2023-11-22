@@ -178,7 +178,7 @@ const NewWorker3 = () => {
                          
 
                     <div className='block-buttons-worknew3'>
-                        <Link to={'/add-worker2'}><button class="image-button-next3" style={{backgroundImage: `url(${btnBackNext})`}}>Назад</button></Link>
+                        <Link to={'/add-worker2'}><button className="image-button-next3" style={{backgroundImage: `url(${btnBackNext})`}}>Назад</button></Link>
                     </div>                 
                 </div>   
             </div>            

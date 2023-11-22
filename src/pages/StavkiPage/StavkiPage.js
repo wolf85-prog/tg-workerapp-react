@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
-import {useTelegram} from "../../hooks/useTelegram";
+import { useUsersContext } from "../../contexts/UserContext";
 import Header from "../../components/Header/Header";
 import './StavkiPage.css';
 
@@ -35,8 +35,7 @@ import smallMenu from "../../image/layers/ULEY text.png"
 
 const StavkiPage = () => {
     const [showTable, setShowTable] = useState([false, false, false, false, false])
-    const {user} = useTelegram();
-    const [workerhub, setWorkerhub] = useState([])
+    const { workerhub: worker } = useUsersContext();
     const [specs, setSpecs] = useState([])
 
     let arraySpec = []
@@ -55,9 +54,9 @@ const StavkiPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => {
-            const worker = await getWorkerId('1408579113') //user?.id '1408579113'
+            //const worker = await getWorkerId('1408579113') //user?.id '1408579113'
 
-            setWorkerhub(worker)
+            //setWorkerhub(worker)
 
             worker[0]?.spec.map((work)=>{
                 specData.map((item)=> {
@@ -165,7 +164,7 @@ const StavkiPage = () => {
                             // <img className='table-image' src={Table1} alt='' width='95%'/> 
                             <div style={{marginBottom:'20px', marginTop: '-48px', width: '320px'}}> 
                             {/* <div style={{marginBottom:'20px', marginTop: '-48px', width: '77%'}}>  */}
-                                <table class="table-spec" id="table">
+                                <table className="table-spec" id="table">
                                     <tbody>
                                         <tr>
                                             <td className='title-gray' style={{verticalAlign: 'bottom', height: '60px'}}>Моя ставка</td>

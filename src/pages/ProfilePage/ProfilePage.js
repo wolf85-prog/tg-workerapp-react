@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
-import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
-import MyButton from "../../components/UI/MyButton/MyButton";
+import { useUsersContext } from "../../contexts/UserContext";
 import './ProfilePage.css';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
@@ -14,8 +13,6 @@ import iconCheck from "../../image/check.png";
 import iconUnCheck from "../../image/uncheck.png";
 //import Loader from "../../components/UI/Loader/Loader";
 
-import { getWorkerId } from '../../http/chatAPI';
-
 import btnMenu from "../../image/layers/icon_menu.png";
 import btnChange from "../../image/buttons/button_for_menu2.png"
 import smallMenu from "../../image/layers/ULEY text.png"
@@ -24,28 +21,24 @@ import smallMenu from "../../image/layers/ULEY text.png"
 //const API_URL = process.env.REACT_APP_API_URL
 
 const ProfilePage = () => {
-
-    const {user} = useTelegram();
-    const [workerhub, setWorkerhub] = useState([])
-    //const [spec, setSpec] = useState("")
+    const { workerhub } = useUsersContext();
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
-    useEffect(() => {
+    // useEffect(() => {
 
-        const fetchData = async() => {
-            const worker = await getWorkerId(user?.id) //user?.id
-            console.log("worker: ", worker)
-            setWorkerhub(worker)
-            //setSpec(worker[0]?.spec.map(worker => worker.name))
-        }
+    //     const fetchData = async() => {
+    //         const worker = await getWorkerId(user?.id) //user?.id
+    //         console.log("worker: ", worker)
+    //         setWorkerhub(worker)
+    //     }
 
-        fetchData()
+    //     fetchData()
 
-    }, []);
+    // }, []);
 
     useEffect(() => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
@@ -87,7 +80,7 @@ const ProfilePage = () => {
                     <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' | ')}</li>
                 </ol>
                 <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
-                    <Link to={'/edit-worker'}><button class="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Внести изменения</button></Link>
+                    <Link to={'/edit-worker'}><button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Внести изменения</button></Link>
                 </div>
             </div>
             {/* } */}

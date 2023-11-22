@@ -253,7 +253,7 @@ const EditWorker = () => {
 
                         <button 
                             disabled={disabledBtn}
-                            class="image-button-edit" 
+                            className="image-button-edit" 
                             style={{ backgroundImage: `url(${btnSave})`}}
                             onClick={addNewWorker}
                         >

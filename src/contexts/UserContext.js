@@ -1,11 +1,14 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getProjectsAll, getBlockId, getDatabase } from './../http/chatAPI';
+import { getWorkerId } from './../http/chatAPI';
+import {useTelegram} from "./../hooks/useTelegram";
 
 const UserContext = createContext();
 
 const useUsersContext = () => useContext(UserContext);
 
 const UserProvider = ({ children }) => {
+	const {user} = useTelegram();
+
 	const [workerFam, setWorkerFam] = useState('')
     const [workerName, setWorkerName] = useState('')
     const [phone, setPhone] = useState('');
@@ -22,6 +25,7 @@ const UserProvider = ({ children }) => {
 
 	const [projects, setProjects] = useState([]);
 	const [specId, setSpecId] = useState('');
+	const [workerhub, setWorkerhub] = useState([])
 
 	//статус регистрации
 	const [flag, setFlag] = useState("NOREG") // NOREG, ONLY_REG, REG
@@ -39,6 +43,18 @@ const UserProvider = ({ children }) => {
 	const [pasAdress, setPasAdress] = useState('');
 	const [pasEmail, setPasEmail] = useState('');
 
+	// при первой загрузке приложения выполнится код ниже
+    useEffect(() => {
+
+        const fetchData = async() => {
+            const worker = await getWorkerId(user?.id) //user?.id '805436270'
+            console.log("worker context: ", worker)
+            setWorkerhub(worker)
+        }
+
+        fetchData()
+
+    }, []);
 
 
     return (
@@ -89,6 +105,7 @@ const UserProvider = ({ children }) => {
 			setPasAdress,
 			pasEmail, 
 			setPasEmail,
+			workerhub,
 		}}>
 			{children}
 		</UserContext.Provider>

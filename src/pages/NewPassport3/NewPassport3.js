@@ -358,7 +358,7 @@ const NewPassport3 = () => {
 
                         {/* <button 
                             // disabled={disabledBtn}
-                            class="image-button-pas" 
+                            className="image-button-pas" 
                             style={{ backgroundImage: `url(${btnNextSend})`}}
                             onClick={pressNext}
                         >

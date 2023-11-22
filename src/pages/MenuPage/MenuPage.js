@@ -20,10 +20,10 @@ import smallMenu from "../../image/layers/ULEY text.png"
 const MenuPage = () => {
     const {user} = useTelegram();
     const navigate = useNavigate();
-    const { width, isScreenSm, isScreenMd, isScreenLg, } = useResize();
-
-    const { setProjects, projects } = useUsersContext();
+    const { workerhub: worker } = useUsersContext();
     const { setSpecId, flag } = useUsersContext();
+
+    const { width, isScreenSm, isScreenMd, isScreenLg, } = useResize();
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
@@ -33,25 +33,27 @@ const MenuPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            //const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            console.log("worker: ", worker)
+            setTimeout(()=> {      
+                if (worker.length > 0) {
+                    //зарегистрирован
+                    console.log("Зарегистирован", "REG")
+                    setSpecId(worker[0]?.id)
 
-            if (worker.length > 0) {
-                //зарегистрирован
-                console.log("Зарегистирован", "REG")
-                setSpecId(worker[0]?.id)
-
-            } else  {
-                if (flag === 'ONLY_REG') {
-                    //только что зарегистрирован
-                    console.log("Только что зарегистировался", user?.id, flag)
-                    navigate("/process")
-                } 
-                else if (flag === 'NOREG') {
-                    //не зарегистрирован
-                    console.log("Зарегистрируйтесь!", user?.id)
-                    navigate("/add-worker")
+                } else  {
+                    if (flag === 'ONLY_REG') {
+                        //только что зарегистрирован
+                        console.log("Только что зарегистировался", flag)
+                        navigate("/process")
+                    } 
+                    else if (flag === 'NOREG') {
+                        //не зарегистрирован
+                        console.log("Зарегистрируйтесь! NOREG")
+                        navigate("/add-worker")
+                    }
                 }
-            }
+            }, 5000)
         }
 
         fetchData()   

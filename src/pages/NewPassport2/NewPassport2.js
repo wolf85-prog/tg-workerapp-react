@@ -229,7 +229,7 @@ const NewPassport2 = () => {
                         {/* <MyButton onClick={pressNext} style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Далее</MyButton> */}
                         <button 
                             // disabled={disabledBtn}
-                            class="image-button-pas" 
+                            className="image-button-pas" 
                             style={{ backgroundImage: `url(${btnNextSend})`}}
                             onClick={pressNext}
                         >
@@ -284,7 +284,7 @@ const NewPassport2 = () => {
                     <div className='block-buttons-newpas1'>
                         <button 
                             // disabled={disabledBtn}
-                            class="image-button-pas" 
+                            className="image-button-pas" 
                             style={{ backgroundImage: `url(${btnNextSend})`}}
                             onClick={pressNext}
                         >

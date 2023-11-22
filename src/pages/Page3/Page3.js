@@ -114,12 +114,12 @@ const Page3 = () => {
             <div className='form-smeta-page3'>                                
             {isPostsLoading
                 ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
-                : <div id="table-scroll" class="table-scroll">
-                    <div class="table-wrap">
-                        <table class="main-table" id="table">
+                : <div id="table-scroll" className="table-scroll">
+                    <div className="table-wrap">
+                        <table className="main-table" id="table">
                         <thead>
                             <tr>
-                            <th class="fixed-side" scope="col" style={{minWidth: '60px', height:'45px', zIndex: '15'}}>Дата</th>
+                            <th className="fixed-side" scope="col" style={{minWidth: '60px', height:'45px', zIndex: '15'}}>Дата</th>
                                 <th scope="col" style={{minWidth: '200px'}}>Проект</th>
                                 <th scope="col" style={{minWidth: '150px'}}>Вид работ</th>
                                 <th scope="col" style={{minWidth: '60px'}}>Старт</th>
@@ -135,7 +135,7 @@ const Page3 = () => {
                         {sortedAndSearchedPosts.length > 0 ?
                         sortedAndSearchedPosts.map((item, index) => (
                             <tr>
-                                <td class="fixed-side">{item.specs[0].date.split("T")[0].split('-')[2] + '.' + item.specs[0].date.split("T")[0].split('-')[1] + "." + item.specs[0].date.split("T")[0].split('-')[0]}</td>
+                                <td className="fixed-side">{item.specs[0].date.split("T")[0].split('-')[2] + '.' + item.specs[0].date.split("T")[0].split('-')[1] + "." + item.specs[0].date.split("T")[0].split('-')[0]}</td>
                                 <td>{item.title}</td>
                                 <td>{item.specs[0].vid}</td>
                                 <td>00:00</td>
@@ -148,7 +148,7 @@ const Page3 = () => {
                             </tr>
                             ))
                         : <tr>
-                            <td class="fixed-side"></td>
+                            <td className="fixed-side"></td>
                             <td></td>
                             <td></td>
                             <td></td>

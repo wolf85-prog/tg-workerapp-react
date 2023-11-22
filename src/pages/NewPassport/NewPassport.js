@@ -236,7 +236,7 @@ const NewPassport = () => {
                     {/* <div className='block-buttons-newpas1'> */}
                         <button 
                             // disabled={disabledBtn}
-                            class="image-button-pas" 
+                            className="image-button-pas" 
                             style={{ backgroundImage: `url(${btnNextSend})`}}
                             onClick={pressNext}
                         >

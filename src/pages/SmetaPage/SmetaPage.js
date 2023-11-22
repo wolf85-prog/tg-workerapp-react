@@ -110,7 +110,7 @@ const SmetaPage = () => {
             
             <div className='form-smeta'>
 
-            <table class="c-tbl" id="table">
+            <table className="c-tbl" id="table">
                 <thead><tr>
                     <th>Дата</th><th colspan="2" className='th-inline'>{formatted}</th></tr>
                 </thead>
@@ -192,8 +192,8 @@ const SmetaPage = () => {
                     <MyButton onClick={showPopup} style={{width: "auto", height: '40px', border: '0px', backgroundImage: `linear-gradient(#000000, #3d413e)`}}>
                         Запросить информацию по смете
                     </MyButton>  
-                    {/* <button class="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Подтвердить смету</button>
-                    <button class="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Запросить информацию по смете</button>         */}
+                    {/* <button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Подтвердить смету</button>
+                    <button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Запросить информацию по смете</button>         */}
                 </div>
                     
             </div>

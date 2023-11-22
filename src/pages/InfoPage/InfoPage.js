@@ -62,17 +62,17 @@ const InfoPage = () => {
             
             <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
                 <div className='menu-form-info'>
-                    <Link to={'/info1'}><button class="button-info" style={{ backgroundImage: `url(${ButtonsInfo})`}}>С чего начать</button></Link> 
-                    <button class="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Первый проект</button>
-                    <button class="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Чат проекта</button> 
-                    <button class="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Переработки</button> 
-                    <button class="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Логистика</button>
-                    <button class="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Мерч</button> 
-                    <button class="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Фотоотчет</button>
-                    <button class="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Запас</button>
-                    <button class="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Смета</button>
-                    <button class="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Способ оплаты</button>
-                    <button class="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Техника безопасости</button>
+                    <Link to={'/info1'}><button className="button-info" style={{ backgroundImage: `url(${ButtonsInfo})`}}>С чего начать</button></Link> 
+                    <button className="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Первый проект</button>
+                    <button className="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Чат проекта</button> 
+                    <button className="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Переработки</button> 
+                    <button className="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Логистика</button>
+                    <button className="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Мерч</button> 
+                    <button className="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Фотоотчет</button>
+                    <button className="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Запас</button>
+                    <button className="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Смета</button>
+                    <button className="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Способ оплаты</button>
+                    <button className="button-info" onClick={showPopup} style={{ backgroundImage: `url(${ButtonsInfo})`}}>Техника безопасости</button>
                 </div>
             </div>
             
