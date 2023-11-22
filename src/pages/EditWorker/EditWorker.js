@@ -231,6 +231,7 @@ const EditWorker = () => {
                             <NewSelect
                                     id="category"
                                     options={categories}
+                                    showSpec={showSpec}
                                     selectedElement={selectedElement}
                                     setSelectedElement={setSelectedElement}
                                     onChange={onCategoriesSelectChange}
@@ -241,6 +242,7 @@ const EditWorker = () => {
                         <div style={{position: 'relative', marginTop: '34px', marginLeft: '30px', marginRight: '30px'}}>
                             <NewSelect
                                 disabled={disabled}
+                                showSpec={showSpec}
                                 id="model"
                                 options={models}
                                 selectedElement={selectedElement}

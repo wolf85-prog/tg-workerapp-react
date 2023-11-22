@@ -85,11 +85,12 @@ const NewWorker = () => {
 
     // 1. при выборе нового значения в категории
     const onCategoriesSelectChange = (e) => {
-
-        setSelectedElement(e.target.options.value);
+        //console.log(e.target.key)
+        //setSelectedElement(e.target.value);
+        setSelectedElement(e.target.value)
 
         // преобразуем выбранное значение опции списка в число - идентификатор категории
-        const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
+        const categoryId = e.target.value //parseInt(e.target.options[e.target.selectedIndex].value);
         // получаем из массива категорий объект категории по соответствующему идентификатору
         const category = categories.find(item => item.id === categoryId);
         const catSelect = category.icon; //capitalizeFirst(category.name);
@@ -111,12 +112,14 @@ const NewWorker = () => {
 
     // 2. выбор специальности
     const onSpecSelectChange = (e) => {
-        setSelectedElement(e.target.options.value);
+        
 
-        const modelId = parseInt(e.target.options[e.target.selectedIndex].value);
+        const modelId = e.target.value //parseInt(e.target.options[e.target.selectedIndex].value);
         const model = models.find(item => item.id === modelId);
 
         setWorker({...worker, spec: model.name})
+        
+        //setSelectedElement(model.name);
 
         setDisabledBtn(false)
     }
@@ -225,7 +228,7 @@ const NewWorker = () => {
                             position: 'absolute', 
                             bottom: '13px', 
                             //left: '15%',
-                            zIndex: '20',
+                            zIndex: '2',
                             width: '100%',
                         }}>
                         <Link to={'/add-worker2'}>

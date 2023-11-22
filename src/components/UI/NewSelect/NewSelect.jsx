@@ -17,7 +17,7 @@ import Photo from "../../../image/layers/icons/PHOTO.png";
 import Party from "../../../image/layers/icons/PARTY.png";
 
 
-const NewSelect = ({id, options, title, onChange, selectedElement, disabled}) => {
+const NewSelect = ({id, options, title, onChange, selectedElement, disabled, showSpec}) => {
 
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(false);
@@ -43,10 +43,11 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled}) =>
     useEffect(()=> {
         console.log("options: ", options)
         //options.map((item)=>{
-            specData.map((item)=> {
+            specData.map((item, index)=> {
                 //item.models.map((model)=> {
                     //if (model.name === item.name) {
                         let image
+                        let name
                         if (item.icon === 'Sound') {
                             image = Sound;
                         } else if (item.icon === 'Riggers') {
@@ -71,6 +72,10 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled}) =>
                             image = Party;
                         }
 
+                        if (item.id === index+1) {
+                            name = item.name
+                        } 
+
                         const newObj = {
                             icon: image,
                             name: item.name
@@ -88,7 +93,10 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled}) =>
 
     const handleClick = (e) => {
         e.preventDefault();
-        setOpen(!open);
+        if (!disabled) {
+           setOpen(!open); 
+        }
+        
     };
 
     return (
@@ -103,7 +111,7 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled}) =>
                             // onChange={onChange}
                         >
                             <div className={classes.dropdownTitle}>
-                                {selected ? selected : ""}
+                                {selectedElement ? selectedElement : ""}
                             </div>
                             <img src={tringlDown} className={'chevron-new'} alt=''/>
                         </div>
@@ -114,11 +122,6 @@ const NewSelect = ({id, options, title, onChange, selectedElement, disabled}) =>
                             <li 
                                 key={id + index} 
                                 value={option.id} 
-                                // onClick={() => {
-                                //     setSelected(option.name);
-                                //     console.log(option.name)
-                                //     setOpen(false);
-                                // }}
                                 onClick={(e)=> {
                                         onChange(e)
                                         setSelected(option.name);
