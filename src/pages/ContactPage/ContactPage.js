@@ -18,6 +18,7 @@ import btnContact1 from "../../image/buttons/contact[E-mail].png";
 import btnContact2 from "../../image/buttons/contact[Phone].png";
 import btnContact3 from "../../image/buttons/contact[Vk].png";
 import btnContact4 from "../../image/buttons/contact[Web].png";
+import MyModalTop from '../../components/MyModalTop/MyModalTop';
 
 const ContactPage = () => {
     const [showGrad, setShowGrad] = useState(false)
@@ -52,7 +53,7 @@ const ContactPage = () => {
 
         setTimeout(()=> {
             setModal(false)       
-        }, 4000)
+        }, 6000)
     }
 
     //---------------------------------------------------------------------------------------
@@ -86,9 +87,9 @@ const ContactPage = () => {
             </div>
 
 
-            <MyModal visible={modal} setVisible={setModal}>
+            <MyModalTop visible={modal} setVisible={setModal}>
                 <img src={callPoster} alt='' width={350}/>
-            </MyModal>
+            </MyModalTop>
 
         </div>
     );
