@@ -47,7 +47,7 @@ const ContactPage = () => {
     };
 
     const showPopup = () => {
-        //openInNewTab('tel:+74995001411')
+        openInNewTab('tel:+74995001411')
         setModal(true)
 
         setTimeout(()=> {
