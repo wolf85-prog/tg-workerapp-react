@@ -7,6 +7,8 @@
     display: none;
     background: rgba(0,0,0, 0.5);  
     z-index: 15;
+    animation: showModal 1s linear forwards;
+    /* animation-delay: 1s; */
 }
 
 .myModalContent {
@@ -24,3 +26,12 @@
     justify-content: center;
     align-items: center;
 }
+
+@keyframes showModal {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
