@@ -15,6 +15,9 @@ import Trucks from "../../../image/layers/icons/TRUCKS.png";
 import Catering from "../../../image/layers/icons/CATERING.png";
 import Photo from "../../../image/layers/icons/PHOTO.png";
 import Party from "../../../image/layers/icons/PARTY.png";
+import Games from "../../../image/layers/icons/GAMES.png";
+
+import Marker from "../../../image/icons/marker.png";
 
 
 const NewSelect = ({id, options, titleCat, titleSpec, onChange, disabled}) => {
@@ -66,6 +69,8 @@ const NewSelect = ({id, options, titleCat, titleSpec, onChange, disabled}) => {
                             image = Photo;
                         } else if (item.icon === 'Party') {
                             image = Party;
+                        } else if (item.icon === 'Games') {
+                            image = Games;
                         }
 
 
@@ -124,6 +129,7 @@ const NewSelect = ({id, options, titleCat, titleSpec, onChange, disabled}) => {
                                 className={classes.listyle}
                             >
                                 {/* <div><div style={{color: '#797979'}}> — </div><div style={{paddingLeft: '8px'}}>{option.name}</div></div> */}
+                                {/* <div style={{display: 'flex', alignItems: 'center'}}><img src={Marker} width={20} style={{ marginRight: '5px'}} /> {option.name}</div> */}
                                 {option.name}
                                 <img className={option.icon ? classes.imageCat : ""} src={option.icon ? image[index].icon : ""} alt=""/>
                             </li>
