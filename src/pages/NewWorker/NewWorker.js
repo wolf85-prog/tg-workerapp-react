@@ -94,7 +94,7 @@ const NewWorker = () => {
         console.log(e.target.value)
 
         // преобразуем выбранное значение опции списка в число - идентификатор категории
-        const categoryId = e.target.value //parseInt(e.target.options[e.target.selectedIndex].value);
+        const categoryId = parseInt(e.target.value) //parseInt(e.target.options[e.target.selectedIndex].value);
         // получаем из массива категорий объект категории по соответствующему идентификатору
         const category = categories.find(item => item.id === categoryId);
         const catSelect = category.icon; //capitalizeFirst(category.name);
@@ -175,7 +175,7 @@ const NewWorker = () => {
                 <img src={FonGradWhite} alt='' className='fon-style-white'/>
             </div>
 
-            <div style={{display: 'flex', height: 'calc(100vh - 65px)', padding: '0 25px', overflow: 'auto'}}>
+            <div style={{display: 'flex', height: 'calc(100vh - 65px)', padding: '0 25px', overflow: 'hidden'}}>
                 {/* Чёрная плашка */}
                 <div className='form-new-worker1'> 
                     {/*Специализация*/}   
