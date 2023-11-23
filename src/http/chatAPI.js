@@ -95,3 +95,13 @@ export const getProjectsCash = async () =>{
         console.log("error while calling getProjectsCash api", error.message);
     }
 }
+
+export const getSmetaCash = async () =>{
+    try {
+       let response = await $host.get(`api/smetscash`);
+       //console.log(response);
+       return response.data;
+    } catch (error) {
+        console.log("error while calling getSmetaCash api", error.message);
+    }
+}

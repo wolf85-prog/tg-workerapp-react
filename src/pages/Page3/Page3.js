@@ -9,7 +9,7 @@ import Loader from "../../components/UI/Loader/Loader";
 
 import { useUsersContext } from "../../contexts/UserContext"
 import {useProjects} from "../../hooks/useProjects"
-import { getProjectsCash } from '../../http/chatAPI';
+import { getProjectsCash , getSmetaCash} from '../../http/chatAPI';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
@@ -58,7 +58,13 @@ const Page3 = () => {
             console.log("Начинаю загружать проекты...")
             const projects = await getProjectsCash();
 
+            const smets = await getSmetaCash();
+            console.log("smets: ", smets)
+
             projects.map((project)=> {
+
+                let projObject = smets.find((proj) => proj.projectId === project.id)
+
                 const newProject = {
                     id: project.id,
                     title: project.title,
@@ -66,12 +72,13 @@ const Page3 = () => {
                     date_end: project.dateEnd,
                     status: JSON.parse(project.status),
                     specs: JSON.parse(project.specs),
+                    smeta: projObject ? JSON.parse(projObject?.dop) : "",
                 }
-                //console.log(newProject)
+                console.log(newProject)
                 arrayProject.push(newProject)
             })
 
-            //console.log(arrayProject)
+            console.log(arrayProject)
                 
             setProjects(arrayProject)
 
@@ -137,13 +144,13 @@ const Page3 = () => {
                             <tr>
                                 <td className="fixed-side">{item.specs[0].date.split("T")[0].split('-')[2] + '.' + item.specs[0].date.split("T")[0].split('-')[1] + "." + item.specs[0].date.split("T")[0].split('-')[0]}</td>
                                 <td>{item.title}</td>
-                                <td>{item.specs[0].vid}</td>
-                                <td>00:00</td>
-                                <td>00:00</td>
-                                <td>0,00</td>
-                                <td>0,00</td>
-                                <td>0,00</td>
-                                <td>0,00</td>
+                                <td>{item.specs[0]?.vid}</td>
+                                <td>{item.smeta[0] ? item.smeta[0]?.start : "00:00"}</td>
+                                <td>{item.smeta[0] ? item.smeta[0]?.stop : "00:00"}</td>
+                                <td>{item.smeta[0] ? item.smeta[0]?.stavka : "0,00"}</td>
+                                <td>{item.smeta[0] ? item.smeta[0]?.pererabotka : "0,00"}</td>
+                                <td>{item.smeta[0] ? item.smeta[0]?.gsm : "0,00"}</td>
+                                <td>-</td>
                                 <td style={{padding: '4px'}}><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
                             </tr>
                             ))
