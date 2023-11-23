@@ -46,6 +46,8 @@ const NewWorker = () => {
     const [selectedElement, setSelectedElement] = useState("")
     const [disabledBtn, setDisabledBtn] = useState(true)
     const [disabled, setDisabled] = useState(true)
+    const [titleCat, setTitleCat] = useState("")
+    const [titleSpec, setTitleSpec] = useState("")
 
 //----------------------------------------------------------------------------------
 
@@ -79,6 +81,9 @@ const NewWorker = () => {
     useEffect(() => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх 
+
+        setTitleCat("Выберите категорию...")
+        //setTitleSpec("Выберите специальность...")
     })
 
     //---------------------------------------------------------------------------------------
@@ -109,6 +114,9 @@ const NewWorker = () => {
         // const spec = true
         // setShowSpec(spec)
         // console.log(spec)
+
+        setTitleCat("")
+        //setTitleSpec("Выберите специальность...")
     }
 
     // 2. выбор специальности
@@ -182,6 +190,7 @@ const NewWorker = () => {
                             options={categories}
                             // selectedElement={selectedElement}
                             // setSelectedElement={setSelectedElement}
+                            // titleCat={titleCat}
                             onChange={onCategoriesSelectChange}
                         /> 
                     </div>
@@ -195,6 +204,7 @@ const NewWorker = () => {
                             options={models}
                             // selectedElement={selectedElement}
                             // setSelectedElement={setSelectedElement}
+                            // titleSpec={titleSpec}
                             onChange={onSpecSelectChange}
                         />
                     </div>

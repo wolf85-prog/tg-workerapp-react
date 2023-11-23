@@ -17,7 +17,7 @@ import Photo from "../../../image/layers/icons/PHOTO.png";
 import Party from "../../../image/layers/icons/PARTY.png";
 
 
-const NewSelect = ({id, options, title, onChange, disabled}) => {
+const NewSelect = ({id, options, titleCat, titleSpec, onChange, disabled}) => {
 
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(false);
@@ -37,6 +37,7 @@ const NewSelect = ({id, options, title, onChange, disabled}) => {
       }, []);
 
     useEffect(()=> {
+        console.log(titleCat)
         //options.map((item)=>{
             specData.map((item, index)=> {
                 //item.models.map((model)=> {
@@ -103,7 +104,7 @@ const NewSelect = ({id, options, title, onChange, disabled}) => {
                             // onChange={onChange}
                         >
                             <div className={classes.dropdownTitle}>
-                                {selected ? selected : "" }
+                                {titleCat ? titleCat : (selected ? selected : "")}
                             </div>
                             <img src={tringlDown} className={'chevron-new'} alt=''/>
                         </div>
@@ -122,7 +123,7 @@ const NewSelect = ({id, options, title, onChange, disabled}) => {
                                 }
                                 className={classes.listyle}
                             >
-                                {/* <div><span style={{color: '#797979'}}> — </span><span style={{paddingLeft: '8px'}}>{option.name}</span></div> */}
+                                {/* <div><div style={{color: '#797979'}}> — </div><div style={{paddingLeft: '8px'}}>{option.name}</div></div> */}
                                 {option.name}
                                 <img className={option.icon ? classes.imageCat : ""} src={option.icon ? image[index].icon : ""} alt=""/>
                             </li>
