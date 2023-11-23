@@ -129,8 +129,8 @@ const NewSelect = ({id, options, titleCat, titleSpec, onChange, disabled}) => {
                                 className={classes.listyle}
                             >
                                 {/* <div><div style={{color: '#797979'}}> — </div><div style={{paddingLeft: '8px'}}>{option.name}</div></div> */}
-                                {/* <div style={{display: 'flex', alignItems: 'center'}}><img src={Marker} width={20} style={{ marginRight: '5px'}} /> {option.name}</div> */}
-                                {option.name}
+                                <div style={{display: 'flex', alignItems: 'center'}}><img src={Marker} width={20} style={{ marginRight: '5px'}} /> {option.name}</div>
+                                {/* {option.name} */}
                                 <img className={option.icon ? classes.imageCat : ""} src={option.icon ? image[index].icon : ""} alt=""/>
                             </li>
                         )}
