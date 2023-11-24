@@ -8,6 +8,7 @@ import { useTelegram } from "../../hooks/useTelegram";
 import { useUsersContext } from "../../contexts/UserContext"
 import { useResize } from './../../hooks/useResize';
 import { getWorkerId } from '../../http/chatAPI';
+import { getProjectsCash, getSmetaCash } from '../../http/chatAPI';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
@@ -22,6 +23,7 @@ const MenuPage = () => {
     const navigate = useNavigate();
     //const { workerhub: worker } = useUsersContext();
     const { setSpecId, flag } = useUsersContext();
+    const { projects, setProjects, specId} = useUsersContext();
 
     const { width, isScreenSm, isScreenMd, isScreenLg, } = useResize();
 
@@ -31,11 +33,47 @@ const MenuPage = () => {
  //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
+    useEffect(()=> {
+        const fetchDataProjects = async () => {
+            const arrayProject = []
+                   
+            console.log("Начинаю загружать проекты...")
+            const projects = await getProjectsCash();
+
+            console.log("Начинаю загружать сметы...")
+            const smets = await getSmetaCash();
+            console.log("smets: ", smets)
+
+            projects.map((project)=> {
+                let projObject = smets.find((proj) => proj.projectId === project.id)
+
+                const newProject = {
+                    id: project.id,
+                    title: project.title,
+                    date_start: project.dateStart,
+                    date_end: project.dateEnd,
+                    status: JSON.parse(project.status),
+                    specs: JSON.parse(project.specs),
+                    smeta: projObject ? JSON.parse(projObject?.dop) : "",
+                }
+                //console.log(newProject)
+                arrayProject.push(newProject)
+            })
+
+            console.log(arrayProject)
+                
+            setProjects(arrayProject)   
+        }
+
+        fetchDataProjects()                    
+    }, [])
+
+
     useEffect(() => {
         const fetchData = async() => { 
             const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
-            console.log("worker: ", worker.length)
-
+            console.log("worker: ", worker.length) 
+            
             setTimeout(()=> {      
                 if (worker.length > 0) {
                     //зарегистрирован

@@ -22,6 +22,7 @@ import smallMenu from "../../image/layers/ULEY text.png"
 const ProjectPage = () => {
 
     const { projects, setProjects, specId} = useUsersContext();
+    //const [projects, setProjects] = useState([])
 
      const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
@@ -36,45 +37,14 @@ const ProjectPage = () => {
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        console.log('start specId: ', specId)
+        
         setIsPostsLoading(true)
         
-        const fetchDataProjects = async () => {
-            const arrayProject = []
-                   
-            console.log("Начинаю загружать проекты...")
-            const projects = await getProjectsCash();
+        //setTimeout(()=> {
+            console.log('start specId: ', specId)
+            setIsPostsLoading(false)   
+        //}, 3000)
 
-            console.log("Начинаю загружать сметы...")
-            const smets = await getSmetaCash();
-            console.log("smets: ", smets)
-
-            projects.map((project)=> {
-                let projObject = smets.find((proj) => proj.projectId === project.id)
-
-                const newProject = {
-                    id: project.id,
-                    title: project.title,
-                    date_start: project.dateStart,
-                    date_end: project.dateEnd,
-                    status: JSON.parse(project.status),
-                    specs: JSON.parse(project.specs),
-                    smeta: projObject ? JSON.parse(projObject?.dop) : "",
-                }
-                //console.log(newProject)
-                arrayProject.push(newProject)
-            })
-
-            console.log(arrayProject)
-                
-            setProjects(arrayProject)
-
-            setTimeout(()=> {
-                setIsPostsLoading(false) 
-            }, 2000)    
-        }
-
-        fetchDataProjects()                    
     }, [])
 
 
