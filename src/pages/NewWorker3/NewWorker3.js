@@ -24,7 +24,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Stack } from "@mui/material";
 
 import { useUsersContext } from "./../../contexts/UserContext";
-import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
+import NewSelect2 from '../../components/UI/NewSelectOld/NewSelect2';
 import NewSelect from '../../components/UI/NewSelect/NewSelect';
 
 const API_URL = process.env.REACT_APP_API_URL

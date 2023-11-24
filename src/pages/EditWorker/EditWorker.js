@@ -18,7 +18,7 @@ import smallMenu from "../../image/layers/ULEY text.png"
 
 import btnSave from "../../image/newspec/button_save.png"
 import NewSelect from '../../components/UI/NewSelect/NewSelect';
-import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
+import NewSelect2 from '../../components/UI/NewSelectOld/NewSelect2';
 
 import Forma from "../../image/newspec/forma.png";
 

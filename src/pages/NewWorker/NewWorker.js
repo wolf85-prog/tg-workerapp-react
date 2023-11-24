@@ -17,6 +17,7 @@ import smallMenu from "../../image/layers/ULEY text.png"
 
 import btnSave from "../../image/newspec/button_save.png"
 import NewSelect from '../../components/UI/NewSelect/NewSelect';
+import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
 
 import specData from "../../data/specData"
 import { useUsersContext } from "./../../contexts/UserContext";
@@ -46,8 +47,8 @@ const NewWorker = () => {
     const [selectedElement, setSelectedElement] = useState("")
     const [disabledBtn, setDisabledBtn] = useState(true)
     const [disabled, setDisabled] = useState(true)
-    const [titleCat, setTitleCat] = useState("")
-    const [titleSpec, setTitleSpec] = useState("")
+    const [titleCat, setTitleCat] = useState(false)
+    const [titleSpec, setTitleSpec] = useState(false)
 
 //----------------------------------------------------------------------------------
 
@@ -82,7 +83,7 @@ const NewWorker = () => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх 
 
-        setTitleCat("Выберите категорию...")
+        //setTitleCat("")
         //setTitleSpec("Выберите специальность...")
     })
 
@@ -91,7 +92,7 @@ const NewWorker = () => {
     // 1. при выборе нового значения в категории
     const onCategoriesSelectChange = (e) => {
         //setSelectedElement(e.target.value);
-        console.log(e.target.value)
+        //console.log(e.target.value)
 
         // преобразуем выбранное значение опции списка в число - идентификатор категории
         const categoryId = parseInt(e.target.value) //parseInt(e.target.options[e.target.selectedIndex].value);
@@ -109,19 +110,14 @@ const NewWorker = () => {
 
         // меняем модели во втором списке
         setModels(models);
-
         setDisabled(false)
-        // const spec = true
-        // setShowSpec(spec)
-        // console.log(spec)
-
-        setTitleCat("")
+        setTitleSpec("")
         //setTitleSpec("Выберите специальность...")
     }
 
     // 2. выбор специальности
     const onSpecSelectChange = (e) => {
-        console.log(e.target.value)
+        //console.log(e.target.value)
         //setSelectedElement(e.target.value);
 
         const modelId = e.target.value //parseInt(e.target.options[e.target.selectedIndex].value);
@@ -148,6 +144,9 @@ const NewWorker = () => {
         setDisabled(true);
         setShowSpec(false)
         setDisabledBtn(true);
+
+        setTitleCat("")
+        setTitleSpec("")
     }
 
     {/* Удаление специальности */}
@@ -190,7 +189,8 @@ const NewWorker = () => {
                             options={categories}
                             // selectedElement={selectedElement}
                             // setSelectedElement={setSelectedElement}
-                            // titleCat={titleCat}
+                            titleCat={titleCat}
+                            setTitleCat={setTitleCat}
                             onChange={onCategoriesSelectChange}
                         /> 
                     </div>
@@ -198,13 +198,14 @@ const NewWorker = () => {
 
                     <p style={{position: 'absolute', top: '80px', left: '30px', fontSize: '14px'}}>Специальность</p>   
                     <div style={{position: 'relative', marginTop: '34px', marginLeft: '30px', marginRight: '30px'}}>
-                        <NewSelect
+                        <NewSelect2
                             disabled={disabled}
                             id="model"
                             options={models}
                             // selectedElement={selectedElement}
                             // setSelectedElement={setSelectedElement}
-                            // titleSpec={titleSpec}
+                            titleSpec={titleSpec}
+                            setTitleSpec={setTitleSpec}
                             onChange={onSpecSelectChange}
                         />
                     </div>

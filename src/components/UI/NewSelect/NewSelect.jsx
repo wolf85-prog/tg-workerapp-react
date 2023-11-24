@@ -20,7 +20,7 @@ import Games from "../../../image/layers/icons/GAMES.png";
 import Marker from "../../../image/icons/marker.png";
 
 
-const NewSelect = ({id, options, titleCat, titleSpec, onChange, disabled}) => {
+const NewSelect = ({id, options, titleCat, setTitleCat, onChange, disabled}) => {
 
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(false);
@@ -40,7 +40,7 @@ const NewSelect = ({id, options, titleCat, titleSpec, onChange, disabled}) => {
       }, []);
 
     useEffect(()=> {
-        console.log(titleCat)
+        console.log("titleCat: ", titleCat)
         //options.map((item)=>{
             specData.map((item, index)=> {
                 //item.models.map((model)=> {
@@ -82,7 +82,7 @@ const NewSelect = ({id, options, titleCat, titleSpec, onChange, disabled}) => {
                     //}
                 //})
             })
-            console.log(arraySpec)
+            //console.log(arraySpec)
             setImage(arraySpec)
         //})
     },[specData])
@@ -106,10 +106,9 @@ const NewSelect = ({id, options, titleCat, titleSpec, onChange, disabled}) => {
                             className={classes.dropdownHeader}
                             onClick={handleClick}
                             tabIndex="0"
-                            // onChange={onChange}
                         >
                             <div className={classes.dropdownTitle}>
-                                {titleCat ? titleCat : (selected ? selected : "")}
+                                {titleCat}
                             </div>
                             <img src={tringlDown} className={'chevron-new'} alt=''/>
                         </div>
@@ -122,7 +121,8 @@ const NewSelect = ({id, options, titleCat, titleSpec, onChange, disabled}) => {
                                 value={option.id} 
                                 onClick={(e)=> {
                                         onChange(e)
-                                        setSelected(option.name);
+                                        //setSelected(option.name);
+                                        setTitleCat(option.name)
                                         setOpen(false);
                                     }
                                 }
