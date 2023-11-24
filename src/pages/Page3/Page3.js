@@ -58,11 +58,11 @@ const Page3 = () => {
             console.log("Начинаю загружать проекты...")
             const projects = await getProjectsCash();
 
+            console.log("Начинаю загружать сметы...")
             const smets = await getSmetaCash();
             console.log("smets: ", smets)
 
             projects.map((project)=> {
-
                 let projObject = smets.find((proj) => proj.projectId === project.id)
 
                 const newProject = {

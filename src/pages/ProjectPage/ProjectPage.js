@@ -8,7 +8,7 @@ import Loader from "../../components/UI/Loader/Loader";
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 import { useUsersContext } from "../../contexts/UserContext"
-import { getProjectsCash } from '../../http/chatAPI';
+import { getProjectsCash, getSmetaCash } from '../../http/chatAPI';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
@@ -45,7 +45,13 @@ const ProjectPage = () => {
             console.log("Начинаю загружать проекты...")
             const projects = await getProjectsCash();
 
+            console.log("Начинаю загружать сметы...")
+            const smets = await getSmetaCash();
+            console.log("smets: ", smets)
+
             projects.map((project)=> {
+                let projObject = smets.find((proj) => proj.projectId === project.id)
+
                 const newProject = {
                     id: project.id,
                     title: project.title,
@@ -53,6 +59,7 @@ const ProjectPage = () => {
                     date_end: project.dateEnd,
                     status: JSON.parse(project.status),
                     specs: JSON.parse(project.specs),
+                    smeta: projObject ? JSON.parse(projObject?.dop) : "",
                 }
                 //console.log(newProject)
                 arrayProject.push(newProject)

@@ -33,6 +33,11 @@ const SmetaPage = () => {
     const projSpec = location.state?.spec
     const projDateMain = location.state?.dateMain
 
+    const projStart = location.state?.start
+    const projStop = location.state?.stop
+    const projStavka = location.state?.stavka
+    const projPererabotka = location.state?.pererabotka
+
     console.log("projNumber: ", projNumber)
     console.log("projTitle: ", projTitle)
     console.log("projDate: ", projDate)
@@ -130,8 +135,8 @@ const SmetaPage = () => {
                         </tr>
                         <tr>
                             <td className='th-left'>Интервал</td>
-                            <td>00:00</td>
-                            <td>00:00</td>
+                            <td>{projStart ? projStart : "00:00"}</td>
+                            <td>{projStop ? projStop : "00:00"}</td>
                         </tr>
                         <tr>
                             <td className='th-left'>Часы</td>
@@ -143,11 +148,11 @@ const SmetaPage = () => {
                         </tr>
                         <tr>
                             <td className='th-left'>Ставка</td>
-                            <td colspan="2">0.00</td>
+                            <td colspan="2">{projStavka ? projStavka : "0:00"}</td>
                         </tr>
                         <tr>
                             <td className='th-left'>Переработка</td>
-                            <td colspan="2">0.00</td>
+                            <td colspan="2">{projPererabotka ? projPererabotka : "0:00"}</td>
                         </tr>
                         <tr>
                             <td className='th-left'>Доп. расходы</td>

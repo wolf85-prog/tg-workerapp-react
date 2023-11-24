@@ -50,6 +50,10 @@ const ProjectItem = (props) => {
               vid: props.post.specs[0]?.vid,
               spec: props.post.specs[0]?.spec,
               dateMain: props.post.specs[0]?.date,
+              start: props.post.smeta[0]?.start,
+              stop: props.post.smeta[0]?.stop,
+              stavka: props.post.smeta[0]?.stavka,
+              pererabotka: props.post.smeta[0]?.pererabotka,
             }
         })
     }
