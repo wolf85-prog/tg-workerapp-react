@@ -168,64 +168,66 @@ const NewWorker = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
             {/* белый градиент */}
-            <div  style={{display: 'flex', height: 'calc(100vh - 65px)', position: 'absolute', zIndex: '2'}}>
+            <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
                 <img src={FonGradWhite} alt='' className='fon-style-white'/>
             </div>
+            
+            <div style={{paddingTop: '45px'}}>
+                <div style={{display: 'flex', height: 'calc(100vh - 105px)', padding: '0 25px', overflow: 'hidden'}}>
+                    {/* Чёрная плашка */}
+                    <div className='form-new-worker1'> 
+                        {/*Специализация*/}   
+                        <p style={{marginTop: '-35px', fontSize: '17px', color: '#fff'}}>
+                            Выберите свою специальность
+                        </p>
+                        
+                        <p style={{position: 'absolute', top: '8px', left: '30px', fontSize: '14px'}}>Категория</p>    
+                        <div style={{position: 'relative', marginTop: '44px', marginLeft: '30px', marginRight: '30px'}}>
+                        <NewSelect
+                                id="category"
+                                options={categories}
+                                titleCat={titleCat}
+                                setTitleCat={setTitleCat}
+                                onChange={onCategoriesSelectChange}
+                            /> 
+                        </div>
+                        
 
-            <div style={{display: 'flex', height: 'calc(100vh - 65px)', padding: '0 25px', overflow: 'hidden'}}>
-                {/* Чёрная плашка */}
-                <div className='form-new-worker1'> 
-                    {/*Специализация*/}   
-                    <p style={{marginTop: '-35px', fontSize: '17px', color: '#fff'}}>
-                        Выберите свою специальность
-                    </p>
+                        <p style={{position: 'absolute', top: '80px', left: '30px', fontSize: '14px'}}>Специальность</p>   
+                        <div style={{position: 'relative', marginTop: '34px', marginLeft: '30px', marginRight: '30px'}}>
+                            <NewSelect2
+                                disabled={disabled}
+                                id="model"
+                                options={models}
+                                titleSpec={titleSpec}
+                                setTitleSpec={setTitleSpec}
+                                onChange={onSpecSelectChange}
+                            />
+                        </div>
+
+                        <button 
+                            disabled={disabledBtn}
+                            className="image-button-add" 
+                            style={{ backgroundImage: `url(${btnSave})`}}
+                            onClick={addNewWorker}
+                        >
+                            Добавить
+                        </button>
+
                     
-                    <p style={{position: 'absolute', top: '8px', left: '30px', fontSize: '14px'}}>Категория</p>    
-                    <div style={{position: 'relative', marginTop: '44px', marginLeft: '30px', marginRight: '30px'}}>
-                       <NewSelect
-                            id="category"
-                            options={categories}
-                            titleCat={titleCat}
-                            setTitleCat={setTitleCat}
-                            onChange={onCategoriesSelectChange}
-                        /> 
+                        
+
+                        {/*список работников*/}
+                        <div style={{
+                            boxSizing: 'border-box', 
+                            height: '140px', 
+                            zIndex: 20,
+                            paddingTop: '40px',
+                        }}>
+                            <WorkerList remove={removeWorker} workers={workers} />
+                        </div>
+    
                     </div>
-                      
-
-                    <p style={{position: 'absolute', top: '80px', left: '30px', fontSize: '14px'}}>Специальность</p>   
-                    <div style={{position: 'relative', marginTop: '34px', marginLeft: '30px', marginRight: '30px'}}>
-                        <NewSelect2
-                            disabled={disabled}
-                            id="model"
-                            options={models}
-                            titleSpec={titleSpec}
-                            setTitleSpec={setTitleSpec}
-                            onChange={onSpecSelectChange}
-                        />
-                    </div>
-
-                    <button 
-                        disabled={disabledBtn}
-                        className="image-button-add" 
-                        style={{ backgroundImage: `url(${btnSave})`}}
-                        onClick={addNewWorker}
-                    >
-                        Добавить
-                    </button>
-
-                
-                     
-
-                    {/*список работников*/}
-                    <div style={{
-                        boxSizing: 'border-box', 
-                        height: '140px', 
-                        zIndex: 20,
-                        paddingTop: '40px',
-                    }}>
-                        <WorkerList remove={removeWorker} workers={workers} />
-                    </div>
- 
                 </div>
             </div>
 

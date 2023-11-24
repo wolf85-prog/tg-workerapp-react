@@ -222,7 +222,7 @@ const EditWorker = () => {
             </div>    
             
             <div style={{paddingTop: '45px'}}>
-                <div style={{display: 'flex', height: 'calc(100vh - 105px)', padding: '0 25px', overflow: 'auto'}}>
+                <div style={{display: 'flex', height: 'calc(100vh - 105px)', padding: '0 25px', overflow: 'hidden'}}>
 
                     {/* Чёрная плашка */}
                     <div className='form-edit-worker1'> 
@@ -269,6 +269,7 @@ const EditWorker = () => {
                             height: '140px', 
                             zIndex: 20,
                             paddingTop: '40px',
+                            overflow: 'scroll',
                         }}>
                             <WorkerList remove={removeWorker} workers={workers} />
         
