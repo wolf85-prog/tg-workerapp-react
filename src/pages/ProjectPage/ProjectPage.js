@@ -35,6 +35,8 @@ const ProjectPage = () => {
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
 
+    //console.log("spesID: ", props.worker)
+
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
