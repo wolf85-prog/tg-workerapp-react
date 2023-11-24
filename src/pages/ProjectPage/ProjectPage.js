@@ -9,6 +9,7 @@ import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 import { useUsersContext } from "../../contexts/UserContext"
 import { getProjectsCash, getSmetaCash } from '../../http/chatAPI';
+import { getWorkerId } from '../../http/chatAPI';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
@@ -21,7 +22,7 @@ import smallMenu from "../../image/layers/ULEY text.png"
 
 const ProjectPage = () => {
 
-    const { projects, setProjects, specId} = useUsersContext();
+    const { projects, setProjects, setSpecId, specId} = useUsersContext();
     //const [projects, setProjects] = useState([])
 
      const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
@@ -37,13 +38,13 @@ const ProjectPage = () => {
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        
-        setIsPostsLoading(true)
-        
-        //setTimeout(()=> {
-            console.log('start specId: ', specId)
+        const fetchData = async() => { 
+            setIsPostsLoading(true)
+
             setIsPostsLoading(false)   
-        //}, 3000)
+        }
+
+        fetchData()
 
     }, [])
 

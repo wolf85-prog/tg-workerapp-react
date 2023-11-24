@@ -61,8 +61,8 @@ const MenuPage = () => {
             })
 
             console.log(arrayProject)
-                
-            setProjects(arrayProject)   
+            
+            setProjects(arrayProject)        
         }
 
         fetchDataProjects()                    
