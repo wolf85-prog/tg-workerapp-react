@@ -41,7 +41,7 @@ const HelloPage = () => {
  
                 setSpecId(worker[0]?.id)
 
-                setTimeout(() => navigate("/menu"), 5000)
+                //setTimeout(() => navigate("/menu"), 5000)
 
             } else {
                 console.log("Зарегистрируйтесь!", user?.id)
@@ -76,7 +76,7 @@ const HelloPage = () => {
             <img src={FonGradTop} alt='' className='fon-style2' style={{visibility: showGrad ? "visible": "hidden"}} />
             <img src={FonGradBottom} alt='' className='fon-style21' style={{visibility: showGrad2 ? "visible": "hidden"}} />
             
-            <form>
+            {/* <form>
                 <div style={{marginTop: '330px'}}>  
                     {!fio
                         ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
@@ -85,7 +85,17 @@ const HelloPage = () => {
                     }                
                            
                 </div>       
-            </form>
+            </form> */}
+
+            <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
+                <div className='form-label'>
+                    {!fio
+                        ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
+                        : <p className='welcomStyle'> {fio}
+                        </p>  
+                    }
+                </div>
+            </div>
         </div>
     );
 };

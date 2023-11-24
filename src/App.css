@@ -216,16 +216,6 @@
   /* animation-delay: 1s; */
 }
 
-.welcomStyle {
-  margin: 20px 5px;
-  display: flex;
-  font-size: 26px;
-  color: #ffffff;
-  justify-content: center;
-  animation: showFio 4s linear forwards;
-  animation-delay: 1s;
-}
-
 .modal-open {
   animation: showGradMenu 4s linear forwards;
   animation-delay: 1s;
@@ -280,15 +270,6 @@
   }
   100% {
     opacity: 1;
-  }
-}
-
-@keyframes showFio {
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
   }
 }
 
