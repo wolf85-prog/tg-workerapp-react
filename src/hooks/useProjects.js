@@ -23,6 +23,7 @@ export const useProjects = (posts2, sort, query, specId) => {
     //console.log("query: ", query)
     //console.log("specId: ", specId)
     //console.log("context projects: ", posts2)
+    //console.log("sortedPosts: ", sortedPosts)
 
     const sortedAndSearchedPosts = useMemo(() => {
 
@@ -44,6 +45,7 @@ export const useProjects = (posts2, sort, query, specId) => {
             }
             
         }
+
         return sortedPosts; //posts2 
 
     }, [query, sortedPosts]) //post2

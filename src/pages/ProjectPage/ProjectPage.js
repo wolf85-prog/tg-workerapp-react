@@ -23,7 +23,8 @@ import smallMenu from "../../image/layers/ULEY text.png"
 const ProjectPage = () => {
 
     const { projects, setProjects, setSpecId, specId} = useUsersContext();
-    //const [projects, setProjects] = useState([])
+    const [projects2, setProjects2] = useState([])
+    const [proj, setProj] = useState([])
 
      const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
@@ -39,6 +40,7 @@ const ProjectPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
+            
             setIsPostsLoading(true)
 
             setIsPostsLoading(false)   
