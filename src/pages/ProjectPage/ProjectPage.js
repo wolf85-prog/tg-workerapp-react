@@ -71,7 +71,7 @@ const ProjectPage = () => {
 
             setTimeout(()=> {
                 setIsPostsLoading(false) 
-            }, 1000)    
+            }, 2000)    
         }
 
         fetchDataProjects()                    
