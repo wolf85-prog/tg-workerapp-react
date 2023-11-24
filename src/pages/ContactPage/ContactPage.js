@@ -47,9 +47,9 @@ const ContactPage = () => {
         window.open(url, '_blank', 'noreferrer');
     };
 
-    const showPopup = () => {
-        openInNewTab('tel:+74995001411')
+    const showPopup = () => {   
         setModal(true)
+        openInNewTab('tel:+74995001411')
 
         setTimeout(()=> {
             setModal(false)       
@@ -87,9 +87,9 @@ const ContactPage = () => {
             </div>
 
 
-            <MyModalTop visible={modal} setVisible={setModal}>
+            <MyModal visible={modal} setVisible={setModal}>
                 <img src={callPoster} alt='' width={350}/>
-            </MyModalTop>
+            </MyModal>
 
         </div>
     );
