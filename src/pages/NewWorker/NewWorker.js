@@ -82,9 +82,6 @@ const NewWorker = () => {
     useEffect(() => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх 
-
-        //setTitleCat("")
-        //setTitleSpec("Выберите специальность...")
     })
 
     //---------------------------------------------------------------------------------------
@@ -110,6 +107,7 @@ const NewWorker = () => {
 
         // меняем модели во втором списке
         setModels(models);
+
         setDisabled(false)
         setTitleSpec("")
         //setTitleSpec("Выберите специальность...")
@@ -187,8 +185,6 @@ const NewWorker = () => {
                        <NewSelect
                             id="category"
                             options={categories}
-                            // selectedElement={selectedElement}
-                            // setSelectedElement={setSelectedElement}
                             titleCat={titleCat}
                             setTitleCat={setTitleCat}
                             onChange={onCategoriesSelectChange}
@@ -202,8 +198,6 @@ const NewWorker = () => {
                             disabled={disabled}
                             id="model"
                             options={models}
-                            // selectedElement={selectedElement}
-                            // setSelectedElement={setSelectedElement}
                             titleSpec={titleSpec}
                             setTitleSpec={setTitleSpec}
                             onChange={onSpecSelectChange}

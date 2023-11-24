@@ -18,7 +18,7 @@ import smallMenu from "../../image/layers/ULEY text.png"
 
 import btnSave from "../../image/newspec/button_save.png"
 import NewSelect from '../../components/UI/NewSelect/NewSelect';
-import NewSelect2 from '../../components/UI/NewSelectOld/NewSelect2';
+import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
 
 import Forma from "../../image/newspec/forma.png";
 
@@ -52,6 +52,8 @@ const EditWorker = () => {
     const [selectedElement, setSelectedElement] = useState("")
     const [disabledBtn, setDisabledBtn] = useState(true)
     const [disabled, setDisabled] = useState(true)
+    const [titleCat, setTitleCat] = useState(false)
+    const [titleSpec, setTitleSpec] = useState(false)
 
 //----------------------------------------------------------------------------------
 
@@ -92,8 +94,8 @@ const EditWorker = () => {
     // 1. при выборе нового значения в категории
     const onCategoriesSelectChange = (e) => {
 
-        console.log(e.target.value)
-        setSelectedElement(e.target.value);
+        // console.log(e.target.value)
+        // setSelectedElement(e.target.value);
 
         // преобразуем выбранное значение опции списка в число - идентификатор категории
         //const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
@@ -114,7 +116,7 @@ const EditWorker = () => {
         setModels(models);
 
         setDisabled(false)
-        setShowSpec(true)
+        setTitleSpec("")
     }
 
     // 2. выбор специальности
@@ -144,6 +146,9 @@ const EditWorker = () => {
         setDisabled(true);
         setShowSpec(false)
         setDisabledBtn(true);
+
+        setTitleCat("")
+        setTitleSpec("")
     }
 
     {/* Удаление специальности */}
@@ -231,22 +236,20 @@ const EditWorker = () => {
                             <NewSelect
                                     id="category"
                                     options={categories}
-                                    showSpec={showSpec}
-                                    selectedElement={selectedElement}
-                                    setSelectedElement={setSelectedElement}
+                                    titleCat={titleCat}
+                                    setTitleCat={setTitleCat}
                                     onChange={onCategoriesSelectChange}
                             /> 
                         </div> 
 
                         <p style={{position: 'absolute', top: '80px', left: '30px', fontSize: '14px'}}>Специальность</p>   
                         <div style={{position: 'relative', marginTop: '34px', marginLeft: '30px', marginRight: '30px'}}>
-                            <NewSelect
+                            <NewSelect2
                                 disabled={disabled}
-                                showSpec={showSpec}
                                 id="model"
                                 options={models}
-                                selectedElement={selectedElement}
-                                setSelectedElement={setSelectedElement}
+                                titleSpec={titleSpec}
+                                setTitleSpec={setTitleSpec}
                                 onChange={onSpecSelectChange}
                             />
                         </div>
