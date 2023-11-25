@@ -151,27 +151,27 @@ const SmetaPage = () => {
                         </tr>
                         <tr>
                             <td className='th-left'>Смена</td>
-                            <td colspan="2">{projSmena ? projSmena : "0"}</td>
+                            <td colspan="2">{projSmena ? parseInt(projSmena).toLocaleString() : "0"}.00</td>
                         </tr>
                         <tr>
                             <td className='th-left'>Ставка</td>
-                            <td colspan="2">{projStavka ? projStavka : "0:00"}</td>
+                            <td colspan="2">{projStavka ? parseInt(projStavka).toLocaleString() : "0"}.00</td>
                         </tr>
                         <tr>
                             <td className='th-left'>Переработка</td>
-                            <td colspan="2">{projPererabotka ? projPererabotka : "0:00"}</td>
+                            <td colspan="2">{projPererabotka ? parseInt(projPererabotka).toLocaleString() : "0"}.00</td>
                         </tr>
                         <tr>
                             <td className='th-left'>Доп. расходы</td>
-                            <td colspan="2">{(projTransport + projGSM) ? (projTransport + projGSM) : "0.00"}</td>
+                            <td colspan="2">{(projTransport + projGSM) ? (projTransport + projGSM) : "0"}.00</td>
                         </tr>
                         <tr>
                             <td className='th-left'>Такси / ГСМ</td>
-                            <td colspan="2">{projTaxi? projTaxi : "0.00"}</td>
+                            <td colspan="2">{projTaxi? parseInt(projTaxi).toLocaleString() : "0"}.00</td>
                         </tr>
                         <tr>
                             <td className='th-left'>Общ. транспорт</td>
-                            <td colspan="2">{projTransport ? projTransport : "0.00"}</td>
+                            <td colspan="2">{projTransport ? projTransport : "0"}.00</td>
                         </tr>
                         <tr>
                             <td className='th-left'>Мерч</td>
@@ -182,7 +182,7 @@ const SmetaPage = () => {
                         </tr>
                         <tr>
                             <td>Итого</td>
-                            <td colspan="2">{projSpecialist ? projSpecialist : "0.00"}</td>
+                            <td colspan="2">{projSpecialist ? parseInt(projSpecialist).toLocaleString() : "0"}.00</td>
                         </tr>
                         <tr>
                             <td colspan="3" style={{padding: '0 3px'}}><img src={Banner} alt='' width='100%'/></td>

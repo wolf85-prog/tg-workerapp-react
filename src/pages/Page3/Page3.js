@@ -33,7 +33,7 @@ const Page3 = () => {
 
     const [projects2, setProjects2] = useState([])
 
-    const [proj, setProj] = useState([])
+    const [count, setCount] = useState(0)
     const [isPostsLoading, setIsPostsLoading] = useState(false);
 
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
@@ -47,53 +47,32 @@ const Page3 = () => {
     });
 
 
-    // при первой загрузке приложения выполнится код ниже
-    // useEffect(() => {
-    //     console.log('start specId: ', specId)
-    //     setIsPostsLoading(true)
-        
-    //     const fetchDataProjects = async () => {
-    //         const arrayProject = []
-                   
-    //         console.log("Начинаю загружать проекты...")
-    //         const projects = await getProjectsCash();
-
-    //         console.log("Начинаю загружать сметы...")
-    //         const smets = await getSmetaCash();
-    //         console.log("smets: ", smets)
-
-    //         projects.map((project)=> {
-    //             let projObject = smets.find((proj) => proj.projectId === project.id)
-
-    //             const newProject = {
-    //                 id: project.id,
-    //                 title: project.title,
-    //                 date_start: project.dateStart,
-    //                 date_end: project.dateEnd,
-    //                 status: JSON.parse(project.status),
-    //                 specs: JSON.parse(project.specs),
-    //                 smeta: projObject ? JSON.parse(projObject?.dop) : "",
-    //             }
-    //             console.log(newProject)
-    //             arrayProject.push(newProject)
-    //         })
-
-    //         console.log(arrayProject)
-                
-    //         setProjects(arrayProject)
-
-    //         setTimeout(()=> {
-    //             setIsPostsLoading(false) 
-    //         }, 1000)    
-    //     }
-
-    //     fetchDataProjects()                    
-    // }, [])
-
     useEffect(() => {
         const fetchData = async() => { 
-            
+            let con
             setIsPostsLoading(true)
+
+            if (sortedAndSearchedPosts.length >0) {
+                
+                // const sortProjects = [...sortedAndSearchedPosts].sort((a, b) => {
+                //     var dateA = new Date(a['date_start']), dateB = new Date(b['date_start'])                                  
+                //     return dateA-dateB
+                // })
+                // setProjects2(sortProjects)
+
+                //console.log(sortedAndSearchedPosts)
+                sortedAndSearchedPosts.map((item, index) => {
+                    con = 0
+                    //console.log(item)
+                    if (item.smeta !== '') {
+                       con = count + item.smeta.filter((item) => item.fio_id === specId)[0]?.specialist 
+                       setCount(con)
+                    }  
+
+                    //const da[...item.specs]
+                })
+            }
+            
 
             setIsPostsLoading(false)   
         }
@@ -159,11 +138,11 @@ const Page3 = () => {
                                 <td>{item.specs.filter((item) => item.id === specId)[0]?.vid}</td>
                                 <td>{item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.start : "00:00"}</td>
                                 <td>{item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.stop : "00:00"}</td>
-                                <td>{item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.stavka : "0,00"}</td>
-                                <td>{item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.pererabotka : "0,00"}</td>
-                                <td>{item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.gsm : "0,00"}</td>
+                                <td>{item.smeta ? parseInt(item.smeta.filter((item) => item.fio_id === specId)[0]?.stavka).toLocaleString() : "0"}.00</td>
+                                <td>{item.smeta ? parseInt(item.smeta.filter((item) => item.fio_id === specId)[0]?.pererabotka).toLocaleString() : "0"}.00</td>
+                                <td>{item.smeta ? parseInt(item.smeta.filter((item) => item.fio_id === specId)[0]?.gsm).toLocaleString() : "0"}.00</td>
                                 
-                                <td>-</td>
+                                <td>{item.smeta ? parseInt(item.smeta.filter((item) => item.fio_id === specId)[0]?.specialist).toLocaleString() : "0"}.00</td>
                                 <td style={{padding: '4px'}}><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
                             </tr>
                             ))
@@ -183,7 +162,7 @@ const Page3 = () => {
                         <tr>
                             <td colSpan={7} style={{padding: '0'}}></td>
                             <td style={{padding: '0'}}>Итого:</td>
-                            <td style={{padding: '0'}}>0,00</td>
+                            <td style={{padding: '0'}}>{parseInt(count).toLocaleString()}.00</td>
                             <td style={{padding: '0'}}></td>
                         </tr>
                         </tbody>
