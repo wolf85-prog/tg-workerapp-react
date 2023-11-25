@@ -23,10 +23,8 @@ import smallMenu from "../../image/layers/ULEY text.png"
 const ProjectPage = () => {
 
     const { projects, setProjects, setSpecId, specId} = useUsersContext();
-    const [projects2, setProjects2] = useState([])
-    const [proj, setProj] = useState([])
 
-     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
+    const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
     const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query, specId); //specId '1408579113'
 
@@ -84,7 +82,7 @@ const ProjectPage = () => {
             <div className="project-list">                   
                 {isPostsLoading
                     ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
-                    : <ProjectList posts={sortedAndSearchedPosts} title="" worker={specId}/>
+                    : <ProjectList posts={sortedAndSearchedPosts} title="" workerId={specId}/>
                 }
             </div>   
 

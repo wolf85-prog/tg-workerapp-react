@@ -4,7 +4,7 @@ import './ProjectList.css';
 import ProjectItem from "../ProjectItem/ProjectItem";
 
 
-const ProjectList = ({posts, title, worker, remove}) => {
+const ProjectList = ({posts, title, workerId, remove}) => {
     
     if (!posts.length) {
         return (
@@ -24,7 +24,7 @@ const ProjectList = ({posts, title, worker, remove}) => {
                      
 
             {posts.map((post, index) =>
-                <ProjectItem number={index + 1} post={post} key={post.id} specId={worker}/>    
+                <ProjectItem number={index + 1} post={post} key={post.id} specId={workerId}/>    
             )}
             
         </div>

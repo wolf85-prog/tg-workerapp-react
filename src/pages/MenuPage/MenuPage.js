@@ -33,6 +33,37 @@ const MenuPage = () => {
  //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
+    
+    useEffect(() => {
+        const fetchData = async() => { 
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            console.log("worker: ", worker.length) 
+            console.log(worker[0]?.id)
+            setSpecId(worker[0]?.id)
+            
+            setTimeout(()=> {      
+                if (worker.length > 0) {
+                    //зарегистрирован
+                    console.log("Зарегистирован", "REG")
+                    setSpecId(worker[0]?.id)
+                } else  {
+                    if (flag === 'ONLY_REG') {
+                        //только что зарегистрирован
+                        console.log("Только что зарегистировался", flag)
+                        navigate("/process")
+                    } 
+                    else if (flag === 'NOREG') {
+                        //не зарегистрирован
+                        console.log("Зарегистрируйтесь! NOREG")
+                        navigate("/add-worker")
+                    }
+                }
+            }, 10000)
+        }
+
+        fetchData()   
+    }, []);
+
     useEffect(()=> {
         const fetchDataProjects = async () => {
             const arrayProject = []
@@ -67,37 +98,6 @@ const MenuPage = () => {
 
         fetchDataProjects()                    
     }, [])
-
-
-    useEffect(() => {
-        const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
-            console.log("worker: ", worker.length) 
-            console.log(worker[0]?.id)
-            setSpecId(worker[0]?.id)
-            
-            setTimeout(()=> {      
-                if (worker.length > 0) {
-                    //зарегистрирован
-                    console.log("Зарегистирован", "REG")
-                    setSpecId(worker[0]?.id)
-                } else  {
-                    if (flag === 'ONLY_REG') {
-                        //только что зарегистрирован
-                        console.log("Только что зарегистировался", flag)
-                        navigate("/process")
-                    } 
-                    else if (flag === 'NOREG') {
-                        //не зарегистрирован
-                        console.log("Зарегистрируйтесь! NOREG")
-                        navigate("/add-worker")
-                    }
-                }
-            }, 10000)
-        }
-
-        fetchData()   
-    }, []);
 
     useEffect(() => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ

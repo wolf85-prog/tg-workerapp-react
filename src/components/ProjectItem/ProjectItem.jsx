@@ -40,20 +40,29 @@ const ProjectItem = (props) => {
     const formatted = (d_end) ? `${date}.${month}.${year} - ${date2}.${month2}.${year2}` : `${date}.${month}.${year}`;
     const formattime = `${chas}:${minut}`
 
+    console.log(props.post.smeta)
+    
     const onShowProject = () => {
         navigate('/smeta', {
             state: {
+              specId: props.specId,
               proj: props.number,
               title: props.post.title,
               date: props.post.date_start,
               date2: props.post.date_end,
-              vid: props.post.specs[0]?.vid,
-              spec: props.post.specs[0]?.spec,
-              dateMain: props.post.specs[0]?.date,
-              start: props.post.smeta[0]?.start,
-              stop: props.post.smeta[0]?.stop,
-              stavka: props.post.smeta[0]?.stavka,
-              pererabotka: props.post.smeta[0]?.pererabotka,
+              vid: props.post.specs.filter((item) => item.id === props.specId)[0]?.vid,   
+              spec: props.post.specs.filter((item) => item.id === props.specId)[0]?.spec, 
+              dateMain: props.post.specs.filter((item) => item.id === props.specId)[0]?.date,
+              start: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.start,
+              stop: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.stop,
+              chasi: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.chasi,
+              smena: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.smena,
+              stavka: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.stavka,
+              pererabotka: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.pererabotka,
+              taxi: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.taxi, 
+              gsm: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.gsm,  
+              transport: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.transport,   
+              specialist: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist, 
             }
         })
     }

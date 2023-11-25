@@ -18,7 +18,6 @@ import btnContact1 from "../../image/buttons/contact[E-mail].png";
 import btnContact2 from "../../image/buttons/contact[Phone].png";
 import btnContact3 from "../../image/buttons/contact[Vk].png";
 import btnContact4 from "../../image/buttons/contact[Web].png";
-import MyModalTop from '../../components/MyModalTop/MyModalTop';
 
 const ContactPage = () => {
     const [showGrad, setShowGrad] = useState(false)
@@ -49,10 +48,12 @@ const ContactPage = () => {
 
     const showPopup = () => {   
         setModal(true)
-        openInNewTab('tel:+74995001411')
+        setTimeout(()=> {
+            //openInNewTab('tel:+74995001411')
+        }, 2000)
 
         setTimeout(()=> {
-            setModal(false)       
+            //setModal(false)       
         }, 6000)
     }
 
@@ -88,7 +89,7 @@ const ContactPage = () => {
 
 
             <MyModal visible={modal} setVisible={setModal}>
-                <img src={callPoster} alt='' width={350}/>
+                <img src={callPoster} alt='' style={{width: '100%', padding: '0 10px'}}/>
             </MyModal>
 
         </div>
