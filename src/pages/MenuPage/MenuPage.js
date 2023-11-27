@@ -7,8 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useTelegram } from "../../hooks/useTelegram";
 import { useUsersContext } from "../../contexts/UserContext"
 import { useResize } from './../../hooks/useResize';
-import { getWorkerId } from '../../http/chatAPI';
-import { getProjectsCash, getSmetaCash } from '../../http/chatAPI';
+import { getWorkerId, getProjectsCash, getSmetaCash } from '../../http/chatAPI';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
@@ -32,11 +31,10 @@ const MenuPage = () => {
 
  //----------------------------------------------------------------------------------
 
-    // при первой загрузке приложения выполнится код ниже
-    
+    // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setSpecId(worker[0]?.id)
