@@ -186,7 +186,7 @@ const ProfilePage = () => {
                 
             </div>
             
-            <div className='down-icon'><img src={iconDown} alt='' style={{width: '60px'}} /></div>
+            <div className='down-icon'><img src={iconDown} alt='' style={{width: '60px', opacity: '0.3'}} /></div>
 
             <div className='footer-block'>
                 {/* <Link to={'/menu'}><img src={btnMenu} alt='' /></Link> */}
