@@ -70,11 +70,11 @@ const ProjectItem = (props) => {
     return (
         <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
             <div className="post__content">
-                <div className="post_title">{props.post.title}</div>
+                <div className="post_title">{props.post.title} <span style={{color: '#adaa15', fontSize: '26px'}}>1 000.00</span></div>
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>
                 <div>Начало: <span className="subscribe">{formattime}</span> </div>
                 <div style={{fontSize: '14px'}}>
-                    0.00 рублей х 10 часов = 0 000.00 рублей
+                    0.00 рублей х 10 часов
                 </div>
             </div>
         </div>

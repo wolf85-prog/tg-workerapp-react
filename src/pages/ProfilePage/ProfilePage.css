@@ -77,7 +77,7 @@ input[id="cb1"] {
     display: flex;
     justify-content: space-between;
     /* align-items: center; */
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
     
 .bullet-title {
@@ -119,4 +119,11 @@ input[id="cb1"] {
     cursor: pointer;
     margin-bottom: 20px;
     padding-bottom: 5px;
+}
+
+.profile-project-list {
+    z-index: 2;
+    position: relative;
+    box-sizing:border-box;
+    height: 72vh;
 }

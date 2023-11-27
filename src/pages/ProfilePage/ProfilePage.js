@@ -19,6 +19,7 @@ import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
 import iconCheck from "../../image/check.png";
 import iconUnCheck from "../../image/uncheck.png";
+import iconEdit from "../../image/icons/edit_icon.png";
 //import Loader from "../../components/UI/Loader/Loader";
 
 import btnMenu from "../../image/layers/icon_menu.png";
@@ -49,7 +50,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setSpecId(worker[0]?.id)
@@ -141,6 +142,7 @@ const ProfilePage = () => {
                     {/* <li><div className="bullet-title">Город</div>{workerhub[0]?.city}</li> */}
                     <li><div className="bullet-title">Специальность</div>              
                         <table className="table-noborder">{workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' ? <tr key={worker.id}><td>{worker.name}</td></tr> : '' )}</table>
+                        <Link to={'/edit-worker'} style={{ margin: 'auto 0'}}><img src={iconEdit} alt='' style={{ width: '40px', height: '40px'}}/></Link>
                     </li>
                     <li><div className="bullet-title">Рейтинг</div>
                         &#9733;&#9733;&#9733;&#9733;&#9733;  
@@ -150,10 +152,10 @@ const ProfilePage = () => {
                     {/* <li><div className="bullet-title">Замечания</div>{workerhub[0]?.comteg.map(item=>item.name).join(' ')}</li> */}
                     <li><div className="bullet-title">Мерч</div><img src={workerhub[0]?.merch.length > 0 ? iconCheck : iconUnCheck} alt='' width='25px' height='25px'/></li>
                     <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' | ')}</li>
-                    <li><div className="bullet-title">Общая сумма дохода</div><span style={{fontSize: '22px'}}>1 000</span></li>
+                    <li><div className="bullet-title" style={{margin: 'auto 0'}}>Общая сумма дохода</div><span style={{fontSize: '26px', margin: 'auto 0'}}>1 000.00</span></li>
                 </ol>
                 <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
-                    <Link to={'/edit-worker'}><button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Внести изменения</button></Link>
+                    <Link to={'/edit-worker'}><button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button></Link>
                 </div>
 
 
@@ -164,7 +166,7 @@ const ProfilePage = () => {
                     arr_status={status}
                 />
 
-                <div className="project-list">                   
+                <div className="profile-project-list">                   
                     {isPostsLoading
                         ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
                         : <ProjectList posts={sortedAndSearchedPosts} title="" workerId={specId}/>
@@ -175,7 +177,7 @@ const ProfilePage = () => {
             
 
             <div className='footer-block'>
-                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
+                {/* <Link to={'/menu'}><img src={btnMenu} alt='' /></Link> */}
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
             </div>
             
