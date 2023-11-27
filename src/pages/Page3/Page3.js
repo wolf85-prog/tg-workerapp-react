@@ -50,6 +50,7 @@ const Page3 = () => {
     useEffect(() => {
         const fetchData = async() => { 
             let con
+            let arrayProjects = []
             setIsPostsLoading(true)
 
             if (sortedAndSearchedPosts.length >0) {
@@ -67,10 +68,33 @@ const Page3 = () => {
                     if (item.smeta !== '') {
                        con = count + item.smeta.filter((item) => item.fio_id === specId)[0]?.specialist 
                        setCount(con)
-                    }  
+                    }
+                    
+                    const newProject = {
+                        date: item.specs.filter((item) => item.id === specId)[0].date,
+                        title: item.title,
+                        vid: item.specs.filter((item) => item.id === specId)[0]?.vid,
+                        start: item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.start : "00:00",
+                        stop: item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.stop : "00:00",
+                        stavka: item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.stavka : "0",
+                        pererabotka: item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.pererabotka : "0",
+                        gsm: item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.gsm : "0",
+                        specialist: item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.gsm : "0",
+                    }
 
-                    //const da[...item.specs]
+                    arrayProjects.push(newProject)
+
                 })
+
+                console.log("arrayProjects: ", arrayProjects)
+
+                const sortProjects = [...arrayProjects].sort((a, b) => {
+                    var dateA = new Date(a['date']), dateB = new Date(b['date'])                                  
+                    return dateA-dateB
+                })
+                console.log("sortProjects: ", sortProjects)
+                setProjects2(sortProjects)
+
             }
             
 
@@ -130,19 +154,32 @@ const Page3 = () => {
                             </tr>
                         </thead>
                         <tbody>
-                        {sortedAndSearchedPosts.length > 0 ?
-                        sortedAndSearchedPosts.map((item, index) => (
-                            <tr>
-                                <td className="fixed-side">{item.specs[0].date.split("T")[0].split('-')[2] + '.' + item.specs[0].date.split("T")[0].split('-')[1] + "." + item.specs[0].date.split("T")[0].split('-')[0]}</td>
-                                <td>{item.title}</td>
-                                <td>{item.specs.filter((item) => item.id === specId)[0]?.vid}</td>
-                                <td>{item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.start : "00:00"}</td>
-                                <td>{item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.stop : "00:00"}</td>
-                                <td>{item.smeta ? parseInt(item.smeta.filter((item) => item.fio_id === specId)[0]?.stavka).toLocaleString() : "0"}.00</td>
-                                <td>{item.smeta ? parseInt(item.smeta.filter((item) => item.fio_id === specId)[0]?.pererabotka).toLocaleString() : "0"}.00</td>
-                                <td>{item.smeta ? parseInt(item.smeta.filter((item) => item.fio_id === specId)[0]?.gsm).toLocaleString() : "0"}.00</td>
+                        {projects2.length > 0 ?
+                        projects2.map((item, index) => (
+                            // <tr>
+                            //     <td className="fixed-side">{item.specs[0].date.split("T")[0].split('-')[2] + '.' + item.specs[0].date.split("T")[0].split('-')[1] + "." + item.specs[0].date.split("T")[0].split('-')[0]}</td>
+                            //     <td>{item.title}</td>
+                            //     <td>{item.specs.filter((item) => item.id === specId)[0]?.vid}</td>
+                            //     <td>{item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.start : "00:00"}</td>
+                            //     <td>{item.smeta ? item.smeta.filter((item) => item.fio_id === specId)[0]?.stop : "00:00"}</td>
+                            //     <td>{item.smeta ? parseInt(item.smeta.filter((item) => item.fio_id === specId)[0]?.stavka).toLocaleString() : "0"}.00</td>
+                            //     <td>{item.smeta ? parseInt(item.smeta.filter((item) => item.fio_id === specId)[0]?.pererabotka).toLocaleString() : "0"}.00</td>
+                            //     <td>{item.smeta ? parseInt(item.smeta.filter((item) => item.fio_id === specId)[0]?.gsm).toLocaleString() : "0"}.00</td>
                                 
-                                <td>{item.smeta ? parseInt(item.smeta.filter((item) => item.fio_id === specId)[0]?.specialist).toLocaleString() : "0"}.00</td>
+                            //     <td>{item.smeta ? parseInt(item.smeta.filter((item) => item.fio_id === specId)[0]?.specialist).toLocaleString() : "0"}.00</td>
+                            //     <td style={{padding: '4px'}}><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
+                            // </tr>
+                            <tr>
+                                <td className="fixed-side">{item.date.split("T")[0].split('-')[2] + '.' + item.date.split("T")[0].split('-')[1] + "." + item.date.split("T")[0].split('-')[0]}</td>
+                                <td>{item.title}</td>
+                                <td>{item.vid}</td>
+                                <td>{item.start}</td>
+                                <td>{item.stop}</td>
+                                <td>{parseInt(item.stavka).toLocaleString()}.00</td>
+                                <td>{parseInt(item.pererabotka).toLocaleString()}.00</td>
+                                <td>{parseInt(item.gsm).toLocaleString()}.00</td>
+                                
+                                <td>{parseInt(item.specialist).toLocaleString()}.00</td>
                                 <td style={{padding: '4px'}}><img src={check2} width='25' style={{verticalAlign: 'middle', padding: '3px'}} alt=''/></td>
                             </tr>
                             ))
