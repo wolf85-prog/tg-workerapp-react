@@ -106,8 +106,10 @@ const SmetaPage = () => {
 
 
     useEffect(() => {
-        tg.onClick(handleClick)
-        
+        tg.onEvent("backButtonClicked", handleClick)
+        return () => {
+            tg.offEvent('backButtonClicked', handleClick)
+        }
     }, [handleClick])
 
     useEffect(() => {
