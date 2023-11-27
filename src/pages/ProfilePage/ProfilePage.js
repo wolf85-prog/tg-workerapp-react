@@ -36,10 +36,11 @@ const ProfilePage = () => {
     const { setSpecId, flag } = useUsersContext();
     const { projects, setProjects, specId} = useUsersContext();
     const { workerhub } = useUsersContext();
+    const [workerId, setWorkerId] = useState('')
 
     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
-    const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query, specId); //specId '1408579113'
+    const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query, workerId); //specId '1408579113'
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
@@ -53,7 +54,7 @@ const ProfilePage = () => {
             const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
-            setSpecId(worker[0]?.id)
+            setWorkerId(worker[0]?.id)
             
             setTimeout(()=> {      
                 if (worker.length > 0) {
@@ -81,6 +82,7 @@ const ProfilePage = () => {
     useEffect(()=> {
         const fetchDataProjects = async () => {
             const arrayProject = []
+            setIsPostsLoading(true)
                    
             console.log("Начинаю загружать проекты...")
             const projects = await getProjectsCash();
@@ -107,7 +109,9 @@ const ProfilePage = () => {
 
             console.log(arrayProject)
             
-            setProjects(arrayProject)        
+            setProjects(arrayProject)  
+            
+            setIsPostsLoading(false)   
         }
 
         fetchDataProjects()                    
