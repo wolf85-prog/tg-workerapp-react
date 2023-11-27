@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {useNavigate, useLocation} from "react-router-dom";
 import { useUsersContext } from "../../contexts/UserContext"
+import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import MyModal from "../../components/MyModal/MyModal";
@@ -22,7 +23,7 @@ import BackModal from "../../image/background/background_modal.png"
 
 const SmetaPage = () => {
     const location = useLocation()
-
+    const {tg, user} = useTelegram();
     const { specId } = useUsersContext();
 
     const projNumber = location.state?.proj
@@ -102,6 +103,16 @@ const SmetaPage = () => {
             setModal(false)
         }, 3000)
     }
+
+
+    useEffect(() => {
+        tg.onClick(handleClick)
+        
+    }, [handleClick])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
 
     //---------------------------------------------------------------------------------------
 
