@@ -120,7 +120,7 @@ const SmetaPage = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Моя смета', icon: 'false'}}/>
+            <Header header={{title: 'Мой доход', icon: 'false'}}/>
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
@@ -225,7 +225,8 @@ const SmetaPage = () => {
 
 
             <div className='block-smeta'>
-                <img src={btnMenu} alt='' onClick={handleClick} />
+                {/* <img src={btnMenu} alt='' onClick={handleClick} /> */}
+                <div></div>
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
             </div>
 

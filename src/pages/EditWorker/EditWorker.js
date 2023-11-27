@@ -56,6 +56,7 @@ const EditWorker = () => {
     const [titleSpec, setTitleSpec] = useState(false)
 
 //----------------------------------------------------------------------------------
+    const handleClick = () => navigate(-1);
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
@@ -88,6 +89,17 @@ const EditWorker = () => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх 
     })
+
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", handleClick)
+        return () => {
+            tg.offEvent('backButtonClicked', handleClick)
+        }
+    }, [handleClick])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
 
     //---------------------------------------------------------------------------------------
 
@@ -203,7 +215,7 @@ const EditWorker = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Новая специальность', icon: 'false'}}/>
+            <Header header={{title: 'Добавить специальность', icon: 'false'}}/>
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />

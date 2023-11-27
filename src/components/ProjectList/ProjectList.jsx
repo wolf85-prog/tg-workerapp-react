@@ -8,7 +8,7 @@ const ProjectList = ({posts, title, workerId, remove}) => {
     
     if (!posts.length) {
         return (
-            <h2 style={{textAlign: 'center', paddingTop: '80px'}}>
+            <h2 style={{textAlign: 'center', paddingTop: '80px', paddingBottom: '80px'}}>
                 Проекты не найдены
             </h2>
         )

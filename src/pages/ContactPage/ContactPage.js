@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import './ContactPage.css';
 import MyModal from "../../components/MyModal/MyModal";
@@ -20,6 +21,7 @@ import btnContact3 from "../../image/buttons/contact[Vk].png";
 import btnContact4 from "../../image/buttons/contact[Web].png";
 
 const ContactPage = () => {
+    const {tg, user} = useTelegram();
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
     const [modal, setModal] = useState(false)
@@ -30,6 +32,8 @@ const ContactPage = () => {
     const [showButton4, setShowButton4] = useState(false)
     
 //----------------------------------------------------------------------------------
+    const navigate = useNavigate();
+    const handleClick = () => navigate(-1);
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
@@ -57,6 +61,17 @@ const ContactPage = () => {
         }, 6000)
     }
 
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", handleClick)
+        return () => {
+            tg.offEvent('backButtonClicked', handleClick)
+        }
+    }, [handleClick])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
+
     //---------------------------------------------------------------------------------------
 
     return (
@@ -83,7 +98,7 @@ const ContactPage = () => {
             </div>
 
             <div className='footer-block' style={{bottom: '0'}}>
-                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
+                <Link to={'/profile'}><img src={btnMenu} alt='' /></Link>
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
             </div>
 

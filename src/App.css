@@ -327,7 +327,7 @@
 
 .footer-block {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 0 20px;
   position: fixed;

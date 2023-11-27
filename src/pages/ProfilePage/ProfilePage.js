@@ -20,8 +20,10 @@ import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 import iconCheck from "../../image/check.png";
 import iconUnCheck from "../../image/uncheck.png";
 import iconEdit from "../../image/icons/edit_icon.png";
+import iconDown from "../../image/icons/arrow_down.png";
 //import Loader from "../../components/UI/Loader/Loader";
 
+import ButtonsMenu2 from "../../image/buttons/button_for_menu2.png"
 import btnMenu from "../../image/layers/icon_menu.png";
 import btnChange from "../../image/buttons/button_for_menu2.png"
 import smallMenu from "../../image/layers/ULEY text.png"
@@ -144,9 +146,9 @@ const ProfilePage = () => {
                     <li><div className="bullet-title">ФИО</div>{workerhub[0]?.fio.split(' ')[0]}</li>
                     <li><div className="bullet-title"></div>{workerhub[0]?.fio.split(' ')[1]}</li>
                     {/* <li><div className="bullet-title">Город</div>{workerhub[0]?.city}</li> */}
-                    <li><div className="bullet-title">Специальность</div>              
-                        <table className="table-noborder">{workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' ? <tr key={worker.id}><td>{worker.name}</td></tr> : '' )}</table>
-                        <Link to={'/edit-worker'} style={{ margin: 'auto 0'}}><img src={iconEdit} alt='' style={{ width: '40px', height: '40px'}}/></Link>
+                    <li><div className="bullet-title">Специальность </div> 
+                        <Link to={'/edit-worker'} style={{position: 'absolute', left: '140px'}}><img src={iconEdit} alt='' style={{ width: '25px', height: '25px'}}/></Link>             
+                        <table className="table-noborder">{workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' ? <tr key={worker.id}><td>{worker.name}</td></tr> : '' )}</table> 
                     </li>
                     <li><div className="bullet-title">Рейтинг</div>
                         &#9733;&#9733;&#9733;&#9733;&#9733;  
@@ -175,13 +177,20 @@ const ProfilePage = () => {
                         ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
                         : <ProjectList posts={sortedAndSearchedPosts} title="" workerId={specId}/>
                     }
+
+                    <Link to={'/info'}><button className="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Информация</button></Link>
+                    <Link to={'/contacts'}><button className="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Контакты</button></Link>
+                
                 </div> 
+
                 
             </div>
             
+            <div className='down-icon'><img src={iconDown} alt='' style={{width: '60px'}} /></div>
 
             <div className='footer-block'>
                 {/* <Link to={'/menu'}><img src={btnMenu} alt='' /></Link> */}
+                <div></div>
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
             </div>
             

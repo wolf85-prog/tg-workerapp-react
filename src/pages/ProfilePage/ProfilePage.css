@@ -127,3 +127,10 @@ input[id="cb1"] {
     box-sizing:border-box;
     height: 72vh;
 }
+
+.down-icon {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    z-index: 50;
+}

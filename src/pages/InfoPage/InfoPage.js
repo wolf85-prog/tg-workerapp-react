@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import ButtonStatus from "../../components/UI/ButtonStatus/ButtonStatus";
 import MyButton from "../../components/UI/MyButton/MyButton";
@@ -18,11 +19,14 @@ import smallMenu from "../../image/layers/ULEY text.png"
 import BackModal from "../../image/background/background_modal.png"
 
 const InfoPage = () => {
+    const {tg, user} = useTelegram();
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
     const [modal, setModal] = useState(false)
 
 //----------------------------------------------------------------------------------
+    const navigate = useNavigate();
+    const handleClick = () => navigate(-1);
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
@@ -44,6 +48,17 @@ const InfoPage = () => {
             setModal(false)
         }, 3000)
     }
+
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", handleClick)
+        return () => {
+            tg.offEvent('backButtonClicked', handleClick)
+        }
+    }, [handleClick])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
     //---------------------------------------------------------------------------------------
 
     return (
@@ -77,7 +92,7 @@ const InfoPage = () => {
             </div>
             
             <div className='footer-block' style={{bottom: '0'}}>
-                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
+                <Link to={'/profile'}><img src={btnMenu} alt='' /></Link>
                 <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
             </div>
 
