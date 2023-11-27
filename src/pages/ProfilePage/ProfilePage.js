@@ -48,6 +48,8 @@ const ProfilePage = () => {
     const [showGrad2, setShowGrad2] = useState(false)
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
+    const [headerName, setHeaderName] = useState('Мой профиль');
+    const [scrollTop, setScrollTop] = useState(0);
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже   
@@ -124,11 +126,21 @@ const ProfilePage = () => {
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх  
     })
 
+    const handleScroll = (e) => {
+        if (e.currentTarget.scrollTop < 120) {
+           setHeaderName("Мой профиль"); 
+        } else if (e.currentTarget.scrollTop > 120) {
+            setHeaderName("Мои проекты"); 
+        }
+        
+    };
+
+
     //---------------------------------------------------------------------------------------
 
     return (
         <div className="App">
-            <Header header={{title: 'Мой профиль', icon: 'false'}}/>
+            <Header header={{title: `${headerName}`, icon: 'false'}}/>
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
@@ -141,7 +153,7 @@ const ProfilePage = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
 
 
-            <div className='form-profile'>
+            <div className='form-profile' onScroll={handleScroll}>
                 <ol className="bullet">
                     <li><div className="bullet-title">ФИО</div>{workerhub[0]?.fio.split(' ')[0]}</li>
                     <li><div className="bullet-title"></div>{workerhub[0]?.fio.split(' ')[1]}</li>
