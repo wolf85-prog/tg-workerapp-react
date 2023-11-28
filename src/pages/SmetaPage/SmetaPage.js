@@ -155,22 +155,22 @@ const SmetaPage = () => {
                             <td className='th-left'>Вид работ</td>
                             <td colspan="2">{projVid}</td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                             <td className='th-left'>Интервал</td>
                             <td>{projStart ? projStart : "00:00"}</td>
                             <td>{projStop ? projStop : "00:00"}</td>
-                        </tr>
+                        </tr> */}
                         <tr>
                             <td className='th-left'>Часы</td>
                             <td colspan="2">{projChasi ? projChasi : "0"}</td>
                         </tr>
                         <tr>
-                            <td className='th-left'>Смена</td>
-                            <td colspan="2">{projSmena ? parseInt(projSmena).toLocaleString() : "0"}.00</td>
-                        </tr>
-                        <tr>
                             <td className='th-left'>Ставка</td>
                             <td colspan="2">{projStavka ? parseInt(projStavka).toLocaleString() : "0"}.00</td>
+                        </tr>
+                        <tr>
+                            <td className='th-left'>Смена</td>
+                            <td colspan="2">{projSmena ? parseInt(projSmena).toLocaleString() : "0"}.00</td>
                         </tr>
                         <tr>
                             <td className='th-left'>Переработка</td>
@@ -180,7 +180,7 @@ const SmetaPage = () => {
                             <td className='th-left'>Доп. расходы</td>
                             <td colspan="2">{(projTransport + projGSM) ? (projTransport + projGSM) : "0"}.00</td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                             <td className='th-left'>Такси / ГСМ</td>
                             <td colspan="2">{projTaxi? parseInt(projTaxi).toLocaleString() : "0"}.00</td>
                         </tr>
@@ -191,7 +191,7 @@ const SmetaPage = () => {
                         <tr>
                             <td className='th-left'>Мерч</td>
                             <td colspan="2">0.00</td>
-                        </tr>
+                        </tr> */}
                         <tr>
                             <td colspan="4" style={{padding: '10px'}}></td>
                         </tr>

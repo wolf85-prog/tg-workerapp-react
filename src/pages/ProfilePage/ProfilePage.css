@@ -126,6 +126,8 @@ input[id="cb1"] {
     position: relative;
     box-sizing:border-box;
     height: 72vh;
+    margin-left: -5px;
+    margin-right: -5px;
 }
 
 .down-icon {

@@ -133,9 +133,9 @@ const ProfilePage = () => {
     })
 
     const handleScroll = (e) => {
-        if (e.currentTarget.scrollTop < 120) {
+        if (e.currentTarget.scrollTop < 150) {
            setHeaderName("Мой профиль"); 
-        } else if (e.currentTarget.scrollTop > 120) {
+        } else if (e.currentTarget.scrollTop > 150) {
             setHeaderName("Мои проекты"); 
         }
         
@@ -173,7 +173,7 @@ const ProfilePage = () => {
             <div className='form-profile' onScroll={handleScroll}>
                 <ol className="bullet">
                     <li><div className="bullet-title">ФИО</div>{workerhub[0]?.fio.split(' ')[0]}</li>
-                    <li><div className="bullet-title"></div>{workerhub[0]?.fio.split(' ')[1]}</li>
+                    <li><div className="bullet-title"></div>{workerhub[0]?.fio.split(' ')[1]} {workerhub[0]?.fio.split(' ')[2]}</li>
                     {/* <li><div className="bullet-title">Город</div>{workerhub[0]?.city}</li> */}
                     <li><div className="bullet-title">Специальность </div> 
                         <Link to={'/edit-worker'} style={{position: 'absolute', left: '140px'}}><img src={iconEdit} alt='' style={{ width: '22px', height: '22px'}}/></Link>             
@@ -195,7 +195,7 @@ const ProfilePage = () => {
 
 
                 {/* Проекты */}
-                <div style={{position: 'absolute', top: `calc(${height} - 100px)`}}>
+                <div style={{position: 'absolute', top: height}}>
                     <ProjectFilter
                         filter={filter}
                         setFilter={setFilter}
@@ -220,7 +220,7 @@ const ProfilePage = () => {
                 
             </div>
             
-            <div className='down-icon'><img src={iconDown} alt='' style={{width: '60px', opacity: '0.3'}} /></div>
+            <div className='down-icon'><img src={iconDown} alt='' style={{width: '80px', opacity: '0.9'}} /></div>
 
             <div className='footer-block'>
                 {/* <Link to={'/menu'}><img src={btnMenu} alt='' /></Link> */}
