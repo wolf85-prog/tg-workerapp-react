@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { useNavigate } from "react-router-dom";
 import { useTelegram } from "../../hooks/useTelegram";
+import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { useUsersContext } from "../../contexts/UserContext";
 import {useProjects} from "../../hooks/useProjects"
 import './ProfilePage.css';
@@ -32,8 +33,10 @@ import smallMenu from "../../image/layers/ULEY text.png"
 //const API_URL = process.env.REACT_APP_API_URL
 
 const ProfilePage = () => {
-    const {user} = useTelegram();
+    const {tg, user} = useTelegram();
     const navigate = useNavigate();
+    const handleClick = () => navigate(-1);
+
     //const { workerhub: worker } = useUsersContext();
     const { setSpecId, flag } = useUsersContext();
     const { projects, setProjects, specId} = useUsersContext();
@@ -50,6 +53,7 @@ const ProfilePage = () => {
     const [isPostsLoading, setIsPostsLoading] = useState(false);
     const [headerName, setHeaderName] = useState('Мой профиль');
     const [scrollTop, setScrollTop] = useState(0);
+    const { height, width } = useWindowDimensions();
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже   
@@ -124,6 +128,8 @@ const ProfilePage = () => {
     useEffect(() => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх  
+
+        console.log("height: ", height)
     })
 
     const handleScroll = (e) => {
@@ -134,6 +140,17 @@ const ProfilePage = () => {
         }
         
     };
+
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", handleClick)
+        return () => {
+            tg.offEvent('backButtonClicked', handleClick)
+        }
+    }, [handleClick])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
 
 
     //---------------------------------------------------------------------------------------
@@ -159,7 +176,7 @@ const ProfilePage = () => {
                     <li><div className="bullet-title"></div>{workerhub[0]?.fio.split(' ')[1]}</li>
                     {/* <li><div className="bullet-title">Город</div>{workerhub[0]?.city}</li> */}
                     <li><div className="bullet-title">Специальность </div> 
-                        <Link to={'/edit-worker'} style={{position: 'absolute', left: '140px'}}><img src={iconEdit} alt='' style={{ width: '25px', height: '25px'}}/></Link>             
+                        <Link to={'/edit-worker'} style={{position: 'absolute', left: '140px'}}><img src={iconEdit} alt='' style={{ width: '22px', height: '22px'}}/></Link>             
                         <table className="table-noborder">{workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' ? <tr key={worker.id}><td>{worker.name}</td></tr> : '' )}</table> 
                     </li>
                     <li><div className="bullet-title">Рейтинг</div>
@@ -178,22 +195,27 @@ const ProfilePage = () => {
 
 
                 {/* Проекты */}
-                <ProjectFilter
-                    filter={filter}
-                    setFilter={setFilter}
-                    arr_status={status}
-                />
+                <div style={{position: 'absolute', top: `calc(${height} - 100px)`}}>
+                    <ProjectFilter
+                        filter={filter}
+                        setFilter={setFilter}
+                        arr_status={status}
+                    />
 
-                <div className="profile-project-list">                   
-                    {isPostsLoading
-                        ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
-                        : <ProjectList posts={sortedAndSearchedPosts} title="" workerId={specId}/>
-                    }
+                    <div className="profile-project-list">                   
+                        {isPostsLoading
+                            ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
+                            : <ProjectList posts={sortedAndSearchedPosts} title="" workerId={specId}/>
+                        }
 
-                    <Link to={'/info'}><button className="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Информация</button></Link>
-                    <Link to={'/contacts'}><button className="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Контакты</button></Link>
+                        <Link to={'/info'}><button className="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Информация</button></Link>
+                        <Link to={'/contacts'}><button className="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Контакты</button></Link>
+                    
+                    </div> 
+                </div>
+
+
                 
-                </div> 
 
                 
             </div>

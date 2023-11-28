@@ -26,6 +26,9 @@ const SmetaPage = () => {
     const {tg, user} = useTelegram();
     const { specId } = useUsersContext();
 
+    const navigate = useNavigate();
+    const handleClick = () => navigate(-1);
+
     const projNumber = location.state?.proj
     const projTitle = location.state?.title
     const projDate = location.state?.date != null ? location.state?.date : '';
@@ -83,8 +86,7 @@ const SmetaPage = () => {
     const formatted = (d_end) ? `${date}.${month}.${year} - ${date2}.${month2}.${year2}` : `${date}.${month}.${year}`;
 
     // при первой загрузке приложения выполнится код ниже
-    const navigate = useNavigate();
-    const handleClick = () => navigate(-1);
+    
 
     useEffect(() => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
