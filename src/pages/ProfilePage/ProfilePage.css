@@ -122,6 +122,20 @@ input[id="cb1"] {
     padding-bottom: 5px;
 }
 
+.image-button3 {
+    width: 150px;
+    height: 45px;
+    border: none;
+    background-size: cover;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+}
+
+
 .profile-project-list {
     z-index: 2;
     position: relative;
@@ -136,12 +150,12 @@ input[id="cb1"] {
     /* bottom: 0; */
     z-index: 50;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -25%);
 }
 
 .down-image {
-    animation: showIcon 4s linear forwards;
-    /* animation-delay: 1s; */
+    animation: showIcon 6s linear forwards;
+    animation-delay: 1s;
 }
 
 @keyframes showIcon {
