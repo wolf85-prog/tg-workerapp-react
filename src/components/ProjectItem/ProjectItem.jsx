@@ -40,7 +40,7 @@ const ProjectItem = (props) => {
     const formatted = (d_end) ? `${date}.${month}.${year} - ${date2}.${month2}.${year2}` : `${date}.${month}.${year}`;
     const formattime = `${chas}:${minut}`
 
-    console.log(props.post.smeta)
+    //console.log(props.post.smeta)
     
     const onShowProject = () => {
         navigate('/smeta', {
