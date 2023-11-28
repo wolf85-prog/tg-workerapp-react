@@ -154,7 +154,7 @@ input[id="cb1"] {
 }
 
 .down-image {
-    animation: showIcon 6s linear forwards;
+    animation: showIcon 6s infinite;;
     animation-delay: 1s;
 }
 
