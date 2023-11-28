@@ -49,6 +49,7 @@ const ProfilePage = () => {
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
+    const [showArroy, setShowArroy] = useState(false)
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
     const [headerName, setHeaderName] = useState('Мой профиль');
@@ -128,8 +129,25 @@ const ProfilePage = () => {
     useEffect(() => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх  
+        
+        // 86400 секунд в дне
+        var minutCount = 0;
+        let i = 0;
 
-        console.log("height: ", height)
+        // повторить с интервалом 2 минуты
+        let timerId = setInterval(async() => {
+
+            minutCount++
+            i++ // счетчик интервалов
+
+            setShowArroy(true)
+
+        }, 4000); //каждые 4 сек
+
+        // остановить вывод через 30 дней
+        if (minutCount === 20000) {
+            clearInterval(timerId);
+        } 
     })
 
     const handleScroll = (e) => {
@@ -220,7 +238,7 @@ const ProfilePage = () => {
                 
             </div>
             
-            <div className='down-icon'><img src={iconDown} alt='' style={{width: '80px', opacity: '0.9'}} /></div>
+            <div className='down-icon'><img src={iconDown} alt='' style={{width: '80px', visibility: showArroy ? "visible": "hidden"}} /></div>
 
             <div className='footer-block'>
                 {/* <Link to={'/menu'}><img src={btnMenu} alt='' /></Link> */}
