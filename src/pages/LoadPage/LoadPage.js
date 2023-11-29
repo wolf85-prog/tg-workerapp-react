@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {useNavigate} from "react-router-dom";
 import { useResize } from './../../hooks/useResize';
+import { useTelegram } from "../../hooks/useTelegram";
 import './LoadPage.css';
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
@@ -10,7 +11,7 @@ import Logo2 from "../../image/workhub.png";
 
 
 const LoadPage = () => {
-
+    const {tg, user} = useTelegram();
     const navigate = useNavigate();
 
     const [showLogo, setShowLogo] = useState(false);
@@ -30,6 +31,10 @@ const LoadPage = () => {
 
         setTimeout(() =>  navigate("/hello"), 7000)
     }, []);
+
+    useEffect(()=>{
+        tg.expand() //раскрыть приложение на всю высоту
+    }, [])
 
 
     return (

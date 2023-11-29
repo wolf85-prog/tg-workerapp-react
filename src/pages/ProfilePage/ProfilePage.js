@@ -159,6 +159,10 @@ const ProfilePage = () => {
         
     };
 
+    useEffect(()=>{
+        tg.expand() //раскрыть приложение на всю высоту
+    }, [])
+
     useEffect(() => {
         tg.onEvent("backButtonClicked", handleClick)
         return () => {
