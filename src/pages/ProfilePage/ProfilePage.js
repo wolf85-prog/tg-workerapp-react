@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { useNavigate } from "react-router-dom";
+import { RWebShare } from "react-web-share";
+
 import { useTelegram } from "../../hooks/useTelegram";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { useUsersContext } from "../../contexts/UserContext";
@@ -57,6 +59,8 @@ const ProfilePage = () => {
     const [scrollTop, setScrollTop] = useState(0);
     const { height, width } = useWindowDimensions();
 
+    const [whatsapp, setWhatsapp] = useState('http://')
+    const [telegram, setTelegram] = useState('http://')
         
 //----------------------------------------------------------------------------------
 
@@ -210,8 +214,24 @@ const ProfilePage = () => {
                     <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' | ')}</li>
                     <li><div className="bullet-title" style={{margin: 'auto 0'}}>Общая сумма дохода</div><span style={{fontSize: '26px', margin: 'auto 0'}}>1 000.00</span></li>
                 </ol>
+
+                
+
                 <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
-                    <Link to={'/process'}><button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button></Link>
+                    <RWebShare
+                        data={{
+                            text: "Поделиться ссылкой - ULEY Workhub",
+                            url: "http://localhost:7001",
+                            title: "ULEY",
+                        }}
+                        onClick={() =>
+                            console.log("shared successfully!")
+                        }
+                        sites={[whatsapp, telegram]}
+                    >
+                        <button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button>
+                    </RWebShare>
+                    {/* <Link to={'/process'}><button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button></Link> */}
                 </div>
 
 

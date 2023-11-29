@@ -111,3 +111,12 @@
     margin: 8px 0;
     padding: 6px 35px;
 }
+
+.button-chat{
+    width: 25%;
+    height: auto;
+    background-color: green;
+    text-align: center;
+    padding: 1px 5px;
+    border-radius: 20px;
+}

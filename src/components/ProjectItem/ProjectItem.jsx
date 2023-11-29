@@ -77,6 +77,9 @@ const ProjectItem = (props) => {
                 <div style={{fontSize: '14px'}}>
                     0.00 рублей х 10 часов
                 </div>
+                <div className='button-chat'>
+                    Чат
+                </div>
             </div>
         </div>
     );
