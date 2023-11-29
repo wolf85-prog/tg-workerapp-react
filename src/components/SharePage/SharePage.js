@@ -50,7 +50,7 @@ const SharePage = ({title, text, url }) => {
 
     return (
         <div>
-            <button onClick={onShareClick} className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button>
+            <button onClick={onShareClick} className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Отправить</button>
             {isShowed ? (
                 <ul>
                 <li>

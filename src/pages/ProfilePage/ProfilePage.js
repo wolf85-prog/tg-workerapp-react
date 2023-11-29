@@ -30,7 +30,6 @@ import ButtonsMenu2 from "../../image/buttons/button_for_menu2.png"
 import btnMenu from "../../image/layers/icon_menu.png";
 import btnChange from "../../image/buttons/button_for_menu2.png"
 import smallMenu from "../../image/layers/logo_04_light.png"
-import SharePage from '../../components/SharePage/SharePage';
 
 
 //const API_URL = process.env.REACT_APP_API_URL
@@ -66,10 +65,7 @@ const ProfilePage = () => {
         return Math.floor(Math.random()  
                 * (max - min + 1)) + min; 
     }; 
-  
-    const handleClick = () => { 
-        setNum(randomNumberInRange(1, 20)); 
-    }; 
+   
         
 //----------------------------------------------------------------------------------
 
@@ -152,8 +148,6 @@ const ProfilePage = () => {
     useEffect(() => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх  
-
-        //setTimeout(() =>  setShowArroy(true), 1000) 
     })
 
     const handleScroll = (e) => {
@@ -163,8 +157,6 @@ const ProfilePage = () => {
             setHeaderName("Мои проекты");
             setShowArroy(false) 
         }
-
-        //if (e.currentTarget.scrollTop < 150) {
         
     };
 
@@ -223,31 +215,15 @@ const ProfilePage = () => {
                     <li><div className="bullet-title">Мерч</div><img src={workerhub[0]?.merch.length > 0 ? iconCheck : iconUnCheck} alt='' width='25px' height='25px'/></li>
                     <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' | ')}</li>
                     <li><div className="bullet-title" style={{margin: 'auto 0'}}>Общая сумма дохода</div><span style={{fontSize: '26px', margin: 'auto 0'}}>1 000.00</span></li>
-                </ol>
-
-                
+                </ol>            
 
                 <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
-                    {/* <RWebShare
-                        data={{
-                            text: "Поделиться ссылкой - ULEY Workhub",
-                            url: "http://localhost:7001",
-                            title: "ULEY",
-                        }}
-                        onClick={() =>
-                            console.log("shared successfully!")
-                        }
-                        sites={[whatsapp, telegram]}
-                    >                 
-                    </RWebShare> */}
-
-                    {/* <Link to={'/process'}><button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button></Link> */}
-
-                    <SharePage
+                    <Link to={'/process'}><button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button></Link>
+                    {/* <SharePage
                         url="https://mywebsite.com/article-slug"
                         title="Article Title"
                         message="Check this article"
-                    />
+                    /> */}
                 </div>
 
 
@@ -269,8 +245,7 @@ const ProfilePage = () => {
                             <Link to={'/info'}><button className="image-button3" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Инфо</button></Link>
                             <Link to={'/contacts'}><button className="image-button3" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Связь</button></Link> 
                         </div>
-                        
-                    
+
                     </div> 
                 </div>
 
