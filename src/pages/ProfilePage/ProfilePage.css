@@ -117,17 +117,32 @@ input[id="cb1"] {
     color: #ffffff;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 40px;
     margin-bottom: 20px;
     padding-bottom: 5px;
 }
+
+.image-button3 {
+    width: 150px;
+    height: 45px;
+    border: none;
+    background-size: cover;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+}
+
 
 .profile-project-list {
     z-index: 2;
     position: relative;
     box-sizing:border-box;
     height: 72vh;
-    margin-left: -5px;
-    margin-right: -5px;
+    /* margin-left: -5px;
+    margin-right: -5px; */
 }
 
 .down-icon {
@@ -135,10 +150,12 @@ input[id="cb1"] {
     /* bottom: 0; */
     z-index: 50;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -25%);
+}
 
-    animation: showIcon 4s linear forwards;
-    /* animation-delay: 1s; */
+.down-image {
+    animation: showIcon 6s infinite;;
+    animation-delay: 1s;
 }
 
 @keyframes showIcon {
@@ -151,4 +168,4 @@ input[id="cb1"] {
     100% {
         opacity: 0;
     }
-  }
+}

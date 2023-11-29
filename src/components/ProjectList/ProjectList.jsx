@@ -13,7 +13,7 @@ const ProjectList = ({posts, title, workerId, remove}) => {
             </h2>
         )
     } else {
-        console.log("Кол-во проектов: ", posts.length)
+        //console.log("Кол-во проектов: ", posts.length)
     }
 
     return (

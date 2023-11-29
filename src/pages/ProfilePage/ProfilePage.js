@@ -24,6 +24,7 @@ import iconEdit from "../../image/icons/edit_icon.png";
 import iconDown from "../../image/icons/arrow_down.png";
 //import Loader from "../../components/UI/Loader/Loader";
 
+import ButtonsMenu from "../../image/buttons/button_menu.png"
 import ButtonsMenu2 from "../../image/buttons/button_for_menu2.png"
 import btnMenu from "../../image/layers/icon_menu.png";
 import btnChange from "../../image/buttons/button_for_menu2.png"
@@ -35,17 +36,17 @@ import smallMenu from "../../image/layers/ULEY text.png"
 const ProfilePage = () => {
     const {tg, user} = useTelegram();
     const navigate = useNavigate();
-    const handleClick = () => navigate(-1);
 
     //const { workerhub: worker } = useUsersContext();
     const { setSpecId, flag } = useUsersContext();
     const { projects, setProjects, specId} = useUsersContext();
     const { workerhub } = useUsersContext();
     const [workerId, setWorkerId] = useState('')
+    const [projects2, setProjects2] = useState('')
 
     const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
-    const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query, workerId); //specId '1408579113'
+    const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query, workerId); //specId '1408579113'
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
@@ -55,6 +56,8 @@ const ProfilePage = () => {
     const [headerName, setHeaderName] = useState('Мой профиль');
     const [scrollTop, setScrollTop] = useState(0);
     const { height, width } = useWindowDimensions();
+
+        
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже   
@@ -88,6 +91,7 @@ const ProfilePage = () => {
         fetchData()   
     }, []);
 
+//---------------------------------------------------------------------
     useEffect(()=> {
         const fetchDataProjects = async () => {
             const arrayProject = []
@@ -117,37 +121,25 @@ const ProfilePage = () => {
             })
 
             console.log(arrayProject)
+
+            setTimeout(()=> {
+                setProjects2(arrayProject)  
             
-            setProjects(arrayProject)  
+                setIsPostsLoading(false)   
+            }, 3000)
             
-            setIsPostsLoading(false)   
+            
         }
 
         fetchDataProjects()                    
     }, [])
 
+//---------------------------------------------------------------------
     useEffect(() => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх  
-        
-        // 86400 секунд в дне
-        var minutCount = 0;
-        let i = 0;
 
-        // повторить с интервалом 2 минуты
-        let timerId = setInterval(async() => {
-
-            minutCount++
-            i++ // счетчик интервалов
-
-            setShowArroy(true)
-
-        }, 4000); //каждые 4 сек
-
-        // остановить вывод через 30 дней
-        if (minutCount === 20000) {
-            clearInterval(timerId);
-        } 
+        setTimeout(() =>  setShowArroy(true), 1000) 
     })
 
     const handleScroll = (e) => {
@@ -159,16 +151,20 @@ const ProfilePage = () => {
         
     };
 
+    const onClose = () => {
+        tg.close()
+    }
+
     useEffect(()=>{
         tg.expand() //раскрыть приложение на всю высоту
     }, [])
 
     useEffect(() => {
-        tg.onEvent("backButtonClicked", handleClick)
+        tg.onEvent("backButtonClicked", onClose)
         return () => {
-            tg.offEvent('backButtonClicked', handleClick)
+            tg.offEvent('backButtonClicked', onClose)
         }
-    }, [handleClick])
+    }, [onClose])
 
     useEffect(() => {
         tg.BackButton.show();
@@ -217,7 +213,7 @@ const ProfilePage = () => {
 
 
                 {/* Проекты */}
-                <div style={{position: 'absolute', top: height}}>
+                <div style={{position: 'absolute', top: height, width: '100%'}}>
                     <ProjectFilter
                         filter={filter}
                         setFilter={setFilter}
@@ -230,19 +226,18 @@ const ProfilePage = () => {
                             : <ProjectList posts={sortedAndSearchedPosts} title="" workerId={specId}/>
                         }
 
-                        <Link to={'/info'}><button className="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Информация</button></Link>
-                        <Link to={'/contacts'}><button className="image-button" style={{ backgroundImage: `url(${ButtonsMenu2})`}}>Контакты</button></Link>
+                        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                            <Link to={'/info'}><button className="image-button3" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Инфо</button></Link>
+                            <Link to={'/contacts'}><button className="image-button3" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Связь</button></Link> 
+                        </div>
+                        
                     
                     </div> 
                 </div>
 
-
-                
-
-                
             </div>
             
-            <div className='down-icon'><img src={iconDown} alt='' style={{width: '80px', visibility: showArroy ? "visible": "hidden"}} /></div>
+            <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', visibility: showArroy ? "visible": "hidden"}} /></div>
 
             <div className='footer-block'>
                 {/* <Link to={'/menu'}><img src={btnMenu} alt='' /></Link> */}
