@@ -350,3 +350,10 @@
   color: #fff;
   border-radius: 5px;
 }
+
+.small-menu-icon {
+  position: relative;
+  margin-right: 5px;
+  width: 120px;
+  opacity: 0.3;
+}

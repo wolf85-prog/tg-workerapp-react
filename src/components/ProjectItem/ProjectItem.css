@@ -38,11 +38,47 @@
     border-left: 10px solid #808080;
 }
 
+.red-color {
+    color: #C8372D;
+}
+.orange-color {
+    color: #c4830c;
+}
+.yellow-color {
+    color: #D1941A;
+}
+.green-color {
+    color: #008000;
+}
+.blue-color {
+    color: #236bd6;
+}
+.purple-color {
+    color: #800080;
+}
+.gray-color {
+    color: #808080;
+}
+.brown-color {
+    color: #a52a2a;
+}
+.pink-color {
+    color: #ffc0cb;
+}
+.default-color {
+    color: #808080;
+}
+
 .post_title {
     font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.maney_status {
+    position: absolute;
+    right: 15px;
 }
 
 .subscribe {

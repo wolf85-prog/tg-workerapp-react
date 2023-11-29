@@ -289,7 +289,7 @@ const NewPassport = () => {
             </div>
             
             <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
-                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
+                <img src={smallMenu} alt='' className='small-menu-icon' />
             </div>
         </div>
     );

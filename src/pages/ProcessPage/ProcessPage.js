@@ -25,7 +25,7 @@ const ProcessPage = () => {
                             justifyContent: 'center',
                             fontSize: '26px',
                             color: '#fff',
-                        }}> Пожалуйста, подождите! Процесс регистрации не завершен... 
+                        }}> Поделиться ссылкой 
                     </p>         
                 </div> 
             </form>         

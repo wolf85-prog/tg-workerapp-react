@@ -313,7 +313,7 @@ const EditWorker = () => {
             <div className='footer-block' style={{bottom: '0'}}>
                 {/* <Link to={'/profile'}><img src={btnMenu} alt='' /></Link> */}
                 <div></div>
-                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
+                <img src={smallMenu} alt='' className='small-menu-icon' />
             </div>
         </div>
     );

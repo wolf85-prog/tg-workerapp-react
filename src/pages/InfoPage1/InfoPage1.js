@@ -70,7 +70,7 @@ const InfoPage1 = () => {
 
             <div className='footer-block'>
                 <Link to={'/info'}><img src={btnMenu} alt='' /></Link>
-                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
+                <img src={smallMenu} alt='' className='small-menu-icon' />
             </div>      
         </div>
     );

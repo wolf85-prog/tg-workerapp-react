@@ -229,7 +229,7 @@ const SmetaPage = () => {
             <div className='block-smeta'>
                 {/* <img src={btnMenu} alt='' onClick={handleClick} /> */}
                 <div></div>
-                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
+                <img src={smallMenu} alt='' className='small-menu-icon' />
             </div>
 
 

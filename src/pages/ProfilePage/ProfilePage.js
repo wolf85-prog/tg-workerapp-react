@@ -28,7 +28,7 @@ import ButtonsMenu from "../../image/buttons/button_menu.png"
 import ButtonsMenu2 from "../../image/buttons/button_for_menu2.png"
 import btnMenu from "../../image/layers/icon_menu.png";
 import btnChange from "../../image/buttons/button_for_menu2.png"
-import smallMenu from "../../image/layers/ULEY text.png"
+import smallMenu from "../../image/layers/logo_04_light.png"
 
 
 //const API_URL = process.env.REACT_APP_API_URL
@@ -50,7 +50,7 @@ const ProfilePage = () => {
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
-    const [showArroy, setShowArroy] = useState(false)
+    const [showArroy, setShowArroy] = useState(true)
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
     const [headerName, setHeaderName] = useState('Мой профиль');
@@ -63,7 +63,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -139,15 +139,18 @@ const ProfilePage = () => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх  
 
-        setTimeout(() =>  setShowArroy(true), 1000) 
+        //setTimeout(() =>  setShowArroy(true), 1000) 
     })
 
     const handleScroll = (e) => {
-        if (e.currentTarget.scrollTop < 150) {
+        if (e.currentTarget.scrollTop < 300) {
            setHeaderName("Мой профиль"); 
-        } else if (e.currentTarget.scrollTop > 150) {
-            setHeaderName("Мои проекты"); 
+        } else if (e.currentTarget.scrollTop > 300) {
+            setHeaderName("Мои проекты");
+            setShowArroy(false) 
         }
+
+        //if (e.currentTarget.scrollTop < 150) {
         
     };
 
@@ -208,7 +211,7 @@ const ProfilePage = () => {
                     <li><div className="bullet-title" style={{margin: 'auto 0'}}>Общая сумма дохода</div><span style={{fontSize: '26px', margin: 'auto 0'}}>1 000.00</span></li>
                 </ol>
                 <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
-                    <Link to={'/edit-worker'}><button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button></Link>
+                    <Link to={'/process'}><button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button></Link>
                 </div>
 
 
@@ -242,7 +245,7 @@ const ProfilePage = () => {
             <div className='footer-block'>
                 {/* <Link to={'/menu'}><img src={btnMenu} alt='' /></Link> */}
                 <div></div>
-                <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '5px', width: '120px'}} />
+                <img src={smallMenu} alt='' className='small-menu-icon' />
             </div>
             
         </div>
