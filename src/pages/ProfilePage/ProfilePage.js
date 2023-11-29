@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { useNavigate } from "react-router-dom";
-import { RWebShare } from "react-web-share";
 
 import { useTelegram } from "../../hooks/useTelegram";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
@@ -31,6 +30,7 @@ import ButtonsMenu2 from "../../image/buttons/button_for_menu2.png"
 import btnMenu from "../../image/layers/icon_menu.png";
 import btnChange from "../../image/buttons/button_for_menu2.png"
 import smallMenu from "../../image/layers/logo_04_light.png"
+import SharePage from '../../components/SharePage/SharePage';
 
 
 //const API_URL = process.env.REACT_APP_API_URL
@@ -59,8 +59,17 @@ const ProfilePage = () => {
     const [scrollTop, setScrollTop] = useState(0);
     const { height, width } = useWindowDimensions();
 
-    const [whatsapp, setWhatsapp] = useState('http://')
-    const [telegram, setTelegram] = useState('http://')
+
+    const [num, setNum] = useState(0); 
+  
+    const randomNumberInRange = (min, max) => { 
+        return Math.floor(Math.random()  
+                * (max - min + 1)) + min; 
+    }; 
+  
+    const handleClick = () => { 
+        setNum(randomNumberInRange(1, 20)); 
+    }; 
         
 //----------------------------------------------------------------------------------
 
@@ -119,6 +128,7 @@ const ProfilePage = () => {
                     status: JSON.parse(project.status),
                     specs: JSON.parse(project.specs),
                     smeta: projObject ? JSON.parse(projObject?.dop) : "",
+                    statusMoney: randomNumberInRange(1, 5)
                 }
                 //console.log(newProject)
                 arrayProject.push(newProject)
@@ -218,7 +228,7 @@ const ProfilePage = () => {
                 
 
                 <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
-                    <RWebShare
+                    {/* <RWebShare
                         data={{
                             text: "Поделиться ссылкой - ULEY Workhub",
                             url: "http://localhost:7001",
@@ -228,10 +238,16 @@ const ProfilePage = () => {
                             console.log("shared successfully!")
                         }
                         sites={[whatsapp, telegram]}
-                    >
-                        <button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button>
-                    </RWebShare>
+                    >                 
+                    </RWebShare> */}
+
                     {/* <Link to={'/process'}><button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button></Link> */}
+
+                    <SharePage
+                        url="https://mywebsite.com/article-slug"
+                        title="Article Title"
+                        message="Check this article"
+                    />
                 </div>
 
 
@@ -260,6 +276,7 @@ const ProfilePage = () => {
 
             </div>
             
+            {/* стрелка */}
             <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', visibility: showArroy ? "visible": "hidden"}} /></div>
 
             <div className='footer-block'>

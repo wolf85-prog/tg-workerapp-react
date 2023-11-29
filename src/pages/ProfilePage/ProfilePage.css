@@ -44,11 +44,10 @@ input[id="cb1"] {
     margin-top: 80px;
     margin-left: 20px;
     margin-right: 20px;
-
-    z-index: 2;
+    z-index: 30;
     position: relative;
     box-sizing: border-box;
-    height: 78vh;
+    height: 100vh;
     overflow: auto;
 }
 
@@ -137,10 +136,10 @@ input[id="cb1"] {
 
 
 .profile-project-list {
-    z-index: 2;
+    z-index: 30;
     position: relative;
-    box-sizing:border-box;
-    height: 72vh;
+    /* box-sizing:border-box;
+    height: 72vh; */
     /* margin-left: -5px;
     margin-right: -5px; */
 }

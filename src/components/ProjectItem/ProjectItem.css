@@ -78,7 +78,7 @@
 
 .maney_status {
     position: absolute;
-    right: 15px;
+    right: 30px;
 }
 
 .subscribe {
@@ -115,7 +115,7 @@
 .button-chat{
     width: 25%;
     height: auto;
-    background-color: green;
+    background-color: #7a7a7a;
     text-align: center;
     padding: 1px 5px;
     border-radius: 20px;

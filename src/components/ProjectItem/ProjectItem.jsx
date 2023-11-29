@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './ProjectItem.css';
 import {useNavigate} from "react-router-dom";
 
@@ -41,6 +41,8 @@ const ProjectItem = (props) => {
     const formattime = `${chas}:${minut}`
 
     //console.log(props.post.smeta)
+
+    const [statusMoney, setStatusMoney] = useState("")
     
     const onShowProject = () => {
         navigate('/smeta', {
@@ -67,18 +69,38 @@ const ProjectItem = (props) => {
         })
     }
 
+    useEffect(()=> {
+        if (props.post.statusMoney === 1) {
+            setStatusMoney('Предварительно')
+        } else if(props.post.statusMoney === 2) {
+            setStatusMoney('Фактически')
+        }
+        else if(props.post.statusMoney === 3) {
+            setStatusMoney('Подтверждено')
+        }
+        else if(props.post.statusMoney === 4) {
+            setStatusMoney('На оплате')
+        }
+        else if(props.post.statusMoney === 5) {
+            setStatusMoney('Оплачено')
+        }
+    }, [])
+    
+
     return (
         <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
             <div className="post__content">
                 <div className="post_title">{props.post.title} <span style={{color: '#adaa15', fontSize: '20px'}}>1 000.00</span></div>
-                <div className="maney_status default-color">Предварительно</div>
+                <div className="maney_status default-color">{statusMoney}</div>
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>
                 <div>Начало: <span className="subscribe">{formattime}</span> </div>
                 <div style={{fontSize: '14px'}}>
                     0.00 рублей х 10 часов
                 </div>
-                <div className='button-chat'>
-                    Чат
+                <div style={{width: '100%', display: 'flex', justifyContent: 'flex-end'}}>
+                    <div className='button-chat'>
+                        Чат
+                    </div>
                 </div>
             </div>
         </div>
