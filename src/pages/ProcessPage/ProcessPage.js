@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import './ProcessPage.css';
 import {useTelegram} from "../../hooks/useTelegram";
 
-import qrCode from "../../image/qr.jpeg";
+import qrCode from "../../image/qr-code.png";
 
 import SharePage from '../../components/SharePage/SharePage';
 
@@ -38,9 +38,9 @@ const ProcessPage = () => {
                 <img src={qrCode} alt='' style={{width: '80%'}} />    
                 <div style={{marginTop: '50px'}}>
                     <SharePage
-                        url="https://mywebsite.com/article-slug"
-                        title="Article Title"
-                        message="Check this article"
+                        url="https://t.me/ULEY_Workhub_Bot"
+                        title="ULEY Workhub"
+                        message="Добавить бота"
                     /> 
                 </div>
                              

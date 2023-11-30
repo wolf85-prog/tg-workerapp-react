@@ -69,6 +69,13 @@
     color: #808080;
 }
 
+.post__title {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .post_title {
     font-size: 20px;
     display: flex;
@@ -78,7 +85,7 @@
 
 .maney_status {
     position: absolute;
-    right: 30px;
+    right: 0;
 }
 
 .subscribe {

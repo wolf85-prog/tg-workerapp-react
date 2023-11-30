@@ -89,7 +89,7 @@ const ProjectItem = (props) => {
 
     return (
         <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
-            <div className="post__content">
+            <div className="post__content" style={{position: 'relative'}}>
                 <div className="post_title">{props.post.title} <span style={{color: '#adaa15', fontSize: '20px'}}>1 000.00</span></div>
                 <div className="maney_status default-color">{statusMoney}</div>
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>
@@ -97,7 +97,7 @@ const ProjectItem = (props) => {
                 <div style={{fontSize: '14px'}}>
                     0.00 рублей х 10 часов
                 </div>
-                <div style={{width: '100%', display: 'flex', justifyContent: 'flex-end'}}>
+                <div style={{width: '100%', display: 'flex', justifyContent: 'flex-end', position: 'absolute', bottom: '0', right: '0'}}>
                     <div className='button-chat'>
                         Чат
                     </div>
