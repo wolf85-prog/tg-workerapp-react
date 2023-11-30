@@ -165,7 +165,7 @@ const ProfilePage = () => {
     }
 
     useEffect(()=>{
-        if (!tg.isExpanded()) {
+        if (!tg.isExpanded) {
            tg.expand() //раскрыть приложение на всю высоту 
         }
         
