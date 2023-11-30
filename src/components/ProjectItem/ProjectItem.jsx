@@ -3,10 +3,9 @@ import './ProjectItem.css';
 import {useNavigate} from "react-router-dom";
 
 import backgroundProject from './../../image/background/bacground_project.png'
+import { getStavka } from '../../http/stavkaAPI';
 
 const ProjectItem = (props) => {
-
-    //console.log("project title: ", props)
 
     const navigate = useNavigate();
    
@@ -17,8 +16,6 @@ const ProjectItem = (props) => {
     let d_end, year2, date2, month2, chas2, minut2;
 
     const d = new Date(dateProject);
-
-    //console.log("start: ", d)
 
     //time start
     const year = d.getFullYear()
@@ -40,18 +37,30 @@ const ProjectItem = (props) => {
     const formatted = (d_end) ? `${date}.${month}.${year} - ${date2}.${month2}.${year2}` : `${date}.${month}.${year}`;
     const formattime = `${chas}:${minut}`
 
-    //console.log(props.post.smeta)
-
     const [statusMoney, setStatusMoney] = useState("")
+    const [stavka, setStavka] = useState()
+
+    useEffect(()=> {
+        const fetch = async() => {
+            console.log(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
+            const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
+            console.log("stavka: ", res)
+            setStavka(res)
+        }
+
+        fetch()
+    }, [])
     
     const onShowProject = () => {
         navigate('/smeta', {
             state: {
               specId: props.specId,
               proj: props.number,
+              projId: props.post.id,
               title: props.post.title,
               date: props.post.date_start,
               date2: props.post.date_end,
+              staffId: props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId,  
               vid: props.post.specs.filter((item) => item.id === props.specId)[0]?.vid,   
               spec: props.post.specs.filter((item) => item.id === props.specId)[0]?.spec, 
               dateMain: props.post.specs.filter((item) => item.id === props.specId)[0]?.date,
@@ -90,7 +99,7 @@ const ProjectItem = (props) => {
     return (
         <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
             <div className="post__content" style={{position: 'relative'}}>
-                <div className="post_title">{props.post.title} <span style={{color: '#adaa15', fontSize: '20px'}}>1 000.00</span></div>
+                <div className="post_title">{props.post.title} <span style={{color: '#adaa15', fontSize: '20px'}}>{stavka ? stavka : '0.00'}</span></div>
                 <div className="maney_status default-color">{statusMoney}</div>
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>
                 <div>Начало: <span className="subscribe">{formattime}</span> </div>
