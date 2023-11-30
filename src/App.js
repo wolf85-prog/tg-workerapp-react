@@ -25,6 +25,7 @@ import NewPassport3 from './pages/NewPassport3/NewPassport3';
 import AnketaPage from './pages/AnketaPage/AnketaPage';
 import NewStavka from './pages/NewStavka/NewStavka';
 import EditWorker from './pages/EditWorker/EditWorker';
+import LoadPage2 from "./pages/LoadPage2/LoadPage2";
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
           <CssBaseline />
               <Routes>
                   <Route index element={<LoadPage />}/>
+                  <Route path={'load'} element={<LoadPage2 />}/>
                   <Route path={'hello'} element={<HelloPage />}/>
                   <Route path={'menu'} element={<MenuPage />}/>
                   <Route path={'add-worker'} element={<NewWorker />}/>
