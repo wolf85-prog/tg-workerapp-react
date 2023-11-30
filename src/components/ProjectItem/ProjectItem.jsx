@@ -42,8 +42,10 @@ const ProjectItem = (props) => {
 
     useEffect(()=> {
         const fetch = async() => {
-            console.log(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
+            //console.log(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
+            
             const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
+            
             console.log("stavka: ", res)
             setStavka(res)
         }
@@ -99,7 +101,7 @@ const ProjectItem = (props) => {
     return (
         <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
             <div className="post__content" style={{position: 'relative'}}>
-                <div className="post_title">{props.post.title} <span style={{color: '#adaa15', fontSize: '20px'}}>{stavka ? stavka : '0.00'}</span></div>
+                <div className="post_title">{props.post.title} <span style={{color: '#adaa15', fontSize: '20px'}}>{stavka ? stavka.payment : '0.00'}</span></div>
                 <div className="maney_status default-color">{statusMoney}</div>
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>
                 <div>Начало: <span className="subscribe">{formattime}</span> </div>
