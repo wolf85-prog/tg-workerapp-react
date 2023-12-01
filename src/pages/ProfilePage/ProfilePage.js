@@ -129,13 +129,16 @@ const ProfilePage = () => {
                 }
                 //
                 //console.log(workerId)
-                console.log(index, projObject ? JSON.parse(projObject?.dop).filter((item) => item.fio_id === workerId)[0]?.specialist : 0)
+                //console.log(index, projObject ? JSON.parse(projObject?.dop).filter((item) => item.fio_id === workerId)[0]?.specialist : 0)
                 //setSumma(summa + projObject ? JSON.parse(projObject?.dop).filter((item) => item.fio_id === workerId)[0]?.specialist : 0)
                 //tempSum = tempSum + projObject ? JSON.parse(projObject?.dop).filter((item) => item.fio_id === workerId)[0]?.specialist : 0
                 //console.log("tempSum: ", tempSum)
 
                 arrayProject.push(newProject)
             })
+
+            const tempArr = [...arrayProject.filter(post=> post.specs.find(item => item.id === workerId))]
+            console.log("tempArr: ", tempArr)
 
             setSumma(tempSum)
 
