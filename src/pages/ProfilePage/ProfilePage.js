@@ -11,6 +11,7 @@ import './ProfilePage.css';
 import { getWorkerId, getProjectsCash, getSmetaCash } from '../../http/chatAPI';
 
 import Loader from "../../components/UI/Loader/Loader";
+import Loader2 from "../../components/UI/Loader_min/Loader_min"
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 
@@ -57,7 +58,7 @@ const ProfilePage = () => {
     const [headerName, setHeaderName] = useState('Мой профиль');
     const [scrollTop, setScrollTop] = useState(0);
     const { height, width } = useWindowDimensions();
-
+    const [isLoadingSum, setIsLoadingSum] = useState(true);
 
     const [summa, setSumma] = useState(0); 
   
@@ -72,7 +73,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -127,18 +128,11 @@ const ProfilePage = () => {
                     smeta: projObject ? JSON.parse(projObject?.dop) : "",
                     statusMoney: randomNumberInRange(1, 5)
                 }
-                //
-                //console.log(workerId)
-                //console.log(index, projObject ? JSON.parse(projObject?.dop).filter((item) => item.fio_id === workerId)[0]?.specialist : 0)
-                //setSumma(summa + projObject ? JSON.parse(projObject?.dop).filter((item) => item.fio_id === workerId)[0]?.specialist : 0)
-                //tempSum = tempSum + projObject ? JSON.parse(projObject?.dop).filter((item) => item.fio_id === workerId)[0]?.specialist : 0
-                //console.log("tempSum: ", tempSum)
 
                 arrayProject.push(newProject)
             })
 
             const tempArr = [...arrayProject].filter(post=> post.specs.find(item => item.id === workerId))
-            //console.log("tempArr: ", tempArr..smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist)
             tempArr.map((item)=> {
                 console.log("ставка: ", item.smeta ? item.smeta.find((item2) => item2.fio_id === workerId)?.specialist : 0)
                 if (item.smeta) {
@@ -146,8 +140,8 @@ const ProfilePage = () => {
                 }
                 
             })
-
             setSumma(tempSum)
+            setIsLoadingSum(false)
 
             console.log(arrayProject)
 
@@ -235,7 +229,7 @@ const ProfilePage = () => {
                     {/* <li><div className="bullet-title">Замечания</div>{workerhub[0]?.comteg.map(item=>item.name).join(' ')}</li> */}
                     <li><div className="bullet-title">Мерч</div><img src={workerhub[0]?.merch.length > 0 ? iconCheck : iconUnCheck} alt='' width='25px' height='25px'/></li>
                     <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' | ')}</li>
-                    <li><div className="bullet-title" style={{margin: 'auto 0'}}>Общая сумма дохода</div><span style={{fontSize: '26px', margin: 'auto 0'}}>{parseInt(summa).toLocaleString()}.00</span></li>
+                    <li><div className="bullet-title" style={{margin: 'auto 0'}}>Общая сумма дохода</div><span style={{fontSize: '26px', margin: 'auto 0'}}>{isLoadingSum ? <Loader2 /> : parseInt(summa).toLocaleString()+".00"}</span></li>
                 </ol>            
 
                 <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>

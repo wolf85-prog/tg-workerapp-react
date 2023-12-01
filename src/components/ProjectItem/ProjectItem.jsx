@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './ProjectItem.css';
 import {useNavigate} from "react-router-dom";
+import Loader from "./../UI/Loader_min/Loader_min"
 
 import backgroundProject from './../../image/background/bacground_project.png'
 import { getStavka } from '../../http/stavkaAPI';
@@ -40,6 +41,8 @@ const ProjectItem = (props) => {
     const [statusMoney, setStatusMoney] = useState("")
     const [stavka, setStavka] = useState()
 
+    const [isLoading, setIsLoading] = useState(true);
+
     useEffect(()=> {
         const fetch = async() => {
             //console.log(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
@@ -49,6 +52,8 @@ const ProjectItem = (props) => {
 
                 //console.log("stavka: ", res)
                 setStavka(res)
+
+                setIsLoading(false)
             }, 3000)    
             
         }
@@ -104,7 +109,7 @@ const ProjectItem = (props) => {
     return (
         <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
             <div className="post__content" style={{position: 'relative'}}>
-                <div className="post_title">{props.post.title} <span style={{color: '#adaa15', fontSize: '20px'}}>{stavka ? stavka.payment : '0.00'}</span></div>
+                <div className="post_title">{props.post.title} <span style={{color: '#adaa15', fontSize: '20px'}}>{isLoading ? <Loader /> : (stavka ? stavka.payment : '0.00')}</span></div>
                 <div className="maney_status default-color">{statusMoney}</div>
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>
                 <div>Начало: <span className="subscribe">{formattime}</span> </div>

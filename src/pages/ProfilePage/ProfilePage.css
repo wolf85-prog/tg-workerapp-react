@@ -153,7 +153,7 @@ input[id="cb1"] {
 }
 
 .down-image {
-    animation: showIcon 6s infinite;;
+    animation: mover 2s infinite alternate, showIcon 10s infinite;
     /* animation-delay: 1s; */
 }
 
@@ -167,4 +167,9 @@ input[id="cb1"] {
     100% {
         opacity: 1;
     }
+}
+
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
 }
