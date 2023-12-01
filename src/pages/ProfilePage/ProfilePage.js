@@ -60,6 +60,8 @@ const ProfilePage = () => {
     const { height, width } = useWindowDimensions();
     const [isLoadingSum, setIsLoadingSum] = useState(true);
 
+    const [showHistory, setShowHistory] = useState(false);
+
     const [summa, setSumma] = useState(0); 
   
     const randomNumberInRange = (min, max) => { 
@@ -195,6 +197,17 @@ const ProfilePage = () => {
     }, [])
 
 
+    const showQRCode = () => {
+        navigate('/process')
+    }
+
+    {/* Показать  */}
+    const clickShowHistory = (e) => {
+        e.preventDefault();
+
+        showHistory ? setShowHistory(false) : setShowHistory(true)
+    }
+
     //---------------------------------------------------------------------------------------
 
     return (
@@ -230,15 +243,18 @@ const ProfilePage = () => {
                     <li><div className="bullet-title">Мерч</div><img src={workerhub[0]?.merch.length > 0 ? iconCheck : iconUnCheck} alt='' width='25px' height='25px'/></li>
                     <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' | ')}</li>
                     <li><div className="bullet-title" style={{margin: 'auto 0'}}>Общая сумма дохода</div><span style={{fontSize: '26px', margin: 'auto 0'}}>{isLoadingSum ? <Loader2 /> : parseInt(summa).toLocaleString()+".00"}</span></li>
-                </ol>            
+                    <li><div style={{width: '100%', marginRight: '20px'}}><button onClick={clickShowHistory} style={{padding: '5px 10px'}}>История</button></div></li>
+                </ol>   
+
+                <div>
+                    <ol className="bullet" style={{ display: showHistory ? "block" : "none" }}>
+                        <li><div className="bullet-title">Ноябрь - 1 000.00</div></li>
+                        <li><div className="bullet-title">Сентябрь - 1 000.00</div></li>
+                    </ol>
+                </div>         
 
                 <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
-                    <Link to={'/process'}><button className="image-button2" style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button></Link>
-                    {/* <SharePage
-                        url="https://mywebsite.com/article-slug"
-                        title="Article Title"
-                        message="Check this article"
-                    /> */}
+                    <button className="image-button2" onClick={showQRCode} style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button>
                 </div>
 
 
