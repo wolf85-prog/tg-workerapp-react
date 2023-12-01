@@ -44,10 +44,13 @@ const ProjectItem = (props) => {
         const fetch = async() => {
             //console.log(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
             
-            const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
+            setTimeout(async()=> {
+                const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
+
+                //console.log("stavka: ", res)
+                setStavka(res)
+            }, 3000)    
             
-            console.log("stavka: ", res)
-            setStavka(res)
         }
 
         fetch()

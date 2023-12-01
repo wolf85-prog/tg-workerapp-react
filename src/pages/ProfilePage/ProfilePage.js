@@ -59,7 +59,7 @@ const ProfilePage = () => {
     const { height, width } = useWindowDimensions();
 
 
-    const [num, setNum] = useState(0); 
+    const [summa, setSumma] = useState(0); 
   
     const randomNumberInRange = (min, max) => { 
         return Math.floor(Math.random()  
@@ -113,7 +113,8 @@ const ProfilePage = () => {
             const smets = await getSmetaCash();
             console.log("smets: ", smets)
 
-            projects.map((project)=> {
+            let tempSum = 0
+            projects.map((project, index)=> {
                 let projObject = smets.find((proj) => proj.projectId === project.id)
 
                 const newProject = {
@@ -126,9 +127,17 @@ const ProfilePage = () => {
                     smeta: projObject ? JSON.parse(projObject?.dop) : "",
                     statusMoney: randomNumberInRange(1, 5)
                 }
-                //console.log(newProject)
+                //
+                //console.log(workerId)
+                console.log(index, projObject ? JSON.parse(projObject?.dop).filter((item) => item.fio_id === workerId)[0]?.specialist : 0)
+                //setSumma(summa + projObject ? JSON.parse(projObject?.dop).filter((item) => item.fio_id === workerId)[0]?.specialist : 0)
+                //tempSum = tempSum + projObject ? JSON.parse(projObject?.dop).filter((item) => item.fio_id === workerId)[0]?.specialist : 0
+                //console.log("tempSum: ", tempSum)
+
                 arrayProject.push(newProject)
             })
+
+            setSumma(tempSum)
 
             console.log(arrayProject)
 
@@ -136,8 +145,7 @@ const ProfilePage = () => {
                 setProjects2(arrayProject)  
             
                 setIsPostsLoading(false)   
-            }, 3000)
-            
+            }, 3000)      
             
         }
 
@@ -217,7 +225,7 @@ const ProfilePage = () => {
                     {/* <li><div className="bullet-title">Замечания</div>{workerhub[0]?.comteg.map(item=>item.name).join(' ')}</li> */}
                     <li><div className="bullet-title">Мерч</div><img src={workerhub[0]?.merch.length > 0 ? iconCheck : iconUnCheck} alt='' width='25px' height='25px'/></li>
                     <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' | ')}</li>
-                    <li><div className="bullet-title" style={{margin: 'auto 0'}}>Общая сумма дохода</div><span style={{fontSize: '26px', margin: 'auto 0'}}>1 000.00</span></li>
+                    <li><div className="bullet-title" style={{margin: 'auto 0'}}>Общая сумма дохода</div><span style={{fontSize: '26px', margin: 'auto 0'}}>{summa}</span></li>
                 </ol>            
 
                 <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
