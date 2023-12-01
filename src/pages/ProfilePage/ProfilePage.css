@@ -134,6 +134,17 @@ input[id="cb1"] {
     padding-bottom: 5px;
 }
 
+.history-button {
+    width: 120px;
+    height: 35px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    background: linear-gradient(174deg, rgba(0,0,0,1) 0%, rgba(64,61,61,1) 64%);
+    font-size: 14px;
+}
+
 
 .profile-project-list {
     z-index: 30;

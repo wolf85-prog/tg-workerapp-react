@@ -243,16 +243,18 @@ const ProfilePage = () => {
                     <li><div className="bullet-title">Мерч</div><img src={workerhub[0]?.merch.length > 0 ? iconCheck : iconUnCheck} alt='' width='25px' height='25px'/></li>
                     <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' | ')}</li>
                     <li><div className="bullet-title" style={{margin: 'auto 0'}}>Общая сумма дохода</div><span style={{fontSize: '26px', margin: 'auto 0'}}>{isLoadingSum ? <Loader2 /> : parseInt(summa).toLocaleString()+".00"}</span></li>
-                    <li><div style={{width: '100%', marginRight: '20px'}}><button onClick={clickShowHistory} style={{padding: '5px 10px'}}>История</button></div></li>
+                    <li><div style={{width: '100%', marginRight: '20px'}}><button onClick={clickShowHistory} className='history-button' style={{padding: '5px 10px', backgroundImage: `url(${btnChange})`}}>История</button></div></li>
                 </ol>   
 
                 <div>
                     <ol className="bullet" style={{ display: showHistory ? "block" : "none" }}>
-                        <li><div className="bullet-title">Ноябрь - 1 000.00</div></li>
-                        <li><div className="bullet-title">Сентябрь - 1 000.00</div></li>
+                        <li><div className="bullet-title">Ноябрь 2023 [Подтверждено]</div><div>10 000.00</div></li>
+                        <li><div className="bullet-title">Октябрь 2023 [Оплачено]</div><div>10 000.00</div></li>
+                        <li><div className="bullet-title">Сентябрь 2023 [Оплачено]</div><div>10 000.00</div></li>
                     </ol>
                 </div>         
 
+                {/* Кнопка Пригласить друга */}
                 <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
                     <button className="image-button2" onClick={showQRCode} style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button>
                 </div>

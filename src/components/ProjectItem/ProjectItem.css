@@ -127,3 +127,18 @@
     padding: 1px 5px;
     border-radius: 20px;
 }
+
+.green-fon {
+    background-color: #008000;
+}
+
+.gray-fon {
+    background-color: #808080;;
+}
+
+.etap {
+    width: 20px;
+    height: 5px;
+    border-radius: 15px;
+    margin-left: 2px;
+}

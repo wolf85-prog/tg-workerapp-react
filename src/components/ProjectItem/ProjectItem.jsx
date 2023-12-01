@@ -109,7 +109,8 @@ const ProjectItem = (props) => {
     return (
         <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
             <div className="post__content" style={{position: 'relative'}}>
-                <div className="post_title">{props.post.title} <span style={{color: '#adaa15', fontSize: '20px'}}>{isLoading ? <Loader /> : (stavka ? parseInt(stavka.payment).toLocaleString()+".00" : '0.00')}</span></div>
+                <div className="post_title">{props.post.title} <span style={{color: '#c9c8c8', fontSize: '20px'}}>{isLoading ? <Loader /> : (stavka ? parseInt(stavka.payment).toLocaleString()+".00" : '0.00')}</span></div>
+                <div style={{display: 'flex', justifyContent: 'flex-end'}}><div className='etap green-fon'></div><div className='etap green-fon'></div><div className='etap green-fon'></div><div className='etap green-fon'></div><div className='etap gray-fon'></div></div>
                 <div className="maney_status default-color">{statusMoney}</div>
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>
                 <div>Начало: <span className="subscribe">{formattime}</span> </div>
