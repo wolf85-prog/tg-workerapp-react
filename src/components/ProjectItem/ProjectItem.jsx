@@ -107,9 +107,10 @@ const ProjectItem = (props) => {
         }
     }, [])
     
-    const goToChat = () => {
+    const goToChat = (e) => {
+        e.stopPropagation();
         //console.log("sdfsdf")
-        window.location.replace(props.post.tgURLChat);
+        window.location.replace(props.post.tgURL_chat);
       };
 
     return (

@@ -47,7 +47,7 @@ input[id="cb1"] {
     z-index: 30;
     position: relative;
     box-sizing: border-box;
-    height: 95vh;
+    height: 100vh;
     overflow: auto;
 }
 
