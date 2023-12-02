@@ -39,9 +39,7 @@ const ProfilePage = () => {
     const {tg, user} = useTelegram();
     const navigate = useNavigate();
 
-    //const { workerhub: worker } = useUsersContext();
-    const { setSpecId, flag } = useUsersContext();
-    const { projects, setProjects, specId} = useUsersContext();
+    const { projects, setProjects, specId, setSpecId, flag } = useUsersContext();
     const { workerhub } = useUsersContext();
     const [workerId, setWorkerId] = useState('')
     const [projects2, setProjects2] = useState('')
@@ -79,12 +77,13 @@ const ProfilePage = () => {
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
+            setSpecId(worker[0]?.id)
             
             setTimeout(()=> {      
                 if (worker.length > 0) {
                     //зарегистрирован
                     console.log("Зарегистирован", "REG")
-                    setSpecId(worker[0]?.id)
+                    //setSpecId(worker[0]?.id)
                 } else  {
                     if (flag === 'ONLY_REG') {
                         //только что зарегистрирован
@@ -111,10 +110,11 @@ const ProfilePage = () => {
                    
             console.log("Начинаю загружать проекты...")
             const projects = await getProjectsCash();
+            console.log("projects: ", projects)
 
             console.log("Начинаю загружать сметы...")
             const smets = await getSmetaCash();
-            console.log("smets: ", smets)
+            //console.log("smets: ", smets)
 
             let tempSum = 0
             projects.map((project, index)=> {
@@ -131,34 +131,32 @@ const ProfilePage = () => {
                     smeta: projObject ? JSON.parse(projObject?.dop) : "",
                     statusMoney: randomNumberInRange(1, 5)
                 }
-
                 arrayProject.push(newProject)
             })
 
-            setTimeout(()=> {
-                console.log(arrayProject)
+            console.log(workerId)
 
-                setProjects2(arrayProject) 
-                
-                const tempArr = [...arrayProject].filter(post=> post.specs.find(item => item.id === workerId))
-                tempArr.map((item)=> {
-                    console.log("ставка: ", item.smeta ? item.smeta.find((item2) => item2.fio_id === workerId)?.specialist : 0)
-                    if (item.smeta) {
-                        tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
-                    }    
-                })
+            const tempArr = [...arrayProject].filter(post=> post.specs.find(item => item.id === workerId))
+            tempArr.map((item)=> {
+                if (item.smeta) {
+                    tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
+                }   
                 console.log("tempSum: ", tempSum)
-                setSumma(tempSum)
+            })
 
-                setIsLoadingSum(false)
-            
+            console.log("tempArr: ", tempArr)
+            setSumma(tempSum)
+            setIsLoadingSum(false)
+
+            setTimeout(()=> {
+                setProjects2(arrayProject)     
                 setIsPostsLoading(false)   
-            }, 5000)      
+            }, 3000)      
             
         }
 
         fetchDataProjects()                    
-    }, [])
+    }, [workerId])
 
 //---------------------------------------------------------------------
     useEffect(() => {

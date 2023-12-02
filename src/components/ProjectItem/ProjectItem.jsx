@@ -2,13 +2,14 @@ import React, {useState, useEffect} from 'react';
 import './ProjectItem.css';
 import {useNavigate} from "react-router-dom";
 import Loader from "./../UI/Loader_min/Loader_min"
-
-import backgroundProject from './../../image/background/bacground_project.png'
+import { useUsersContext } from "../../contexts/UserContext";
 import { getStavka } from '../../http/stavkaAPI';
 
 const ProjectItem = (props) => {
 
     const navigate = useNavigate();
+
+    const {specId} = useUsersContext();
    
     const statusColor = props.post.status == null ? 'gray' : props.post.status.color;
     const dateProject = props.post.date_start != null ? props.post.date_start : '';
@@ -45,7 +46,7 @@ const ProjectItem = (props) => {
 
     useEffect(()=> {
         const fetch = async() => {
-            //console.log(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
+            console.log(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
             
             setTimeout(async()=> {
                 const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
