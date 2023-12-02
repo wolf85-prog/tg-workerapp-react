@@ -135,24 +135,25 @@ const ProfilePage = () => {
                 arrayProject.push(newProject)
             })
 
-            const tempArr = [...arrayProject].filter(post=> post.specs.find(item => item.id === workerId))
-            tempArr.map((item)=> {
-                console.log("ставка: ", item.smeta ? item.smeta.find((item2) => item2.fio_id === workerId)?.specialist : 0)
-                if (item.smeta) {
-                    tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
-                }
-                
-            })
-            setSumma(tempSum)
-            setIsLoadingSum(false)
-
-            console.log(arrayProject)
-
             setTimeout(()=> {
-                setProjects2(arrayProject)  
+                console.log(arrayProject)
+
+                setProjects2(arrayProject) 
+                
+                const tempArr = [...arrayProject].filter(post=> post.specs.find(item => item.id === workerId))
+                tempArr.map((item)=> {
+                    console.log("ставка: ", item.smeta ? item.smeta.find((item2) => item2.fio_id === workerId)?.specialist : 0)
+                    if (item.smeta) {
+                        tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
+                    }    
+                })
+                console.log("tempSum: ", tempSum)
+                setSumma(tempSum)
+
+                setIsLoadingSum(false)
             
                 setIsPostsLoading(false)   
-            }, 3000)      
+            }, 5000)      
             
         }
 

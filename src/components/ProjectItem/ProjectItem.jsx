@@ -14,8 +14,6 @@ const ProjectItem = (props) => {
     const dateProject = props.post.date_start != null ? props.post.date_start : '';
     const dateProject2 = props.post.date_end != null ? props.post.date_end : '';
 
-    console.log("URL: ", props.post.tgURL_chat)
-
     let d_end, year2, date2, month2, chas2, minut2;
 
     const d = new Date(dateProject);
