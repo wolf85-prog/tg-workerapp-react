@@ -14,6 +14,8 @@ const ProjectItem = (props) => {
     const dateProject = props.post.date_start != null ? props.post.date_start : '';
     const dateProject2 = props.post.date_end != null ? props.post.date_end : '';
 
+    console.log("URL: ", props.post.tgURL_chat)
+
     let d_end, year2, date2, month2, chas2, minut2;
 
     const d = new Date(dateProject);
@@ -105,6 +107,10 @@ const ProjectItem = (props) => {
         }
     }, [])
     
+    const goToChat = () => {
+        console.log("sdfsdf")
+        //window.location.replace(props.post.tgURLChat);
+      };
 
     return (
         <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
@@ -118,9 +124,11 @@ const ProjectItem = (props) => {
                     0.00 рублей х 10 часов
                 </div>
                 <div style={{width: '100%', display: 'flex', justifyContent: 'flex-end', position: 'absolute', bottom: '0', right: '0'}}>
-                    <div className='button-chat'>
+                    {props.post.tgURL_chat && 
+                    <div className='button-chat' onClick={goToChat}>
                         Чат
                     </div>
+                    }
                 </div>
             </div>
         </div>

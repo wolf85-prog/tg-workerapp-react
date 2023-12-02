@@ -125,6 +125,7 @@ const ProfilePage = () => {
                     title: project.title,
                     date_start: project.dateStart,
                     date_end: project.dateEnd,
+                    tgURL_chat: project.tgURLchat,
                     status: JSON.parse(project.status),
                     specs: JSON.parse(project.specs),
                     smeta: projObject ? JSON.parse(projObject?.dop) : "",
@@ -243,7 +244,7 @@ const ProfilePage = () => {
                     <li><div className="bullet-title">Мерч</div><img src={workerhub[0]?.merch.length > 0 ? iconCheck : iconUnCheck} alt='' width='25px' height='25px'/></li>
                     <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' | ')}</li>
                     <li><div className="bullet-title" style={{margin: 'auto 0'}}>Общая сумма дохода</div><span style={{fontSize: '26px', margin: 'auto 0'}}>{isLoadingSum ? <Loader2 /> : parseInt(summa).toLocaleString()+".00"}</span></li>
-                    <li><div style={{width: '100%', marginRight: '20px'}}><button onClick={clickShowHistory} className='history-button' style={{padding: '5px 10px', backgroundImage: `url(${btnChange})`}}>История</button></div></li>
+                    <li><div style={{width: '100%'}}><button onClick={clickShowHistory} className='history-button'>История</button></div></li>
                 </ol>   
 
                 <div>
