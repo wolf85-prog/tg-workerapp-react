@@ -108,8 +108,8 @@ const ProjectItem = (props) => {
     }, [])
     
     const goToChat = () => {
-        console.log("sdfsdf")
-        //window.location.replace(props.post.tgURLChat);
+        //console.log("sdfsdf")
+        window.location.replace(props.post.tgURLChat);
       };
 
     return (
