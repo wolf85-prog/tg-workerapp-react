@@ -44,6 +44,12 @@ const ProjectItem = (props) => {
 
     const [isLoading, setIsLoading] = useState(true);
 
+    const [showEtap1, setShowEtap1] = useState(false);
+    const [showEtap2, setShowEtap2] = useState(false);
+    const [showEtap3, setShowEtap3] = useState(false);
+    const [showEtap4, setShowEtap4] = useState(false);
+    const [showEtap5, setShowEtap5] = useState(false);
+
     useEffect(()=> {
         const fetch = async() => {
             console.log(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
@@ -91,17 +97,32 @@ const ProjectItem = (props) => {
 
     useEffect(()=> {
         if (props.post.statusMoney === 1) {
+            setShowEtap1(true)
             setStatusMoney('Предварительно')
         } else if(props.post.statusMoney === 2) {
+            setShowEtap1(true)
+            setShowEtap2(true)
             setStatusMoney('Фактически')
         }
         else if(props.post.statusMoney === 3) {
+            setShowEtap1(true)
+            setShowEtap2(true)
+            setShowEtap3(true)
             setStatusMoney('Подтверждено')
         }
         else if(props.post.statusMoney === 4) {
+            setShowEtap1(true)
+            setShowEtap2(true)
+            setShowEtap3(true)
+            setShowEtap4(true)
             setStatusMoney('На оплате')
         }
         else if(props.post.statusMoney === 5) {
+            setShowEtap1(true)
+            setShowEtap2(true)
+            setShowEtap3(true)
+            setShowEtap4(true)
+            setShowEtap5(true)
             setStatusMoney('Оплачено')
         }
     }, [])
@@ -113,10 +134,11 @@ const ProjectItem = (props) => {
       };
 
     return (
-        <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
+        // <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
+        <div className={`box`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
             <div className="post__content" style={{position: 'relative'}}>
                 <div className="post_title">{props.post.title} <span style={{color: '#c9c8c8', fontSize: '20px'}}>{isLoading ? <Loader /> : (stavka ? parseInt(stavka.payment).toLocaleString()+".00" : '0.00')}</span></div>
-                <div style={{display: 'flex', justifyContent: 'flex-end'}}><div className='etap green-fon'></div><div className='etap green-fon'></div><div className='etap green-fon'></div><div className='etap green-fon'></div><div className='etap gray-fon'></div></div>
+                <div style={{display: 'flex', justifyContent: 'flex-end'}}><div className={showEtap1 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap2 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap3 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap4 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap5 ? 'etap green-fon' : 'etap gray-fon'}></div></div>
                 <div className="maney_status default-color">{statusMoney}</div>
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>
                 <div>Начало: <span className="subscribe">{formattime}</span> </div>

@@ -15,7 +15,7 @@ import smallMenu from "../../image/layers/ULEY text.png"
 
 import callPoster from "../../image/call_poster.png"
 
-import btnContact1 from "../../image/buttons/contact[E-mail].png";
+import btnContact1 from "../../image/buttons/contact[office].png";
 import btnContact2 from "../../image/buttons/contact[Phone].png";
 import btnContact3 from "../../image/buttons/contact[Vk].png";
 import btnContact4 from "../../image/buttons/contact[Web].png";
@@ -40,10 +40,10 @@ const ContactPage = () => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх 
 
-        setTimeout(() =>  setShowButton1(true), 500) // кнопка 1
-        setTimeout(() =>  setShowButton2(true), 1500) // кнопка 2
-        setTimeout(() =>  setShowButton3(true), 2500) // кнопка 3
-        setTimeout(() =>  setShowButton4(true), 3500) // кнопка 4
+        setTimeout(() =>  setShowButton1(true), 200) // кнопка 1
+        setTimeout(() =>  setShowButton2(true), 700) // кнопка 2
+        setTimeout(() =>  setShowButton3(true), 1200) // кнопка 3
+        setTimeout(() =>  setShowButton4(true), 1700) // кнопка 4
     });
 
     const openInNewTab = (url) => {
@@ -90,10 +90,10 @@ const ContactPage = () => {
             
             <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
                 <div className="form-contact">
-                    <img src={btnContact2} onClick={() => showPopup()}  width='90' className='btns' alt='' style={{visibility: showButton1 ? "visible": "hidden"}}/>
-                    <img src={btnContact1} onClick={() => openInNewTab('mailto:u.l.e.y@mail.ru')}  width='90' className='btns2' alt='' style={{visibility: showButton2 ? "visible": "hidden"}}/>
-                    <img src={btnContact4} onClick={() => openInNewTab('https://uley.team/')} width='90' className='btns3' alt='' style={{visibility: showButton3 ? "visible": "hidden"}}/>
-                    <img src={btnContact3} onClick={() => openInNewTab('https://vk.com/uley.team')} width='90' className='btns4' alt='' style={{visibility: showButton4 ? "visible": "hidden"}}/>
+                    <img src={btnContact2} onClick={() => showPopup()} className='btns' alt='' style={{visibility: showButton1 ? "visible": "hidden"}}/>
+                    <img src={btnContact1} onClick={() => openInNewTab('https://t.me/ULEY_Office_Bot')} className='btns2' alt='' style={{visibility: showButton2 ? "visible": "hidden"}}/>
+                    <img src={btnContact4} onClick={() => openInNewTab('https://uley.team/')} className='btns3' alt='' style={{visibility: showButton3 ? "visible": "hidden"}}/>
+                    <img src={btnContact3} onClick={() => openInNewTab('https://vk.com/uley.team')} className='btns4' alt='' style={{visibility: showButton4 ? "visible": "hidden"}}/>
                 </div>
             </div>
 

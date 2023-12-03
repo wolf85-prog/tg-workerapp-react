@@ -3,7 +3,8 @@ import {useNavigate} from "react-router-dom";
 import './ProcessPage.css';
 import {useTelegram} from "../../hooks/useTelegram";
 
-import qrCode from "../../image/qr-code.png";
+import qrCode from "../../image/QR—Code.jpg";
+import BlackFon from "../../image/background/Background_black_600X800.png";
 
 import SharePage from '../../components/SharePage/SharePage';
 
@@ -33,8 +34,11 @@ const ProcessPage = () => {
 
     return (
         <div className="App">
-            
-            <div style={{height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>                  
+
+            {/* темный фон */}
+            <img src={BlackFon} alt='' className='fon-black' />
+
+            <div style={{position: 'relative', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>                  
                 <img src={qrCode} alt='' style={{width: '80%'}} />    
                 <div style={{marginTop: '50px'}}>
                     <SharePage

@@ -20,32 +20,36 @@
     margin: 5%;
     position: relative;
     z-index: 7;
-    animation: showBlock 5s linear forwards;
-    animation-delay: 0.5s;
+    animation: showBlock 2.5s linear forwards;
+    animation-delay: 0.2s;
+    width: 90px;
 }
 
 .btns2 {
   margin: 5%;
   position: relative;
   z-index: 7;
-  animation: showBlock 5s linear forwards;
-  animation-delay: 1.5s;
+  animation: showBlock 2.5s linear forwards;
+  animation-delay: 0.7s;
+  width: 92px;
 }
 
 .btns3 {
   margin: 5%;
   position: relative;
   z-index: 7;
-  animation: showBlock 5s linear forwards;
-  animation-delay: 2.5s;
+  animation: showBlock 2.5s linear forwards;
+  animation-delay: 1.2s;
+  width: 90px;
 }
 
 .btns4 {
   margin: 5%;
   position: relative;
   z-index: 7;
-  animation: showBlock 5s linear forwards;
-  animation-delay: 3.5s;
+  animation: showBlock 2.5s linear forwards;
+  animation-delay: 1.7s;
+  width: 90px;
 }
 
 @keyframes showBlock {

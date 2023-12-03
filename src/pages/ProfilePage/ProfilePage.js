@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { useNavigate } from "react-router-dom";
@@ -24,6 +24,10 @@ import iconCheck from "../../image/check.png";
 import iconUnCheck from "../../image/uncheck.png";
 import iconEdit from "../../image/icons/edit_icon.png";
 import iconDown from "../../image/icons/arrow_down.png";
+import iconCheck2 from "../../image/icons/галка.png"
+import iconStatus from "../../image/icons/крестик.png"
+import iconStatus2 from "../../image/icons/стрелки желтые.png"
+import iconStatus3 from "../../image/icons/стрелки синие.png"
 //import Loader from "../../components/UI/Loader/Loader";
 
 import ButtonsMenu from "../../image/buttons/button_menu.png"
@@ -39,7 +43,9 @@ const ProfilePage = () => {
     const {tg, user} = useTelegram();
     const navigate = useNavigate();
 
-    const { projects, setProjects, specId, setSpecId, flag } = useUsersContext();
+    const projectsRef = useRef(null)
+
+    const { projects, setProjects, specId, setSpecId, flag, summa, setSumma } = useUsersContext();
     const { workerhub } = useUsersContext();
     const [workerId, setWorkerId] = useState('')
     const [projects2, setProjects2] = useState('')
@@ -60,7 +66,7 @@ const ProfilePage = () => {
 
     const [showHistory, setShowHistory] = useState(false);
 
-    const [summa, setSumma] = useState(0); 
+    //const [summa, setSumma] = useState(0); 
   
     const randomNumberInRange = (min, max) => { 
         return Math.floor(Math.random()  
@@ -129,7 +135,7 @@ const ProfilePage = () => {
                     status: JSON.parse(project.status),
                     specs: JSON.parse(project.specs),
                     smeta: projObject ? JSON.parse(projObject?.dop) : "",
-                    statusMoney: randomNumberInRange(1, 5)
+                    statusMoney: projObject ? (JSON.parse(projObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
                 }
                 arrayProject.push(newProject)
             })
@@ -162,6 +168,8 @@ const ProfilePage = () => {
     useEffect(() => {
         setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
         setTimeout(() =>  setShowGrad(true), 4500) //градиент верх  
+
+        //executeScroll()
     })
 
     const handleScroll = (e) => {
@@ -208,6 +216,8 @@ const ProfilePage = () => {
         showHistory ? setShowHistory(false) : setShowHistory(true)
     }
 
+    const executeScroll = () => projectsRef.current.scrollIntoView()
+
     //---------------------------------------------------------------------------------------
 
     return (
@@ -248,9 +258,9 @@ const ProfilePage = () => {
 
                 <div>
                     <ol className="bullet" style={{ display: showHistory ? "block" : "none" }}>
-                        <li><div className="bullet-title">Ноябрь 2023 [Подтверждено]</div><div>10 000.00</div></li>
-                        <li><div className="bullet-title">Октябрь 2023 [Оплачено]</div><div>10 000.00</div></li>
-                        <li><div className="bullet-title">Сентябрь 2023 [Оплачено]</div><div>10 000.00</div></li>
+                        <li><div className="bullet-title">Ноябрь 2023 <img src={iconCheck2} className='icon-history' /></div><div>0.00</div></li>
+                        <li><div className="bullet-title">Октябрь 2023 <img src={iconStatus} className='icon-history' /></div><div>0.00</div></li>
+                        <li><div className="bullet-title">Сентябрь 2023 <img src={iconStatus2} className='icon-history' /></div><div>0.00</div></li>
                     </ol>
                 </div>         
 
@@ -261,7 +271,7 @@ const ProfilePage = () => {
 
 
                 {/* Проекты */}
-                <div style={{position: 'absolute', top: height, width: '100%'}}>
+                <div ref={projectsRef} style={{position: 'absolute', top: height, width: '100%'}}>
                     <ProjectFilter
                         filter={filter}
                         setFilter={setFilter}
@@ -274,9 +284,9 @@ const ProfilePage = () => {
                             : <ProjectList posts={sortedAndSearchedPosts} title="" workerId={specId}/>
                         }
 
-                        <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                            <Link to={'/info'}><button className="image-button3" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Инфо</button></Link>
-                            <Link to={'/contacts'}><button className="image-button3" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Связь</button></Link> 
+                        <div style={{display: 'flex', justifyContent: 'center'}}>
+                            {/* <Link to={'/info'}><button className="image-button3" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Инфо</button></Link> */}
+                            <button className="image-button3" onClick={()=>navigate('/contacts')} style={{ backgroundImage: `url(${ButtonsMenu})`}}>Связь</button>
                         </div>
 
                     </div> 
