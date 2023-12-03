@@ -18,7 +18,7 @@ const HelloPage = () => {
 
     const {user} = useTelegram();
     const navigate = useNavigate();
-    const { workerhub: worker } = useUsersContext();
+    //const { workerhub: worker } = useUsersContext();
     const { width, isScreenSm, isScreenMd, isScreenLg, } = useResize();
 
     const [showGrad, setShowGrad] = useState(false)
@@ -32,7 +32,7 @@ const HelloPage = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         const fetchData = async() => { 
-            //const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
 
             if (worker.length > 0) {
                 console.log("Вы уже зарегистрированы!", user?.id)
