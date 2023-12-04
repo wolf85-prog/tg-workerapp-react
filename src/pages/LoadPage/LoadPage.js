@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import { useResize } from './../../hooks/useResize';
 import { useTelegram } from "../../hooks/useTelegram";
 import './LoadPage.css';
+import { useUsersContext } from "../../contexts/UserContext"
 
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/layers/ULEY_triangle.png";
@@ -16,7 +17,8 @@ const LoadPage = () => {
 
     const [showLogo, setShowLogo] = useState(false);
     const [showLogo2, setShowLogo2] = useState(false);
-    //const [showLogo3, setShowLogo3] = useState(false);
+
+    const { workerhub: worker } = useUsersContext();
 
     const { width, isScreenSm, isScreenMd, isScreenLg, } = useResize();
 //----------------------------------------------------------------------------------

@@ -13,7 +13,7 @@ import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 import FonGradWhite from "../../image/layers/grad_white.png";
 
 import btnBackNext from "../../image/newspec/button_back.png"
-import smallMenu from "../../image/layers/ULEY text.png"
+import smallMenu from "../../image/layers/logo_04_light.png"
 
 import CustomSelect3 from "../../components/UI/CustomSelect3/CustomSelect3";
 

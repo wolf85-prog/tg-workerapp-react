@@ -18,7 +18,7 @@ import TablePng from "../../image/table_with_text.png"
 
 import btnMenu from "../../image/layers/icon_menu.png";
 import btnChange from "../../image/buttons/button_change.png";
-import smallMenu from "../../image/layers/ULEY text.png"
+import smallMenu from "../../image/layers/logo_04_light.png"
 import BackModal from "../../image/background/background_modal.png"
 
 const SmetaPage = () => {
@@ -27,7 +27,7 @@ const SmetaPage = () => {
     const { specId } = useUsersContext();
 
     const navigate = useNavigate();
-    const handleClick = () => navigate(-1);
+    const handleClick = () => navigate('/profile#section-two');
 
     const projNumber = location.state?.proj
     const projTitle = location.state?.title

@@ -9,7 +9,7 @@ import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 import FonGradWhite from "../../image/layers/grad_white.png";
-import smallMenu from "../../image/layers/ULEY text.png"
+import smallMenu from "../../image/layers/logo_04_light.png"
 import btnNextSend from "../../image/newpassport/button_next_send.png"
 import btnBack from "../../image/newpassport/icon_back.png"
 

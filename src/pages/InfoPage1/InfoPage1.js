@@ -10,7 +10,7 @@ import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
 import btnMenu from "../../image/layers/icon_menu.png";
-import smallMenu from "../../image/layers/ULEY text.png"
+import smallMenu from "../../image/layers/logo_04_light.png"
 
 const InfoPage1 = () => {
     const [showGrad, setShowGrad] = useState(false)

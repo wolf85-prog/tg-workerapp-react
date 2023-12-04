@@ -12,7 +12,7 @@ import FonGradWhite from "../../image/layers/grad_white.png";
 import btnNextSend from "../../image/newpassport/button_next_send.png"
 import btnBack from "../../image/newpassport/icon_back.png"
 
-import smallMenu from "../../image/layers/ULEY text.png"
+import smallMenu from "../../image/layers/logo_04_light.png"
 import {useTelegram} from "../../hooks/useTelegram";
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';

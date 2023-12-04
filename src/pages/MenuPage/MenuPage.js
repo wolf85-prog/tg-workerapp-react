@@ -15,7 +15,7 @@ import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
 import ButtonsMenu2 from "../../image/buttons/button_for_menu2.png"
-import smallMenu from "../../image/layers/ULEY text.png"
+import smallMenu from "../../image/layers/logo_04_light.png"
 
 const MenuPage = () => {
     const {user} = useTelegram();

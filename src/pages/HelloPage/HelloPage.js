@@ -18,7 +18,7 @@ const HelloPage = () => {
 
     const {user} = useTelegram();
     const navigate = useNavigate();
-    //const { workerhub: worker } = useUsersContext();
+    const { workerhub: worker } = useUsersContext();
     const { width, isScreenSm, isScreenMd, isScreenLg, } = useResize();
 
     const [showGrad, setShowGrad] = useState(false)
@@ -30,9 +30,12 @@ const HelloPage = () => {
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
+    useEffect(()=>{
+        console.log("worker loader: ", worker)
+    }, [worker])
+
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
 
             if (worker.length > 0) {
                 console.log("Вы уже зарегистрированы!", user?.id)
@@ -50,7 +53,7 @@ const HelloPage = () => {
         }
 
         fetchData()   
-    });
+    }, [worker]);
 
     useEffect(() => {
         setTimeout(() =>  setShowGrad(true), 1000) //градиент верх
@@ -87,10 +90,12 @@ const HelloPage = () => {
                 </div>       
             </form> */}
 
-            <div style={{display: 'flex', height: '100vh', position: 'fixed'}}>
+            <div style={{display: 'flex', height: '100vh', position: 'fixed', width: '100%'}}>
                 <div className='form-label'>
                     {!fio
-                        ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
+                        ? <div style={{display: 'flex', justifyContent: 'center'}}>
+                            <Loader/>
+                        </div>
                         : <p className='welcomStyle'> {fio}
                         </p>  
                     }

@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { useNavigate } from "react-router-dom";
 
+import ScrollToHashElement from "./../../components/ScrollToHashElement/ScrollToHashElement";
+
 import { useTelegram } from "../../hooks/useTelegram";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { useUsersContext } from "../../contexts/UserContext";
@@ -50,7 +52,7 @@ const ProfilePage = () => {
     const [workerId, setWorkerId] = useState('')
     const [projects2, setProjects2] = useState('')
 
-    const [status, setStatus] = useState([{title: "Все"}, {title: "Новые"}, {title: "Старые"}]);
+    const [status, setStatus] = useState([{title: "Новые"}, {title: "Старые"}, {title: "Все"}]);
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
     const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query, workerId); //specId '1408579113'
 
@@ -222,6 +224,8 @@ const ProfilePage = () => {
 
     return (
         <div className="App">
+            <ScrollToHashElement />
+
             <Header header={{title: `${headerName}`, icon: 'false'}}/>
 
             {/* темный фон */}
@@ -236,7 +240,7 @@ const ProfilePage = () => {
 
 
             <div className='form-profile' onScroll={handleScroll}>
-                <ol className="bullet">
+                <ol className="bullet" id='section-one'>
                     <li><div className="bullet-title">ФИО</div>{workerhub[0]?.fio.split(' ')[0]}</li>
                     <li><div className="bullet-title"></div>{workerhub[0]?.fio.split(' ')[1]} {workerhub[0]?.fio.split(' ')[2]}</li>
                     {/* <li><div className="bullet-title">Город</div>{workerhub[0]?.city}</li> */}
@@ -258,9 +262,9 @@ const ProfilePage = () => {
 
                 <div>
                     <ol className="bullet" style={{ display: showHistory ? "block" : "none" }}>
-                        <li><div className="bullet-title">Ноябрь 2023 <img src={iconCheck2} className='icon-history' /></div><div>0.00</div></li>
-                        <li><div className="bullet-title">Октябрь 2023 <img src={iconStatus} className='icon-history' /></div><div>0.00</div></li>
-                        <li><div className="bullet-title">Сентябрь 2023 <img src={iconStatus2} className='icon-history' /></div><div>0.00</div></li>
+                        <li><div className="bullet-title history">11.2023 [<img src={iconCheck2} className='icon-history' />]</div><div>0.00</div></li>
+                        <li><div className="bullet-title history">10.2023 [<img src={iconStatus} className='icon-history' />]</div><div>0.00</div></li>
+                        <li><div className="bullet-title history">09.2023 [<img src={iconStatus2} className='icon-history' />]</div><div>0.00</div></li>
                     </ol>
                 </div>         
 
@@ -271,7 +275,7 @@ const ProfilePage = () => {
 
 
                 {/* Проекты */}
-                <div ref={projectsRef} style={{position: 'absolute', top: height, width: '100%'}}>
+                <div ref={projectsRef} id='section-two' style={{position: 'absolute', top: height, width: '100%'}}>
                     <ProjectFilter
                         filter={filter}
                         setFilter={setFilter}
@@ -280,7 +284,7 @@ const ProfilePage = () => {
 
                     <div className="profile-project-list">                   
                         {isPostsLoading
-                            ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%'}}><Loader/></div>
+                            ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%', marginBottom: '50%'}}><Loader/></div>
                             : <ProjectList posts={sortedAndSearchedPosts} title="" workerId={specId}/>
                         }
 
@@ -295,7 +299,7 @@ const ProfilePage = () => {
             </div>
             
             {/* стрелка */}
-            <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', visibility: showArroy ? "visible": "hidden"}} /></div>
+            <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: showArroy ? "block": "none"}} /></div>
 
             <div className='footer-block'>
                 {/* <Link to={'/menu'}><img src={btnMenu} alt='' /></Link> */}

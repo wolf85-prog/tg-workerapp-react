@@ -22,7 +22,7 @@ import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 import FonGradWhite from "../../image/layers/grad_white.png";
 import btnNextSend from "../../image/newpassport/button_next_send.png"
 
-import smallMenu from "../../image/layers/ULEY text.png"
+import smallMenu from "../../image/layers/logo_04_light.png"
 
 const API_URL = process.env.REACT_APP_API_URL
 

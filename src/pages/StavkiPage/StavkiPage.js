@@ -31,7 +31,7 @@ import ButtonStavka from "../../image/buttons/button_stavka.png"
 import ButtonStavka2 from "../../image/buttons/button_stavka2.png"
 
 import btnMenu from "../../image/layers/icon_menu.png";
-import smallMenu from "../../image/layers/ULEY text.png"
+import smallMenu from "../../image/layers/logo_04_light.png"
 
 const StavkiPage = () => {
     const [showTable, setShowTable] = useState([false, false, false, false, false])

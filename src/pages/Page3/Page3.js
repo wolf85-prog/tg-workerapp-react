@@ -21,7 +21,7 @@ import uncheck2 from "../../image/uncheck2.png";
 import banner from "../../image/BannerWorkhub3.png";
 
 import btnMenu from "../../image/layers/icon_menu.png";
-import smallMenu from "../../image/layers/ULEY text.png"
+import smallMenu from "../../image/layers/logo_04_light.png"
 import BackModal from "../../image/background/background_modal.png"
 
 const Page3 = () => {

@@ -14,7 +14,7 @@ import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
 import ButtonsInfo from "../../image/buttons/button_info.png"
 import btnMenu from "../../image/layers/icon_menu.png";
-import smallMenu from "../../image/layers/ULEY text.png"
+import smallMenu from "../../image/layers/logo_04_light.png"
 
 import BackModal from "../../image/background/background_modal.png"
 

@@ -25,8 +25,8 @@ const UserProvider = ({ children }) => {
 
 	const [projects, setProjects] = useState([]);
 	const [specId, setSpecId] = useState('');
-	const [workerhub, setWorkerhub] = useState([])
-	const [summa, setSumma] = useState(0)
+	const [workerhub, setWorkerhub] = useState([]);
+	const [summa, setSumma] = useState(0);
 
 	//статус регистрации
 	const [flag, setFlag] = useState("NOREG") // NOREG, ONLY_REG, REG
@@ -48,7 +48,7 @@ const UserProvider = ({ children }) => {
     useEffect(() => {
 
         const fetchData = async() => {
-            const worker = await getWorkerId(user?.ids) //user?.id '805436270'
+            const worker = await getWorkerId(user?.id) //user?.id '805436270'
             console.log("worker context: ", worker)
             setWorkerhub(worker)
         }
