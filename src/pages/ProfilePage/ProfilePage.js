@@ -270,9 +270,9 @@ const ProfilePage = () => {
 
                 <div>
                     <ol className="bullet" style={{ display: showHistory ? "block" : "none" }}>
-                        <li><div className="bullet-title history">11.2023 [<img src={iconCheck2} className='icon-history' />]</div><div>0.00</div></li>
-                        <li><div className="bullet-title history">10.2023 [<img src={iconStatus} className='icon-history' />]</div><div>0.00</div></li>
-                        <li><div className="bullet-title history">09.2023 [<img src={iconStatus2} className='icon-history' />]</div><div>0.00</div></li>
+                        <li><div className="bullet-title history">11.2023 <img src={iconCheck2} className='icon-history' /></div><div>0.00</div></li>
+                        <li><div className="bullet-title history">10.2023 <img src={iconStatus} className='icon-history' /></div><div>0.00</div></li>
+                        <li><div className="bullet-title history">09.2023 <img src={iconStatus2} className='icon-history' /></div><div>0.00</div></li>
                     </ol>
                 </div>         
 

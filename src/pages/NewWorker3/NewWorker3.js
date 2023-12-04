@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
@@ -16,6 +16,7 @@ import btnBackNext from "../../image/newspec/button_back.png"
 import smallMenu from "../../image/layers/logo_04_light.png"
 
 import CustomSelect3 from "../../components/UI/CustomSelect3/CustomSelect3";
+import NewSelect3 from '../../components/UI/NewSelect3/NewSelect3';
 
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
@@ -35,6 +36,9 @@ const NewWorker3 = () => {
     const [showGrad2, setShowGrad2] = useState(false)
 
     const {tg, queryId, user} = useTelegram();
+
+    const navigate = useNavigate();
+    const handleClick = () => navigate(-1);
 
     const { workerFam, workerName, phone, workers, 
         city, setCity, dateborn, setDateborn } = useUsersContext();
@@ -118,7 +122,12 @@ const NewWorker3 = () => {
     }, [])
 
     useEffect(() => {
-        tg.MainButton.show();
+        if (city, dateborn) {
+           tg.MainButton.show(); 
+        } else {
+            tg.MainButton.hide();  
+        }
+        
     }, [])
 
 
@@ -129,6 +138,17 @@ const NewWorker3 = () => {
     const onChangeTime = (e) => {
         setDateborn(e.target.value)
     }
+
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", handleClick)
+        return () => {
+            tg.offEvent('backButtonClicked', handleClick)
+        }
+    }, [handleClick])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
 
 
     return (
@@ -150,11 +170,11 @@ const NewWorker3 = () => {
                 <img src={FonGradWhite} alt='' className='fon-style-white'/>
             </div>
 
-            <div style={{display: 'flex', height: '100vh'}}>
+            <div style={{display: 'flex', height: '100vh', padding: '0px 25px'}}>
 
                 <div className='form-new-worker3'>               
                     {/*Город*/}
-                    <div style={{position: 'relative', marginTop: '41px', marginLeft: '30px', marginRight: '30px'}}>
+                    <div style={{position: 'relative', marginTop: '33px', marginLeft: '30px', marginRight: '30px'}}>
                         <input
                             className='input-style-city'
                             placeholder='Ваш город'
@@ -166,8 +186,8 @@ const NewWorker3 = () => {
                         
                     {/*Год рождения*/}
                     <p style={{position: 'absolute', top: '80px', left: '30px', fontSize: '14px'}}>Год рождения</p>   
-                    <div style={{position: 'relative', marginTop: '34px', marginLeft: '30px', marginRight: '30px'}}>
-                        <NewSelect2
+                    <div style={{position: 'relative', marginTop: '14px', marginLeft: '30px', marginRight: '30px'}}>
+                        <NewSelect3
                             id="dateborn"
                             options={dates}
                             selectedElement={selectedElement}
@@ -190,31 +210,6 @@ const NewWorker3 = () => {
         </div>
     );
 };
-
-const RedditTextField = styled((props) => (
-    <TextField InputProps={{ disableUnderline: true }} {...props}  />
-))(({ theme }) => ({
-    '& .MuiFilledInput-root': {
-        height: '55px',
-        border: '2px solid #2e7cff',
-        overflow: 'hidden',
-        borderRadius: 10,
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
-        '&.Mui-focused': {
-            backgroundColor: 'transparent',
-            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-            borderColor: theme.palette.primary.main,
-        },
-    },
-}));
 
 
 export default NewWorker3;

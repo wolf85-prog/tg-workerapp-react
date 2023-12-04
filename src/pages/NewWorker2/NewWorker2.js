@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewWorker2.css';
@@ -20,6 +21,10 @@ import InputMask from 'react-input-mask';
 import { useUsersContext } from "./../../contexts/UserContext";
 
 const NewWorker2 = () => {
+    const {tg, user} = useTelegram();
+
+    const navigate = useNavigate();
+    const handleClick = () => navigate(-1);
 
     const { workerFam, setWorkerFam, workerName, setWorkerName, phone, setPhone } = useUsersContext();
     const [showGrad, setShowGrad] = useState(false)
@@ -53,6 +58,17 @@ const NewWorker2 = () => {
         setPhone(e.target.value)
         //console.log(phone.length)
     }
+
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", handleClick)
+        return () => {
+            tg.offEvent('backButtonClicked', handleClick)
+        }
+    }, [handleClick])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
 
     return (
         <div className="App">

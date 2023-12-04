@@ -27,13 +27,14 @@ import { sendMyMessage } from '../../http/chatAPI';
 const API_URL = process.env.REACT_APP_API_URL
 
 const NewWorker = () => {
+    const {tg, user} = useTelegram();
     const navigate = useNavigate();
+    const handleClick = () => navigate(-1);
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
 
     const {worker, setWorker, workers, setWorkers} = useUsersContext();
-    const {user} = useTelegram();
 
     //категории
     const [categories, setCategories] = useState([]);
@@ -152,6 +153,22 @@ const NewWorker = () => {
         setWorkers(workers.filter(p => p.id !== worker.id))
     }
 
+    const onClose = () => {
+        tg.close()
+    }
+
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", onClose)
+        return () => {
+            tg.offEvent('backButtonClicked', onClose)
+        }
+    }, [onClose])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
+
+    //-----------------------------------------------------------------------------
 
     return (
         <div className="App">
@@ -249,7 +266,8 @@ const NewWorker = () => {
             </div>
 
             <div className='footer-block' style={{bottom: '0'}}>
-                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
+                {/* <Link to={'/menu'}><img src={btnMenu} alt='' /></Link> */}
+                <div></div>
                 <img src={smallMenu} alt='' className='small-menu-icon' />
             </div>
         </div>
