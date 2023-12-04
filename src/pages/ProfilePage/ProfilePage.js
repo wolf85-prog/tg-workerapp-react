@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import ScrollToHashElement from "./../../components/ScrollToHashElement/ScrollToHashElement";
 
@@ -44,6 +44,7 @@ import smallMenu from "../../image/layers/logo_04_light.png"
 const ProfilePage = () => {
     const {tg, user} = useTelegram();
     const navigate = useNavigate();
+    const { hash } = useLocation();
 
     const projectsRef = useRef(null)
 
@@ -75,7 +76,7 @@ const ProfilePage = () => {
                 * (max - min + 1)) + min; 
     }; 
    
-        
+    
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже   
@@ -217,6 +218,13 @@ const ProfilePage = () => {
 
         showHistory ? setShowHistory(false) : setShowHistory(true)
     }
+
+    useEffect(()=> {
+        console.log("hash: ", hash)
+        if (hash === '#section-two') {
+            executeScroll()
+        }
+    }, [hash])
 
     const executeScroll = () => projectsRef.current.scrollIntoView()
 
