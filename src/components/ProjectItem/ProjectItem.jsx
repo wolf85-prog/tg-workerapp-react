@@ -12,12 +12,14 @@ const ProjectItem = (props) => {
     const {specId} = useUsersContext();
    
     const statusColor = props.post.status == null ? 'gray' : props.post.status.color;
-    const dateProject = props.post.date_start != null ? props.post.date_start : '';
-    const dateProject2 = props.post.date_end != null ? props.post.date_end : '';
+    //const dateProject = props.post.date_start != null ? props.post.date_start : '';
+    //const dateProject2 = props.post.date_end != null ? props.post.date_end : '';
+
+    const dateMain = props.post.specs.filter((item) => item.id === props.specId)[0]?.date;
 
     let d_end, year2, date2, month2, chas2, minut2;
 
-    const d = new Date(dateProject);
+    const d = new Date(dateMain);
 
     //time start
     const year = d.getFullYear()
@@ -27,14 +29,14 @@ const ProjectItem = (props) => {
     const minut = String(d.getMinutes()).padStart(2, "0"); //d.getMinutes();
 
     //time end
-    if (dateProject2) {
-        d_end = new Date(dateProject2);
-        year2 = d_end.getFullYear()
-        date2 = String(d_end.getDate()).padStart(2, "0"); 
-        month2 = String(d_end.getMonth()+1).padStart(2, "0"); 
-        chas2 = String(d_end.getHours()).padStart(2, "0"); //d.getHours();
-        minut2 = String(d_end.getMinutes()).padStart(2, "0"); //d.getMinutes();
-    } 
+    // if (dateProject2) {
+    //     d_end = new Date(dateProject2);
+    //     year2 = d_end.getFullYear()
+    //     date2 = String(d_end.getDate()).padStart(2, "0"); 
+    //     month2 = String(d_end.getMonth()+1).padStart(2, "0"); 
+    //     chas2 = String(d_end.getHours()).padStart(2, "0"); //d.getHours();
+    //     minut2 = String(d_end.getMinutes()).padStart(2, "0"); //d.getMinutes();
+    // } 
 
     const formatted = (d_end) ? `${date}.${month}.${year} - ${date2}.${month2}.${year2}` : `${date}.${month}.${year}`;
     const formattime = `${chas}:${minut}`

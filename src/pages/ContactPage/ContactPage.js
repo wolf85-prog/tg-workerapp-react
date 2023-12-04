@@ -98,7 +98,8 @@ const ContactPage = () => {
             </div>
 
             <div className='footer-block' style={{bottom: '0'}}>
-                <Link to={'/profile'}><img src={btnMenu} alt='' /></Link>
+                {/* <Link to={'/profile'}><img src={btnMenu} alt='' /></Link> */}
+                <div></div>
                 <img src={smallMenu} alt='' className='small-menu-icon' />
             </div>
 
