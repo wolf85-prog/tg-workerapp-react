@@ -98,6 +98,8 @@ const ProjectItem = (props) => {
     }
 
     useEffect(()=> {
+        console.log(props.post.finalSmeta)
+        
         if (props.post.statusMoney === 1) {
             setShowEtap1(true)
             setStatusMoney('Предварительно')
@@ -106,27 +108,29 @@ const ProjectItem = (props) => {
             setShowEtap2(true)
             setStatusMoney('Фактически')
         }
-        else if(props.post.statusMoney === 3) {
+
+        if (props.post.finalSmeta === 'Подтверждена') {
             setShowEtap1(true)
             setShowEtap2(true)
             setShowEtap3(true)
             setStatusMoney('Подтверждено')
         }
-        else if(props.post.statusMoney === 4) {
-            setShowEtap1(true)
-            setShowEtap2(true)
-            setShowEtap3(true)
-            setShowEtap4(true)
-            setStatusMoney('На оплате')
-        }
-        else if(props.post.statusMoney === 5) {
-            setShowEtap1(true)
-            setShowEtap2(true)
-            setShowEtap3(true)
-            setShowEtap4(true)
-            setShowEtap5(true)
-            setStatusMoney('Оплачено')
-        }
+
+        // else if(props.post.statusMoney === 4) {
+        //     setShowEtap1(true)
+        //     setShowEtap2(true)
+        //     setShowEtap3(true)
+        //     setShowEtap4(true)
+        //     setStatusMoney('На оплате')
+        // }
+        // else if(props.post.statusMoney === 5) {
+        //     setShowEtap1(true)
+        //     setShowEtap2(true)
+        //     setShowEtap3(true)
+        //     setShowEtap4(true)
+        //     setShowEtap5(true)
+        //     setStatusMoney('Оплачено')
+        // }
     }, [])
     
     const goToChat = (e) => {

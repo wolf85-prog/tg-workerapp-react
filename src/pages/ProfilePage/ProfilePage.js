@@ -127,7 +127,7 @@ const ProfilePage = () => {
 
             let tempSum = 0
             projects.map((project, index)=> {
-                let projObject = smets.find((proj) => proj.projectId === project.id)
+                let smetaObject = smets.find((proj) => proj.projectId === project.id)
 
                 const newProject = {
                     id: project.id,
@@ -137,8 +137,9 @@ const ProfilePage = () => {
                     tgURL_chat: project.tgURLchat,
                     status: JSON.parse(project.status),
                     specs: JSON.parse(project.specs),
-                    smeta: projObject ? JSON.parse(projObject?.dop) : "",
-                    statusMoney: projObject ? (JSON.parse(projObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
+                    smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
+                    finalSmeta: smetaObject ? smetaObject?.final : "",
+                    statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
                 }
                 arrayProject.push(newProject)
             })
@@ -157,10 +158,10 @@ const ProfilePage = () => {
             setSumma(tempSum)
             setIsLoadingSum(false)
 
-            setTimeout(()=> {
+            //setTimeout(()=> {
                 setProjects2(arrayProject)     
                 setIsPostsLoading(false)   
-            }, 3000)      
+            //}, 3000)      
             
         }
 

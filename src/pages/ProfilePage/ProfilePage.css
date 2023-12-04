@@ -91,7 +91,7 @@ input[id="cb1"] {
 
 .history {
     display: flex;
-    align-items: center;
+    align-items: baseline;
 }
 
 .spec li{
@@ -170,7 +170,7 @@ input[id="cb1"] {
 }
 
 .icon-history {
-    width: 20px;
+    width: 13px;
     margin-left: 5px;
     margin-right: 5px;
 }
