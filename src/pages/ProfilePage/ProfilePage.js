@@ -240,7 +240,6 @@ const ProfilePage = () => {
 
     return (
         <div className="App">
-            <ScrollToHashElement />
 
             <Header header={{title: `${headerName}`, icon: 'false'}}/>
 
