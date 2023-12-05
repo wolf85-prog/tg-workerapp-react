@@ -123,7 +123,7 @@ const ProfilePage = () => {
 
             console.log("Начинаю загружать сметы...")
             const smets = await getSmetaCash();
-            //console.log("smets: ", smets)
+            console.log("smets: ", smets)
 
             let tempSum = 0
             projects.map((project, index)=> {

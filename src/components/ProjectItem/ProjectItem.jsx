@@ -3,7 +3,7 @@ import './ProjectItem.css';
 import {useNavigate} from "react-router-dom";
 import Loader from "./../UI/Loader_min/Loader_min"
 import { useUsersContext } from "../../contexts/UserContext";
-import { getStavka } from '../../http/stavkaAPI';
+import { getStavka, addStavka, getSpecStavka } from '../../http/stavkaAPI';
 
 const ProjectItem = (props) => {
 
@@ -57,9 +57,14 @@ const ProjectItem = (props) => {
             console.log(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
             
             setTimeout(async()=> {
+                const res0 = await getSpecStavka(props.specId)
+                console.log("res0: ", res0)
+
                 const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
 
-                //console.log("stavka: ", res)
+                const res_add = await addStavka(props.specId, res.payment)
+
+                console.log("stavka cash: ", res_add)
                 setStavka(res)
 
                 setIsLoading(false)
