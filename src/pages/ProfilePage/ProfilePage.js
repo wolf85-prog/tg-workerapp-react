@@ -291,13 +291,13 @@ const ProfilePage = () => {
                         arr_status={status}
                     />
 
-                    <div className="profile-project-list">                   
+                    <div ref={projectsRef} id='section-two' className="profile-project-list">                   
                         {isPostsLoading
                             ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%', marginBottom: '50%'}}><Loader/></div>
                             : <ProjectList posts={sortedAndSearchedPosts} title="" workerId={specId}/>
                         }
 
-                        <div ref={projectsRef} id='section-two' style={{display: 'flex', justifyContent: 'center'}}>
+                        <div style={{display: 'flex', justifyContent: 'center'}}>
                             {/* <Link to={'/info'}><button className="image-button3" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Инфо</button></Link> */}
                             <button className="image-button3" onClick={()=>navigate('/contacts')} style={{ backgroundImage: `url(${ButtonsMenu})`}}>Связь</button>
                         </div>
