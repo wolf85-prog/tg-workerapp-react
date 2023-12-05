@@ -285,8 +285,6 @@ const ProfilePage = () => {
                 {/* Проекты */}
                 <div style={{position: 'absolute', top: height, width: '100%'}}>
                     <ProjectFilter
-                        ref={projectsRef} 
-                        id='section-two'
                         filter={filter}
                         setFilter={setFilter}
                         arr_status={status}
@@ -298,7 +296,7 @@ const ProfilePage = () => {
                             : <ProjectList posts={sortedAndSearchedPosts} title="" workerId={specId}/>
                         }
 
-                        <div style={{display: 'flex', justifyContent: 'center'}}>
+                        <div ref={projectsRef} id='section-two' style={{display: 'flex', justifyContent: 'center'}}>
                             {/* <Link to={'/info'}><button className="image-button3" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Инфо</button></Link> */}
                             <button className="image-button3" onClick={()=>navigate('/contacts')} style={{ backgroundImage: `url(${ButtonsMenu})`}}>Связь</button>
                         </div>
