@@ -223,7 +223,7 @@ const ProfilePage = () => {
     useEffect(()=> {
         console.log("hash: ", hash)
         if (hash === '#section-two') {
-            scrollToSection(projectsRef)
+            executeScroll(projectsRef)
         }
     }, [hash])
 
