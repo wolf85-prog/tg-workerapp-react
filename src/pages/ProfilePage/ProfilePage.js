@@ -277,7 +277,7 @@ const ProfilePage = () => {
                 </div>         
 
                 {/* Кнопка Пригласить друга */}
-                <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
+                <div ref={projectsRef} id='section-two' style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
                     <button className="image-button2" onClick={showQRCode} style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button>
                 </div>
 
@@ -290,7 +290,7 @@ const ProfilePage = () => {
                         arr_status={status}
                     />
 
-                    <div ref={projectsRef} id='section-two' className="profile-project-list">                   
+                    <div className="profile-project-list">                   
                         {isPostsLoading
                             ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%', marginBottom: '50%'}}><Loader/></div>
                             : <ProjectList posts={sortedAndSearchedPosts} title="" workerId={specId}/>
