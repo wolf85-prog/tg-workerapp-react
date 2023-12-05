@@ -227,7 +227,7 @@ const ProfilePage = () => {
         }
     }, [hash])
 
-    const executeScroll = () => projectsRef.current.scrollIntoView(false)
+    const executeScroll = () => projectsRef.current.scrollIntoView()
 
     //---------------------------------------------------------------------------------------
 
@@ -277,13 +277,13 @@ const ProfilePage = () => {
                 </div>         
 
                 {/* Кнопка Пригласить друга */}
-                <div ref={projectsRef} id='section-two' style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
+                <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
                     <button className="image-button2" onClick={showQRCode} style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button>
                 </div>
 
 
                 {/* Проекты */}
-                <div style={{position: 'absolute', top: height, width: '100%'}}>
+                <div ref={projectsRef} id='section-two' style={{position: 'absolute', top: height, width: '100%'}}>
                     <ProjectFilter
                         filter={filter}
                         setFilter={setFilter}
