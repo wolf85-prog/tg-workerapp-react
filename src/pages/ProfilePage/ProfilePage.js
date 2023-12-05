@@ -227,14 +227,7 @@ const ProfilePage = () => {
         }
     }, [hash])
 
-    const executeScroll = () => projectsRef.current.scrollIntoView()
-
-    const scrollToSection = (elementRef) => {
-        window.scrollTo({
-          top: elementRef.current.offsetTop,
-          behavior: "smooth",
-         });
-        };
+    const executeScroll = () => projectsRef.current.scrollIntoView({block: "center", inline: "center"})
 
     //---------------------------------------------------------------------------------------
 
