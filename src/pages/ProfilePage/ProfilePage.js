@@ -227,7 +227,7 @@ const ProfilePage = () => {
         }
     }, [hash])
 
-    const executeScroll = () => {
+    const executeScroll = (projectsRef) => {
         projectsRef.current.scrollIntoView()
     }
     //---------------------------------------------------------------------------------------
@@ -284,12 +284,11 @@ const ProfilePage = () => {
 
 
                 {/* Проекты */}
-                <div  style={{position: 'absolute', top: height, width: '100%'}}>
+                <div  style={{position: 'absolute', top: height, width: '100%'}} ref={projectsRef}>
                     <ProjectFilter
                         filter={filter}
                         setFilter={setFilter}
                         arr_status={status}
-                        ref={projectsRef}
                     />
 
                     <div className="profile-project-list">                   
