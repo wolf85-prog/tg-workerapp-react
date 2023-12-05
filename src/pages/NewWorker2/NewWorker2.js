@@ -77,7 +77,7 @@ const NewWorker2 = () => {
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
             
-            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
+            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0', width: '100%'}}>
                 <img src={Fon} alt='' className='fon-style-full' />
             </div>
 

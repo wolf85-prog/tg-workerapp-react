@@ -82,7 +82,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -284,14 +284,14 @@ const ProfilePage = () => {
 
 
                 {/* Проекты */}
-                <div ref={projectsRef} id='section-two' style={{position: 'absolute', top: height, width: '100%'}}>
+                <div style={{position: 'absolute', top: height, width: '100%'}}>
                     <ProjectFilter
                         filter={filter}
                         setFilter={setFilter}
                         arr_status={status}
                     />
 
-                    <div className="profile-project-list">                   
+                    <div ref={projectsRef} id='section-two' className="profile-project-list">                   
                         {isPostsLoading
                             ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%', marginBottom: '50%'}}><Loader/></div>
                             : <ProjectList posts={sortedAndSearchedPosts} title="" workerId={specId}/>

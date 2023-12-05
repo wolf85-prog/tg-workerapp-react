@@ -229,7 +229,7 @@ const EditWorker = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
             
             {/* белый градиент */}
-            <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
+            <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2', width: '100%'}}>
                 <img src={FonGradWhite} alt='' className='fon-style-white'/>
             </div>    
             
