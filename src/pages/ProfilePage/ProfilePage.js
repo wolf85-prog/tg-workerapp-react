@@ -228,11 +228,7 @@ const ProfilePage = () => {
     }, [hash])
 
     const executeScroll = () => {
-        //projectsRef.current.scrollIntoView(false)
-        let list = document.getElementById(two);
-        let targetLi = document.getElementById(liID); // id tag of the <li> element
-
-        list.scrollTop = (targetLi.offsetTop - 50);
+        projectsRef.current.scrollIntoView()
     }
     //---------------------------------------------------------------------------------------
 
@@ -288,20 +284,21 @@ const ProfilePage = () => {
 
 
                 {/* Проекты */}
-                <div style={{position: 'absolute', top: height, width: '100%'}} id='two'>
+                <div  style={{position: 'absolute', top: height, width: '100%'}}>
                     <ProjectFilter
                         filter={filter}
                         setFilter={setFilter}
                         arr_status={status}
+                        ref={projectsRef}
                     />
 
-                    <div className="profile-project-list" id="liID">                   
+                    <div className="profile-project-list">                   
                         {isPostsLoading
                             ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%', marginBottom: '50%'}}><Loader/></div>
                             : <ProjectList posts={sortedAndSearchedPosts} title="" workerId={specId}/>
                         }
 
-                        <div ref={projectsRef}  style={{display: 'flex', justifyContent: 'center'}}>
+                        <div style={{display: 'flex', justifyContent: 'center'}}>
                             {/* <Link to={'/info'}><button className="image-button3" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Инфо</button></Link> */}
                             <button className="image-button3" onClick={()=>navigate('/contacts')} style={{ backgroundImage: `url(${ButtonsMenu})`}}>Связь</button>
                         </div>

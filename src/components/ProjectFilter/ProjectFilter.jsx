@@ -3,7 +3,7 @@ import './ProjectFilter.css';
 import ButtonStatus from "../UI/ButtonStatus/ButtonStatus";
 //import SortSelect from "../UI/SortSelect/SortSelect";
 
-const ProjectFilter = ({filter, setFilter, arr_status}) => {
+const ProjectFilter = ({filter, setFilter, arr_status, ref}) => {
 
     const [buttonPress, setButtonPress] = useState(false);
 
@@ -50,7 +50,7 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
 
 
     return (
-        <div className='buttons_status'>
+        <div className='buttons_status' ref={ref}>
             {arr_status.map((item, index) =>
                     <ButtonStatus className={`btn-status ${item.color}-btn`} onClick={onChangeFilter} key={index+1} value={item.title}>{item.title}</ButtonStatus>     
             )}
