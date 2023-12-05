@@ -227,7 +227,7 @@ const ProfilePage = () => {
         }
     }, [hash])
 
-    const executeScroll = () => projectsRef.current.scrollIntoView({block: "center", inline: "center"})
+    const executeScroll = () => projectsRef.current.scrollIntoView(false)
 
     //---------------------------------------------------------------------------------------
 
