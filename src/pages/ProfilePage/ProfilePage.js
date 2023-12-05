@@ -283,8 +283,10 @@ const ProfilePage = () => {
 
 
                 {/* Проекты */}
-                <div ref={projectsRef} id='section-two' style={{position: 'absolute', top: height, width: '100%'}}>
+                <div style={{position: 'absolute', top: height, width: '100%'}}>
                     <ProjectFilter
+                        ref={projectsRef} 
+                        id='section-two'
                         filter={filter}
                         setFilter={setFilter}
                         arr_status={status}
