@@ -229,7 +229,7 @@ const ProfilePage = () => {
 
     const executeScroll = () => {
         //projectsRef.current.scrollIntoView(false)
-        let list = document.getElementById(section-two);
+        let list = document.getElementById(two);
         let targetLi = document.getElementById(liID); // id tag of the <li> element
 
         list.scrollTop = (targetLi.offsetTop - 50);
@@ -288,7 +288,7 @@ const ProfilePage = () => {
 
 
                 {/* Проекты */}
-                <div style={{position: 'absolute', top: height, width: '100%'}} id='section-two'>
+                <div style={{position: 'absolute', top: height, width: '100%'}} id='two'>
                     <ProjectFilter
                         filter={filter}
                         setFilter={setFilter}
