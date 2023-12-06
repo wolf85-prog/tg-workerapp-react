@@ -223,8 +223,8 @@ const ProfilePage = () => {
     useEffect(()=> {
         console.log("hash: ", hash)
         if (hash === '#section-two') {
-           executeScroll(projectsRef)
-           //setScrollPosition(projectsRef)
+           //executeScroll(projectsRef)
+           setScrollPosition(projectsRef)
         }
     }, [hash])
 
@@ -233,10 +233,19 @@ const ProfilePage = () => {
     }
 
     const setScrollPosition = (element) => {
-        window.scrollTo({
-          top: element.current.offsetTop,
-          behavior: "smooth"
+        const topOffset = 100; // если не нужен отступ сверху 
+        const elementPosition = scrollTarget.getBoundingClientRect().top;
+        const offsetPosition = elementPosition - topOffset;
+
+        window.scrollBy({
+            top: offsetPosition,
+            behavior: 'smooth'
         });
+
+        // window.scrollTo({
+        //   top: element.current.offsetTop,
+        //   behavior: "smooth"
+        // });
     };
 
     //---------------------------------------------------------------------------------------
