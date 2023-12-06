@@ -20,6 +20,16 @@ export const addStavka = async (specsId, projId, stavka) =>{
     }
 }
 
+export const addFactStavka = async (specsId, projId, stavka) =>{
+    try {
+       let response = await $host.get(`api/specs/stavka/fact/${specsId}/${projId}/${stavka}`);
+       //console.log(response)
+       return response.data;
+    } catch (error) {
+        console.log("error while calling addFactStavka api", error.message);
+    }
+}
+
 export const getSpecStavka = async (specsId, projId) =>{
     try {
        let response = await $host.get(`api/specs/stavka/get/${specsId}/${projId}`);

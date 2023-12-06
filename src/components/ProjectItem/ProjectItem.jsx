@@ -3,7 +3,7 @@ import './ProjectItem.css';
 import {useNavigate} from "react-router-dom";
 import Loader from "./../UI/Loader_min/Loader_min"
 import { useUsersContext } from "../../contexts/UserContext";
-import { getStavka, addStavka, getSpecStavka } from '../../http/stavkaAPI';
+import { getStavka, addStavka, addFactStavka, getSpecStavka } from '../../http/stavkaAPI';
 
 const ProjectItem = (props) => {
 
@@ -16,6 +16,8 @@ const ProjectItem = (props) => {
     //const dateProject2 = props.post.date_end != null ? props.post.date_end : '';
 
     const dateMain = props.post.specs.filter((item) => item.id === props.specId)[0]?.date;
+    const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist : ""
+    console.log("fact: ", fact)
 
     let d_end, year2, date2, month2, chas2, minut2;
 
@@ -56,8 +58,8 @@ const ProjectItem = (props) => {
     useEffect(()=> {
         const fetch = async() => {
             //console.log(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
-            
-            setTimeout(async()=> {
+                //const res_add
+
                 const res0 = await getSpecStavka(props.specId, props.post.id)
                 console.log("res0: ", res0)
 
@@ -65,24 +67,44 @@ const ProjectItem = (props) => {
                     const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
                     console.log(res)
 
-                    const res_add = await addStavka(props.specId, props.post.id, res?.payment)
-
-                    console.log("stavka cash: ", res_add)
                     setStavka(res?.payment)
 
                     setIsLoading(false)
+
+                    if (fact) {
+                        const res_add = await addFactStavka(props.specId, props.post.id, res?.payment)
+                        console.log("fact stavka cash: ", res_add)
+                    } else {
+                       const res_add = await addStavka(props.specId, props.post.id, res?.payment) 
+                       console.log("pred stavka cash: ", res_add)
+                    }
+                    
                 } else {
                     console.log(res0?.predStavka)
+                    setCashStavka(res0)
                     setStavka(res0?.predStavka)
                     setIsLoading(false)
-                }
-                
-            }, 3000)    
+                }    
             
         }
 
         fetch()
     }, [])
+
+    useEffect(()=> {
+        //console.log("cashStavka: ", cashStavka)
+        if (cashStavka.predStavka) {        
+            if (cashStavka.factStavka) { 
+                if (cashStavka.podtverStavka) {
+                    setStavka(cashStavka.podtverStavka)
+                } else {
+                    setStavka(cashStavka.factStavka)
+                }
+            } else {
+                setStavka(cashStavka.predStavka)
+            }
+        }  
+    },[cashStavka])
     
     const onShowProject = () => {
         navigate('/smeta', {
