@@ -223,13 +223,22 @@ const ProfilePage = () => {
     useEffect(()=> {
         console.log("hash: ", hash)
         if (hash === '#section-two') {
-            executeScroll(projectsRef)
+           executeScroll(projectsRef)
+           //setScrollPosition(projectsRef)
         }
     }, [hash])
 
     const executeScroll = (projectsRef) => {
         projectsRef.current.scrollIntoView()
     }
+
+    const setScrollPosition = (element) => {
+        window.scrollTo({
+          top: element.current.offsetTop,
+          behavior: "smooth"
+        });
+    };
+
     //---------------------------------------------------------------------------------------
 
     return (

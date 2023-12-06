@@ -10,19 +10,19 @@ export const getStavka = async (projectId, staffId) =>{
     }
 }
 
-export const addStavka = async (specsId, stavka) =>{
+export const addStavka = async (specsId, projId, stavka) =>{
     try {
-       let response = await $host.get(`api/specs/stavka/add/${specsId}/${stavka}`);
+       let response = await $host.get(`api/specs/stavka/add/${specsId}/${projId}/${stavka}`);
        //console.log(response)
        return response.data;
     } catch (error) {
-        console.log("error while calling getStavka api", error.message);
+        console.log("error while calling addStavka api", error.message);
     }
 }
 
-export const getSpecStavka = async (specsId) =>{
+export const getSpecStavka = async (specsId, projId) =>{
     try {
-       let response = await $host.get(`api/specs/stavka/get/${specsId}`);
+       let response = await $host.get(`api/specs/stavka/get/${specsId}/${projId}`);
        //console.log(response)
        return response.data;
     } catch (error) {

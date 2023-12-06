@@ -43,6 +43,7 @@ const ProjectItem = (props) => {
 
     const [statusMoney, setStatusMoney] = useState("")
     const [stavka, setStavka] = useState()
+    const [cashStavka, setCashStavka] = useState({})
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -54,20 +55,28 @@ const ProjectItem = (props) => {
 
     useEffect(()=> {
         const fetch = async() => {
-            console.log(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
+            //console.log(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
             
             setTimeout(async()=> {
-                const res0 = await getSpecStavka(props.specId)
+                const res0 = await getSpecStavka(props.specId, props.post.id)
                 console.log("res0: ", res0)
 
-                const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
+                if (!res0) {
+                    const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
+                    console.log(res)
 
-                const res_add = await addStavka(props.specId, res.payment)
+                    const res_add = await addStavka(props.specId, props.post.id, res?.payment)
 
-                console.log("stavka cash: ", res_add)
-                setStavka(res)
+                    console.log("stavka cash: ", res_add)
+                    setStavka(res?.payment)
 
-                setIsLoading(false)
+                    setIsLoading(false)
+                } else {
+                    console.log(res0?.predStavka)
+                    setStavka(res0?.predStavka)
+                    setIsLoading(false)
+                }
+                
             }, 3000)    
             
         }
@@ -103,7 +112,7 @@ const ProjectItem = (props) => {
     }
 
     useEffect(()=> {
-        console.log(props.post.finalSmeta)
+        //console.log(props.post.finalSmeta)
         
         if (props.post.statusMoney === 1) {
             setShowEtap1(true)
@@ -148,7 +157,7 @@ const ProjectItem = (props) => {
         // <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
         <div className={`box`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
             <div className="post__content" style={{position: 'relative'}}>
-                <div className="post_title">{props.post.title} <span style={{color: '#c9c8c8', fontSize: '20px'}}>{isLoading ? <Loader /> : (stavka ? parseInt(stavka.payment).toLocaleString()+".00" : '0.00')}</span></div>
+                <div className="post_title">{props.post.title} <span style={{color: '#c9c8c8', fontSize: '20px'}}>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : '0.00')}</span></div>
                 <div style={{display: 'flex', justifyContent: 'flex-end'}}><div className={showEtap1 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap2 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap3 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap4 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap5 ? 'etap green-fon' : 'etap gray-fon'}></div></div>
                 <div className="maney_status default-color">{statusMoney}</div>
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>
