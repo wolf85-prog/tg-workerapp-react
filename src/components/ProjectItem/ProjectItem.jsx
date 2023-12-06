@@ -5,6 +5,8 @@ import Loader from "./../UI/Loader_min/Loader_min"
 import { useUsersContext } from "../../contexts/UserContext";
 import { getStavka, addStavka, addFactStavka, getSpecStavka } from '../../http/stavkaAPI';
 
+import plashka from "../../image/buttons/project_plashka.png";
+
 const ProjectItem = (props) => {
 
     const navigate = useNavigate();
@@ -84,8 +86,7 @@ const ProjectItem = (props) => {
                     setCashStavka(res0)
                     setStavka(res0?.predStavka)
                     setIsLoading(false)
-                }    
-            
+                }       
         }
 
         fetch()
@@ -177,10 +178,10 @@ const ProjectItem = (props) => {
 
     return (
         // <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
-        <div className={`box`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
+        <div className={`box`} onClick={onShowProject} style={{ background: `linear-gradient(to right bottom, #000000, #3d413e)` }}>
             <div className="post__content" style={{position: 'relative'}}>
                 <div className="post_title">{props.post.title} <span style={{color: '#c9c8c8', fontSize: '20px'}}>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : '0.00')}</span></div>
-                <div style={{display: 'flex', justifyContent: 'flex-end'}}><div className={showEtap1 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap2 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap3 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap4 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap5 ? 'etap green-fon' : 'etap gray-fon'}></div></div>
+                <div style={{display: 'flex', justifyContent: 'flex-end'}}><div className={showEtap1 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap2 ? 'etap green2-fon' : 'etap gray-fon'}></div><div className={showEtap3 ? 'etap green3-fon' : 'etap gray-fon'}></div><div className={showEtap4 ? 'etap green4-fon' : 'etap gray-fon'}></div><div className={showEtap5 ? 'etap green5-fon' : 'etap gray-fon'}></div></div>
                 <div className="maney_status default-color">{statusMoney}</div>
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>
                 <div>Начало: <span className="subscribe">{formattime}</span> </div>

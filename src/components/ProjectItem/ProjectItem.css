@@ -129,7 +129,23 @@
 }
 
 .green-fon {
-    background-color: #008000;
+    background-color: #017f00;
+}
+
+.green2-fon {
+    background-color: #00ac00;
+}
+
+.green3-fon {
+    background-color: #01c603;
+}
+
+.green4-fon {
+    background-color: #03d603;
+}
+
+.green5-fon {
+    background-color: #00f102;
 }
 
 .gray-fon {
