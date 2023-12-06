@@ -225,7 +225,7 @@ const ProfilePage = () => {
         if (hash === '#section-two') {
             setTimeout(()=> {
                 executeScroll(projectsRef)
-            }, 2000)
+            }, 1000)
            
         }
     }, [hash])
