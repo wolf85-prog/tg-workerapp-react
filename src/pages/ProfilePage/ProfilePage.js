@@ -223,12 +223,15 @@ const ProfilePage = () => {
     useEffect(()=> {
         console.log("hash: ", hash)
         if (hash === '#section-two') {
-           executeScroll(projectsRef)
+            setTimeout(()=> {
+                executeScroll(projectsRef)
+            }, 2000)
+           
         }
     }, [hash])
 
     const executeScroll = (projectsRef) => {
-        projectsRef.current.scrollIntoView()
+        projectsRef.current.scrollIntoView({behavior: 'smooth'})
     }
 
 
