@@ -84,7 +84,7 @@ const ProjectItem = (props) => {
                 } else {
                     console.log(res0?.predStavka)
                     setCashStavka(res0)
-                    setStavka(res0?.predStavka)
+                    setStavka(res0.predStavka ? res0.predStavka : res0.factStavka)
                     setIsLoading(false)
                 }       
         }

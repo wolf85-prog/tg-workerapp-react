@@ -44,7 +44,7 @@ const NewSelect3 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) 
                             tabIndex="0"
                         >
                             <div className={classes.dropdownTitle}>
-                                {titleSpec}
+                                {selected ? selected : ""}
                             </div>
                             <img src={tringlDown} className={'chevron-new'} alt=''/>
                         </div>
@@ -57,8 +57,8 @@ const NewSelect3 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) 
                                 value={option.id} 
                                 onClick={(e)=> {
                                         onChange(e)
-                                        //setSelected(option.name);
-                                        setTitleSpec(option.name)
+                                        setSelected(option.name);
+                                        //setTitleSpec(option.name)
                                         setOpen(false);
                                     }
                                 }

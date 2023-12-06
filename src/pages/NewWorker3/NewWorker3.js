@@ -74,7 +74,7 @@ const NewWorker3 = () => {
     })
 
     const onDatesSelectChange = (e) => {
-        setSelectedElement(e.target.options.value);
+        //setSelectedElement(e.target.value);
         setDateborn(e.target.value)
     }
 
@@ -190,8 +190,8 @@ const NewWorker3 = () => {
                         <NewSelect3
                             id="dateborn"
                             options={dates}
-                            selectedElement={selectedElement}
-                            setSelectedElement={setSelectedElement}
+                            //selectedElement={selectedElement}
+                            //setSelectedElement={setSelectedElement}
                             onChange={onDatesSelectChange}
                         />
                     </div>
