@@ -234,7 +234,7 @@ const ProfilePage = () => {
 
     const setScrollPosition = (element) => {
         const topOffset = 100; // если не нужен отступ сверху 
-        const elementPosition = scrollTarget.getBoundingClientRect().top;
+        const elementPosition = element.current.getBoundingClientRect().top;
         const offsetPosition = elementPosition - topOffset;
 
         window.scrollBy({
