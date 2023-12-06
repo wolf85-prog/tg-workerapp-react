@@ -69,15 +69,15 @@ const ProjectItem = (props) => {
                     const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
                     console.log(res)
 
-                    setStavka(res?.payment)
+                    setStavka(res ? res.payment : 0)
 
                     setIsLoading(false)
 
                     if (fact) {
-                        const res_add = await addFactStavka(props.specId, props.post.id, res?.payment)
+                        const res_add = await addFactStavka(props.specId, props.post.id, res ? res.payment : 0)
                         console.log("fact stavka cash: ", res_add)
                     } else {
-                       const res_add = await addStavka(props.specId, props.post.id, res?.payment) 
+                       const res_add = await addStavka(props.specId, props.post.id, res ? res.payment : 0) 
                        console.log("pred stavka cash: ", res_add)
                     }
                     
