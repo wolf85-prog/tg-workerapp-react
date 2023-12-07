@@ -31,7 +31,8 @@ const LoadPage = () => {
         setTimeout(() =>  setShowLogo(false), 7000)
         setTimeout(() =>  setShowLogo2(false), 7000)
 
-        setTimeout(() =>  navigate("/hello"), 7000)
+        //setTimeout(() =>  navigate("/hello"), 7000)
+        setTimeout(() =>  navigate("/profile"), 7000)
     }, []);
 
     useEffect(()=>{

@@ -56,6 +56,7 @@ const ProfilePage = () => {
     const [status, setStatus] = useState([{title: "Новые"}, {title: "Старые"}, {title: "Все"}]);
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
     const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query, workerId); //specId '1408579113'
+    const [sortProject, setSortProject] = useState([])
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
@@ -82,7 +83,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -129,10 +130,7 @@ const ProfilePage = () => {
             projects.map((project, index)=> {
                 let smetaObject = smets.find((proj) => proj.projectId === project.id)
 
-                
                 const specsArr = JSON.parse(project.specs)
-
-                console.log("date_start: ", project.dateStart)//specsArr.filter((item) => item.id === workerId)[0]?.date)//.find((item) => item.id === workerId)?.date)
 
                 const newProject = {
                     id: project.id,
@@ -141,7 +139,7 @@ const ProfilePage = () => {
                     date_end: project.dateEnd,
                     tgURL_chat: project.tgURLchat,
                     status: JSON.parse(project.status),
-                    specs: JSON.parse(project.specs),
+                    specs: JSON.parse(project.specs), //specsArr.filter((item)=> item.id === workerId)[0],
                     smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
                     finalSmeta: smetaObject ? smetaObject?.final : "",
                     statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
@@ -149,9 +147,10 @@ const ProfilePage = () => {
                 arrayProject.push(newProject)
             })
 
-            console.log(workerId)
+            //console.log(workerId)
 
             const tempArr = [...arrayProject].filter(post=> post.specs.find(item => item.id === workerId))
+            //const tempArr = [...arrayProject].filter(post=> post.specs?.id === workerId)
             tempArr.map((item)=> {
                 if (item.smeta) {
                     tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
@@ -172,6 +171,54 @@ const ProfilePage = () => {
 
         fetchDataProjects()                    
     }, [workerId])
+
+    useEffect(()=> {
+        const sortArray = []
+        console.log(filter.query)
+
+        sortedAndSearchedPosts.map((project)=> {
+            //console.log(project)
+            const newProject = {
+                id: project.id,
+                title: project.title,
+                date_start: project.date_start,
+                date_end: project.date_end,
+                dateMain: project.specs.find(item => item.id === workerId).date,
+                tgURL_chat: project.tgURL_chat,
+                status: project.status,
+                specs: project.specs,
+                smeta: project.smeta,
+                finalSmeta: project.finalSmeta,
+                statusMoney: project.statusMoney,
+            }
+            sortArray.push(newProject)
+        })
+        console.log("change: ", sortArray)
+
+        if (filter.query === 'Старые') {
+            const newArray = [...sortArray].sort((a, b) => {
+                var dateA = new Date(a['dateMain']), dateB = new Date(b['dateMain'])                    
+                //return dateA-dateB  //сортировка по возрастающей дате     
+                return dateB-dateA  //сортировка по убывающей дате  
+            })
+            setSortProject(newArray)
+        } else if (filter.query === 'Новые') {
+            const newArray = [...sortArray].sort((a, b) => {
+                var dateA = new Date(a['dateMain']), dateB = new Date(b['dateMain'])                    
+                return dateA-dateB  //сортировка по возрастающей дате     
+                //return dateB-dateA  //сортировка по убывающей дате  
+            })
+            setSortProject(newArray)
+        } else if (filter.query === 'Все') {
+            const newArray = [...sortArray].sort((a, b) => {
+                var dateA = new Date(a['dateMain']), dateB = new Date(b['dateMain'])                    
+                //return dateA-dateB  //сортировка по возрастающей дате     
+                return dateB-dateA  //сортировка по убывающей дате  
+            })
+            setSortProject(newArray)
+        } 
+
+    }, [sortedAndSearchedPosts])
 
 //---------------------------------------------------------------------
     useEffect(() => {
@@ -307,7 +354,7 @@ const ProfilePage = () => {
                     <div className="profile-project-list">                   
                         {isPostsLoading
                             ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%', marginBottom: '50%'}}><Loader/></div>
-                            : <ProjectList posts={sortedAndSearchedPosts} title="" workerId={specId}/>
+                            : <ProjectList posts={sortProject} title="" workerId={specId}/>
                         }
 
                         <div style={{display: 'flex', justifyContent: 'center'}}>

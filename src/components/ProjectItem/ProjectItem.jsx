@@ -75,11 +75,11 @@ const ProjectItem = (props) => {
                 //const res_add
 
                 const res0 = await getSpecStavka(props.specId, props.post.id)
-                console.log("res0: ", res0)
+                //console.log("res0: ", res0)
 
                 if (!res0) {
                     const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
-                    console.log(res)
+                    //console.log(res)
 
                     setStavka(res ? res.payment : 0)
 
@@ -94,7 +94,7 @@ const ProjectItem = (props) => {
                     }
                     
                 } else {
-                    console.log(res0?.predStavka)
+                    //console.log(res0?.predStavka)
                     setCashStavka(res0)
                     setStavka(res0.predStavka ? res0.predStavka : res0.factStavka)
                     setIsLoading(false)
