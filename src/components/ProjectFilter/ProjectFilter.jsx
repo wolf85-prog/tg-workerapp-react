@@ -7,7 +7,8 @@ import newFilter from "../../image/buttons/blue_filter.png";
 import oldFilter from "../../image/buttons/orange_filter.png";
 import allFilter from "../../image/buttons/green_filter.png";
 
-import btnFilter from "../../image/newspec/button_back.png";
+//import btnFilter from "../../image/newspec/button_back.png";
+import btnFilter from "../../image/buttons/button_menu.png"
 
 const ProjectFilter = ({filter, setFilter, arr_status}) => {
 

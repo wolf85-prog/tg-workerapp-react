@@ -40,7 +40,7 @@ const ProjectItem = (props) => {
         //console.log("dateMain: ", dateMain)
         const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist : ""
         setFact(fact)
-        //console.log("fact: ", fact)
+        console.log("fact: ", fact)
     
         let d_end, year2, date2, month2, chas2, minut2;
     
@@ -71,53 +71,64 @@ const ProjectItem = (props) => {
 
     useEffect(()=> {
         const fetch = async() => {
-            //console.log(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
-                //const res_add
+            const res0 = await getSpecStavka(props.specId, props.post.id)
+            console.log("res0: ", res0)
 
-                const res0 = await getSpecStavka(props.specId, props.post.id)
-                //console.log("res0: ", res0)
+            //если кэш пуст
+            if (!res0) {
+                const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
+                console.log(res)
 
-                if (!res0) {
-                    const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
-                    //console.log(res)
+                //сохранить в бд предварительную ставку
+                const res_add = await addStavka(props.specId, props.post.id, res ? res.payment : 0) 
+                console.log("pred stavka cash: ", res_add)
 
-                    setStavka(res ? res.payment : 0)
+                
 
-                    setIsLoading(false)
-
-                    if (fact) {
-                        const res_add = await addFactStavka(props.specId, props.post.id, res ? res.payment : 0)
-                        console.log("fact stavka cash: ", res_add)
-                    } else {
-                       const res_add = await addStavka(props.specId, props.post.id, res ? res.payment : 0) 
-                       console.log("pred stavka cash: ", res_add)
-                    }
-                    
+                if (fact) {
+                    //сохранить в бд фактическую ставку
+                    const res_add2 = await addFactStavka(props.specId, props.post.id, fact)
+                    console.log("fact stavka cash: ", res_add2)
+                    setStavka(fact)
                 } else {
-                    //console.log(res0?.predStavka)
-                    setCashStavka(res0)
-                    setStavka(res0.predStavka ? res0.predStavka : res0.factStavka)
-                    setIsLoading(false)
-                }       
+                    setStavka(res ? res.payment : 0)
+                }
+                
+
+                setIsLoading(false)
+                    
+            } else {
+                //сохранить в бд фактическую ставку
+                const res_add2 = await addFactStavka(props.specId, props.post.id, fact ? fact : 0)
+                //console.log("fact stavka cash: ", res_add2)
+
+                //console.log("pred: ", res0?.predStavka)
+                //console.log("fact: ", res0?.factStavka)
+                setCashStavka(res0) // данные из кэша
+                setStavka(res0.factStavka ? res0.factStavka : res0.predStavka)
+                setIsLoading(false)
+            }  
+            
+            
         }
 
         fetch()
-    }, [])
+    }, [fact])
 
-    useEffect(()=> {
-        //console.log("cashStavka: ", cashStavka)
-        if (cashStavka.predStavka) {        
-            if (cashStavka.factStavka) { 
-                if (cashStavka.podtverStavka) {
-                    setStavka(cashStavka.podtverStavka)
-                } else {
-                    setStavka(cashStavka.factStavka)
-                }
-            } else {
-                setStavka(cashStavka.predStavka)
-            }
-        }  
-    },[cashStavka])
+    // useEffect(()=> {
+    //     //console.log("cashStavka: ", cashStavka)
+    //     if (cashStavka.predStavka) {        
+    //         if (cashStavka.factStavka) { 
+    //             if (cashStavka.podtverStavka) {
+    //                 setStavka(cashStavka.podtverStavka)
+    //             } else {
+    //                 setStavka(cashStavka.factStavka)
+    //             }
+    //         } else {
+    //             setStavka(cashStavka.predStavka)
+    //         }
+    //     }  
+    // },[cashStavka])
     
     const onShowProject = () => {
         navigate('/smeta', {

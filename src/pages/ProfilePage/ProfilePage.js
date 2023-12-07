@@ -195,26 +195,33 @@ const ProfilePage = () => {
         })
         console.log("change: ", sortArray)
 
+        const currentDate = new Date()
+
         if (filter.query === 'Старые') {
             const newArray = [...sortArray].sort((a, b) => {
                 var dateA = new Date(a['dateMain']), dateB = new Date(b['dateMain'])                    
                 //return dateA-dateB  //сортировка по возрастающей дате     
                 return dateB-dateA  //сортировка по убывающей дате  
             })
-            setSortProject(newArray)
+            setSortProject(newArray.filter(item => new Date(item.dateMain).getTime() < currentDate.getTime()))
+        
         } else if (filter.query === 'Новые') {
+
             const newArray = [...sortArray].sort((a, b) => {
                 var dateA = new Date(a['dateMain']), dateB = new Date(b['dateMain'])                    
                 return dateA-dateB  //сортировка по возрастающей дате     
                 //return dateB-dateA  //сортировка по убывающей дате  
             })
-            setSortProject(newArray)
+            //console.log("date: ", new Date(newArray[0].dateMain).getTime())
+            setSortProject(newArray.filter(item => new Date(item.dateMain).getTime() > currentDate.getTime()))
+        
         } else if (filter.query === 'Все') {
             const newArray = [...sortArray].sort((a, b) => {
                 var dateA = new Date(a['dateMain']), dateB = new Date(b['dateMain'])                    
                 //return dateA-dateB  //сортировка по возрастающей дате     
                 return dateB-dateA  //сортировка по убывающей дате  
             })
+
             setSortProject(newArray)
         } 
 
