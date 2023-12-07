@@ -66,7 +66,7 @@
     color: #ffc0cb;
 }
 .default-color {
-    color: #808080;
+    color: #9590A0;
 }
 
 .post__title {
@@ -128,6 +128,20 @@
     border-radius: 20px;
 }
 
+.btn-grad {
+    width: 25%;
+    height: auto;
+    text-align: center;
+    padding: 3px 5px;
+    border-radius: 20px;
+    font-size: 14px;
+    background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    display: block;
+  }
+
 .green-fon {
     background-color: #017f00;
 }
@@ -149,7 +163,7 @@
 }
 
 .gray-fon {
-    background-color: #808080;;
+    background-color: #9590A0;;
 }
 
 .etap {

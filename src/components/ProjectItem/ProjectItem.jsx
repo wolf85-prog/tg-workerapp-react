@@ -12,38 +12,6 @@ const ProjectItem = (props) => {
     const navigate = useNavigate();
 
     const {specId} = useUsersContext();
-   
-    const statusColor = props.post.status == null ? 'gray' : props.post.status.color;
-    //const dateProject = props.post.date_start != null ? props.post.date_start : '';
-    //const dateProject2 = props.post.date_end != null ? props.post.date_end : '';
-
-    const dateMain = props.post.specs.filter((item) => item.id === props.specId)[0]?.date;
-    const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist : ""
-    console.log("fact: ", fact)
-
-    let d_end, year2, date2, month2, chas2, minut2;
-
-    const d = new Date(dateMain);
-
-    //time start
-    const year = d.getFullYear()
-    const month = String(d.getMonth()+1).padStart(2, "0"); 
-    const date = String(d.getDate()).padStart(2, "0"); 
-    const chas = String(d.getHours()).padStart(2, "0"); //d.getHours();
-    const minut = String(d.getMinutes()).padStart(2, "0"); //d.getMinutes();
-
-    //time end
-    // if (dateProject2) {
-    //     d_end = new Date(dateProject2);
-    //     year2 = d_end.getFullYear()
-    //     date2 = String(d_end.getDate()).padStart(2, "0"); 
-    //     month2 = String(d_end.getMonth()+1).padStart(2, "0"); 
-    //     chas2 = String(d_end.getHours()).padStart(2, "0"); //d.getHours();
-    //     minut2 = String(d_end.getMinutes()).padStart(2, "0"); //d.getMinutes();
-    // } 
-
-    const formatted = (d_end) ? `${date}.${month}.${year} - ${date2}.${month2}.${year2}` : `${date}.${month}.${year}`;
-    const formattime = `${chas}:${minut}`
 
     const [statusMoney, setStatusMoney] = useState("")
     const [stavka, setStavka] = useState()
@@ -56,6 +24,50 @@ const ProjectItem = (props) => {
     const [showEtap3, setShowEtap3] = useState(false);
     const [showEtap4, setShowEtap4] = useState(false);
     const [showEtap5, setShowEtap5] = useState(false);
+
+    const [formatted, setFormatted] = useState("")
+    const [formattime, setFormattime] = useState("")
+    const [fact, setFact] = useState()
+
+    useEffect(()=> {
+        //console.log("props: ", props)
+        const statusColor = props.post.status == null ? 'gray' : props.post.status.color;
+        const dateProject = props.post.date_start != null ? props.post.date_start : '';
+        //console.log("dateProject: ", dateProject)
+        //const dateProject2 = props.post.date_end != null ? props.post.date_end : '';
+    
+        const dateMain = props.post.specs.filter((item) => item.id === props.specId)[0]?.date;
+        //console.log("dateMain: ", dateMain)
+        const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist : ""
+        setFact(fact)
+        //console.log("fact: ", fact)
+    
+        let d_end, year2, date2, month2, chas2, minut2;
+    
+        const d = new Date(dateMain);
+    
+        //time start
+        const year = d.getFullYear()
+        const month = String(d.getMonth()+1).padStart(2, "0"); 
+        const date = String(d.getDate()).padStart(2, "0"); 
+        const chas = String(d.getHours()).padStart(2, "0"); //d.getHours();
+        const minut = String(d.getMinutes()).padStart(2, "0"); //d.getMinutes();
+    
+        //time end
+        // if (dateProject2) {
+        //     d_end = new Date(dateProject2);
+        //     year2 = d_end.getFullYear()
+        //     date2 = String(d_end.getDate()).padStart(2, "0"); 
+        //     month2 = String(d_end.getMonth()+1).padStart(2, "0"); 
+        //     chas2 = String(d_end.getHours()).padStart(2, "0"); //d.getHours();
+        //     minut2 = String(d_end.getMinutes()).padStart(2, "0"); //d.getMinutes();
+        // } 
+    
+        const formatted = (d_end) ? `${date}.${month}.${year} - ${date2}.${month2}.${year2}` : `${date}.${month}.${year}`;
+        const formattime = `${chas}:${minut}`
+        setFormatted(formatted)
+        setFormattime(formattime)
+    })
 
     useEffect(()=> {
         const fetch = async() => {
@@ -190,7 +202,7 @@ const ProjectItem = (props) => {
                 </div>
                 <div style={{width: '100%', display: 'flex', justifyContent: 'flex-end', position: 'absolute', bottom: '0', right: '0'}}>
                     {props.post.tgURL_chat && 
-                    <div className='button-chat' onClick={goToChat}>
+                    <div className='btn-grad' onClick={goToChat}>
                         Чат
                     </div>
                     }

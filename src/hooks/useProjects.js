@@ -8,8 +8,8 @@ export const useSortedPosts = (posts, sort) => {
             return [...posts].sort((a, b) => {
                 var dateA = new Date(a[sort]), dateB = new Date(b[sort])
                                 
-                //return dateA-dateB  //сортировка по возрастающей дате     
-                return dateB-dateA  //сортировка по убывающей дате  
+                return dateA-dateB  //сортировка по возрастающей дате     
+                //return dateB-dateA  //сортировка по убывающей дате  
             })
         }
         return posts;
@@ -30,6 +30,7 @@ export const useProjects = (posts2, sort, query, specId) => {
         if (query != '') {
             if (query === 'Все') {
                 //console.log("filter all")
+                console.log("sortedPosts: ", sortedPosts)
                 return sortedPosts.filter(post=> post.specs.find(item => item.id === specId)); //posts2; 
             }
 
