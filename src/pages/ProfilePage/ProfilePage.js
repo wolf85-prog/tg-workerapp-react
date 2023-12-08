@@ -83,7 +83,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -132,28 +132,50 @@ const ProfilePage = () => {
 
                 const specsArr = JSON.parse(project.specs)
 
-                const newProject = {
-                    id: project.id,
-                    title: project.title,
-                    date_start: project.dateStart,
-                    date_end: project.dateEnd,
-                    tgURL_chat: project.tgURLchat,
-                    status: JSON.parse(project.status),
-                    specs: JSON.parse(project.specs), //specsArr.filter((item)=> item.id === workerId)[0],
-                    smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
-                    finalSmeta: smetaObject ? smetaObject?.final : "",
-                    statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
-                }
-                arrayProject.push(newProject)
+                if (smetaObject) {
+                    specsArr.map((spec, index) => {
+                        if (spec.id === workerId) {
+                            const newProject = {
+                                id: project.id,
+                                title: project.title,
+                                date_start: project.dateStart,
+                                date_end: project.dateEnd,
+                                tgURL_chat: project.tgURLchat,
+                                status: JSON.parse(project.status),
+                                specs: spec, 
+                                smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
+                                finalSmeta: smetaObject ? smetaObject?.final : "",
+                                statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
+                            }
+
+                            arrayProject.push(newProject)
+                        }   
+                    })
+                } 
+                
+
+                // const newProject = {
+                //     id: project.id,
+                //     title: project.title,
+                //     date_start: project.dateStart,
+                //     date_end: project.dateEnd,
+                //     tgURL_chat: project.tgURLchat,
+                //     status: JSON.parse(project.status),
+                //     specs: JSON.parse(project.specs), //specsArr.filter((item)=> item.id === workerId)[0],
+                //     smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
+                //     finalSmeta: smetaObject ? smetaObject?.final : "",
+                //     statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
+                // }
+
+                //arrayProject.push(newProject)
             })
 
-            //console.log(workerId)
 
-            const tempArr = [...arrayProject].filter(post=> post.specs.find(item => item.id === workerId))
+            const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
             //const tempArr = [...arrayProject].filter(post=> post.specs?.id === workerId)
             tempArr.map((item)=> {
                 if (item.smeta) {
-                    tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
+                    tempSum = tempSum + (item.smeta.fio_id === workerId ? item.smeta.specialist : 0)  //item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
                 }   
                 console.log("tempSum: ", tempSum)
             })
@@ -162,11 +184,8 @@ const ProfilePage = () => {
             setSumma(tempSum)
             setIsLoadingSum(false)
 
-            //setTimeout(()=> {
-                setProjects2(arrayProject)     
-                setIsPostsLoading(false)   
-            //}, 3000)      
-            
+            setProjects2(arrayProject)     
+            setIsPostsLoading(false)          
         }
 
         fetchDataProjects()                    
@@ -183,7 +202,7 @@ const ProfilePage = () => {
                 title: project.title,
                 date_start: project.date_start,
                 date_end: project.date_end,
-                dateMain: project.specs.find(item => item.id === workerId).date,
+                dateMain: project.specs.date, //find(item => item.id === workerId).date,
                 tgURL_chat: project.tgURL_chat,
                 status: project.status,
                 specs: project.specs,

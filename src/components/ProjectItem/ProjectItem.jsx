@@ -36,9 +36,9 @@ const ProjectItem = (props) => {
         //console.log("dateProject: ", dateProject)
         //const dateProject2 = props.post.date_end != null ? props.post.date_end : '';
     
-        const dateMain = props.post.specs.filter((item) => item.id === props.specId)[0]?.date;
-        //console.log("dateMain: ", dateMain)
-        const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist : ""
+        const dateMain = props.post.specs.date //props.post.specs.filter((item) => item.id === props.specId)[0]?.date;
+        
+        const fact = props.post.smeta.fio_id === props.specId ? props.post.smeta.specialist : 0 //props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist : ""
         setFact(fact)
         console.log("fact: ", fact)
     

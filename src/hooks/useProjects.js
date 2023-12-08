@@ -39,7 +39,7 @@ export const useProjects = (posts2, sort, query, specId) => {
             
         //}
 
-        return sortedPosts.filter(post=> post.specs.find(item => item.id === specId));
+        return sortedPosts.filter(post=> post.specs.id === specId);
 
     }, [query, sortedPosts]) //post2
 
