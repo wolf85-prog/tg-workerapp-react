@@ -32,7 +32,7 @@ import iconStatus2 from "../../image/icons/стрелки желтые.png"
 import iconStatus3 from "../../image/icons/стрелки синие.png"
 //import Loader from "../../components/UI/Loader/Loader";
 
-import ButtonsMenu from "../../image/buttons/button_menu.png"
+import ButtonsMenu from "../../image/buttons/button_menu_old.png"
 import ButtonsMenu2 from "../../image/buttons/button_for_menu2.png"
 import btnMenu from "../../image/layers/icon_menu.png";
 import btnChange from "../../image/buttons/button_for_menu2.png"

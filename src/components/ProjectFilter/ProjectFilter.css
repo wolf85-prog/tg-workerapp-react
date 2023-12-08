@@ -6,14 +6,15 @@
     width: 100%;
     /* background-color: #121212; */
     z-index: 5;
+    display: flex;
+    justify-content: space-between;
 }
 
 .btn-status {
     color: #ffffff;
     padding-bottom: 6px;
-    margin: 5px 0;
-    width: 120px;
-    height: 40px;
+    width: 100px;
+    height: 45px;
     font-size: 14px;
     background-color: transparent;
     border: none;

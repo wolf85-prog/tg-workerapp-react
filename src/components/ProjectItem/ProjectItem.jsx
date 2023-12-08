@@ -70,13 +70,20 @@ const ProjectItem = (props) => {
     })
 
     useEffect(()=> {
-        const fetch = async() => {
-            
-            //сохранить в бд фактическую ставку
+        //сохранить в бд фактическую ставку
+        const saveFact = async() => {
             if (fact) {
-                await addFactStavka(props.specId, props.post.id, fact)
+                const res = await addFactStavka(props.specId, props.post.id, fact)
+
+                setCashStavka(res) 
             }
-            
+        }
+
+        saveFact()
+    }, [fact])
+    
+    useEffect(()=> {
+        const fetch = async() => {
             
             const res0 = await getSpecStavka(props.specId, props.post.id)
             console.log("res0: ", res0)
