@@ -71,6 +71,13 @@ const ProjectItem = (props) => {
 
     useEffect(()=> {
         const fetch = async() => {
+            
+            //сохранить в бд фактическую ставку
+            if (fact) {
+                await addFactStavka(props.specId, props.post.id, fact)
+            }
+            
+            
             const res0 = await getSpecStavka(props.specId, props.post.id)
             console.log("res0: ", res0)
 
@@ -83,52 +90,34 @@ const ProjectItem = (props) => {
                 const res_add = await addStavka(props.specId, props.post.id, res ? res.payment : 0) 
                 console.log("pred stavka cash: ", res_add)
 
-                
-
-                if (fact) {
-                    //сохранить в бд фактическую ставку
-                    const res_add2 = await addFactStavka(props.specId, props.post.id, fact)
-                    console.log("fact stavka cash: ", res_add2)
-                    setStavka(fact)
-                } else {
-                    setStavka(res ? res.payment : 0)
-                }
-                
+                const res2 = await getSpecStavka(props.specId, props.post.id)
+                setCashStavka(res2) 
 
                 setIsLoading(false)
                     
-            } else {
-                //сохранить в бд фактическую ставку
-                const res_add2 = await addFactStavka(props.specId, props.post.id, fact ? fact : 0)
-                //console.log("fact stavka cash: ", res_add2)
-
-                //console.log("pred: ", res0?.predStavka)
-                //console.log("fact: ", res0?.factStavka)
+            } else {                
                 setCashStavka(res0) // данные из кэша
-                setStavka(res0.factStavka ? res0.factStavka : res0.predStavka)
                 setIsLoading(false)
-            }  
-            
-            
+            }      
         }
 
         fetch()
-    }, [fact])
+    }, [])
 
-    // useEffect(()=> {
-    //     //console.log("cashStavka: ", cashStavka)
-    //     if (cashStavka.predStavka) {        
-    //         if (cashStavka.factStavka) { 
-    //             if (cashStavka.podtverStavka) {
-    //                 setStavka(cashStavka.podtverStavka)
-    //             } else {
-    //                 setStavka(cashStavka.factStavka)
-    //             }
-    //         } else {
-    //             setStavka(cashStavka.predStavka)
-    //         }
-    //     }  
-    // },[cashStavka])
+    useEffect(()=> {
+        //console.log("cashStavka: ", cashStavka)
+        if (cashStavka.predStavka) {        
+            if (cashStavka.factStavka) { 
+                if (cashStavka.podtverStavka) {
+                    setStavka(cashStavka.podtverStavka)
+                } else {
+                    setStavka(cashStavka.factStavka)
+                }
+            } else {
+                setStavka(cashStavka.predStavka)
+            }
+        }  
+    },[cashStavka])
     
     const onShowProject = () => {
         navigate('/smeta', {
@@ -203,7 +192,7 @@ const ProjectItem = (props) => {
         // <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
         <div className={`box`} onClick={onShowProject} style={{ backgroundImage: `url(${plashka})`, backgroundSize: 'cover' }}>
             <div className="post__content" style={{position: 'relative'}}>
-                <div className="post_title">{props.post.title} <span style={{color: '#c9c8c8', fontSize: '20px'}}>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : '0.00')}</span></div>
+                <div className="post_title">{props.post.title} <span style={{color: '#c9c8c8', fontSize: '20px'}}>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : 'нет ставки')}</span></div>
                 <div style={{display: 'flex', justifyContent: 'flex-end'}}><div className={showEtap1 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap2 ? 'etap green2-fon' : 'etap gray-fon'}></div><div className={showEtap3 ? 'etap green3-fon' : 'etap gray-fon'}></div><div className={showEtap4 ? 'etap green4-fon' : 'etap gray-fon'}></div><div className={showEtap5 ? 'etap green5-fon' : 'etap gray-fon'}></div></div>
                 <div className="maney_status default-color">{statusMoney}</div>
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>
