@@ -131,8 +131,9 @@ const ProfilePage = () => {
                 let smetaObject = smets.find((proj) => proj.projectId === project.id)
 
                 const specsArr = JSON.parse(project.specs)
+                //console.log("specsArr: ", specsArr)
 
-                if (smetaObject) {
+                //if (smetaObject) {
                     specsArr.map((spec, index) => {
                         if (spec.id === workerId) {
                             const newProject = {
@@ -151,7 +152,7 @@ const ProfilePage = () => {
                             arrayProject.push(newProject)
                         }   
                     })
-                } 
+                //} 
                 
 
                 // const newProject = {
@@ -170,17 +171,16 @@ const ProfilePage = () => {
                 //arrayProject.push(newProject)
             })
 
-
             const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
-            //const tempArr = [...arrayProject].filter(post=> post.specs?.id === workerId)
+            console.log("tempArr: ", tempArr)
             tempArr.map((item)=> {
-                if (item.smeta) {
-                    tempSum = tempSum + (item.smeta.fio_id === workerId ? item.smeta.specialist : 0)  //item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
+                if (item.smeta ) {
+                    console.log("смета: ", item.smeta)
+                    tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
                 }   
                 console.log("tempSum: ", tempSum)
             })
 
-            console.log("tempArr: ", tempArr)
             setSumma(tempSum)
             setIsLoadingSum(false)
 

@@ -90,7 +90,7 @@ const ProjectItem = (props) => {
 
             //если кэш пуст
             if (!res0) {
-                const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
+                const res = await getStavka(props.post.id, props.post.specs.rowId)
                 //console.log(res)
 
                 //сохранить в бд предварительную ставку
