@@ -38,7 +38,7 @@ const ProjectItem = (props) => {
     
         const dateMain = props.post.specs.date //props.post.specs.filter((item) => item.id === props.specId)[0]?.date;
         
-        const fact = props.post.smeta.fio_id === props.specId ? props.post.smeta.specialist : 0 //props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist : ""
+        const fact = (props.post.smeta.fio_id === props.specId) && (props.post.smeta.date === dateMain) ? props.post.smeta.specialist : 0 //props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist : ""
         setFact(fact)
         console.log("fact: ", fact)
     
@@ -86,12 +86,12 @@ const ProjectItem = (props) => {
         const fetch = async() => {
             
             const res0 = await getSpecStavka(props.specId, props.post.id)
-            console.log("res0: ", res0)
+            //console.log("res0: ", res0)
 
             //если кэш пуст
             if (!res0) {
                 const res = await getStavka(props.post.id, props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId)
-                console.log(res)
+                //console.log(res)
 
                 //сохранить в бд предварительную ставку
                 const res_add = await addStavka(props.specId, props.post.id, res ? res.payment : 0) 
@@ -127,6 +127,7 @@ const ProjectItem = (props) => {
     },[cashStavka])
     
     const onShowProject = () => {
+        console.log("props: ", props)
         navigate('/smeta', {
             state: {
               specId: props.specId,
@@ -135,10 +136,10 @@ const ProjectItem = (props) => {
               title: props.post.title,
               date: props.post.date_start,
               date2: props.post.date_end,
-              staffId: props.post.specs.filter((item) => item.id === props.specId)[0]?.rowId,  
-              vid: props.post.specs.filter((item) => item.id === props.specId)[0]?.vid,   
-              spec: props.post.specs.filter((item) => item.id === props.specId)[0]?.spec, 
-              dateMain: props.post.specs.filter((item) => item.id === props.specId)[0]?.date,
+              staffId: props.post.specs.rowId, //filter((item) => item.id === props.specId)[0]?.rowId,  
+              vid: props.post.specs.vid, //filter((item) => item.id === props.specId)[0]?.vid,   
+              spec: props.post.specs.spec, //filter((item) => item.id === props.specId)[0]?.spec, 
+              dateMain: props.post.specs.date, //filter((item) => item.id === props.specId)[0]?.date,
               start: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.start,
               stop: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.stop,
               chasi: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.chasi,
