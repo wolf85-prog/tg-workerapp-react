@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Monserrat';
+  src: url('fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -27,7 +34,7 @@
 
 .App {
   width: 100%;
-  font-family: Arial;
+  font-family: Monserrat;
   text-align: center;
   position: relative;
 }

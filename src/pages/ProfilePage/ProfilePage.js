@@ -269,6 +269,8 @@ const ProfilePage = () => {
     }
 
     useEffect(()=>{
+        tg.setHeaderColor('#797979') // установка цвета хедера
+        
         if (!tg.isExpanded) {
            tg.expand() //раскрыть приложение на всю высоту 
         }
