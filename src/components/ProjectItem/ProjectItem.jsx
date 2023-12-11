@@ -29,6 +29,8 @@ const ProjectItem = (props) => {
     const [formattime, setFormattime] = useState("")
     const [fact, setFact] = useState()
 
+    const [mainDate, setMainDate] = useState("")
+
     useEffect(()=> {
         //console.log("props: ", props)
         const statusColor = props.post.status == null ? 'gray' : props.post.status.color;
@@ -36,18 +38,18 @@ const ProjectItem = (props) => {
         //console.log("dateProject: ", dateProject)
         //const dateProject2 = props.post.date_end != null ? props.post.date_end : '';
     
-        const dateMain = props.post.specs.date //props.post.specs.filter((item) => item.id === props.specId)[0]?.date;
+        const dateTemp = props.post.specs.date //props.post.specs.filter((item) => item.id === props.specId)[0]?.date;
+        //setMainDate(dateTemp)
 
-        console.log("ДАТА:", new Date(dateMain).toLocaleDateString())
         
         //const fact = (props.post.smeta.fio_id === props.specId) && (props.post.smeta.date === dateMain) ? props.post.smeta.specialist : 0 //props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist : ""
-        const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId && new Date(item.date).toLocaleDateString() === new Date(dateMain).toLocaleDateString())[0]?.specialist : ""
+        const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId && new Date(item.date).toLocaleDateString() === new Date(dateTemp).toLocaleDateString())[0]?.specialist : ""
         setFact(fact)
-        console.log("fact: ", fact)
+        //console.log("fact: ", fact)
     
         let d_end, year2, date2, month2, chas2, minut2;
     
-        const d = new Date(dateMain);
+        const d = new Date(dateTemp);
     
         //time start
         const year = d.getFullYear()
@@ -76,7 +78,7 @@ const ProjectItem = (props) => {
         //сохранить в бд фактическую ставку
         const saveFact = async() => {
             if (fact) {
-                const res = await addFactStavka(props.specId, props.post.id, fact)
+                const res = await addFactStavka(props.specId, props.post.id, fact, new Date(props.post.specs.date).toLocaleDateString())
 
                 setCashStavka(res) 
             }
@@ -88,25 +90,36 @@ const ProjectItem = (props) => {
     useEffect(()=> {
         const fetch = async() => {
             
-            const res0 = await getSpecStavka(props.specId, props.post.id)
-            //console.log("res0: ", res0)
+            const res0 = await getSpecStavka(props.specId, props.post.id, new Date(props.post.specs.date).toLocaleDateString())
+            //console.log("res0: ", new Date(props.post.specs.date).toLocaleDateString())
 
             //если кэш пуст
             if (!res0) {
-                const res = await getStavka(props.post.id, props.post.specs.rowId)
+                const res = await getStavka(props.post.id, props.post.specs.rowId) //API
                 //console.log(res)
 
                 //сохранить в бд предварительную ставку
-                const res_add = await addStavka(props.specId, props.post.id, res ? res.payment : 0) 
+                const res_add = await addStavka(props.specId, props.post.id, res ? res.payment : 0, new Date(props.post.specs.date).toLocaleDateString()) 
                 console.log("pred stavka cash: ", res_add)
 
-                const res2 = await getSpecStavka(props.specId, props.post.id)
+                const res2 = await getSpecStavka(props.specId, props.post.id, new Date(props.post.specs.date).toLocaleDateString())
                 setCashStavka(res2) 
 
                 setIsLoading(false)
                     
             } else {                
                 setCashStavka(res0) // данные из кэша
+ 
+                if (res0.factStavka) { 
+                    if (res0.podtverStavka) {
+                        setStavka(res0.podtverStavka)
+                    } else {
+                        setStavka(res0.factStavka)
+                    }
+                } else {
+                    setStavka(res0.predStavka)
+                }
+
                 setIsLoading(false)
             }      
         }
@@ -114,20 +127,20 @@ const ProjectItem = (props) => {
         fetch()
     }, [])
 
-    useEffect(()=> {
-        //console.log("cashStavka: ", cashStavka)
-        if (cashStavka.predStavka) {        
-            if (cashStavka.factStavka) { 
-                if (cashStavka.podtverStavka) {
-                    setStavka(cashStavka.podtverStavka)
-                } else {
-                    setStavka(cashStavka.factStavka)
-                }
-            } else {
-                setStavka(cashStavka.predStavka)
-            }
-        }  
-    },[cashStavka])
+    // useEffect(()=> {
+    //    // console.log("cashStavka: ", cashStavka)
+    //     if (cashStavka.predStavka) {        
+    //         if (cashStavka.factStavka) { 
+    //             if (cashStavka.podtverStavka) {
+    //                 setStavka(cashStavka.podtverStavka)
+    //             } else {
+    //                 setStavka(cashStavka.factStavka)
+    //             }
+    //         } else {
+    //             setStavka(cashStavka.predStavka)
+    //         }
+    //     }  
+    // },[])
     
     const onShowProject = () => {
         console.log("props: ", props)
@@ -152,7 +165,7 @@ const ProjectItem = (props) => {
               taxi: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.taxi, 
               gsm: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.gsm,  
               transport: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.transport,   
-              specialist: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist, 
+              specialist: props.post.smeta.filter((item) => item.fio_id === props.specId && item.date.split("T")[0] === props.post.specs.date.split("T")[0])[0]?.specialist, 
             }
         })
     }
@@ -203,7 +216,7 @@ const ProjectItem = (props) => {
         // <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
         <div className={`box`} onClick={onShowProject} style={{ backgroundImage: `url(${plashka})`, backgroundSize: 'cover' }}>
             <div className="post__content" style={{position: 'relative'}}>
-                <div className="post_title">{props.post.title} <span style={{color: '#c9c8c8', fontSize: '20px'}}>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : 'нет ставки')}</span></div>
+                <div className="post_title">{props.post.title} <span style={{color: '#c9c8c8', fontSize: '20px', marginBottom: '5px'}}>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : 'нет ставки')}</span></div>
                 <div style={{display: 'flex', justifyContent: 'flex-end'}}><div className={showEtap1 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap2 ? 'etap green2-fon' : 'etap gray-fon'}></div><div className={showEtap3 ? 'etap green3-fon' : 'etap gray-fon'}></div><div className={showEtap4 ? 'etap green4-fon' : 'etap gray-fon'}></div><div className={showEtap5 ? 'etap green5-fon' : 'etap gray-fon'}></div></div>
                 <div className="maney_status default-color">{statusMoney}</div>
                 <div>Дата: <span className="subscribe">{formatted}</span> </div>
