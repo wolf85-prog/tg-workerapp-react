@@ -37,8 +37,11 @@ const ProjectItem = (props) => {
         //const dateProject2 = props.post.date_end != null ? props.post.date_end : '';
     
         const dateMain = props.post.specs.date //props.post.specs.filter((item) => item.id === props.specId)[0]?.date;
+
+        console.log("ДАТА:", new Date(dateMain).toLocaleDateString())
         
-        const fact = (props.post.smeta.fio_id === props.specId) && (props.post.smeta.date === dateMain) ? props.post.smeta.specialist : 0 //props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist : ""
+        //const fact = (props.post.smeta.fio_id === props.specId) && (props.post.smeta.date === dateMain) ? props.post.smeta.specialist : 0 //props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist : ""
+        const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId && new Date(item.date).toLocaleDateString() === new Date(dateMain).toLocaleDateString())[0]?.specialist : ""
         setFact(fact)
         console.log("fact: ", fact)
     

@@ -24,7 +24,7 @@ const ProjectList = ({posts, title, workerId, remove}) => {
                      
 
             {posts.map((post, index) =>
-                <ProjectItem number={index + 1} post={post} key={post.id} specId={workerId}/>    
+                <ProjectItem number={index + 1} post={post} key={post.id + index} specId={workerId}/>    
             )}
             
         </div>

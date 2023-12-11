@@ -83,7 +83,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -341,7 +341,15 @@ const ProfilePage = () => {
                         {/* <li><div className="bullet-title">Город</div>{workerhub[0]?.city}</li> */}
                         <li><div className="bullet-title">Специальность </div> 
                             <Link to={'/edit-worker'} style={{position: 'absolute', left: '140px'}}><img src={iconEdit} alt='' style={{ width: '22px', height: '22px'}}/></Link>             
-                            <table className="table-noborder">{workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' ? <tr key={worker.id}><td>{worker.name}</td></tr> : '' )}</table> 
+                            <table className="table-noborder">
+                                <tbody>
+                                {workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' 
+                                ?   <tr key={worker.id}>
+                                        <td>{worker.name}</td>
+                                    </tr> 
+                                : '' )}
+                                </tbody>
+                            </table> 
                         </li>
                         <li><div className="bullet-title">Рейтинг</div>
                             &#9733;&#9733;&#9733;&#9733;&#9733;  

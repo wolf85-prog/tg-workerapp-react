@@ -10,9 +10,9 @@ export const getStavka = async (projectId, staffId) =>{
     }
 }
 
-export const addStavka = async (specsId, projId, stavka) =>{
+export const addStavka = async (specsId, projId, stavka, date) =>{
     try {
-       let response = await $host.get(`api/specs/stavka/add/${specsId}/${projId}/${stavka}`);
+       let response = await $host.get(`api/specs/stavka/add/${specsId}/${projId}/${stavka}/${date}`);
        //console.log(response)
        return response.data;
     } catch (error) {
@@ -20,9 +20,9 @@ export const addStavka = async (specsId, projId, stavka) =>{
     }
 }
 
-export const addFactStavka = async (specsId, projId, stavka) =>{
+export const addFactStavka = async (specsId, projId, stavka, date) =>{
     try {
-       let response = await $host.get(`api/specs/stavka/fact/${specsId}/${projId}/${stavka}`);
+       let response = await $host.get(`api/specs/stavka/fact/${specsId}/${projId}/${stavka}/${date}`);
        //console.log(response)
        return response.data;
     } catch (error) {
@@ -30,9 +30,9 @@ export const addFactStavka = async (specsId, projId, stavka) =>{
     }
 }
 
-export const getSpecStavka = async (specsId, projId) =>{
+export const getSpecStavka = async (specsId, projId, date) =>{
     try {
-       let response = await $host.get(`api/specs/stavka/get/${specsId}/${projId}`);
+       let response = await $host.get(`api/specs/stavka/get/${specsId}/${projId}/${date}`);
        //console.log(response)
        return response.data;
     } catch (error) {
