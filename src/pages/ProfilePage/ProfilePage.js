@@ -290,16 +290,16 @@ const ProfilePage = () => {
         tg.BackButton.show();
     }, [])
 
-    useEffect(() => {
-        tg.MainButton.setParams({
-            text: '',
-            color: '#343A41' //'#2e2e2e'
-        })
-    }, [])
+    // useEffect(() => {
+    //     tg.MainButton.setParams({
+    //         text: '',
+    //         color: '#343A41' //'#2e2e2e'
+    //     })
+    // }, [])
 
-    useEffect(() => {
-        tg.MainButton.show();     
-    }, [])
+    // useEffect(() => {
+    //     tg.MainButton.show();     
+    // }, [])
 
 
     const showQRCode = () => {
