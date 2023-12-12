@@ -22,6 +22,8 @@ import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
+import CardSpec from "../../image/new/card_spec.svg";
+
 import iconCheck from "../../image/check.png";
 import iconUnCheck from "../../image/uncheck.png";
 import iconEdit from "../../image/icons/edit_icon.png";
@@ -83,7 +85,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -323,14 +325,24 @@ const ProfilePage = () => {
             <Header header={{title: `${headerName}`, icon: 'false'}}/>
 
             {/* темный фон */}
-            <img src={BlackFon} alt='' className='fon-black' />
+            {/* <img src={BlackFon} alt='' className='fon-black' />
             
             <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0', opacity: '0.6'}}>
                 <img src={Fon} alt='' className='fon-style-full' />
             </div>
 
             <img src={FonGradTop} alt='' className='fon-style-menu1' style={{visibility: showGrad ? "visible": "hidden"}}/>
-            <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
+            <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/> */}
+
+            {/* <article class="card">
+                <h3 class="card__title">Мальдивские острова</h3>
+                <p class="card__price">от 55 000 р</p>
+                <a href="tel:+74932200080" class="card__link">+7 (4932) 2000-80</a>
+            </article> */}
+
+            <div>
+                <img src={CardSpec} alt='' />
+            </div>
 
 
             <div className='form-profile' onScroll={handleScroll}>

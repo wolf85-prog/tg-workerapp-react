@@ -39,6 +39,14 @@
   position: relative;
 }
 
+.card {
+  padding: 30px;
+  background-image: url("./image/new/card_spec.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .block-buttons {
   display: flex;
   justify-content: space-between;
