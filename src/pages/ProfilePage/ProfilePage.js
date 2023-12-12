@@ -295,7 +295,7 @@ const ProfilePage = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: '',
+            text: 'ULEY',
             color: '#343A41' //'#2e2e2e'
         })
     }, [])
