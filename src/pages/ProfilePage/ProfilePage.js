@@ -372,6 +372,10 @@ const ProfilePage = () => {
                     </div>
                     <div className='block-id'>ID 2135446</div>
                 </article>
+            </div>
+            
+
+            <div className="container" style={{display: 'flex'}}>
 
                 {/* Мерч */}
                 <article className='block-merch'> 
@@ -383,11 +387,11 @@ const ProfilePage = () => {
                             <div className='rectangle-circle2'></div>
                         </div>
 
-                        <p className='merch-title'>Мерч</p>
+                        {/* <p className='merch-title'>Мерч</p>
                         <div className='perechislenie'>
                             <p className="">Sound</p>
                             <p className="">Production</p> 
-                        </div>
+                        </div> */}
                 </article>
 
                 {/* Компетенции */}
@@ -395,7 +399,7 @@ const ProfilePage = () => {
                     <div className='rectangle-kompeten'></div>
                     <div className='rectangle-kompeten2'></div>
                     <div className='rectangle-kompeten3'></div>
-                    <div className='kompetencii-title'><p>Компетенции</p><img className='vector-icon' src={Vector} alt=''/></div>
+                    {/* <div className='kompetencii-title'><p>Компетенции</p><img className='vector-icon' src={Vector} alt=''/></div> */}
                 </article>
 
                 {/* Доход */}
@@ -403,13 +407,11 @@ const ProfilePage = () => {
                     <div className='rectangle-dohod'></div>
                     <div className='rectangle-dohod2'></div>
                     <div className='rectangle-dohod3'></div>
-                    <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
-                    <p className='summa-dohod'>12212</p>
+                    {/* <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
+                    <p className='summa-dohod'>12212</p> */}
                 </article>
 
-            </div>
-
-                
+            </div>        
             
 
 

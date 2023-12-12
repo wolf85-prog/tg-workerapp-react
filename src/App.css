@@ -137,7 +137,7 @@
   position: absolute;
   width: 124px;
   height: 22px;
-  left: 210px;
+  right: 15px;
   top: 117px;
 }
 
@@ -153,11 +153,10 @@
 
 .block-id {
   /* ID 312224589 */
-
   position: absolute;
-  width: 65px;
+  width: 100px;
   height: 12px;
-  left: 265px;
+  right: 15px;
   top: 137px;
 
   font-style: normal;
@@ -165,122 +164,12 @@
   font-size: 10px;
   line-height: 12px;
   text-align: right;
-
   /* ULEY Светлый */
   color: #E8F1F9;
-
   opacity: 0.4;
 }
 
 
-.block-merch {
-  position: absolute;
-  width: 139px;
-  height: 163px;
-  left: 0;
-  top: 200px;
-}
-
-.rectangle-merch {
-  box-sizing: border-box;
-  position: absolute;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 1.11%;
-  background: #2B2E32;
-  box-shadow: 20px 21px 20px rgba(25, 23, 23, 0.17), -12px -15px 20px rgba(203, 226, 251, 0.05), 1.08px 0px 5.076px rgba(0, 0, 0, 0.57), inset -2.16px 0px 4.32px rgba(0, 0, 0, 0.27), inset -2.16px 0px 2.592px rgba(0, 0, 0, 0.22), inset 0px 0px 19.24px rgba(67, 67, 67, 0.29);
-  border-radius: 21.6px;
-}
-
-.rectangle-merch2 {
-  box-sizing: border-box;
-  position: absolute;
-  left: 0%;
-  right: 29.43%;
-  top: 0%;
-  bottom: 0%;
-  background: linear-gradient(90deg, #2B2E32 12.69%, rgba(43, 46, 50, 0) 106.01%, rgba(43, 46, 50, 0) 130.57%);
-  border-radius: 21.6px;
-}
-
-.rectangle-merch3 {
-  position: absolute;
-  left: 54.39%;
-  right: 19.08%;
-  top: 1.73%;
-  bottom: 2.68%;
-  background: #2B2F33;
-  filter: blur(5px);
-}
-
-.merch-title {
-  /* Мерч */
-  position: absolute;
-  width: 45px;
-  height: 11px;
-  left: 20px;
-  top: 20px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: -0.045em;
-  /* ULEY Светлый */
-  color: #E8F1F9;
-}
-
-.perechislenie {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  position: absolute;
-  width: 73px;
-  height: 85px;
-  left: 20px;
-  top: 50px;
-}
-
-.perechislenie p {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  /* identical to box height */
-  letter-spacing: -0.045em;
-  /* ULEY Светлый */
-  color: #E8F1F9;
-  opacity: 0.2;
-  /* Inside auto layout */
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
-
-/* Rectangle 12 */
-.rectangle-circle {
-  position: absolute;
-  width: 26px;
-  height: 26px;
-  left: 102px;
-  top: 20px;
-}
-
-
-/* Rectangle 11 */
-.rectangle-circle2 {
-  box-sizing: border-box;
-  position: absolute;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%;
-  background: linear-gradient(136.22deg, rgba(237, 237, 237, 0.2) 20.92%, rgba(65, 65, 65, 0.2) 64.46%), linear-gradient(314.64deg, #1F2021 21.78%, #242526 55.17%, #313337 96.32%);
-  box-shadow: -2px -1px 3.5px rgba(0, 0, 0, 0.25), -5.51642px -4.82687px 14px rgba(255, 255, 255, 0.11), 2px 4px 20.3px rgba(0, 0, 0, 0.7), inset 1px 1px 0px rgba(255, 255, 255, 0.04), inset -6px -6px 24px rgba(0, 0, 0, 0.37), inset 5px 7px 8.3px rgba(91, 91, 91, 0.25), inset 0px 0px 37px rgba(67, 67, 67, 0.29);
-  border-radius: 100px;
-}
 
 
 .block-buttons {
