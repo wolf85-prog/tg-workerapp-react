@@ -17,7 +17,7 @@ const Header = (props) => {
             </span>
 
             <span className={'username'}>
-                ID {user?.id}
+                Контакты
                 {/* ID 805436270 */}
             </span>
             {/* <img className={'btn-close'} onClick={onClose} src={CloseButton}/> */}

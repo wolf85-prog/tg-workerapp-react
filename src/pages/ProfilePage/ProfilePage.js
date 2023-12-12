@@ -22,7 +22,10 @@ import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
-import CardSpec from "../../image/new/card_spec.svg";
+import Star from "../../image/new/star.svg";
+import StarActive from "../../image/new/star_activ.svg";
+import Edit from "../../image/new/edit.svg"
+import Vector from "../../image/new/vector.svg"
 
 import iconCheck from "../../image/check.png";
 import iconUnCheck from "../../image/uncheck.png";
@@ -346,12 +349,67 @@ const ProfilePage = () => {
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/> */}
 
             <div className="container">
+                {/* ФИО */}
                 <article className="card">
                     <div className="rectangle"><div className="rectangle2"><div className="rectangle3"></div></div>
                     </div>
-                    <h3 className="profile_fio">Иванов Иван Иванович</h3>
+                    <div>
+                        <p className="profile_fio">Иванов Иван Иванович</p>
+                        <div className="card-specs bullet">
+                            <ul>
+                                <li className="bullet-title">Техник монтажа</li>
+                                <li className="bullet-title">Режиссер <img src={Edit} alt=''/></li>
+                            </ul>   
+                        </div>     
+                    </div>
+                    
+                    <div className="star-block">
+                        <img className='star-icon' src={StarActive} alt='' /> 
+                        <img className='star-icon' src={StarActive} alt='' />
+                        <img className='star-icon' src={Star} alt='' />
+                        <img className='star-icon' src={Star} alt='' />
+                        <img className='star-icon' src={Star} alt='' />
+                    </div>
+                    <div className='block-id'>ID 2135446</div>
                 </article>
+
+                {/* Мерч */}
+                <article className='block-merch'> 
+                        <div className='rectangle-merch'></div>
+                        <div className='rectangle-merch2'></div>
+                        <div className='rectangle-merch3'></div> 
+
+                        <div className='rectangle-circle'>
+                            <div className='rectangle-circle2'></div>
+                        </div>
+
+                        <p className='merch-title'>Мерч</p>
+                        <div className='perechislenie'>
+                            <p className="">Sound</p>
+                            <p className="">Production</p> 
+                        </div>
+                </article>
+
+                {/* Компетенции */}
+                <article className='block-kompetencii'> 
+                    <div className='rectangle-kompeten'></div>
+                    <div className='rectangle-kompeten2'></div>
+                    <div className='rectangle-kompeten3'></div>
+                    <div className='kompetencii-title'><p>Компетенции</p><img className='vector-icon' src={Vector} alt=''/></div>
+                </article>
+
+                {/* Доход */}
+                <article className='block-dohod'> 
+                    <div className='rectangle-dohod'></div>
+                    <div className='rectangle-dohod2'></div>
+                    <div className='rectangle-dohod3'></div>
+                    <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
+                    <p className='summa-dohod'>12212</p>
+                </article>
+
             </div>
+
+                
             
 
 
@@ -418,7 +476,7 @@ const ProfilePage = () => {
             </div> */}
             
             {/* стрелка */}
-            <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: showArroy ? "block": "none"}} /></div>
+            {/* <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: showArroy ? "block": "none"}} /></div> */}
 
             <div className='footer-block'>
                 {/* <Link to={'/menu'}><img src={btnMenu} alt='' /></Link> */}
