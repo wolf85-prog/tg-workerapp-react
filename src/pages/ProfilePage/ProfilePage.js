@@ -282,20 +282,20 @@ const ProfilePage = () => {
         
     }, [])
 
-    // useEffect(() => {
-    //     tg.onEvent("backButtonClicked", onClose)
-    //     return () => {
-    //         tg.offEvent('backButtonClicked', onClose)
-    //     }
-    // }, [onClose])
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", onClose)
+        return () => {
+            tg.offEvent('backButtonClicked', onClose)
+        }
+    }, [onClose])
 
-    // useEffect(() => {
-    //     tg.BackButton.show();
-    // }, [])
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Сохранить',
+            text: '',
             color: '#343A41' //'#2e2e2e'
         })
     }, [])
@@ -478,11 +478,10 @@ const ProfilePage = () => {
             {/* стрелка */}
             {/* <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: showArroy ? "block": "none"}} /></div> */}
 
-            <div className='footer-block'>
-                {/* <Link to={'/menu'}><img src={btnMenu} alt='' /></Link> */}
+            {/* <div className='footer-block'>
                 <div></div>
                 <img src={smallMenu} alt='' className='small-menu-icon' />
-            </div>
+            </div> */}
             
         </div>
     );
