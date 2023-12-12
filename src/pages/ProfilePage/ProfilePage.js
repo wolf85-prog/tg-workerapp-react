@@ -85,7 +85,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -271,7 +271,7 @@ const ProfilePage = () => {
     }
 
     useEffect(()=>{
-        tg.setHeaderColor('#797979') // установка цвета хедера
+        tg.setHeaderColor('#343A41') // установка цвета хедера
         
         if (!tg.isExpanded) {
            tg.expand() //раскрыть приложение на всю высоту 
@@ -288,6 +288,17 @@ const ProfilePage = () => {
 
     useEffect(() => {
         tg.BackButton.show();
+    }, [])
+
+    useEffect(() => {
+        tg.MainButton.setParams({
+            text: '',
+            color: '#343A41' //'#2e2e2e'
+        })
+    }, [])
+
+    useEffect(() => {
+        tg.MainButton.show();     
     }, [])
 
 
