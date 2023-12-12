@@ -85,7 +85,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -334,23 +334,21 @@ const ProfilePage = () => {
             <img src={FonGradTop} alt='' className='fon-style-menu1' style={{visibility: showGrad ? "visible": "hidden"}}/>
             <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/> */}
 
-            {/* <article class="card">
-                <h3 class="card__title">Мальдивские острова</h3>
-                <p class="card__price">от 55 000 р</p>
-                <a href="tel:+74932200080" class="card__link">+7 (4932) 2000-80</a>
-            </article> */}
-
-            <div>
-                <img src={CardSpec} alt='' />
+            <div className="container">
+                <article className="card">
+                    <div className="rectangle"><div className="rectangle2"><div className="rectangle3"></div></div>
+                    </div>
+                    <h3 className="profile_fio">Иванов Иван Иванович</h3>
+                </article>
             </div>
+            
 
 
-            <div className='form-profile' onScroll={handleScroll}>
+            {/* <div className='form-profile' onScroll={handleScroll}>
                 <div style={{height: height}}>
                     <ol className="bullet" id='section-one'>
                         <li><div className="bullet-title">ФИО</div>{workerhub[0]?.fio.split(' ')[0]}</li>
                         <li><div className="bullet-title"></div>{workerhub[0]?.fio.split(' ')[1]} {workerhub[0]?.fio.split(' ')[2]}</li>
-                        {/* <li><div className="bullet-title">Город</div>{workerhub[0]?.city}</li> */}
                         <li><div className="bullet-title">Специальность </div> 
                             <Link to={'/edit-worker'} style={{position: 'absolute', left: '140px'}}><img src={iconEdit} alt='' style={{ width: '22px', height: '22px'}}/></Link>             
                             <table className="table-noborder">
@@ -366,9 +364,7 @@ const ProfilePage = () => {
                         <li><div className="bullet-title">Рейтинг</div>
                             &#9733;&#9733;&#9733;&#9733;&#9733;  
                         </li>                    
-                        {/* <li><div className="bullet-title">Проекты с U.L.E.Y</div>{workerhub[0]?.rank}</li> */}
                         <li><div className="bullet-title">Компетенции</div></li>
-                        {/* <li><div className="bullet-title">Замечания</div>{workerhub[0]?.comteg.map(item=>item.name).join(' ')}</li> */}
                         <li><div className="bullet-title">Мерч</div><img src={workerhub[0]?.merch.length > 0 ? iconCheck : iconUnCheck} alt='' width='25px' height='25px'/></li>
                         <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' | ')}</li>
                         <li><div className="bullet-title" style={{margin: 'auto 0'}}>Общая сумма дохода</div><span style={{fontSize: '26px', margin: 'auto 0'}}>{isLoadingSum ? <Loader2 /> : parseInt(summa).toLocaleString()+".00"}</span></li>
@@ -383,15 +379,11 @@ const ProfilePage = () => {
                         </ol>
                     </div>         
 
-                    {/* Кнопка Пригласить друга */}
                     <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
                         <button className="image-button2" onClick={showQRCode} style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button>
                     </div> 
                 </div>
                 
-
-
-                {/* Проекты */}
                 <div  ref={projectsRef}>
                     <ProjectFilter
                         filter={filter}
@@ -406,14 +398,13 @@ const ProfilePage = () => {
                         }
 
                         <div style={{display: 'flex', justifyContent: 'center'}}>
-                            {/* <Link to={'/info'}><button className="image-button3" style={{ backgroundImage: `url(${ButtonsMenu})`}}>Инфо</button></Link> */}
                             <button className="image-button3" onClick={()=>navigate('/contacts')} style={{ backgroundImage: `url(${ButtonsMenu})`}}>Связь</button>
                         </div>
 
                     </div> 
                 </div>
 
-            </div>
+            </div> */}
             
             {/* стрелка */}
             <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: showArroy ? "block": "none"}} /></div>
