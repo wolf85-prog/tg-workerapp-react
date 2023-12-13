@@ -6,6 +6,7 @@ import { useUsersContext } from "../../contexts/UserContext";
 import { getStavka, addStavka, addFactStavka, getSpecStavka } from '../../http/stavkaAPI';
 
 import plashka from "../../image/buttons/project_plashka.png";
+import btnChat from "../../image/new/btn_chat.svg"
 
 const ProjectItem = (props) => {
 
@@ -242,8 +243,14 @@ const ProjectItem = (props) => {
                 <div className='project-text'>
                     <p className="project_title">Тест</p>
                     <p className="project_subtitle">06.12.2023 | 20:00</p>
+                    <div className='progress'>
+
+                    </div>
+                    
                     <p className='project_money'>6 0000</p>
                 </div>
+
+                <div className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>
             </div>
         </div>
 
