@@ -213,26 +213,34 @@ const ProjectItem = (props) => {
       };
 
     return (
-        // <div className={`box ${statusColor}`} onClick={onShowProject} style={{ background: `linear-gradient(to bottom right, #000000, #3d413e)` }}>
-        <div className={`box`} onClick={onShowProject} style={{ backgroundImage: `url(${plashka})`, backgroundSize: 'cover' }}>
-            <div className="post__content" style={{position: 'relative'}}>
-                <div className="post_title">{props.post.title} <span style={{color: '#c9c8c8', fontSize: '20px', marginBottom: '5px'}}>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : 'нет ставки')}</span></div>
-                <div style={{display: 'flex', justifyContent: 'flex-end'}}><div className={showEtap1 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap2 ? 'etap green2-fon' : 'etap gray-fon'}></div><div className={showEtap3 ? 'etap green3-fon' : 'etap gray-fon'}></div><div className={showEtap4 ? 'etap green4-fon' : 'etap gray-fon'}></div><div className={showEtap5 ? 'etap green5-fon' : 'etap gray-fon'}></div></div>
-                <div className="maney_status default-color">{statusMoney}</div>
-                <div>Дата: <span className="subscribe">{formatted}</span> </div>
-                <div>Начало: <span className="subscribe">{formattime}</span> </div>
-                <div style={{fontSize: '14px'}}>
-                    0.00 рублей х 10 часов
-                </div>
-                <div style={{width: '100%', display: 'flex', justifyContent: 'flex-end', position: 'absolute', bottom: '0', right: '0'}}>
-                    {props.post.tgURL_chat && 
-                    <div className='btn-grad' onClick={goToChat}>
-                        Чат
-                    </div>
-                    }
-                </div>
+        // <div className={`box`} onClick={onShowProject} style={{ backgroundImage: `url(${plashka})`, backgroundSize: 'cover' }}>
+        //     <div className="post__content" style={{position: 'relative'}}>
+        //         <div className="post_title">{props.post.title} <span style={{color: '#c9c8c8', fontSize: '20px', marginBottom: '5px'}}>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : 'нет ставки')}</span></div>
+        //         <div style={{display: 'flex', justifyContent: 'flex-end'}}><div className={showEtap1 ? 'etap green-fon' : 'etap gray-fon'}></div><div className={showEtap2 ? 'etap green2-fon' : 'etap gray-fon'}></div><div className={showEtap3 ? 'etap green3-fon' : 'etap gray-fon'}></div><div className={showEtap4 ? 'etap green4-fon' : 'etap gray-fon'}></div><div className={showEtap5 ? 'etap green5-fon' : 'etap gray-fon'}></div></div>
+        //         <div className="maney_status default-color">{statusMoney}</div>
+        //         <div>Дата: <span className="subscribe">{formatted}</span> </div>
+        //         <div>Начало: <span className="subscribe">{formattime}</span> </div>
+        //         <div style={{fontSize: '14px'}}>
+        //             0.00 рублей х 10 часов
+        //         </div>
+        //         <div style={{width: '100%', display: 'flex', justifyContent: 'flex-end', position: 'absolute', bottom: '0', right: '0'}}>
+        //             {props.post.tgURL_chat && 
+        //             <div className='btn-grad' onClick={goToChat}>
+        //                 Чат
+        //             </div>
+        //             }
+        //         </div>
+        //     </div>
+        // </div>
+
+        <div className='container'>
+            <div className='proj-card'>
+                <div className='rectangle-projcard'></div>
+                <div className='rectangle-projcard2'></div>
+                <div className='rectangle-projcard3'></div>
             </div>
         </div>
+
     );
 };
 

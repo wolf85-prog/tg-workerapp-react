@@ -4,7 +4,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewWorker4.css';
-import Fon from "../../image/logo_01_light.png";
+
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
 
@@ -84,7 +84,7 @@ const NewWorker4 = () => {
         <div className="App">
             <Header header={{title: 'Новый специалист', icon: 'false'}}/>
 
-            <img src={Fon} alt='' className='fon-style'/>
+            {/* <img src={Fon} alt='' className='fon-style'/> */}
 
             <form>
                 {/*Прокатные комапнии*/}

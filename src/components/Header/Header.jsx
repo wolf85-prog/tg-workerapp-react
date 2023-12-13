@@ -2,25 +2,20 @@ import React from 'react';
 import {useTelegram} from "../../hooks/useTelegram";
 import './Header.css';
 
+import Menu from "../../image/new/menu.svg";
+
 const Header = (props) => {
     const {user} = useTelegram();
     return (
         <div className={'header'}>
-
-            {/* {props.header.icon !== 'false'
-            ? <img src = {briefcase} alt="briefcase"/> : ""
-            } */}
-
 
             <span className={'title'}>
                 {props.header.title}
             </span>
 
             <span className={'username'}>
-                Контакты
-                {/* ID 805436270 */}
+                {props.header.icon !== 'false' ? <img src = {Menu} alt="briefcase"/> : props.header.menu}
             </span>
-            {/* <img className={'btn-close'} onClick={onClose} src={CloseButton}/> */}
         </div>
     );
 };

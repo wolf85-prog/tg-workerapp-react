@@ -17,32 +17,31 @@ import Loader2 from "../../components/UI/Loader_min/Loader_min"
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 
-import BlackFon from "../../image/background/Background_black_600X800.png";
-import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
-import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
-import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
+// import BlackFon from "../../image/background/Background_black_600X800.png";
+// import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
+// import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
+// import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
 import Star from "../../image/new/star.svg";
 import StarActive from "../../image/new/star_activ.svg";
 import Edit from "../../image/new/edit.svg"
 import Vector from "../../image/new/vector.svg"
 
-import iconCheck from "../../image/check.png";
-import iconUnCheck from "../../image/uncheck.png";
-import iconEdit from "../../image/icons/edit_icon.png";
-import iconDown from "../../image/icons/arrow_down.png";
-import iconCheck2 from "../../image/icons/галка.png"
-import iconStatus from "../../image/icons/крестик.png"
-import iconStatus2 from "../../image/icons/стрелки желтые.png"
-import iconStatus3 from "../../image/icons/стрелки синие.png"
+// import iconCheck from "../../image/check.png";
+// import iconUnCheck from "../../image/uncheck.png";
+// import iconEdit from "../../image/icons/edit_icon.png";
+// import iconDown from "../../image/icons/arrow_down.png";
+// import iconCheck2 from "../../image/icons/галка.png"
+// import iconStatus from "../../image/icons/крестик.png"
+// import iconStatus2 from "../../image/icons/стрелки желтые.png"
+// import iconStatus3 from "../../image/icons/стрелки синие.png"
 //import Loader from "../../components/UI/Loader/Loader";
 
 import ButtonsMenu from "../../image/buttons/button_menu_old.png"
-import ButtonsMenu2 from "../../image/buttons/button_for_menu2.png"
-import btnMenu from "../../image/layers/icon_menu.png";
-import btnChange from "../../image/buttons/button_for_menu2.png"
-import smallMenu from "../../image/layers/logo_04_light.png"
-
+// import ButtonsMenu2 from "../../image/buttons/button_for_menu2.png"
+// import btnMenu from "../../image/layers/icon_menu.png";
+// import btnChange from "../../image/buttons/button_for_menu2.png"
+// import smallMenu from "../../image/layers/logo_04_light.png"
 
 //const API_URL = process.env.REACT_APP_API_URL
 
@@ -336,7 +335,7 @@ const ProfilePage = () => {
     return (
         <div className="App">
 
-            <Header header={{title: `${headerName}`, icon: 'false'}}/>
+            <Header header={{title: `${headerName}`, icon: 'false', menu: 'Контакты'}}/>
 
             {/* темный фон */}
             {/* <img src={BlackFon} alt='' className='fon-black' />
@@ -375,7 +374,7 @@ const ProfilePage = () => {
             </div>
             
 
-            <div className="container" style={{display: 'flex'}}>
+            <div className="container" style={{display: 'flex', marginTop: '205px'}}>
 
                 {/* Мерч */}
                 <article className='block-merch'> 
@@ -387,33 +386,34 @@ const ProfilePage = () => {
                             <div className='rectangle-circle2'></div>
                         </div>
 
-                        {/* <p className='merch-title'>Мерч</p>
+                        <p className='merch-title'>Мерч</p>
                         <div className='perechislenie'>
                             <p className="">Sound</p>
                             <p className="">Production</p> 
-                        </div> */}
+                        </div>
                 </article>
 
-                {/* Компетенции */}
-                <article className='block-kompetencii'> 
-                    <div className='rectangle-kompeten'></div>
-                    <div className='rectangle-kompeten2'></div>
-                    <div className='rectangle-kompeten3'></div>
-                    {/* <div className='kompetencii-title'><p>Компетенции</p><img className='vector-icon' src={Vector} alt=''/></div> */}
-                </article>
+                <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', marginLeft: '10px'}}>
+                    {/* Компетенции */}
+                    <article className='block-kompetencii'> 
+                        <div className='rectangle-kompeten'></div>
+                        <div className='rectangle-kompeten2'></div>
+                        <div className='rectangle-kompeten3'></div>
+                        <div className='kompetencii-title'><p>Компетенции</p><img className='vector-icon' src={Vector} alt=''/></div>
+                    </article>
 
-                {/* Доход */}
-                <article className='block-dohod'> 
-                    <div className='rectangle-dohod'></div>
-                    <div className='rectangle-dohod2'></div>
-                    <div className='rectangle-dohod3'></div>
-                    {/* <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
-                    <p className='summa-dohod'>12212</p> */}
-                </article>
+                    {/* Доход */}
+                     <article className='block-dohod'> 
+                        <div className='rectangle-dohod'></div>
+                        <div className='rectangle-dohod2'></div>
+                        <div className='rectangle-dohod3'></div>
+                        <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
+                        <p className='summa-dohod'>12212</p>
+                    </article>
+                </div>    
 
             </div>        
             
-
 
             {/* <div className='form-profile' onScroll={handleScroll}>
                 <div style={{height: height}}>
@@ -454,7 +454,8 @@ const ProfilePage = () => {
                         <button className="image-button2" onClick={showQRCode} style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button>
                     </div> 
                 </div>
-                
+
+        
                 <div  ref={projectsRef}>
                     <ProjectFilter
                         filter={filter}
@@ -476,6 +477,29 @@ const ProfilePage = () => {
                 </div>
 
             </div> */}
+
+            <Header header={{title: `Мои проекты`, icon: 'true', menu: 'меню'}}/>
+
+            <div  ref={projectsRef}>
+                {/* <ProjectFilter
+                    filter={filter}
+                    setFilter={setFilter}
+                    arr_status={status}
+                /> */}
+
+                <div className="profile-project-list">                   
+                    {isPostsLoading
+                        ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%', marginBottom: '50%'}}><Loader/></div>
+                        : <ProjectList posts={sortProject} title="" workerId={specId}/>
+                    }
+
+                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                        <button className="image-button3" onClick={()=>navigate('/contacts')} style={{ backgroundImage: `url(${ButtonsMenu})`}}>Связь</button>
+                    </div>
+
+                </div> 
+            </div>
+
             
             {/* стрелка */}
             {/* <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: showArroy ? "block": "none"}} /></div> */}

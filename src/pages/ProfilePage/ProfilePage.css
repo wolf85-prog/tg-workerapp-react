@@ -196,6 +196,7 @@ input[id="cb1"] {
     width: 100%;
     height: 163px;
     position: relative;
+    flex-basis: 250px;
   }
   
   .rectangle-merch {
@@ -281,8 +282,8 @@ input[id="cb1"] {
     position: absolute;
     width: 26px;
     height: 26px;
-    left: 102px;
-    top: 20px;
+    right: 10%;
+    top: 10px;
   }
   
   
@@ -304,6 +305,7 @@ input[id="cb1"] {
     position: relative;
     width: 100%;
     height: 43px;
+    margin-bottom: 6px;
     /* right: 0;
     top: 200px; */
 }
@@ -350,7 +352,7 @@ input[id="cb1"] {
     gap: 47px;
 
     position: absolute;
-    width: 167.67px;
+    width: 100%;
     height: 20px;
     left: 15px;
     top: 10px;

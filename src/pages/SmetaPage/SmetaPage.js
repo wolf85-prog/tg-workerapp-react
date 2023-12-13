@@ -14,8 +14,6 @@ import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
-import TablePng from "../../image/table_with_text.png"
-
 import btnMenu from "../../image/layers/icon_menu.png";
 import btnChange from "../../image/buttons/button_change.png";
 import smallMenu from "../../image/layers/logo_04_light.png"

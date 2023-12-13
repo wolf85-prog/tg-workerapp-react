@@ -13,13 +13,10 @@ import Photo from "../../image/layers/icons/PHOTO.png";
 import Party from "../../image/layers/icons/PARTY.png";
 
 import {FormControl, InputBase, InputLabel} from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import {alpha, styled} from "@mui/material/styles";
 import './WorkerItem.css'
 
-import formSpec from "../../image/newspec/form_spec.png"
 import iconDel from "../../image/newspec/icon_del.png"
-import iconSound from "../../image/newspec/icon_sound.png"
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
     'label + &': {
