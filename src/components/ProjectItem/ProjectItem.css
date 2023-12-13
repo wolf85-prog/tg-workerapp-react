@@ -1,87 +1,104 @@
-.box {
-    border-radius: 10px;
-    box-shadow: 0px 0px 40px -20px var(--grayishBlue);
-    padding: 15px 30px;
-    margin: 20px 2px;
+.proj-card {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    margin-bottom: 15px;
+}
+
+.rectangle-projcard {
+    box-sizing: border-box;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 1.11%;
+
+    background: #2B2E32;
+    box-shadow: 20px 21px 20px rgba(25, 23, 23, 0.17), -12px -15px 20px rgba(203, 226, 251, 0.03), 1.08px 0px 5.076px rgba(0, 0, 0, 0.57), inset -2.16px 0px 4.32px rgba(0, 0, 0, 0.27), inset -2.16px 0px 2.592px rgba(0, 0, 0, 0.22), inset 0px 0px 19.24px rgba(67, 67, 67, 0.29);
+    border-radius: 21.6px;
+}
+
+.rectangle-projcard2 {
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 0%;
+    right: 29.43%;
+    top: 0%;
+    bottom: 1.05%;
+
+    background: linear-gradient(90deg, #2B2E32 12.69%, rgba(43, 46, 50, 0) 106.01%, rgba(43, 46, 50, 0) 130.57%);
+    border-radius: 21.6px;
+}
+
+.rectangle-projcard3 {
+    position: absolute;
+    left: 54.39%;
+    right: 19.08%;
+    top: 1.73%;
+    bottom: 2.68%;
+
+    background: #2B2F33;
+    filter: blur(5px);
+}
+
+.project-text {
+    position: absolute;
+    width: 50%;
+    height: 150px;
+    left: 20px;
+    top: 18px;
     text-align: left;
-    background-color: #000;
 }
 
-.red {
-    border-left: 10px solid #C8372D;
-}
-.orange {
-    border-left: 10px solid #c4830c;
-}
-.yellow {
-    border-left: 10px solid #D1941A;
-}
-.green {
-    border-left: 10px solid #008000;
-}
-.blue {
-    border-left: 10px solid #236bd6;
-}
-.purple {
-    border-left: 10px solid #800080;
-}
-.gray {
-    border-left: 10px solid #808080;
-}
-.brown {
-    border-left: 10px solid #a52a2a;
-}
-.pink {
-    border-left: 10px solid #ffc0cb;
-}
-.default {
-    border-left: 10px solid #808080;
+.project_title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+    letter-spacing: -0.045em;
+
+    /* ULEY Светлый */
+    color: #E8F1F9;
 }
 
-.red-color {
-    color: #C8372D;
-}
-.orange-color {
-    color: #c4830c;
-}
-.yellow-color {
-    color: #D1941A;
-}
-.green-color {
-    color: #008000;
-}
-.blue-color {
-    color: #236bd6;
-}
-.purple-color {
-    color: #800080;
-}
-.gray-color {
-    color: #808080;
-}
-.brown-color {
-    color: #a52a2a;
-}
-.pink-color {
-    color: #ffc0cb;
-}
-.default-color {
-    color: #9590A0;
+.project_subtitle {
+    /* 06.12.2023 | 20:00 */
+    position: absolute;
+    left: 0;
+    top: 25px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    letter-spacing: -0.045em;
+
+    /* ULEY Светлый */
+    color: #E8F1F9;
+
+    opacity: 0.4;
 }
 
-.post__title {
+.project_money {
+    /* 6 000.00 */
+    position: absolute;
+    left: 0px;
+    top: 120px;
+
+    font-style: normal;
+    font-weight: 400;
     font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    line-height: 24px;
+
+    /* ULEY Светлый */
+    color: #E8F1F9;
+    opacity: 0.6;
 }
 
-.post_title {
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+
 
 .maney_status {
     position: absolute;
@@ -175,46 +192,3 @@
 
 
 
-.proj-card {
-    position: relative;
-    width: 100%;
-    height: 190px;
-    margin-bottom: 15px;
-}
-
-.rectangle-projcard {
-    box-sizing: border-box;
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 1.11%;
-
-    background: #2B2E32;
-    box-shadow: 20px 21px 20px rgba(25, 23, 23, 0.17), -12px -15px 20px rgba(203, 226, 251, 0.03), 1.08px 0px 5.076px rgba(0, 0, 0, 0.57), inset -2.16px 0px 4.32px rgba(0, 0, 0, 0.27), inset -2.16px 0px 2.592px rgba(0, 0, 0, 0.22), inset 0px 0px 19.24px rgba(67, 67, 67, 0.29);
-    border-radius: 21.6px;
-}
-
-.rectangle-projcard2 {
-    box-sizing: border-box;
-
-    position: absolute;
-    left: 0%;
-    right: 29.43%;
-    top: 0%;
-    bottom: 1.05%;
-
-    background: linear-gradient(90deg, #2B2E32 12.69%, rgba(43, 46, 50, 0) 106.01%, rgba(43, 46, 50, 0) 130.57%);
-    border-radius: 21.6px;
-}
-
-.rectangle-projcard3 {
-    position: absolute;
-    left: 54.39%;
-    right: 19.08%;
-    top: 1.73%;
-    bottom: 2.68%;
-
-    background: #2B2F33;
-    filter: blur(5px);
-}

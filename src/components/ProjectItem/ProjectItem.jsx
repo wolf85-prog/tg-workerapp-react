@@ -238,6 +238,12 @@ const ProjectItem = (props) => {
                 <div className='rectangle-projcard'></div>
                 <div className='rectangle-projcard2'></div>
                 <div className='rectangle-projcard3'></div>
+
+                <div className='project-text'>
+                    <p className="project_title">Тест</p>
+                    <p className="project_subtitle">06.12.2023 | 20:00</p>
+                    <p className='project_money'>6 0000</p>
+                </div>
             </div>
         </div>
 
