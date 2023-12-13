@@ -124,7 +124,7 @@
 
 .shkala {
     position: absolute;
-    top: 80px;
+    top: 40px;
     left: 0;
     width: 100%;
 }
@@ -135,6 +135,31 @@
     left: 1px;
     width: 120px;
 }
+
+.line-one {
+    /* Line 3 */
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    left: 0px;
+    top: 107px;
+
+    border: 1px solid #3392FF;
+    box-shadow: inset 0px 2px 2px #232222;
+}
+
+/* Line 2 */
+.line-two {
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    left: 0px;
+    top: 108px;
+
+    border: 1px solid #1B1E21;
+    box-shadow: inset 0px -1px 2px rgba(255, 255, 255, 0.13);
+}
+
 
 
 

@@ -9,6 +9,10 @@
     margin-bottom: 20px;
 }
 
+.header-icon {
+    width: 80px;
+}
+
 .title {
     font-size: 18px;
     margin-left: 5px;
@@ -39,4 +43,57 @@
     color: #E8F1F9;
 
     opacity: 0.4;
+}
+
+
+
+/* Меню */
+.menu-filter {
+    position: absolute;
+    width: 91px;
+    height: 121px;
+    right: 0px;
+    top: 2px;
+    z-index: 50;
+}
+
+/* Rectangle 14 */
+.menu-rec {
+    box-sizing: border-box;
+    position: absolute;
+    width: 91px;
+    height: 121px;
+    right: 19px;
+    top: 0;
+
+    background: rgba(50, 55, 61, 0.4);
+    border: 1px solid rgba(37, 39, 42, 0.5);
+    backdrop-filter: blur(7.5px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 20px;
+}
+
+/* Vector */
+.menu-icon-filter {
+    position: relative;
+    z-index: 10;
+    margin-top: 15px;
+}
+
+.item-filter {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.045em;
+
+    /* ULEY Светлый */
+    color: #E8F1F9;
+}
+
+.text-filter {
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    text-align: left;
 }

@@ -145,7 +145,7 @@ input[id="cb1"] {
 
 
 .profile-project-list {
-    z-index: 30;
+    z-index: 10;
     position: relative;
     /* box-sizing:border-box;
     height: 72vh; */
@@ -421,3 +421,7 @@ input[id="cb1"] {
     color: #E8F1F9;
     opacity: 0.6;
 }
+
+
+
+

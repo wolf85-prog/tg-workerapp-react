@@ -26,6 +26,7 @@ import Star from "../../image/new/star.svg";
 import StarActive from "../../image/new/star_activ.svg";
 import Edit from "../../image/new/edit.svg"
 import Vector from "../../image/new/vector.svg"
+import Workhub from "../../image/workhub.png"
 
 // import iconCheck from "../../image/check.png";
 // import iconUnCheck from "../../image/uncheck.png";
@@ -336,7 +337,7 @@ const ProfilePage = () => {
     return (
         <div className="App">
 
-            <Header header={{title: `${headerName}`, icon: 'false', menu: 'Контакты'}}/>
+            <Header header={{title: `${headerName}`, icon: 'false', menu: `${Workhub}`}}/>
 
             {/* темный фон */}
             {/* <img src={BlackFon} alt='' className='fon-black' />
@@ -479,7 +480,7 @@ const ProfilePage = () => {
 
             </div> */}
 
-            <Header header={{title: `Мои проекты`, icon: 'true', menu: 'меню'}}/>
+            
 
             <div  ref={projectsRef}>
                 {/* <ProjectFilter
@@ -488,7 +489,11 @@ const ProfilePage = () => {
                     arr_status={status}
                 /> */}
 
-                <div className="profile-project-list">                   
+
+
+                <div className="profile-project-list">   
+                    <Header header={{title: `Мои проекты`, icon: 'true', menu: 'меню'}}/>
+
                     {isPostsLoading
                         ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%', marginBottom: '50%'}}><Loader/></div>
                         : <ProjectList posts={sortProject} title="" workerId={specId}/>

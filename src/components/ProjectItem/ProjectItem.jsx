@@ -9,6 +9,7 @@ import btnChat from "../../image/new/btn_chat.svg"
 import Vector from "../../image/new/vector.svg"
 import Begunok from "../../image/new/begunok.svg"
 import Shkala from "../../image/new/shkala.svg"
+import Progress from "../../image/new/progress.svg"
 
 const ProjectItem = (props) => {
 
@@ -253,8 +254,11 @@ const ProjectItem = (props) => {
                 </div>
 
                 <div className='progress'>
-                    <img className='shkala' src={Shkala} alt=''/> 
+                    {/* <img className='shkala' src={Shkala} alt=''/> 
                     <img className='begunok' src={Begunok} alt=''/> 
+                    <div className='line-one'></div>
+                    <div className='line-two'></div> */}
+                    <img className='shkala' src={Progress} alt=''/>
                 </div>
                 
 
