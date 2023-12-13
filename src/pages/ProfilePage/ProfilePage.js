@@ -366,7 +366,7 @@ const ProfilePage = () => {
                     <div className="star-block">
                         <img className='star-icon' src={StarActive} alt='' /> 
                         <img className='star-icon' src={StarActive} alt='' />
-                        <img className='star-icon' src={Star} alt='' />
+                        <img className='star-icon' src={StarActive} alt='' />
                         <img className='star-icon' src={Star} alt='' />
                         <img className='star-icon' src={Star} alt='' />
                     </div>
@@ -375,7 +375,7 @@ const ProfilePage = () => {
             </div>
             
 
-            <div className="container" style={{display: 'flex', marginTop: '205px'}}>
+            <div className="container" style={{display: 'flex', marginTop: '215px'}}>
 
                 {/* Мерч */}
                 <article className='block-merch'> 

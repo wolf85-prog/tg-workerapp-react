@@ -111,6 +111,31 @@
     justify-content: center;
 }
 
+.vector {
+    position: absolute;
+    right: 25px;
+    top: 20px;
+}
+
+.progress {
+    position: relative;
+    margin: 0 25px;
+}
+
+.shkala {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+}
+
+.begunok {
+    position: absolute;
+    top: 50px;
+    left: 1px;
+    width: 120px;
+}
+
 
 
 .maney_status {

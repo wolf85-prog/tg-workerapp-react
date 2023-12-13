@@ -5,8 +5,10 @@ import Loader from "./../UI/Loader_min/Loader_min"
 import { useUsersContext } from "../../contexts/UserContext";
 import { getStavka, addStavka, addFactStavka, getSpecStavka } from '../../http/stavkaAPI';
 
-import plashka from "../../image/buttons/project_plashka.png";
 import btnChat from "../../image/new/btn_chat.svg"
+import Vector from "../../image/new/vector.svg"
+import Begunok from "../../image/new/begunok.svg"
+import Shkala from "../../image/new/shkala.svg"
 
 const ProjectItem = (props) => {
 
@@ -240,15 +242,21 @@ const ProjectItem = (props) => {
                 <div className='rectangle-projcard2'></div>
                 <div className='rectangle-projcard3'></div>
 
-                <div className='project-text'>
-                    <p className="project_title">Тест</p>
-                    <p className="project_subtitle">06.12.2023 | 20:00</p>
-                    <div className='progress'>
-
+                <div>
+                    <div className='project-text'>
+                        <p className="project_title">Тест</p>
+                        <p className="project_subtitle">06.12.2023 | 20:00</p>
+                        
+                        <p className='project_money'>6 0000</p>
                     </div>
-                    
-                    <p className='project_money'>6 0000</p>
+                    <img className='vector' src={Vector} alt=''/>  
                 </div>
+
+                <div className='progress'>
+                    <img className='shkala' src={Shkala} alt=''/> 
+                    <img className='begunok' src={Begunok} alt=''/> 
+                </div>
+                
 
                 <div className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>
             </div>
