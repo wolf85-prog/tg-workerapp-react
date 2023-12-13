@@ -26,6 +26,7 @@ import Star from "../../image/new/star.svg";
 import StarActive from "../../image/new/star_activ.svg";
 import Edit from "../../image/new/edit.svg"
 import Vector from "../../image/new/vector.svg"
+import VectorUp from "../../image/new/vector_up.svg"
 import Workhub from "../../image/workhub.png"
 
 // import iconCheck from "../../image/check.png";
@@ -74,6 +75,7 @@ const ProfilePage = () => {
     const [isLoadingSum, setIsLoadingSum] = useState(true);
 
     const [showHistory, setShowHistory] = useState(false);
+    const [showKompet, setShowKompet] = useState(false);
 
     //const [summa, setSumma] = useState(0); 
   
@@ -332,6 +334,12 @@ const ProfilePage = () => {
     }
 
 
+
+    const clickKompeten = () => {
+        showKompet ? setShowKompet(false) : setShowKompet(true)
+    }
+
+
     //---------------------------------------------------------------------------------------
 
     return (
@@ -397,15 +405,40 @@ const ProfilePage = () => {
 
                 <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', marginLeft: '10px'}}>
                     {/* Компетенции */}
-                    <article className='block-kompetencii'> 
+                    <article className='block-kompetencii' style={{display: !showKompet ? 'block' : 'none'}}> 
                         <div className='rectangle-kompeten'></div>
                         <div className='rectangle-kompeten2'></div>
                         <div className='rectangle-kompeten3'></div>
-                        <div className='kompetencii-title'><p>Компетенции</p><img className='vector-icon' src={Vector} alt=''/></div>
+                        <div className='kompetencii-title'>
+                            <p>Компетенции</p>
+                            <img className='vector-icon' src={Vector} alt='' onClick={clickKompeten}/>
+                        </div>
                     </article>
 
+                    {/* open */}
+                    <article className='block-kompetencii-open' style={{display: showKompet ? 'block' : 'none'}}> 
+                        <div className='rec1'></div>
+                        <div className='rec2'></div>
+                        <div className='rec3'></div>
+                        <div className='kompetencii-title'>
+                            <p>Компетенции</p>
+                            <img className='vector-icon' src={VectorUp} alt='' onClick={clickKompeten}/>
+                        </div>
+                        <div className='kompet-list'>
+                            <ul>
+                                <li>Работа с оборудованием</li>
+                                <li>Технические навыки</li>
+                                <li>Визуальное восприятие</li>
+                                <li>Коммуникация </li>
+                                <li>Работа со сценарием</li>
+                            </ul>
+                        </div>
+                    </article>
+
+
+
                     {/* Доход */}
-                     <article className='block-dohod'> 
+                     <article className='block-dohod' style={{display: showKompet ? 'none' : 'block'}}> 
                         <div className='rectangle-dohod'></div>
                         <div className='rectangle-dohod2'></div>
                         <div className='rectangle-dohod3'></div>
