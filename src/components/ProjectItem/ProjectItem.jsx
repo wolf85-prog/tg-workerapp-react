@@ -7,8 +7,6 @@ import { getStavka, addStavka, addFactStavka, getSpecStavka } from '../../http/s
 
 import btnChat from "../../image/new/btn_chat.svg"
 import Vector from "../../image/new/vector.svg"
-import Begunok from "../../image/new/begunok.svg"
-import Shkala from "../../image/new/shkala.svg"
 import Progress from "../../image/new/progress.svg"
 
 const ProjectItem = (props) => {

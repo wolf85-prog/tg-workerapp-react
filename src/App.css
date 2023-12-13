@@ -466,18 +466,37 @@
 
 
 .footer-block {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
   position: fixed;
   left: 0;
-  bottom: 25px;
+  bottom: -7px;
   width: 100%;
-  height: auto;
   z-index: 20;
-  padding-top: 15px;
-  margin-bottom: 25px;
+}
+
+.icon-footer {
+  width: 40px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.btn-friend {
+  width: 120px;
+  position: absolute;
+  bottom: 95px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.footer-icons {
+  position: absolute;
+  bottom: 65px;
+  left: 0;
+}
+
+.footer-icons2 {
+  position: absolute;
+  bottom: 65px;
+  right: 0;
 }
 
 .input-style {

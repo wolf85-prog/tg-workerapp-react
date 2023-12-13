@@ -29,6 +29,17 @@ import Vector from "../../image/new/vector.svg"
 import VectorUp from "../../image/new/vector_up.svg"
 import Workhub from "../../image/workhub.png"
 
+import Footer from "../../image/new/footer.svg"
+import VK from "../../image/new/basil_vk-outline.svg"
+import Phone from "../../image/new/ph_phone-call.svg"
+import Web from "../../image/new/dashicons_admin-site-alt3.svg"
+import Telegram from "../../image/new/basil_telegram-outline.svg"
+
+import Friend from "../../image/new/friends.svg"
+
+import Dohod from "../../image/new/dohod.svg"
+import DohodOpen from "../../image/new/dohodOpen.svg"
+
 // import iconCheck from "../../image/check.png";
 // import iconUnCheck from "../../image/uncheck.png";
 // import iconEdit from "../../image/icons/edit_icon.png";
@@ -442,6 +453,7 @@ const ProfilePage = () => {
                         <div className='rectangle-dohod'></div>
                         <div className='rectangle-dohod2'></div>
                         <div className='rectangle-dohod3'></div>
+                        {/* <img src={Dohod} alt='' /> */}
                         <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
                         <p className='summa-dohod'>12212</p>
                     </article>
@@ -547,6 +559,20 @@ const ProfilePage = () => {
                 <div></div>
                 <img src={smallMenu} alt='' className='small-menu-icon' />
             </div> */}
+
+            <div className='footer-block'>
+                <img src={Friend} alt='' width='100%' className='btn-friend' />
+                <img src={Footer} alt='' width='100%' className='' />
+                <div className='footer-icons'>
+                    <img onClick={()=>console.log("sdfsdf")} src={Phone} alt='' width='100%' className='icon-footer' />
+                    <img onClick={()=>console.log("sdfsdf")} src={Web} alt='' width='100%' className='icon-footer' />
+                </div>
+                <div className='footer-icons2'> 
+                    <img onClick={()=>console.log("sdfsdf")} src={Telegram} alt='' width='100%' className='icon-footer' />
+                    <img onClick={()=>console.log("sdfsdf")} src={VK} alt='' width='100%' className='icon-footer' />   
+                </div>
+                
+            </div>
             
         </div>
     );
