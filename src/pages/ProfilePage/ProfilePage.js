@@ -310,7 +310,7 @@ const ProfilePage = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'ULEY',
+            text: 'WORKHUB',
             color: '#343A41' //'#2e2e2e'
         })
     }, [])

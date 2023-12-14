@@ -22,7 +22,7 @@ const Header = (props) => {
                 {props.header.title}
             </span>
 
-            <span className={'username'} onClick={onClickFilter}>
+            <span className={'username'} onClick={onClickFilter} style={{display: showFilter ? 'none' : 'block'}}>
                 {props.header.icon !== 'true' ? <img src = {props.header.menu} alt="" className='header-icon'/> : <img src = {Menu} alt=""/>}
             </span>
 
