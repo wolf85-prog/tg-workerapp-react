@@ -7,6 +7,7 @@ import { getStavka, addStavka, addFactStavka, getSpecStavka } from '../../http/s
 
 import btnChat from "../../image/new/btn_chat.svg"
 import Vector from "../../image/new/vector.svg"
+import VectorUp from "../../image/new/vector_up.svg"
 import Progress from "../../image/new/progress.svg"
 
 const ProjectItem = (props) => {
@@ -21,7 +22,8 @@ const ProjectItem = (props) => {
 
     const [isLoading, setIsLoading] = useState(true);
 
-    const [showEtap1, setShowEtap1] = useState(false);
+    const [showProject, setShowProject] = useState(false);
+    
     const [showEtap2, setShowEtap2] = useState(false);
     const [showEtap3, setShowEtap3] = useState(false);
     const [showEtap4, setShowEtap4] = useState(false);
@@ -176,18 +178,18 @@ const ProjectItem = (props) => {
         //console.log(props.post.finalSmeta)
         
         if (props.post.statusMoney === 1) {
-            setShowEtap1(true)
+            // setShowEtap1(true)
             setStatusMoney('Предварительно')
         } else if(props.post.statusMoney === 2) {
-            setShowEtap1(true)
-            setShowEtap2(true)
+            // setShowEtap1(true)
+            // setShowEtap2(true)
             setStatusMoney('Фактически')
         }
 
         if (props.post.finalSmeta === 'Подтверждена') {
-            setShowEtap1(true)
-            setShowEtap2(true)
-            setShowEtap3(true)
+            // setShowEtap1(true)
+            // setShowEtap2(true)
+            // setShowEtap3(true)
             setStatusMoney('Подтверждено')
         }
 
@@ -214,6 +216,10 @@ const ProjectItem = (props) => {
         window.location.replace(props.post.tgURL_chat);
       };
 
+    const clickProject = () => {
+        showProject ? setShowProject(false) : setShowProject(true)
+    }
+
     return (
         // <div className={`box`} onClick={onShowProject} style={{ backgroundImage: `url(${plashka})`, backgroundSize: 'cover' }}>
         //     <div className="post__content" style={{position: 'relative'}}>
@@ -236,31 +242,43 @@ const ProjectItem = (props) => {
         // </div>
 
         <div className='container'>
+            
             <div className='proj-card'>
                 <div className='rectangle-projcard'></div>
                 <div className='rectangle-projcard2'></div>
                 <div className='rectangle-projcard3'></div>
+                
+                <div className='project-text'>
+                    <p className="project_title">Тест</p>
+                    <p className="project_subtitle">06.12.2023 | 20:00</p>
+                </div>
+                <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>  
 
-                <div>
-                    <div className='project-text'>
-                        <p className="project_title">Тест</p>
-                        <p className="project_subtitle">06.12.2023 | 20:00</p>
-                        
-                        <p className='project_money'>6 0000</p>
-                    </div>
-                    <img className='vector' src={Vector} alt=''/>  
+                <img className='shkala' src={Progress} alt=''/>
+
+                <div className='card-footer'>
+                    <p className='project_money'>6 0000</p>
+                    <div className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>
                 </div>
 
-                <div className='progress'>
-                    {/* <img className='shkala' src={Shkala} alt=''/> 
-                    <img className='begunok' src={Begunok} alt=''/> 
-                    <div className='line-one'></div>
-                    <div className='line-two'></div> */}
-                    <img className='shkala' src={Progress} alt=''/>
-                </div>
                 
 
-                <div className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>
+                <div className='smeta' style={{display: showProject ? 'block' : 'none'}}>
+                    <div className='line3'></div>
+                    <div className='smeta-text'>
+                        <ul>
+                            <li className='item-list'><div>Специальность</div>Техник</li>
+                            <li className='item-list'><div>Вид работ</div>Монтаж</li>
+                        </ul>
+                    </div>
+                    <div className='block-button'>
+                        <div className='button1'>Уточнить</div>
+                        <div className='button2'>Подтвердить</div>
+                    </div>
+                </div> 
+                
+
+                
             </div>
         </div>
 

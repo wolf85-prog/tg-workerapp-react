@@ -87,6 +87,7 @@ const ProfilePage = () => {
 
     const [showHistory, setShowHistory] = useState(false);
     const [showKompet, setShowKompet] = useState(false);
+    const [showFooter, setShowFooter] = useState(false);
 
     //const [summa, setSumma] = useState(0); 
   
@@ -313,6 +314,20 @@ const ProfilePage = () => {
             color: '#343A41' //'#2e2e2e'
         })
     }, [])
+
+
+    const clickWorkhub = () => {
+        showFooter ? setShowFooter(false) : setShowFooter(true)
+    }
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', clickWorkhub)
+        return () => {
+            tg.offEvent('mainButtonClicked', clickWorkhub)
+        }
+    }, [clickWorkhub])
+
+    
 
     useEffect(() => {
         tg.MainButton.show();     
@@ -560,7 +575,7 @@ const ProfilePage = () => {
                 <img src={smallMenu} alt='' className='small-menu-icon' />
             </div> */}
 
-            <div className='footer-block'>
+            <div className='footer-block' style={{display: showFooter ? 'block' : 'none'}}>
                 <img src={Friend} alt='' width='100%' className='btn-friend' />
                 <img src={Footer} alt='' width='100%' className='' />
                 <div className='footer-icons'>

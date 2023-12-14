@@ -1,7 +1,7 @@
 .proj-card {
     position: relative;
     width: 100%;
-    height: 190px;
+    height: auto;
     margin-bottom: 15px;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .project-text {
-    position: absolute;
+    position: relative;
     width: 50%;
     height: 150px;
     left: 20px;
@@ -84,48 +84,57 @@
 
 .project_money {
     /* 6 000.00 */
-    position: absolute;
-    left: 0px;
-    top: 120px;
-
+    position: relative;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
-
+    text-align: left;
     /* ULEY Светлый */
     color: #E8F1F9;
     opacity: 0.6;
+    padding-left: 25px;
+    padding-bottom: 25px;
 }
 
 .chat-button {
     background-repeat: no-repeat;
     width: 110px;
     height: 60px;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+    position: relative;
+    /* bottom: 10px;
+    right: 10px; */
     background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.card-footer {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
 .vector {
     position: absolute;
     right: 25px;
     top: 20px;
+    z-index: 50;
 }
 
 .progress {
-    position: relative;
-    margin: 0 25px;
+    position: absolute;
+    left: 1%;
+    top: 0%
+    /* margin-left: 5px;
+    margin-right: 0px; */
 }
 
 .shkala {
     position: absolute;
-    top: 40px;
-    left: 0;
+    top: 20px;
+    left: 15px;
     width: 100%;
 }
 
@@ -160,98 +169,85 @@
     box-shadow: inset 0px -1px 2px rgba(255, 255, 255, 0.13);
 }
 
-
-
-
-.maney_status {
-    position: absolute;
-    right: 0;
+.smeta {
+    position: relative;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-bottom: 25px;
 }
 
-.subscribe {
-    font-size: 16px;
-    color: #9590A0;
+/* Line 3 */
+.proj-card .line3{
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    opacity: 0.6;
+    border: 1px solid #25272A;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.image_comp {
-    padding-right: 5px;
-}
-
-.col_span {
-    background: #828282;
-    border-radius: 99px;
-    margin: 0 1px 0 3px;
-    padding: 2px 8px;
-    font-size: 10px;
-}
-
-.find_span {
-    background: #D1941A;
-    font-size: 10px;
-    margin: 8px 0;
-    padding: 6px 35px;
-}
-
-.nofind_span {
-    background: transition; 
-    font-size: 10px;
-    margin: 8px 0;
-    padding: 6px 35px;
-}
-
-.button-chat{
-    width: 25%;
-    height: auto;
-    background-color: #535151;
-    text-align: center;
-    padding: 1px 5px;
-    border-radius: 20px;
-}
-
-.btn-grad {
-    width: 25%;
-    height: auto;
-    text-align: center;
-    padding: 3px 5px;
-    border-radius: 20px;
+.smeta-text {
+    margin-top: 5px;
+    font-style: normal;
+    font-weight: 400;
     font-size: 14px;
-    background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%);
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;            
-    display: block;
-  }
-
-.green-fon {
-    background-color: #017f00;
+    line-height: 17px;
+    /* identical to box height */
+    letter-spacing: -0.045em;
+    /* ULEY Светлый */
+    color: #E8F1F9;
+    opacity: 0.4;
 }
 
-.green2-fon {
-    background-color: #00ac00;
+.item-list {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0px;
+    margin-bottom: 5px;
 }
 
-.green3-fon {
-    background-color: #01c603;
+.block-button {
+    position: relative;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.green4-fon {
-    background-color: #03d603;
+.button1 {
+    /* Rectangle 6 */
+    box-sizing: border-box;
+    width: 148px;
+    height: 44px;
+    /* ULEY Светлый */
+    border: 0.481481px solid #E8F1F9;
+    border-radius: 20px;
+    padding: 10px;
 }
 
-.green5-fon {
-    background-color: #00f102;
+.button2 {
+    /* Rectangle 6 */
+    box-sizing: border-box;
+    width: 148px;
+    height: 44px;
+    background: linear-gradient(183.21deg, rgba(113, 113, 113, 0.2) 4.27%, rgba(53, 50, 50, 0.2) 96.9%), linear-gradient(314.64deg, #1F2021 21.78%, #242526 55.17%, #313337 96.32%);
+    border: 0.481481px solid rgba(44, 44, 44, 0.25);
+    box-shadow: -2.65605px -2.32405px 8.13704px rgba(170, 170, 170, 0.11), 0.962963px 1.92593px 9.77407px rgba(0, 0, 0, 0.52), inset -3px -4px 3.9963px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 10px;
 }
 
-.gray-fon {
-    background-color: #9590A0;;
-}
 
-.etap {
-    width: 20px;
-    height: 5px;
-    border-radius: 15px;
-    margin-left: 2px;
-}
+
+
+
+
+
+
+
+
+
 
 
 
