@@ -2,6 +2,10 @@ import React, {useState, useEffect} from 'react';
 import './ProjectItem.css';
 import {useNavigate} from "react-router-dom";
 import Loader from "./../UI/Loader_min/Loader_min"
+
+import MyModal from "../../components/MyModal/MyModal";
+import BackModal from "../../image/new/card.svg"
+
 import { useUsersContext } from "../../contexts/UserContext";
 import { getStavka, addStavka, addFactStavka, getSpecStavka } from '../../http/stavkaAPI';
 
@@ -23,6 +27,7 @@ const ProjectItem = (props) => {
     const [isLoading, setIsLoading] = useState(true);
 
     const [showProject, setShowProject] = useState(false);
+    const [showModalEtap, setShowModalEtap] = useState(false);
     
     const [showEtap2, setShowEtap2] = useState(false);
     const [showEtap3, setShowEtap3] = useState(false);
@@ -220,6 +225,10 @@ const ProjectItem = (props) => {
         showProject ? setShowProject(false) : setShowProject(true)
     }
 
+    const clickShkala = () => {
+        showModalEtap ? setShowModalEtap(false) : setShowModalEtap(true)
+    }
+
     return (
         // <div className={`box`} onClick={onShowProject} style={{ backgroundImage: `url(${plashka})`, backgroundSize: 'cover' }}>
         //     <div className="post__content" style={{position: 'relative'}}>
@@ -240,7 +249,7 @@ const ProjectItem = (props) => {
         //         </div>
         //     </div>
         // </div>
-
+    <>
         <div className='container'>
             
             <div className='proj-card'>
@@ -254,7 +263,7 @@ const ProjectItem = (props) => {
                 </div>
                 <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>  
 
-                <img className='shkala' src={Progress} alt=''/>
+                <img onClick={clickShkala} className='shkala' src={Progress} alt=''/>
 
                 <div className='card-footer'>
                     <p className='project_money'>6 0000</p>
@@ -282,6 +291,19 @@ const ProjectItem = (props) => {
             </div>
         </div>
 
+        <MyModal visible={showModalEtap} setVisible={setShowModalEtap}>
+            <div className='modal-card'>
+                <div className='rectangle-modal'></div>
+                <div className='rectangle-modal2'></div>
+                <div className='rectangle-modal3'></div>
+
+                <p style={{position: 'absolute', width: '100%', top: '25%'}}>
+                    Этапы передвижения ваших средств
+                </p>
+            </div>
+            {/* <img src={BackModal} alt=''/> */}
+        </MyModal>
+    </>
     );
 };
 
