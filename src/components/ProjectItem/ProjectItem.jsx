@@ -13,6 +13,9 @@ import btnChat from "../../image/new/btn_chat.svg"
 import Vector from "../../image/new/vector.svg"
 import VectorUp from "../../image/new/vector_up.svg"
 import Progress from "../../image/new/progress.svg"
+import Question from "../../image/new/question.svg"
+import Close from "../../image/new/close.svg"
+import ClosePress from "../../image/new/close_press.svg"
 
 const ProjectItem = (props) => {
 
@@ -297,9 +300,23 @@ const ProjectItem = (props) => {
                 <div className='rectangle-modal2'></div>
                 <div className='rectangle-modal3'></div>
 
-                <p style={{position: 'absolute', width: '100%', top: '25%'}}>
+                <img src={Question} alt='' style={{position: 'absolute', top: '20px', left: '20px'}}/>
+
+                <img onClick={()=>setShowModalEtap(false)} src={Close} alt='' style={{position: 'absolute', top: '20px', right: '20px'}}/>
+
+                <p style={{position: 'absolute', width: '100%', top: '45px'}}>
                     Этапы передвижения ваших средств
                 </p>
+
+                <div className='block-text'>
+                    <ul className='text-modal-list'>
+                        <li>01. Предварительно</li>
+                        <li>02. Фактически</li>
+                        <li>03. Подтверждено</li>
+                        <li>04. В процессе [на оплате]</li>
+                        <li>05. Оплачено</li>
+                    </ul>
+                </div>
             </div>
             {/* <img src={BackModal} alt=''/> */}
         </MyModal>

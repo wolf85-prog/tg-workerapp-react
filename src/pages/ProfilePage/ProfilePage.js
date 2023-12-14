@@ -12,6 +12,7 @@ import {useProjects} from "../../hooks/useProjects"
 import './ProfilePage.css';
 import { getWorkerId, getProjectsCash, getSmetaCash } from '../../http/chatAPI';
 
+import MyModal from "../../components/MyModal/MyModal";
 import Loader from "../../components/UI/Loader/Loader";
 import Loader2 from "../../components/UI/Loader_min/Loader_min"
 import ProjectList from "../../components/ProjectList/ProjectList";
@@ -28,6 +29,9 @@ import Edit from "../../image/new/edit.svg"
 import Vector from "../../image/new/vector.svg"
 import VectorUp from "../../image/new/vector_up.svg"
 import Workhub from "../../image/workhub.png"
+import QRCode from "../../image/new/QR_Code.svg"
+import Close from "../../image/new/close.svg"
+import ClosePress from "../../image/new/close_press.svg"
 
 import Footer from "../../image/new/footer.svg"
 import VK from "../../image/new/basil_vk-outline.svg"
@@ -89,6 +93,7 @@ const ProfilePage = () => {
     const [showKompet, setShowKompet] = useState(false);
     const [showDohod, setShowDohod] = useState(false);
     const [showFooter, setShowFooter] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     //const [summa, setSumma] = useState(0); 
   
@@ -371,6 +376,11 @@ const ProfilePage = () => {
         showDohod ? setShowDohod(false) : setShowDohod(true)
     }
 
+    const clickPodel = () => {
+        console.log("zczxc")
+        showModal ? setShowModal(false) : setShowModal(true)
+    }
+
     //---------------------------------------------------------------------------------------
 
     return (
@@ -469,22 +479,34 @@ const ProfilePage = () => {
 
 
                         {/* Доход */}
-                        <article className='block-dohod' style={{display: showKompet ? 'none' : 'block'}}> 
+                        {/* <article className='block-dohod' style={{display: showKompet ? 'none' : 'block'}}> 
                             <div className='rectangle-dohod'></div>
                             <div className='rectangle-dohod2'></div>
                             <div className='rectangle-dohod3'></div>
-                            {/* <img src={Dohod} alt='' /> */}
                             <div className='kompetencii-title'><p>Доход</p><img onClick={clickDohod} className='vector-icon' src={showDohod ? VectorUp : Vector} alt=''/></div>
                             <p className='summa-dohod'>12212</p>
-                        </article>
+                        </article> */}
                     </div> 
                 </div>
 
+                <div className='wrap-dohod'>
+                    <div className='inner1'></div>
+                   <article className='block-dohod' style={{display: showKompet ? 'none' : 'block'}}> 
+                        {/* <div className='rectangle-dohod'></div>
+                        <div className='rectangle-dohod2'></div>
+                        <div className='rectangle-dohod3'></div> */}
+                        <div className='kompetencii-title'><p>Доход</p><img onClick={clickDohod} className='vector-icon' src={showDohod ? VectorUp : Vector} alt=''/></div>
+                        <p className='summa-dohod'>12212</p>
+                    </article>
+
+                    
+                </div>
+
                 <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}}> 
-                    <div className='rectangle-dohod'></div>
+                    {/* <div className='rectangle-dohod'></div>
                     <div className='rectangle-dohod2'></div>
-                    <div className='rectangle-dohod3'></div>
-                </article>     
+                    <div className='rectangle-dohod3'></div> */}
+                </article>      
 
             </div>
 
@@ -589,7 +611,7 @@ const ProfilePage = () => {
             </div> */}
 
             <div className='footer-block' style={{display: !showFooter ? 'block' : 'none'}}>
-                <img src={Friend} alt='' width='100%' className='btn-friend' />
+                <img onClick={clickPodel} src={Friend} alt='' width='100%' className='btn-friend' />
                 <img src={Footer} alt='' width='100%' className='' />
                 <div className='footer-icons'>
                     <img onClick={()=>console.log("sdfsdf")} src={Phone} alt='' width='100%' className='icon-footer' />
@@ -601,6 +623,27 @@ const ProfilePage = () => {
                 </div>
                 
             </div>
+
+
+            <MyModal visible={showModal} setVisible={setShowModal}>
+                <div className='qr-card'>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <img onClick={()=>setShowModal(false)} src={Close} alt='' style={{position: 'absolute', right: '10px', top: '10px'}}/>
+
+                    <p style={{position: 'absolute', width: '100%', top: '25px'}}>
+                        Пригласи друга и получи скидку
+                    </p>
+                    <img src={QRCode} alt='' style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
+
+                </div>
+                <div className='block-modal-button'>
+                    <div className='button_info'>Подробнее</div>
+                    <div className='button_podel'>Поделиться</div>
+                </div>
+            </MyModal>
             
         </div>
     );

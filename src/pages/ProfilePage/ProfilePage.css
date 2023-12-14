@@ -426,6 +426,10 @@ input[id="cb1"] {
     width: 100%;
     height: 115px;
     z-index: 0;
+
+    border-radius: 12px 12px 0 0;
+    background-color: #1F2021;
+    flex: 0 0 50%;
 }
 
 .block-dohod2 {
@@ -434,7 +438,10 @@ input[id="cb1"] {
     width: 100%;
     height: 115px;
     z-index: 0;
-    margin-top: 5px;
+    /* margin-top: 5px; */
+
+    border-radius: 12px 0 12px 12px;
+    background-color: #1F2021;
 }
 
 .rectangle-dohod {
@@ -488,6 +495,65 @@ input[id="cb1"] {
     color: #E8F1F9;
     opacity: 0.6;
 }
+
+
+
+/* Карточка */
+.qr-card{
+    width: 340px;
+    height: 413px;
+    display: grid;
+}
+
+.block-modal-button {
+    position: relative;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.button_info {
+    /* Rectangle 6 */
+    box-sizing: border-box;
+    width: 148px;
+    height: 44px;
+    /* ULEY Светлый */
+    border: 0.481481px solid #E8F1F9;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.button_podel {
+    /* Rectangle 6 */
+    box-sizing: border-box;
+    width: 148px;
+    height: 44px;
+    background: linear-gradient(183.21deg, rgba(113, 113, 113, 0.2) 4.27%, rgba(53, 50, 50, 0.2) 96.9%), linear-gradient(314.64deg, #1F2021 21.78%, #242526 55.17%, #313337 96.32%);
+    border: 0.481481px solid rgba(44, 44, 44, 0.25);
+    box-shadow: -2.65605px -2.32405px 8.13704px rgba(170, 170, 170, 0.11), 0.962963px 1.92593px 9.77407px rgba(0, 0, 0, 0.52), inset -3px -4px 3.9963px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.wrap-dohod {
+    display: flex;
+    background-color: #343a41;
+}
+
+.inner1 {
+    background-color: #1f2021;
+    flex: 0 0 50%;
+}
+
+.inner1:after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    border-bottom-right-radius: 12px;
+    float: right;
+    background-color: #343a41;
+}
+
 
 
 
