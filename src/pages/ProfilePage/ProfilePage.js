@@ -87,6 +87,7 @@ const ProfilePage = () => {
 
     const [showHistory, setShowHistory] = useState(false);
     const [showKompet, setShowKompet] = useState(false);
+    const [showDohod, setShowDohod] = useState(false);
     const [showFooter, setShowFooter] = useState(false);
 
     //const [summa, setSumma] = useState(0); 
@@ -365,6 +366,10 @@ const ProfilePage = () => {
         showKompet ? setShowKompet(false) : setShowKompet(true)
     }
 
+    
+    const clickDohod = () => {
+        showDohod ? setShowDohod(false) : setShowDohod(true)
+    }
 
     //---------------------------------------------------------------------------------------
 
@@ -410,71 +415,79 @@ const ProfilePage = () => {
             </div>
             
 
-            <div className="container" style={{display: 'flex', marginTop: '215px'}}>
+            <div className="container" >
+                <div style={{display: 'flex', marginTop: '215px'}}>
+                    {/* Мерч */}
+                    <article className='block-merch'> 
+                            <div className='rectangle-merch'></div>
+                            <div className='rectangle-merch2'></div>
+                            <div className='rectangle-merch3'></div> 
 
-                {/* Мерч */}
-                <article className='block-merch'> 
-                        <div className='rectangle-merch'></div>
-                        <div className='rectangle-merch2'></div>
-                        <div className='rectangle-merch3'></div> 
+                            <div className='rectangle-circle'>
+                                <div className='rectangle-circle2'></div>
+                            </div>
 
-                        <div className='rectangle-circle'>
-                            <div className='rectangle-circle2'></div>
-                        </div>
-
-                        <p className='merch-title'>Мерч</p>
-                        <div className='perechislenie'>
-                            <p className="">Sound</p>
-                            <p className="">Production</p> 
-                        </div>
-                </article>
-
-                <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', marginLeft: '10px'}}>
-                    {/* Компетенции */}
-                    <article className='block-kompetencii' style={{display: !showKompet ? 'block' : 'none'}}> 
-                        <div className='rectangle-kompeten'></div>
-                        <div className='rectangle-kompeten2'></div>
-                        <div className='rectangle-kompeten3'></div>
-                        <div className='kompetencii-title'>
-                            <p>Компетенции</p>
-                            <img className='vector-icon' src={Vector} alt='' onClick={clickKompeten}/>
-                        </div>
+                            <p className='merch-title'>Мерч</p>
+                            <div className='perechislenie'>
+                                <p className="">Sound</p>
+                                <p className="">Production</p> 
+                            </div>
                     </article>
 
-                    {/* open */}
-                    <article className='block-kompetencii-open' style={{display: showKompet ? 'block' : 'none'}}> 
-                        <div className='rec1'></div>
-                        <div className='rec2'></div>
-                        <div className='rec3'></div>
-                        <div className='kompetencii-title'>
-                            <p>Компетенции</p>
-                            <img className='vector-icon' src={VectorUp} alt='' onClick={clickKompeten}/>
-                        </div>
-                        <div className='kompet-list'>
-                            <ul>
-                                <li>Работа с оборудованием</li>
-                                <li>Технические навыки</li>
-                                <li>Визуальное восприятие</li>
-                                <li>Коммуникация </li>
-                                <li>Работа со сценарием</li>
-                            </ul>
-                        </div>
-                    </article>
+                    <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', marginLeft: '10px'}}>
+                        {/* Компетенции */}
+                        <article className='block-kompetencii' style={{display: !showKompet ? 'block' : 'none'}}> 
+                            <div className='rectangle-kompeten'></div>
+                            <div className='rectangle-kompeten2'></div>
+                            <div className='rectangle-kompeten3'></div>
+                            <div className='kompetencii-title'>
+                                <p>Компетенции</p>
+                                <img className='vector-icon' src={Vector} alt='' onClick={clickKompeten}/>
+                            </div>
+                        </article>
+
+                        {/* open */}
+                        <article className='block-kompetencii-open' style={{display: showKompet ? 'block' : 'none'}}> 
+                            <div className='rec1'></div>
+                            <div className='rec2'></div>
+                            <div className='rec3'></div>
+                            <div className='kompetencii-title'>
+                                <p>Компетенции</p>
+                                <img className='vector-icon' src={VectorUp} alt='' onClick={clickKompeten}/>
+                            </div>
+                            <div className='kompet-list'>
+                                <ul>
+                                    <li>Работа с оборудованием</li>
+                                    <li>Технические навыки</li>
+                                    <li>Визуальное восприятие</li>
+                                    <li>Коммуникация </li>
+                                    <li>Работа со сценарием</li>
+                                </ul>
+                            </div>
+                        </article>
 
 
 
-                    {/* Доход */}
-                     <article className='block-dohod' style={{display: showKompet ? 'none' : 'block'}}> 
-                        <div className='rectangle-dohod'></div>
-                        <div className='rectangle-dohod2'></div>
-                        <div className='rectangle-dohod3'></div>
-                        {/* <img src={Dohod} alt='' /> */}
-                        <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
-                        <p className='summa-dohod'>12212</p>
-                    </article>
-                </div>    
+                        {/* Доход */}
+                        <article className='block-dohod' style={{display: showKompet ? 'none' : 'block'}}> 
+                            <div className='rectangle-dohod'></div>
+                            <div className='rectangle-dohod2'></div>
+                            <div className='rectangle-dohod3'></div>
+                            {/* <img src={Dohod} alt='' /> */}
+                            <div className='kompetencii-title'><p>Доход</p><img onClick={clickDohod} className='vector-icon' src={showDohod ? VectorUp : Vector} alt=''/></div>
+                            <p className='summa-dohod'>12212</p>
+                        </article>
+                    </div> 
+                </div>
 
-            </div>        
+                <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}}> 
+                    <div className='rectangle-dohod'></div>
+                    <div className='rectangle-dohod2'></div>
+                    <div className='rectangle-dohod3'></div>
+                </article>     
+
+            </div>
+
             
 
             {/* <div className='form-profile' onScroll={handleScroll}>
