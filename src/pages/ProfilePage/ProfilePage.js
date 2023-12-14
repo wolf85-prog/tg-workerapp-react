@@ -588,7 +588,7 @@ const ProfilePage = () => {
                 <img src={smallMenu} alt='' className='small-menu-icon' />
             </div> */}
 
-            <div className='footer-block' style={{display: showFooter ? 'block' : 'none'}}>
+            <div className='footer-block' style={{display: !showFooter ? 'block' : 'none'}}>
                 <img src={Friend} alt='' width='100%' className='btn-friend' />
                 <img src={Footer} alt='' width='100%' className='' />
                 <div className='footer-icons'>

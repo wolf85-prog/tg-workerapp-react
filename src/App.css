@@ -468,19 +468,19 @@
 .footer-block {
   position: fixed;
   left: 0;
-  bottom: -7px;
+  bottom: -50px;
   width: 100%;
   z-index: 20;
 }
 
 .icon-footer {
-  width: 40px;
+  width: 30px;
   margin-left: 25px;
   margin-right: 25px;
 }
 
 .btn-friend {
-  width: 120px;
+  width: 100px;
   position: absolute;
   bottom: 95px;
   left: 50%;
