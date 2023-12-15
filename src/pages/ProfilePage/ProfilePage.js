@@ -33,7 +33,7 @@ import QRCode from "../../image/new/QR_Code.svg"
 import Close from "../../image/new/close.svg"
 import ClosePress from "../../image/new/close_press.svg"
 
-import Footer from "../../image/new/footer.svg"
+import Footer from "../../image/new/footer2.png"
 import VK from "../../image/new/basil_vk-outline.svg"
 import Phone from "../../image/new/ph_phone-call.svg"
 import Web from "../../image/new/dashicons_admin-site-alt3.svg"
@@ -612,10 +612,10 @@ const ProfilePage = () => {
                 <img src={smallMenu} alt='' className='small-menu-icon' />
             </div> */}
 
-            <div className='footer-block' style={{display: !showFooter ? 'block' : 'none'}}>
+            <div className='footer-block' style={{display: showFooter ? 'block' : 'none'}}>
                 <img onClick={clickPodel} src={Friend} alt='' width='100%' className='btn-friend' />
-                <img src={Footer} alt='' width='100%' className='' />
-                {/* <div className='footer-rec'></div> */}
+                <img src={Footer} alt='' width='100%' className='footer-image' />
+                <div className='footer-rec'></div>
                 <div className='footer-icons'>
                     <img onClick={()=>console.log("sdfsdf")} src={Phone} alt='' width='100%' className='icon-footer' />
                     <img onClick={()=>console.log("sdfsdf")} src={Web} alt='' width='100%' className='icon-footer' />

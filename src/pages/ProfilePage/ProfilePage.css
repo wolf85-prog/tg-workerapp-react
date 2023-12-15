@@ -575,20 +575,22 @@ input[id="cb1"] {
     bottom: -20px;
 }
 
+.footer-image {
+    position: fixed;
+    bottom: 50px;
+    left: 0;
+    height: 60px;
+}
+
 .footer-rec {   
-    /* Rectangle 5 */
     box-sizing: border-box;
     position: absolute;
-    left: 0%;
+    left: 0;
     right: 0%;
-    top: 20.62%;
-    bottom: 0%;
-
-    /* ULEY Темный */
+    bottom: 0;
     background: #25272A;
-    border: 1px solid rgba(67, 72, 79, 0.4);
-    box-shadow: 0px -24px 30.3px #25272A, inset 0px 4px 20px rgba(0, 0, 0, 0.25);
-
+    height: 100px;
+    width: 100%;
 }
 
 
