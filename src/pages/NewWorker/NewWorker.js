@@ -265,9 +265,8 @@ const NewWorker = () => {
                         </Link>
             </div>
 
-            <div className='footer-block' style={{bottom: '0'}}>
-                {/* <Link to={'/menu'}><img src={btnMenu} alt='' /></Link> */}
-                <div></div>
+
+            <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
                 <img src={smallMenu} alt='' className='small-menu-icon' />
             </div>
         </div>
