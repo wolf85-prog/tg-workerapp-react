@@ -196,7 +196,8 @@ input[id="cb1"] {
     width: 100%;
     height: 163px;
     position: relative;
-    flex-basis: 250px;
+    flex: 0 0 42%;
+    z-index: 20;
   }
   
   .rectangle-merch {
@@ -419,17 +420,24 @@ input[id="cb1"] {
     text-align: left;
 }
 
+.dohod {
+    position: relative;
+    width: 100%;
+    z-index: 10;
+    margin-top: -110px;
+}
+
 
 .block-dohod {
     /* Карточка */
     position: relative;
     width: 100%;
-    height: 115px;
+    height: 108px;
     z-index: 0;
-
-    border-radius: 12px 12px 0 0;
+    border-radius: 21.6px 21.6px 0 0;
     background-color: #1F2021;
-    flex: 0 0 50%;
+    /* flex: 0 0 56%; */
+    /* margin-left: 10px; */
 }
 
 .block-dohod2 {
@@ -440,8 +448,28 @@ input[id="cb1"] {
     z-index: 0;
     /* margin-top: 5px; */
 
-    border-radius: 12px 0 12px 12px;
+    border-radius: 21.6px 0 21.6px 21.6px;
     background-color: #1F2021;
+}
+
+.wrap-dohod {
+    display: flex;
+    background-color: #343a41;
+}
+
+.inner1 {
+    /* background-color: #1f2021; */
+    background: #2B2E32;
+    flex: 0 0 42%;
+}
+
+.inner1:after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    border-bottom-right-radius: 21.6px;
+    float: right;
+    background-color: #343a41;
 }
 
 .rectangle-dohod {
@@ -453,7 +481,10 @@ input[id="cb1"] {
     top: 0%;
     bottom: 1.11%;
     background: #2B2E32;
-    box-shadow: 20px 21px 20px rgba(25, 23, 23, 0.17), -6px -4px 20px rgba(203, 226, 251, 0.1), 1.08px 0px 5.076px rgba(0, 0, 0, 0.57), inset -2.16px 0px 4.32px rgba(0, 0, 0, 0.27), inset -2.16px 0px 2.592px rgba(0, 0, 0, 0.22), inset 0px 0px 19.24px rgba(67, 67, 67, 0.29);
+    /* box-shadow: 20px 21px 20px rgba(25, 23, 23, 0.17), -6px -4px 20px rgba(203, 226, 251, 0.1), 1.08px 0px 5.076px rgba(0, 0, 0, 0.57), 
+    inset -2.16px 0px 4.32px rgba(0, 0, 0, 0.27), 
+    inset -2.16px 0px 2.592px rgba(0, 0, 0, 0.22), 
+    inset 0px 0px 19.24px rgba(67, 67, 67, 0.29); */
     border-radius: 21.6px;
 }
 
@@ -535,24 +566,7 @@ input[id="cb1"] {
     padding: 10px;
 }
 
-.wrap-dohod {
-    display: flex;
-    background-color: #343a41;
-}
 
-.inner1 {
-    background-color: #1f2021;
-    flex: 0 0 50%;
-}
-
-.inner1:after {
-    content: '';
-    height: 100%;
-    width: 100%;
-    border-bottom-right-radius: 12px;
-    float: right;
-    background-color: #343a41;
-}
 
 
 

@@ -444,7 +444,7 @@ const ProfilePage = () => {
                             </div>
                     </article>
 
-                    <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', marginLeft: '10px'}}>
+                    <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', marginLeft: '10px', flex: '0 0 56%'}}>
                         {/* Компетенции */}
                         <article className='block-kompetencii' style={{display: !showKompet ? 'block' : 'none'}}> 
                             <div className='rectangle-kompeten'></div>
@@ -489,24 +489,26 @@ const ProfilePage = () => {
                     </div> 
                 </div>
 
-                <div className='wrap-dohod'>
-                    <div className='inner1'></div>
-                   <article className='block-dohod' style={{display: showKompet ? 'none' : 'block'}}> 
-                        {/* <div className='rectangle-dohod'></div>
-                        <div className='rectangle-dohod2'></div>
-                        <div className='rectangle-dohod3'></div> */}
-                        <div className='kompetencii-title'><p>Доход</p><img onClick={clickDohod} className='vector-icon' src={showDohod ? VectorUp : Vector} alt=''/></div>
-                        <p className='summa-dohod'>12212</p>
-                    </article>
+                <div className='dohod'>
+                   <div className='wrap-dohod'>
+                        <div className='inner1' style={{borderBottomRightRadius: showDohod ? '0px' : '21.6px'}}></div>
+                        <article className='block-dohod' style={{display: showKompet ? 'none' : 'block', borderRadius: showDohod ?  '21.6px 21.6px 0 0' : '21.6px', height: showDohod ? '118px' : '110px', backgroundColor: showDohod ? '#2b2f33' : '#1F2021'}}> 
+                            <div className='rectangle-dohod' style={{borderRadius: showDohod ? '21.6px 21.6px 0 0' : '21.6px'}}></div>
+                            <div className='rectangle-dohod2' style={{borderRadius: showDohod ? '21.6px 21.6px 0 0' : '21.6px'}}></div>
+                            <div className='rectangle-dohod3'></div>
+                            <div className='kompetencii-title'><p>Доход</p><img onClick={clickDohod} className='vector-icon' src={showDohod ? VectorUp : Vector} alt=''/></div>
+                            <p className='summa-dohod'>12212</p>
+                        </article>    
+                    </div>
 
-                    
+                    <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}}> 
+                        <div className='rectangle-dohod' style={{borderRadius: showDohod ? '21.6px 0 21.6px 21.6px' : '21.6px'}}></div>
+                        <div className='rectangle-dohod2' style={{borderRadius: showDohod ? '21.6px 0 21.6px 21.6px' : '21.6px'}}></div>
+                        <div className='rectangle-dohod3'></div>
+                    </article>  
                 </div>
 
-                <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}}> 
-                    {/* <div className='rectangle-dohod'></div>
-                    <div className='rectangle-dohod2'></div>
-                    <div className='rectangle-dohod3'></div> */}
-                </article>      
+                     
 
             </div>
 
