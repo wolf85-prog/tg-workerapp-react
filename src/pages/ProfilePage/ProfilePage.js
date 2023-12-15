@@ -86,7 +86,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -450,20 +450,10 @@ const ProfilePage = () => {
                                 </ul>
                             </div>
                         </article>
-
-
-
-                        {/* Доход */}
-                        {/* <article className='block-dohod' style={{display: showKompet ? 'none' : 'block'}}> 
-                            <div className='rectangle-dohod'></div>
-                            <div className='rectangle-dohod2'></div>
-                            <div className='rectangle-dohod3'></div>
-                            <div className='kompetencii-title'><p>Доход</p><img onClick={clickDohod} className='vector-icon' src={showDohod ? VectorUp : Vector} alt=''/></div>
-                            <p className='summa-dohod'>12212</p>
-                        </article> */}
                     </div> 
                 </div>
 
+                {/* Доход */}
                 <div className='dohod'>
                    <div className='wrap-dohod'>
                         <div className='inner1' style={{borderBottomRightRadius: showDohod ? '0px' : '21.6px'}}></div>
@@ -481,9 +471,7 @@ const ProfilePage = () => {
                         <div className='rectangle-dohod2' style={{borderRadius: showDohod ? '21.6px 0 21.6px 21.6px' : '21.6px'}}></div>
                         <div className='rectangle-dohod3'></div>
                     </article>  
-                </div>
-
-                     
+                </div>      
 
             </div>
 
