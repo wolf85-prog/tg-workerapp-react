@@ -251,7 +251,7 @@ const NewWorker = () => {
             {/* Далее */}
             <div style={{
                             position: 'absolute', 
-                            bottom: '13px', 
+                            bottom: '0px', 
                             //left: '15%',
                             zIndex: '20',
                             width: '100%',
