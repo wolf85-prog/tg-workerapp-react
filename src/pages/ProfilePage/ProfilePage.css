@@ -365,6 +365,7 @@ input[id="cb1"] {
     width: 100%;
     height: 163px;
     margin-bottom: 6px;
+    z-index: 50;
     /* right: 0;
     top: 200px; */
 }

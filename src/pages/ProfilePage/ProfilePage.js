@@ -18,10 +18,6 @@ import Loader2 from "../../components/UI/Loader_min/Loader_min"
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 
-// import BlackFon from "../../image/background/Background_black_600X800.png";
-// import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
-// import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
-// import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 
 import Star from "../../image/new/star.svg";
 import StarActive from "../../image/new/star_activ.svg";
@@ -41,26 +37,8 @@ import Telegram from "../../image/new/basil_telegram-outline.svg"
 
 import Friend from "../../image/new/friends.svg"
 
-import Dohod from "../../image/new/dohod.svg"
-import DohodOpen from "../../image/new/dohodOpen.svg"
-
-// import iconCheck from "../../image/check.png";
-// import iconUnCheck from "../../image/uncheck.png";
-// import iconEdit from "../../image/icons/edit_icon.png";
-// import iconDown from "../../image/icons/arrow_down.png";
-// import iconCheck2 from "../../image/icons/галка.png"
-// import iconStatus from "../../image/icons/крестик.png"
-// import iconStatus2 from "../../image/icons/стрелки желтые.png"
-// import iconStatus3 from "../../image/icons/стрелки синие.png"
-//import Loader from "../../components/UI/Loader/Loader";
 
 import ButtonsMenu from "../../image/buttons/button_menu_old.png"
-// import ButtonsMenu2 from "../../image/buttons/button_for_menu2.png"
-// import btnMenu from "../../image/layers/icon_menu.png";
-// import btnChange from "../../image/buttons/button_for_menu2.png"
-// import smallMenu from "../../image/layers/logo_04_light.png"
-
-//const API_URL = process.env.REACT_APP_API_URL
 
 const ProfilePage = () => {
     const {tg, user} = useTelegram();
@@ -108,7 +86,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -388,27 +366,20 @@ const ProfilePage = () => {
 
             <Header header={{title: `${headerName}`, icon: 'false', menu: `${Workhub}`}}/>
 
-            {/* темный фон */}
-            {/* <img src={BlackFon} alt='' className='fon-black' />
-            
-            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0', opacity: '0.6'}}>
-                <img src={Fon} alt='' className='fon-style-full' />
-            </div>
-
-            <img src={FonGradTop} alt='' className='fon-style-menu1' style={{visibility: showGrad ? "visible": "hidden"}}/>
-            <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/> */}
-
             <div className="container">
                 {/* ФИО */}
                 <article className="card">
                     <div className="rectangle"><div className="rectangle2"><div className="rectangle3"></div></div>
                     </div>
                     <div>
-                        <p className="profile_fio">Иванов Иван Иванович</p>
+                        <p className="profile_fio">{workerhub[0]?.fio}</p>
                         <div className="card-specs bullet">
                             <ul>
-                                <li className="bullet-title">Техник монтажа</li>
-                                <li className="bullet-title">Режиссер <img src={Edit} alt=''/></li>
+                                {workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' 
+                                ?   <li className="bullet-title">{worker.name}</li>
+                                : '' )}
+                                {/* <li className="bullet-title">Техник монтажа</li>
+                                <li className="bullet-title">Режиссер <img src={Edit} alt=''/></li> */}
                             </ul>   
                         </div>     
                     </div>
@@ -420,7 +391,7 @@ const ProfilePage = () => {
                         <img className='star-icon' src={Star} alt='' />
                         <img className='star-icon' src={Star} alt='' />
                     </div>
-                    <div className='block-id'>ID 2135446</div>
+                    <div className='block-id'>ID {user?.id}</div>
                 </article>
             </div>
             
@@ -439,8 +410,12 @@ const ProfilePage = () => {
 
                             <p className='merch-title'>Мерч</p>
                             <div className='perechislenie'>
-                                <p className="">Sound</p>
-                                <p className="">Production</p> 
+                                {workerhub[0]?.merch.map(item=> {
+                                        <p className="">item.name</p>
+                                    }
+                                )}
+                                {/* <p className="">Sound</p>
+                                <p className="">Production</p>  */}
                             </div>
                     </article>
 
@@ -492,12 +467,12 @@ const ProfilePage = () => {
                 <div className='dohod'>
                    <div className='wrap-dohod'>
                         <div className='inner1' style={{borderBottomRightRadius: showDohod ? '0px' : '21.6px'}}></div>
-                        <article className='block-dohod' style={{display: showKompet ? 'none' : 'block', borderRadius: showDohod ?  '21.6px 21.6px 0 0' : '21.6px', height: showDohod ? '118px' : '110px', backgroundColor: showDohod ? '#2b2f33' : '#1F2021'}}> 
+                        <article className='block-dohod' style={{borderRadius: showDohod ?  '21.6px 21.6px 0 0' : '21.6px', height: showDohod ? '118px' : '110px', backgroundColor: showDohod ? '#2b2f33' : '#1F2021'}}> 
                             <div className='rectangle-dohod' style={{borderRadius: showDohod ? '21.6px 21.6px 0 0' : '21.6px'}}></div>
                             <div className='rectangle-dohod2' style={{borderRadius: showDohod ? '21.6px 21.6px 0 0' : '21.6px'}}></div>
                             <div className='rectangle-dohod3'></div>
                             <div className='kompetencii-title'><p>Доход</p><img onClick={clickDohod} className='vector-icon' src={showDohod ? VectorUp : Vector} alt=''/></div>
-                            <p className='summa-dohod'>12212</p>
+                            <p className='summa-dohod'>{isLoadingSum ? <Loader2 /> : parseInt(summa).toLocaleString()+".00"}</p>
                         </article>    
                     </div>
 

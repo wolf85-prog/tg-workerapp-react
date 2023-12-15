@@ -263,12 +263,11 @@ const ProjectItem = (props) => {
                 <div className='rectangle-projcard3'></div>
                 
                 <div className='project-text'>
-                    <p className="project_title">Тест</p>
-                    <p className="project_subtitle">06.12.2023 | 20:00</p>
+                    <p className="project_title">{props.post.title}</p>
+                    <p className="project_subtitle">{formatted} | {formattime}</p>
                 </div>
                 <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>  
 
-                {/* <img onClick={clickShkala} className='shkala' src={Progress} alt=''/> */}
                 <div className='shkala'>
                     <div className='shkala-line1'></div>
                     <div className='shkala-line2'></div>
@@ -276,18 +275,11 @@ const ProjectItem = (props) => {
                     <div className='shkala1'>
                         <img src={Shkala} alt='' className='shkala-img'/>
                     </div>
-                    
-                    {/* <div className='shkala1'>
-                        <div className='shkala1-line'></div>
-                        <div className='shkala1-line2'></div>
-                        <div className='shkala1-line3'></div>
-                        <div className='shkala1-line4'></div>
-                    </div> */}
                 </div>
 
                 <div className='card-footer'>
-                    <p className='project_money'>6 0000</p>
-                    <div className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>
+                    <p className='project_money'>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : 'нет ставки')}</p>
+                    {props.post.tgURL_chat && <div onClick={goToChat} className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>}
                 </div>
 
                 
@@ -296,8 +288,13 @@ const ProjectItem = (props) => {
                     <div className='line3'></div>
                     <div className='smeta-text'>
                         <ul>
-                            <li className='item-list'><div>Специальность</div>Техник</li>
-                            <li className='item-list'><div>Вид работ</div>Монтаж</li>
+                            <li className='item-list'><div>Специальность</div>{props.post.specs.spec}</li>
+                            <li className='item-list'><div>Вид работ</div>{props.post.specs.vid}</li>
+                            <li className='item-list'><div>Часы</div>{props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.chasi}</li>
+                            <li className='item-list'><div>Ставка</div>{props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.stavka}</li>
+                            <li className='item-list'><div>Смена</div>{props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.smena}</li>
+                            <li className='item-list'><div>Переработка</div></li>
+                            <li className='item-list'><div>Доп. расходы</div></li>
                         </ul>
                     </div>
                     <div className='block-button'>
