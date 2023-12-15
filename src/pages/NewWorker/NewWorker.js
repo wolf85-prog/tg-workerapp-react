@@ -253,7 +253,7 @@ const NewWorker = () => {
                             position: 'absolute', 
                             bottom: '13px', 
                             //left: '15%',
-                            zIndex: '2',
+                            zIndex: '20',
                             width: '100%',
                         }}>
                         <Link to={'/add-worker2'}>
