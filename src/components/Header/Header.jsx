@@ -6,7 +6,7 @@ import Menu from "../../image/new/menu.svg";
 import MenuFilter from "../../image/new/menuFilter.svg";
 
 const Header = (props) => {
-    const {user} = useTelegram();
+    // const {user} = useTelegram();
 
     const [showFilter, setShowFilter] = useState(false)
 
