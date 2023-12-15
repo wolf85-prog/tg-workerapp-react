@@ -290,9 +290,9 @@ const ProjectItem = (props) => {
                         <ul>
                             <li className='item-list'><div>Специальность</div>{props.post.specs.spec}</li>
                             <li className='item-list'><div>Вид работ</div>{props.post.specs.vid}</li>
-                            <li className='item-list'><div>Часы</div>{props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.chasi}</li>
-                            <li className='item-list'><div>Ставка</div>{props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.stavka}</li>
-                            <li className='item-list'><div>Смена</div>{props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.smena}</li>
+                            <li className='item-list'><div>Часы</div>{props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.chasi : '00.00'}</li>
+                            <li className='item-list'><div>Ставка</div>{props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.stavka : '0.00'}</li>
+                            <li className='item-list'><div>Смена</div>{props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.smena : "0.00"}</li>
                             <li className='item-list'><div>Переработка</div></li>
                             <li className='item-list'><div>Доп. расходы</div></li>
                         </ul>
