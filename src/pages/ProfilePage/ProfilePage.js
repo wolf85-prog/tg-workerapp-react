@@ -596,9 +596,9 @@ const ProfilePage = () => {
                         : <ProjectList posts={sortProject} title="" workerId={specId}/>
                     }
 
-                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                    {/* <div style={{display: 'flex', justifyContent: 'center'}}>
                         <button className="image-button3" onClick={()=>navigate('/contacts')} style={{ backgroundImage: `url(${ButtonsMenu})`}}>Связь</button>
-                    </div>
+                    </div> */}
 
                 </div> 
             </div>
@@ -615,6 +615,7 @@ const ProfilePage = () => {
             <div className='footer-block' style={{display: !showFooter ? 'block' : 'none'}}>
                 <img onClick={clickPodel} src={Friend} alt='' width='100%' className='btn-friend' />
                 <img src={Footer} alt='' width='100%' className='' />
+                {/* <div className='footer-rec'></div> */}
                 <div className='footer-icons'>
                     <img onClick={()=>console.log("sdfsdf")} src={Phone} alt='' width='100%' className='icon-footer' />
                     <img onClick={()=>console.log("sdfsdf")} src={Web} alt='' width='100%' className='icon-footer' />

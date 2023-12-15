@@ -135,17 +135,111 @@
 
 .shkala {
     position: absolute;
-    top: 25px;
+    top: 90px;
     left: 15px;
     width: 100%;
 }
 
+.shkala-line1 {
+    /* Line 3 */
+
+    position: absolute;
+    width: 90%;
+    height: 0px;
+    left: 0%;
+    top: 0;
+
+    border: 1px solid #3392FF;
+    box-shadow: inset 0px 2px 2px #232222;
+}
+
+.shkala-line2 {
+    /* Line 2 */
+    position: absolute;
+    width: 90%px;
+    height: 0px;
+    left: 0%;
+    top: 1px;
+
+    border: 1px solid #1B1E21;
+    box-shadow: inset 0px -1px 2px rgba(255, 255, 255, 0.13);
+}
+
+
 .begunok {
     position: absolute;
-    top: 50px;
-    left: 1px;
-    width: 120px;
+    top: -80px;
+    left: -70px;
+    z-index: 5;
 }
+
+
+/* Шкала 0-1 */
+.shkala1 {
+    position: absolute;
+    top: -25px;
+    left: 0px;
+    right: 30px;
+    z-index: 3;
+}
+
+.shkala-img {
+    width: 100%;
+}
+
+
+
+
+/* Line 11 */
+.shkala1-line {
+    position: absolute;
+    width: 10px;
+    height: 0px;
+    left: 42px;
+    top: 12px;
+
+    border: 1px solid #424548;
+    transform: rotate(-90deg);
+}
+
+/* Line 12 */
+.shkala1-line2 {
+    position: absolute;
+    width: 10px;
+    height: 0px;
+    left: 62px;
+    top: 12px;
+
+    border: 1px solid #424548;
+    transform: rotate(-90deg);
+}
+
+/* Line 13 */
+.shkala1-line3 {
+    position: absolute;
+    width: 10px;
+    height: 0px;
+    left: 82px;
+    top: 12px;
+
+    border: 1px solid #424548;
+    transform: rotate(-90deg);
+}
+
+/* Line 15 */
+.shkala1-line4 {
+    position: absolute;
+    width: 20px;
+    height: 0px;
+    left: 102px;
+    top: 17px;
+
+    border: 1px solid #424548;
+    transform: rotate(-90deg);
+}
+
+
+
 
 .line-one {
     /* Line 3 */

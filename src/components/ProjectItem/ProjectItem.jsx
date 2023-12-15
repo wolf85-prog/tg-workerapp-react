@@ -13,9 +13,11 @@ import btnChat from "../../image/new/btn_chat.svg"
 import Vector from "../../image/new/vector.svg"
 import VectorUp from "../../image/new/vector_up.svg"
 import Progress from "../../image/new/progress.svg"
+import Ukazatel from "../../image/new/ukazatel.svg"
 import Question from "../../image/new/question.svg"
 import Close from "../../image/new/close.svg"
 import ClosePress from "../../image/new/close_press.svg"
+import Shkala from "../../image/new/shkala2.svg"
 
 const ProjectItem = (props) => {
 
@@ -266,7 +268,22 @@ const ProjectItem = (props) => {
                 </div>
                 <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>  
 
-                <img onClick={clickShkala} className='shkala' src={Progress} alt=''/>
+                {/* <img onClick={clickShkala} className='shkala' src={Progress} alt=''/> */}
+                <div className='shkala'>
+                    <div className='shkala-line1'></div>
+                    <div className='shkala-line2'></div>
+                    <img src={Ukazatel} alt='' className='begunok'/>
+                    <div className='shkala1'>
+                        <img src={Shkala} alt='' className='shkala-img'/>
+                    </div>
+                    
+                    {/* <div className='shkala1'>
+                        <div className='shkala1-line'></div>
+                        <div className='shkala1-line2'></div>
+                        <div className='shkala1-line3'></div>
+                        <div className='shkala1-line4'></div>
+                    </div> */}
+                </div>
 
                 <div className='card-footer'>
                     <p className='project_money'>6 0000</p>
