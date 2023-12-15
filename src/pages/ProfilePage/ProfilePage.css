@@ -436,7 +436,7 @@ input[id="cb1"] {
     z-index: 0;
     border-radius: 21.6px 21.6px 0 0;
     background-color: #1F2021;
-    /* flex: 0 0 56%; */
+    flex: 0 0 55%;
     /* margin-left: 10px; */
 }
 
@@ -455,12 +455,13 @@ input[id="cb1"] {
 .wrap-dohod {
     display: flex;
     background-color: #343a41;
+    border-radius: 21.6px 21.6px 0 0px;
 }
 
 .inner1 {
     /* background-color: #1f2021; */
     background: #2B2E32;
-    flex: 0 0 42%;
+    flex: 0 0 45%;
 }
 
 .inner1:after {
