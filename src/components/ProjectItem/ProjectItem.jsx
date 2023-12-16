@@ -266,12 +266,15 @@ const ProjectItem = (props) => {
                     <p className="project_title">{props.post.title}</p>
                     <p className="project_subtitle">{formatted} | {formattime}</p>
                 </div>
-                <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>  
+                <div style={{width: '40px', height: '40px', position: 'absolute', right: '25px', top: '20px'}}>
+                  <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>   
+                </div>
+                 
 
                 <div className='shkala'>
                     <div className='shkala-line1'></div>
                     <div className='shkala-line2'></div>
-                    <img src={Ukazatel} alt='' className='begunok'/>
+                    <img src={Ukazatel} alt='' className='begunok' onClick={clickShkala}/>
                     <div className='shkala1'>
                         <img src={Shkala} alt='' className='shkala-img'/>
                     </div>

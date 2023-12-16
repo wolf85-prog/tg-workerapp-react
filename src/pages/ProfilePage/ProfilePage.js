@@ -376,10 +376,8 @@ const ProfilePage = () => {
                         <div className="card-specs bullet">
                             <ul>
                                 {workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' 
-                                ?   <li className="bullet-title">{worker.name}</li>
+                                ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} alt=''/>}</li>
                                 : '' )}
-                                {/* <li className="bullet-title">Техник монтажа</li>
-                                <li className="bullet-title">Режиссер <img src={Edit} alt=''/></li> */}
                             </ul>   
                         </div>     
                     </div>
@@ -405,7 +403,7 @@ const ProfilePage = () => {
                             <div className='rectangle-merch3'></div> 
 
                             <div className='rectangle-circle'>
-                                <div className='rectangle-circle2'></div>
+                                <div className={workerhub[0]?.merch.length > 0 ? 'rectangle-circle-on' : 'rectangle-circle-off'}></div>
                             </div>
 
                             <p className='merch-title'>Мерч</p>
@@ -425,9 +423,9 @@ const ProfilePage = () => {
                             <div className='rectangle-kompeten'></div>
                             <div className='rectangle-kompeten2'></div>
                             <div className='rectangle-kompeten3'></div>
-                            <div className='kompetencii-title'>
-                                <p>Компетенции</p>
-                                <img className='vector-icon' src={Vector} alt='' onClick={clickKompeten}/>
+                            <div className='kompetencii-title' onClick={clickKompeten}>
+                                <p className='text-kompetencii'>Компетенции</p>
+                                <img className='vector-icon' src={Vector} alt=''/>
                             </div>
                         </article>
 
@@ -436,9 +434,9 @@ const ProfilePage = () => {
                             <div className='rec1'></div>
                             <div className='rec2'></div>
                             <div className='rec3'></div>
-                            <div className='kompetencii-title'>
-                                <p>Компетенции</p>
-                                <img className='vector-icon' src={VectorUp} alt='' onClick={clickKompeten}/>
+                            <div className='kompetencii-title' onClick={clickKompeten}>
+                                <p className='text-kompetencii' >Компетенции</p>
+                                <img className='vector-icon' src={VectorUp} alt=''/>
                             </div>
                             <div className='kompet-list'>
                                 <ul>
@@ -461,7 +459,7 @@ const ProfilePage = () => {
                             <div className='rectangle-dohod' style={{borderRadius: showDohod ? '21.6px 21.6px 0 0' : '21.6px'}}></div>
                             <div className='rectangle-dohod2' style={{borderRadius: showDohod ? '21.6px 21.6px 0 0' : '21.6px'}}></div>
                             <div className='rectangle-dohod3'></div>
-                            <div className='kompetencii-title'><p>Доход</p><img onClick={clickDohod} className='vector-icon' src={showDohod ? VectorUp : Vector} alt=''/></div>
+                            <div className='kompetencii-title' onClick={clickDohod}><p>Доход</p><img className='vector-icon' src={showDohod ? VectorUp : Vector} alt=''/></div>
                             <p className='summa-dohod'>{isLoadingSum ? <Loader2 /> : parseInt(summa).toLocaleString()+".00"}</p>
                         </article>    
                     </div>
@@ -470,6 +468,10 @@ const ProfilePage = () => {
                         <div className='rectangle-dohod' style={{borderRadius: showDohod ? '21.6px 0 21.6px 21.6px' : '21.6px'}}></div>
                         <div className='rectangle-dohod2' style={{borderRadius: showDohod ? '21.6px 0 21.6px 21.6px' : '21.6px'}}></div>
                         <div className='rectangle-dohod3'></div>
+                        <p className='history-title'>История</p>
+                        <div className='dates-history'><p>11.2023</p><p>0.00</p></div>
+                        <div className='dates-history2'><p>10.2023</p><p>0.00</p></div>
+                        <div className='dates-history2'><p>09.2023</p><p>0.00</p></div>
                     </article>  
                 </div>      
 
@@ -549,8 +551,6 @@ const ProfilePage = () => {
                     arr_status={status}
                 /> */}
 
-
-
                 <div className="profile-project-list">   
                     <Header header={{title: `Мои проекты`, icon: 'true', menu: 'меню'}}/>
 
@@ -558,22 +558,12 @@ const ProfilePage = () => {
                         ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%', marginBottom: '50%'}}><Loader/></div>
                         : <ProjectList posts={sortProject} title="" workerId={specId}/>
                     }
-
-                    {/* <div style={{display: 'flex', justifyContent: 'center'}}>
-                        <button className="image-button3" onClick={()=>navigate('/contacts')} style={{ backgroundImage: `url(${ButtonsMenu})`}}>Связь</button>
-                    </div> */}
-
                 </div> 
             </div>
 
             
             {/* стрелка */}
             {/* <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: showArroy ? "block": "none"}} /></div> */}
-
-            {/* <div className='footer-block'>
-                <div></div>
-                <img src={smallMenu} alt='' className='small-menu-icon' />
-            </div> */}
 
             <div className='footer-block' style={{display: showFooter ? 'block' : 'none'}}>
                 <img onClick={clickPodel} src={Friend} alt='' width='100%' className='btn-friend' />
