@@ -605,7 +605,7 @@ const ProfilePage = () => {
 
                     {isPostsLoading
                         ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%', marginBottom: '50%'}}><Loader/></div>
-                        : <ProjectList posts={sortProject} title="" workerId={specId}/>
+                        : <ProjectList posts={sortProject} title="" workerId={specId} width={width}/>
                     }
                 </div> 
             </div>

@@ -8,7 +8,7 @@ import Vector from "../../image/new/vector.svg"
 import Progress0 from "../../image/new/progress0.svg"
 
 
-const ProjectList = ({posts, title, workerId, remove}) => {
+const ProjectList = ({posts, title, workerId, remove, width}) => {
     
     if (!posts.length) {
         return (
@@ -53,7 +53,7 @@ const ProjectList = ({posts, title, workerId, remove}) => {
                      
 
             {posts.map((post, index) =>
-                <ProjectItem number={index + 1} post={post} key={post.id + index} specId={workerId}/>    
+                <ProjectItem number={index + 1} post={post} key={post.id + index} specId={workerId} width={width}/>    
             )}
             
         </div>

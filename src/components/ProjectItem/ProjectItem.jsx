@@ -33,6 +33,8 @@ const ProjectItem = (props) => {
 
     const [showProject, setShowProject] = useState(false);
     const [showModalEtap, setShowModalEtap] = useState(false);
+
+    const [ukazatel, setUkazatel] = useState(0);
     
     const [showEtap2, setShowEtap2] = useState(false);
     const [showEtap3, setShowEtap3] = useState(false);
@@ -185,15 +187,20 @@ const ProjectItem = (props) => {
     }
 
     useEffect(()=> {
-        //console.log(props.post.finalSmeta)
+        console.log("width: ", props.width)
         
         if (props.post.statusMoney === 1) {
             // setShowEtap1(true)
             setStatusMoney('Предварительно')
+            console.log(props.post.statusMoney, Math.floor(props.width/5))
+            setUkazatel(Math.floor(props.width/5) - Math.floor(props.width*2/5))
+
         } else if(props.post.statusMoney === 2) {
             // setShowEtap1(true)
             // setShowEtap2(true)
             setStatusMoney('Фактически')
+            console.log(props.post.statusMoney, Math.floor(props.width*2/5))
+            setUkazatel(Math.floor(props.width*2/5)- Math.floor(props.width*2/5))
         }
 
         if (props.post.finalSmeta === 'Подтверждена') {
@@ -201,6 +208,8 @@ const ProjectItem = (props) => {
             // setShowEtap2(true)
             // setShowEtap3(true)
             setStatusMoney('Подтверждено')
+            console.log(props.post.statusMoney, Math.floor(props.width*3/5))
+            setUkazatel(Math.floor(props.width*3/5)- Math.floor(props.width*2/5))
         }
 
         // else if(props.post.statusMoney === 4) {
@@ -273,7 +282,7 @@ const ProjectItem = (props) => {
                 <div className='shkala'>
                     <div className='shkala-line1'></div>
                     <div className='shkala-line2'></div>
-                    <img src={Ukazatel} alt='' className='begunok' onClick={clickShkala} style={{left: '22px'}}/>
+                    <img src={Ukazatel} alt='' className='begunok' onClick={clickShkala} style={{left: `${ukazatel}px`}}/>
                     <div className='shkala1'>
                         <img src={Shkala} alt='' className='shkala-img'/>
                     </div>
