@@ -427,7 +427,7 @@ const ProfilePage = () => {
                         <div className="card-specs bullet">
                             <ul>
                                 {workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' 
-                                ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} alt=''/>}</li>
+                                ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={()=>navigate('/edit-worker')} alt=''/>}</li>
                                 : '' )}
                             </ul>   
                         </div>     
@@ -500,13 +500,13 @@ const ProfilePage = () => {
 
                 {/* Доход */}
                 <div className='dohod'>
-                   <div className='wrap-dohod'>
+                   <div className='wrap-dohod' onClick={clickDohod}>
                         <div className='inner1' style={{borderBottomRightRadius: showDohod ? '0px' : '21.6px'}}></div>
                         <article className='block-dohod' style={{borderRadius: showDohod ?  '21.6px 21.6px 0 0' : '21.6px', height: showDohod ? '118px' : '110px', backgroundColor: showDohod ? '#2b2f33' : '#1F2021'}}> 
                             <div className='rectangle-dohod' style={{borderRadius: showDohod ? '21.6px 21.6px 0 0' : '21.6px'}}></div>
                             <div className='rectangle-dohod2' style={{borderRadius: showDohod ? '21.6px 21.6px 0 0' : '21.6px'}}></div>
                             <div className='rectangle-dohod3'></div>
-                            <div className='kompetencii-title' onClick={clickDohod}><p>Доход</p><img className='vector-icon' src={showDohod ? VectorUp : Vector} alt=''/></div>
+                            <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={showDohod ? VectorUp : Vector} alt=''/></div>
                             <p className='summa-dohod'>{isLoadingSum ? <Loader2 /> : parseInt(summa).toLocaleString()+".00"}</p>
                         </article>    
                     </div>
