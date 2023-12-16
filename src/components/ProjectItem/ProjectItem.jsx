@@ -257,7 +257,7 @@ const ProjectItem = (props) => {
     <>
         <div className='container'>
             
-            <div className='proj-card'>
+            <div className='proj-card' onClick={clickProject}>
                 <div className='rectangle-projcard'></div>
                 <div className='rectangle-projcard2'></div>
                 <div className='rectangle-projcard3'></div>
@@ -266,15 +266,14 @@ const ProjectItem = (props) => {
                     <p className="project_title">{props.post.title}</p>
                     <p className="project_subtitle">{formatted} | {formattime}</p>
                 </div>
-                <div style={{width: '40px', height: '40px', position: 'absolute', right: '25px', top: '20px'}}>
-                  <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>   
-                </div>
+
+                <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>   
                  
 
                 <div className='shkala'>
                     <div className='shkala-line1'></div>
                     <div className='shkala-line2'></div>
-                    <img src={Ukazatel} alt='' className='begunok' onClick={clickShkala}/>
+                    <img src={Ukazatel} alt='' className='begunok' onClick={clickShkala} style={{left: '22px'}}/>
                     <div className='shkala1'>
                         <img src={Shkala} alt='' className='shkala-img'/>
                     </div>
@@ -317,7 +316,7 @@ const ProjectItem = (props) => {
                 <div className='rectangle-modal2'></div>
                 <div className='rectangle-modal3'></div>
 
-                <img src={Question} alt='' style={{position: 'absolute', top: '20px', left: '20px'}}/>
+                {/* <img src={Question} alt='' style={{position: 'absolute', top: '20px', left: '20px'}}/> */}
 
                 <img onClick={()=>setShowModalEtap(false)} src={Close} alt='' style={{position: 'absolute', top: '20px', right: '20px'}}/>
 

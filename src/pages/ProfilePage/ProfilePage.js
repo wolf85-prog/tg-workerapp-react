@@ -36,6 +36,7 @@ import Web from "../../image/new/dashicons_admin-site-alt3.svg"
 import Telegram from "../../image/new/basil_telegram-outline.svg"
 
 import Friend from "../../image/new/friends.svg"
+import callPoster from "../../image/call_poster.png"
 
 
 import ButtonsMenu from "../../image/buttons/button_menu_old.png"
@@ -72,6 +73,7 @@ const ProfilePage = () => {
     const [showDohod, setShowDohod] = useState(false);
     const [showFooter, setShowFooter] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [modal, setModal] = useState(false)
 
     //const [summa, setSumma] = useState(0); 
   
@@ -359,6 +361,55 @@ const ProfilePage = () => {
         showModal ? setShowModal(false) : setShowModal(true)
     }
 
+
+    const openInNewTab = (url) => {
+        window.open(url, '_blank', 'noreferrer');
+    };
+
+    const showPopup = () => {   
+        setModal(true)
+        //setTimeout(()=> {
+            openInNewTab('tel:+74995001411')
+        //}, 2000)
+
+        setTimeout(()=> {
+            setModal(false)       
+        }, 6000)
+    }
+
+
+    //share
+    const [isShowed, setIsShowed] = useState(false)
+    const [isCopied, setIsCopied] = useState(false)
+
+    useEffect(() => {
+        if (!isCopied) return
+    
+        const timer = setTimeout(() => {
+          setIsCopied(currentIsCopied => !currentIsCopied)
+        }, 3000)
+    
+        return () => clearTimeout(timer)
+    }, [isCopied])
+  
+    const onShareClick = (e) => {
+        const url="https://t.me/ULEY_Workhub_Bot"
+        const title="ULEY Workhub"
+        const text="Добавить бота"
+
+        e.preventDefault()
+        if (navigator.share) {
+            navigator.share({
+            title: title,
+            text: text,
+            url: url,
+            })
+            .catch(console.error)
+        } else {
+            setIsShowed(currentIsShowed => !currentIsShowed)
+        }
+    }
+
     //---------------------------------------------------------------------------------------
 
     return (
@@ -391,11 +442,8 @@ const ProfilePage = () => {
                     </div>
                     <div className='block-id'>ID {user?.id}</div>
                 </article>
-            </div>
-            
 
-            <div className="container" >
-                <div style={{display: 'flex', marginTop: '215px'}}>
+                <div style={{display: 'flex', marginTop: '15px'}}>
                     {/* Мерч */}
                     <article className='block-merch'> 
                             <div className='rectangle-merch'></div>
@@ -408,9 +456,8 @@ const ProfilePage = () => {
 
                             <p className='merch-title'>Мерч</p>
                             <div className='perechislenie'>
-                                {workerhub[0]?.merch.map(item=> {
-                                        <p className="">item.name</p>
-                                    }
+                                {workerhub[0]?.merch.map(item=> 
+                                        <p className="">{item.name}</p>
                                 )}
                                 {/* <p className="">Sound</p>
                                 <p className="">Production</p>  */}
@@ -473,10 +520,8 @@ const ProfilePage = () => {
                         <div className='dates-history2'><p>10.2023</p><p>0.00</p></div>
                         <div className='dates-history2'><p>09.2023</p><p>0.00</p></div>
                     </article>  
-                </div>      
-
+                </div> 
             </div>
-
             
 
             {/* <div className='form-profile' onScroll={handleScroll}>
@@ -552,7 +597,11 @@ const ProfilePage = () => {
                 /> */}
 
                 <div className="profile-project-list">   
-                    <Header header={{title: `Мои проекты`, icon: 'true', menu: 'меню'}}/>
+                    <Header 
+                        header={{title: `Мои проекты`, icon: 'true', menu: 'меню'}}
+                        filter={filter}
+                        setFilter={setFilter}
+                    />
 
                     {isPostsLoading
                         ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%', marginBottom: '50%'}}><Loader/></div>
@@ -565,17 +614,17 @@ const ProfilePage = () => {
             {/* стрелка */}
             {/* <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: showArroy ? "block": "none"}} /></div> */}
 
-            <div className='footer-block' style={{display: showFooter ? 'block' : 'none'}}>
+            <div className='footer-block' style={{display: !showFooter ? 'block' : 'none'}}>
                 <img onClick={clickPodel} src={Friend} alt='' width='100%' className='btn-friend' />
                 <img src={Footer} alt='' width='100%' className='footer-image' />
                 <div className='footer-rec'></div>
                 <div className='footer-icons'>
-                    <img onClick={()=>console.log("sdfsdf")} src={Phone} alt='' width='100%' className='icon-footer' />
-                    <img onClick={()=>console.log("sdfsdf")} src={Web} alt='' width='100%' className='icon-footer' />
+                    <img onClick={()=>showPopup()} src={Phone} alt='' width='100%' className='icon-footer' />
+                    <img onClick={()=>openInNewTab('https://uley.team/')} src={Web} alt='' width='100%' className='icon-footer' />
                 </div>
                 <div className='footer-icons2'> 
-                    <img onClick={()=>console.log("sdfsdf")} src={Telegram} alt='' width='100%' className='icon-footer' />
-                    <img onClick={()=>console.log("sdfsdf")} src={VK} alt='' width='100%' className='icon-footer' />   
+                    <img onClick={() =>openInNewTab('https://t.me/ULEY_Office_Bot')} src={Telegram} alt='' width='100%' className='icon-footer' />
+                    <img onClick={()=>openInNewTab('https://vk.com/uley.team')} src={VK} alt='' width='100%' className='icon-footer' />   
                 </div>
                 
             </div>
@@ -587,9 +636,9 @@ const ProfilePage = () => {
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <img onClick={()=>setShowModal(false)} src={Close} alt='' style={{position: 'absolute', right: '10px', top: '10px'}}/>
+                    <img onClick={()=>setShowModal(false)} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '20px'}}/>
 
-                    <p style={{position: 'absolute', width: '100%', top: '25px'}}>
+                    <p style={{position: 'absolute', width: '100%', top: '65px'}}>
                         Пригласи друга и получи скидку
                     </p>
                     <img src={QRCode} alt='' style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
@@ -597,8 +646,12 @@ const ProfilePage = () => {
                 </div>
                 <div className='block-modal-button'>
                     <div className='button_info'>Подробнее</div>
-                    <div className='button_podel'>Поделиться</div>
+                    <div onClick={onShareClick} className='button_podel'>Поделиться</div>
                 </div>
+            </MyModal>
+
+            <MyModal visible={modal} setVisible={setModal}>
+                <img src={callPoster} alt='' style={{width: '100%', padding: '0 10px'}}/>
             </MyModal>
             
         </div>

@@ -27,7 +27,7 @@ const ProjectList = ({posts, title, workerId, remove}) => {
                             <p className="project_title">Здесь будут ваши заказы</p>
                             {/* <p className="project_subtitle">06.12.2023 | 20:00</p> */}
                             
-                            <p className='project_money'>0.00</p>
+                            <p className='project_money2'>0.00</p>
                         </div>
                         <img className='vector' src={Vector} alt=''/>  
                     </div>

@@ -72,6 +72,7 @@
     backdrop-filter: blur(7.5px);
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 20px;
+    z-index: 9;
 }
 
 /* Vector */
@@ -91,11 +92,12 @@
 
     /* ULEY Светлый */
     color: #E8F1F9;
+    margin-bottom: 8px;
 }
 
 .text-filter {
     position: absolute;
-    top: 30px;
+    top: 25px;
     left: 15px;
     text-align: left;
 }

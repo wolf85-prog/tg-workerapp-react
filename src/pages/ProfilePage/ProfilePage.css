@@ -522,7 +522,7 @@ input[id="cb1"] {
 
 .wrap-dohod {
     display: flex;
-    background-color: #343a41;
+    background-color: #2e3339;
     border-radius: 21.6px 21.6px 0 0px;
 }
 
@@ -538,7 +538,7 @@ input[id="cb1"] {
     width: 100%;
     border-bottom-right-radius: 21.6px;
     float: right;
-    background-color: #343a41;
+    background-color: #2e3339;
 }
 
 .rectangle-dohod {
@@ -601,7 +601,7 @@ input[id="cb1"] {
 /* Карточка */
 .qr-card{
     width: 340px;
-    height: 413px;
+    height: 400px;
     display: grid;
 }
 
