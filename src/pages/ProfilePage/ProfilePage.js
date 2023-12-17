@@ -668,7 +668,7 @@ const ProfilePage = () => {
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'>Важно</p>
-                    <p className='text-vagno'>Здесь будет Ваш текст</p>
+                    <p className='text-vagno'></p>
                     <div className='button-ok' onClick={()=>setShowInfo(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
