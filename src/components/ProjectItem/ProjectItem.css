@@ -157,10 +157,9 @@
 .shkala-line1 {
     /* Line 3 */
     position: absolute;
-    width: 90%;
     height: 0px;
     left: 0%;
-    top: 0;
+    top: 1px;
     border: 1px solid #3392FF;
     box-shadow: inset 0px 2px 2px #232222;
     z-index: 6;
@@ -169,10 +168,10 @@
 .shkala-line2 {
     /* Line 2 */
     position: absolute;
-    width: 90%px;
+    width: 90%;
     height: 0px;
     left: 0%;
-    top: 1px;
+    top: 0px;
 
     border: 1px solid #1B1E21;
     box-shadow: inset 0px -1px 2px rgba(255, 255, 255, 0.13);
@@ -182,7 +181,7 @@
 .begunok {
     position: absolute;
     top: -80px;
-    left: -70px;
+    left: 6px;
     z-index: 7;
 }
 
@@ -190,7 +189,7 @@
 /* Шкала 0-1 */
 .shkala1 {
     position: absolute;
-    top: -30px;
+    top: -23px;
     left: 0px;
     right: 30px;
     z-index: 3;

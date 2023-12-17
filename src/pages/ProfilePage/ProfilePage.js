@@ -37,7 +37,7 @@ import Telegram from "../../image/new/basil_telegram-outline.svg"
 
 import Friend from "../../image/new/friends.svg"
 import callPoster from "../../image/call_poster.png"
-
+import BlackFon from "../../image/new/fon_grad.svg";
 
 import ButtonsMenu from "../../image/buttons/button_menu_old.png"
 
@@ -74,6 +74,7 @@ const ProfilePage = () => {
     const [showFooter, setShowFooter] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [modal, setModal] = useState(false)
+    const [showInfo, setShowInfo] = useState(false)
 
     //const [summa, setSumma] = useState(0); 
   
@@ -357,8 +358,11 @@ const ProfilePage = () => {
     }
 
     const clickPodel = () => {
-        console.log("zczxc")
         showModal ? setShowModal(false) : setShowModal(true)
+    }
+
+    const clickInfo = () => {
+        showInfo ? setShowInfo(false) : setShowInfo(true)
     }
 
 
@@ -395,7 +399,7 @@ const ProfilePage = () => {
     const onShareClick = (e) => {
         const url="https://t.me/ULEY_Workhub_Bot"
         const title="ULEY Workhub"
-        const text="Добавить бота"
+        const text="U.L.E.Y | Workhub"
 
         e.preventDefault()
         if (navigator.share) {
@@ -417,6 +421,9 @@ const ProfilePage = () => {
 
             <Header header={{title: `${headerName}`, icon: 'false', menu: `${Workhub}`}}/>
 
+            {/* темный фон */}
+            {/* <img src={BlackFon} alt='' className='fon-black' /> */}
+
             <div className="container">
                 {/* ФИО */}
                 <article className="card">
@@ -427,7 +434,7 @@ const ProfilePage = () => {
                         <div className="card-specs bullet">
                             <ul>
                                 {workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' 
-                                ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={()=>navigate('/edit-worker')} alt=''/>}</li>
+                                ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={()=>navigate('/edit-worker')} alt='' style={{marginLeft: '20px'}}/>}</li>
                                 : '' )}
                             </ul>   
                         </div>     
@@ -645,13 +652,28 @@ const ProfilePage = () => {
 
                 </div>
                 <div className='block-modal-button'>
-                    <div className='button_info'>Подробнее</div>
+                    <div className='button_info' onClick={clickInfo}>Подробнее</div>
                     <div onClick={onShareClick} className='button_podel'>Поделиться</div>
                 </div>
             </MyModal>
 
             <MyModal visible={modal} setVisible={setModal}>
                 <img src={callPoster} alt='' style={{width: '100%', padding: '0 10px'}}/>
+            </MyModal>
+
+            <MyModal visible={showInfo} setVisible={setShowInfo}>
+                <div className='info-card'>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <p className='vagno'>Важно</p>
+                    <p className='text-vagno'>Здесь будет Ваш текст</p>
+                    <div className='button-ok' onClick={()=>setShowInfo(false)}>
+                        <div className='rec-button'>Хорошо</div>
+                        
+                    </div>
+                </div>
             </MyModal>
             
         </div>
