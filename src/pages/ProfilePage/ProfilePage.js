@@ -452,7 +452,7 @@ const ProfilePage = () => {
 
                 <div style={{display: 'flex', marginTop: '15px'}}>
                     {/* Мерч */}
-                    <article className='block-merch'> 
+                    <article className='block-merch' onClick={clickInfo}> 
                             <div className='rectangle-merch'></div>
                             <div className='rectangle-merch2'></div>
                             <div className='rectangle-merch3'></div> 
