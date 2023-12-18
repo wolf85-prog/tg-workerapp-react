@@ -43,10 +43,10 @@ const ProjectItem = (props) => {
     const [ukazatel, setUkazatel] = useState(0);
     const [widthLine, setWidthLine] = useState(0)
     
-    const [showEtap2, setShowEtap2] = useState(false);
-    const [showEtap3, setShowEtap3] = useState(false);
-    const [showEtap4, setShowEtap4] = useState(false);
-    const [showEtap5, setShowEtap5] = useState(false);
+    const [showShkala1, setShowShkala1] = useState(false);
+    const [showShkala2, setShowShkala2] = useState(false);
+    const [showShkala3, setShowShkala3] = useState(false);
+    const [showShkala4, setShowShkala4] = useState(false);
 
     const [formatted, setFormatted] = useState("")
     const [formattime, setFormattime] = useState("")
@@ -180,14 +180,17 @@ const ProjectItem = (props) => {
         if (props.post.statusMoney === 1) {
             setStatusMoney('Предварительно')
             //console.log(props.post.statusMoney, Math.floor(widthCard/5))
-            setUkazatel(Math.floor(widthCard/5))
-            setWidthLine(Math.floor((widthCard-120)/5))
+            //setUkazatel(Math.floor(widthCard/5))
+            //setWidthLine(Math.floor((widthCard-120)/5))
+            setShowShkala1(true)
 
         } else if(props.post.statusMoney === 2) {
             setStatusMoney('Фактически')
             //console.log(props.post.statusMoney, Math.floor(widthCard*2/5))
-            setUkazatel(Math.floor(widthCard*2/5))
-            setWidthLine(Math.floor((widthCard-120)*2/5))
+            //setUkazatel(Math.floor(widthCard*2/5))
+            //setWidthLine(Math.floor((widthCard-120)*2/5))
+            setShowShkala1(false)
+            setShowShkala2(true)
         }
 
         if (props.post.finalSmeta === 'Подтверждена') {
@@ -195,8 +198,11 @@ const ProjectItem = (props) => {
             
             //console.log(props.post.statusMoney, Math.floor(widthCard*3/5))
             
-            setUkazatel(Math.floor(widthCard*3/5))
-            setWidthLine(Math.floor((widthCard-120)*3/5))
+            // setUkazatel(Math.floor(widthCard*3/5))
+            // setWidthLine(Math.floor((widthCard-120)*3/5))
+            setShowShkala1(false)
+            setShowShkala2(false)
+            setShowShkala3(true)
         }
 
         // else if(props.post.statusMoney === 4) {
@@ -265,8 +271,12 @@ const ProjectItem = (props) => {
 
                 <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>   
                 
+                
+                
                 <div className='shkala1'>
-                   <img src={Shkala1} alt='' className='shkala-img' onClick={clickShkala}/> 
+                   <img src={Shkala1} alt='' className='shkala-img' onClick={clickShkala} style={{display: showShkala1 ? 'block' : 'none'}}/> 
+                   <img src={Shkala2} alt='' className='shkala-img' onClick={clickShkala} style={{display: showShkala2 ? 'block' : 'none'}}/> 
+                   <img src={Shkala3} alt='' className='shkala-img' onClick={clickShkala} style={{display: showShkala3 ? 'block' : 'none'}}/> 
                 </div>
                 
 

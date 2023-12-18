@@ -461,10 +461,6 @@ input[id="cb1"] {
     width: 100%;
     height: 108px;
     z-index: 0;
-    border-radius: 21.6px 21.6px 0 0;
-    background-color: #1F2021;
-    flex: 0 0 55%;
-    /* margin-left: 10px; */
 }
 
 .block-dohod2 {
@@ -521,6 +517,14 @@ input[id="cb1"] {
     opacity: 0.4;
 }
 
+.dohod-open {
+    width: 100%;
+    position: relative;
+    margin-top: -115px;
+    height: 260px;
+    /* margin-left: -5px; */
+}
+
 .wrap-dohod {
     display: flex;
     /* background-color: #32383e; */
@@ -551,10 +555,10 @@ input[id="cb1"] {
     top: 0%;
     bottom: 1.11%;
     background: #2B2E32;
-    /* box-shadow: 20px 21px 20px rgba(25, 23, 23, 0.17), -6px -4px 20px rgba(203, 226, 251, 0.1), 1.08px 0px 5.076px rgba(0, 0, 0, 0.57), 
+    box-shadow: 20px 21px 20px rgba(25, 23, 23, 0.17), -6px -4px 20px rgba(203, 226, 251, 0.1), 1.08px 0px 5.076px rgba(0, 0, 0, 0.57), 
     inset -2.16px 0px 4.32px rgba(0, 0, 0, 0.27), 
     inset -2.16px 0px 2.592px rgba(0, 0, 0, 0.22), 
-    inset 0px 0px 19.24px rgba(67, 67, 67, 0.29); */
+    inset 0px 0px 19.24px rgba(67, 67, 67, 0.29);
     border-radius: 21.6px;
 }
 
