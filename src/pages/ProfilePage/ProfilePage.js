@@ -621,7 +621,7 @@ const ProfilePage = () => {
             {/* стрелка */}
             {/* <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: showArroy ? "block": "none"}} /></div> */}
 
-            <div className='footer-block' style={{display: !showFooter ? 'block' : 'none'}}>
+            <div className='footer-block' style={{display: showFooter ? 'block' : 'none'}}>
                 <img onClick={clickPodel} src={Friend} alt='' width='100%' className='btn-friend' />
                 <img src={Footer} alt='' width='100%' className='footer-image' />
                 <div className='footer-rec'></div>
@@ -632,8 +632,7 @@ const ProfilePage = () => {
                 <div className='footer-icons2'> 
                     <img onClick={() =>openInNewTab('https://t.me/ULEY_Office_Bot')} src={Telegram} alt='' width='100%' className='icon-footer' />
                     <img onClick={()=>openInNewTab('https://vk.com/uley.team')} src={VK} alt='' width='100%' className='icon-footer' />   
-                </div>
-                
+                </div>   
             </div>
 
 
