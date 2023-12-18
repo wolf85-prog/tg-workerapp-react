@@ -17,7 +17,13 @@ import Ukazatel from "../../image/new/ukazatel.png"
 import Question from "../../image/new/question.svg"
 import Close from "../../image/new/close.svg"
 import ClosePress from "../../image/new/close_press.svg"
-import Shkala from "../../image/new/shkala2.svg"
+// import Shkala from "../../image/new/shkala2.svg"
+
+import Shkala1 from "../../image/new/Slice 6_1.svg"
+import Shkala2 from "../../image/new/Slice 6_2.svg"
+import Shkala3 from "../../image/new/Slice 6_3.svg"
+import Shkala4 from "../../image/new/Slice 6_4.svg"
+import Shkala5 from "../../image/new/Slice 6_5.svg"
 
 const ProjectItem = (props) => {
 
@@ -258,18 +264,22 @@ const ProjectItem = (props) => {
                 </div>
 
                 <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>   
-                 
+                
+                <div className='shkala1'>
+                   <img src={Shkala1} alt='' className='shkala-img' onClick={clickShkala}/> 
+                </div>
+                
 
-                <div className='shkala'>
+                {/* <div className='shkala'>
                     <div className='shkala-line1' style={{width:`${widthLine}px`}}></div>
                     <div className='shkala-line2'></div>
 
                     <img src={Ukazatel} alt='' className='begunok' onClick={clickShkala} style={{left: `${ukazatel}px`}}/>
                     
-                    <div className='shkala1'>
-                        <img src={Shkala} alt='' className='shkala-img'/>
+                    
+                        <img src={Shkala1} alt='' className='shkala-img'/>
                     </div>
-                </div>
+                </div> */}
 
                 <div className='card-footer'>
                     <p className='project_money'>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : 'нет ставки')}</p>

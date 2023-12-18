@@ -38,8 +38,10 @@ import Telegram from "../../image/new/basil_telegram-outline.svg"
 import Friend from "../../image/new/friends.svg"
 import callPoster from "../../image/call_poster.png"
 import BlackFon from "../../image/new/fon_grad.svg";
-
+import DohodOpen from "../../image/new/dohodOpen.svg";
 import ButtonsMenu from "../../image/buttons/button_menu_old.png"
+
+
 
 const ProfilePage = () => {
     const {tg, user} = useTelegram();
@@ -89,7 +91,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -488,7 +490,19 @@ const ProfilePage = () => {
                 </div>
 
                 {/* Доход */}
-                <div className='dohod'>
+                <img src={DohodOpen} alt='' />
+                {/* <div className='dohod2'>
+                    <div className='dohod-inner'>
+                        <div className='dohod-card'>
+                            <div className='rec-dohod2'></div>
+                            <div className='rec-dohod3'></div>
+                            <div className='rec-dohod4'></div>
+                            <div className='line-dohod'></div>
+                        </div>
+                    </div>
+                </div> */}
+
+                {/* <div className='dohod'>
                    <div className='wrap-dohod' onClick={clickDohod}>
                         <div className='inner1' style={{borderBottomRightRadius: showDohod ? '0px' : '21.6px'}}></div>
                         <article className='block-dohod' style={{borderRadius: showDohod ?  '21.6px 21.6px 0 0' : '21.6px', height: showDohod ? '118px' : '110px', backgroundColor: showDohod ? '#2b2f33' : '#1F2021'}}> 
@@ -509,7 +523,8 @@ const ProfilePage = () => {
                         <div className='dates-history2'><p>10.2023</p><p>0.00</p></div>
                         <div className='dates-history2'><p>09.2023</p><p>0.00</p></div>
                     </article>  
-                </div> 
+                </div>  */}
+            
             </div>
             
 
