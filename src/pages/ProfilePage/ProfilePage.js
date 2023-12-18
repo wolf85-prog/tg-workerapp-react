@@ -139,42 +139,24 @@ const ProfilePage = () => {
                 const specsArr = JSON.parse(project.specs)
                 //console.log("specsArr: ", specsArr)
 
-                //if (smetaObject) {
-                    specsArr.map((spec, index) => {
-                        if (spec.id === workerId) {
-                            const newProject = {
-                                id: project.id,
-                                title: project.title,
-                                date_start: project.dateStart,
-                                date_end: project.dateEnd,
-                                tgURL_chat: project.tgURLchat,
-                                status: JSON.parse(project.status),
-                                specs: spec, 
-                                smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
-                                finalSmeta: smetaObject ? smetaObject?.final : "",
-                                statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
-                            }
-
-                            arrayProject.push(newProject)
-                        }   
-                    })
-                //} 
-                
-
-                // const newProject = {
-                //     id: project.id,
-                //     title: project.title,
-                //     date_start: project.dateStart,
-                //     date_end: project.dateEnd,
-                //     tgURL_chat: project.tgURLchat,
-                //     status: JSON.parse(project.status),
-                //     specs: JSON.parse(project.specs), //specsArr.filter((item)=> item.id === workerId)[0],
-                //     smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
-                //     finalSmeta: smetaObject ? smetaObject?.final : "",
-                //     statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
-                // }
-
-                //arrayProject.push(newProject)
+                specsArr.map((spec, index) => {
+                    if (spec.id === workerId) {
+                        const newProject = {
+                            id: project.id,
+                            title: project.title,
+                            date_start: project.dateStart,
+                            date_end: project.dateEnd,
+                            tgURL_chat: project.tgURLchat,
+                            status: JSON.parse(project.status),
+                            specs: spec, 
+                            smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
+                            finalSmeta: smetaObject ? smetaObject?.final : "",
+                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
+                        }
+                        console.log(newProject)
+                        arrayProject.push(newProject)
+                    }   
+                })
             })
 
             const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
@@ -422,7 +404,7 @@ const ProfilePage = () => {
             <Header header={{title: `${headerName}`, icon: 'false', menu: `${Workhub}`}}/>
 
             {/* темный фон */}
-            {/* <img src={BlackFon} alt='' className='fon-black' /> */}
+            <img src={BlackFon} alt='' className='fon-black' />
 
             <div className="container">
                 {/* ФИО */}
@@ -566,31 +548,8 @@ const ProfilePage = () => {
                         </ol>
                     </div>         
 
-                    <div style={{display: 'flex', justifyContent: 'center', zIndex: '12', position: 'relative'}}>
-                        <button className="image-button2" onClick={showQRCode} style={{ backgroundImage: `url(${btnChange})`}}>Пригласить друга</button>
-                    </div> 
                 </div>
 
-        
-                <div  ref={projectsRef}>
-                    <ProjectFilter
-                        filter={filter}
-                        setFilter={setFilter}
-                        arr_status={status}
-                    />
-
-                    <div className="profile-project-list">                   
-                        {isPostsLoading
-                            ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%', marginBottom: '50%'}}><Loader/></div>
-                            : <ProjectList posts={sortProject} title="" workerId={specId}/>
-                        }
-
-                        <div style={{display: 'flex', justifyContent: 'center'}}>
-                            <button className="image-button3" onClick={()=>navigate('/contacts')} style={{ backgroundImage: `url(${ButtonsMenu})`}}>Связь</button>
-                        </div>
-
-                    </div> 
-                </div>
 
             </div> */}
 

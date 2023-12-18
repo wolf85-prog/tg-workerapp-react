@@ -13,7 +13,7 @@ import btnChat from "../../image/new/btn_chat.svg"
 import Vector from "../../image/new/vector.svg"
 import VectorUp from "../../image/new/vector_up.svg"
 import Progress from "../../image/new/progress.svg"
-import Ukazatel from "../../image/new/ukazatel.svg"
+import Ukazatel from "../../image/new/ukazatel.png"
 import Question from "../../image/new/question.svg"
 import Close from "../../image/new/close.svg"
 import ClosePress from "../../image/new/close_press.svg"
@@ -49,17 +49,9 @@ const ProjectItem = (props) => {
     const [mainDate, setMainDate] = useState("")
 
     useEffect(()=> {
-        //console.log("props: ", props)
-        const statusColor = props.post.status == null ? 'gray' : props.post.status.color;
-        const dateProject = props.post.date_start != null ? props.post.date_start : '';
-        //console.log("dateProject: ", dateProject)
-        //const dateProject2 = props.post.date_end != null ? props.post.date_end : '';
-    
+ 
         const dateTemp = props.post.specs.date //props.post.specs.filter((item) => item.id === props.specId)[0]?.date;
-        //setMainDate(dateTemp)
 
-        
-        //const fact = (props.post.smeta.fio_id === props.specId) && (props.post.smeta.date === dateMain) ? props.post.smeta.specialist : 0 //props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.specialist : ""
         const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId && new Date(item.date).toLocaleDateString() === new Date(dateTemp).toLocaleDateString())[0]?.specialist : ""
         setFact(fact)
         //console.log("fact: ", fact)
@@ -143,82 +135,61 @@ const ProjectItem = (props) => {
 
         fetch()
     }, [])
-
-    // useEffect(()=> {
-    //    // console.log("cashStavka: ", cashStavka)
-    //     if (cashStavka.predStavka) {        
-    //         if (cashStavka.factStavka) { 
-    //             if (cashStavka.podtverStavka) {
-    //                 setStavka(cashStavka.podtverStavka)
-    //             } else {
-    //                 setStavka(cashStavka.factStavka)
-    //             }
-    //         } else {
-    //             setStavka(cashStavka.predStavka)
-    //         }
-    //     }  
-    // },[])
     
-    const onShowProject = () => {
-        console.log("props: ", props)
-        navigate('/smeta', {
-            state: {
-              specId: props.specId,
-              proj: props.number,
-              projId: props.post.id,
-              title: props.post.title,
-              date: props.post.date_start,
-              date2: props.post.date_end,
-              staffId: props.post.specs.rowId, //filter((item) => item.id === props.specId)[0]?.rowId,  
-              vid: props.post.specs.vid, //filter((item) => item.id === props.specId)[0]?.vid,   
-              spec: props.post.specs.spec, //filter((item) => item.id === props.specId)[0]?.spec, 
-              dateMain: props.post.specs.date, //filter((item) => item.id === props.specId)[0]?.date,
-              start: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.start,
-              stop: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.stop,
-              chasi: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.chasi,
-              smena: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.smena,
-              stavka: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.stavka,
-              pererabotka: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.pererabotka,
-              taxi: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.taxi, 
-              gsm: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.gsm,  
-              transport: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.transport,   
-              specialist: props.post.smeta.filter((item) => item.fio_id === props.specId && item.date.split("T")[0] === props.post.specs.date.split("T")[0])[0]?.specialist, 
-            }
-        })
-    }
+    // const onShowProject = () => {
+    //     console.log("props: ", props)
+    //     navigate('/smeta', {
+    //         state: {
+    //           specId: props.specId,
+    //           proj: props.number,
+    //           projId: props.post.id,
+    //           title: props.post.title,
+    //           date: props.post.date_start,
+    //           date2: props.post.date_end,
+    //           staffId: props.post.specs.rowId, //filter((item) => item.id === props.specId)[0]?.rowId,  
+    //           vid: props.post.specs.vid, //filter((item) => item.id === props.specId)[0]?.vid,   
+    //           spec: props.post.specs.spec, //filter((item) => item.id === props.specId)[0]?.spec, 
+    //           dateMain: props.post.specs.date, //filter((item) => item.id === props.specId)[0]?.date,
+    //           start: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.start,
+    //           stop: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.stop,
+    //           chasi: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.chasi,
+    //           smena: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.smena,
+    //           stavka: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.stavka,
+    //           pererabotka: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.pererabotka,
+    //           taxi: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.taxi, 
+    //           gsm: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.gsm,  
+    //           transport: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.transport,   
+    //           specialist: props.post.smeta.filter((item) => item.fio_id === props.specId && item.date.split("T")[0] === props.post.specs.date.split("T")[0])[0]?.specialist, 
+    //         }
+    //     })
+    // }
 
     useEffect(()=> {
-        console.log("width: ", props.width-50)
-        setWidthCard(props.width-50)
+        //console.log("width: ", props.width-60)
+        setWidthCard(props.width-60)
     })
 
     useEffect(()=> {
           
         if (props.post.statusMoney === 1) {
-            // setShowEtap1(true)
             setStatusMoney('Предварительно')
-            console.log(props.post.statusMoney, Math.floor(widthCard/5))
-            setUkazatel(Math.floor(widthCard/5) - Math.floor(widthCard/5))
+            //console.log(props.post.statusMoney, Math.floor(widthCard/5))
+            setUkazatel(Math.floor(widthCard/5))
             setWidthLine(Math.floor((widthCard-120)/5))
 
         } else if(props.post.statusMoney === 2) {
-            // setShowEtap1(true)
-            // setShowEtap2(true)
             setStatusMoney('Фактически')
-            console.log(props.post.statusMoney, Math.floor(widthCard*2/5))
-            setUkazatel(Math.floor(widthCard*2/5)- Math.floor(widthCard*2/5))
+            //console.log(props.post.statusMoney, Math.floor(widthCard*2/5))
+            setUkazatel(Math.floor(widthCard*2/5))
             setWidthLine(Math.floor((widthCard-120)*2/5))
         }
 
         if (props.post.finalSmeta === 'Подтверждена') {
-            // setShowEtap1(true)
-            // setShowEtap2(true)
-            // setShowEtap3(true)
             setStatusMoney('Подтверждено')
             
-            console.log(props.post.statusMoney, Math.floor(widthCard*3/5))
+            //console.log(props.post.statusMoney, Math.floor(widthCard*3/5))
             
-            setUkazatel(Math.floor(widthCard*3/5)- Math.floor(widthCard*2/5))
+            setUkazatel(Math.floor(widthCard*3/5))
             setWidthLine(Math.floor((widthCard-120)*3/5))
         }
 
@@ -276,13 +247,13 @@ const ProjectItem = (props) => {
     <>
         <div className='container'>
             
-            <div className='proj-card' onClick={clickProject}>
+            <div className='proj-card'>
                 <div className='rectangle-projcard'></div>
                 <div className='rectangle-projcard2'></div>
                 <div className='rectangle-projcard3'></div>
                 
                 <div className='project-text'>
-                    <p className="project_title">{props.post.title}</p>
+                    <p className="project_title" onClick={clickProject}>{props.post.title}</p>
                     <p className="project_subtitle">{formatted} | {formattime}</p>
                 </div>
 

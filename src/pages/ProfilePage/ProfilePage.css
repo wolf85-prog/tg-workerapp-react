@@ -523,7 +523,7 @@ input[id="cb1"] {
 
 .wrap-dohod {
     display: flex;
-    background-color: #32383e;
+    /* background-color: #32383e; */
     border-radius: 21.6px 21.6px 0 0px;
 }
 
@@ -539,7 +539,7 @@ input[id="cb1"] {
     width: 100%;
     border-bottom-right-radius: 21.6px;
     float: right;
-    background-color: #32383e;
+    background-color: #30353b;
 }
 
 .rectangle-dohod {

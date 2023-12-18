@@ -7,7 +7,7 @@
     display: none;
     background: rgba(26,24,24, 0.88);  
     z-index: 35;
-    animation: showModal 0.5s linear forwards;
+    animation: showModal 0.25s linear forwards;
     /* animation-delay: 1s; */
 }
 
