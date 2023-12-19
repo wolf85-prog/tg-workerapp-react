@@ -90,7 +90,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -503,6 +503,19 @@ const ProfilePage = () => {
 
                 {/* Доход */}
                 <img src={DohodOpen} alt='' onClick={clickDohod} className='dohod-open' style={{display: showDohod ? 'block' : 'none'}}/>
+                <article className='block-dohod'>
+                    <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
+                    <p className='summa-dohod'>12212</p>
+                </article>
+
+                <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}}> 
+                    <p className='history-title'>История</p>
+                    <div className='dates-history'><p>11.2023</p><p>0.00</p></div>
+                    <div className='dates-history2'><p>10.2023</p><p>0.00</p></div>
+                    <div className='dates-history2'><p>09.2023</p><p>0.00</p></div>
+                </article> 
+                
+                
                 {/* <div className='dohod2'>
                     <div className='dohod-inner'>
                         <div className='dohod-card'>
