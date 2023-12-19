@@ -39,7 +39,6 @@ import Friend from "../../image/new/friends.svg"
 import callPoster from "../../image/call_poster.png"
 import BlackFon from "../../image/new/fon_grad.svg";
 import DohodOpen from "../../image/new/dohodOpen.png";
-import ButtonsMenu from "../../image/buttons/button_menu_old.png"
 
 
 
