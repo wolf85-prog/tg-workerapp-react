@@ -90,7 +90,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
-            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -503,9 +503,9 @@ const ProfilePage = () => {
 
                 {/* Доход */}
                 <img src={DohodOpen} alt='' onClick={clickDohod} className='dohod-open' style={{display: showDohod ? 'block' : 'none'}}/>
-                <article className='block-dohod'>
-                    <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
-                    <p className='summa-dohod'>12212</p>
+                <article className='block-dohod' style={{display: showDohod ? 'block' : 'none'}}>
+                    {/* <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
+                    <p className='summa-dohod'>12212</p> */}
                 </article>
 
                 <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}}> 
@@ -620,10 +620,11 @@ const ProfilePage = () => {
             {/* стрелка */}
             {/* <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: showArroy ? "block": "none"}} /></div> */}
 
-            <div className='footer-block' style={{display: showFooter ? 'block' : 'none'}}>
+            <div className='footer-block' style={{display: !showFooter ? 'block' : 'none'}}>
                 <img onClick={clickPodel} src={Friend} alt='' width='100%' className='btn-friend' />
                 <img src={Footer} alt='' width='100%' className='footer-image' />
                 <div className='footer-rec'></div>
+                
                 <div className='footer-icons'>
                     <img onClick={()=>showPopup()} src={Phone} alt='' width='100%' className='icon-footer' />
                     <img onClick={()=>openInNewTab('https://uley.team/')} src={Web} alt='' width='100%' className='icon-footer' />
@@ -656,7 +657,19 @@ const ProfilePage = () => {
             </MyModal>
 
             <MyModal visible={modal} setVisible={setModal}>
-                <img src={callPoster} alt='' style={{width: '100%', padding: '0 10px'}}/>
+            <div className='info-card'>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <p className='vagno'>Важно</p>
+                    <p className='text-vagno'>Рекомендуемый период времени для связи с менеджером</p>
+                    <p className='text-vagno2'>10:00 - 20:00</p>
+                    <div className='button-ok' onClick={()=>setModal(false)}>
+                        <div className='rec-button'>Хорошо</div>
+                        
+                    </div>
+                </div>
             </MyModal>
 
             <MyModal visible={showInfo} setVisible={setShowInfo}>

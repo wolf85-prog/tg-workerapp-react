@@ -467,7 +467,7 @@ input[id="cb1"] {
     width: 100%;
     height: 115px;
     z-index: 0;
-    margin-top: -114px;
+    margin-top: -220px;
 }
 
 .history-title {
@@ -645,9 +645,9 @@ input[id="cb1"] {
 
 .footer-image {
     position: fixed;
-    bottom: 50px;
+    bottom: 40px;
     left: 0;
-    height: 60px;
+    /* height: 60px; */
 }
 
 .footer-rec {   
@@ -699,6 +699,22 @@ input[id="cb1"] {
     /* ULEY Светлый */
     color: #E8F1F9;
 
+    opacity: 0.4;
+}
+
+.text-vagno2 {
+    /* Здесь будет Ваш текст */
+    position: absolute;
+    left: 50%;
+    top: 90px;
+    transform: translate(-50%, 0);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.045em;
+    /* ULEY Светлый */
+    color: #E8F1F9;
     opacity: 0.4;
 }
 
