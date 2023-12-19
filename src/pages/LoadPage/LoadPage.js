@@ -25,14 +25,14 @@ const LoadPage = () => {
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        setTimeout(() =>  setShowLogo(true), 1000) //U.L.E.Y.
-        setTimeout(() =>  setShowLogo2(true), 2000) // WORKHUB
+        //setTimeout(() =>  setShowLogo(true), 1000) //U.L.E.Y.
+        //setTimeout(() =>  setShowLogo2(true), 2000) // WORKHUB
 
-        setTimeout(() =>  setShowLogo(false), 7000)
-        setTimeout(() =>  setShowLogo2(false), 7000)
+        //setTimeout(() =>  setShowLogo(false), 7000)
+        //setTimeout(() =>  setShowLogo2(false), 7000)
 
         //setTimeout(() =>  navigate("/hello"), 7000)
-        setTimeout(() =>  navigate("/profile"), 7000)
+        setTimeout(() =>  navigate("/profile"), 500)
     }, []);
 
     useEffect(()=>{
