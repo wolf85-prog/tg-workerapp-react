@@ -275,7 +275,7 @@ const ProjectItem = (props) => {
                     <p className="project_subtitle">{formatted} | {formattime}</p>
                 </div>
 
-                <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>   
+                <img className='vector' src={showProject ? VectorUp : Vector} alt=''/>   
                 
                 
                 
