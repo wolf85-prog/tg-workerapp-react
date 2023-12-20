@@ -22,7 +22,7 @@ import banner from "../../image/BannerWorkhub3.png";
 
 import btnMenu from "../../image/layers/icon_menu.png";
 import smallMenu from "../../image/layers/logo_04_light.png"
-import BackModal from "../../image/background/background_modal.png"
+// import BackModal from "../../image/background/background_modal.png"
 
 const Page3 = () => {
     const [showGrad, setShowGrad] = useState(false)
@@ -234,7 +234,7 @@ const Page3 = () => {
                 <p style={{position: 'absolute', width: '100%', top: '25%'}}>
                     Функция находится в разработке
                 </p>
-                <img src={BackModal} alt=''/>
+                {/* <img src={BackModal} alt=''/> */}
             </MyModal>
 
         </div>

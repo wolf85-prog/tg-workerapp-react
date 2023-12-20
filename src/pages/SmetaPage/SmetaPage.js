@@ -17,7 +17,6 @@ import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 import btnMenu from "../../image/layers/icon_menu.png";
 import btnChange from "../../image/buttons/button_change.png";
 import smallMenu from "../../image/layers/logo_04_light.png"
-import BackModal from "../../image/background/background_modal.png"
 
 const SmetaPage = () => {
     const location = useLocation()
@@ -235,7 +234,7 @@ const SmetaPage = () => {
                 <p style={{position: 'absolute', width: '100%', top: '25%'}}>
                     Функция находится в разработке
                 </p>
-                <img src={BackModal} alt=''/>
+                {/* <img src={BackModal} alt=''/> */}
             </MyModal>
         </div>
     );

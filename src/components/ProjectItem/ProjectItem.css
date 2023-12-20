@@ -189,15 +189,16 @@
 /* Шкала 0-1 */
 .shkala1 {
     position: absolute;
-    top: 65px;
+    top: 75px;
     left: 20px;
     z-index: 3;
+    right: -10px;
 }
 
 .shkala-img {
     width: 100%;
     position: relative;
-    height: 58px;
+    height: 45px;
 }
 
 

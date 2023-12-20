@@ -19,11 +19,11 @@ import Close from "../../image/new/close.svg"
 import ClosePress from "../../image/new/close_press.svg"
 // import Shkala from "../../image/new/shkala2.svg"
 
-import Shkala1 from "../../image/new/Slice 6_1.svg"
-import Shkala2 from "../../image/new/Slice 6_2.svg"
-import Shkala3 from "../../image/new/Slice 6_3.svg"
-import Shkala4 from "../../image/new/Slice 6_4.svg"
-import Shkala5 from "../../image/new/Slice 6_5.svg"
+import Shkala1 from "../../image/new/shkala1.png"
+import Shkala2 from "../../image/new/shkala2.png"
+import Shkala3 from "../../image/new/shkala3.png"
+import Shkala4 from "../../image/new/shkala4.png"
+import Shkala5 from "../../image/new/shkala5.png"
 
 const ProjectItem = (props) => {
 
