@@ -494,7 +494,7 @@ const ProfilePage = () => {
                             <div className='rectangle-dohod3'></div>
                                 {/* <img src={Dohod} alt='' /> */}
                             <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
-                            <p className='summa-dohod'>12212</p>
+                            <p className='summa-dohod'>{isLoadingSum ? <Loader2 /> : parseInt(summa).toLocaleString()+".00"}</p>
                         </article>
                     </div> 
                 </div>
@@ -503,9 +503,11 @@ const ProfilePage = () => {
 
                 {/* Доход */}
                 <img src={DohodOpen} alt='' onClick={clickDohod} className='dohod-open' style={{display: showDohod ? 'block' : 'none'}}/>
-                <article className='block-dohod' style={{display: showDohod ? 'block' : 'none'}}>
-                    {/* <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
-                    <p className='summa-dohod'>12212</p> */}
+                
+                
+                <article className='block-dohod-open' onClick={clickDohod} style={{display: showDohod ? 'block' : 'none'}}>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}><p>Доход</p><img className='vector-icon2' src={Vector} alt=''/></div> 
+                    <p className='summa-dohod2'>{isLoadingSum ? <Loader2 /> : parseInt(summa).toLocaleString()+".00"}</p>
                 </article>
 
                 <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}}> 
@@ -549,51 +551,7 @@ const ProfilePage = () => {
                         <div className='dates-history2'><p>09.2023</p><p>0.00</p></div>
                     </article>  
                 </div>   */}
-            
             </div>
-            
-
-            {/* <div className='form-profile' onScroll={handleScroll}>
-                <div style={{height: height}}>
-                    <ol className="bullet" id='section-one'>
-                        <li><div className="bullet-title">ФИО</div>{workerhub[0]?.fio.split(' ')[0]}</li>
-                        <li><div className="bullet-title"></div>{workerhub[0]?.fio.split(' ')[1]} {workerhub[0]?.fio.split(' ')[2]}</li>
-                        <li><div className="bullet-title">Специальность </div> 
-                            <Link to={'/edit-worker'} style={{position: 'absolute', left: '140px'}}><img src={iconEdit} alt='' style={{ width: '22px', height: '22px'}}/></Link>             
-                            <table className="table-noborder">
-                                <tbody>
-                                {workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' 
-                                ?   <tr key={worker.id}>
-                                        <td>{worker.name}</td>
-                                    </tr> 
-                                : '' )}
-                                </tbody>
-                            </table> 
-                        </li>
-                        <li><div className="bullet-title">Рейтинг</div>
-                            &#9733;&#9733;&#9733;&#9733;&#9733;  
-                        </li>                    
-                        <li><div className="bullet-title">Компетенции</div></li>
-                        <li><div className="bullet-title">Мерч</div><img src={workerhub[0]?.merch.length > 0 ? iconCheck : iconUnCheck} alt='' width='25px' height='25px'/></li>
-                        <li><div className="bullet-title"></div>{workerhub[0]?.merch.map(item=>item.name).join(' | ')}</li>
-                        <li><div className="bullet-title" style={{margin: 'auto 0'}}>Общая сумма дохода</div><span style={{fontSize: '26px', margin: 'auto 0'}}>{isLoadingSum ? <Loader2 /> : parseInt(summa).toLocaleString()+".00"}</span></li>
-                        <li><div style={{width: '100%'}}><button onClick={clickShowHistory} className='history-button'>История</button></div></li>
-                    </ol>   
-
-                    <div>
-                        <ol className="bullet" style={{ display: showHistory ? "block" : "none" }}>
-                            <li><div className="bullet-title history">11.2023 <img src={iconCheck2} className='icon-history' /></div><div>0.00</div></li>
-                            <li><div className="bullet-title history">10.2023 <img src={iconStatus} className='icon-history' /></div><div>0.00</div></li>
-                            <li><div className="bullet-title history">09.2023 <img src={iconStatus2} className='icon-history' /></div><div>0.00</div></li>
-                        </ol>
-                    </div>         
-
-                </div>
-
-
-            </div> */}
-
-            
 
             <div  ref={projectsRef}>
                 {/* <ProjectFilter
@@ -620,7 +578,7 @@ const ProfilePage = () => {
             {/* стрелка */}
             {/* <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: showArroy ? "block": "none"}} /></div> */}
 
-            <div className='footer-block' style={{display: !showFooter ? 'block' : 'none'}}>
+            <div className='footer-block' style={{display: showFooter ? 'block' : 'none'}}>
                 <img onClick={clickPodel} src={Friend} alt='' width='100%' className='btn-friend' />
                 <img src={Footer} alt='' width='100%' className='footer-image' />
                 <div className='footer-rec'></div>

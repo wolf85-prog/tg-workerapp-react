@@ -124,6 +124,12 @@
   top: 8px;
 }
 
+.vector-icon2 {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+
 
 .star-block {
   display: flex;
