@@ -54,6 +54,8 @@ const ProjectItem = (props) => {
 
     const [mainDate, setMainDate] = useState("")
 
+    const [showInfo, setShowInfo] = useState(false)
+
     useEffect(()=> {
  
         const dateTemp = props.post.specs.date //props.post.specs.filter((item) => item.id === props.specId)[0]?.date;
@@ -236,6 +238,10 @@ const ProjectItem = (props) => {
         showModalEtap ? setShowModalEtap(false) : setShowModalEtap(true)
     }
 
+    const clickInfo = () => {
+        showInfo ? setShowInfo(false) : setShowInfo(true)
+    }
+
     return (
         // <div className={`box`} onClick={onShowProject} style={{ backgroundImage: `url(${plashka})`, backgroundSize: 'cover' }}>
         //     <div className="post__content" style={{position: 'relative'}}>
@@ -312,8 +318,8 @@ const ProjectItem = (props) => {
                         </ul>
                     </div>
                     <div className='block-button'>
-                        <div className='button1'>Уточнить</div>
-                        <div className='button2'>Подтвердить</div>
+                        <div className='button1' onClick={clickInfo}>Уточнить</div>
+                        <div className='button2' onClick={clickInfo}>Подтвердить</div>
                     </div>
                 </div> 
                 
@@ -348,6 +354,21 @@ const ProjectItem = (props) => {
             </div>
             {/* <img src={BackModal} alt=''/> */}
         </MyModal>
+
+        <MyModal visible={showInfo} setVisible={setShowInfo}>
+                <div className='info-card'>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <p className='vagno'>Важно</p>
+                    <p className='text-vagno'>Функция находится в разработке</p>
+                    <div className='button-ok' onClick={()=>setShowInfo(false)}>
+                        <div className='rec-button'>Хорошо</div>
+                        
+                    </div>
+                </div>
+            </MyModal>
     </>
     );
 };
