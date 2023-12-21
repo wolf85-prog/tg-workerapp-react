@@ -128,6 +128,16 @@ const ProjectItem = (props) => {
                 const res2 = await getSpecStavka(props.specId, props.post.id, new Date(props.post.specs.date).toLocaleDateString())
                 setCashStavka(res2) 
 
+                if (res2.factStavka) { 
+                    if (res2.podtverStavka) {
+                        setStavka(res2.podtverStavka)
+                    } else {
+                        setStavka(res2.factStavka)
+                    }
+                } else {
+                    setStavka(res2.predStavka)
+                }
+
                 setIsLoading(false)
                     
             } else {                
@@ -247,6 +257,7 @@ const ProjectItem = (props) => {
     
     function handleTouchMove(e) {
         setTouchEnd(e.targetTouches[0].clientX);
+        showInfo ? setShowInfo(false) : setShowInfo(true)
     }
     
     function handleTouchEnd() {
@@ -299,11 +310,11 @@ const ProjectItem = (props) => {
                 
                 
                 <div className='shkala1'>
-                   <img src={Shkala1} alt='' className='shkala-img' onClick={clickShkala} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd} style={{display: showShkala1 ? 'block' : 'none'}}/> 
-                   <img src={Shkala2} alt='' className='shkala-img' onClick={clickShkala} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd} style={{display: showShkala2 ? 'block' : 'none'}}/> 
-                   <img src={Shkala3} alt='' className='shkala-img' onClick={clickShkala} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd} style={{display: showShkala3 ? 'block' : 'none'}}/> 
-                   <img src={Shkala4} alt='' className='shkala-img' onClick={clickShkala} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd} style={{display: showShkala4 ? 'block' : 'none'}}/> 
-                   <img src={Shkala5} alt='' className='shkala-img' onClick={clickShkala} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd} style={{display: showShkala5 ? 'block' : 'none'}}/> 
+                   <img src={Shkala1} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchMove} style={{display: showShkala1 ? 'block' : 'none'}}/> 
+                   <img src={Shkala2} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchMove} style={{display: showShkala2 ? 'block' : 'none'}}/> 
+                   <img src={Shkala3} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchMove} style={{display: showShkala3 ? 'block' : 'none'}}/> 
+                   <img src={Shkala4} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchMove} style={{display: showShkala4 ? 'block' : 'none'}}/> 
+                   <img src={Shkala5} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchMove} style={{display: showShkala5 ? 'block' : 'none'}}/> 
                 </div>
                 
 
