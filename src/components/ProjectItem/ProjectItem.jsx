@@ -47,6 +47,7 @@ const ProjectItem = (props) => {
     const [showShkala2, setShowShkala2] = useState(false);
     const [showShkala3, setShowShkala3] = useState(false);
     const [showShkala4, setShowShkala4] = useState(false);
+    const [showShkala5, setShowShkala5] = useState(false);
 
     const [formatted, setFormatted] = useState("")
     const [formattime, setFormattime] = useState("")
@@ -55,6 +56,11 @@ const ProjectItem = (props) => {
     const [mainDate, setMainDate] = useState("")
 
     const [showInfo, setShowInfo] = useState(false)
+
+    const [touchStart, setTouchStart] = useState(0);
+    const [touchEnd, setTouchEnd] = useState(0);
+
+    
 
     useEffect(()=> {
  
@@ -181,16 +187,12 @@ const ProjectItem = (props) => {
           
         if (props.post.statusMoney === 1) {
             setStatusMoney('Предварительно')
-            //console.log(props.post.statusMoney, Math.floor(widthCard/5))
-            //setUkazatel(Math.floor(widthCard/5))
-            //setWidthLine(Math.floor((widthCard-120)/5))
+
             setShowShkala1(true)
 
         } else if(props.post.statusMoney === 2) {
             setStatusMoney('Фактически')
-            //console.log(props.post.statusMoney, Math.floor(widthCard*2/5))
-            //setUkazatel(Math.floor(widthCard*2/5))
-            //setWidthLine(Math.floor((widthCard-120)*2/5))
+
             setShowShkala1(false)
             setShowShkala2(true)
         }
@@ -198,10 +200,6 @@ const ProjectItem = (props) => {
         if (props.post.finalSmeta === 'Подтверждена') {
             setStatusMoney('Подтверждено')
             
-            //console.log(props.post.statusMoney, Math.floor(widthCard*3/5))
-            
-            // setUkazatel(Math.floor(widthCard*3/5))
-            // setWidthLine(Math.floor((widthCard-120)*3/5))
             setShowShkala1(false)
             setShowShkala2(false)
             setShowShkala3(true)
@@ -242,6 +240,27 @@ const ProjectItem = (props) => {
         showInfo ? setShowInfo(false) : setShowInfo(true)
     }
 
+
+    function handleTouchStart(e) {
+        setTouchStart(e.targetTouches[0].clientX);
+    }
+    
+    function handleTouchMove(e) {
+        setTouchEnd(e.targetTouches[0].clientX);
+    }
+    
+    function handleTouchEnd() {
+        if (touchStart - touchEnd > 150) {
+            // do your stuff here for left swipe
+            showInfo ? setShowInfo(false) : setShowInfo(true)
+        }
+    
+        if (touchStart - touchEnd < -150) {
+            // do your stuff here for right swipe
+            showInfo ? setShowInfo(false) : setShowInfo(true)
+        }
+    }
+
     return (
         // <div className={`box`} onClick={onShowProject} style={{ backgroundImage: `url(${plashka})`, backgroundSize: 'cover' }}>
         //     <div className="post__content" style={{position: 'relative'}}>
@@ -275,27 +294,18 @@ const ProjectItem = (props) => {
                     <p className="project_subtitle">{formatted} | {formattime}</p>
                 </div>
 
-                <img className='vector' src={showProject ? VectorUp : Vector} alt=''/>   
+                <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>   
                 
                 
                 
                 <div className='shkala1'>
-                   <img src={Shkala1} alt='' className='shkala-img' onClick={clickShkala} style={{display: showShkala1 ? 'block' : 'none'}}/> 
-                   <img src={Shkala2} alt='' className='shkala-img' onClick={clickShkala} style={{display: showShkala2 ? 'block' : 'none'}}/> 
-                   <img src={Shkala3} alt='' className='shkala-img' onClick={clickShkala} style={{display: showShkala3 ? 'block' : 'none'}}/> 
+                   <img src={Shkala1} alt='' className='shkala-img' onClick={clickShkala} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd} style={{display: showShkala1 ? 'block' : 'none'}}/> 
+                   <img src={Shkala2} alt='' className='shkala-img' onClick={clickShkala} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd} style={{display: showShkala2 ? 'block' : 'none'}}/> 
+                   <img src={Shkala3} alt='' className='shkala-img' onClick={clickShkala} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd} style={{display: showShkala3 ? 'block' : 'none'}}/> 
+                   <img src={Shkala4} alt='' className='shkala-img' onClick={clickShkala} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd} style={{display: showShkala4 ? 'block' : 'none'}}/> 
+                   <img src={Shkala5} alt='' className='shkala-img' onClick={clickShkala} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd} style={{display: showShkala5 ? 'block' : 'none'}}/> 
                 </div>
                 
-
-                {/* <div className='shkala'>
-                    <div className='shkala-line1' style={{width:`${widthLine}px`}}></div>
-                    <div className='shkala-line2'></div>
-
-                    <img src={Ukazatel} alt='' className='begunok' onClick={clickShkala} style={{left: `${ukazatel}px`}}/>
-                    
-                    
-                        <img src={Shkala1} alt='' className='shkala-img'/>
-                    </div>
-                </div> */}
 
                 <div className='card-footer'>
                     <p className='project_money'>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : 'нет ставки')}</p>
@@ -335,8 +345,9 @@ const ProjectItem = (props) => {
                 <div className='rectangle-modal3'></div>
 
                 {/* <img src={Question} alt='' style={{position: 'absolute', top: '20px', left: '20px'}}/> */}
-
-                <img onClick={()=>setShowModalEtap(false)} src={Close} alt='' style={{position: 'absolute', top: '20px', right: '20px'}}/>
+                <div className='block-close' onClick={()=>setShowModalEtap(false)}>
+                   <img src={Close} alt=''/> 
+                </div>
 
                 <p style={{position: 'absolute', width: '100%', top: '45px'}}>
                     Этапы передвижения ваших средств

@@ -44,7 +44,7 @@
 
 .project-text {
     position: relative;
-    width: 90%;
+    width: 94%;
     height: 120px;
     left: 20px;
     top: 18px;
@@ -353,7 +353,7 @@
 /* Карточка */
 .modal-card {
     width: 350px;
-    height: 190px; 
+    height: 130px; 
     z-index: 70;
 }
 
@@ -364,6 +364,7 @@
 .block-text li {
     list-style-type: none;
     /* Убираем маркеры */
+    margin-bottom: 3px;
 }
 
 .text-modal-list {
@@ -376,6 +377,17 @@
     color: #E8F1F9;   
     opacity: 0.4;
     text-align: left;
+}
+
+.block-close {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
