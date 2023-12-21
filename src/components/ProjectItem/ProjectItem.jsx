@@ -253,11 +253,11 @@ const ProjectItem = (props) => {
 
     function handleTouchStart(e) {
         setTouchStart(e.targetTouches[0].clientX);
+        showModalEtap ? setShowModalEtap(false) : setShowModalEtap(true)
     }
     
     function handleTouchMove(e) {
-        setTouchEnd(e.targetTouches[0].clientX);
-        showInfo ? setShowInfo(false) : setShowInfo(true)
+        setTouchEnd(e.targetTouches[0].clientX);     
     }
     
     function handleTouchEnd() {
@@ -310,11 +310,11 @@ const ProjectItem = (props) => {
                 
                 
                 <div className='shkala1'>
-                   <img src={Shkala1} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchMove} style={{display: showShkala1 ? 'block' : 'none'}}/> 
-                   <img src={Shkala2} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchMove} style={{display: showShkala2 ? 'block' : 'none'}}/> 
-                   <img src={Shkala3} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchMove} style={{display: showShkala3 ? 'block' : 'none'}}/> 
-                   <img src={Shkala4} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchMove} style={{display: showShkala4 ? 'block' : 'none'}}/> 
-                   <img src={Shkala5} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchMove} style={{display: showShkala5 ? 'block' : 'none'}}/> 
+                   <img src={Shkala1} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchStart} style={{display: showShkala1 ? 'block' : 'none'}}/> 
+                   <img src={Shkala2} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchStart} style={{display: showShkala2 ? 'block' : 'none'}}/> 
+                   <img src={Shkala3} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchStart} style={{display: showShkala3 ? 'block' : 'none'}}/> 
+                   <img src={Shkala4} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchStart} style={{display: showShkala4 ? 'block' : 'none'}}/> 
+                   <img src={Shkala5} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchStart} style={{display: showShkala5 ? 'block' : 'none'}}/> 
                 </div>
                 
 
