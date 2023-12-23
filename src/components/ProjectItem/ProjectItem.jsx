@@ -19,11 +19,11 @@ import Close from "../../image/new/close.svg"
 import ClosePress from "../../image/new/close_press.svg"
 // import Shkala from "../../image/new/shkala2.svg"
 
-import Shkala1 from "../../image/new/shkala1.png"
-import Shkala2 from "../../image/new/shkala2.png"
-import Shkala3 from "../../image/new/shkala3.png"
-import Shkala4 from "../../image/new/shkala4.png"
-import Shkala5 from "../../image/new/shkala5.png"
+import Shkala1 from "../../image/new/progress.png"
+import Shkala2 from "../../image/new/progress2.png"
+import Shkala3 from "../../image/new/progress3.png"
+import Shkala4 from "../../image/new/progress4.png"
+import Shkala5 from "../../image/new/progress5.png"
 
 const ProjectItem = (props) => {
 
@@ -307,14 +307,14 @@ const ProjectItem = (props) => {
 
                 <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>   
                 
-                
+                <div className='shkala-click' onClick={clickShkala} onTouchMove={handleTouchStart}></div>
                 
                 <div className='shkala1'>
-                   <img src={Shkala1} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchStart} style={{display: showShkala1 ? 'block' : 'none'}}/> 
-                   <img src={Shkala2} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchStart} style={{display: showShkala2 ? 'block' : 'none'}}/> 
-                   <img src={Shkala3} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchStart} style={{display: showShkala3 ? 'block' : 'none'}}/> 
-                   <img src={Shkala4} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchStart} style={{display: showShkala4 ? 'block' : 'none'}}/> 
-                   <img src={Shkala5} alt='' className='shkala-img' onClick={clickShkala} onTouchMove={handleTouchStart} style={{display: showShkala5 ? 'block' : 'none'}}/> 
+                   <img src={Shkala1} alt='' className='shkala-img' style={{display: showShkala1 ? 'block' : 'none'}}/> 
+                   <img src={Shkala2} alt='' className='shkala-img' style={{display: showShkala2 ? 'block' : 'none'}}/> 
+                   <img src={Shkala3} alt='' className='shkala-img' style={{display: showShkala3 ? 'block' : 'none'}}/> 
+                   <img src={Shkala4} alt='' className='shkala-img' style={{display: showShkala4 ? 'block' : 'none'}}/> 
+                   <img src={Shkala5} alt='' className='shkala-img' style={{display: showShkala5 ? 'block' : 'none'}}/> 
                 </div>
                 
 

@@ -105,17 +105,18 @@
   position: absolute;
   left: 20px;
   top: 49px;
-
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   letter-spacing: -0.045em;
-
   /* ULEY Светлый */
   color: #E8F1F9;
-
   opacity: 0.4;
+
+  overflow: auto;
+  height: 100px;
+  width: 90%;
 }
 
 .vector-icon {

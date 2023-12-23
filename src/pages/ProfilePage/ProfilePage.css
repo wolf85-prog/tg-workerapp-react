@@ -237,7 +237,7 @@ input[id="cb1"] {
     width: 45px;
     height: 11px;
     left: 20px;
-    top: 20px;
+    top: 15px;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -253,11 +253,12 @@ input[id="cb1"] {
     align-items: flex-start;
     padding: 0px;
     position: absolute;
-    width: 73px;
-    height: 85px;
+    width: 90px;
+    height: 100px;
     left: 20px;
-    top: 50px;
+    top: 40px;
     text-align: left;
+    overflow: auto;
   }
   
   .perechislenie p {

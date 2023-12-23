@@ -35,7 +35,7 @@ import Phone from "../../image/new/ph_phone-call.svg"
 import Web from "../../image/new/dashicons_admin-site-alt3.svg"
 import Telegram from "../../image/new/basil_telegram-outline.svg"
 
-import Friend from "../../image/new/friends.svg"
+import Friend from "../../image/new/button_plus.png"
 import callPoster from "../../image/call_poster.png"
 import BlackFon from "../../image/new/fon_grad.svg";
 import DohodOpen from "../../image/new/dohodOpen.png";
@@ -488,7 +488,7 @@ const ProfilePage = () => {
 
 
                         {/* Доход */}
-                        <article className='block-dohod' onClick={clickDohod} style={{display: showDohod ? 'none' : 'block'}}> 
+                        <article className='block-dohod' onClick={clickDohod} style={{display: showDohod || showKompet ? 'none' : 'block'}}> 
                             <div className='rectangle-dohod'></div>
                             <div className='rectangle-dohod2'></div>
                             <div className='rectangle-dohod3'></div>

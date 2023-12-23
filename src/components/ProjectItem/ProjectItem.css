@@ -49,6 +49,7 @@
     left: 20px;
     top: 18px;
     text-align: left;
+    z-index: 10;
 }
 
 .project_title {
@@ -195,10 +196,22 @@
     right: -10px;
 }
 
+.shkala-click {
+    position: absolute;
+    top: 75px;
+    left: 20px;
+    right: -10px;
+    width: 90%;
+    height: 40px;
+    z-index: 50;
+}
+
 .shkala-img {
-    width: 100%;
+    width: 91%;
     position: relative;
-    height: 45px;
+    height: 180px;
+    margin-top: -60px;
+    z-index: 0;
 }
 
 
