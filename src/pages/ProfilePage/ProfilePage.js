@@ -19,7 +19,7 @@ import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 
 
-import Star from "../../image/new/star.svg";
+import Star from "../../image/new/star.png";
 import StarActive from "../../image/new/star_activ.svg";
 import Edit from "../../image/new/edit.svg"
 import Vector from "../../image/new/vector.svg"
