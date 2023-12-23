@@ -101,7 +101,7 @@
 }
 
 .card-specs {
-  /* Техник монтажа Звукорежиссер Инженер Техник по звуку */
+  /* Техник монтажаЗвукорежиссерИнженерТехник по звуку */
   position: absolute;
   left: 20px;
   top: 49px;
@@ -147,7 +147,6 @@
 
 .star-icon {
   width: 20px;
-  height: 20px;
 }
 
 .star-icon-activ {
