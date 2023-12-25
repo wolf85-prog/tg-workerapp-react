@@ -468,9 +468,12 @@ const ProfilePage = () => {
 
                         {/* open */}
                         <article className='block-kompetencii-open' style={{display: showKompet ? 'block' : 'none'}}> 
-                            <div className='rec1'></div>
+                            <div className='rectangle-kompeten'></div>
+                            <div className='rectangle-kompeten2'></div>
+                            <div className='rectangle-kompeten3'></div>
+                            {/* <div className='rec1'></div>
                             <div className='rec2'></div>
-                            <div className='rec3'></div>
+                            <div className='rec3'></div> */}
                             <div className='kompetencii-title' onClick={clickKompeten}>
                                 <p className='text-kompetencii' >Компетенции</p>
                                 <img className='vector-icon' src={VectorUp} alt=''/>
