@@ -66,9 +66,9 @@ const ProjectItem = (props) => {
  
         const dateTemp = props.post.specs.date //props.post.specs.filter((item) => item.id === props.specId)[0]?.date;
 
-        const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId && new Date(item.date).toLocaleDateString() === new Date(dateTemp).toLocaleDateString())[0]?.specialist : ""
+        const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId && item.date === dateTemp)[0]?.specialist : ""
         setFact(fact)
-        //console.log("fact: ", fact)
+        console.log("fact: ", fact)
     
         let d_end, year2, date2, month2, chas2, minut2;
     
@@ -101,7 +101,7 @@ const ProjectItem = (props) => {
         //сохранить в бд фактическую ставку
         const saveFact = async() => {
             if (fact) {
-                const res = await addFactStavka(props.specId, props.post.id, fact, new Date(props.post.specs.date).toLocaleDateString())
+                const res = await addFactStavka(props.specId, props.post.id, fact, props.post.specs.date)
 
                 setCashStavka(res) 
             }
@@ -113,7 +113,7 @@ const ProjectItem = (props) => {
     useEffect(()=> {
         const fetch = async() => {
             
-            const res0 = await getSpecStavka(props.specId, props.post.id, new Date(props.post.specs.date).toLocaleDateString())
+            const res0 = await getSpecStavka(props.specId, props.post.id, props.post.specs.date)
             //console.log("res0: ", new Date(props.post.specs.date).toLocaleDateString())
 
             //если кэш пуст
@@ -122,10 +122,10 @@ const ProjectItem = (props) => {
                 //console.log(res)
 
                 //сохранить в бд предварительную ставку
-                const res_add = await addStavka(props.specId, props.post.id, res ? res.payment : 0, new Date(props.post.specs.date).toLocaleDateString()) 
+                const res_add = await addStavka(props.specId, props.post.id, res ? res.payment : 0, props.post.specs.date) 
                 console.log("pred stavka cash: ", res_add)
 
-                const res2 = await getSpecStavka(props.specId, props.post.id, new Date(props.post.specs.date).toLocaleDateString())
+                const res2 = await getSpecStavka(props.specId, props.post.id, props.post.specs.date)
                 setCashStavka(res2) 
 
                 if (res2.factStavka) { 
@@ -160,33 +160,6 @@ const ProjectItem = (props) => {
         fetch()
     }, [])
     
-    // const onShowProject = () => {
-    //     console.log("props: ", props)
-    //     navigate('/smeta', {
-    //         state: {
-    //           specId: props.specId,
-    //           proj: props.number,
-    //           projId: props.post.id,
-    //           title: props.post.title,
-    //           date: props.post.date_start,
-    //           date2: props.post.date_end,
-    //           staffId: props.post.specs.rowId, //filter((item) => item.id === props.specId)[0]?.rowId,  
-    //           vid: props.post.specs.vid, //filter((item) => item.id === props.specId)[0]?.vid,   
-    //           spec: props.post.specs.spec, //filter((item) => item.id === props.specId)[0]?.spec, 
-    //           dateMain: props.post.specs.date, //filter((item) => item.id === props.specId)[0]?.date,
-    //           start: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.start,
-    //           stop: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.stop,
-    //           chasi: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.chasi,
-    //           smena: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.smena,
-    //           stavka: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.stavka,
-    //           pererabotka: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.pererabotka,
-    //           taxi: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.taxi, 
-    //           gsm: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.gsm,  
-    //           transport: props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.transport,   
-    //           specialist: props.post.smeta.filter((item) => item.fio_id === props.specId && item.date.split("T")[0] === props.post.specs.date.split("T")[0])[0]?.specialist, 
-    //         }
-    //     })
-    // }
 
     useEffect(()=> {
         //console.log("width: ", props.width-60)
@@ -300,7 +273,9 @@ const ProjectItem = (props) => {
                 
 
                 <div className='card-footer'>
+                    {/* деньги */}
                     <p className='project_money'>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : 'нет ставки')}</p>
+                    {/* кнопка Чат */}
                     {props.post.tgURL_chat && <div onClick={goToChat} className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>}
                 </div>
 
@@ -312,10 +287,10 @@ const ProjectItem = (props) => {
                         <ul>
                             <li className='item-list'><div>Специальность</div>{props.post.specs.spec}</li>
                             <li className='item-list'><div>Вид работ</div>{props.post.specs.vid}</li>
-                            <li className='item-list'><div>Часы</div>{props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.chasi : ''}</li>
-                            <li className='item-list'><div>Ставка</div>{props.post.smeta ? parseInt(props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.stavka).toLocaleString()+".00" : ''}</li>
-                            <li className='item-list'><div>Смена</div>{props.post.smeta ? parseInt(props.post.smeta.filter((item) => item.fio_id === props.specId)[0]?.smena).toLocaleString()+".00" : ''}</li>
-                            <li className='item-list'><div>Переработка</div></li>
+                            <li className='item-list'><div>Часы</div>{props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId && item.date === props.post.specs.date)[0]?.chasi : ''}</li>
+                            <li className='item-list'><div>Ставка</div>{props.post.smeta ? parseInt(props.post.smeta.filter((item) => item.fio_id === props.specId && item.date === props.post.specs.date)[0]?.stavka).toLocaleString()+".00" : ''}</li>
+                            <li className='item-list'><div>Смена</div>{props.post.smeta ? parseInt(props.post.smeta.filter((item) => item.fio_id === props.specId && item.date === props.post.specs.date)[0]?.smena).toLocaleString()+".00" : ''}</li>
+                            <li className='item-list'><div>Переработка</div>{props.post.smeta ? parseInt(props.post.smeta.filter((item) => item.fio_id === props.specId && item.date === props.post.specs.date)[0]?.pererabotka).toLocaleString()+".00" : ''}</li>
                             <li className='item-list'><div>Доп. расходы</div></li>
                         </ul>
                     </div>
