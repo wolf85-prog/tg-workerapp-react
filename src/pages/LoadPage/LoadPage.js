@@ -5,6 +5,8 @@ import { useTelegram } from "../../hooks/useTelegram";
 import './LoadPage.css';
 import { useUsersContext } from "../../contexts/UserContext"
 
+import logo from '../../image/logo.gif'
+
 import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/layers/ULEY_triangle.png";
 import Logo from "../../image/logo_04_light.png";
@@ -25,14 +27,9 @@ const LoadPage = () => {
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        //setTimeout(() =>  setShowLogo(true), 1000) //U.L.E.Y.
-        //setTimeout(() =>  setShowLogo2(true), 2000) // WORKHUB
-
-        //setTimeout(() =>  setShowLogo(false), 7000)
-        //setTimeout(() =>  setShowLogo2(false), 7000)
 
         //setTimeout(() =>  navigate("/hello"), 7000)
-        setTimeout(() =>  navigate("/profile"), 500)
+        setTimeout(() =>  navigate("/profile"), 7000)
     }, []);
 
     useEffect(()=>{
@@ -42,13 +39,7 @@ const LoadPage = () => {
 
     return (
         <div className="App" style={{display: 'flex', height: '100vh'}}>
-            <img src={BlackFon} alt='' className='fon-black' />
-
-            <div style={{position: 'relative', margin: 'auto', zIndex: '10'}}>
-                <img src={Logo} alt='' className='fon-style3' style={{visibility: showLogo ? "visible": "hidden"}}/>
-                <img src={Logo2} alt='' className='fon-style4' style={{visibility: showLogo2 ? "visible": "hidden"}}/> 
-            </div>
-            
+            <img src={logo} alt="loading..." width='100%' />
         </div>
     );
 };
