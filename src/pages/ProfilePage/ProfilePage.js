@@ -571,7 +571,7 @@ const ProfilePage = () => {
                     />
 
                     {isPostsLoading
-                        ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50%', marginBottom: '50%'}}><Loader/></div>
+                        ? <div style={{width: '100vw', display: 'flex', justifyContent: 'center', justifyContent: 'center'}}><Loader/></div>
                         : <ProjectList posts={sortProject} title="" workerId={specId} width={width}/>
                     }
                 </div> 
