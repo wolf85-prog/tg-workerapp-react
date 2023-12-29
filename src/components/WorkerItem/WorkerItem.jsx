@@ -86,10 +86,10 @@ const WorkerItem = (props) => {
         <div className="list_spec">
 
             <div className='form-new-spec'>
-                <img src={image} alt='icon' style={{ marginLeft: '-55px', marginRight: '5px', width: '40px'}}/>
+                {/* <img src={image} alt='icon' style={{ marginLeft: '-55px', marginRight: '5px', width: '40px'}}/> */}
                 {props.worker.spec}</div>
 
-            <img src={iconDel} alt='icon' onClick={() => props.remove(props.worker)} style={{marginLeft: '20px', width: '5%'}}/>
+            <img src={iconDel} alt='icon' onClick={() => props.remove(props.worker)} style={{marginLeft: '20px', width: '3%'}}/>
         </div>
     );
 };

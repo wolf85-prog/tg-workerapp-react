@@ -4,23 +4,6 @@ import classes from './NewSelect2.module.css';
 import Vector from "../../../image/new/vector.svg"
 import VectorUp from "../../../image/new/vector_up.svg"
 
-import specData from "../../../data/specData"
-
-import Sound from "../../../image/layers/icons/SOUND.png";
-import Riggers from "../../../image/layers/icons/RIGGERS.png";
-import Production from "../../../image/layers/icons/PRODUCTION.png"
-import StageGround from "../../../image/layers/icons/STAGEGROUND.png";
-import Video from "../../../image/layers/icons/VIDEO.png";
-import Light from "../../../image/layers/icons/LIGHT.png";
-import Stagehands from "../../../image/layers/icons/STAGEHANDS.png";
-import Trucks from "../../../image/layers/icons/TRUCKS.png";
-import Catering from "../../../image/layers/icons/CATERING.png";
-import Photo from "../../../image/layers/icons/PHOTO.png";
-import Party from "../../../image/layers/icons/PARTY.png";
-import Games from "../../../image/layers/icons/GAMES.png";
-
-import Marker from "../../../image/icons/marker.png";
-
 
 const NewSelect2 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) => {
 
@@ -39,55 +22,8 @@ const NewSelect2 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) 
         return () => {
           document.removeEventListener("mousedown", handler);
         };
-      }, []);
+    }, []);
 
-    useEffect(()=> {
-        console.log("titleSpec: ", titleSpec)
-        //options.map((item)=>{
-            specData.map((item, index)=> {
-                //item.models.map((model)=> {
-                    //if (model.name === item.name) {
-                        let image
-                        let name
-                        if (item.icon === 'Sound') {
-                            image = Sound;
-                        } else if (item.icon === 'Riggers') {
-                            image = Riggers;
-                        } else if (item.icon === 'Production') {
-                            image = Production;
-                        } else if (item.icon === 'Stage Ground') {
-                            image = StageGround;
-                        } else if (item.icon === 'Video') {
-                            image = Video;
-                        } else if (item.icon === 'Light') {
-                            image = Light;
-                        } else if (item.icon === 'Stagehands') {
-                            image = Stagehands;
-                        } else if (item.icon === 'Trucks') {
-                            image = Trucks;
-                        } else if (item.icon === 'Catering') {
-                            image = Catering;
-                        } else if (item.icon === 'Photo') {
-                            image = Photo;
-                        } else if (item.icon === 'Party') {
-                            image = Party;
-                        } else if (item.icon === 'Games') {
-                            image = Games;
-                        }
-
-
-                        const newObj = {
-                            icon: image,
-                            name: item.name
-                        }
-                        arraySpec.push(newObj)
-                    //}
-                //})
-            })
-            //console.log(arraySpec)
-            setImage(arraySpec)
-        //})
-    },[specData])
 
     const menuRef = useRef();
 
@@ -101,7 +37,69 @@ const NewSelect2 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) 
 
     return (
         <div>
-            <div className={classes.dropdown}>
+            {!open && (<div className={classes.dropdown}>
+                <div className={classes.rec1}></div>
+                <div className={classes.rec2}></div>
+                <div className={classes.rec3}></div>
+                <div className={classes.dropdownWrapper} ref={menuRef}>
+                    <div className={classes.dropdownContainer}>
+                        <div
+                            className={classes.dropdownHeader}
+                            onClick={handleClick}
+                            tabIndex="0"
+                        >
+                            <div className={classes.dropdownTitle}>
+                                {titleSpec}
+                            </div>
+                            <img src={open ? VectorUp : Vector} className={'chevron-new'} alt='' style={{marginBottom: '5px'}}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            )}
+
+            {open && (<div className={classes.dropdownOpen}>
+                <div className={classes.rec1Open}></div>
+                <div className={classes.rec2Open}></div>
+                <div className={classes.rec3Open}></div>
+                <div className={classes.lineOpen}></div>
+                <div className={classes.dropdownWrapper} ref={menuRef}>
+                    <div className={classes.dropdownContainer}>
+                        <div
+                            className={classes.dropdownHeader}
+                            onClick={handleClick}
+                            tabIndex="0"
+                        >
+                            <div className={classes.dropdownTitle}>
+                                {titleSpec}
+                            </div>
+                            <img src={open ? VectorUp : Vector} className={'chevron-new'} alt='' style={{marginBottom: '5px'}}/>
+                        </div>
+
+                        <ul className={classes.listitem}>
+                            {options.map((option, index) =>
+                                <li 
+                                    key={id + index} 
+                                    value={option.id} 
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setTitleSpec(option.name)
+                                            setOpen(false);  
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> {option.name}
+                                </li>
+                            )}
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>)}
+
+            {/* <div className={classes.dropdown}>
                 <div className={classes.rec1}></div>
                 <div className={classes.rec2}></div>
                 <div className={classes.rec3}></div>
@@ -133,7 +131,6 @@ const NewSelect2 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) 
                                 }
                                 className={classes.listyle}
                             >
-                                {/* <div style={{display: 'flex', alignItems: 'center'}}> */}
                                     <img src={Marker} width={20} style={{ marginRight: '15px'}} /> 
                                     {option.name}
                                 <img className={option.icon ? classes.imageCat : ""} src={option.icon ? image[index].icon : ""} alt=""/>
@@ -142,7 +139,7 @@ const NewSelect2 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) 
                         </ul>
                     )}
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

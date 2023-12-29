@@ -12,10 +12,10 @@
 }
 
 .form-new-spec {
-    width: 95%;
+    width: 80%;
     height: 45px;
     background-size: cover;
-    background-color: #2e2e2e;
+    /* background-color: #2e2e2e; */
     color: #ffffff;
     font-size: 14px;
     cursor: pointer;
@@ -23,6 +23,6 @@
     justify-content: flex-start;
     align-items: center;
     /* padding-bottom: 2px; */
-    padding-left: 60px;
+    padding-left: 10px;
     border-radius: 50px;
 }

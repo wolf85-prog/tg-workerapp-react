@@ -96,20 +96,22 @@
     
 }
 
+
 .listitem {
     width: 100%;
     position: relative;
     border-radius: 5px;
     z-index: 105;
     overflow: scroll;
-    height: 160px;
-    margin-top: 20px;
+    height: 110px;
+    /* margin-top: 20px; */
+    list-style-type: disc;
 }
 
 .listyle {
     background-color: transparent;
     padding: 10px 25px;
-    height: 50px;
+    height: 40px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -132,8 +134,12 @@
 } */
 
 .dropdownOpen {
-    width: 350px;
+    width: 100%;
     height: 174px;
+    position: absolute;
+    right: 0px;
+    left: 0;
+    z-index: 100;
 }
 
 /* Rectangle 4 */
@@ -185,6 +191,6 @@
     top: 21.71%;
     /* bottom: 75.29%; */
     opacity: 0.6;
-    border: 2px solid #25272A;
+    border: 1px solid #25272A;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }

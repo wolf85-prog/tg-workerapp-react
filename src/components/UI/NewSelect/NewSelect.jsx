@@ -34,7 +34,7 @@ const NewSelect = ({id, options, titleCat, setTitleCat, onChange, disabled}) => 
 
     return (
         <div>
-            <div className={classes.dropdown}>
+            {!open && (<div className={classes.dropdown}>
                 <div className={classes.rec1}></div>
                 <div className={classes.rec2}></div>
                 <div className={classes.rec3}></div>
@@ -51,54 +51,49 @@ const NewSelect = ({id, options, titleCat, setTitleCat, onChange, disabled}) => 
                             <img src={open ? VectorUp : Vector} className={'chevron-new'} alt='' style={{marginBottom: '5px'}}/>
                         </div>
                     </div>
-                    {/* {open && (
-                        <ul className={classes.listitem}>
-                        {options.map((option, index) =>
-                            <li 
-                                key={id + index} 
-                                value={option.id} 
-                                onClick={(e)=> {
-                                        console.log("sfsfsdfsdf")
-                                        onChange(e)
-                                        setTitleCat(option.name)
-                                        setOpen(false);
-                                    }
-                                }
-                                className={classes.listyle}
-                            >
-                                    <img src={Marker} width={20} style={{ marginRight: '15px'}} /> 
-                                    {option.name}
-                            </li>
-                        )}
-                        </ul>
-                    )} */}
                 </div>
             </div>
+            )}
 
             {open && (<div className={classes.dropdownOpen}>
                 <div className={classes.rec1Open}></div>
                 <div className={classes.rec2Open}></div>
                 <div className={classes.rec3Open}></div>
                 <div className={classes.lineOpen}></div>
-
-                <ul className={classes.listitem}>
-                    {options.map((option, index) =>
-                        <li 
-                            key={id + index} 
-                            value={option.id} 
-                            onClick={(e)=> {
-                                    console.log("sdfsdf")
-                                    onChange(e)
-                                    setTitleCat(option.name)
-                                    // setOpen(false);   
-                                }
-                            }
-                            className={classes.listyle}
+                <div className={classes.dropdownWrapper} ref={menuRef}>
+                    <div className={classes.dropdownContainer}>
+                        <div
+                            className={classes.dropdownHeader}
+                            onClick={handleClick}
+                            tabIndex="0"
                         >
-                            {option.name}
-                        </li>
-                    )}
-                </ul>
+                            <div className={classes.dropdownTitle}>
+                                {titleCat}
+                            </div>
+                            <img src={open ? VectorUp : Vector} className={'chevron-new'} alt='' style={{marginBottom: '5px'}}/>
+                        </div>
+
+                        <ul className={classes.listitem}>
+                            {options.map((option, index) =>
+                                <li 
+                                    key={id + index} 
+                                    value={option.id} 
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setTitleCat(option.name)
+                                            setOpen(false);   
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> {option.name}
+                                </li>
+                            )}
+                        </ul>
+
+                    </div>
+                </div>
+
             </div>)}
         </div>
     );

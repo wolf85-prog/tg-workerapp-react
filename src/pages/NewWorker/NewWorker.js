@@ -23,6 +23,7 @@ import specData from "../../data/specData"
 import { useUsersContext } from "./../../contexts/UserContext";
 import { sendMyMessage } from '../../http/chatAPI';
 
+import InputMask from 'react-input-mask';
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -35,6 +36,12 @@ const NewWorker = () => {
     const [showGrad2, setShowGrad2] = useState(false)
 
     const {worker, setWorker, workers, setWorkers} = useUsersContext();
+    const { workerFam, setWorkerFam, workerName, setWorkerName, phone, setPhone } = useUsersContext();
+    const {city, setCity, dateborn, setDateborn} = useUsersContext();
+
+    //даты
+    const [dates, setDates] = useState([]);
+    let datesArr = []
 
     //категории
     const [categories, setCategories] = useState([]);
@@ -153,6 +160,36 @@ const NewWorker = () => {
         setWorkers(workers.filter(p => p.id !== worker.id))
     }
 
+
+    const onChangeFamily = (e) => {
+        setWorkerFam(e.target.value)
+    }
+
+    const onChangeName = (e) => {
+        setWorkerName(e.target.value)
+    }
+
+    const handlePhone = (e)=>{
+        setPhone(e.target.value)
+        //console.log(phone.length)
+    }
+
+    const onChangeCity = (e) => {
+        setCity(e.target.value)
+    }
+
+    const onChangeTime = (e) => {
+        setDateborn(e.target.value)
+    }
+
+    const onDatesSelectChange = (e) => {
+        //setSelectedElement(e.target.value);
+        setDateborn(e.target.value)
+    }
+
+
+
+
     const onClose = () => {
         tg.close()
     }
@@ -183,7 +220,7 @@ const NewWorker = () => {
 
                        
             <div style={{position: 'relative', marginTop: '80px', marginLeft: '25px', marginRight: '25px'}}>
-            <p className='cat-title'>Категория...</p>  
+            <p className='cat-title' style={{display: titleCat ? 'none' : 'block'}}>Категория...</p>  
                 <NewSelect
                     id="category"
                     options={categories}
@@ -194,7 +231,7 @@ const NewWorker = () => {
             </div>
                           
             <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px'}}>
-            <p className='cat-title'>Специальность...</p> 
+            <p className='cat-title' style={{display: titleSpec ? 'none' : 'block'}}>Специальность...</p> 
                 <NewSelect2
                     disabled={disabled}
                     id="model"
@@ -216,18 +253,74 @@ const NewWorker = () => {
                 </button> 
             </div>
             
-   
 
             {/*список работников*/}
-            {/* <div style={{
+            <div style={{
                 boxSizing: 'border-box', 
                 height: '140px', 
                 zIndex: 20,
                 paddingTop: '40px',
             }}>
                 <WorkerList remove={removeWorker} workers={workers} />
-            </div>            */}
+            </div>           
             
+
+            {/* Фамилия */}
+            <div style={{position: 'relative', marginTop: '2px', marginLeft: '30px', marginRight: '30px', height: '38px'}}>
+                <div className='rec1-input'></div>
+                <div className='rec2-input'></div>
+                <div className='rec3-input'></div>
+                <input
+                    className='input-style3'
+                    placeholder='Фамилия'
+                    id="worker_soname"
+                    variant="filled"
+                    onChange={onChangeFamily}
+                    //value={workerFam}
+                />
+            </div>
+
+            {/* Имя */}
+            <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '38px'}}>
+                <div className='rec1-input'></div>
+                <div className='rec2-input'></div>
+                <div className='rec3-input'></div>
+                <input
+                    className='input-style3'
+                    placeholder='Имя'
+                    id="worker_name"
+                    onChange={onChangeName}
+                    value={workerName}
+                /> 
+            </div>         
+
+            {/* Номер телефона */}
+            <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '38px'}}>
+                <div className='rec1-input'></div>
+                <div className='rec2-input'></div>
+                <div className='rec3-input'></div>
+                <InputMask
+                    className='input-style3'
+                    mask="+7 (999) 999-99-99"
+                    disabled={false}
+                    maskChar=""
+                    onChange={handlePhone} 
+                    value={phone}
+                    placeholder='Номер телефона'
+                >
+                </InputMask>
+            </div>
+
+            <div style={{position: 'relative', marginTop: '10px', marginRight: '25px'}}>
+                <button 
+                    disabled={disabledBtn}
+                    className="image-button-add" 
+                    style={{ backgroundImage: `url(${btnSave})`}}
+                    //onClick={addNewWorker}
+                >
+                    Добавить
+                </button> 
+            </div>
 
             {/* Далее */}
             {/* <div style={{
@@ -246,6 +339,31 @@ const NewWorker = () => {
                         </Link>
             </div> */}
 
+            {/*Город*/}
+            <div style={{position: 'relative', marginTop: '65px', marginLeft: '30px', marginRight: '30px', height: '38px'}}>
+                <div className='rec1-input'></div>
+                <div className='rec2-input'></div>
+                <div className='rec3-input'></div>
+                <input
+                    className='input-style3'
+                    placeholder='Город'
+                    id="worker_name"
+                    onChange={onChangeCity}
+                    value={city}
+                /> 
+            </div>
+                        
+            {/*Год рождения*/}
+            <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px'}}>
+            <p className='cat-title'>Год рождения</p>   
+                <NewSelect3
+                    id="dateborn"
+                    options={dates}
+                    //selectedElement={selectedElement}
+                    //setSelectedElement={setSelectedElement}
+                    onChange={onDatesSelectChange}
+                />
+            </div>
 
         </div>
     );
