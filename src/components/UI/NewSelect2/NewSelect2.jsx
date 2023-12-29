@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import classes from './NewSelect2.module.css';
-import tringlDown from "../../../image/newspec/tringl_down.png"
+
+import Vector from "../../../image/new/vector.svg"
+import VectorUp from "../../../image/new/vector_up.svg"
 
 import specData from "../../../data/specData"
 
@@ -100,6 +102,9 @@ const NewSelect2 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) 
     return (
         <div>
             <div className={classes.dropdown}>
+                <div className={classes.rec1}></div>
+                <div className={classes.rec2}></div>
+                <div className={classes.rec3}></div>
                 <div className={classes.dropdownWrapper} ref={menuRef}>
                     <div className={classes.dropdownContainer}>
                         <div
@@ -110,7 +115,7 @@ const NewSelect2 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) 
                             <div className={classes.dropdownTitle}>
                                 {titleSpec}
                             </div>
-                            <img src={tringlDown} className={'chevron-new'} alt=''/>
+                            <img src={Vector} className={'chevron-new'} alt='' style={{marginBottom: '5px'}}/>
                         </div>
                     </div>
                     {open && (

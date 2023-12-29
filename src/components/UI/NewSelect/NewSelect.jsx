@@ -1,24 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import classes from './NewSelect.module.css';
-import tringlDown from "../../../image/newspec/tringl_down.png"
 
-import specData from "../../../data/specData"
-
-import Sound from "../../../image/layers/icons/SOUND.png";
-import Riggers from "../../../image/layers/icons/RIGGERS.png";
-import Production from "../../../image/layers/icons/PRODUCTION.png"
-import StageGround from "../../../image/layers/icons/STAGEGROUND.png";
-import Video from "../../../image/layers/icons/VIDEO.png";
-import Light from "../../../image/layers/icons/LIGHT.png";
-import Stagehands from "../../../image/layers/icons/STAGEHANDS.png";
-import Trucks from "../../../image/layers/icons/TRUCKS.png";
-import Catering from "../../../image/layers/icons/CATERING.png";
-import Photo from "../../../image/layers/icons/PHOTO.png";
-import Party from "../../../image/layers/icons/PARTY.png";
-import Games from "../../../image/layers/icons/GAMES.png";
-
-import Marker from "../../../image/icons/marker.png";
-
+import Vector from "../../../image/new/vector.svg"
+import VectorUp from "../../../image/new/vector_up.svg"
 
 const NewSelect = ({id, options, titleCat, setTitleCat, onChange, disabled}) => {
 
@@ -39,67 +23,21 @@ const NewSelect = ({id, options, titleCat, setTitleCat, onChange, disabled}) => 
         };
       }, []);
 
-    useEffect(()=> {
-        console.log("titleCat: ", titleCat)
-        //options.map((item)=>{
-            specData.map((item, index)=> {
-                //item.models.map((model)=> {
-                    //if (model.name === item.name) {
-                        let image
-                        let name
-                        if (item.icon === 'Sound') {
-                            image = Sound;
-                        } else if (item.icon === 'Riggers') {
-                            image = Riggers;
-                        } else if (item.icon === 'Production') {
-                            image = Production;
-                        } else if (item.icon === 'Stage Ground') {
-                            image = StageGround;
-                        } else if (item.icon === 'Video') {
-                            image = Video;
-                        } else if (item.icon === 'Light') {
-                            image = Light;
-                        } else if (item.icon === 'Stagehands') {
-                            image = Stagehands;
-                        } else if (item.icon === 'Trucks') {
-                            image = Trucks;
-                        } else if (item.icon === 'Catering') {
-                            image = Catering;
-                        } else if (item.icon === 'Photo') {
-                            image = Photo;
-                        } else if (item.icon === 'Party') {
-                            image = Party;
-                        } else if (item.icon === 'Games') {
-                            image = Games;
-                        }
-
-
-                        const newObj = {
-                            icon: image,
-                            name: item.name
-                        }
-                        arraySpec.push(newObj)
-                    //}
-                //})
-            })
-            //console.log(arraySpec)
-            setImage(arraySpec)
-        //})
-    },[specData])
-
     const menuRef = useRef();
 
     const handleClick = (e) => {
         e.preventDefault();
         if (!disabled) {
            setOpen(!open); 
-        }
-        
+        } 
     };
 
     return (
         <div>
             <div className={classes.dropdown}>
+                <div className={classes.rec1}></div>
+                <div className={classes.rec2}></div>
+                <div className={classes.rec3}></div>
                 <div className={classes.dropdownWrapper} ref={menuRef}>
                     <div className={classes.dropdownContainer}>
                         <div
@@ -110,34 +48,58 @@ const NewSelect = ({id, options, titleCat, setTitleCat, onChange, disabled}) => 
                             <div className={classes.dropdownTitle}>
                                 {titleCat}
                             </div>
-                            <img src={tringlDown} className={'chevron-new'} alt=''/>
+                            <img src={open ? VectorUp : Vector} className={'chevron-new'} alt='' style={{marginBottom: '5px'}}/>
                         </div>
                     </div>
-                    {open && (
+                    {/* {open && (
                         <ul className={classes.listitem}>
                         {options.map((option, index) =>
                             <li 
                                 key={id + index} 
                                 value={option.id} 
                                 onClick={(e)=> {
+                                        console.log("sfsfsdfsdf")
                                         onChange(e)
-                                        //setSelected(option.name);
                                         setTitleCat(option.name)
                                         setOpen(false);
                                     }
                                 }
                                 className={classes.listyle}
                             >
-                                {/* <div style={{display: 'flex', alignItems: 'center'}}> */}
                                     <img src={Marker} width={20} style={{ marginRight: '15px'}} /> 
                                     {option.name}
-                                <img className={option.icon ? classes.imageCat : ""} src={option.icon ? image[index].icon : ""} alt=""/>
                             </li>
                         )}
                         </ul>
-                    )}
+                    )} */}
                 </div>
             </div>
+
+            {open && (<div className={classes.dropdownOpen}>
+                <div className={classes.rec1Open}></div>
+                <div className={classes.rec2Open}></div>
+                <div className={classes.rec3Open}></div>
+                <div className={classes.lineOpen}></div>
+
+                <ul className={classes.listitem}>
+                    {options.map((option, index) =>
+                        <li 
+                            key={id + index} 
+                            value={option.id} 
+                            onClick={(e)=> {
+                                    console.log("sdfsdf")
+                                    onChange(e)
+                                    setTitleCat(option.name)
+                                    // setOpen(false);   
+                                }
+                            }
+                            className={classes.listyle}
+                        >
+                            {option.name}
+                        </li>
+                    )}
+                </ul>
+            </div>)}
         </div>
     );
 };

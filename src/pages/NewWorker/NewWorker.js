@@ -6,18 +6,18 @@ import Header from "../../components/Header/Header";
 import WorkerList from "../../components/WorkerList/WorkerList";
 import './NewWorker.css';
 
-import BlackFon from "../../image/background/Background_black_600X800.png";
+import BlackFon from "../../image/new/fon_grad.svg";
+// import BlackFon from "../../image/background/Background_black_600X800.png";
 import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
 import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
 import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
 import FonGradWhite from "../../image/layers/grad_white.png";
 
-import btnMenu from "../../image/layers/icon_menu.png";
-import smallMenu from "../../image/layers/logo_04_light.png"
+import btnSave from "../../image/buttons/btn_add.png"
 
-import btnSave from "../../image/newspec/button_save.png"
 import NewSelect from '../../components/UI/NewSelect/NewSelect';
 import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
+import NewSelect3 from '../../components/UI/NewSelect3/NewSelect3';
 
 import specData from "../../data/specData"
 import { useUsersContext } from "./../../contexts/UserContext";
@@ -172,84 +172,65 @@ const NewWorker = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Новый специалист', icon: 'false'}}/>
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
+
+            {/*Специализация*/}   
+            <p style={{position: 'absolute', top: '25px', left: '25px', fontSize: '17px', color: '#fff'}}>
+                Выберите свою специальность
+            </p>
+
+                       
+            <div style={{position: 'relative', marginTop: '80px', marginLeft: '25px', marginRight: '25px'}}>
+            <p className='cat-title'>Категория...</p>  
+                <NewSelect
+                    id="category"
+                    options={categories}
+                    titleCat={titleCat}
+                    setTitleCat={setTitleCat}
+                    onChange={onCategoriesSelectChange}
+                /> 
+            </div>
+                          
+            <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px'}}>
+            <p className='cat-title'>Специальность...</p> 
+                <NewSelect2
+                    disabled={disabled}
+                    id="model"
+                    options={models}
+                    titleSpec={titleSpec}
+                    setTitleSpec={setTitleSpec}
+                    onChange={onSpecSelectChange}
+                />
+            </div>
+
+            <div style={{position: 'relative', marginTop: '10px', marginRight: '25px'}}>
+                <button 
+                    disabled={disabledBtn}
+                    className="image-button-add" 
+                    style={{ backgroundImage: `url(${btnSave})`}}
+                    onClick={addNewWorker}
+                >
+                    Добавить
+                </button> 
+            </div>
             
-            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
-                <img src={Fon} alt='' className='fon-style-full' />
-            </div>
+   
 
-            <img src={FonGradTop} alt='' className='fon-style-menu1' style={{visibility: showGrad ? "visible": "hidden"}}/>
-            <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
-
-            {/* белый градиент */}
-            <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2', width: '100%'}}>
-                <img src={FonGradWhite} alt='' className='fon-style-white'/>
-            </div>
+            {/*список работников*/}
+            {/* <div style={{
+                boxSizing: 'border-box', 
+                height: '140px', 
+                zIndex: 20,
+                paddingTop: '40px',
+            }}>
+                <WorkerList remove={removeWorker} workers={workers} />
+            </div>            */}
             
-            <div style={{paddingTop: '45px'}}>
-                <div style={{display: 'flex', height: 'calc(100vh - 105px)', padding: '0 25px', overflow: 'hidden'}}>
-                    {/* Чёрная плашка */}
-                    <div className='form-new-worker1'> 
-                        {/*Специализация*/}   
-                        <p style={{marginTop: '-35px', fontSize: '17px', color: '#fff'}}>
-                            Выберите свою специальность
-                        </p>
-                        
-                        <p style={{position: 'absolute', top: '8px', left: '30px', fontSize: '14px'}}>Категория</p>    
-                        <div style={{position: 'relative', marginTop: '44px', marginLeft: '30px', marginRight: '30px'}}>
-                        <NewSelect
-                                id="category"
-                                options={categories}
-                                titleCat={titleCat}
-                                setTitleCat={setTitleCat}
-                                onChange={onCategoriesSelectChange}
-                            /> 
-                        </div>
-                        
-
-                        <p style={{position: 'absolute', top: '80px', left: '30px', fontSize: '14px'}}>Специальность</p>   
-                        <div style={{position: 'relative', marginTop: '34px', marginLeft: '30px', marginRight: '30px'}}>
-                            <NewSelect2
-                                disabled={disabled}
-                                id="model"
-                                options={models}
-                                titleSpec={titleSpec}
-                                setTitleSpec={setTitleSpec}
-                                onChange={onSpecSelectChange}
-                            />
-                        </div>
-
-                        <button 
-                            disabled={disabledBtn}
-                            className="image-button-add" 
-                            style={{ backgroundImage: `url(${btnSave})`}}
-                            onClick={addNewWorker}
-                        >
-                            Добавить
-                        </button>
-
-                    
-                        
-
-                        {/*список работников*/}
-                        <div style={{
-                            boxSizing: 'border-box', 
-                            height: '140px', 
-                            zIndex: 20,
-                            paddingTop: '40px',
-                        }}>
-                            <WorkerList remove={removeWorker} workers={workers} />
-                        </div>
-    
-                    </div>
-                </div>
-            </div>
 
             {/* Далее */}
-            <div style={{
+            {/* <div style={{
                             position: 'absolute', 
                             bottom: '0px', 
                             //left: '15%',
@@ -263,12 +244,9 @@ const NewWorker = () => {
                                     Далее
                             </button>
                         </Link>
-            </div>
+            </div> */}
 
 
-            <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
-                <img src={smallMenu} alt='' className='small-menu-icon' />
-            </div>
         </div>
     );
 };

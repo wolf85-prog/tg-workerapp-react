@@ -28,11 +28,50 @@
     /* height: 80vh; */
 }
 
+/* Rectangle 4 */
+.rec1 {
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 0.57%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    background: #2B2E32;
+    box-shadow: 20px 21px 20px rgba(25, 23, 23, 0.17), -10px -10px 15px rgba(203, 226, 251, 0.02), 1.08px 0px 5px rgba(0, 0, 0, 0.57), inset -2.16px 0px 4.32px rgba(0, 0, 0, 0.27), inset -2.16px 0px 2.592px rgba(0, 0, 0, 0.22), inset 0px 0px 19.24px rgba(67, 67, 67, 0.29);
+    border-radius: 21.6px;
+}
+
+/* Rectangle 5 */
+.rec2 {
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 0%;
+    right: 39.43%;
+    top: 0%;
+    bottom: 0%;
+
+    background: linear-gradient(90deg, #2B2E32 12.69%, rgba(43, 46, 50, 0) 106.01%, rgba(43, 46, 50, 0) 130.57%);
+    border-radius: 21.6px;
+}
+
+/* Rectangle 16 */
+.rec3 {
+    position: absolute;
+    left: 53.14%;
+    right: 20.29%;
+    top: 6.98%;
+    bottom: 6.98%;
+
+    background: #2B2F33;
+    filter: blur(5px);
+}
+
 .dropdownWrapper {
     width: 100%;
-    height: 35px;
-    background-color: #202020;
-    border-radius: 10px;
+    height: 43px;
     /* padding: 0 20px; */
 }
     
@@ -50,7 +89,7 @@
     position: relative;
     z-index: 99;
     outline: none;
-    padding: 0 15px;
+    padding: 0 25px;
 }
 
 .dropdownTitle {
@@ -63,23 +102,89 @@
     border-radius: 5px;
     z-index: 105;
     overflow: scroll;
-    height: 260px;
+    height: 160px;
+    margin-top: 20px;
 }
 
 .listyle {
-    background-color: #141414;
-    padding: 10px;
-    height: 60px;
-    color: #fff;
+    background-color: transparent;
+    padding: 10px 25px;
+    height: 50px;
     display: flex;
     align-items: center;
     width: 100%;
-    /* border-bottom: 1px solid #202020; */
-    border-bottom: 1px solid #393939;
     justify-content: flex-start;
     text-align: left;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    letter-spacing: -0.045em;
+    /* ULEY Светлый */
+    color: #E8F1F9;
+    opacity: 0.4;
 }
     
 /* li.activeList {
     background-color: #555353;
 } */
+
+.dropdownOpen {
+    width: 350px;
+    height: 174px;
+}
+
+/* Rectangle 4 */
+.rec1Open {
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 0.57%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    background: #2B2E32;
+    box-shadow: 20px 21px 20px rgba(25, 23, 23, 0.17), -10px -10px 15px rgba(203, 226, 251, 0.02), 1.08px 0px 5.076px rgba(0, 0, 0, 0.57), inset -2.16px 0px 4.32px rgba(0, 0, 0, 0.27), inset -2.16px 0px 2.592px rgba(0, 0, 0, 0.22), inset 0px 0px 19.24px rgba(67, 67, 67, 0.29);
+    border-radius: 21.6px;
+}
+
+/* Rectangle 5 */
+.rec2Open {
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 0%;
+    right: 44.57%;
+    top: 0%;
+    bottom: 0%;
+
+    background: linear-gradient(90deg, #2B2E32 12.69%, rgba(43, 46, 50, 0) 106.01%, rgba(43, 46, 50, 0) 130.57%);
+    border-radius: 21.6px;
+}
+
+/* Rectangle 16 */
+.rec3Open {
+    position: absolute;
+    left: 43.14%;
+    right: 35.14%;
+    top: 1.72%;
+    bottom: 2.3%;
+
+    background: #2B2F33;
+    filter: blur(5px);
+}
+
+/* Line 2 */
+.lineOpen {
+    position: absolute;
+    left: 5.71%;
+    right: 5.71%;
+    top: 21.71%;
+    /* bottom: 75.29%; */
+    opacity: 0.6;
+    border: 2px solid #25272A;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
