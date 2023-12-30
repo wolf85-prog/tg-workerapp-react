@@ -53,6 +53,7 @@ const NewWorker = () => {
     const [showDate, setShowDate] = useState(false)
     const [showApply, setShowApply] = useState(false)
     const [showModal, setShowModal] = useState(false)
+    const [showMainBtn, setShowMainBtn] = useState(false)
 
     //select
     const [selectedElement, setSelectedElement] = useState("")
@@ -222,6 +223,7 @@ const NewWorker = () => {
     const clickApply = () => {
         console.log("apply")
         setShowModal(true)
+        setShowMainBtn(true)
     }
 
 
@@ -287,13 +289,13 @@ const NewWorker = () => {
     }, [])
 
     useEffect(() => {
-        if (workerFam, phone, city, dateborn) {
+        if (showMainBtn) {
            tg.MainButton.show(); 
         } else {
             tg.MainButton.hide();  
         }
         
-    }, [])
+    }, [showMainBtn])
 
     //-------------------------------------------------------------------
 
