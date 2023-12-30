@@ -57,6 +57,7 @@ const NewWorker = () => {
     const [disabled, setDisabled] = useState(true)
     const [titleCat, setTitleCat] = useState(false)
     const [titleSpec, setTitleSpec] = useState(false)
+    const [titleDate, setTitleDate] = useState(false)
 
 //----------------------------------------------------------------------------------
 
@@ -88,9 +89,15 @@ const NewWorker = () => {
     }, [workers])
 
     useEffect(() => {
-        setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
-        setTimeout(() =>  setShowGrad(true), 4500) //градиент верх 
-    })
+        for (let i = 1945; i < 2023; i++) { // выведет 0, затем 1, затем 2         
+            const obj = {
+                id: i,
+                name: i,
+            }
+            datesArr.push(obj)
+        }   
+        setDates(datesArr)
+    }, [])
 
     //---------------------------------------------------------------------------------------
 
@@ -257,7 +264,7 @@ const NewWorker = () => {
             {/*список работников*/}
             <div style={{
                 boxSizing: 'border-box', 
-                height: '140px', 
+                height: 'auto', 
                 zIndex: 20,
                 paddingTop: '40px',
             }}>
@@ -266,7 +273,7 @@ const NewWorker = () => {
             
 
             {/* Фамилия */}
-            <div style={{position: 'relative', marginTop: '2px', marginLeft: '30px', marginRight: '30px', height: '38px'}}>
+            <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
                 <div className='rec1-input'></div>
                 <div className='rec2-input'></div>
                 <div className='rec3-input'></div>
@@ -281,7 +288,7 @@ const NewWorker = () => {
             </div>
 
             {/* Имя */}
-            <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '38px'}}>
+            <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
                 <div className='rec1-input'></div>
                 <div className='rec2-input'></div>
                 <div className='rec3-input'></div>
@@ -295,7 +302,7 @@ const NewWorker = () => {
             </div>         
 
             {/* Номер телефона */}
-            <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '38px'}}>
+            <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
                 <div className='rec1-input'></div>
                 <div className='rec2-input'></div>
                 <div className='rec3-input'></div>
@@ -340,7 +347,7 @@ const NewWorker = () => {
             </div> */}
 
             {/*Город*/}
-            <div style={{position: 'relative', marginTop: '65px', marginLeft: '30px', marginRight: '30px', height: '38px'}}>
+            <div style={{position: 'relative', marginTop: '70px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
                 <div className='rec1-input'></div>
                 <div className='rec2-input'></div>
                 <div className='rec3-input'></div>
@@ -355,12 +362,14 @@ const NewWorker = () => {
                         
             {/*Год рождения*/}
             <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px'}}>
-            <p className='cat-title'>Год рождения</p>   
+            <p className='cat-title' style={{display: titleDate ? 'none' : 'block'}}>Год рождения</p>   
                 <NewSelect3
                     id="dateborn"
                     options={dates}
                     //selectedElement={selectedElement}
                     //setSelectedElement={setSelectedElement}
+                    titleDate={titleDate}
+                    setTitleDate={setTitleDate}
                     onChange={onDatesSelectChange}
                 />
             </div>

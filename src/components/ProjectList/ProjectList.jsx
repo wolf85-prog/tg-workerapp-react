@@ -36,8 +36,10 @@ const ProjectList = ({posts, title, workerId, remove, width}) => {
                         <img className='shkala' src={Progress0} alt=''/>
                     </div>
                     
-
-                    <div className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>
+                    <div className='card-footer'>
+                        <div></div>
+                        <div className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>
+                    </div>
                 </div>
             </div>
         )
@@ -53,7 +55,7 @@ const ProjectList = ({posts, title, workerId, remove, width}) => {
                      
 
             {posts.map((post, index) =>
-                <ProjectItem number={index + 1} post={post} key={post.id + index} specId={workerId} width={width}/>    
+                <ProjectItem number={index + 1} post={post} key={post.id + index} width={width}/>    
             )}
             
         </div>

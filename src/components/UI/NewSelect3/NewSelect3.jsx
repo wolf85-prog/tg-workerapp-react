@@ -5,7 +5,7 @@ import tringlDown from "../../../image/newspec/tringl_down.png"
 import Vector from "../../../image/new/vector.svg"
 import VectorUp from "../../../image/new/vector_up.svg"
 
-const NewSelect3 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) => {
+const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) => {
 
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(false);
@@ -48,7 +48,8 @@ const NewSelect3 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) 
                             tabIndex="0"
                         >
                             <div className={classes.dropdownTitle}>
-                                {selected ? selected : ""}
+                                {/* {selected ? selected : ""} */}
+                                {titleDate}
                             </div>
                             <img src={open ? VectorUp : Vector} className={'chevron-new'} alt='' style={{marginBottom: '5px'}}/>
                         </div>
@@ -70,7 +71,8 @@ const NewSelect3 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) 
                             tabIndex="0"
                         >
                             <div className={classes.dropdownTitle}>
-                                {selected ? selected : ""}
+                                {/* {selected ? selected : ""} */}
+                                {titleDate}
                             </div>
                             <img src={open ? VectorUp : Vector} className={'chevron-new'} alt='' style={{marginBottom: '5px'}}/>
                         </div>
@@ -83,6 +85,7 @@ const NewSelect3 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) 
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected(option.name);
+                                            setTitleDate(option.name)
                                             setOpen(false); 
                                         }
                                     }

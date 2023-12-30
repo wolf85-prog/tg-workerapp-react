@@ -27,8 +27,6 @@ import Shkala5 from "../../image/new/progress5.png"
 
 const ProjectItem = (props) => {
 
-    const navigate = useNavigate();
-
     const {specId} = useUsersContext();
 
     const [statusMoney, setStatusMoney] = useState("")
@@ -40,8 +38,6 @@ const ProjectItem = (props) => {
     const [showProject, setShowProject] = useState(false);
     const [showModalEtap, setShowModalEtap] = useState(false);
     const [widthCard, setWidthCard] = useState(0);
-    const [ukazatel, setUkazatel] = useState(0);
-    const [widthLine, setWidthLine] = useState(0)
     
     const [showShkala1, setShowShkala1] = useState(false);
     const [showShkala2, setShowShkala2] = useState(false);
@@ -60,15 +56,13 @@ const ProjectItem = (props) => {
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
 
-    
-
     useEffect(()=> {
  
-        const dateTemp = props.post.specs.date //props.post.specs.filter((item) => item.id === props.specId)[0]?.date;
+        const dateTemp = props.post.specs.date
 
-        const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId && item.date === dateTemp)[0]?.specialist : ""
+        const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === dateTemp)[0]?.specialist : ""
         setFact(fact)
-        console.log("fact: ", fact)
+        //console.log("fact: ", fact)
     
         let d_end, year2, date2, month2, chas2, minut2;
     
@@ -81,16 +75,6 @@ const ProjectItem = (props) => {
         const chas = String(d.getHours()).padStart(2, "0"); //d.getHours();
         const minut = String(d.getMinutes()).padStart(2, "0"); //d.getMinutes();
     
-        //time end
-        // if (dateProject2) {
-        //     d_end = new Date(dateProject2);
-        //     year2 = d_end.getFullYear()
-        //     date2 = String(d_end.getDate()).padStart(2, "0"); 
-        //     month2 = String(d_end.getMonth()+1).padStart(2, "0"); 
-        //     chas2 = String(d_end.getHours()).padStart(2, "0"); //d.getHours();
-        //     minut2 = String(d_end.getMinutes()).padStart(2, "0"); //d.getMinutes();
-        // } 
-    
         const formatted = (d_end) ? `${date}.${month}.${year} - ${date2}.${month2}.${year2}` : `${date}.${month}.${year}`;
         const formattime = `${chas}:${minut}`
         setFormatted(formatted)
@@ -101,7 +85,7 @@ const ProjectItem = (props) => {
         //сохранить в бд фактическую ставку
         const saveFact = async() => {
             if (fact) {
-                const res = await addFactStavka(props.specId, props.post.id, fact, props.post.specs.date)
+                const res = await addFactStavka(specId, props.post.id, fact, props.post.specs.date)
 
                 setCashStavka(res) 
             }
@@ -112,9 +96,7 @@ const ProjectItem = (props) => {
     
     useEffect(()=> {
         const fetch = async() => {
-            
-            const res0 = await getSpecStavka(props.specId, props.post.id, props.post.specs.date)
-            //console.log("res0: ", new Date(props.post.specs.date).toLocaleDateString())
+            const res0 = await getSpecStavka(specId, props.post.id, props.post.specs.date)
 
             //если кэш пуст
             if (!res0) {
@@ -122,10 +104,10 @@ const ProjectItem = (props) => {
                 //console.log(res)
 
                 //сохранить в бд предварительную ставку
-                const res_add = await addStavka(props.specId, props.post.id, res ? res.payment : 0, props.post.specs.date) 
+                const res_add = await addStavka(specId, props.post.id, res ? res.payment : 0, props.post.specs.date) 
                 console.log("pred stavka cash: ", res_add)
 
-                const res2 = await getSpecStavka(props.specId, props.post.id, props.post.specs.date)
+                const res2 = await getSpecStavka(specId, props.post.id, props.post.specs.date)
                 setCashStavka(res2) 
 
                 if (res2.factStavka) { 
@@ -161,10 +143,6 @@ const ProjectItem = (props) => {
     }, [])
     
 
-    useEffect(()=> {
-        //console.log("width: ", props.width-60)
-        setWidthCard(props.width-60)
-    })
 
     useEffect(()=> {
           
@@ -187,27 +165,16 @@ const ProjectItem = (props) => {
             setShowShkala2(false)
             setShowShkala3(true)
         }
-
         // else if(props.post.statusMoney === 4) {
-        //     setShowEtap1(true)
-        //     setShowEtap2(true)
-        //     setShowEtap3(true)
-        //     setShowEtap4(true)
         //     setStatusMoney('На оплате')
         // }
         // else if(props.post.statusMoney === 5) {
-        //     setShowEtap1(true)
-        //     setShowEtap2(true)
-        //     setShowEtap3(true)
-        //     setShowEtap4(true)
-        //     setShowEtap5(true)
         //     setStatusMoney('Оплачено')
         // }
-    }, [widthCard])
+    }, [])
     
     const goToChat = (e) => {
         e.stopPropagation();
-        //console.log("sdfsdf")
         window.location.replace(props.post.tgURL_chat);
       };
 
@@ -274,7 +241,7 @@ const ProjectItem = (props) => {
 
                 <div className='card-footer'>
                     {/* деньги */}
-                    <p className='project_money'>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : 'нет ставки')}</p>
+                    <p className='project_money'>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : '0')}</p>
                     {/* кнопка Чат */}
                     {props.post.tgURL_chat && <div onClick={goToChat} className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>}
                 </div>
@@ -287,10 +254,10 @@ const ProjectItem = (props) => {
                         <ul>
                             <li className='item-list'><div>Специальность</div>{props.post.specs.spec}</li>
                             <li className='item-list'><div>Вид работ</div>{props.post.specs.vid}</li>
-                            <li className='item-list'><div>Часы</div>{props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === props.specId && item.date === props.post.specs.date)[0]?.chasi : ''}</li>
-                            <li className='item-list'><div>Ставка</div>{props.post.smeta ? parseInt(props.post.smeta.filter((item) => item.fio_id === props.specId && item.date === props.post.specs.date)[0]?.stavka).toLocaleString()+".00" : ''}</li>
-                            <li className='item-list'><div>Смена</div>{props.post.smeta ? parseInt(props.post.smeta.filter((item) => item.fio_id === props.specId && item.date === props.post.specs.date)[0]?.smena).toLocaleString()+".00" : ''}</li>
-                            <li className='item-list'><div>Переработка</div>{props.post.smeta ? parseInt(props.post.smeta.filter((item) => item.fio_id === props.specId && item.date === props.post.specs.date)[0]?.pererabotka).toLocaleString()+".00" : ''}</li>
+                            <li className='item-list'><div>Часы</div>{props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.chasi : ''}</li>
+                            <li className='item-list'><div>Ставка</div>{props.post.smeta ? parseInt(props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.stavka).toLocaleString()+".00" : ''}</li>
+                            <li className='item-list'><div>Смена</div>{props.post.smeta ? parseInt(props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.smena).toLocaleString()+".00" : ''}</li>
+                            <li className='item-list'><div>Переработка</div>{props.post.smeta ? parseInt(props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.pererabotka).toLocaleString()+".00" : ''}</li>
                             <li className='item-list'><div>Доп. расходы</div></li>
                         </ul>
                     </div>
