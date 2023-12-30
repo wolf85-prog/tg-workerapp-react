@@ -1,17 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
-import Header from "../../components/Header/Header";
+import MyModal from "../../components/MyModal/MyModal";
 
 import WorkerList from "../../components/WorkerList/WorkerList";
 import './NewWorker.css';
 
 import BlackFon from "../../image/new/fon_grad.svg";
-// import BlackFon from "../../image/background/Background_black_600X800.png";
-import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
-import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
-import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
-import FonGradWhite from "../../image/layers/grad_white.png";
 
 import btnSave from "../../image/buttons/btn_add.png"
 
@@ -28,7 +23,7 @@ import InputMask from 'react-input-mask';
 const API_URL = process.env.REACT_APP_API_URL
 
 const NewWorker = () => {
-    const {tg, user} = useTelegram();
+    const {tg, queryId, user} = useTelegram();
     const navigate = useNavigate();
     const handleClick = () => navigate(-1);
 
@@ -50,14 +45,25 @@ const NewWorker = () => {
 
     const [showSpec, setShowSpec] = useState(false)
     const [showNext, setShowNext] = useState(false)
+    
+    const [showBlockFam, setShowBlockFam] = useState(false)
+    const [showBlockCity, setShowBlockCity] = useState(false)
+
+    const [showFIO, setShowFIO] = useState(false)
+    const [showDate, setShowDate] = useState(false)
+    const [showApply, setShowApply] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
     //select
     const [selectedElement, setSelectedElement] = useState("")
     const [disabledBtn, setDisabledBtn] = useState(true)
+    const [disabledBtn2, setDisabledBtn2] = useState(true)
     const [disabled, setDisabled] = useState(true)
     const [titleCat, setTitleCat] = useState(false)
     const [titleSpec, setTitleSpec] = useState(false)
     const [titleDate, setTitleDate] = useState(false)
+
+    const [isLoading, setIsLoading] = useState(false);
 
 //----------------------------------------------------------------------------------
 
@@ -104,7 +110,6 @@ const NewWorker = () => {
     // 1. при выборе нового значения в категории
     const onCategoriesSelectChange = (e) => {
         //setSelectedElement(e.target.value);
-        //console.log(e.target.value)
 
         // преобразуем выбранное значение опции списка в число - идентификатор категории
         const categoryId = parseInt(e.target.value) //parseInt(e.target.options[e.target.selectedIndex].value);
@@ -160,11 +165,27 @@ const NewWorker = () => {
 
         setTitleCat("")
         setTitleSpec("")
+
+        setShowBlockFam(true)
     }
 
     {/* Удаление специальности */}
     const removeWorker = (worker) => {
         setWorkers(workers.filter(p => p.id !== worker.id))
+    }
+
+    const addNewWorker2 = (e) => {
+        setShowFIO(true)
+        setShowBlockCity(true)
+    }
+
+    const editNewWorker2 = (e) => {
+        setShowFIO(false)
+    }
+
+    const addNewWorker3 = () => {
+        setShowDate(true)
+        setShowApply(true)
     }
 
 
@@ -179,6 +200,8 @@ const NewWorker = () => {
     const handlePhone = (e)=>{
         setPhone(e.target.value)
         //console.log(phone.length)
+
+        setDisabledBtn(false)
     }
 
     const onChangeCity = (e) => {
@@ -192,8 +215,14 @@ const NewWorker = () => {
     const onDatesSelectChange = (e) => {
         //setSelectedElement(e.target.value);
         setDateborn(e.target.value)
+        setDisabledBtn2(false)
     }
 
+
+    const clickApply = () => {
+        console.log("apply")
+        setShowModal(true)
+    }
 
 
 
@@ -213,6 +242,60 @@ const NewWorker = () => {
     }, [])
 
     //-----------------------------------------------------------------------------
+
+     //отправка данных в telegram-бот
+     const onSendData = useCallback(() => {
+
+        const data = {
+            workerfamily: workerFam,
+            workerName, 
+            phone,
+            worklist: workers,
+            city, 
+            dateborn, 
+            queryId,
+        }
+
+        tg.MainButton.hide();
+        setIsLoading(true)
+
+
+        fetch(API_URL + 'web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        
+        setIsLoading(false)
+              
+    }, [workerFam, workerName, phone, workers, city, dateborn])
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
+
+    useEffect(() => {
+        tg.MainButton.setParams({
+            text: 'Сохранить',
+            color: '#000000' //'#2e2e2e'
+        })
+    }, [])
+
+    useEffect(() => {
+        if (workerFam, phone, city, dateborn) {
+           tg.MainButton.show(); 
+        } else {
+            tg.MainButton.hide();  
+        }
+        
+    }, [])
+
+    //-------------------------------------------------------------------
 
     return (
         <div className="App">
@@ -271,108 +354,144 @@ const NewWorker = () => {
                 <WorkerList remove={removeWorker} workers={workers} />
             </div>           
             
+            <div style={{display: showBlockFam ? 'block' : 'none'}}>
+                {/* Фамилия */}
+                <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
+                    <div className='rec1-input'></div>
+                    <div className='rec2-input'></div>
+                    <div className='rec3-input'></div>
+                    <input
+                        className='input-style3'
+                        placeholder='Фамилия'
+                        id="worker_soname"
+                        variant="filled"
+                        onChange={onChangeFamily}
+                        value={workerFam}
+                    />
+                </div>
 
-            {/* Фамилия */}
-            <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
-                <div className='rec1-input'></div>
-                <div className='rec2-input'></div>
-                <div className='rec3-input'></div>
-                <input
-                    className='input-style3'
-                    placeholder='Фамилия'
-                    id="worker_soname"
-                    variant="filled"
-                    onChange={onChangeFamily}
-                    //value={workerFam}
-                />
+                {/* Имя */}
+                <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
+                    <div className='rec1-input'></div>
+                    <div className='rec2-input'></div>
+                    <div className='rec3-input'></div>
+                    <input
+                        className='input-style3'
+                        placeholder='Имя'
+                        id="worker_name"
+                        onChange={onChangeName}
+                        value={workerName}
+                    /> 
+                </div>         
+
+                {/* Номер телефона */}
+                <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
+                    <div className='rec1-input'></div>
+                    <div className='rec2-input'></div>
+                    <div className='rec3-input'></div>
+                    <InputMask
+                        className='input-style3'
+                        mask="+7 (999) 999-99-99"
+                        disabled={false}
+                        maskChar=""
+                        onChange={handlePhone} 
+                        value={phone}
+                        placeholder='Номер телефона'
+                    >
+                    </InputMask>
+                </div>
+
+                <div style={{position: 'relative', marginTop: '10px', marginRight: '25px'}}>
+                    <p className='fio-text' style={{display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p>
+
+                    {!showFIO ? 
+                    <button 
+                        disabled={disabledBtn}
+                        className="image-button-add" 
+                        style={{ backgroundImage: `url(${btnSave})`}}
+                        onClick={addNewWorker2}
+                    >
+                        Добавить
+                    </button> 
+                    :<button 
+                        disabled={disabledBtn}
+                        className="image-button-add" 
+                        style={{ backgroundImage: `url(${btnSave})`}}
+                        onClick={editNewWorker2}
+                    >
+                        Изменить
+                    </button> }
+                </div>
             </div>
 
-            {/* Имя */}
-            <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
-                <div className='rec1-input'></div>
-                <div className='rec2-input'></div>
-                <div className='rec3-input'></div>
-                <input
-                    className='input-style3'
-                    placeholder='Имя'
-                    id="worker_name"
-                    onChange={onChangeName}
-                    value={workerName}
-                /> 
-            </div>         
 
-            {/* Номер телефона */}
-            <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
-                <div className='rec1-input'></div>
-                <div className='rec2-input'></div>
-                <div className='rec3-input'></div>
-                <InputMask
-                    className='input-style3'
-                    mask="+7 (999) 999-99-99"
-                    disabled={false}
-                    maskChar=""
-                    onChange={handlePhone} 
-                    value={phone}
-                    placeholder='Номер телефона'
-                >
-                </InputMask>
+            <div style={{display: showBlockCity ? 'block' : 'none'}}>
+                    {/*Город*/}
+                <div style={{position: 'relative', marginTop: '70px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
+                    <div className='rec1-input'></div>
+                    <div className='rec2-input'></div>
+                    <div className='rec3-input'></div>
+                    <input
+                        className='input-style3'
+                        placeholder='Город'
+                        id="worker_name"
+                        onChange={onChangeCity}
+                        value={city}
+                    /> 
+                </div>
+                            
+                {/*Год рождения*/}
+                <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px'}}>
+                <p className='cat-title' style={{display: titleDate ? 'none' : 'block'}}>Год рождения</p>   
+                    <NewSelect3
+                        id="dateborn"
+                        options={dates}
+                        //selectedElement={selectedElement}
+                        //setSelectedElement={setSelectedElement}
+                        titleDate={titleDate}
+                        setTitleDate={setTitleDate}
+                        onChange={onDatesSelectChange}
+                    />
+                </div>
+
+                <div style={{position: 'relative', marginTop: '10px', marginRight: '25px'}}>
+                    <p className='fio-text' style={{display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p>
+
+                    {!showApply ? 
+                    <button 
+                        disabled={disabledBtn2}
+                        className="image-button-add" 
+                        style={{ backgroundImage: `url(${btnSave})`}}
+                        onClick={addNewWorker3}
+                    >
+                        Добавить
+                    </button> 
+                    :<button 
+                        disabled={disabledBtn2}
+                        className="image-button-add" 
+                        style={{ backgroundImage: `url(${btnSave})`}}
+                        onClick={clickApply}
+                    >
+                        Подтвердить
+                    </button> }
+                </div>
             </div>
 
-            <div style={{position: 'relative', marginTop: '10px', marginRight: '25px'}}>
-                <button 
-                    disabled={disabledBtn}
-                    className="image-button-add" 
-                    style={{ backgroundImage: `url(${btnSave})`}}
-                    //onClick={addNewWorker}
-                >
-                    Добавить
-                </button> 
-            </div>
 
-            {/* Далее */}
-            {/* <div style={{
-                            position: 'absolute', 
-                            bottom: '0px', 
-                            //left: '15%',
-                            zIndex: '20',
-                            width: '100%',
-                        }}>
-                        <Link to={'/add-worker2'}>
-                            <button 
-                                className="image-button-edit" 
-                                style={{ backgroundImage: `url(${btnSave})`, marginBottom: "15px", visibility: showNext ? "visible" : "hidden"}}>
-                                    Далее
-                            </button>
-                        </Link>
-            </div> */}
+            <MyModal visible={showModal} setVisible={setShowModal}>
+                <div className='info-card'>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
 
-            {/*Город*/}
-            <div style={{position: 'relative', marginTop: '70px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
-                <div className='rec1-input'></div>
-                <div className='rec2-input'></div>
-                <div className='rec3-input'></div>
-                <input
-                    className='input-style3'
-                    placeholder='Город'
-                    id="worker_name"
-                    onChange={onChangeCity}
-                    value={city}
-                /> 
-            </div>
+                    <p className='vagno'>Регистрация прошла успешно</p>
+                    <p className='text-vagno'>Добро пожаловать на борт</p>
+                    <div className='button-ok' onClick={()=>setShowModal(false)}>
+                        <div className='rec-button'>Хорошо</div>
                         
-            {/*Год рождения*/}
-            <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px'}}>
-            <p className='cat-title' style={{display: titleDate ? 'none' : 'block'}}>Год рождения</p>   
-                <NewSelect3
-                    id="dateborn"
-                    options={dates}
-                    //selectedElement={selectedElement}
-                    //setSelectedElement={setSelectedElement}
-                    titleDate={titleDate}
-                    setTitleDate={setTitleDate}
-                    onChange={onDatesSelectChange}
-                />
-            </div>
+                    </div>
+                </div>
+        </MyModal>
 
         </div>
     );

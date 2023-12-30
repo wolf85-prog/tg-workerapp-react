@@ -313,7 +313,7 @@ const ProjectItem = (props) => {
                         
                     </div>
                 </div>
-            </MyModal>
+        </MyModal>
     </>
     );
 };
