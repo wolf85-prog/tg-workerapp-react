@@ -24,7 +24,7 @@ const ProjectList = ({posts, title, workerId, remove, width}) => {
 
                     <div>
                         <div className='project-text'>
-                            <p className="project_title">Здесь будут ваши заказы</p>
+                            <p className="project_title">Здесь будут ваши проекты</p>
                             {/* <p className="project_subtitle">06.12.2023 | 20:00</p> */}
                             
                             <p className='project_money2'>0.00</p>

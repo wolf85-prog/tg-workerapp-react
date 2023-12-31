@@ -82,6 +82,24 @@ input::placeholder {
     opacity: 0.4;
 }
 
+.spec-title {
+    position: absolute;
+    top: 12px; 
+    left: 25px; 
+    font-size: 14px; 
+    z-index: 55;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    letter-spacing: -0.045em;
+    /* ULEY Светлый */
+    color: #E8F1F9;
+    opacity: 0.4;
+}
+
 
 .image-button-add {
     position: absolute;

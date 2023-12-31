@@ -58,7 +58,7 @@ const NewSelect2 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) 
             </div>
             )}
 
-            {open && (<div className={classes.dropdownOpen}>
+            {open && (<div className={classes.dropdownOpen} style={{height: options.length*44}}>
                 <div className={classes.rec1Open}></div>
                 <div className={classes.rec2Open}></div>
                 <div className={classes.rec3Open}></div>
@@ -76,7 +76,7 @@ const NewSelect2 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) 
                             <img src={open ? VectorUp : Vector} className={'chevron-new'} alt='' style={{marginBottom: '5px'}}/>
                         </div>
 
-                        <ul className={classes.listitem}>
+                        <ul className={classes.listitem} style={{height: options.length*41}}>
                             {options.map((option, index) =>
                                 <li 
                                     key={id + index} 

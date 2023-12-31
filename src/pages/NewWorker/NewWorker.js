@@ -323,7 +323,7 @@ const NewWorker = () => {
             </div>
                           
             <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px'}}>
-            <p className='cat-title' style={{display: titleSpec ? 'none' : 'block'}}>Специальность...</p> 
+            <p className='spec-title' style={{display: titleSpec ? 'none' : 'block'}}>Специальность...</p> 
                 <NewSelect2
                     disabled={disabled}
                     id="model"
