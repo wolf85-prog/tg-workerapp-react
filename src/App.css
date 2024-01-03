@@ -564,7 +564,7 @@
 
 
 /* text right to left*/
-.b-marquee--rtl {}
+
 
 .b-marquee--rtl .b-marquee__text {
   -webkit-animation: animMarqueeRtl 5s linear infinite;
