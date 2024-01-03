@@ -18,42 +18,6 @@ import './WorkerItem.css'
 
 import iconDel from "../../image/newspec/icon_del.png"
 
-const BootstrapInput = styled(InputBase)(({ theme }) => ({
-    'label + &': {
-        marginTop: '21px',//theme.spacing(3),
-    },
-    '& .MuiInputBase-input': {
-        borderRadius: 10,
-        position: 'relative',
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        border: '2px solid #76A9FF',
-        fontSize: 16,
-        padding: '10px 12px',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        // Use the system font instead of the default Roboto font.
-        fontFamily: [
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            'Roboto',
-            '"Helvetica Neue"',
-            'Arial',
-            'sans-serif',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-        ].join(','),
-        '&:focus': {
-            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
-            borderColor: theme.palette.primary.main,
-        },
-    },
-}));
-
 
 const WorkerItem = (props) => {
     let image;
@@ -85,11 +49,11 @@ const WorkerItem = (props) => {
     return (
         <div className="list_spec">
 
-            <div className='form-new-spec'>
+            <div>
                 {/* <img src={image} alt='icon' style={{ marginLeft: '-55px', marginRight: '5px', width: '40px'}}/> */}
                 {props.worker.spec}</div>
 
-            <img src={iconDel} alt='icon' onClick={() => props.remove(props.worker)} style={{marginLeft: '20px', width: '3%'}}/>
+            {/* <img src={iconDel} alt='icon' onClick={() => props.remove(props.worker)} style={{marginLeft: '20px', width: '3%'}}/> */}
         </div>
     );
 };

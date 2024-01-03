@@ -58,7 +58,7 @@ const NewSelect2 = ({id, options, titleSpec, setTitleSpec, onChange, disabled}) 
             </div>
             )}
 
-            {open && (<div className={classes.dropdownOpen} style={{height: options.length*44}}>
+            {open && (<div className={classes.dropdownOpen} style={{height: (options.length+1)*42}}>
                 <div className={classes.rec1Open}></div>
                 <div className={classes.rec2Open}></div>
                 <div className={classes.rec3Open}></div>

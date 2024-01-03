@@ -5,7 +5,7 @@ import Vector from "../../../image/new/vector.svg"
 import VectorUp from "../../../image/new/vector_up.svg"
 
 const NewSelect = ({id, options, titleCat, setTitleCat, onChange, disabled}) => {
-    console.log(options.length)
+
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(false);
     const [image, setImage] = useState([]);
@@ -55,7 +55,7 @@ const NewSelect = ({id, options, titleCat, setTitleCat, onChange, disabled}) => 
             </div>
             )}
 
-            {open && (<div className={classes.dropdownOpen} style={{height: options.length*44}}>
+            {open && (<div className={classes.dropdownOpen} style={{height: (options.length+1)*41}}>
                 <div className={classes.rec1Open}></div>
                 <div className={classes.rec2Open}></div>
                 <div className={classes.rec3Open}></div>

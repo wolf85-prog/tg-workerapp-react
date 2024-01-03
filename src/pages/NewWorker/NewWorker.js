@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import MyModal from "../../components/MyModal/MyModal";
+import Marquee from '../../components/UI/Marquee/Marquee';
 
 import WorkerList from "../../components/WorkerList/WorkerList";
 import './NewWorker.css';
@@ -96,7 +97,7 @@ const NewWorker = () => {
     }, [workers])
 
     useEffect(() => {
-        for (let i = 1945; i < 2023; i++) { // выведет 0, затем 1, затем 2         
+        for (let i = 1950; i < 2023; i++) { // выведет 0, затем 1, затем 2         
             const obj = {
                 id: i,
                 name: i,
@@ -335,6 +336,18 @@ const NewWorker = () => {
             </div>
 
             <div style={{position: 'relative', marginTop: '10px', marginRight: '25px'}}>
+                {/*список работников*/}
+                <div style={{
+                    boxSizing: 'border-box', 
+                    height: 'auto', 
+                    zIndex: 20,
+                    paddingTop: '15px',
+                }}>
+                    <Marquee workers={workers}/>
+                    {/* <WorkerList remove={removeWorker} workers={workers} /> */}
+                </div>  
+
+                {/*кнопка Добавить*/}
                 <button 
                     disabled={disabledBtn}
                     className="image-button-add" 
@@ -344,21 +357,11 @@ const NewWorker = () => {
                     Добавить
                 </button> 
             </div>
-            
-
-            {/*список работников*/}
-            <div style={{
-                boxSizing: 'border-box', 
-                height: 'auto', 
-                zIndex: 20,
-                paddingTop: '40px',
-            }}>
-                <WorkerList remove={removeWorker} workers={workers} />
-            </div>           
+                   
             
             <div style={{display: showBlockFam ? 'block' : 'none'}}>
                 {/* Фамилия */}
-                <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
+                <div style={{position: 'relative', marginTop: '50px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
@@ -404,7 +407,8 @@ const NewWorker = () => {
                 </div>
 
                 <div style={{position: 'relative', marginTop: '10px', marginRight: '25px'}}>
-                    <p className='fio-text' style={{display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p>
+                    {/* <p className='fio-text' style={{display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p> */}
+                    {showFIO && <Marquee workerFam={workerFam} workerName={workerName} phone={phone}/>}
 
                     {!showFIO ? 
                     <button 
@@ -457,7 +461,8 @@ const NewWorker = () => {
                 </div>
 
                 <div style={{position: 'relative', marginTop: '10px', marginRight: '25px'}}>
-                    <p className='fio-text' style={{display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p>
+                    {/* <p className='fio-text' style={{display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p> */}
+                    {showDate && <Marquee city={city} dateborn={dateborn} />}
 
                     {!showApply ? 
                     <button 

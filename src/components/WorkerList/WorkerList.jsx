@@ -3,7 +3,7 @@ import WorkerItem from "../WorkerItem/WorkerItem";
 
 const WorkerList = ({workers, remove}) => {
     return (
-        <div>
+        <div style={{display: 'flex'}}>
             {workers.map((worker) =>
                 <WorkerItem remove={remove} worker={worker} key={worker.id} />
             )}
