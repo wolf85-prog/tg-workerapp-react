@@ -97,7 +97,7 @@ const NewWorker = () => {
     }, [workers])
 
     useEffect(() => {
-        for (let i = 1950; i < 2023; i++) { // выведет 0, затем 1, затем 2         
+        for (let i = 1970; i <= 2010; i++) { // выведет 0, затем 1, затем 2         
             const obj = {
                 id: i,
                 name: i,
@@ -498,7 +498,7 @@ const NewWorker = () => {
                         
                     </div>
                 </div>
-        </MyModal>
+            </MyModal>
 
         </div>
     );

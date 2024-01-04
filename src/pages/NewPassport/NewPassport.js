@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
-import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewPassport.css';
 
 import { useUsersContext } from "../../contexts/UserContext";
@@ -14,15 +13,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Stack } from "@mui/material";
 
-import BlackFon from "../../image/background/Background_black_600X800.png";
-import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
-import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
-import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
-
-import FonGradWhite from "../../image/layers/grad_white.png";
-import btnNextSend from "../../image/newpassport/button_next_send.png"
-
-import smallMenu from "../../image/layers/logo_04_light.png"
+import BlackFon from "../../image/new/fon_grad.svg";
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -42,15 +33,6 @@ const NewPassport = () => {
     const [nameDirty, setNameDirty] = useState(false)
     const [datebornDirty, setDatebornDirty] = useState(false)
     const [error, setError] = useState("")
-
-    const [showGrad, setShowGrad] = useState(false)
-    const [showGrad2, setShowGrad2] = useState(false)
-
-
-    useEffect(() => {
-        setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
-        setTimeout(() =>  setShowGrad(true), 4500) //градиент верх 
-    })
 
     const pressNext = () => {      
         if (pasFam && pasName && pasDateborn.length === 10) {
@@ -115,29 +97,15 @@ const NewPassport = () => {
         setPasDateborn(e.target.value)
     }
 
-
-
     //---------------------------------------------------------------------------------------
-
 
     return (
         <div className="App">
-            <Header header={{title: 'Моя анкета', icon: 'false'}}/>
+            <Header header={{title: 'Моя аккредитация', icon: 'false'}}/>
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
-            
-            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
-                <img src={Fon} alt='' className='fon-style-full' />
-            </div>
 
-            <img src={FonGradTop} alt='' className='fon-style-menu1' style={{visibility: showGrad ? "visible": "hidden"}}/>
-            <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
-
-            {/* белый градиент */}
-            <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
-                <img src={FonGradWhite} alt='' className='fon-style-white'/>
-            </div>
 
             {/* Предупреждение */}
             <div style={{
@@ -145,43 +113,43 @@ const NewPassport = () => {
                         color: 'red', 
                         fontSize: '18px',    
                         position: 'absolute',
-                        top: 'calc(30vh - 25px)',
+                        top: 'calc(20vh - 25px)',
                         width: '100%',
                     }}>{error}
             </div>
 
-            <div style={{display: 'flex', height: '100vh', padding: '0 25px'}}>            
+            <div style={{display: 'flex', justifyContent: 'space-around', height: '100vh', padding: '0 25px'}}>            
                 
-                {/* Чёрная плашка */}
-                <div className='form-new-passport'>  
-                    {/* <p style={{
-                            marginTop: '-35px', 
-                            visibility: (error && !pasFam || !pasName || pasDateborn.length !== 10) ? 'visible' : 'hidden',
-                            color: 'red', 
-                            fontSize: '18px',
-                        }}>
-                        {error}
-                    </p> */}
+                <div style={{width: '100%', marginTop: '40px'}}> 
+
+                    <div className="header-fio">
+                        <p>ФИО</p>
+                        <p>Шаг 1/3</p>
+                    </div>
+
                     {/*Фамилия*/}
-                    <div style={{position: 'relative', 
-                            marginTop: '31px', 
-                            marginLeft: '25px', 
-                            marginRight: '25px'}}>
+                    <div style={{position: 'relative', marginTop: '20px', width: '100%', height: '43px'}}>
+                        <div className='rec1-input'></div>
+                        <div className='rec2-input'></div>
+                        <div className='rec3-input'></div>
                         <input
-                            className='input-style2'
+                            className='input-style3'
                             placeholder='Фамилия'
                             name='fam'
                             id="pas_family"
                             onChange={onChangeFamily}
                             value={pasFam}
                             style={{border: famDirty ? '1px solid #ff0000' : ''}}
-                        />  
-                    </div> 
+                        />
+                    </div>
 
                     {/* Имя */}
-                    <div style={{position: 'relative', marginLeft: '25px', marginRight: '25px'}}>
-                       <input
-                            className='input-style2'
+                    <div style={{position: 'relative', marginTop: '20px', width: '100%', height: '43px'}}>
+                        <div className='rec1-input'></div>
+                        <div className='rec2-input'></div>
+                        <div className='rec3-input'></div>
+                        <input
+                            className='input-style3'
                             placeholder='Имя'
                             id="pas_name"
                             name='name'
@@ -193,9 +161,12 @@ const NewPassport = () => {
                      
 
                     {/* Отчество */}
-                    <div style={{position: 'relative', marginLeft: '25px', marginRight: '25px'}}>
+                    <div style={{position: 'relative', marginTop: '20px', width: '100%', height: '43px'}}>
+                        <div className='rec1-input'></div>
+                        <div className='rec2-input'></div>
+                        <div className='rec3-input'></div>
                         <input
-                            className='input-style2'
+                            className='input-style3'
                             placeholder='Отчество'
                             id="pas_soname"
                             onChange={onChangeSoname}
@@ -215,14 +186,17 @@ const NewPassport = () => {
                             // value={pasDateborn}
                             onChange={onChangeTime}
                         />  */}
-                    <div style={{position: 'relative', marginLeft: '25px', marginRight: '25px'}}>
+                    <div style={{position: 'relative', marginTop: '20px', width: '100%', height: '43px'}}>
+                        <div className='rec1-input'></div>
+                        <div className='rec2-input'></div>
+                        <div className='rec3-input'></div>
                         <InputMask
+                            className='input-style3'
                             mask="99.99.9999"
                             disabled={false}
                             maskChar=""
                             value={pasDateborn}
                             onChange={onChangeTime} 
-                            className='input-style2'
                             placeholder='Дата рождения'
                             id="date"
                             name='date'
@@ -231,18 +205,10 @@ const NewPassport = () => {
                         </InputMask>
                     </div>
                         
-                    {/* </div>      */}
-
-                    {/* <div className='block-buttons-newpas1'> */}
-                        <button 
-                            // disabled={disabledBtn}
-                            className="image-button-pas" 
-                            style={{ backgroundImage: `url(${btnNextSend})`}}
-                            onClick={pressNext}
-                        >
-                            Далее
-                        </button>
-                    {/* </div> */}
+                    <div className='block-button' style={{padding: '0'}}>
+                        <div className='button1' >Назад</div>
+                        <div className='button2' onClick={pressNext}>Далее</div>
+                    </div>  
                 </div>  
 
 
@@ -282,15 +248,8 @@ const NewPassport = () => {
                         </Stack>
                     </LocalizationProvider>
                 </div> */}
-                
-
-                
-
             </div>
             
-            <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
-                <img src={smallMenu} alt='' className='small-menu-icon' />
-            </div>
         </div>
     );
 };

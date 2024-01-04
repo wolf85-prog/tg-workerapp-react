@@ -1,31 +1,29 @@
 .file-upload  {
     width: 100%;
-
     text-align: center;
-    padding: 0 10px;
+    padding: 7px 20px;
     position: relative;
     cursor: pointer;
     color: #000;
-
-    height: 38px;
-    overflow: hidden;
-    border-radius: 10px;
-    background-color: #2e2e2e;
-
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
     border-radius: 10px;
     margin-bottom: 20px;
   }
 
 
   .file-upload p {
-    font-size: 16px;
-    color: #8f8e91;
+    font-style: normal;
     font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    letter-spacing: -0.045em;
+    /* ULEY Светлый */
+    color: #E8F1F9;
+    opacity: 0.4;
   }
   .file-upload input {
     display: block;

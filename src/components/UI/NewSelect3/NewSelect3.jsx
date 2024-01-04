@@ -28,14 +28,14 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
 
 
     const menuRef = useRef();
-
+    const myRef = useRef();
 
     const handleClick = (e) => {
         e.preventDefault();
         if (!disabled) {
            setOpen(!open);  
         }  
-        
+        myRef?.current?.scrollIntoView()
     };
     
 
@@ -99,6 +99,72 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> {option.name}
                                 </li>
                             )}
+                                {/* <li 
+                                    value='0'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('1970');
+                                            setTitleDate('1970')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1970
+                                </li>
+                                <li 
+                                    value='1'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('1971');
+                                            setTitleDate('1971')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1971
+                                </li>
+                                <li 
+                                    value='2'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('1972');
+                                            setTitleDate('1972')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                    ref={myRef}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1972
+                                </li>
+                                <li 
+                                    value='3'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('1973');
+                                            setTitleDate('1973')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1973
+                                </li>
+                                <li 
+                                    value='4'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('1974');
+                                            setTitleDate('1974')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                </li> */}
                         </ul>
 
                     </div>

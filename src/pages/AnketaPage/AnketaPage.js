@@ -3,16 +3,11 @@ import {Link, useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import './AnketaPage.css';
+import MyModal from "../../components/MyModal/MyModal";
 
 import {getWorkerId} from "../../http/chatAPI"
 
-import BlackFon from "../../image/background/Background_black_600X800.png";
-import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
-import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
-import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
-
-import btnMenu from "../../image/layers/icon_menu.png";
-import smallMenu from "../../image/layers/logo_04_light.png"
+import BlackFon from "../../image/new/fon_grad.svg";
 
 import btnApplyCancel from "../../image/newpassport/button_apply.png"
 import btnInfo from "../../image/newpassport/button_info.png"
@@ -24,20 +19,18 @@ const AnketaPage = () => {
     const {user} = useTelegram();
     const navigate = useNavigate();
 
+    const [headerName, setHeaderName] = useState('Моя аккредитация');
     const [showPage1, setShowPage1] = useState(true)
     const [showPage2, setShowPage2] = useState(false)
     const [showPage3, setShowPage3] = useState(false)
 
-    const [showGrad, setShowGrad] = useState(false)
-    const [showGrad2, setShowGrad2] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
     const [workerName, setWorkerName] = useState("")
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
-        setTimeout(() =>  setShowGrad(true), 4500) //градиент верх 
         
         const fetch = async() => {
            const worker = await getWorkerId(user?.id) //user?.id '1408579113'
@@ -66,25 +59,98 @@ const AnketaPage = () => {
         setShowPage1(false)
     }
 
+
+    const clickOtkaz = () => {
+        //navigate('/add-passport')
+        setShowModal(true)
+    }
+
+    const clickApply = () => {
+        //navigate('/add-passport')
+    }
+
     //---------------------------------------------------------------------------------------
 
     return (
         <div className="App">
-            <Header header={{title: '', icon: 'false'}}/>
+            {/* <Header header={{title: '', icon: 'false'}}/> */}
+            {/* <Header header={{title: `${headerName}`, icon: 'false'}}/> */}
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
             
-            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
-                <img src={Fon} alt='' className='fon-style-full' />
+            {/*аккредитация*/}   
+            <p className='header-passport'>
+                Моя аккредитация
+            </p>
+
+            <div className="container" style={{margin: '115px 25px'}}>
+                {/* ФИО */}
+                <article className="card" style={{position: 'absolute', top: '75px', height: '300px'}}>
+                    <div className="rectangle"><div className="rectangle2"><div className="rectangle3"></div></div></div>
+                    <div style={{
+                            position: 'relative',
+                            margin: '20px 25px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            fontStyle: 'normal',
+                            fontWeight: '500',
+                            fontSize: '16px',
+                            lineHeight: '20px',
+                            letterSpacing: '-0.045em',
+                            /* ULEY Светлый */
+                            color: '#E8F1F9',
+                            textAlign: 'left',
+                        }}>
+                        <p> Добрый день, {workerName}.</p> 
+                        <p>На связи система U.L.E.Y | Workhub.</p> 
+ 
+                    </div> 
+                    <div style={{
+                        fontStyle: 'normal',
+                        fontWeight: '400',
+                        fontSize: '14px',
+                        lineHeight: '17px',
+                        /* identical to box height */
+                        letterSpacing: '-0.045em',
+                        /* ULEY Светлый */
+                        color: '#E8F1F9',
+                        opacity: '0.4',
+                        padding: '5px 25px',
+                        textAlign: 'left',
+                    }}>
+                        <p>
+                            Служба безопасности требует предоставить информацию о специалистах приглашённых на проект, в этом случае участие возможно только после предоставления персональных данных.
+                        </p>
+                        <br/>
+                        <p>
+                            Для продолжения необходимо  согласие
+                        </p>
+                    </div> 
+
+                    <div className='block-button'>
+                        <div className='button1' onClick={clickOtkaz}>Отказываюсь</div>
+                        <div className='button2' onClick={clickApply}>Согласен</div>
+                    </div>   
+                </article>
             </div>
 
-            <img src={FonGradTop} alt='' className='fon-style-menu1' style={{visibility: showGrad ? "visible": "hidden"}}/>
-            <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
+            <MyModal visible={showModal} setVisible={setShowModal}>
+                <div className='info-card'>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
 
+                    <p className='vagno'>Ваш отказ принят</p>
+                    <p className='text-vagno' style={{textAlign: 'left'}}>Для продолжения работы на этом проекте необходимо  согласие. До встречи на других проектах!</p>
+                    <div className='button-ok' onClick={()=>setShowModal(false)}>
+                        <div className='rec-button'>Хорошо</div>
+                        
+                    </div>
+                </div>
+            </MyModal>
             
-            <div style={{display: 'flex', height: '100vh'}}>
-                {/* page1 */}
+            {/* <div style={{display: 'flex', height: '100vh'}}>
                 <div style={{display: showPage1 ? "block" : 'none', position: 'relative', zIndex: '10', height: '285px', margin: 'auto'}}>                  
                     <div style={{
                             margin: '20px 25px',
@@ -102,10 +168,9 @@ const AnketaPage = () => {
                         <button onClick={pagePassport} className="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Согласен предоставить персональные данные</button>
                         <button onClick={page3} className="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Отказываюсь от предоставления данных и участия в проекте</button>
                         <button onClick={page2} className="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Пояснения</button>
-                    </div>      
+                    </div>       
                 </div>
 
-                 {/* page2  */}
                  <div style={{display: showPage3 ? "block" : 'none', position: 'relative', zIndex: '10', height: '60px', margin: 'auto'}}>                  
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '0px 25px'}}> 
                         <p
@@ -122,7 +187,6 @@ const AnketaPage = () => {
                     </div>  
                 </div>
 
-                 {/* page3  */}
                  <div style={{display: showPage2 ? "block" : 'none', position: 'relative', zIndex: '10', height: '320px', margin: 'auto'}}>                  
                     <div
                         style={{
@@ -142,12 +206,8 @@ const AnketaPage = () => {
                         <button onClick={page3} className="image-button-anketa" style={{ backgroundImage: `url(${btnApplyCancel})`}}>Отказываюсь от предоставления данных и участия в проекте</button>
                     </div>      
                 </div>
-            </div>   
-
-            <div className='footer-block' style={{bottom: '0'}}>
-                <Link to={'/menu'}><img src={btnMenu} alt='' /></Link>
-                <img src={smallMenu} alt='' className='small-menu-icon' />
-            </div>     
+            </div>    */}
+    
         </div>
     );
 };

@@ -1,3 +1,17 @@
+.header-passport {
+    position: absolute; 
+    top: 25px; 
+    left: 25px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.045em;
+    
+    /* ULEY Светлый */
+    color: #E8F1F9;
+}
+
 .image-button-anketa {
     width: 330px;
     height: 49px;

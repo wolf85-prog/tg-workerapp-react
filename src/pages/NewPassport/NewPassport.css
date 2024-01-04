@@ -55,3 +55,18 @@
     margin-bottom: 20px;
     font-size: 16px;
 }
+
+.header-fio {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    letter-spacing: -0.045em;
+    /* ULEY Светлый */
+    color: #E8F1F9;
+    opacity: 0.4;
+}

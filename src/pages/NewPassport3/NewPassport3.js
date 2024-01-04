@@ -4,15 +4,8 @@ import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewPassport3.css';
 
-import BlackFon from "../../image/background/Background_black_600X800.png";
-import Fon from "../../image/icons/U.L.E.Y_triangle4_main2.png";
-import FonGradTop from "../../image/layers/upper_red_corner_menu2.png";
-import FonGradBottom from "../../image/layers/lower_blue_corner_menu.png";
-import FonGradWhite from "../../image/layers/grad_white.png";
-import btnNextSend from "../../image/newpassport/button_next_send.png"
-import btnBack from "../../image/newpassport/icon_back.png"
+import BlackFon from "../../image/new/fon_grad.svg";
 
-import smallMenu from "../../image/layers/logo_04_light.png"
 import {useTelegram} from "../../hooks/useTelegram";
 import TextField from '@mui/material/TextField';
 import { alpha, styled } from '@mui/material/styles';
@@ -64,12 +57,6 @@ const NewPassport3 = () => {
 
     const [showGrad, setShowGrad] = useState(false)
     const [showGrad2, setShowGrad2] = useState(false)
-
-
-    useEffect(() => {
-        setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
-        setTimeout(() =>  setShowGrad(true), 4500) //градиент верх 
-    })
 
     // useEffect(() => {
     //     if (pasPlaceborn && pasAdress && pasEmail) {
@@ -257,36 +244,10 @@ const NewPassport3 = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Моя анкета', icon: 'false'}}/>
+            <Header header={{title: 'Моя аккредитация', icon: 'false'}}/>
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
-            
-            <div style={{display: 'flex', height: '100vh', position: 'fixed', right: '0'}}>
-                <img src={Fon} alt='' className='fon-style-full' />
-            </div>
-
-            <img src={FonGradTop} alt='' className='fon-style-menu1' style={{visibility: showGrad ? "visible": "hidden"}}/>
-            <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/>
-
-            {/* {(error && !pasPlaceborn || !pasAdress || !pasEmail) && 
-                <div style={{
-                    color: 'red', 
-                    fontSize: '18px',
-                    position: 'absolute', 
-                    left: '0', 
-                    top: '70px', 
-                    right: '0', 
-                    marginLeft: 'auto', 
-                    marginRight: 'auto'}}>
-                        {error}
-                </div>
-            } */}
-
-            {/* белый градиент */}
-            <div  style={{display: 'flex', height: '100vh', position: 'absolute', zIndex: '2'}}>
-                <img src={FonGradWhite} alt='' className='fon-style-white'/>
-            </div>
 
             {/* Предупреждение */}
             <div style={{
@@ -294,20 +255,25 @@ const NewPassport3 = () => {
                         color: 'red', 
                         fontSize: '18px',
                         position: 'absolute',
-                        top: 'calc(30vh - 25px)',
+                        top: 'calc(20vh - 25px)',
                         width: '100%',
                     }}>{error}
             </div>
 
-            <div style={{display: 'flex', height: '100vh', padding: '0 25px', overflow: 'auto'}}>            
-                
-                {/* Чёрная плашка */}
-                <div className='form-new-passport'>
-                    
+            <div style={{display: 'flex', height: '100vh', padding: '0 25px'}}>            
+            
+                <div style={{width: '100%', marginTop: '40px'}}>
+                    <div className="header-fio">
+                        <p>Адрес</p>
+                        <p>Шаг 3/3</p>
+                    </div>
                     {/*Место рождения*/}
-                    <div style={{position: 'relative', marginTop: '30px', marginLeft: '25px', marginRight: '25px'}}>
+                    <div style={{position: 'relative', marginTop: '20px', width: '100%', height: '43px'}}>
+                        <div className='rec1-input'></div>
+                        <div className='rec2-input'></div>
+                        <div className='rec3-input'></div>
                         <input
-                            className='input-style2'
+                            className='input-style3'
                             placeholder='Место рождения'
                             id="worker_soname"
                             variant="filled"
@@ -318,9 +284,12 @@ const NewPassport3 = () => {
                     </div> 
 
                     {/* Адрес регистрации */}
-                    <div style={{marginLeft: '25px', marginRight: '25px'}}>
+                    <div style={{position: 'relative', marginTop: '20px', width: '100%', height: '43px'}}>
+                        <div className='rec1-input'></div>
+                        <div className='rec2-input'></div>
+                        <div className='rec3-input'></div>
                         <input
-                            className='input-style2'
+                            className='input-style3'
                             placeholder='Адрес регистрации'
                             id="worker_name"
                             variant="filled"
@@ -332,9 +301,12 @@ const NewPassport3 = () => {
                     
 
                     {/* Email */}
-                    <div style={{marginLeft: '25px', marginRight: '25px'}}>
-                       <input
-                            className='input-style2'
+                    <div style={{position: 'relative', marginTop: '20px', width: '100%', height: '43px'}}>
+                        <div className='rec1-input'></div>
+                        <div className='rec2-input'></div>
+                        <div className='rec3-input'></div>
+                        <input
+                            className='input-style3'
                             placeholder='Email'
                             id="worker_name"
                             variant="filled"
@@ -345,43 +317,26 @@ const NewPassport3 = () => {
                     </div> 
 
                     {/* Фото для аккредитации */}
-                    <div style={{marginLeft: '25px', marginRight: '25px'}}>
+                    <div style={{position: 'relative', marginTop: '20px', width: '100%', height: '43px'}}>
+                        <div className='rec1-input'></div>
+                        <div className='rec2-input'></div>
+                        <div className='rec3-input'></div>
                         <div className="file-upload">
                         <p>{selectedName || "Фото для аккредитации"}</p><img src={uploadImg} alt="upload" width={30} height={30} />
                         <input
-                                type="file" 
-                                name="photo" 
-                                onChange={handleFileChange}
-                            /> 
+                            className='input-style3'
+                            type="file" 
+                            name="photo" 
+                            onChange={handleFileChange}
+                        /> 
                         </div> 
-                    </div>    
+                    </div>  
 
-                        {/* <button 
-                            // disabled={disabledBtn}
-                            className="image-button-pas" 
-                            style={{ backgroundImage: `url(${btnNextSend})`}}
-                            onClick={pressNext}
-                        >
-                            Отправить анкету
-                        </button> */}
-                </div>
+                    <div className='block-button' style={{padding: '0'}}>
+                        <div className='button1' >Назад</div>
+                        <div className='button2' onClick={pressNext}>Подтвердить</div>
+                    </div>   
 
-
-                
-                {/* <MyButton style={{marginBottom: "15px", width: "150px"}} onClick={handleSubmit}>Отправить</MyButton> */}
-
-                {/* <div className='block-buttons-new2'>
-                    <Link to={'/add-passport2'}><MyButton style={{width: "80px", background: '#3f4052', border: '1px solid #3f4052'}}>Назад</MyButton></Link>
-                    <MyButton onClick={pressNext} style={{width: "auto", background: '#3f4052', border: '1px solid #3f4052'}}>Сохранить</MyButton>
-                </div> */}
-
-                {/* <div style={{position: 'fixed', bottom: '25px', right: '0'}}>
-                    <img src={smallMenu} alt='' style={{position: 'relative', marginRight: '25px', width: '120px'}} />
-                </div> */}
-
-                <div className='footer-block' style={{position: 'fixed', bottom: '25px', right: '0'}}>
-                    <Link to={'/add-passport2'}><img src={btnBack} alt='' /></Link>
-                    <img src={smallMenu} alt='' className='small-menu-icon' />
                 </div>
 
             </div>
