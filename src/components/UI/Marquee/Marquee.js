@@ -7,7 +7,7 @@ import WorkerItem from "../../WorkerItem/WorkerItem";
 // 2. Defining Variants
 const marqueeVariants = {
   animate: {
-    x: [150, 0],
+    x: [150, 25],
     transition: {
       x: {
         repeat: Infinity,
@@ -31,9 +31,9 @@ const Marquee = ({workers, workerFam, workerName, phone, city, dateborn}) => {
                 >
                     {workers ? 
                     <div style={{display: 'flex'}}>
-                        {workers.map((worker) =>
-                            <WorkerItem worker={worker} key={worker.id} />
-                        )}
+                        {workers.map((worker) => 
+                              worker.spec
+                        ).join(' | ')}      
                     </div>
                     : workerFam ?
                     <p className='fio-text'>{workerFam} {workerName} | {phone}</p>

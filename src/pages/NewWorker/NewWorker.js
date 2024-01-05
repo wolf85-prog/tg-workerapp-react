@@ -67,6 +67,8 @@ const NewWorker = () => {
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const [showBegun, setShowBegun] = useState(false)
+
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
@@ -169,6 +171,10 @@ const NewWorker = () => {
         setTitleSpec("")
 
         setShowBlockFam(true)
+
+        setTimeout(()=> {
+            setShowBegun(true)
+        }, 5000)
     }
 
     {/* Удаление специальности */}
@@ -343,8 +349,10 @@ const NewWorker = () => {
                     zIndex: 20,
                     paddingTop: '15px',
                 }}>
+                    {showBegun ? 
                     <Marquee workers={workers}/>
-                    {/* <WorkerList remove={removeWorker} workers={workers} /> */}
+                    : <WorkerList remove={removeWorker} workers={workers} />
+                    }
                 </div>  
 
                 {/*кнопка Добавить*/}
