@@ -110,8 +110,8 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchData = async() => { 
             const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
-            console.log("worker: ", worker.length) 
-            console.log(worker[0]?.id)
+            //console.log("worker: ", worker.length) 
+            //console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
             setSpecId(worker[0]?.id)
             
