@@ -7,7 +7,7 @@ import WorkerItem from "../../WorkerItem/WorkerItem";
 // 2. Defining Variants
 const marqueeVariants = {
   animate: {
-    x: [100, 25],
+    x: [200, -155],
     transition: {
       x: {
         repeat: Infinity,

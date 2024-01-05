@@ -322,13 +322,15 @@ const NewWorker = () => {
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
 
+            <img src={BlackFon} alt='' className='fon-black' style={{right: '-50%', zIndex: '1'}} />
+
             {/*Специализация*/}   
-            <p style={{position: 'absolute', top: '25px', left: '25px', fontSize: '17px', color: '#fff'}}>
+            <p style={{position: 'absolute', top: '25px', left: '25px', fontSize: '17px', color: '#fff', zIndex: '5'}}>
                 Выберите свою специальность
             </p>
 
                        
-            <div style={{position: 'relative', marginTop: '80px', marginLeft: '25px', marginRight: '25px'}}>
+            <div style={{position: 'relative', marginTop: '80px', marginLeft: '25px', marginRight: '25px', zIndex: '100'}}>
                 <p className='cat-title' style={{display: titleCat ? 'none' : 'block'}}>Категория...</p>  
                 <NewSelect
                     id="category"
@@ -339,7 +341,7 @@ const NewWorker = () => {
                 /> 
             </div>
                           
-            <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px'}}>
+            <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px', zIndex: '99'}}>
                 <p className='spec-title' style={{display: titleSpec ? 'none' : 'block'}}>Специальность...</p> 
                 <NewSelect2
                     disabled={disabled}
@@ -359,10 +361,13 @@ const NewWorker = () => {
                     zIndex: 20,
                     paddingTop: '15px',
                 }}>
-                    {showBegun ? 
-                    <Marquee workers={workers}/>
-                    : <WorkerList remove={removeWorker} workers={workers} />
-                    }
+                    <WorkerList remove={removeWorker} workers={workers} />
+                    
+                    {/* {showBegun ? 
+                    <Marquee workers={workers}/> 
+                    : 
+                    <WorkerList remove={removeWorker} workers={workers} />
+                     } */}
                 </div>  
 
                 {/*кнопка Добавить*/}
@@ -379,7 +384,7 @@ const NewWorker = () => {
             
             <div style={{display: showBlockFam ? 'block' : 'none'}}>
                 {/* Фамилия */}
-                <div style={{position: 'relative', marginTop: '50px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
+                <div style={{position: 'relative', marginTop: '40px', marginLeft: '30px', marginRight: '30px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
@@ -394,7 +399,7 @@ const NewWorker = () => {
                 </div>
 
                 {/* Имя */}
-                <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
+                <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
@@ -408,7 +413,7 @@ const NewWorker = () => {
                 </div>         
 
                 {/* Номер телефона */}
-                <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
+                <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
@@ -455,7 +460,7 @@ const NewWorker = () => {
 
             <div style={{display: showBlockCity ? 'block' : 'none'}}>
                     {/*Город*/}
-                <div style={{position: 'relative', marginTop: '70px', marginLeft: '30px', marginRight: '30px', height: '43px'}}>
+                <div style={{position: 'relative', marginTop: '50px', marginLeft: '30px', marginRight: '30px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
@@ -469,7 +474,7 @@ const NewWorker = () => {
                 </div>
                             
                 {/*Год рождения*/}
-                <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px'}}>
+                <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px', zIndex: '99'}}>
                 <p className='cat-title' style={{display: titleDate ? 'none' : 'block'}}>Год рождения</p>   
                     <NewSelect3
                         id="dateborn"
@@ -487,7 +492,8 @@ const NewWorker = () => {
                     {showDate && 
                     showBegun3 ? 
                     <Marquee city={city} dateborn={dateborn} />
-                    :<p className='fio-text' style={{display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p>
+                    :
+                    <p className='fio-text' style={{display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p>
                     }
 
                     
