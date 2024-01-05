@@ -106,9 +106,6 @@ const EditWorker = () => {
     // 1. при выборе нового значения в категории
     const onCategoriesSelectChange = (e) => {
 
-        // console.log(e.target.value)
-        // setSelectedElement(e.target.value);
-
         // преобразуем выбранное значение опции списка в число - идентификатор категории
         //const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
         const categoryId = e.target.value //parseInt(e.target.value);

@@ -39,8 +39,12 @@ import Friend from "../../image/new/button_plus.png"
 import callPoster from "../../image/call_poster.png"
 import BlackFon from "../../image/new/fon_grad.svg";
 import DohodOpen from "../../image/new/dohodOpen.png";
+import btnSave from "../../image/buttons/btn_add.png"
 
-
+import specData from "../../data/specData"
+import NewSelect from '../../components/UI/NewSelect/NewSelect';
+import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
+import Marquee from '../../components/UI/Marquee/Marquee';
 
 const ProfilePage = () => {
     const {tg, user} = useTelegram();
@@ -76,7 +80,22 @@ const ProfilePage = () => {
     const [showModal, setShowModal] = useState(false);
     const [modal, setModal] = useState(false)
     const [showInfo, setShowInfo] = useState(false)
+    const [showAddSpec, setShowAddSpec] = useState(false)
 
+    //категории
+    const [categories, setCategories] = useState([]);
+    //специальности
+    const [models, setModels] = useState([]);
+
+    //select
+    const [selectedElement, setSelectedElement] = useState("")
+    const [disabledBtn, setDisabledBtn] = useState(true)
+    const [disabled, setDisabled] = useState(true)
+    const [titleCat, setTitleCat] = useState(false)
+    const [titleSpec, setTitleSpec] = useState(false)
+
+    const {worker, setWorker, workers, setWorkers} = useUsersContext();
+    const [showSpec, setShowSpec] = useState(false)
     //const [summa, setSumma] = useState(0); 
   
     const randomNumberInRange = (min, max) => { 
@@ -397,6 +416,85 @@ const ProfilePage = () => {
         }
     }
 
+
+
+
+
+    // при первой загрузке приложения выполнится код ниже
+    useEffect(() => {
+
+        //отправляем в админку сообщение
+        //sendMyMessage(user?.id)
+
+        // устанавливаем категории
+        if (specData.length > 0 && specData) {
+            setCategories(specData);
+        }
+
+        // и модели из первой категории по умолчанию
+        if (specData.length > 0 && specData[0].models && specData[0].models.length > 0) {
+            setModels(specData[0].models);
+        }
+
+    }, []);
+
+    // 1. при выборе нового значения в категории
+    const onCategoriesSelectChange = (e) => {
+
+        // преобразуем выбранное значение опции списка в число - идентификатор категории
+        //const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
+        const categoryId = e.target.value //parseInt(e.target.value);
+        // получаем из массива категорий объект категории по соответствующему идентификатору
+        const category = categories.find(item => item.id === categoryId);
+        const catSelect = category.icon; //capitalizeFirst(category.name);
+        const iconCatSelect = category.icon;
+
+        setWorker({...worker, cat: catSelect, icon: iconCatSelect})
+
+        // выбираем все модели в категории, если таковые есть
+        const models = category.models && category.models.length > 0
+            ? category.models
+            : [{ id: 0, name: 'Нет моделей', items: [] }];
+
+        // меняем модели во втором списке
+        setModels(models);
+
+        setDisabled(false)
+        setTitleSpec("")
+    }
+
+    // 2. выбор специальности
+    const onSpecSelectChange = (e) => {
+        setSelectedElement(e.target.value);
+
+        const modelId = e.target.value //parseInt(e.target.options[e.target.selectedIndex].value);
+        const model = models.find(item => item.id === modelId);
+
+        setWorker({...worker, spec: model.name})
+
+        setDisabledBtn(false)
+    }
+
+
+    {/* Добавление специальности */}
+    const addNewWorker = (e) => {
+        e.preventDefault();
+
+        if (worker.cat !== '' || worker.spec !== '') {
+            setWorkers([...workers, {...worker, id: Date.now()}])
+        }
+
+        setWorker({cat: '', spec: '', icon: ''})
+        setSelectedElement("");
+
+        setDisabled(true);
+        setShowSpec(false)
+        setDisabledBtn(true);
+
+        setTitleCat("")
+        setTitleSpec("")
+    }
+
     //---------------------------------------------------------------------------------------
 
     return (
@@ -417,7 +515,7 @@ const ProfilePage = () => {
                         <div className="card-specs bullet">
                             <ul>
                                 {workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' 
-                                ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={()=>navigate('/edit-worker')} alt='' style={{marginLeft: '20px'}}/>}</li>
+                                ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={()=>setShowAddSpec(true)} alt='' style={{marginLeft: '20px'}}/>}</li>
                                 : '' )}
                             </ul>   
                         </div>     
@@ -645,6 +743,67 @@ const ProfilePage = () => {
                         <div className='rec-button'>Хорошо</div>
                         
                     </div>
+                </div>
+            </MyModal>
+
+
+            <MyModal visible={showAddSpec} setVisible={setShowAddSpec}>
+                <div className='info-card'>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <img onClick={()=>setShowAddSpec(false)} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
+
+                    <p className='vagno'>Добавить специальность</p>
+                    <div style={{position: 'relative', marginTop: '80px', marginLeft: '25px', marginRight: '25px'}}>
+                        <p className='cat-title' style={{display: titleCat ? 'none' : 'block'}}>Категория...</p>  
+                        <NewSelect
+                            id="category"
+                            options={categories}
+                            titleCat={titleCat}
+                            setTitleCat={setTitleCat}
+                            onChange={onCategoriesSelectChange}
+                        /> 
+                    </div>
+                                
+                    <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px'}}>
+                        <p className='spec-title' style={{display: titleSpec ? 'none' : 'block'}}>Специальность...</p> 
+                        <NewSelect2
+                            disabled={disabled}
+                            id="model"
+                            options={models}
+                            titleSpec={titleSpec}
+                            setTitleSpec={setTitleSpec}
+                            onChange={onSpecSelectChange}
+                        />
+                    </div>
+
+                    <div style={{position: 'relative', marginTop: '10px', marginRight: '25px'}}>
+                        {/*список работников*/}
+                        <div style={{
+                            boxSizing: 'border-box', 
+                            height: 'auto', 
+                            zIndex: 20,
+                            paddingTop: '15px',
+                        }}>
+                            <Marquee workers={workers}/>
+                            {/* <WorkerList remove={removeWorker} workers={workers} /> */}
+                        </div>  
+
+                        {/*кнопка Добавить*/}
+                        <button 
+                            disabled={disabledBtn}
+                            className="image-button-add" 
+                            style={{ backgroundImage: `url(${btnSave})`}}
+                            onClick={addNewWorker}
+                        >
+                            Добавить
+                        </button> 
+                    </div>
+                    {/* <div className='button-ok' onClick={()=>setShowAddSpec(false)}>
+                        <div className='rec-button'>Добавить</div>                     
+                    </div> */}
                 </div>
             </MyModal>
             
