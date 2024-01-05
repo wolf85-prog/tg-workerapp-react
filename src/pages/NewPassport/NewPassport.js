@@ -206,7 +206,7 @@ const NewPassport = () => {
                     </div>
                         
                     <div className='block-button' style={{padding: '0'}}>
-                        <div className='button1' >Назад</div>
+                        <div className='button1' onClick={()=>navigate('/anketa')}>Назад</div>
                         <div className='button2' onClick={pressNext}>Далее</div>
                     </div>  
                 </div>  

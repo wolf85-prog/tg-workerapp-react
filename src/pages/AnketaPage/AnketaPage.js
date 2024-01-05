@@ -66,7 +66,7 @@ const AnketaPage = () => {
     }
 
     const clickApply = () => {
-        //navigate('/add-passport')
+        navigate('/add-passport')
     }
 
     //---------------------------------------------------------------------------------------
@@ -142,7 +142,10 @@ const AnketaPage = () => {
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'>Ваш отказ принят</p>
-                    <p className='text-vagno' style={{textAlign: 'left'}}>Для продолжения работы на этом проекте необходимо  согласие. До встречи на других проектах!</p>
+                    <div className='text-vagno' style={{textAlign: 'left'}}>
+                        <p>Для продолжения работы на этом проекте необходимо  согласие.</p>
+                        <p>До встречи на других проектах!</p>
+                    </div>
                     <div className='button-ok' onClick={()=>setShowModal(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
