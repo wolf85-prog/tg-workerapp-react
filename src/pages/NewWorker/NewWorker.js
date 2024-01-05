@@ -68,6 +68,8 @@ const NewWorker = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const [showBegun, setShowBegun] = useState(false)
+    const [showBegun2, setShowBegun2] = useState(false)
+    const [showBegun3, setShowBegun3] = useState(false)
 
 //----------------------------------------------------------------------------------
 
@@ -185,6 +187,10 @@ const NewWorker = () => {
     const addNewWorker2 = (e) => {
         setShowFIO(true)
         setShowBlockCity(true)
+
+        setTimeout(()=> {
+            setShowBegun2(true)
+        }, 5000)
     }
 
     const editNewWorker2 = (e) => {
@@ -194,6 +200,10 @@ const NewWorker = () => {
     const addNewWorker3 = () => {
         setShowDate(true)
         setShowApply(true)
+
+        setTimeout(()=> {
+            setShowBegun3(true)
+        }, 5000)
     }
 
 
@@ -416,7 +426,11 @@ const NewWorker = () => {
 
                 <div style={{position: 'relative', marginTop: '10px', marginRight: '25px'}}>
                     {/* <p className='fio-text' style={{display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p> */}
-                    {showFIO && <Marquee workerFam={workerFam} workerName={workerName} phone={phone}/>}
+                    {showFIO && 
+                    showBegun2 ? 
+                    <Marquee workerFam={workerFam} workerName={workerName} phone={phone}/>
+                    : <p className='fio-text' style={{display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p>
+                    }
 
                     {!showFIO ? 
                     <button 
@@ -470,7 +484,13 @@ const NewWorker = () => {
 
                 <div style={{position: 'relative', marginTop: '10px', marginRight: '25px'}}>
                     {/* <p className='fio-text' style={{display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p> */}
-                    {showDate && <Marquee city={city} dateborn={dateborn} />}
+                    {showDate && 
+                    showBegun3 ? 
+                    <Marquee city={city} dateborn={dateborn} />
+                    :<p className='fio-text' style={{display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p>
+                    }
+
+                    
 
                     {!showApply ? 
                     <button 
