@@ -211,10 +211,6 @@ const NewWorker = () => {
     const addNewWorker2 = (e) => {
         setShowFIO(true)
         setShowBlockCity(true)
-
-        setTimeout(()=> {
-            setShowBegun2(true)
-        }, 5000)
     }
 
     const editNewWorker2 = (e) => {
@@ -224,10 +220,6 @@ const NewWorker = () => {
     const addNewWorker3 = () => {
         setShowDate(true)
         setShowApply(true)
-
-        setTimeout(()=> {
-            setShowBegun3(true)
-        }, 5000)
     }
 
 
@@ -418,11 +410,12 @@ const NewWorker = () => {
                     boxSizing: 'border-box', 
                     height: 'auto', 
                     zIndex: 20,
+                    // marginTop: '15px',
                 }}>
                     {/* <WorkerList remove={removeWorker} workers={workers} width={width} /> */}
                     {showBlockFam && 
                         showBegun && widthD < widthStr ? 
-                        <Marquee workers={workers} width={widthDX} /> 
+                        <div className='fio-text'><Marquee workers={workers} width={widthDX} /></div> 
                         : 
                         <div className='fio-text'><WorkerList remove={removeWorker} workers={workers} width={width} /></div>
                     }
@@ -490,7 +483,7 @@ const NewWorker = () => {
                 <div style={{position: 'relative', marginTop: '10px', marginRight: '25px', textAlign: 'left'}}>
                     {/* <p className='fio-text' style={{display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p> */}
                     {showFIO && 
-                        showBegun2 && //widthD < widthStr2 ? 
+                        //showBegun2 && widthD < widthStr2 ? 
                         //<Marquee workerFam={workerFam} workerName={workerName} phone={phone} width={widthDX} />
                         //: 
                         <p className='fio-text' style={{marginLeft: '25px', display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p>
