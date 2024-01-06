@@ -2,24 +2,26 @@ import React from 'react';
 // 1. Importing framer-motion
 import { motion } from "framer-motion";
 import "./Marquee.css";
-import WorkerItem from "../../WorkerItem/WorkerItem";
 
-// 2. Defining Variants
-const marqueeVariants = {
-  animate: {
-    x: [200, -155],
-    transition: {
-      x: {
-        repeat: Infinity,
-        repeatType: "loop",
-        duration: 15,
-        ease: "linear",
+
+
+const Marquee = ({width, workers, workerFam, workerName, phone, city, dateborn}) => {
+
+  // 2. Defining Variants
+  const marqueeVariants = {
+    animate: {
+      x: [width, -155],
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 15,
+          ease: "linear",
+        },
       },
     },
-  },
-};
-
-const Marquee = ({workers, workerFam, workerName, phone, city, dateborn}) => {
+  };
+  
     return (
         <div>
             <div className="marquee">

@@ -18,6 +18,7 @@ import NewSelect3 from '../../components/UI/NewSelect3/NewSelect3';
 import specData from "../../data/specData"
 import { useUsersContext } from "./../../contexts/UserContext";
 import { sendMyMessage } from '../../http/chatAPI';
+import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 
 import InputMask from 'react-input-mask';
 
@@ -71,10 +72,14 @@ const NewWorker = () => {
     const [showBegun2, setShowBegun2] = useState(false)
     const [showBegun3, setShowBegun3] = useState(false)
 
+    const { height, width } = useWindowDimensions();
+
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
+
+        console.log("width: ", width)
 
         //отправляем в админку сообщение
         //sendMyMessage(user?.id)
@@ -316,13 +321,19 @@ const NewWorker = () => {
 
     //-------------------------------------------------------------------
 
+    //длина окна
+    let widthD = width - (131 + 25*2)
+
+    let widthDX = width - (131 + 25*2)
+    //console.log("widthD: ", widthD)
+
     return (
         <div className="App">
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
 
-            <img src={BlackFon} alt='' className='fon-black' style={{right: '-50%', zIndex: '1'}} />
+            <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
 
             {/*Специализация*/}   
             <p style={{position: 'absolute', top: '25px', left: '25px', fontSize: '17px', color: '#fff', zIndex: '5'}}>
@@ -361,13 +372,13 @@ const NewWorker = () => {
                     zIndex: 20,
                     paddingTop: '15px',
                 }}>
-                    <WorkerList remove={removeWorker} workers={workers} />
+                    {/* <WorkerList remove={removeWorker} workers={workers} width={width} /> */}
                     
-                    {/* {showBegun ? 
-                    <Marquee workers={workers}/> 
+                    {showBegun ? 
+                    <Marquee workers={workers} width={widthD} /> 
                     : 
-                    <WorkerList remove={removeWorker} workers={workers} />
-                     } */}
+                    <WorkerList remove={removeWorker} workers={workers} width={width} />
+                     }
                 </div>  
 
                 {/*кнопка Добавить*/}
