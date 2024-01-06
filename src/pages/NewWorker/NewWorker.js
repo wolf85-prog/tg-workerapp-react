@@ -73,12 +73,35 @@ const NewWorker = () => {
     const [widthD, setWidthD] = useState(0)
     const [widthDX, setWidthDX] = useState(0)
 
+    const [widthStr2, setWidthStr2] = useState(0)
+    const [widthStr3, setWidthStr3] = useState(0)
+
 //----------------------------------------------------------------------------------
+
+    useEffect(() => {
+        let str = ''
+        str = `${workerFam} ${workerName} | ${phone}`
+
+        let canvas = document.createElement('canvas');
+        let ctx = canvas.getContext("2d");
+        ctx.font = "16px Arial";        
+        let widthX = Math.round(ctx.measureText(str).width);
+
+        setWidthStr2(widthX)
+    }, [workerFam, workerName, phone])
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
 
-        console.log("widthStr: ", widthStr)
+        let str = ''
+        str = `${workerFam} ${workerName} | ${phone}`
+
+        let canvas = document.createElement('canvas');
+        let ctx = canvas.getContext("2d");
+        ctx.font = "16px Arial";        
+        let widthX = Math.round(ctx.measureText(str).width);
+
+        setWidthStr2(widthX)
 
         //отправляем в админку сообщение
         //sendMyMessage(user?.id)
@@ -328,6 +351,12 @@ const NewWorker = () => {
             if (widthStr > widthD) {
                 setShowBegun(true)
             }
+            // if (widthStr2 > widthD) {
+            //     setShowBegun2(true)
+            // }
+            // if (widthStr3 > widthD) {
+            //     setShowBegun3(true)
+            // }
         }, 5000)
 
 
@@ -335,6 +364,12 @@ const NewWorker = () => {
             if (widthStr > widthD) {
                 setShowBegun(false)
             }
+            // if (widthStr2 > widthD) {
+            //     setShowBegun2(false)
+            // }
+            // if (widthStr3 > widthD) {
+            //     setShowBegun3(false)
+            // }
         }, 20000);
 
     }, [widthStr])
@@ -345,9 +380,7 @@ const NewWorker = () => {
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
-
             <img src={BlackFon} alt='' className='fon-black' style={{left: `${20 - width}px`, zIndex: '1'}} />
-
             <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
 
             {/*Специализация*/}   
@@ -385,14 +418,13 @@ const NewWorker = () => {
                     boxSizing: 'border-box', 
                     height: 'auto', 
                     zIndex: 20,
-                    paddingTop: '15px',
                 }}>
                     {/* <WorkerList remove={removeWorker} workers={workers} width={width} /> */}
                     {showBlockFam && 
                         showBegun && widthD < widthStr ? 
                         <Marquee workers={workers} width={widthDX} /> 
                         : 
-                        <WorkerList remove={removeWorker} workers={workers} width={width} />
+                        <div className='fio-text'><WorkerList remove={removeWorker} workers={workers} width={width} /></div>
                     }
                 </div>  
 
@@ -410,7 +442,7 @@ const NewWorker = () => {
             
             <div style={{display: showBlockFam ? 'block' : 'none'}}>
                 {/* Фамилия */}
-                <div style={{position: 'relative', marginTop: '40px', marginLeft: '30px', marginRight: '30px', height: '43px', zIndex: '3'}}>
+                <div style={{position: 'relative', marginTop: '40px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
@@ -425,7 +457,7 @@ const NewWorker = () => {
                 </div>
 
                 {/* Имя */}
-                <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px', zIndex: '3'}}>
+                <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
@@ -439,7 +471,7 @@ const NewWorker = () => {
                 </div>         
 
                 {/* Номер телефона */}
-                <div style={{position: 'relative', marginTop: '20px', marginLeft: '30px', marginRight: '30px', height: '43px', zIndex: '3'}}>
+                <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
@@ -455,13 +487,15 @@ const NewWorker = () => {
                     </InputMask>
                 </div>
 
-                <div style={{position: 'relative', marginTop: '10px', marginRight: '25px'}}>
+                <div style={{position: 'relative', marginTop: '10px', marginRight: '25px', textAlign: 'left'}}>
                     {/* <p className='fio-text' style={{display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p> */}
                     {showFIO && 
-                    showBegun2 ? 
-                    <Marquee workerFam={workerFam} workerName={workerName} phone={phone}/>
-                    : <p className='fio-text' style={{display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p>
+                        showBegun2 && //widthD < widthStr2 ? 
+                        //<Marquee workerFam={workerFam} workerName={workerName} phone={phone} width={widthDX} />
+                        //: 
+                        <p className='fio-text' style={{marginLeft: '25px', display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p>
                     }
+
 
                     {!showFIO ? 
                     <button 
@@ -486,7 +520,7 @@ const NewWorker = () => {
 
             <div style={{display: showBlockCity ? 'block' : 'none'}}>
                     {/*Город*/}
-                <div style={{position: 'relative', marginTop: '50px', marginLeft: '30px', marginRight: '30px', height: '43px', zIndex: '3'}}>
+                <div style={{position: 'relative', marginTop: '50px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
@@ -513,13 +547,13 @@ const NewWorker = () => {
                     />
                 </div>
 
-                <div style={{position: 'relative', marginTop: '10px', marginRight: '25px'}}>
+                <div style={{position: 'relative', marginTop: '10px', marginRight: '25px', textAlign: 'left'}}>
                     {/* <p className='fio-text' style={{display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p> */}
                     {showDate && 
-                    showBegun3 ? 
-                    <Marquee city={city} dateborn={dateborn} />
-                    :
-                    <p className='fio-text' style={{display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p>
+                        //showBegun3 ? 
+                        //<Marquee city={city} dateborn={dateborn} />
+                        //:
+                        <p className='fio-text' style={{marginLeft: '25px', display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p>
                     }
 
                     

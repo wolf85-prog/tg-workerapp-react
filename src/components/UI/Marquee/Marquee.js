@@ -17,6 +17,7 @@ const Marquee = ({width, workers, workerFam, workerName, phone, city, dateborn})
           repeatType: "loop",
           duration: 10,
           ease: "linear",
+          repeatDelay: 3,
         },
       },
     },
