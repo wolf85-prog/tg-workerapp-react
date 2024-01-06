@@ -10,12 +10,12 @@ const Marquee = ({width, workers, workerFam, workerName, phone, city, dateborn})
   // 2. Defining Variants
   const marqueeVariants = {
     animate: {
-      x: [width, -155],
+      x: [25, width-55],
       transition: {
         x: {
           repeat: Infinity,
           repeatType: "loop",
-          duration: 15,
+          duration: 10,
           ease: "linear",
         },
       },

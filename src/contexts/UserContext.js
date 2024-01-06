@@ -44,6 +44,8 @@ const UserProvider = ({ children }) => {
 	const [pasAdress, setPasAdress] = useState('');
 	const [pasEmail, setPasEmail] = useState('');
 
+	const [widthStr, setWidthStr] = useState(0)
+
 	// при первой загрузке приложения выполнится код ниже
     useEffect(() => {
 
@@ -109,6 +111,8 @@ const UserProvider = ({ children }) => {
 			workerhub,
 			summa,
 			setSumma,
+			widthStr, 
+			setWidthStr
 		}}>
 			{children}
 		</UserContext.Provider>

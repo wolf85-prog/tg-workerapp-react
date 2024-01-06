@@ -27,12 +27,8 @@ const API_URL = process.env.REACT_APP_API_URL
 const NewWorker = () => {
     const {tg, queryId, user} = useTelegram();
     const navigate = useNavigate();
-    const handleClick = () => navigate(-1);
 
-    const [showGrad, setShowGrad] = useState(false)
-    const [showGrad2, setShowGrad2] = useState(false)
-
-    const {worker, setWorker, workers, setWorkers} = useUsersContext();
+    const {worker, setWorker, workers, setWorkers, widthStr, setWidthStr} = useUsersContext();
     const { workerFam, setWorkerFam, workerName, setWorkerName, phone, setPhone } = useUsersContext();
     const {city, setCity, dateborn, setDateborn} = useUsersContext();
 
@@ -74,12 +70,15 @@ const NewWorker = () => {
 
     const { height, width } = useWindowDimensions();
 
+    const [widthD, setWidthD] = useState(0)
+    const [widthDX, setWidthDX] = useState(0)
+
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
 
-        console.log("width: ", width)
+        console.log("widthStr: ", widthStr)
 
         //отправляем в админку сообщение
         //sendMyMessage(user?.id)
@@ -178,10 +177,7 @@ const NewWorker = () => {
         setTitleSpec("")
 
         setShowBlockFam(true)
-
-        setTimeout(()=> {
-            setShowBegun(true)
-        }, 5000)
+        
     }
 
     {/* Удаление специальности */}
@@ -321,12 +317,24 @@ const NewWorker = () => {
 
     //-------------------------------------------------------------------
 
-    //длина окна
-    let widthD = width - (131 + 25*2)
+    useEffect(() => {
+        //длина окна
+        const widthD = width - (131 + 25*2)
+        setWidthD(widthD)
 
-    let widthDX = width - (131 + 25*2)
-    //console.log("widthD: ", widthD)
+        setWidthDX(widthD - widthStr)
 
+        //console.log("widthDX: ", widthDX)
+
+        if (widthStr > widthD) {
+            setTimeout(()=> {
+                 setShowBegun(true)
+            }, 3000) 
+        }
+    }, [widthStr])
+
+
+    
     return (
         <div className="App">
 
@@ -373,12 +381,12 @@ const NewWorker = () => {
                     paddingTop: '15px',
                 }}>
                     {/* <WorkerList remove={removeWorker} workers={workers} width={width} /> */}
-                    
-                    {showBegun ? 
-                    <Marquee workers={workers} width={widthD} /> 
-                    : 
-                    <WorkerList remove={removeWorker} workers={workers} width={width} />
-                     }
+                    {showBlockFam && 
+                        showBegun && widthD < widthStr ? 
+                        <Marquee workers={workers} width={widthDX} /> 
+                        : 
+                        <WorkerList remove={removeWorker} workers={workers} width={width} />
+                    }
                 </div>  
 
                 {/*кнопка Добавить*/}
