@@ -319,20 +319,25 @@ const NewWorker = () => {
 
     useEffect(() => {
         //длина окна
-        const widthD = width - (131 + 25*2)
+        const widthD = width - (131 + 25)
         setWidthD(widthD)
 
         setWidthDX(widthD - widthStr)
 
-        //console.log("widthDX: ", widthDX)
+        setInterval(()=> {
+            if (widthStr > widthD) {
+                setShowBegun(true)
+            }
+        }, 5000)
 
-        if (widthStr > widthD) {
-            setTimeout(()=> {
-                 setShowBegun(true)
-            }, 3000) 
-        }
+
+        setInterval(()=> {
+            if (widthStr > widthD) {
+                setShowBegun(false)
+            }
+        }, 20000);
+
     }, [widthStr])
-
 
     
     return (
@@ -340,6 +345,8 @@ const NewWorker = () => {
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
+
+            <img src={BlackFon} alt='' className='fon-black' style={{left: `${20 - width}px`, zIndex: '1'}} />
 
             <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
 

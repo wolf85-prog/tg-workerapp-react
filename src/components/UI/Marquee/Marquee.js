@@ -13,7 +13,7 @@ const Marquee = ({width, workers, workerFam, workerName, phone, city, dateborn})
       x: [25, width-55],
       transition: {
         x: {
-          repeat: Infinity,
+          repeat: 0,
           repeatType: "loop",
           duration: 10,
           ease: "linear",
