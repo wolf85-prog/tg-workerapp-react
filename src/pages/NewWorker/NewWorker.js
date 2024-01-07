@@ -28,7 +28,7 @@ const NewWorker = () => {
     const {tg, queryId, user} = useTelegram();
     const navigate = useNavigate();
 
-    const {worker, setWorker, workers, setWorkers, widthStr, setWidthStr} = useUsersContext();
+    const {worker, setWorker, workers, setWorkers, widthStr, setWidthStr, str} = useUsersContext();
     const { workerFam, setWorkerFam, workerName, setWorkerName, phone, setPhone } = useUsersContext();
     const {city, setCity, dateborn, setDateborn} = useUsersContext();
 
@@ -93,13 +93,13 @@ const NewWorker = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
 
-        let str = ''
-        str = `${workerFam} ${workerName} | ${phone}`
+        let str2 = ''
+        str2 = `${workerFam} ${workerName} | ${phone}`
 
         let canvas = document.createElement('canvas');
         let ctx = canvas.getContext("2d");
         ctx.font = "16px Arial";        
-        let widthX = Math.round(ctx.measureText(str).width);
+        let widthX = Math.round(ctx.measureText(str2).width);
 
         setWidthStr2(widthX)
 
@@ -339,30 +339,33 @@ const NewWorker = () => {
 
         setWidthDX(widthD - widthStr)
 
+        console.log("str: ",widthStr,  widthD - widthStr)
+
         setInterval(()=> {
             if (widthStr > widthD) {
+                //console.log("str: ", str*1000)
                 setShowBegun(true)
             }
-            // if (widthStr2 > widthD) {
-            //     setShowBegun2(true)
-            // }
-            // if (widthStr3 > widthD) {
-            //     setShowBegun3(true)
-            // }
-        }, 5000)
+            if (widthStr2 > widthD) {
+                setShowBegun2(true)
+            }
+            if (widthStr3 > widthD) {
+                setShowBegun3(true)
+            }
+        }, 3000)
 
 
         setInterval(()=> {
-            if (widthStr > widthD) {
+            if (widthStr > widthD) {            
                 setShowBegun(false)
             }
-            // if (widthStr2 > widthD) {
-            //     setShowBegun2(false)
-            // }
-            // if (widthStr3 > widthD) {
-            //     setShowBegun3(false)
-            // }
-        }, 20000);
+            if (widthStr2 > widthD) {
+                setShowBegun2(false)
+            }
+            if (widthStr3 > widthD) {
+                setShowBegun3(false)
+            }
+        }, Math.abs((widthD - widthStr)*1000));
 
     }, [widthStr])
 

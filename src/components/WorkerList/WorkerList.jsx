@@ -3,13 +3,14 @@ import { useUsersContext } from "./../../contexts/UserContext";
 
 const WorkerList = ({workers, remove, width}) => {
 
-    const {widthStr, setWidthStr} = useUsersContext();
+    const {widthStr, setWidthStr, setStr} = useUsersContext();
 
     useEffect(() => {
-        let str = ''
-        str = workers.map((worker) =>
+        
+        let str = workers.map((worker) =>
             worker.spec
         ).join(' | ')
+        setStr(str)
 
         let canvas = document.createElement('canvas');
         let ctx = canvas.getContext("2d");
