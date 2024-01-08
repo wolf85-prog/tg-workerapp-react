@@ -53,7 +53,7 @@ const ProfilePage = () => {
     const projectsRef = useRef(null)
 
     const { projects, setProjects, specId, setSpecId, flag, summa, setSumma } = useUsersContext();
-    const { workerhub } = useUsersContext();
+    const { workerhub, setWorkerhub } = useUsersContext();
     const [workerId, setWorkerId] = useState('')
     const [projects2, setProjects2] = useState('')
 
@@ -92,14 +92,7 @@ const ProfilePage = () => {
     const [titleSpec, setTitleSpec] = useState(false)
 
     const {worker, setWorker, workers, setWorkers} = useUsersContext();
-    const [showSpec, setShowSpec] = useState(false)
-    //const [summa, setSumma] = useState(0); 
-  
-    // const randomNumberInRange = (min, max) => { 
-    //     return Math.floor(Math.random()  
-    //             * (max - min + 1)) + min; 
-    // }; 
-   
+    const [showSpec, setShowSpec] = useState(false) 
     
 //----------------------------------------------------------------------------------
 
@@ -474,6 +467,7 @@ const ProfilePage = () => {
             setWorkers([...workers, {...worker, id: Date.now()}])
         }
 
+
         setWorker({cat: '', spec: '', icon: ''})
         setSelectedElement("");
 
@@ -483,6 +477,7 @@ const ProfilePage = () => {
 
         setTitleCat("")
         setTitleSpec("")
+        setShowAddSpec(false)
     }
 
     //---------------------------------------------------------------------------------------
@@ -505,7 +500,7 @@ const ProfilePage = () => {
                         <div className="card-specs bullet">
                             <ul>
                                 {workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' 
-                                ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={()=>setShowAddSpec(true)} alt='' style={{marginLeft: '20px'}}/>}</li>
+                                ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={()=>setShowAddSpec(true)} alt='' style={{marginLeft: '20px', width: '12px'}}/>}</li>
                                 : '' )}
                             </ul>   
                         </div>     
@@ -754,6 +749,7 @@ const ProfilePage = () => {
                             titleCat={titleCat}
                             setTitleCat={setTitleCat}
                             onChange={onCategoriesSelectChange}
+                            heigthModal={true}
                         /> 
                     </div>
                                 
@@ -766,6 +762,7 @@ const ProfilePage = () => {
                             titleSpec={titleSpec}
                             setTitleSpec={setTitleSpec}
                             onChange={onSpecSelectChange}
+                            heigthModal={true}
                         />
                     </div>
 
@@ -777,7 +774,7 @@ const ProfilePage = () => {
                             zIndex: 20,
                             paddingTop: '15px',
                         }}>
-                            <Marquee workers={workers}/>
+                            {/* <Marquee workers={workers}/> */}
                             {/* <WorkerList remove={removeWorker} workers={workers} /> */}
                         </div>  
 

@@ -4,7 +4,7 @@ import classes from './NewSelect.module.css';
 import Vector from "../../../image/new/vector.svg"
 import VectorUp from "../../../image/new/vector_up.svg"
 
-const NewSelect = ({id, options, titleCat, setTitleCat, onChange, disabled}) => {
+const NewSelect = ({id, options, titleCat, setTitleCat, onChange, disabled, heigthModal}) => {
 
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(false);
@@ -55,7 +55,7 @@ const NewSelect = ({id, options, titleCat, setTitleCat, onChange, disabled}) => 
             </div>
             )}
 
-            {open && (<div className={classes.dropdownOpen} style={{height: (options.length+1)*41}}>
+            {open && (<div className={classes.dropdownOpen} style={{height: heigthModal ? '254px' : (options.length+1)*41}}>
                 <div className={classes.rec1Open}></div>
                 <div className={classes.rec2Open}></div>
                 <div className={classes.rec3Open}></div>
@@ -73,7 +73,7 @@ const NewSelect = ({id, options, titleCat, setTitleCat, onChange, disabled}) => 
                             <img src={open ? VectorUp : Vector} className={'chevron-new'} alt='' style={{marginBottom: '5px'}}/>
                         </div>
 
-                        <ul className={classes.listitem} style={{height: options.length*41}}>
+                        <ul className={classes.listitem} style={{height: heigthModal ? '200px' : options.length*41}}>
                             {options.map((option, index) =>
                                 <li 
                                     key={id + index} 
