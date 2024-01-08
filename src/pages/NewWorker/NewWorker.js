@@ -612,6 +612,7 @@ const NewWorker = () => {
 
                     <p className='vagno'>Регистрация прошла успешно</p>
                     <p className='text-vagno' style={{marginTop: '25px'}}>Добро пожаловать на борт!</p>
+                    <p>{workerFam} {workerName} {workers} {city} {dateborn} {phone}</p>
                     <div className='button-ok' onClick={()=>setShowModal(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
