@@ -10,10 +10,11 @@ const Marquee = ({width, workers, workerFam, workerName, phone, city, dateborn})
   // 2. Defining Variants
   const marqueeVariants = {
     animate: {
-      x: [25,  0 - Math.abs(width) - 25],
+     // x: [25,  0 - Math.abs(width) - 25],
+      x: [45,  0 - Math.abs(width) - 85 ],
       transition: {
         x: {
-          repeat: 0,
+          repeat: Infinity,
           repeatType: "loop",
           duration: 10,
           ease: "linear",
@@ -34,7 +35,7 @@ const Marquee = ({width, workers, workerFam, workerName, phone, city, dateborn})
                 >
                     {workers ? 
                     <div style={{display: 'flex'}}>
-                        {workers.map((worker) => 
+                        {workers.slice(0).reverse().map((worker) => 
                               worker.spec
                         ).join(' | ')}      
                     </div>

@@ -44,6 +44,8 @@ const UserProvider = ({ children }) => {
 	const [pasAdress, setPasAdress] = useState('');
 	const [pasEmail, setPasEmail] = useState('');
 
+	const [friend, setFriend] = useState('');
+
 	const [widthStr, setWidthStr] = useState(0)
 	const [str, setStr] = useState(0)
 
@@ -116,7 +118,9 @@ const UserProvider = ({ children }) => {
 			widthStr, 
 			setWidthStr,
 			str,
-			setStr
+			setStr,
+			friend,
+			setFriend
 		}}>
 			{children}
 		</UserContext.Provider>

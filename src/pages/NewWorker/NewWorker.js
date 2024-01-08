@@ -30,7 +30,7 @@ const NewWorker = () => {
 
     const {worker, setWorker, workers, setWorkers, widthStr, setWidthStr, str} = useUsersContext();
     const { workerFam, setWorkerFam, workerName, setWorkerName, phone, setPhone } = useUsersContext();
-    const {city, setCity, dateborn, setDateborn} = useUsersContext();
+    const {city, setCity, dateborn, setDateborn, friend, setFriend} = useUsersContext();
 
     //даты
     const [dates, setDates] = useState([]);
@@ -244,6 +244,19 @@ const NewWorker = () => {
         setCity(e.target.value)
     }
 
+    const onChangeFriend = (e) => {
+        setFriend(e.target.value)
+        
+        
+    }
+
+    const clickAddFrined = () => {
+        //show save button
+        setShowMainBtn(true)
+
+        setShowModal(false)
+    }
+
     const onChangeTime = (e) => {
         setDateborn(e.target.value)
     }
@@ -258,7 +271,6 @@ const NewWorker = () => {
     const clickApply = () => {
         console.log("apply")
         setShowModal(true)
-        setShowMainBtn(true)
 
         const data = {
             workerfamily: workerFam,
@@ -348,14 +360,14 @@ const NewWorker = () => {
     useEffect(() => {
         //длина окна
         const widthD = width - (131 + 25)
-        setWidthD(widthD)
+        //setWidthD(widthD)
 
         setWidthDX(widthD - widthStr)
         setWidthDX2(widthD - widthStr2)
         setWidthDX3(widthD - widthStr3)
 
-        console.log("str: ",widthStr,  widthD - widthStr)
-
+        console.log("str hook: ", widthStr, widthD - widthStr)
+ 
         setInterval(()=> {
             if (widthStr > widthD) {
                 setShowBegun(true)
@@ -369,18 +381,18 @@ const NewWorker = () => {
         }, 3000)
 
 
-        setInterval(()=> {
-            console.log(Math.abs(widthD - widthStr))
-            if (widthStr > widthD) {            
-                setShowBegun(false)
-            }
-            if (widthStr2 > widthD) {
-                setShowBegun2(false)
-            }
-            if (widthStr3 > widthD) {
-                setShowBegun3(false)
-            }
-        }, Math.abs((widthD - widthStr)*180));
+        // setInterval(()=> {
+        //     console.log(Math.abs(widthD - widthStr))
+        //     if (widthStr > widthD) {            
+        //         setShowBegun(false)
+        //     }
+        //     if (widthStr2 > widthD) {
+        //         setShowBegun2(false)
+        //     }
+        //     if (widthStr3 > widthD) {
+        //         setShowBegun3(false)
+        //     }
+        // }, Math.abs((widthD - widthStr)*500));
 
     }, [widthStr])
 
@@ -476,7 +488,7 @@ const NewWorker = () => {
             </div>
                    
             
-            <div style={{display: showBlockFam ? 'block' : 'none'}}>
+            <div style={{display: showBlockFam ? 'block' : 'none', height: '200px'}}>
                 {/* Фамилия */}
                 <div style={{position: 'relative', marginTop: '40px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
@@ -554,7 +566,7 @@ const NewWorker = () => {
             </div>
 
 
-            <div style={{display: showBlockCity ? 'block' : 'none'}}>
+            <div style={{display: showBlockCity ? 'block' : 'none', height: '200px'}}>
                     {/*Город*/}
                 <div style={{position: 'relative', marginTop: '50px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
@@ -583,7 +595,7 @@ const NewWorker = () => {
                     />
                 </div>
 
-                <div style={{position: 'relative', marginTop: '10px', marginRight: '25px', textAlign: 'left'}}>
+                <div style={{position: 'relative', marginTop: '10px', marginRight: '25px', textAlign: 'left', marginBottom: '55px'}}>
                     {/* <p className='fio-text' style={{display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p> */}
                     {showDate && 
                         showBegun3 ? 
@@ -611,6 +623,8 @@ const NewWorker = () => {
                     >
                         Подтвердить
                     </button> }
+
+                    
                 </div>
             </div>
 
@@ -621,11 +635,22 @@ const NewWorker = () => {
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <p className='vagno'>Регистрация прошла успешно</p>
-                    <p className='text-vagno' style={{marginTop: '25px'}}>Добро пожаловать на борт!</p>
-                    {/* <p>{workerFam} {workerName} {workers} {city} {dateborn} {phone}</p> */}
-                    <div className='button-ok' onClick={()=>setShowModal(false)}>
-                        <div className='rec-button'>Хорошо</div>        
+                    <p className='vagno'>Укажите своего друга</p>
+                    {/* <p className='text-vagno' style={{marginTop: '25px'}}>Добро пожаловать на борт!</p> */}
+                    <div style={{position: 'relative', marginTop: '110px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
+                        <div className='rec1-input'></div>
+                        <div className='rec2-input'></div>
+                        <div className='rec3-input'></div>
+                        <input
+                            className='input-style3'
+                            placeholder='id друга'
+                            id="friend_name"
+                            onChange={onChangeFriend}
+                            value={friend}
+                        /> 
+                    </div>
+                    <div className='button-ok' onClick={clickAddFrined}>
+                        <div className='rec-button'>Добавить</div>        
                     </div>
                 </div>
             </MyModal>
