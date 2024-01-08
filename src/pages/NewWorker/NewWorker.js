@@ -356,6 +356,7 @@ const NewWorker = () => {
 
 
         setInterval(()=> {
+            console.log(Math.abs(widthD - widthStr))
             if (widthStr > widthD) {            
                 setShowBegun(false)
             }
@@ -365,7 +366,7 @@ const NewWorker = () => {
             if (widthStr3 > widthD) {
                 setShowBegun3(false)
             }
-        }, Math.abs((widthD - widthStr)*1000));
+        }, Math.abs((widthD - widthStr)*500));
 
     }, [widthStr])
 
@@ -375,7 +376,7 @@ const NewWorker = () => {
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
-            <img src={BlackFon} alt='' className='fon-black' style={{left: `${20 - width}px`, zIndex: '1'}} />
+            <img src={BlackFon} alt='' className='fon-black' style={{left: `${25 - width}px`, zIndex: '1'}} />
             <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
 
             {/*Специализация*/}   
