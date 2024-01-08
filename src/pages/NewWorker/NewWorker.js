@@ -575,7 +575,7 @@ const NewWorker = () => {
             </div>
 
 
-            <MyModal visible={!showModal} setVisible={setShowModal}>
+            <MyModal visible={showModal} setVisible={setShowModal}>
                 <div className='info-card'>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
