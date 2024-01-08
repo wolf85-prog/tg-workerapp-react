@@ -486,9 +486,9 @@ const NewWorker = () => {
                 <div style={{position: 'relative', marginTop: '10px', marginRight: '25px', textAlign: 'left'}}>
                     {/* <p className='fio-text' style={{display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p> */}
                     {showFIO && 
-                        //showBegun2 && widthD < widthStr2 ? 
-                        //<Marquee workerFam={workerFam} workerName={workerName} phone={phone} width={widthDX} />
-                        //: 
+                        showBegun2 && widthD < widthStr2 ? 
+                        <div className='fio-text'><Marquee workerFam={workerFam} workerName={workerName} phone={phone} width={widthDX} /></div>
+                        : 
                         <p className='fio-text' style={{marginLeft: '25px', display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p>
                     }
 
@@ -546,9 +546,9 @@ const NewWorker = () => {
                 <div style={{position: 'relative', marginTop: '10px', marginRight: '25px', textAlign: 'left'}}>
                     {/* <p className='fio-text' style={{display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p> */}
                     {showDate && 
-                        //showBegun3 ? 
-                        //<Marquee city={city} dateborn={dateborn} />
-                        //:
+                        showBegun3 ? 
+                        <div className='fio-text'><Marquee city={city} dateborn={dateborn} /></div>
+                        :
                         <p className='fio-text' style={{marginLeft: '25px', display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p>
                     }
 
