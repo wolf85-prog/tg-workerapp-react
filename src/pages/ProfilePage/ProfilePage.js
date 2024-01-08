@@ -65,6 +65,7 @@ const ProfilePage = () => {
     const [showArroy, setShowArroy] = useState(true)
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
+    const [isProfileLoading, setIsProfileLoading] = useState(true);
     const [headerName, setHeaderName] = useState('Мой профиль');
     //const [scrollTop, setScrollTop] = useState(0);
     const { height, width } = useWindowDimensions();
@@ -99,6 +100,7 @@ const ProfilePage = () => {
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
         const fetchData = async() => { 
+            setIsProfileLoading(true)
             const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
             //console.log("worker: ", worker.length) 
             //console.log(worker[0]?.id)
@@ -110,6 +112,7 @@ const ProfilePage = () => {
                     //зарегистрирован
                     console.log("Зарегистирован", "REG")
                     //setSpecId(worker[0]?.id)
+                    setIsProfileLoading(false)
                 } else  {
                     if (flag === 'ONLY_REG') {
                         //только что зарегистрирован
@@ -122,7 +125,7 @@ const ProfilePage = () => {
                         navigate("/add-worker")
                     }
                 }
-            }, 3000)
+            }, 2000)
         }
 
         fetchData()   
@@ -490,6 +493,9 @@ const ProfilePage = () => {
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
 
+            {isProfileLoading
+            ? <div style={{width: '100vw', display: 'flex', justifyContent: 'center', height: '100vh', alignItems: 'center'}}><Loader/></div>
+            :<>
             <div className="container">
                 {/* ФИО */}
                 <article className="card">
@@ -640,11 +646,6 @@ const ProfilePage = () => {
             </div>
 
             <div  ref={projectsRef}>
-                {/* <ProjectFilter
-                    filter={filter}
-                    setFilter={setFilter}
-                    arr_status={status}
-                /> */}
 
                 <div className="profile-project-list">   
                     <Header 
@@ -659,10 +660,8 @@ const ProfilePage = () => {
                     }
                 </div> 
             </div>
-
-            
-            {/* стрелка */}
-            {/* <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: showArroy ? "block": "none"}} /></div> */}
+            </>
+            }
 
             <div className='footer-block' style={{display: showFooter ? 'block' : 'none'}}>
                 <img onClick={clickPodel} src={Friend} alt='' width='100%' className='btn-friend' />
