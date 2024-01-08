@@ -72,36 +72,17 @@ const NewWorker = () => {
 
     const [widthD, setWidthD] = useState(0)
     const [widthDX, setWidthDX] = useState(0)
+    const [widthDX2, setWidthDX2] = useState(0)
+    const [widthDX3, setWidthDX3] = useState(0)
 
     const [widthStr2, setWidthStr2] = useState(0)
     const [widthStr3, setWidthStr3] = useState(0)
 
 //----------------------------------------------------------------------------------
 
-    useEffect(() => {
-        let str = ''
-        str = `${workerFam} ${workerName} | ${phone}`
-
-        let canvas = document.createElement('canvas');
-        let ctx = canvas.getContext("2d");
-        ctx.font = "16px Arial";        
-        let widthX = Math.round(ctx.measureText(str).width);
-
-        setWidthStr2(widthX)
-    }, [workerFam, workerName, phone])
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-
-        let str2 = ''
-        str2 = `${workerFam} ${workerName} | ${phone}`
-
-        let canvas = document.createElement('canvas');
-        let ctx = canvas.getContext("2d");
-        ctx.font = "16px Arial";        
-        let widthX = Math.round(ctx.measureText(str2).width);
-
-        setWidthStr2(widthX)
 
         //отправляем в админку сообщение
         //sendMyMessage(user?.id)
@@ -211,6 +192,17 @@ const NewWorker = () => {
     const addNewWorker2 = (e) => {
         setShowFIO(true)
         setShowBlockCity(true)
+
+        let str = ''
+        str = `${workerFam} ${workerName} | ${phone}`
+        console.log("str2: ", str)
+
+        let canvas = document.createElement('canvas');
+        let ctx = canvas.getContext("2d");
+        ctx.font = "14px Arial";        
+        let widthX = Math.round(ctx.measureText(str).width);
+
+        setWidthStr2(widthX)
     }
 
     const editNewWorker2 = (e) => {
@@ -220,6 +212,16 @@ const NewWorker = () => {
     const addNewWorker3 = () => {
         setShowDate(true)
         setShowApply(true)
+
+        let str = ''
+        str = `${city} | ${dateborn}`
+
+        let canvas = document.createElement('canvas');
+        let ctx = canvas.getContext("2d");
+        ctx.font = "16px Arial";        
+        let widthX = Math.round(ctx.measureText(str).width);
+
+        setWidthStr3(widthX)
     }
 
 
@@ -338,6 +340,8 @@ const NewWorker = () => {
         setWidthD(widthD)
 
         setWidthDX(widthD - widthStr)
+        setWidthDX2(widthD - widthStr2)
+        setWidthDX3(widthD - widthStr3)
 
         console.log("str: ",widthStr,  widthD - widthStr)
 
@@ -365,9 +369,34 @@ const NewWorker = () => {
             if (widthStr3 > widthD) {
                 setShowBegun3(false)
             }
-        }, Math.abs((widthD - widthStr)*130));
+        }, Math.abs((widthD - widthStr)*180));
 
     }, [widthStr])
+
+    useEffect(() => {
+        //длина окна
+        const widthD = width - (131 + 25)
+        setWidthD(widthD)
+
+        setWidthDX2(widthD - widthStr2)
+
+        console.log("str2: ", widthStr2,  widthD - widthStr2)
+
+        setInterval(()=> {
+            if (widthStr2 > widthD) {
+                setShowBegun2(true)
+            }
+        }, 3000)
+
+
+        setInterval(()=> {
+            console.log(Math.abs(widthD - widthStr2))
+            if (widthStr2 > widthD) {
+                setShowBegun2(false)
+            }
+        }, Math.abs((widthD - widthStr)*130));
+
+    }, [widthStr2])
 
     
     return (
@@ -487,7 +516,7 @@ const NewWorker = () => {
                     {/* <p className='fio-text' style={{display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p> */}
                     {showFIO && 
                         showBegun2 && widthD < widthStr2 ? 
-                        <div className='fio-text'><Marquee workerFam={workerFam} workerName={workerName} phone={phone} width={widthDX} /></div>
+                        <div className='fio-text'><Marquee workerFam={workerFam} workerName={workerName} phone={phone} width={widthDX2} /></div>
                         : 
                         <p className='fio-text' style={{marginLeft: '25px', display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p>
                     }
@@ -547,7 +576,7 @@ const NewWorker = () => {
                     {/* <p className='fio-text' style={{display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p> */}
                     {showDate && 
                         showBegun3 ? 
-                        <div className='fio-text'><Marquee city={city} dateborn={dateborn} /></div>
+                        <div className='fio-text'><Marquee city={city} dateborn={dateborn} width={widthDX3}/></div>
                         :
                         <p className='fio-text' style={{marginLeft: '25px', display: showDate ? 'block' : 'none'}}>{city} | {dateborn}</p>
                     }

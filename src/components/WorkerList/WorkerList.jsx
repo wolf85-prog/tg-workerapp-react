@@ -14,7 +14,7 @@ const WorkerList = ({workers, remove, width}) => {
 
         let canvas = document.createElement('canvas');
         let ctx = canvas.getContext("2d");
-        ctx.font = "16px Arial";        
+        ctx.font = "14px Arial";        
         let widthX = Math.round(ctx.measureText(str).width);
 
         setWidthStr(widthX)
