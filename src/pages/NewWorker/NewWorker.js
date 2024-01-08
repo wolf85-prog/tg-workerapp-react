@@ -365,7 +365,7 @@ const NewWorker = () => {
             if (widthStr3 > widthD) {
                 setShowBegun3(false)
             }
-        }, Math.abs((widthD - widthStr)*150));
+        }, Math.abs((widthD - widthStr)*130));
 
     }, [widthStr])
 

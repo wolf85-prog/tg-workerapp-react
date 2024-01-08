@@ -132,7 +132,7 @@ const ProfilePage = () => {
                         navigate("/add-worker")
                     }
                 }
-            }, 5000)
+            }, 3000)
         }
 
         fetchData()   
