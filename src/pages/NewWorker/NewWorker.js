@@ -343,7 +343,6 @@ const NewWorker = () => {
 
         setInterval(()=> {
             if (widthStr > widthD) {
-                //console.log("str: ", str*1000)
                 setShowBegun(true)
             }
             if (widthStr2 > widthD) {
@@ -366,7 +365,7 @@ const NewWorker = () => {
             if (widthStr3 > widthD) {
                 setShowBegun3(false)
             }
-        }, Math.abs((widthD - widthStr)*500));
+        }, Math.abs((widthD - widthStr)*150));
 
     }, [widthStr])
 

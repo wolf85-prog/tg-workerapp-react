@@ -10,7 +10,7 @@ const Marquee = ({width, workers, workerFam, workerName, phone, city, dateborn})
   // 2. Defining Variants
   const marqueeVariants = {
     animate: {
-      x: [25, -20-Math.abs(width)],
+      x: [25, - Math.abs(width) + 20],
       transition: {
         x: {
           repeat: 0,
@@ -39,8 +39,8 @@ const Marquee = ({width, workers, workerFam, workerName, phone, city, dateborn})
                         ).join(' | ')}      
                     </div>
                     : workerFam ?
-                    <p className='fio-text'>{workerFam} {workerName} | {phone}</p>
-                    : <p className='fio-text'>{city} | {dateborn}</p>
+                    <p>{workerFam} {workerName} | {phone}</p>
+                    : <p>{city} | {dateborn}</p>
                     }
                 </motion.div>
             </div>
