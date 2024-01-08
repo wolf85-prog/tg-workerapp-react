@@ -259,6 +259,17 @@ const NewWorker = () => {
         console.log("apply")
         setShowModal(true)
         setShowMainBtn(true)
+
+        const data = {
+            workerfamily: workerFam,
+            workerName, 
+            phone,
+            worklist: workers,
+            city, 
+            dateborn: dateborn.toString(), 
+        }
+
+        console.log(data)
     }
 
 
@@ -289,7 +300,7 @@ const NewWorker = () => {
             phone,
             worklist: workers,
             city, 
-            dateborn, 
+            dateborn: dateborn.toString(),
             queryId,
         }
 
@@ -612,10 +623,9 @@ const NewWorker = () => {
 
                     <p className='vagno'>Регистрация прошла успешно</p>
                     <p className='text-vagno' style={{marginTop: '25px'}}>Добро пожаловать на борт!</p>
-                    <p>{workerFam} {workerName} {workers} {city} {dateborn} {phone}</p>
+                    {/* <p>{workerFam} {workerName} {workers} {city} {dateborn} {phone}</p> */}
                     <div className='button-ok' onClick={()=>setShowModal(false)}>
-                        <div className='rec-button'>Хорошо</div>
-                        
+                        <div className='rec-button'>Хорошо</div>        
                     </div>
                 </div>
             </MyModal>
