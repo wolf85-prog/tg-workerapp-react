@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -63,13 +62,11 @@ const ProfilePage = () => {
     const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query, workerId); //specId '1408579113'
     const [sortProject, setSortProject] = useState([])
 
-    const [showGrad, setShowGrad] = useState(false)
-    const [showGrad2, setShowGrad2] = useState(false)
     const [showArroy, setShowArroy] = useState(true)
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
     const [headerName, setHeaderName] = useState('Мой профиль');
-    const [scrollTop, setScrollTop] = useState(0);
+    //const [scrollTop, setScrollTop] = useState(0);
     const { height, width } = useWindowDimensions();
     const [isLoadingSum, setIsLoadingSum] = useState(true);
 
@@ -98,10 +95,10 @@ const ProfilePage = () => {
     const [showSpec, setShowSpec] = useState(false)
     //const [summa, setSumma] = useState(0); 
   
-    const randomNumberInRange = (min, max) => { 
-        return Math.floor(Math.random()  
-                * (max - min + 1)) + min; 
-    }; 
+    // const randomNumberInRange = (min, max) => { 
+    //     return Math.floor(Math.random()  
+    //             * (max - min + 1)) + min; 
+    // }; 
    
     
 //----------------------------------------------------------------------------------
@@ -255,12 +252,6 @@ const ProfilePage = () => {
     }, [sortedAndSearchedPosts])
 
 //---------------------------------------------------------------------
-    useEffect(() => {
-        setTimeout(() =>  setShowGrad2(true), 500) // градиент низ
-        setTimeout(() =>  setShowGrad(true), 4500) //градиент верх  
-
-        //executeScroll()
-    })
 
     const handleScroll = (e) => {
         if (e.currentTarget.scrollTop < 300) {
@@ -268,8 +259,7 @@ const ProfilePage = () => {
         } else if (e.currentTarget.scrollTop > 300) {
             setHeaderName("Мои проекты");
             setShowArroy(false) 
-        }
-        
+        }  
     };
 
     const onClose = () => {
@@ -323,16 +313,16 @@ const ProfilePage = () => {
     }, [])
 
 
-    const showQRCode = () => {
-        navigate('/process')
-    }
+    // const showQRCode = () => {
+    //     navigate('/process')
+    // }
 
     {/* Показать  */}
-    const clickShowHistory = (e) => {
-        e.preventDefault();
+    // const clickShowHistory = (e) => {
+    //     e.preventDefault();
 
-        showHistory ? setShowHistory(false) : setShowHistory(true)
-    }
+    //     showHistory ? setShowHistory(false) : setShowHistory(true)
+    // }
 
     useEffect(()=> {
         console.log("hash: ", hash)
@@ -669,7 +659,7 @@ const ProfilePage = () => {
                     />
 
                     {isPostsLoading
-                        ? <div style={{width: '100vw', display: 'flex', justifyContent: 'center', justifyContent: 'center'}}><Loader/></div>
+                        ? <div style={{width: '100vw', display: 'flex', justifyContent: 'center'}}><Loader/></div>
                         : <ProjectList posts={sortProject} title="" width={width}/>
                     }
                 </div> 

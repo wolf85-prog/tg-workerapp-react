@@ -575,14 +575,14 @@ const NewWorker = () => {
             </div>
 
 
-            <MyModal visible={showModal} setVisible={setShowModal}>
+            <MyModal visible={!showModal} setVisible={setShowModal}>
                 <div className='info-card'>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'>Регистрация прошла успешно</p>
-                    <p className='text-vagno'>Добро пожаловать на борт</p>
+                    <p className='text-vagno' style={{marginTop: '25px'}}>Добро пожаловать на борт!</p>
                     <div className='button-ok' onClick={()=>setShowModal(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
