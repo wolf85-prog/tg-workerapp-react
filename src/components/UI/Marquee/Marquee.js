@@ -1,17 +1,38 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 // 1. Importing framer-motion
 import { motion } from "framer-motion";
 import "./Marquee.css";
-
+import { useUsersContext } from "./../../../contexts/UserContext";
 
 
 const Marquee = ({width, workers, workerFam, workerName, phone, city, dateborn}) => {
+
+  const {setWidthStr, setStr} = useUsersContext();
+
+  useEffect(() => {
+
+    let str = workers.slice(0).reverse().map((worker) =>
+        worker.spec
+    ).join(' | ')
+    setStr(str)
+    console.log("str1: ", workers)
+    
+    let canvas = document.createElement('canvas');
+    let ctx = canvas.getContext("2d");
+    ctx.font = "14px Arial";        
+    let widthX = Math.round(ctx.measureText(str).width);
+
+    setWidthStr(widthX)
+    console.log("widthX1: ", 0 - Math.abs(width) - 45)
+
+
+  }, [workers])
 
   // 2. Defining Variants
   const marqueeVariants = {
     animate: {
      // x: [25,  0 - Math.abs(width) - 25],
-      x: [45,  0 - Math.abs(width) - 85 ],
+      x: [45,  0 - Math.abs(width) - 45 ],
       transition: {
         x: {
           repeat: Infinity,

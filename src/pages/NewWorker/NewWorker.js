@@ -363,12 +363,15 @@ const NewWorker = () => {
         //setWidthD(widthD)
 
         setWidthDX(widthD - widthStr)
+        console.log("widthDX: ", widthD - widthStr)
         setWidthDX2(widthD - widthStr2)
         setWidthDX3(widthD - widthStr3)
 
         console.log("str hook: ", widthStr, widthD - widthStr)
+
+        setShowBegun(false)
  
-        setInterval(()=> {
+        setTimeout(()=> {
             if (widthStr > widthD) {
                 setShowBegun(true)
             }

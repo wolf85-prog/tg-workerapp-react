@@ -11,7 +11,7 @@ const WorkerList = ({workers, remove, width}) => {
             worker.spec
         ).join(' | ')
         setStr(str)
-        console.log("str1: ", str)
+        console.log("str1: ", workers)
         
         let canvas = document.createElement('canvas');
         let ctx = canvas.getContext("2d");
@@ -19,9 +19,8 @@ const WorkerList = ({workers, remove, width}) => {
         let widthX = Math.round(ctx.measureText(str).width);
 
         setWidthStr(widthX)
-        //console.log("widthX1: ", widthX)
+        console.log("widthX1: ", widthX)
 
-        //let widthD = width - (131 + 25*2)
     }, [workers])
 
 
