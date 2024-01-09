@@ -25,7 +25,7 @@ const WorkerList = ({workers, remove, width}) => {
 
 
     return (
-        <div style={{display: 'flex', marginLeft: '25px', overflow: 'auto', whiteSpace: 'nowrap' /* Запрещаем перенос текста */}}>
+        <div style={{display: 'flex', marginLeft: '25px', overflow: 'hidden', whiteSpace: 'nowrap' /* Запрещаем перенос текста */}}>
             {workers.slice(0).reverse().map((worker, index) => 
                 worker.spec
             ).join(' | ')}

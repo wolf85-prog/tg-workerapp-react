@@ -430,7 +430,7 @@ const NewWorker = () => {
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
-            <img src={BlackFon} alt='' className='fon-black' style={{left: `${25 - width}px`, zIndex: '1'}} />
+            {/* <img src={BlackFon} alt='' className='fon-black' style={{left: `${25 - width}px`, zIndex: '1'}} /> */}
             <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
 
             {/*Специализация*/}   

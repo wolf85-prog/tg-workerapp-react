@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 // 1. Importing framer-motion
 import { motion } from "framer-motion";
 import "./Marquee.css";
@@ -8,6 +8,8 @@ import { useUsersContext } from "./../../../contexts/UserContext";
 const Marquee = ({width, workers, workerFam, workerName, phone, city, dateborn}) => {
 
   const {setWidthStr, setStr} = useUsersContext();
+
+  const [coord, setCoord] = useState(45)
 
   useEffect(() => {
 
@@ -32,12 +34,12 @@ const Marquee = ({width, workers, workerFam, workerName, phone, city, dateborn})
   const marqueeVariants = {
     animate: {
      // x: [25,  0 - Math.abs(width) - 25],
-      x: [45,  0 - Math.abs(width) - 45 ],
+      x: [50,  0 - Math.abs(width) - 50 ],
       transition: {
         x: {
           repeat: Infinity,
           repeatType: "loop",
-          duration: 10,
+          duration: 12,
           ease: "linear",
           repeatDelay: 3,
         },
