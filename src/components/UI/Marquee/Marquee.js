@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 // 1. Importing framer-motion
 import { motion } from "framer-motion";
 import "./Marquee.css";
@@ -9,11 +9,10 @@ const Marquee = ({width, workers, workerFam, workerName, phone, city, dateborn})
 
   const {setWidthStr, setStr} = useUsersContext();
 
-  const [coord, setCoord] = useState(45)
 
   useEffect(() => {
 
-    let str = workers.slice(0).reverse().map((worker) =>
+    let str = workers?.slice(0).reverse().map((worker) =>
         worker.spec
     ).join(' | ')
     setStr(str)
@@ -34,7 +33,7 @@ const Marquee = ({width, workers, workerFam, workerName, phone, city, dateborn})
   const marqueeVariants = {
     animate: {
      // x: [25,  0 - Math.abs(width) - 25],
-      x: [50,  0 - Math.abs(width) - 50 ],
+      x: [50,  0 - Math.abs(width) - 25 ],
       transition: {
         x: {
           repeat: Infinity,
