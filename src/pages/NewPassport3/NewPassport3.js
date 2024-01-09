@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewPassport3.css';
@@ -14,7 +14,7 @@ import { useUsersContext } from "../../contexts/UserContext";
 import uploadImg from "./../../image/iconUpload.png";
 
 const NewPassport3 = () => {
-
+    const navigate = useNavigate();
     const API_URL = process.env.REACT_APP_API_URL
     const API_URL_HOST = process.env.REACT_APP_HOST
     const {tg, queryId, user} = useTelegram();
@@ -241,6 +241,19 @@ const NewPassport3 = () => {
        }
         
     }, [pasPlaceborn, pasAdress, pasEmail])
+
+    const handleClick = () => navigate('/');
+
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", handleClick)
+        return () => {
+            tg.offEvent('backButtonClicked', handleClick)
+        }
+    }, [handleClick])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
 
     return (
         <div className="App">

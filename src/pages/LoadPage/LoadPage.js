@@ -60,7 +60,13 @@ const LoadPage = () => {
     }, []);
 
     useEffect(()=>{
-        tg.expand() //раскрыть приложение на всю высоту
+        tg.setHeaderColor('#343A41') // установка цвета хедера
+        tg.setBackgroundColor('#343A41') // установка цвета бэкграунда
+        
+        if (!tg.isExpanded) {
+           tg.expand() //раскрыть приложение на всю высоту 
+        }
+        
     }, [])
 
 

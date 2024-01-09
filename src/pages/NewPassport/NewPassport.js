@@ -20,7 +20,7 @@ const API_URL = process.env.REACT_APP_API_URL
 const NewPassport = () => {
     const navigate = useNavigate();
 
-    const {user} = useTelegram();
+    const {tg, user, queryId} = useTelegram();
 
     const { 
         pasFam, setPasFam, 
@@ -96,6 +96,31 @@ const NewPassport = () => {
     const onChangeTime = (e) => {
         setPasDateborn(e.target.value)
     }
+
+    const onClose = () => {
+        tg.close()
+    }
+
+    useEffect(()=>{
+        tg.setHeaderColor('#343A41') // установка цвета хедера
+        tg.setBackgroundColor('#343A41') // установка цвета бэкграунда
+        
+        if (!tg.isExpanded) {
+           tg.expand() //раскрыть приложение на всю высоту 
+        }
+        
+    }, [])
+
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", onClose)
+        return () => {
+            tg.offEvent('backButtonClicked', onClose)
+        }
+    }, [onClose])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
 
     //---------------------------------------------------------------------------------------
 

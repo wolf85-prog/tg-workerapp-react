@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Link, useNavigate} from "react-router-dom";
+import {useTelegram} from "../../hooks/useTelegram";
 import Header from "../../components/Header/Header";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewPassport2.css';
@@ -16,7 +17,7 @@ import { Stack } from "@mui/material";
 import { useUsersContext } from "../../contexts/UserContext";
 
 const NewPassport2 = () => {
-
+    const {tg, user, queryId} = useTelegram();
     const navigate = useNavigate();
 
     const { 
@@ -94,6 +95,29 @@ const NewPassport2 = () => {
     const handleKod = (e)=>{
         setPasKod(e.target.value)
     }
+
+    useEffect(()=>{
+        tg.setHeaderColor('#343A41') // установка цвета хедера
+        tg.setBackgroundColor('#343A41') // установка цвета бэкграунда
+        
+        if (!tg.isExpanded) {
+           tg.expand() //раскрыть приложение на всю высоту 
+        }
+        
+    }, [])
+
+    const handleClick = () => navigate('/');
+
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", handleClick)
+        return () => {
+            tg.offEvent('backButtonClicked', handleClick)
+        }
+    }, [handleClick])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
 
     return (
         <div className="App">
