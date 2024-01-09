@@ -874,7 +874,7 @@ input[id="cb1"] {
 
 .image-add-modal-button {
     position: relative;
-    z-index: 105;
+    z-index: 85;
     width: 131px;
     height: 50px;
     border: none;
