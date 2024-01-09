@@ -45,6 +45,8 @@ import NewSelect from '../../components/UI/NewSelect/NewSelect';
 import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
 import Marquee from '../../components/UI/Marquee/Marquee';
 
+import WorkerList from "../../components/WorkerList/WorkerList";
+
 const ProfilePage = () => {
     const {tg, user} = useTelegram();
     const navigate = useNavigate();
@@ -94,6 +96,8 @@ const ProfilePage = () => {
 
     const {worker, setWorker, workers, setWorkers} = useUsersContext();
     const [showSpec, setShowSpec] = useState(false) 
+
+    const [showBegun, setShowBegun] = useState(false)
     
 //----------------------------------------------------------------------------------
 
@@ -101,7 +105,7 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id '6143011220'
             //console.log("worker: ", worker.length) 
             //console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -247,16 +251,29 @@ const ProfilePage = () => {
 
     }, [sortedAndSearchedPosts])
 
-//---------------------------------------------------------------------
 
-    const handleScroll = (e) => {
-        if (e.currentTarget.scrollTop < 300) {
-           setHeaderName("Мой профиль"); 
-        } else if (e.currentTarget.scrollTop > 300) {
-            setHeaderName("Мои проекты");
-            setShowArroy(false) 
-        }  
-    };
+    const [widthD, setWidthD] = useState(0)
+    const [widthDX, setWidthDX] = useState(0)
+    const [widthStr, setWidthStr] = useState(0)
+
+    //бегущая строка
+    useEffect(() => {
+        //длина окна
+        const widthD = width - (131 + 25)
+
+        setWidthDX(widthD - widthStr)
+
+        setShowBegun(false)
+ 
+        setTimeout(()=> {
+            if (widthStr > widthD) {
+                setShowBegun(true)
+            }
+        }, 3000)
+
+    }, [widthStr])
+
+//---------------------------------------------------------------------
 
     const onClose = () => {
         tg.close()
@@ -308,17 +325,6 @@ const ProfilePage = () => {
         tg.MainButton.show();     
     }, [])
 
-
-    // const showQRCode = () => {
-    //     navigate('/process')
-    // }
-
-    {/* Показать  */}
-    // const clickShowHistory = (e) => {
-    //     e.preventDefault();
-
-    //     showHistory ? setShowHistory(false) : setShowHistory(true)
-    // }
 
     useEffect(()=> {
         console.log("hash: ", hash)
@@ -480,7 +486,9 @@ const ProfilePage = () => {
 
         setTitleCat("")
         setTitleSpec("")
-        setShowAddSpec(false)
+        
+        //setShowAddSpec(false)
+        setShowBegun(true)
     }
 
     //---------------------------------------------------------------------------------------
@@ -604,45 +612,11 @@ const ProfilePage = () => {
 
                 <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}}> 
                     <p className='history-title'>История</p>
-                    <div className='dates-history'><p>11.2023</p><p>0.00</p></div>
-                    <div className='dates-history2'><p>10.2023</p><p>0.00</p></div>
-                    <div className='dates-history2'><p>09.2023</p><p>0.00</p></div>
+                    <div className='dates-history'><p>01.2024</p><p>0.00</p></div>
+                    <div className='dates-history2'><p>02.2024</p><p>0.00</p></div>
+                    <div className='dates-history2'><p>02.2024</p><p>0.00</p></div>
                 </article> 
                 
-                
-                {/* <div className='dohod2'>
-                    <div className='dohod-inner'>
-                        <div className='dohod-card'>
-                            <div className='rec-dohod2'></div>
-                            <div className='rec-dohod3'></div>
-                            <div className='rec-dohod4'></div>
-                            <div className='line-dohod'></div>
-                        </div>
-                    </div>
-                </div> */}
-
-               {/* <div className='dohod'>
-                   <div className='wrap-dohod' onClick={clickDohod}>
-                        <div className='inner1' style={{borderBottomRightRadius: showDohod ? '0px' : '21.6px'}}></div>
-                        <article className='block-dohod' style={{borderRadius: showDohod ?  '21.6px 21.6px 0 0' : '21.6px', height: showDohod ? '118px' : '110px', backgroundColor: showDohod ? '#2b2f33' : '#1F2021'}}> 
-                            <div className='rectangle-dohod' style={{borderRadius: showDohod ? '21.6px 21.6px 0 0' : '21.6px'}}></div>
-                            <div className='rectangle-dohod2' style={{borderRadius: showDohod ? '21.6px 21.6px 0 0' : '21.6px'}}></div>
-                            <div className='rectangle-dohod3'></div>
-                            <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={showDohod ? VectorUp : Vector} alt=''/></div>
-                            <p className='summa-dohod'>{isLoadingSum ? <Loader2 /> : parseInt(summa).toLocaleString()+".00"}</p>
-                        </article>    
-                    </div>
-
-                    <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}}> 
-                        <div className='rectangle-dohod' style={{borderRadius: showDohod ? '21.6px 0 21.6px 21.6px' : '21.6px'}}></div>
-                        <div className='rectangle-dohod2' style={{borderRadius: showDohod ? '21.6px 0 21.6px 21.6px' : '21.6px'}}></div>
-                        <div className='rectangle-dohod3'></div>
-                        <p className='history-title'>История</p>
-                        <div className='dates-history'><p>11.2023</p><p>0.00</p></div>
-                        <div className='dates-history2'><p>10.2023</p><p>0.00</p></div>
-                        <div className='dates-history2'><p>09.2023</p><p>0.00</p></div>
-                    </article>  
-                </div>   */}
             </div>
 
             <div  ref={projectsRef}>
@@ -773,8 +747,9 @@ const ProfilePage = () => {
                             zIndex: 20,
                             paddingTop: '15px',
                         }}>
-                            {/* <Marquee workers={workers}/> */}
-                            {/* <WorkerList remove={removeWorker} workers={workers} /> */}
+                            {showBegun ? 
+                            <Marquee workers={workers}/>
+                            : <WorkerList workers={workers} />}
                         </div>  
 
                         {/*кнопка Добавить*/}

@@ -76,7 +76,7 @@ const ProjectList = ({posts, title, workerId, remove, width}) => {
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'>Важно</p>
-                    <p className='text-vagno'>Информация о проекте</p>
+                    <p className='text-vagno'>Получить бонус 3 000.00 рублей может каждый, кто напишет</p>
                     <div className='button-ok' onClick={()=>setShowInfoProj(false)}>
                         <div className='rec-button'>Хорошо</div>
                         

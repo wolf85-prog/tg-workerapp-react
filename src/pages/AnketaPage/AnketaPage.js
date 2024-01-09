@@ -16,7 +16,7 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 
 
 const AnketaPage = () => {
-    const {user} = useTelegram();
+    const {tg, user} = useTelegram();
     const navigate = useNavigate();
 
     const [headerName, setHeaderName] = useState('Моя аккредитация');
@@ -41,27 +41,8 @@ const AnketaPage = () => {
         fetch()      
     })
 
-    const pagePassport = () => {
-        navigate('/add-passport')
-    }
-
-    const page2 = (e) => {
-        e.preventDefault();
-        setShowPage2(true)
-        setShowPage3(false)
-        setShowPage1(false)
-    }
-
-    const page3 = (e) => {
-        e.preventDefault();
-        setShowPage3(true)
-        setShowPage2(false)
-        setShowPage1(false)
-    }
-
 
     const clickOtkaz = () => {
-        //navigate('/add-passport')
         setShowModal(true)
     }
 
@@ -70,6 +51,31 @@ const AnketaPage = () => {
     }
 
     //---------------------------------------------------------------------------------------
+
+    const onClose = () => {
+        tg.close()
+    }
+
+    useEffect(()=>{
+        tg.setHeaderColor('#343A41') // установка цвета хедера
+        tg.setBackgroundColor('#343A41') // установка цвета бэкграунда
+        
+        if (!tg.isExpanded) {
+           tg.expand() //раскрыть приложение на всю высоту 
+        }
+        
+    }, [])
+
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", onClose)
+        return () => {
+            tg.offEvent('backButtonClicked', onClose)
+        }
+    }, [onClose])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
 
     return (
         <div className="App">

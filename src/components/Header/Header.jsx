@@ -33,8 +33,10 @@ const Header = ({filter, setFilter, header}) => {
                 {header.title}
             </span>
 
-            <span className={'username'} onClick={onClickFilter} style={{display: showFilter ? 'none' : 'block'}}>
-                {header.icon !== 'true' ? <img src = {header.menu} alt="" className='header-icon'/> : <img src = {Menu} alt=""/>}
+            <span className={'username'} >
+                {header.icon !== 'true' ?
+                 <img src = {header.menu} alt="" className='header-icon'/> 
+                : <img src = {Menu} alt="" onClick={onClickFilter} style={{display: showFilter ? 'none' : 'block'}}/>}
             </span>
 
 

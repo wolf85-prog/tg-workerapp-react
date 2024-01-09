@@ -313,6 +313,7 @@ const NewWorker = () => {
             worklist: workers,
             city, 
             dateborn: dateborn.toString(),
+            friend,
             queryId,
         }
 
@@ -330,7 +331,7 @@ const NewWorker = () => {
         
         setIsLoading(false)
               
-    }, [workerFam, workerName, phone, workers, city, dateborn])
+    }, [workerFam, workerName, phone, workers, city, dateborn, friend])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -360,14 +361,8 @@ const NewWorker = () => {
     useEffect(() => {
         //длина окна
         const widthD = width - (131 + 25)
-        //setWidthD(widthD)
 
         setWidthDX(widthD - widthStr)
-        console.log("widthDX: ", widthD - widthStr)
-        setWidthDX2(widthD - widthStr2)
-        setWidthDX3(widthD - widthStr3)
-
-        console.log("str hook: ", widthStr, widthD - widthStr)
 
         setShowBegun(false)
  
@@ -375,27 +370,7 @@ const NewWorker = () => {
             if (widthStr > widthD) {
                 setShowBegun(true)
             }
-            if (widthStr2 > widthD) {
-                setShowBegun2(true)
-            }
-            if (widthStr3 > widthD) {
-                setShowBegun3(true)
-            }
         }, 3000)
-
-
-        // setInterval(()=> {
-        //     console.log(Math.abs(widthD - widthStr))
-        //     if (widthStr > widthD) {            
-        //         setShowBegun(false)
-        //     }
-        //     if (widthStr2 > widthD) {
-        //         setShowBegun2(false)
-        //     }
-        //     if (widthStr3 > widthD) {
-        //         setShowBegun3(false)
-        //     }
-        // }, Math.abs((widthD - widthStr)*500));
 
     }, [widthStr])
 
@@ -408,21 +383,30 @@ const NewWorker = () => {
 
         console.log("str2: ", widthStr2,  widthD - widthStr2)
 
-        setInterval(()=> {
+        setTimeout(()=> {
             if (widthStr2 > widthD) {
                 setShowBegun2(true)
             }
         }, 3000)
 
-
-        setInterval(()=> {
-            console.log(Math.abs(widthD - widthStr2))
-            if (widthStr2 > widthD) {
-                setShowBegun2(false)
-            }
-        }, Math.abs((widthD - widthStr)*160));
-
     }, [widthStr2])
+
+    useEffect(() => {
+        //длина окна
+        const widthD = width - (131 + 25)
+        setWidthD(widthD)
+
+        setWidthDX3(widthD - widthStr3)
+
+        console.log("str3: ", widthStr3,  widthD - widthStr3)
+
+        setTimeout(()=> {
+            if (widthStr3 > widthD) {
+                setShowBegun3(true)
+            }
+        }, 3000)
+
+    }, [widthStr3])
 
     
     return (
@@ -544,7 +528,11 @@ const NewWorker = () => {
                         showBegun2 && widthD < widthStr2 ? 
                         <div className='fio-text'><Marquee workerFam={workerFam} workerName={workerName} phone={phone} width={widthDX2} /></div>
                         : 
-                        <p className='fio-text' style={{marginLeft: '25px', display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p>
+                        <p className='fio-text' style={{
+                            marginLeft: '25px', 
+                            display: showFIO ? 'block' : 'none',
+                            whiteSpace: 'nowrap'
+                        }}>{workerFam} {workerName} | {phone}</p>
                     }
 
 
