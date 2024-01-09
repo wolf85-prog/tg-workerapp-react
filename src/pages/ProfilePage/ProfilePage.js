@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Header from "../../components/Header/Header";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -27,6 +27,7 @@ import Workhub from "../../image/new/wokhub.svg"
 import QRCode from "../../image/new/QR_Code.svg"
 import Close from "../../image/new/close.svg"
 import ClosePress from "../../image/new/close_press.svg"
+import CopyIcon from "../../image/icons/clone.svg"
 
 import Footer from "../../image/new/footer2.png"
 import VK from "../../image/new/basil_vk-outline.svg"
@@ -43,12 +44,12 @@ import btnSave from "../../image/buttons/btn_add.png"
 import specData from "../../data/specData"
 import NewSelect from '../../components/UI/NewSelect/NewSelect';
 import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
-import Marquee from '../../components/UI/Marquee/Marquee';
+import MarqueeModal from '../../components/UI/MarqueeModal/MarqueeModal';
 
-import WorkerList from "../../components/WorkerList/WorkerList";
+import WorkerList2 from '../../components/WorkerList2/WorkerList2';
 
 const ProfilePage = () => {
-    const {tg, user} = useTelegram();
+    const {tg, user, queryId} = useTelegram();
     const navigate = useNavigate();
     const { hash } = useLocation();
 
@@ -98,6 +99,8 @@ const ProfilePage = () => {
     const [showSpec, setShowSpec] = useState(false) 
 
     const [showBegun, setShowBegun] = useState(false)
+
+    const API_URL = process.env.REACT_APP_API_URL
     
 //----------------------------------------------------------------------------------
 
@@ -105,7 +108,7 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
             //console.log("worker: ", worker.length) 
             //console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -488,7 +491,56 @@ const ProfilePage = () => {
         setTitleSpec("")
         
         //setShowAddSpec(false)
-        setShowBegun(true)
+        setShowSpec(true)
+    }
+
+
+    //отправка данных в telegram-бот
+    const onSendData = useCallback(() => {
+
+            const data = {
+                worklist: workers, 
+                user,
+                queryId,
+            }
+    
+            tg.MainButton.hide();
+    
+            fetch(API_URL + 'web-addspec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+                  
+    }, [ workers, user ])
+    
+    useEffect(() => {
+            tg.onEvent('mainButtonClicked', onSendData)
+            return () => {
+                tg.offEvent('mainButtonClicked', onSendData)
+            }
+    }, [onSendData])
+    
+    useEffect(() => {
+            tg.MainButton.setParams({
+                text: 'Сохранить',
+                color: '#000000' //'#2e2e2e'
+            })
+    }, [])
+    
+    useEffect(() => {
+            if (workers.length > 0) {
+                tg.MainButton.show();
+            } else {
+                tg.MainButton.hide();
+            } 
+    }, [workers])
+
+
+    const clickCopyID = () => {
+        
     }
 
     //---------------------------------------------------------------------------------------
@@ -527,7 +579,7 @@ const ProfilePage = () => {
                         <img className='star-icon' src={Star} alt='' />
                         <img className='star-icon' src={Star} alt='' />
                     </div>
-                    <div className='block-id'>ID {user?.id}</div>
+                    <div className='block-id' onClick={clickCopyID}> ID {user?.id}1212121212<img src={CopyIcon} alt='' style={{width: '15px'}}/></div>
                 </article>
 
                 <div style={{display: 'flex', marginTop: '15px'}}>
@@ -706,7 +758,7 @@ const ProfilePage = () => {
 
 
             <MyModal visible={showAddSpec} setVisible={setShowAddSpec}>
-                <div className='info-card'>
+                <div className='info-card' style={{height: 'auto'}}>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
@@ -714,7 +766,7 @@ const ProfilePage = () => {
                     <img onClick={()=>setShowAddSpec(false)} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
 
                     <p className='vagno'>Добавить специальность</p>
-                    <div style={{position: 'relative', marginTop: '80px', marginLeft: '25px', marginRight: '25px'}}>
+                    <div style={{position: 'relative', marginTop: '60px', marginLeft: '25px', marginRight: '25px'}}>
                         <p className='cat-title' style={{display: titleCat ? 'none' : 'block'}}>Категория...</p>  
                         <NewSelect
                             id="category"
@@ -747,20 +799,24 @@ const ProfilePage = () => {
                             zIndex: 20,
                             paddingTop: '15px',
                         }}>
-                            {showBegun ? 
-                            <Marquee workers={workers}/>
-                            : <WorkerList workers={workers} />}
+                            {
+                            showSpec && 
+                            <div className='fio-text'><WorkerList2 workers={workers} /></div>
+                            }
                         </div>  
 
                         {/*кнопка Добавить*/}
-                        <button 
-                            disabled={disabledBtn}
-                            className="image-button-add" 
-                            style={{ backgroundImage: `url(${btnSave})`}}
-                            onClick={addNewWorker}
-                        >
-                            Добавить
-                        </button> 
+                        <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '15px'}}>
+                            <button 
+                                disabled={disabledBtn}
+                                className="image-add-modal-button" 
+                                style={{ backgroundImage: `url(${btnSave})`}}
+                                onClick={addNewWorker}
+                            >
+                                Добавить
+                            </button>
+                        </div>
+                         
                     </div>
                     {/* <div className='button-ok' onClick={()=>setShowAddSpec(false)}>
                         <div className='rec-button'>Добавить</div>                     

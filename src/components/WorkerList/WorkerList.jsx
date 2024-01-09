@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { useUsersContext } from "./../../contexts/UserContext";
+import { useUsersContext } from "../../contexts/UserContext";
 
 const WorkerList = ({workers, remove, width}) => {
 

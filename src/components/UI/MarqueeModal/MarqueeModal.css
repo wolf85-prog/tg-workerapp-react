@@ -1,0 +1,17 @@
+.marquee {
+    position: relative;
+    width: 200px;
+    max-width: 250px;
+    height: 17px;
+    /* overflow-x: hidden; */
+  }
+  
+  .track {
+    position: absolute;
+    white-space: nowrap;
+  }
+  
+  .track > h1 {
+    margin: 20px 0;
+    font-size: 8rem; 
+  }

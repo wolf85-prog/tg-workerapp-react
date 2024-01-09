@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.0951cbbd.css",
-    "main.js": "/static/js/main.1e45cb31.js",
+    "main.css": "/static/css/main.51612593.css",
+    "main.js": "/static/js/main.222fbb94.js",
     "static/media/logo.gif": "/static/media/logo.03a8dcdcb6a3e09abb3d.gif",
     "static/media/grad_white.png": "/static/media/grad_white.bf047de8d71c677415ee.png",
     "static/media/call_poster.png": "/static/media/call_poster.81e3ac2818427e0b4ffc.png",
@@ -51,6 +51,7 @@
     "static/media/wokhub.svg": "/static/media/wokhub.2b85b9a8e9bd381310b569d9c1dbe3fc.svg",
     "static/media/close_press.svg": "/static/media/close_press.14572c1300b40d77339cfd532c0960f2.svg",
     "index.html": "/index.html",
+    "static/media/clone.svg": "/static/media/clone.6208166b27f66a0cfc4ab3afb95823d2.svg",
     "static/media/vector.svg": "/static/media/vector.1f8d2122ee9e28ff2f94efe3224eb38b.svg",
     "static/media/vector_up.svg": "/static/media/vector_up.8342f07471152b7421a92f763a8309e5.svg",
     "static/media/calendar.svg": "/static/media/calendar.923894a71684ccba8ff336dacfb260ba.svg",
@@ -59,11 +60,11 @@
     "static/media/menuFilter.svg": "/static/media/menuFilter.5361a720eb7ff7ae7367798de7a3e033.svg",
     "static/media/close.svg": "/static/media/close.292280e2a4c33572fa44d4be444aac11.svg",
     "static/media/star_activ.svg": "/static/media/star_activ.ed87d15ed8b63931d528d6ca9c357924.svg",
-    "main.0951cbbd.css.map": "/static/css/main.0951cbbd.css.map",
-    "main.1e45cb31.js.map": "/static/js/main.1e45cb31.js.map"
+    "main.51612593.css.map": "/static/css/main.51612593.css.map",
+    "main.222fbb94.js.map": "/static/js/main.222fbb94.js.map"
   },
   "entrypoints": [
-    "static/css/main.0951cbbd.css",
-    "static/js/main.1e45cb31.js"
+    "static/css/main.51612593.css",
+    "static/js/main.222fbb94.js"
   ]
 }

@@ -98,6 +98,7 @@
   text-align: left;
   /* ULEY Светлый */
   color: #E8F1F9;
+  white-space: nowrap;
 }
 
 .card-specs {
@@ -171,6 +172,10 @@
   /* ULEY Светлый */
   color: #E8F1F9;
   opacity: 0.4;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
 }
 
 
