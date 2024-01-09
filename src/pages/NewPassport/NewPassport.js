@@ -97,9 +97,6 @@ const NewPassport = () => {
         setPasDateborn(e.target.value)
     }
 
-    const onClose = () => {
-        tg.close()
-    }
 
     useEffect(()=>{
         tg.setHeaderColor('#343A41') // установка цвета хедера
@@ -111,12 +108,14 @@ const NewPassport = () => {
         
     }, [])
 
+    const handleClick = () => navigate('/');
+
     useEffect(() => {
-        tg.onEvent("backButtonClicked", onClose)
+        tg.onEvent("backButtonClicked", handleClick)
         return () => {
-            tg.offEvent('backButtonClicked', onClose)
+            tg.offEvent('backButtonClicked', handleClick)
         }
-    }, [onClose])
+    }, [handleClick])
 
     useEffect(() => {
         tg.BackButton.show();

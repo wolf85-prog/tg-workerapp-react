@@ -10,6 +10,8 @@ import './NewWorker.css';
 import BlackFon from "../../image/new/fon_grad.svg";
 
 import btnSave from "../../image/buttons/btn_add.png"
+import iconCheck from "../../image/check.png";
+import iconUnCheck from "../../image/uncheck.png";
 
 import NewSelect from '../../components/UI/NewSelect/NewSelect';
 import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
@@ -78,6 +80,7 @@ const NewWorker = () => {
     const [widthStr2, setWidthStr2] = useState(0)
     const [widthStr3, setWidthStr3] = useState(0)
 
+    const [check, setCheck] = useState(false)
 //----------------------------------------------------------------------------------
 
 
@@ -621,27 +624,42 @@ const NewWorker = () => {
 
 
             <MyModal visible={showModal} setVisible={setShowModal}>
-                <div className='info-card'>
+                <div className='info-card' style={{height: '220px'}}>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <p className='vagno'>Укажите своего друга</p>
+                    <p className='vagno'>Важно</p>
                     {/* <p className='text-vagno' style={{marginTop: '25px'}}>Добро пожаловать на борт!</p> */}
-                    <div style={{position: 'relative', marginTop: '110px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
+                    <div style={{position: 'absolute', top: '60px', left: '20px', display: 'flex', alignItems: 'center'}}>
+                        {/* <input type="checkbox" id="scales" name="scales" checked /> */}
+                        <img src={check ? iconCheck : iconUnCheck} onClick={()=>setCheck(!check)} alt='' width='25px' height='25px'/>
+                        <label style={{marginRight: '10px'}}>Я использую  промокод ID</label>
+                    </div>
+                    <div style={{
+                        position: 'absolute',
+                        top: '100px',
+                        left: '0',
+                        marginLeft: '25px', 
+                        marginRight: '25px', 
+                        height: '43px', 
+                        width: '260px',
+                        zIndex: '3',
+                        display: check ? 'block' : 'none'
+                    }}>
                         <div className='rec1-input'></div>
                         <div className='rec2-input'></div>
                         <div className='rec3-input'></div>
                         <input
                             className='input-style3'
-                            placeholder='id друга'
+                            placeholder='Промокод ID'
                             id="friend_name"
                             onChange={onChangeFriend}
                             value={friend}
                         /> 
                     </div>
                     <div className='button-ok' onClick={clickAddFrined}>
-                        <div className='rec-button'>Добавить</div>        
+                        <div className='rec-button'>{check ? "Добавить" : "Хорошо"}</div>        
                     </div>
                 </div>
             </MyModal>
