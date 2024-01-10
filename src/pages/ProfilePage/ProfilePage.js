@@ -449,13 +449,6 @@ const ProfilePage = () => {
             })
                   
     }, [ workers, user ])
-    
-    useEffect(() => {
-            tg.onEvent('mainButtonClicked', onSendData)
-            return () => {
-                tg.offEvent('mainButtonClicked', onSendData)
-            }
-    }, [onSendData])
 
 
 
@@ -510,13 +503,18 @@ const ProfilePage = () => {
     }
 
     useEffect(() => {
-        tg.onEvent('mainButtonClicked', clickWorkhub)
-        return () => {
-            tg.offEvent('mainButtonClicked', clickWorkhub)
+        if (workers.length > 0) {
+            tg.onEvent('mainButtonClicked', onSendData)
+            return () => {
+                tg.offEvent('mainButtonClicked', onSendData)
+            } 
+        } else {
+            tg.onEvent('mainButtonClicked', clickWorkhub)
+            return () => {
+                tg.offEvent('mainButtonClicked', clickWorkhub)
+            }
         }
-    }, [clickWorkhub])
-
-    
+    }, [workers, clickWorkhub, onSendData])
 
 
     //скорировать телеграм id в буфер обмена
