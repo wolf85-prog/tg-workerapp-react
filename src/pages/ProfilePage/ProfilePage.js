@@ -108,7 +108,7 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id '6143011220'
             //console.log("worker: ", worker.length) 
             //console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -491,7 +491,7 @@ const ProfilePage = () => {
         } else {
             tg.MainButton.setParams({
                 text: 'Workhub',
-                color: '#343A41' //'#2e2e2e'
+                color: '#26292c' //'#2e2e2e'
             })
         }
         
@@ -561,7 +561,7 @@ const ProfilePage = () => {
                     <div className='block-id' onClick={clickCopyID}> ID {user?.id}<img src={CopyIcon} alt='' style={{width: '12px'}}/></div>
                 </article>
 
-                <div style={{display: 'flex', marginTop: '15px'}}>
+                <div style={{display: 'flex', marginTop: '15px', justifyContent: 'space-between'}}>
                     {/* Мерч */}
                     <article className='block-merch' onClick={clickInfo}> 
                             <div className='rectangle-merch'></div>
@@ -770,13 +770,12 @@ const ProfilePage = () => {
                         />
                     </div>
 
-                    <div style={{position: 'relative', marginTop: '10px', marginRight: '25px'}}>
+                    <div style={{position: 'relative', marginRight: '25px'}}>
                         {/*список работников*/}
                         <div style={{
                             boxSizing: 'border-box', 
                             height: 'auto', 
                             zIndex: 20,
-                            paddingTop: '15px',
                         }}>
                             {
                             showSpec && 

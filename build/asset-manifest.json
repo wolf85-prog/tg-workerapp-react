@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.a75e6159.css",
-    "main.js": "/static/js/main.4454e534.js",
+    "main.css": "/static/css/main.13c79d02.css",
+    "main.js": "/static/js/main.ec307de9.js",
     "static/media/logo.gif": "/static/media/logo.03a8dcdcb6a3e09abb3d.gif",
     "static/media/grad_white.png": "/static/media/grad_white.bf047de8d71c677415ee.png",
     "static/media/call_poster.png": "/static/media/call_poster.81e3ac2818427e0b4ffc.png",
@@ -60,11 +60,11 @@
     "static/media/menuFilter.svg": "/static/media/menuFilter.5361a720eb7ff7ae7367798de7a3e033.svg",
     "static/media/close.svg": "/static/media/close.292280e2a4c33572fa44d4be444aac11.svg",
     "static/media/star_activ.svg": "/static/media/star_activ.ed87d15ed8b63931d528d6ca9c357924.svg",
-    "main.a75e6159.css.map": "/static/css/main.a75e6159.css.map",
-    "main.4454e534.js.map": "/static/js/main.4454e534.js.map"
+    "main.13c79d02.css.map": "/static/css/main.13c79d02.css.map",
+    "main.ec307de9.js.map": "/static/js/main.ec307de9.js.map"
   },
   "entrypoints": [
-    "static/css/main.a75e6159.css",
-    "static/js/main.4454e534.js"
+    "static/css/main.13c79d02.css",
+    "static/js/main.ec307de9.js"
   ]
 }
