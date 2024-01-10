@@ -278,77 +278,6 @@ const ProfilePage = () => {
 
 //---------------------------------------------------------------------
 
-    const onClose = () => {
-        tg.close()
-    }
-
-    useEffect(()=>{
-        tg.setHeaderColor('#343A41') // установка цвета хедера
-        tg.setBackgroundColor('#26292c') // установка цвета бэкграунда
-        
-        if (!tg.isExpanded) {
-           tg.expand() //раскрыть приложение на всю высоту 
-        }
-        
-    }, [])
-
-    useEffect(() => {
-        tg.onEvent("backButtonClicked", onClose)
-        return () => {
-            tg.offEvent('backButtonClicked', onClose)
-        }
-    }, [onClose])
-
-    useEffect(() => {
-        tg.BackButton.show();
-    }, [])
-
-
-    useEffect(() => {
-        tg.MainButton.show();
-    }, [])
-
-    useEffect(() => {
-        tg.MainButton.setParams({
-            text: 'Workhub',
-            color: '#343A41' //'#2e2e2e'
-        })
-    }, [])
-
-
-    const clickWorkhub = () => {
-        showFooter ? setShowFooter(false) : setShowFooter(true)
-    }
-
-    useEffect(() => {
-        tg.onEvent('mainButtonClicked', clickWorkhub)
-        return () => {
-            tg.offEvent('mainButtonClicked', clickWorkhub)
-        }
-    }, [clickWorkhub])
-
-    
-
-    useEffect(() => {
-        tg.MainButton.show();     
-    }, [])
-
-
-    useEffect(()=> {
-        console.log("hash: ", hash)
-        if (hash === '#section-two') {
-            setTimeout(()=> {
-                executeScroll(projectsRef)
-            }, 1000)
-           
-        }
-    }, [hash])
-
-    const executeScroll = (projectsRef) => {
-        projectsRef.current.scrollIntoView({behavior: 'smooth'})
-    }
-
-
 
     const clickKompeten = () => {
         showKompet ? setShowKompet(false) : setShowKompet(true)
@@ -527,21 +456,68 @@ const ProfilePage = () => {
                 tg.offEvent('mainButtonClicked', onSendData)
             }
     }, [onSendData])
-    
+
+
+
+    const onClose = () => {
+        tg.close()
+    }
+
+    useEffect(()=>{
+        tg.setHeaderColor('#343A41') // установка цвета хедера
+        tg.setBackgroundColor('#26292c') // установка цвета бэкграунда
+        
+        if (!tg.isExpanded) {
+           tg.expand() //раскрыть приложение на всю высоту 
+        }
+        
+    }, [])
+
     useEffect(() => {
+        tg.onEvent("backButtonClicked", onClose)
+        return () => {
+            tg.offEvent('backButtonClicked', onClose)
+        }
+    }, [onClose])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
+
+
+    useEffect(() => {
+        tg.MainButton.show();
+    }, [])
+
+    useEffect(() => {
+        if (workers.length > 0) {
             tg.MainButton.setParams({
                 text: 'Сохранить',
                 color: '#000000' //'#2e2e2e'
             })
-    }, [])
-    
-    useEffect(() => {
-            if (workers.length > 0) {
-                tg.MainButton.show();
-            } else {
-                tg.MainButton.hide();
-            } 
+        } else {
+            tg.MainButton.setParams({
+                text: 'Workhub',
+                color: '#343A41' //'#2e2e2e'
+            })
+        }
+        
     }, [workers])
+
+
+    const clickWorkhub = () => {
+        showFooter ? setShowFooter(false) : setShowFooter(true)
+    }
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', clickWorkhub)
+        return () => {
+            tg.offEvent('mainButtonClicked', clickWorkhub)
+        }
+    }, [clickWorkhub])
+
+    
+
 
     //скорировать телеграм id в буфер обмена
     const clickCopyID = () => {
