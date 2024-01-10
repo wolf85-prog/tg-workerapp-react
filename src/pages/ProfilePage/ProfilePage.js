@@ -284,7 +284,7 @@ const ProfilePage = () => {
 
     useEffect(()=>{
         tg.setHeaderColor('#343A41') // установка цвета хедера
-        tg.setBackgroundColor('#343A41') // установка цвета бэкграунда
+        tg.setBackgroundColor('#26292c') // установка цвета бэкграунда
         
         if (!tg.isExpanded) {
            tg.expand() //раскрыть приложение на всю высоту 
@@ -301,6 +301,11 @@ const ProfilePage = () => {
 
     useEffect(() => {
         tg.BackButton.show();
+    }, [])
+
+
+    useEffect(() => {
+        tg.MainButton.show();
     }, [])
 
     useEffect(() => {
@@ -538,9 +543,9 @@ const ProfilePage = () => {
             } 
     }, [workers])
 
-
+    //скорировать телеграм id в буфер обмена
     const clickCopyID = () => {
-        
+        navigator.clipboard.writeText(user?.id)
     }
 
     //---------------------------------------------------------------------------------------
@@ -579,7 +584,7 @@ const ProfilePage = () => {
                         <img className='star-icon' src={Star} alt='' />
                         <img className='star-icon' src={Star} alt='' />
                     </div>
-                    <div className='block-id' onClick={clickCopyID}> ID {user?.id}<img src={CopyIcon} alt='' style={{width: '15px'}}/></div>
+                    <div className='block-id' onClick={clickCopyID}> ID {user?.id}<img src={CopyIcon} alt='' style={{width: '12px'}}/></div>
                 </article>
 
                 <div style={{display: 'flex', marginTop: '15px'}}>
@@ -666,7 +671,7 @@ const ProfilePage = () => {
                     <p className='history-title'>История</p>
                     <div className='dates-history'><p>01.2024</p><p>0.00</p></div>
                     <div className='dates-history2'><p>02.2024</p><p>0.00</p></div>
-                    <div className='dates-history2'><p>02.2024</p><p>0.00</p></div>
+                    <div className='dates-history2'><p>03.2024</p><p>0.00</p></div>
                 </article> 
                 
             </div>
