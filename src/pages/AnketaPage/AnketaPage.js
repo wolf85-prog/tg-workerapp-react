@@ -130,7 +130,7 @@ const AnketaPage = () => {
                         </p>
                         <br/>
                         <p>
-                            Для продолжения необходимо  согласие
+                            Для продолжения необходимо Ваше согласие
                         </p>
                     </div> 
 
@@ -149,7 +149,7 @@ const AnketaPage = () => {
 
                     <p className='vagno'>Ваш отказ принят</p>
                     <div className='text-vagno' style={{textAlign: 'left'}}>
-                        <p>Для продолжения работы на этом проекте необходимо  согласие.</p>
+                        <p>Для продолжения работы на этом проекте необходимо Ваше согласие.</p>
                         <p>До встречи на других проектах!</p>
                     </div>
                     <div className='button-ok' onClick={()=>setShowModal(false)}>

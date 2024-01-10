@@ -560,7 +560,7 @@ const ProfilePage = () => {
                         <img className='star-icon' src={Star} alt='' />
                         <img className='star-icon' src={Star} alt='' />
                     </div>
-                    <div className='block-id' onClick={clickCopyID}> ID {user?.id}<img src={CopyIcon} alt='' style={{width: '12px'}}/></div>
+                    <div className='block-id' onClick={clickCopyID}> ID {user?.id}</div>
                 </article>
 
                 <div style={{display: 'flex', marginTop: '15px', justifyContent: 'space-between'}}>

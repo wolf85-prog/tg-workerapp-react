@@ -98,7 +98,7 @@ const NewPassport2 = () => {
 
     useEffect(()=>{
         tg.setHeaderColor('#343A41') // установка цвета хедера
-        tg.setBackgroundColor('#343A41') // установка цвета бэкграунда
+        tg.setBackgroundColor('#26292c') // установка цвета бэкграунда
         
         if (!tg.isExpanded) {
            tg.expand() //раскрыть приложение на всю высоту 
@@ -106,14 +106,16 @@ const NewPassport2 = () => {
         
     }, [])
 
-    const handleClick = () => navigate('/');
+    const onClose = () => {
+        tg.close()
+    }
 
     useEffect(() => {
-        tg.onEvent("backButtonClicked", handleClick)
+        tg.onEvent("backButtonClicked", onClose)
         return () => {
-            tg.offEvent('backButtonClicked', handleClick)
+            tg.offEvent('backButtonClicked', onClose)
         }
-    }, [handleClick])
+    }, [onClose])
 
     useEffect(() => {
         tg.BackButton.show();
@@ -132,7 +134,7 @@ const NewPassport2 = () => {
                         color: 'red', 
                         fontSize: '18px',
                         position: 'absolute',
-                        top: 'calc(20vh - 25px)',
+                        top: '70px',
                         width: '100%',
                     }}>{error}
             </div>
@@ -227,7 +229,7 @@ const NewPassport2 = () => {
                     </div>    
 
                     <div className='block-button' style={{padding: '0'}}>
-                        <div className='button1' >Назад</div>
+                        <div className='button1' onClick={()=>navigate(-1)}>Назад</div>
                         <div className='button2' onClick={pressNext}>Далее</div>
                     </div> 
                 </div>
