@@ -176,7 +176,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='5'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1975');
@@ -186,10 +186,10 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1975
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='6'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1976');
@@ -199,10 +199,10 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1976
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='7'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1977');
@@ -212,10 +212,10 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1977
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='8'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1978');
@@ -225,10 +225,10 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1978
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='9'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1979');
@@ -238,10 +238,10 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1979
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='10'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1980');
@@ -255,7 +255,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1980
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='11'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1981');
@@ -268,7 +268,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1981
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='12'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1982');
@@ -281,7 +281,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1982
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='13'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1983');
@@ -294,7 +294,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1983
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='14'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1984');
@@ -307,7 +307,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1984
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='15'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1985');
@@ -317,125 +317,335 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1985
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='16'
                                     onClick={(e)=> {
                                             onChange(e)
-                                            setSelected('1974');
-                                            setTitleDate('1974')
+                                            setSelected('1986');
+                                            setTitleDate('1986')
                                             setOpen(false); 
                                         }
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1986
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='17'
                                     onClick={(e)=> {
                                             onChange(e)
-                                            setSelected('1974');
-                                            setTitleDate('1974')
+                                            setSelected('1987');
+                                            setTitleDate('1987')
                                             setOpen(false); 
                                         }
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1987
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='18'
                                     onClick={(e)=> {
                                             onChange(e)
-                                            setSelected('1974');
-                                            setTitleDate('1974')
+                                            setSelected('1988');
+                                            setTitleDate('1988')
                                             setOpen(false); 
                                         }
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1988
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='19'
                                     onClick={(e)=> {
                                             onChange(e)
-                                            setSelected('1974');
-                                            setTitleDate('1974')
+                                            setSelected('1989');
+                                            setTitleDate('1989')
                                             setOpen(false); 
                                         }
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1989
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='20'
                                     onClick={(e)=> {
                                             onChange(e)
-                                            setSelected('1974');
-                                            setTitleDate('1974')
+                                            setSelected('1990');
+                                            setTitleDate('1990')
                                             setOpen(false); 
                                         }
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1990
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='21'
                                     onClick={(e)=> {
                                             onChange(e)
-                                            setSelected('1974');
-                                            setTitleDate('1974')
+                                            setSelected('1991');
+                                            setTitleDate('1991')
                                             setOpen(false); 
                                         }
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1991
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='22'
                                     onClick={(e)=> {
                                             onChange(e)
-                                            setSelected('1974');
-                                            setTitleDate('1974')
+                                            setSelected('1992');
+                                            setTitleDate('1992')
                                             setOpen(false); 
                                         }
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1992
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='23'
                                     onClick={(e)=> {
                                             onChange(e)
-                                            setSelected('1974');
-                                            setTitleDate('1974')
+                                            setSelected('1993');
+                                            setTitleDate('1993')
                                             setOpen(false); 
                                         }
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1993
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='24'
                                     onClick={(e)=> {
                                             onChange(e)
-                                            setSelected('1974');
-                                            setTitleDate('1974')
+                                            setSelected('1994');
+                                            setTitleDate('1994')
                                             setOpen(false); 
                                         }
                                     }
                                     className={classes.listyle}
                                 >
-                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1994
                                 </li>
+                                <li 
+                                    value='25'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('1995');
+                                            setTitleDate('1995')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1995
+                                </li>
+                                <li 
+                                    value='26'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('1996');
+                                            setTitleDate('1996')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1996
+                                </li>
+                                <li 
+                                    value='27'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('1997');
+                                            setTitleDate('1997')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1997
+                                </li>
+                                <li 
+                                    value='28'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('1998');
+                                            setTitleDate('1998')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1998
+                                </li>
+                                <li 
+                                    value='29'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('1999');
+                                            setTitleDate('1999')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1999
+                                </li>
+                                <li 
+                                    value='30'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('2000');
+                                            setTitleDate('2000')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                    ref={myRef}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2000
+                                </li>
+                                <li 
+                                    value='31'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('2001');
+                                            setTitleDate('2001')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2001
+                                </li>
+                                <li 
+                                    value='32'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('2002');
+                                            setTitleDate('2002')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2002
+                                </li>
+                                <li 
+                                    value='33'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('2003');
+                                            setTitleDate('2003')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2003
+                                </li>
+                                <li 
+                                    value='34'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('2004');
+                                            setTitleDate('2004')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2004
+                                </li>
+                                <li 
+                                    value='35'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('2005');
+                                            setTitleDate('2005')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2005
+                                </li>
+                                <li 
+                                    value='36'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('2006');
+                                            setTitleDate('2006')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2006
+                                </li>
+                                <li 
+                                    value='37'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('2007');
+                                            setTitleDate('2007')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2007
+                                </li>
+                                <li 
+                                    value='38'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('2008');
+                                            setTitleDate('2008')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2008
+                                </li>
+                                <li 
+                                    value='39'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('2009');
+                                            setTitleDate('2009')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2009
+                                </li>
+                                <li 
+                                    value='40'
+                                    onClick={(e)=> {
+                                            onChange(e)
+                                            setSelected('2010');
+                                            setTitleDate('2010')
+                                            setOpen(false); 
+                                        }
+                                    }
+                                    className={classes.listyle}
+                                >
+                                   <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2010
+                                </li>
+
                         </ul>
 
                     </div>
