@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import ScrollToHashElement from "./../../components/ScrollToHashElement/ScrollToHashElement";
+import copy from "copy-to-clipboard";
 
 import { useTelegram } from "../../hooks/useTelegram";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
@@ -519,7 +520,7 @@ const ProfilePage = () => {
 
     //скорировать телеграм id в буфер обмена
     const clickCopyID = () => {
-        navigator.clipboard.writeText(user?.id)
+        copy(user?.id)
     }
 
     //---------------------------------------------------------------------------------------
