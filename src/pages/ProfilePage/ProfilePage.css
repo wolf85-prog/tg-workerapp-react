@@ -470,9 +470,9 @@ input[id="cb1"] {
 
 .block-dohod-open {
     position: absolute;
-    width: 50%;
+    width: 53%;
     z-index: 0;
-    right: 7px;
+    right: 0;
     top: 274px;
 }
 
@@ -528,7 +528,7 @@ input[id="cb1"] {
 }
 
 .dohod-open {
-    width: 120%;
+    width: 119%;
     position: relative;
     margin-top: -146px;
     height: 298px;
