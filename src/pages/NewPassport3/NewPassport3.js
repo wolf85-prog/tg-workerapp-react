@@ -191,21 +191,21 @@ const NewPassport3 = () => {
 
         } else {
             if (!pasPlaceborn) {
-                setError('Заполните выделенные поля!')
+                setError('Заполни выделенные поля!')
                 setPlaceDirty(true) 
             } else {
                 setPlaceDirty(false)   
             } 
 
             if (!pasAdress) {
-                setError('Заполните выделенные поля!')
+                setError('Заполни выделенные поля!')
                 setAddressDirty(true)
             } else {
                 setAddressDirty(false)  
             }
 
             if (!pasEmail.includes("@")) {
-                setError('Заполните выделенные поля!')
+                setError('Заполни выделенные поля!')
                 setEmailDirty(true)
             } else {
                 setEmailDirty(false)  

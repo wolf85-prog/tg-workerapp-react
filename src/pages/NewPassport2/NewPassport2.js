@@ -51,7 +51,7 @@ const NewPassport2 = () => {
         } else {  
             console.log("нет")        
             if (pasNumber.length !== 11) {
-                setError('Заполните выделенные поля!')
+                setError('Заполни выделенные поля!')
                 setNumDirty(true) 
             } else {
                 setNumDirty(false)   
@@ -65,14 +65,14 @@ const NewPassport2 = () => {
             }
 
             if (pasKem.length === 0) {
-                setError('Заполните выделенные поля!')
+                setError('Заполни выделенные поля!')
                 setKemDirty(true)
             } else {
                 setKemDirty(false)  
             }
 
             if (pasKod.length !== 7) {
-                setError('Заполните выделенные поля!')
+                setError('Заполни выделенные поля!')
                 setKodDirty(true)
             } else {
                 setKodDirty(false)  
