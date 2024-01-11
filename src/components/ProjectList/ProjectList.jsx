@@ -5,7 +5,6 @@ import ProjectItem from "../ProjectItem/ProjectItem";
 
 import btnChat from "../../image/new/btn_chat.svg"
 import Vector from "../../image/new/vector.svg"
-import Progress0 from "../../image/new/progress0.svg"
 import MyModal from "../../components/MyModal/MyModal";
 
 const ProjectList = ({posts, title, workerId, remove, width}) => {
@@ -43,9 +42,9 @@ const ProjectList = ({posts, title, workerId, remove, width}) => {
                         <img className='vector' src={Vector} alt=''/>  
                     </div>
 
-                    <div className='progress'>
+                    {/* <div className='progress'>
                         <img className='shkala' src={Progress0} alt=''/>
-                    </div>
+                    </div> */}
                     
                     <div className='card-footer'>
                         <div></div>

@@ -12,18 +12,18 @@ import { getStavka, addStavka, addFactStavka, getSpecStavka } from '../../http/s
 import btnChat from "../../image/new/btn_chat.svg"
 import Vector from "../../image/new/vector.svg"
 import VectorUp from "../../image/new/vector_up.svg"
-import Progress from "../../image/new/progress.svg"
 import Ukazatel from "../../image/new/ukazatel.png"
-import Question from "../../image/new/question.svg"
 import Close from "../../image/new/close.svg"
 import ClosePress from "../../image/new/close_press.svg"
 // import Shkala from "../../image/new/shkala2.svg"
 
+import begunok from "../../image/new/begunok.png"
 import Shkala1 from "../../image/new/progress.png"
 import Shkala2 from "../../image/new/progress2.png"
 import Shkala3 from "../../image/new/progress3.png"
 import Shkala4 from "../../image/new/progress4.png"
 import Shkala5 from "../../image/new/progress5.png"
+import RangeSlider from '../UI/RangeSlider/RangeSlider';
 
 const ProjectItem = (props) => {
 
@@ -230,13 +230,17 @@ const ProjectItem = (props) => {
                 
                 <div className='shkala-click' onClick={clickShkala} onTouchMove={handleTouchStart}></div>
                 
-                <div className='shkala1'>
+                {/* <div className='shkala1'>
                    <img src={Shkala1} alt='' className='shkala-img' style={{display: showShkala1 ? 'block' : 'none'}}/> 
                    <img src={Shkala2} alt='' className='shkala-img' style={{display: showShkala2 ? 'block' : 'none'}}/> 
                    <img src={Shkala3} alt='' className='shkala-img' style={{display: showShkala3 ? 'block' : 'none'}}/> 
                    <img src={Shkala4} alt='' className='shkala-img' style={{display: showShkala4 ? 'block' : 'none'}}/> 
                    <img src={Shkala5} alt='' className='shkala-img' style={{display: showShkala5 ? 'block' : 'none'}}/> 
-                </div>
+                </div> */}
+
+                
+
+                <RangeSlider min={0} max={15} value={7} step={1} />
                 
 
                 <div className='card-footer'>
