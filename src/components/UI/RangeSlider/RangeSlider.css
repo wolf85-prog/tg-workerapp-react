@@ -16,6 +16,7 @@
     user-select: none;
     width: 80vw;
     max-width: 30em;
+    margin-bottom: 25px;
 }
 
 .slider {
@@ -29,6 +30,8 @@
         inset 3px 3px 6 px #000,
         1px 1px 1px #909090;
     cursor: pointer;
+    /* border: none;
+    margin-top: 70px; */
 }
 
 .slider::-webkit-slider-thumb {

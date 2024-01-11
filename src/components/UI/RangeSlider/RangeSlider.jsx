@@ -23,15 +23,14 @@ const RangeSlider = ({min, max, value, step}) => {
 
     return (
         <div className='range-slider'>
-            <div className='slider-container'>
-            {/* <div className="shkala">
-                    <div className='blocks'>
+            <div className="shkala">
+                    {/* <div className='blocks'>
                         <div className="block1">1</div>
                         <div className="block2">2</div>
                         <div className="block3">3</div>
                         <div className="block4">4</div>
                         <div className="block5">5</div>
-                    </div>
+                    </div> */}
 
                     <div className='shkala01'>
                         <div className='shk-line11'></div>
@@ -64,10 +63,13 @@ const RangeSlider = ({min, max, value, step}) => {
                         <div className='shk-line15'></div>
                     </div> 
 
-                    <div className='shkala2'></div>  
-                    <div className='shkala3'></div>  
-                    
-                </div> */}
+                    {/* <div className='shkala2'></div>  
+                    <div className='shkala3'></div>        */}
+                </div>
+            <div className='slider-container'>
+            
+                
+
                 <input 
                     type="range" 
                     value={inputValue}
@@ -77,7 +79,10 @@ const RangeSlider = ({min, max, value, step}) => {
                     max={max}
                     ref={sliderRef}
                     step={step}
+                    style={{border: 'none', marginTop: '20px'}}
                 />
+
+                
                 
                 <div 
                     className='slider-thumb'
@@ -89,6 +94,8 @@ const RangeSlider = ({min, max, value, step}) => {
                     className='progress'
                     style={{ width: `${sliderRange}%` }}
                 ></div>
+
+                
             </div>
         </div>
     );
