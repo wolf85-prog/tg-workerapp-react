@@ -695,7 +695,7 @@ const ProfilePage = () => {
                     <img onClick={()=>setShowModal(false)} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '20px'}}/>
 
                     <p style={{position: 'absolute', width: '100%', top: '55px'}}>
-                        Подпиши 3 друзей за  <br/> 3 000.00 рублей!
+                        Подпиши троих друзей за  <br/> 3 000.00 рублей!
                     </p>
                     <img src={QRCode} alt='' style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
 
