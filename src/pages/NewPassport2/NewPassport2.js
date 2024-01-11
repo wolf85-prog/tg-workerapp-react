@@ -123,7 +123,7 @@ const NewPassport2 = () => {
 
     return (
         <div className="App">
-            <Header header={{title: 'Моя анкета', icon: 'false'}}/>
+            <Header header={{title: 'Моя аккредитация', icon: 'false'}}/>
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />

@@ -44,14 +44,14 @@ const NewPassport = () => {
             console.log('нет')
 
             if (!pasFam) {
-                setError('Заполните выделенные поля!')
+                setError('Заполни выделенные поля!')
                 setFamDirty(true) 
             } else {
                 setFamDirty(false)   
             }
 
             if (!pasName) {
-                setError('Заполните выделенные поля!')
+                setError('Заполни выделенные поля!')
                 setNameDirty(true) 
             } else {
                 setNameDirty(false)   
@@ -59,7 +59,7 @@ const NewPassport = () => {
 
             //if (!pasDateborn || pasDateborn === '2000-01-01') {
             if (pasDateborn.length !== 10) {
-                setError('Заполните выделенные поля!')
+                setError('Заполни выделенные поля!')
                 setDatebornDirty(true) 
             } else {
                 setDatebornDirty(false)   

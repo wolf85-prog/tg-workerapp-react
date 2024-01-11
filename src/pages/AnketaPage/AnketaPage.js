@@ -92,7 +92,7 @@ const AnketaPage = () => {
 
             <div className="container" style={{margin: '115px 25px'}}>
                 {/* ФИО */}
-                <article className="card" style={{position: 'absolute', top: '75px', height: '300px'}}>
+                <article className="card" style={{position: 'absolute', top: '75px', height: 'auto'}}>
                     <div className="rectangle"><div className="rectangle2"><div className="rectangle3"></div></div></div>
                     <div style={{
                             position: 'relative',
@@ -130,7 +130,7 @@ const AnketaPage = () => {
                         </p>
                         <br/>
                         <p>
-                            Для продолжения необходимо Ваше согласие
+                            Для продолжения необходимо твоё согласие
                         </p>
                     </div> 
 
@@ -147,9 +147,9 @@ const AnketaPage = () => {
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <p className='vagno'>Ваш отказ принят</p>
+                    <p className='vagno'>Твой отказ принят</p>
                     <div className='text-vagno' style={{textAlign: 'left'}}>
-                        <p>Для продолжения работы на этом проекте необходимо Ваше согласие.</p>
+                        <p>Для продолжения работы на этом проекте необходимо твоё согласие.</p>
                         <p>До встречи на других проектах!</p>
                     </div>
                     <div className='button-ok' onClick={()=>setShowModal(false)}>
