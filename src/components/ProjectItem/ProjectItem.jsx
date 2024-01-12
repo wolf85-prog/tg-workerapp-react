@@ -278,7 +278,7 @@ const ProjectItem = (props) => {
 
                 </div> */}
 
-                <RangeSlider min={0} max={15} value={7} step={1} />
+                <RangeSlider min={0} max={100} value={25} step={1} />
 
                 {/* <Slider 
                     //defaultValue={50} 

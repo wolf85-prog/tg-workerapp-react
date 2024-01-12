@@ -581,9 +581,10 @@
     width: 312px;
     height: 0px;
     left: 10px;
-    top: 21px;
+    top: -21px;
     border: 1px solid #1B1E21;
     box-shadow: inset 0px -1px 2px rgba(255, 255, 255, 0.13);
+    z-index: 0;
 }
 
 /* Line 3 */
@@ -600,8 +601,8 @@
 .begun {
     width: 250px;
     position: absolute;
-    top: -117px;
-    left: -65px;
+    top: -118px;
+    left: -85px;
 }
 
 

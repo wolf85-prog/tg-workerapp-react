@@ -4,8 +4,8 @@ import './RangeSlider.css'
 import begunok from "../../../image/new/begunok.png"
 
 const RangeSlider = ({min, max, value, step}) => {
-    const [sliderRange, setSliderRange] = useState(0)
-    const [inputValue, setInputValue] = useState(0)
+    const [sliderRange, setSliderRange] = useState(value)
+    const [inputValue, setInputValue] = useState(value)
     const sliderRef = useRef(null)
 
     function handleSliderInput() {
@@ -19,17 +19,16 @@ const RangeSlider = ({min, max, value, step}) => {
 
     function handleSliderInput2() {
         const range = max - min;
-        const distance = 30 - min;
+        const distance = value - min;
         const percentage = (distance / range) * 100;
 
-        setSliderRange(30)
-        setInputValue(30)
-        console.log("sfsdfsdf")
+        setSliderRange(value)
+        setInputValue(value)
     }
 
-    // useEffect(() => {
-    //     handleSliderInput();
-    // }, [sliderRef])
+    useEffect(() => {
+        handleSliderInput();
+    }, [sliderRef])
 
     return (
         <div className='range-slider'>
@@ -72,15 +71,10 @@ const RangeSlider = ({min, max, value, step}) => {
                         <div className='shk-line13'></div>
                         <div className='shk-line15'></div>
                     </div>
-
-                    {/* <div className='shkala2'></div>  
-                    <div className='shkala3'></div>  */}
-
                 </div>
-            <div className='slider-container'>
-            
-                
 
+            <div className='slider-container'>
+                <div className='shkala2'></div>  
                 <input 
                     type="range" 
                     value={inputValue}
@@ -90,12 +84,11 @@ const RangeSlider = ({min, max, value, step}) => {
                     max={max}
                     ref={sliderRef}
                     step={step}
-                    style={{border: 'none', marginTop: '-40px'}}
+                    style={{border: 'none', marginTop: '-40px', zIndex: '15'}}
                     onMouseUp={()=>handleSliderInput2()} 
                     onTouchEnd={()=>handleSliderInput2()} 
                 />
 
-                
                 
                 <div 
                     className='slider-thumb'
