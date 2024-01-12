@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './ProjectItem.css';
 import {useNavigate} from "react-router-dom";
 import Loader from "./../UI/Loader_min/Loader_min"
+import Slider from '@mui/material/Slider';
 
 import MyModal from "../../components/MyModal/MyModal";
 import BackModal from "../../image/new/card.svg"
@@ -55,6 +56,10 @@ const ProjectItem = (props) => {
 
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
+
+    const sliderRef = useRef(null)
+
+    const [inputValue, setInputValue] = useState(50)
 
     useEffect(()=> {
  
@@ -193,23 +198,13 @@ const ProjectItem = (props) => {
 
     function handleTouchStart(e) {
         setTouchStart(e.targetTouches[0].clientX);
+        console.log("start")
         
     }
     
     function handleTouchMove(e) {
-        setTouchEnd(e.targetTouches[0].clientX);     
-    }
-    
-    function handleTouchEnd() {
-        if (touchStart - touchEnd > 150) {
-            // do your stuff here for left swipe
-            showModalEtap ? setShowModalEtap(false) : setShowModalEtap(true)
-        }
-    
-        if (touchStart - touchEnd < -150) {
-            // do your stuff here for right swipe
-            showModalEtap ? setShowModalEtap(false) : setShowModalEtap(true)
-        }
+        setTouchEnd(e.targetTouches[0].clientX); 
+        console.log("move")    
     }
 
     return (
@@ -238,9 +233,61 @@ const ProjectItem = (props) => {
                    <img src={Shkala5} alt='' className='shkala-img' style={{display: showShkala5 ? 'block' : 'none'}}/> 
                 </div> */}
 
-                
+                {/* <div className="shkala">
+                    <div className='blocks'>
+                        <div className="block1">1</div>
+                        <div className="block2">2</div>
+                        <div className="block3">3</div>
+                        <div className="block4">4</div>
+                        <div className="block5">5</div>
+                    </div>
+
+                    <div className='shkala01' style={{left: `${-8}px`}}>
+                        <div className='shk-line11'></div>
+                        <div className='shk-line12'></div>
+                        <div className='shk-line13'></div>
+                        <div className='shk-line15'></div>
+                    </div>
+                    <div className='shkala01' style={{left: `${-8+55}px`}}>
+                        <div className='shk-line11'></div>
+                        <div className='shk-line12'></div>
+                        <div className='shk-line13'></div>
+                        <div className='shk-line15'></div>
+                    </div>
+                    <div className='shkala01' style={{left: `${-8+55*2}px`}}>
+                        <div className='shk-line11'></div>
+                        <div className='shk-line12'></div>
+                        <div className='shk-line13'></div>
+                        <div className='shk-line15'></div>
+                    </div>
+                    <div className='shkala01' style={{left: `${-8+55*3}px`}}>
+                        <div className='shk-line11'></div>
+                        <div className='shk-line12'></div>
+                        <div className='shk-line13'></div>
+                        <div className='shk-line15'></div>
+                    </div>
+                    <div className='shkala01' style={{left: `${-8+55*4}px`}}>
+                        <div className='shk-line11'></div>
+                        <div className='shk-line12'></div>
+                        <div className='shk-line13'></div>
+                        <div className='shk-line15'></div>
+                    </div>
+
+                    <div className='shkala2'></div>  
+                    <div className='shkala3'></div> 
+
+                </div> */}
 
                 <RangeSlider min={0} max={15} value={7} step={1} />
+
+                {/* <Slider 
+                    //defaultValue={50} 
+                    value={inputValue}
+                    aria-label="Default" 
+                    valueLabelDisplay="auto" 
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onChangeCommitted={()=>setInputValue(20)}
+                /> */}
                 
 
                 <div className='card-footer'>
@@ -270,10 +317,7 @@ const ProjectItem = (props) => {
                         <div className='button2' onClick={clickInfo}>Подтвердить</div>
                     </div>
                 </div> 
-                
-
-                
-            </div>
+            </div> 
         </div>
 
         <MyModal visible={showModalEtap} setVisible={setShowModalEtap}>

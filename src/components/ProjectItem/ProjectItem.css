@@ -415,8 +415,11 @@
     position: absolute;
     width: 314.9px;
     height: 37px;
-    left: -40px;
-    top: 120px;
+    /* left: -40px;
+    top: 120px; */
+
+    left: 10px;
+    top: 80px;
 }
 
 
@@ -425,7 +428,8 @@
     position: absolute;
     width: 312.9px;
     height: 37px;
-    left: 40px;
+    /* left: 40px; */
+    left: -30px;
     top: -10px;
 }
 
@@ -521,52 +525,17 @@
     position: absolute;
     width: 60px;
     height: 20px;
-    left: 12px;
+    left: 0;
     top: 7px;
 }
 
-/* Шкала 1-2 */
-.shkala02{
-    position: absolute;
-    width: 60px;
-    height: 20px;
-    left: 72px;
-    top: 7px;
-}
-
-/* Шкала 1-3 */
-.shkala03{
-    position: absolute;
-    width: 60px;
-    height: 20px;
-    left: 132px;
-    top: 7px;
-}
-
-/* Шкала 1-4 */
-.shkala04{
-    position: absolute;
-    width: 60px;
-    height: 20px;
-    left: 192px;
-    top: 7px;
-}
-
-/* Шкала 1-5 */
-.shkala05{
-    position: absolute;
-    width: 60px;
-    height: 20px;
-    left: 252px;
-    top: 7px;
-}
 
 /* Line 11 */
 .shk-line11 {
     position: absolute;
     width: 10px;
     height: 0px;
-    left: 42px;
+    left: 25%;
     top: 12px;
     border: 1px solid #424548;
     transform: rotate(-90deg);
@@ -577,7 +546,7 @@
     position: absolute;
     width: 10px;
     height: 0px;
-    left: 62px;
+    left: 50%;
     top: 12px;
     border: 1px solid #424548;
     transform: rotate(-90deg);
@@ -588,7 +557,7 @@
     position: absolute;
     width: 10px;
     height: 0px;
-    left: 82px;
+    left: 75%;
     top: 12px;
     border: 1px solid #424548;
     transform: rotate(-90deg);
@@ -599,7 +568,7 @@
     position: absolute;
     width: 20px;
     height: 0px;
-    left: 102px;
+    left: 100%;
     top: 12px;
     border: 1px solid #424548;
     transform: rotate(-90deg);
@@ -631,8 +600,8 @@
 .begun {
     width: 250px;
     position: absolute;
-    top: -90px;
-    left: -85px;
+    top: -117px;
+    left: -65px;
 }
 
 

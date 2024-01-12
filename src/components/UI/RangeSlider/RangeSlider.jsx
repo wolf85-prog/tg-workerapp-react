@@ -17,13 +17,23 @@ const RangeSlider = ({min, max, value, step}) => {
         setInputValue(sliderRef.current.value)
     }
 
-    useEffect(() => {
-        handleSliderInput();
-    }, [sliderRef])
+    function handleSliderInput2() {
+        const range = max - min;
+        const distance = 30 - min;
+        const percentage = (distance / range) * 100;
+
+        setSliderRange(30)
+        setInputValue(30)
+        console.log("sfsdfsdf")
+    }
+
+    // useEffect(() => {
+    //     handleSliderInput();
+    // }, [sliderRef])
 
     return (
         <div className='range-slider'>
-            <div className="shkala">
+                <div className="shkala">
                     <div className='blocks'>
                         <div className="block1">1</div>
                         <div className="block2">2</div>
@@ -32,39 +42,40 @@ const RangeSlider = ({min, max, value, step}) => {
                         <div className="block5">5</div>
                     </div>
 
-                    <div className='shkala01'>
+                    <div className='shkala01' style={{left: `${-8}px`}}>
                         <div className='shk-line11'></div>
                         <div className='shk-line12'></div>
                         <div className='shk-line13'></div>
                         <div className='shk-line15'></div>
                     </div>
-                    <div className='shkala02'>
+                    <div className='shkala01' style={{left: `${-8+55}px`}}>
                         <div className='shk-line11'></div>
                         <div className='shk-line12'></div>
                         <div className='shk-line13'></div>
                         <div className='shk-line15'></div>
                     </div>
-                    <div className='shkala03'>
+                    <div className='shkala01' style={{left: `${-8+55*2}px`}}>
                         <div className='shk-line11'></div>
                         <div className='shk-line12'></div>
                         <div className='shk-line13'></div>
                         <div className='shk-line15'></div>
                     </div>
-                    <div className='shkala04'>
+                    <div className='shkala01' style={{left: `${-8+55*3}px`}}>
                         <div className='shk-line11'></div>
                         <div className='shk-line12'></div>
                         <div className='shk-line13'></div>
                         <div className='shk-line15'></div>
                     </div>
-                    <div className='shkala05'>
+                    <div className='shkala01' style={{left: `${-8+55*4}px`}}>
                         <div className='shk-line11'></div>
                         <div className='shk-line12'></div>
                         <div className='shk-line13'></div>
                         <div className='shk-line15'></div>
-                    </div> 
+                    </div>
 
-                    {/*<div className='shkala2'></div>  
-                     <div className='shkala3'></div>     */}   
+                    {/* <div className='shkala2'></div>  
+                    <div className='shkala3'></div>  */}
+
                 </div>
             <div className='slider-container'>
             
@@ -73,13 +84,15 @@ const RangeSlider = ({min, max, value, step}) => {
                 <input 
                     type="range" 
                     value={inputValue}
-                    onInput={handleSliderInput}
+                    onChange={handleSliderInput}
                     className='slider'
                     min={min}
                     max={max}
                     ref={sliderRef}
                     step={step}
-                    style={{border: 'none', marginTop: '20px'}}
+                    style={{border: 'none', marginTop: '-40px'}}
+                    onMouseUp={()=>handleSliderInput2()} 
+                    onTouchEnd={()=>handleSliderInput2()} 
                 />
 
                 
