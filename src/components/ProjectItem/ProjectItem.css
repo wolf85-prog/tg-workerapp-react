@@ -413,11 +413,8 @@
 /* Прогресс */
 .shkala {
     position: absolute;
-    width: 314.9px;
+    width: 100%;
     height: 37px;
-    /* left: -40px;
-    top: 120px; */
-
     left: 10px;
     top: 80px;
 }
@@ -578,7 +575,7 @@
 /* Line 2 */
 .shkala2 {
     position: absolute;
-    width: 312px;
+    width: 100%;
     height: 0px;
     left: 10px;
     top: -21px;

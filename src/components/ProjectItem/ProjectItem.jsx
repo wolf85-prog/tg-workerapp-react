@@ -233,61 +233,8 @@ const ProjectItem = (props) => {
                    <img src={Shkala5} alt='' className='shkala-img' style={{display: showShkala5 ? 'block' : 'none'}}/> 
                 </div> */}
 
-                {/* <div className="shkala">
-                    <div className='blocks'>
-                        <div className="block1">1</div>
-                        <div className="block2">2</div>
-                        <div className="block3">3</div>
-                        <div className="block4">4</div>
-                        <div className="block5">5</div>
-                    </div>
-
-                    <div className='shkala01' style={{left: `${-8}px`}}>
-                        <div className='shk-line11'></div>
-                        <div className='shk-line12'></div>
-                        <div className='shk-line13'></div>
-                        <div className='shk-line15'></div>
-                    </div>
-                    <div className='shkala01' style={{left: `${-8+55}px`}}>
-                        <div className='shk-line11'></div>
-                        <div className='shk-line12'></div>
-                        <div className='shk-line13'></div>
-                        <div className='shk-line15'></div>
-                    </div>
-                    <div className='shkala01' style={{left: `${-8+55*2}px`}}>
-                        <div className='shk-line11'></div>
-                        <div className='shk-line12'></div>
-                        <div className='shk-line13'></div>
-                        <div className='shk-line15'></div>
-                    </div>
-                    <div className='shkala01' style={{left: `${-8+55*3}px`}}>
-                        <div className='shk-line11'></div>
-                        <div className='shk-line12'></div>
-                        <div className='shk-line13'></div>
-                        <div className='shk-line15'></div>
-                    </div>
-                    <div className='shkala01' style={{left: `${-8+55*4}px`}}>
-                        <div className='shk-line11'></div>
-                        <div className='shk-line12'></div>
-                        <div className='shk-line13'></div>
-                        <div className='shk-line15'></div>
-                    </div>
-
-                    <div className='shkala2'></div>  
-                    <div className='shkala3'></div> 
-
-                </div> */}
 
                 <RangeSlider min={0} max={100} value={25} step={1} />
-
-                {/* <Slider 
-                    //defaultValue={50} 
-                    value={inputValue}
-                    aria-label="Default" 
-                    valueLabelDisplay="auto" 
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onChangeCommitted={()=>setInputValue(20)}
-                /> */}
                 
 
                 <div className='card-footer'>
