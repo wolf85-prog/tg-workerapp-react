@@ -46,6 +46,8 @@ const ProjectItem = (props) => {
     const [showShkala4, setShowShkala4] = useState(false);
     const [showShkala5, setShowShkala5] = useState(false);
 
+    const [valueShkala, setValueShkala] = useState(0);
+
     const [formatted, setFormatted] = useState("")
     const [formattime, setFormattime] = useState("")
     const [fact, setFact] = useState()
@@ -156,11 +158,15 @@ const ProjectItem = (props) => {
 
             setShowShkala1(true)
 
+            setValueShkala(13)
+
         } else if(props.post.statusMoney === 2) {
             setStatusMoney('Фактически')
 
             setShowShkala1(false)
             setShowShkala2(true)
+
+            setValueShkala(30)
         }
 
         if (props.post.finalSmeta === 'Подтверждена') {
@@ -169,6 +175,8 @@ const ProjectItem = (props) => {
             setShowShkala1(false)
             setShowShkala2(false)
             setShowShkala3(true)
+
+            setValueShkala(50)
         }
         // else if(props.post.statusMoney === 4) {
         //     setStatusMoney('На оплате')
@@ -234,7 +242,7 @@ const ProjectItem = (props) => {
                 </div> */}
 
 
-                <RangeSlider min={0} max={100} value={25} step={1} />
+                <RangeSlider min={0} max={100} value={valueShkala} step={1} />
                 
 
                 <div className='card-footer'>

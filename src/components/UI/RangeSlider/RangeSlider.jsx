@@ -9,10 +9,30 @@ const RangeSlider = ({min, max, value, step}) => {
     const [inputValue, setInputValue] = useState(value)
     const sliderRef = useRef(null)
 
+    const [showNumber1, setShowNumber1] = useState(false)
+    const [showNumber2, setShowNumber2] = useState(false)
+    const [showNumber3, setShowNumber3] = useState(false)
+    const [showNumber4, setShowNumber4] = useState(false)
+    const [showNumber5, setShowNumber5] = useState(false)
+
     function handleSliderInput() {
         const range = max - min;
         const distance = sliderRef.current.value - min;
         const percentage = (distance / range) * 100;
+
+        console.log(percentage)
+        if (percentage > 13) {
+            setShowNumber1(true)
+        } else if (percentage > 30)  {
+            setShowNumber1(false)
+            setShowNumber2(true)
+        } else if (percentage > 50)  {
+            setShowNumber3(true)
+        } else if (percentage > 70)  {
+            setShowNumber4(true)
+        } else if (percentage > 90)  {
+            setShowNumber5(true)
+        }
 
         setSliderRange(percentage)
         setInputValue(sliderRef.current.value)
@@ -70,11 +90,11 @@ const RangeSlider = ({min, max, value, step}) => {
         <div className='range-slider'>
                 <div className="shkala">
                     <div className='blocks'>
-                        <div className="block1" style={{left: `${20+2}%`}}>1</div>
-                        <div className="block1" style={{left: `${20*2}%`}}>2</div>
-                        <div className="block1" style={{left: `${20*3}%`}}>3</div>
-                        <div className="block1" style={{left: `${20*4}%`}}>4</div>
-                        <div className="block1" style={{left: `${20*5}%`}}>5</div>
+                        <div className={`block1 ${showNumber1 && `block-active`}`} style={{left: `${20+2}%`}}>1</div>
+                        <div className={`block1 ${showNumber2 && `block-active`}`} style={{left: `${21*2+1}%`}}>2</div>
+                        <div className={`block1 ${showNumber3 && `block-active`}`} style={{left: `${21*3+1}%`}}>3</div>
+                        <div className={`block1 ${showNumber4 && `block-active`}`} style={{left: `${21*4+1}%`}}>4</div>
+                        <div className={`block1 ${showNumber5 && `block-active`}`} style={{left: `${21*5+1}%`}}>5</div>
                     </div>
 
                     <div className='shkala01' style={{left: `${-5}%`}}>
@@ -83,25 +103,25 @@ const RangeSlider = ({min, max, value, step}) => {
                         <div className='shk-line13'></div>
                         <div className='shk-line15'></div>
                     </div>
-                    <div className='shkala01' style={{left: `${-5+17.5}%`}}>
+                    <div className='shkala01' style={{left: `${-5+18.8}%`}}>
                         <div className='shk-line11'></div>
                         <div className='shk-line12'></div>
                         <div className='shk-line13'></div>
                         <div className='shk-line15'></div>
                     </div>
-                    <div className='shkala01' style={{left: `${-5+17.5*2}%`}}>
+                    <div className='shkala01' style={{left: `${-5+18.8*2}%`}}>
                         <div className='shk-line11'></div>
                         <div className='shk-line12'></div>
                         <div className='shk-line13'></div>
                         <div className='shk-line15'></div>
                     </div>
-                    <div className='shkala01' style={{left: `${-5+17.5*3}%`}}>
+                    <div className='shkala01' style={{left: `${-5+18.8*3}%`}}>
                         <div className='shk-line11'></div>
                         <div className='shk-line12'></div>
                         <div className='shk-line13'></div>
                         <div className='shk-line15'></div>
                     </div>
-                    <div className='shkala01' style={{left: `${-5+17.5*4}%`}}>
+                    <div className='shkala01' style={{left: `${-5+18.8*4}%`}}>
                         <div className='shk-line11'></div>
                         <div className='shk-line12'></div>
                         <div className='shk-line13'></div>
