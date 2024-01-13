@@ -42,6 +42,9 @@
 }
 
 .slider2 {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     width: 100%;
     height: 1px;
     outline: none;
