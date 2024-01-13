@@ -129,6 +129,8 @@ const RangeSlider = ({min, max, value, step}) => {
                         marginTop: '-40px', 
                         zIndex: '15',
                         appearance: !systemIOS ? 'none' : '',
+                        WebkitAppearance: !systemIOS ? 'none' : '',
+                        MozAppearance: !systemIOS ? 'none' : '',
                     }}
                     onMouseUp={()=>handleSliderInput2()} 
                     onTouchEnd={()=>handleSliderInput2()} 
