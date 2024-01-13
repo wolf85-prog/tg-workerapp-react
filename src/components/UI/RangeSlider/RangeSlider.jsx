@@ -119,7 +119,7 @@ const RangeSlider = ({min, max, value, step}) => {
                     type="range" 
                     value={inputValue}
                     onChange={handleSliderInput}
-                    className='slider'
+                    className={systemIOS ? 'slider2' : 'slider'}
                     min={min}
                     max={max}
                     ref={sliderRef}
@@ -128,9 +128,6 @@ const RangeSlider = ({min, max, value, step}) => {
                         border: 'none', 
                         marginTop: '-40px', 
                         zIndex: '15',
-                        // appearance: !systemIOS ? 'none' : '',
-                        // WebkitAppearance: !systemIOS ? 'none' : '',
-                        // MozAppearance: !systemIOS ? 'none' : '',
                     }}
                     onMouseUp={()=>handleSliderInput2()} 
                     onTouchEnd={()=>handleSliderInput2()} 
