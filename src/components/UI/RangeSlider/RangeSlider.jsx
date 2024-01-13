@@ -4,6 +4,7 @@ import './RangeSlider.css'
 import begunok from "../../../image/new/begunok.png"
 
 const RangeSlider = ({min, max, value, step}) => {
+    const [systemIOS, setSystemIOS] = useState(false)
     const [sliderRange, setSliderRange] = useState(value)
     const [inputValue, setInputValue] = useState(value)
     const sliderRef = useRef(null)
@@ -57,8 +58,12 @@ const RangeSlider = ({min, max, value, step}) => {
     }
 
     useEffect(()=> {
-        //console.log(getMobileOperatingSystem())
-        alert(getMobileOperatingSystem())
+        if (getMobileOperatingSystem() ==="iOS") {
+            setSystemIOS(true)
+        } else {
+            setSystemIOS(false) 
+        }
+        
     },[])
 
     return (
@@ -119,7 +124,13 @@ const RangeSlider = ({min, max, value, step}) => {
                     max={max}
                     ref={sliderRef}
                     step={step}
-                    style={{border: 'none', marginTop: '-40px', zIndex: '15'}}
+                    style={{
+                        border: 'none', 
+                        marginTop: '-40px', 
+                        zIndex: '15',
+                        webkitAppearance: !systemIOS ? 'none !important' : '',
+                        appearance: !systemIOS ? 'none !important' : '',
+                    }}
                     onMouseUp={()=>handleSliderInput2()} 
                     onTouchEnd={()=>handleSliderInput2()} 
                 />
