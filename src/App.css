@@ -37,6 +37,7 @@
   font-family: Monserrat;
   text-align: center;
   position: relative;
+  overflow-x: hidden;
 }
 
 .container {
