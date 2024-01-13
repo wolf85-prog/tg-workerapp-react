@@ -423,10 +423,10 @@
 /* Блоки */
 .blocks{
     position: absolute;
-    width: 312.9px;
+    width: 90%;
     height: 37px;
     /* left: 40px; */
-    left: -30px;
+    left: -10px;
     top: -10px;
 }
 
@@ -436,7 +436,7 @@
     position: absolute;
     width: 4.01px;
     height: 12px;
-    left: 81px;
+    left: 0;
     top: 0;
     font-style: normal;
     font-weight: 400;
@@ -448,79 +448,12 @@
     opacity: 0.15;
 }
 
-/* 2 */
-.block2{
-    position: absolute;
-    width: 6.02px;
-    height: 12px;
-    left: 141px;
-    top: 0;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 12px;
-    letter-spacing: -0.045em;
-    /* ULEY Светлый */
-    color: #E8F1F9;
-    opacity: 0.15;
-}
-
-/* 3 */
-.block3{
-    position: absolute;
-    width: 6.02px;
-    height: 12px;
-    left: 201px;
-    top: 0;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 12px;
-    letter-spacing: -0.045em;
-    /* ULEY Светлый */
-    color: #E8F1F9;
-    opacity: 0.15;
-}
-
-/* 4 */
-.block4{
-    position: absolute;
-    width: 6.02px;
-    height: 12px;
-    left: 261px;
-    top: 0;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 12px;
-    letter-spacing: -0.045em;
-    /* ULEY Светлый */
-    color: #E8F1F9;
-    opacity: 0.15;
-}
-
-/* 5 */
-.block5{
-    position: absolute;
-    width: 6.02px;
-    height: 12px;
-    left: 321px;
-    top: 0;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 12px;
-    letter-spacing: -0.045em;
-    /* ULEY Светлый */
-    color: #E8F1F9;
-    opacity: 0.15;
-}
 
 
 /* Шкала 0-1 */
 .shkala01{
     position: absolute;
-    width: 60px;
+    width: 20%;
     height: 20px;
     left: 0;
     top: 7px;
@@ -575,9 +508,9 @@
 /* Line 2 */
 .shkala2 {
     position: absolute;
-    width: 100%;
+    width: 95%;
     height: 0px;
-    left: 10px;
+    left: 0;
     top: -21px;
     border: 1px solid #1B1E21;
     box-shadow: inset 0px -1px 2px rgba(255, 255, 255, 0.13);

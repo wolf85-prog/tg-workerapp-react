@@ -90,13 +90,13 @@
     transform: scale(.85) translateY(-.75rem) translateX(.15rem);
 }
 
-input {
+/* input {
     width: 100%;
     margin: 0 0;
     border: 2px solid #4F91FF;
     border-radius: 10px;
     height: calc(3.5rem + 2px);
-}
+} */
 
 /* text field */
 .text-field {
