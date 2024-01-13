@@ -235,6 +235,8 @@ const ProjectItem = (props) => {
 
 
                 <RangeSlider min={0} max={100} value={25} step={1} />
+
+                <input type="range" style={{position: 'relative'}}/>
                 
 
                 <div className='card-footer'>
