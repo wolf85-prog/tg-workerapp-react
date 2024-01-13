@@ -9,30 +9,27 @@ const RangeSlider = ({min, max, value, step}) => {
     const [inputValue, setInputValue] = useState(value)
     const sliderRef = useRef(null)
 
-    const [showNumber1, setShowNumber1] = useState(false)
-    const [showNumber2, setShowNumber2] = useState(false)
-    const [showNumber3, setShowNumber3] = useState(false)
-    const [showNumber4, setShowNumber4] = useState(false)
-    const [showNumber5, setShowNumber5] = useState(false)
+    const [showNumber, setShowNumber] = useState(0)
 
     function handleSliderInput() {
         const range = max - min;
         const distance = sliderRef.current.value - min;
         const percentage = (distance / range) * 100;
+        setShowNumber(percentage)
 
         console.log(percentage)
-        if (percentage > 13) {
-            setShowNumber1(true)
-        } else if (percentage > 30)  {
-            setShowNumber1(false)
-            setShowNumber2(true)
-        } else if (percentage > 50)  {
-            setShowNumber3(true)
-        } else if (percentage > 70)  {
-            setShowNumber4(true)
-        } else if (percentage > 90)  {
-            setShowNumber5(true)
-        }
+        // if (percentage > 13) {
+        //     setShowNumber1(true)
+        // } else if (percentage > 30)  {
+        //     setShowNumber1(false)
+        //     setShowNumber2(true)
+        // } else if (percentage > 50)  {
+        //     setShowNumber3(true)
+        // } else if (percentage > 70)  {
+        //     setShowNumber4(true)
+        // } else if (percentage > 90)  {
+        //     setShowNumber5(true)
+        // }
 
         setSliderRange(percentage)
         setInputValue(sliderRef.current.value)
@@ -90,11 +87,11 @@ const RangeSlider = ({min, max, value, step}) => {
         <div className='range-slider'>
                 <div className="shkala">
                     <div className='blocks'>
-                        <div className={`block1 ${showNumber1 && `block-active`}`} style={{left: `${20+2}%`}}>1</div>
-                        <div className={`block1 ${showNumber2 && `block-active`}`} style={{left: `${21*2+1}%`}}>2</div>
-                        <div className={`block1 ${showNumber3 && `block-active`}`} style={{left: `${21*3+1}%`}}>3</div>
-                        <div className={`block1 ${showNumber4 && `block-active`}`} style={{left: `${21*4+1}%`}}>4</div>
-                        <div className={`block1 ${showNumber5 && `block-active`}`} style={{left: `${21*5+1}%`}}>5</div>
+                        <div className={`block1 ${showNumber > 13 && showNumber < 30 && `block-active`}`} style={{left: `${20+2}%`}}>1</div>
+                        <div className={`block1 ${showNumber > 30 && showNumber < 50 && `block-active`}`} style={{left: `${21*2+1}%`}}>2</div>
+                        <div className={`block1 ${showNumber > 50 && showNumber < 70 && `block-active`}`} style={{left: `${21*3+1}%`}}>3</div>
+                        <div className={`block1 ${showNumber > 70 && showNumber < 90 && `block-active`}`} style={{left: `${21*4+1}%`}}>4</div>
+                        <div className={`block1 ${showNumber > 90 && showNumber < 100 && `block-active`}`} style={{left: `${21*5+1}%`}}>5</div>
                     </div>
 
                     <div className='shkala01' style={{left: `${-5}%`}}>
