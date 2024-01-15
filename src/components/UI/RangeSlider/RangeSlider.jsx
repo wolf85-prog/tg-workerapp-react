@@ -38,6 +38,7 @@ const RangeSlider = ({min, max, value, step}) => {
         setShowNumber(percentage)
         setSliderRange(percentage)
         setInputValue(value)
+        setStavkaPlus(value)
     }
 
     useEffect(() => {
