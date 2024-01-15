@@ -5,13 +5,13 @@ import begunok from "../../../image/new/begunok.png"
 
 const RangeSlider = ({min, max, value, step}) => {
     const [systemIOS, setSystemIOS] = useState(false)
-    const [sliderRange, setSliderRange] = useState(value)
+    const [sliderRange, setSliderRange] = useState(0)
     const [inputValue, setInputValue] = useState(value)
     const sliderRef = useRef(null)
 
     const [showNumber, setShowNumber] = useState(0)
 
-    const {stavkaPlus, setStavkaPlus} = useUsersContext();
+    const {setStavkaPlus} = useUsersContext();
 
     function handleSliderInput() {
         const range = max - min;
@@ -25,7 +25,7 @@ const RangeSlider = ({min, max, value, step}) => {
             setStavkaPlus(value + percentage)
         }
         
-        //console.log(value + percentage + ".00")
+        console.log(value)
 
         setSliderRange(percentage)
         setInputValue(sliderRef.current.value)
@@ -35,8 +35,8 @@ const RangeSlider = ({min, max, value, step}) => {
         const range = max - min;
         const distance = value - min;
         const percentage = (distance / range) * 100;
-
-        setSliderRange(value)
+        setShowNumber(percentage)
+        setSliderRange(percentage)
         setInputValue(value)
     }
 
@@ -126,7 +126,7 @@ const RangeSlider = ({min, max, value, step}) => {
                 <div className='shkala2'></div> 
 
                 <div className='slider-thumb' style={{ left: `calc(${sliderRange}% - 0.5em)` }}>
-                    <img className='begun' src={begunok} alt='' style={{display: 'block'}}/>
+                    <img className='begun' src={begunok} alt='' style={{display: 'none'}}/>
                 </div> 
                 <input 
                     type="range" 

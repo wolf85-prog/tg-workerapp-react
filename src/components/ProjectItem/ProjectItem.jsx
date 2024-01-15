@@ -46,13 +46,11 @@ const ProjectItem = (props) => {
     const [showShkala4, setShowShkala4] = useState(false);
     const [showShkala5, setShowShkala5] = useState(false);
 
-    const [valueShkala, setValueShkala] = useState(0);
+    const [valueShkala, setValueShkala] = useState(70);
 
     const [formatted, setFormatted] = useState("")
     const [formattime, setFormattime] = useState("")
     const [fact, setFact] = useState()
-
-    const [mainDate, setMainDate] = useState("")
 
     const [showInfo, setShowInfo] = useState(false)
 
@@ -61,7 +59,7 @@ const ProjectItem = (props) => {
 
     const sliderRef = useRef(null)
 
-    const [inputValue, setInputValue] = useState(50)
+    let statusMoney2 = 2
 
     useEffect(()=> {
  
@@ -152,13 +150,14 @@ const ProjectItem = (props) => {
 
 
     useEffect(()=> {
+        console.log("Статус: ", props.post.statusMoney)
           
         if (props.post.statusMoney === 1) {
             setStatusMoney('Предварительно')
 
             setShowShkala1(true)
 
-            setValueShkala(13)
+            setValueShkala(70) //1
 
         } else if(props.post.statusMoney === 2) {
             setStatusMoney('Фактически')
@@ -166,7 +165,7 @@ const ProjectItem = (props) => {
             setShowShkala1(false)
             setShowShkala2(true)
 
-            setValueShkala(30)
+            setValueShkala(180) //2
         }
 
         if (props.post.finalSmeta === 'Подтверждена') {
@@ -176,7 +175,7 @@ const ProjectItem = (props) => {
             setShowShkala2(false)
             setShowShkala3(true)
 
-            setValueShkala(50)
+            setValueShkala(300) //3
         }
         // else if(props.post.statusMoney === 4) {
         //     setStatusMoney('На оплате')
@@ -242,7 +241,7 @@ const ProjectItem = (props) => {
                 </div> */}
 
 
-                <RangeSlider min={0} max={1000} value={valueShkala} step={50} />
+                <RangeSlider min={0} max={500} value={valueShkala} step={10} />
                 
 
                 <div className='card-footer'>
