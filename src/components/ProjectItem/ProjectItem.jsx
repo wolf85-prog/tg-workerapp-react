@@ -28,7 +28,7 @@ import RangeSlider from '../UI/RangeSlider/RangeSlider';
 
 const ProjectItem = (props) => {
 
-    const {specId} = useUsersContext();
+    const {specId, stavkaPlus} = useUsersContext();
 
     const [statusMoney, setStatusMoney] = useState("")
     const [stavka, setStavka] = useState()
@@ -242,12 +242,13 @@ const ProjectItem = (props) => {
                 </div> */}
 
 
-                <RangeSlider min={0} max={100} value={valueShkala} step={1} />
+                <RangeSlider min={0} max={1000} value={valueShkala} step={50} />
                 
 
                 <div className='card-footer'>
                     {/* деньги */}
-                    <p className='project_money'>{isLoading ? <Loader /> : (stavka ? parseInt(stavka).toLocaleString()+".00" : '0')}</p>
+                    <p className='project_money'>{isLoading ? <Loader /> : (stavka ? parseInt(stavkaPlus ? stavkaPlus : stavka).toLocaleString()+".00" : '0')}</p>
+                    {/* <p className='project_money'>{parseInt(stavkaPlus).toLocaleString()+".00"}</p> */}
                     {/* кнопка Чат */}
                     {props.post.tgURL_chat && <div onClick={goToChat} className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>}
                 </div>

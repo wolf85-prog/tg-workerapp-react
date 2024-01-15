@@ -49,6 +49,8 @@ const UserProvider = ({ children }) => {
 	const [widthStr, setWidthStr] = useState(0)
 	const [str, setStr] = useState(0)
 
+	const [stavkaPlus, setStavkaPlus] = useState(0)
+
 	// при первой загрузке приложения выполнится код ниже
     useEffect(() => {
 
@@ -120,7 +122,9 @@ const UserProvider = ({ children }) => {
 			str,
 			setStr,
 			friend,
-			setFriend
+			setFriend,
+			stavkaPlus,
+			setStavkaPlus
 		}}>
 			{children}
 		</UserContext.Provider>
