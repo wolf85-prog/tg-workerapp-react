@@ -126,7 +126,7 @@ const RangeSlider = ({min, max, value, step}) => {
                 <div className='shkala2'></div> 
 
                 <div className='slider-thumb' style={{ left: `calc(${sliderRange}% - 0.5em)` }}>
-                    <img className='begun' src={begunok} alt='' style={{display: 'none'}}/>
+                    <img className='begun' src={begunok} alt='' style={{display: 'block'}}/>
                 </div> 
                 <input 
                     type="range" 
