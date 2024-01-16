@@ -339,14 +339,15 @@
     margin-top: 25px;
     margin-bottom: 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 0 20px;
 }
 
 .button1 {
     /* Rectangle 6 */
     box-sizing: border-box;
-    width: 148px;
+    width: 35%;
+    min-width: 130px;
     height: 44px;
     /* ULEY Светлый */
     border: 0.481481px solid #E8F1F9;
@@ -357,7 +358,8 @@
 .button2 {
     /* Rectangle 6 */
     box-sizing: border-box;
-    width: 148px;
+    width: 35%;
+    min-width: 130px;
     height: 44px;
     background: linear-gradient(183.21deg, rgba(113, 113, 113, 0.2) 4.27%, rgba(53, 50, 50, 0.2) 96.9%), linear-gradient(314.64deg, #1F2021 21.78%, #242526 55.17%, #313337 96.32%);
     border: 0.481481px solid rgba(44, 44, 44, 0.25);

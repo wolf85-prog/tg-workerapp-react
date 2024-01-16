@@ -28,7 +28,6 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
             let sum = Number(stavka) + Number(distance)
             setStavka(sum)
         }
-        
 
         setSliderRange(percentage)
         setInputValue(sliderRef.current.value)
@@ -131,7 +130,7 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
             <div className='slider-container'>
                 <div className='shkala2'></div> 
 
-                <div className='slider-thumb' style={{ left: `calc(${sliderRange}% - 0.5em)` }}>
+                <div className='slider-thumb' style={{ left: `calc(${sliderRange}% - 7.3em)` }}>
                     <img className='begun' src={begunok} alt='' style={{display: 'block'}}/>
                 </div> 
                 <input 

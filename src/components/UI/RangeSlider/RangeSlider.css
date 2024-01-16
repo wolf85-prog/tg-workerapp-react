@@ -216,8 +216,8 @@
 }
 
 .begun {
-    width: 250px;
+    width: 259px;
     position: absolute;
     top: -118px;
-    left: -102px;
+    left: 0;
 }
