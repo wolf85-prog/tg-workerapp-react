@@ -3,7 +3,7 @@ import './RangeSlider.css'
 import { useUsersContext } from "../../../contexts/UserContext";
 import begunok from "../../../image/new/begunok.png"
 
-const RangeSlider = ({min, max, value, step}) => {
+const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
     const [systemIOS, setSystemIOS] = useState(false)
     const [sliderRange, setSliderRange] = useState(0)
     const [inputValue, setInputValue] = useState(value)
@@ -11,21 +11,23 @@ const RangeSlider = ({min, max, value, step}) => {
 
     const [showNumber, setShowNumber] = useState(0)
 
-    const {setStavkaPlus} = useUsersContext();
+    //const {setStavkaPlus} = useUsersContext();
 
     function handleSliderInput() {
         const range = max - min;
-        const distance = sliderRef.current.value - min;
+        const distance = sliderRef.current.value - min; //
         const percentage = (distance / range) * 100;
+
         setShowNumber(percentage)
         
+        console.log("percentage: ", percentage)
+        console.log("stavka: ", stavka)
         if (percentage === 0) {
-            setStavkaPlus(percentage)  
+            setStavka(percentage)  
         } else {
-            setStavkaPlus(value + percentage)
+            setStavka(stavka + distance)
         }
         
-        console.log(value)
 
         setSliderRange(percentage)
         setInputValue(sliderRef.current.value)
@@ -37,8 +39,9 @@ const RangeSlider = ({min, max, value, step}) => {
         const percentage = (distance / range) * 100;
         setShowNumber(percentage)
         setSliderRange(percentage)
-        setInputValue(value)
-        setStavkaPlus(value)
+        setInputValue(stavka)
+        
+        setStavka(stavka)
     }
 
     useEffect(() => {
@@ -88,7 +91,7 @@ const RangeSlider = ({min, max, value, step}) => {
                         <div className={`block1 ${showNumber > 30 && showNumber < 50 && `block-active`}`} style={{left: `${21*2+1}%`}}>2</div>
                         <div className={`block1 ${showNumber > 50 && showNumber < 70 && `block-active`}`} style={{left: `${21*3+1}%`}}>3</div>
                         <div className={`block1 ${showNumber > 70 && showNumber < 90 && `block-active`}`} style={{left: `${21*4+1}%`}}>4</div>
-                        <div className={`block1 ${showNumber > 90 && showNumber < 100 && `block-active`}`} style={{left: `${21*5+1}%`}}>5</div>
+                        <div className={`block1 ${showNumber > 90 && showNumber < 1000 && `block-active`}`} style={{left: `${21*5+1}%`}}>5</div>
                     </div>
 
                     <div className='shkala01' style={{left: `${-5}%`}}>

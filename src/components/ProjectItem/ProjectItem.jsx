@@ -28,7 +28,7 @@ import RangeSlider from '../UI/RangeSlider/RangeSlider';
 
 const ProjectItem = (props) => {
 
-    const {specId, stavkaPlus} = useUsersContext();
+    const {specId} = useUsersContext();
 
     const [statusMoney, setStatusMoney] = useState("")
     const [stavka, setStavka] = useState()
@@ -56,6 +56,8 @@ const ProjectItem = (props) => {
 
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
+
+    const [stavkaPlus, setStavkaPlus] = useState(0);
 
     const sliderRef = useRef(null)
 
@@ -146,6 +148,12 @@ const ProjectItem = (props) => {
 
         fetch()
     }, [])
+
+
+    //сумма денег для показа при движении фейдера
+    useEffect(()=> {
+        setStavkaPlus(stavka)
+    }, [stavka])
     
 
 
@@ -241,7 +249,7 @@ const ProjectItem = (props) => {
                 </div> */}
 
 
-                <RangeSlider min={0} max={500} value={valueShkala} step={10} />
+                <RangeSlider min={0} max={500} value={valueShkala} step={5} stavka={stavka} setStavka={setStavkaPlus} />
                 
 
                 <div className='card-footer'>

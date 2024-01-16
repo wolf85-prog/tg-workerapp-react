@@ -49,13 +49,11 @@ const UserProvider = ({ children }) => {
 	const [widthStr, setWidthStr] = useState(0)
 	const [str, setStr] = useState(0)
 
-	const [stavkaPlus, setStavkaPlus] = useState(0)
-
 	// при первой загрузке приложения выполнится код ниже
     useEffect(() => {
 
         const fetchData = async() => {
-            const worker = await getWorkerId(user?.id) //user?.id '805436270'
+            const worker = await getWorkerId('1408579113') //user?.id '805436270' '1408579113'
             console.log("worker context: ", worker)
             setWorkerhub(worker)
         }
@@ -123,8 +121,6 @@ const UserProvider = ({ children }) => {
 			setStr,
 			friend,
 			setFriend,
-			stavkaPlus,
-			setStavkaPlus
 		}}>
 			{children}
 		</UserContext.Provider>
