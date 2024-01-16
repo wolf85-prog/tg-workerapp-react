@@ -201,11 +201,11 @@
 
 .shkala-click {
     position: absolute;
-    top: 75px;
+    top: 60px;
     left: 20px;
     right: -10px;
     width: 90%;
-    height: 40px;
+    height: 20px;
     z-index: 50;
 }
 

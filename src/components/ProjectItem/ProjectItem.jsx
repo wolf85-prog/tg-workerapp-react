@@ -238,7 +238,7 @@ const ProjectItem = (props) => {
 
                 <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>   
                 
-                {/* <div className='shkala-click' onClick={clickShkala} onTouchMove={handleTouchStart}></div> */}
+                <div className='shkala-click' onClick={clickShkala} ></div>
                 
                 {/* <div className='shkala1'>
                    <img src={Shkala1} alt='' className='shkala-img' style={{display: showShkala1 ? 'block' : 'none'}}/> 

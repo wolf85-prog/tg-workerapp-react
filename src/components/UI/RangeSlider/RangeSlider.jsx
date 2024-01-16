@@ -21,11 +21,12 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
         setShowNumber(percentage)
         
         console.log("percentage: ", percentage)
-        console.log("stavka: ", stavka)
+        console.log("stavka: ", stavka + percentage)
         if (percentage === 0) {
             setStavka(percentage)  
         } else {
-            setStavka(stavka + distance)
+            let sum = Number(stavka) + Number(percentage)
+            setStavka(sum)
         }
         
 
@@ -39,9 +40,10 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
         const percentage = (distance / range) * 100;
         setShowNumber(percentage)
         setSliderRange(percentage)
-        setInputValue(stavka)
+
+        setInputValue(value) //установить ползунок на исходное место
         
-        setStavka(stavka)
+        setStavka(stavka) //установка суммы в исходное состояние
     }
 
     useEffect(() => {
