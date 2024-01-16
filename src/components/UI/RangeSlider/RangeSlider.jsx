@@ -21,11 +21,11 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
         setShowNumber(percentage)
         
         console.log("percentage: ", percentage)
-        console.log("stavka: ", stavka + percentage)
+        console.log("stavka: ", Number(stavka) + Number(distance))
         if (percentage === 0) {
             setStavka(percentage)  
         } else {
-            let sum = Number(stavka) + Number(percentage)
+            let sum = Number(stavka) + Number(distance)
             setStavka(sum)
         }
         

@@ -16,14 +16,7 @@ import VectorUp from "../../image/new/vector_up.svg"
 import Ukazatel from "../../image/new/ukazatel.png"
 import Close from "../../image/new/close.svg"
 import ClosePress from "../../image/new/close_press.svg"
-// import Shkala from "../../image/new/shkala2.svg"
 
-import begunok from "../../image/new/begunok.png"
-import Shkala1 from "../../image/new/progress.png"
-import Shkala2 from "../../image/new/progress2.png"
-import Shkala3 from "../../image/new/progress3.png"
-import Shkala4 from "../../image/new/progress4.png"
-import Shkala5 from "../../image/new/progress5.png"
 import RangeSlider from '../UI/RangeSlider/RangeSlider';
 
 const ProjectItem = (props) => {
@@ -40,13 +33,8 @@ const ProjectItem = (props) => {
     const [showModalEtap, setShowModalEtap] = useState(false);
     const [widthCard, setWidthCard] = useState(0);
     
-    const [showShkala1, setShowShkala1] = useState(false);
-    const [showShkala2, setShowShkala2] = useState(false);
-    const [showShkala3, setShowShkala3] = useState(false);
-    const [showShkala4, setShowShkala4] = useState(false);
-    const [showShkala5, setShowShkala5] = useState(false);
 
-    const [valueShkala, setValueShkala] = useState(70);
+    const [valueShkala, setValueShkala] = useState(1400);
 
     const [formatted, setFormatted] = useState("")
     const [formattime, setFormattime] = useState("")
@@ -159,38 +147,36 @@ const ProjectItem = (props) => {
 
     useEffect(()=> {
         console.log("Статус: ", props.post.statusMoney)
-          
+        //1
         if (props.post.statusMoney === 1) {
             setStatusMoney('Предварительно')
 
-            setShowShkala1(true)
-
-            setValueShkala(70) //1
-
-        } else if(props.post.statusMoney === 2) {
+            setValueShkala(1400) //1
+        } 
+        //2
+        else if(props.post.statusMoney === 2) {
             setStatusMoney('Фактически')
 
-            setShowShkala1(false)
-            setShowShkala2(true)
-
-            setValueShkala(180) //2
+            setValueShkala(3800) 
+        } 
+        //4
+        else if(props.post.statusMoney === 4) {
+            setStatusMoney('На оплате')
+            setValueShkala(8400)
         }
-
+        //5
+        else if(props.post.statusMoney === 5) {
+            setStatusMoney('Оплачено')
+            setValueShkala(10000)
+        }
+        
+        //3
         if (props.post.finalSmeta === 'Подтверждена') {
             setStatusMoney('Подтверждено')
-            
-            setShowShkala1(false)
-            setShowShkala2(false)
-            setShowShkala3(true)
 
-            setValueShkala(300) //3
+            setValueShkala(6100)
         }
-        // else if(props.post.statusMoney === 4) {
-        //     setStatusMoney('На оплате')
-        // }
-        // else if(props.post.statusMoney === 5) {
-        //     setStatusMoney('Оплачено')
-        // }
+        
     }, [])
     
     const goToChat = (e) => {
@@ -208,18 +194,6 @@ const ProjectItem = (props) => {
 
     const clickInfo = () => {
         showInfo ? setShowInfo(false) : setShowInfo(true)
-    }
-
-
-    function handleTouchStart(e) {
-        setTouchStart(e.targetTouches[0].clientX);
-        console.log("start")
-        
-    }
-    
-    function handleTouchMove(e) {
-        setTouchEnd(e.targetTouches[0].clientX); 
-        console.log("move")    
     }
 
     return (
@@ -240,22 +214,13 @@ const ProjectItem = (props) => {
                 
                 <div className='shkala-click' onClick={clickShkala} ></div>
                 
-                {/* <div className='shkala1'>
-                   <img src={Shkala1} alt='' className='shkala-img' style={{display: showShkala1 ? 'block' : 'none'}}/> 
-                   <img src={Shkala2} alt='' className='shkala-img' style={{display: showShkala2 ? 'block' : 'none'}}/> 
-                   <img src={Shkala3} alt='' className='shkala-img' style={{display: showShkala3 ? 'block' : 'none'}}/> 
-                   <img src={Shkala4} alt='' className='shkala-img' style={{display: showShkala4 ? 'block' : 'none'}}/> 
-                   <img src={Shkala5} alt='' className='shkala-img' style={{display: showShkala5 ? 'block' : 'none'}}/> 
-                </div> */}
 
-
-                <RangeSlider min={0} max={500} value={valueShkala} step={5} stavka={stavka} setStavka={setStavkaPlus} />
+                <RangeSlider min={0} max={10000} value={valueShkala} step={5} stavka={stavka} setStavka={setStavkaPlus} />
                 
 
                 <div className='card-footer'>
                     {/* деньги */}
                     <p className='project_money'>{isLoading ? <Loader /> : (stavka ? parseInt(stavkaPlus ? stavkaPlus : stavka).toLocaleString()+".00" : '0')}</p>
-                    {/* <p className='project_money'>{parseInt(stavkaPlus).toLocaleString()+".00"}</p> */}
                     {/* кнопка Чат */}
                     {props.post.tgURL_chat && <div onClick={goToChat} className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>}
                 </div>
