@@ -27,7 +27,8 @@ const UserProvider = ({ children }) => {
 	const [specId, setSpecId] = useState('');
 	const [workerhub, setWorkerhub] = useState([]);
 	const [summa, setSumma] = useState(0);
-	const [dohod, setDohod] = useState(0);
+	
+	//let dohod = []
 
 	//статус регистрации
 	const [flag, setFlag] = useState("NOREG") // NOREG, ONLY_REG, REG
@@ -122,8 +123,6 @@ const UserProvider = ({ children }) => {
 			setStr,
 			friend,
 			setFriend,
-			dohod,
-			setDohod
 		}}>
 			{children}
 		</UserContext.Provider>

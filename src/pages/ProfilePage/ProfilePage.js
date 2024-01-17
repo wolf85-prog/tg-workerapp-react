@@ -57,7 +57,7 @@ const ProfilePage = () => {
 
     const projectsRef = useRef(null)
 
-    const { projects, setProjects, specId, setSpecId, flag, summa, setSumma, dohod } = useUsersContext();
+    const { projects, setProjects, specId, setSpecId, flag, summa, setSumma } = useUsersContext();
     const { workerhub, setWorkerhub } = useUsersContext();
     const [workerId, setWorkerId] = useState('')
     const [projects2, setProjects2] = useState('')
@@ -102,12 +102,17 @@ const ProfilePage = () => {
 
     const [showBegun, setShowBegun] = useState(false)
 
+    const [allDohod, setAllDohod] = useState(0)
+    const [dohod, setDohod] = useState(0);
+
     const API_URL = process.env.REACT_APP_API_URL
     
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
+        setDohod(0)
+
         const fetchData = async() => { 
             setIsProfileLoading(true)
             const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
@@ -145,7 +150,8 @@ const ProfilePage = () => {
         const fetchDataProjects = async () => {
             const arrayProject = []
             setIsPostsLoading(true)
-                   
+            
+            //dohod = []
             console.log("Начинаю загружать проекты...")
             const projects = await getProjectsCash();
             console.log("projects: ", projects)
@@ -301,6 +307,14 @@ const ProfilePage = () => {
         }, 3000)
 
     }, [widthStr])
+
+
+    useEffect(()=> {
+
+        console.log("dohod: ", dohod)
+        //setDohod(dohod)
+
+    }, [dohod])
 
 //---------------------------------------------------------------------
 
@@ -684,7 +698,7 @@ const ProfilePage = () => {
 
                     {isPostsLoading
                         ? <div style={{width: '100vw', display: 'flex', justifyContent: 'center'}}><Loader/></div>
-                        : <ProjectList posts={sortProject} title="" width={width}/>
+                        : <ProjectList posts={sortProject} title="" width={width} setDohod={setDohod} dohod={dohod}/>
                     }
                 </div> 
             </div>

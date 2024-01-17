@@ -21,7 +21,7 @@ import RangeSlider from '../UI/RangeSlider/RangeSlider';
 
 const ProjectItem = (props) => {
 
-    const {specId, dohod, setDohod} = useUsersContext();
+    const {specId} = useUsersContext();
 
     const [statusMoney, setStatusMoney] = useState("")
     const [stavka, setStavka] = useState()
@@ -52,7 +52,7 @@ const ProjectItem = (props) => {
     let statusMoney2 = 2
 
     useEffect(()=> {
- 
+        
         const dateTemp = props.post.specs.date
 
         const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === dateTemp)[0]?.specialist : ""
@@ -140,12 +140,23 @@ const ProjectItem = (props) => {
 
     //сумма денег для показа при движении фейдера
     useEffect(()=> {
-        console.log("stavka: ", stavka)
-        console.log("dohod: ", dohod)
+        //console.log("stavka: ", props.dohod)
+        
         setStavkaPlus(stavka)
-        let sum = dohod + isNaN(stavka) ? 0 : stavka
-        console.log("sum: ", sum)
-        setDohod(sum)
+
+        // let sum = 0
+        // if (!isNaN(stavka)) {
+        //   sum = props.dohod + Number(stavka)  
+        // }
+        
+        //console.log("sum: ", sum)
+        //setDohod(sum)
+
+        //const arr = [...dohod]
+        //console.log("arr: ", arr)
+        //arr.push(isNaN(stavka) ? 0 : Number(stavka))
+        //setDohod(arr.push(isNaN(stavka) ? 0 : Number(stavka)))
+        //console.log("dohod: ", dohod)
     }, [stavka])
     
 
