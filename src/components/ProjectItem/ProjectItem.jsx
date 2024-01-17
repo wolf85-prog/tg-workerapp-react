@@ -34,7 +34,7 @@ const ProjectItem = (props) => {
     const [widthCard, setWidthCard] = useState(0);
     
 
-    const [valueShkala, setValueShkala] = useState(1400);
+    const [valueShkala, setValueShkala] = useState(1650);
 
     const [formatted, setFormatted] = useState("")
     const [formattime, setFormattime] = useState("")
@@ -151,7 +151,7 @@ const ProjectItem = (props) => {
         if (props.post.statusMoney === 1) {
             setStatusMoney('Предварительно')
 
-            setValueShkala(1400) //1
+            setValueShkala(1650) //1
         } 
         //2
         else if(props.post.statusMoney === 2) {

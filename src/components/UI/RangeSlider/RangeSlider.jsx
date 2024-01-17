@@ -20,8 +20,8 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
 
         setShowNumber(percentage)
         
-        console.log("percentage: ", percentage)
-        console.log("stavka: ", Number(stavka) + Number(distance))
+        // console.log("percentage: ", percentage)
+        // console.log("stavka: ", Number(stavka) + Number(distance))
         if (percentage === 0) {
             setStavka(percentage)  
         } else {
@@ -95,7 +95,7 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
                         <div className={`block1 ${showNumber > 90 && showNumber < 1000 && `block-active`}`} style={{left: `${21*5+1}%`}}>5</div>
                     </div>
 
-                    <div className='shkala01' style={{left: `${-5}%`}}>
+                    <div className='shkala01' style={{left: `${-6}%`}}>
                         <div className='shk-line11'></div>
                         <div className='shk-line12'></div>
                         <div className='shk-line13'></div>
@@ -130,7 +130,7 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
             <div className='slider-container'>
                 <div className='shkala2'></div> 
 
-                <div className='slider-thumb' style={{ left: `calc(${sliderRange}% - 7.3em)` }}>
+                <div className='slider-thumb' style={{ left: `calc(${sliderRange}% - 7.6em)` }}>
                     <img className='begun' src={begunok} alt='' style={{display: 'block'}}/>
                 </div> 
                 <input 
