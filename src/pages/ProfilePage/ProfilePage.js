@@ -11,6 +11,7 @@ import { useUsersContext } from "../../contexts/UserContext";
 import {useProjects} from "../../hooks/useProjects"
 import './ProfilePage.css';
 import { getWorkerId, getProjectsCash, getSmetaCash } from '../../http/chatAPI';
+import { getStavka } from '../../http/stavkaAPI';
 
 import MyModal from "../../components/MyModal/MyModal";
 import Loader from "../../components/UI/Loader/Loader";
@@ -56,7 +57,7 @@ const ProfilePage = () => {
 
     const projectsRef = useRef(null)
 
-    const { projects, setProjects, specId, setSpecId, flag, summa, setSumma } = useUsersContext();
+    const { projects, setProjects, specId, setSpecId, flag, summa, setSumma, dohod } = useUsersContext();
     const { workerhub, setWorkerhub } = useUsersContext();
     const [workerId, setWorkerId] = useState('')
     const [projects2, setProjects2] = useState('')
@@ -109,7 +110,7 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
             //console.log("worker: ", worker.length) 
             //console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -160,8 +161,15 @@ const ProfilePage = () => {
                 const specsArr = JSON.parse(project.specs)
                 //console.log("specsArr: ", specsArr)
 
-                specsArr.map((spec, index) => {
+                specsArr.map(async(spec, index) => {
                     if (spec.id === workerId) {
+
+                        //получить предварительную ставку
+                        //const res = await getStavka(project.id, spec.rowId) //API
+                        //console.log("res stavka: ", res?.payment)
+
+                        //tempSum = tempSum + item.stavka
+
                         const newProject = {
                             id: project.id,
                             title: project.title,
@@ -172,26 +180,43 @@ const ProfilePage = () => {
                             specs: spec, 
                             smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
                             finalSmeta: smetaObject ? smetaObject?.final : "",
-                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
+                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1,
+                            //stavka: res?.payment
                         }
                         console.log(newProject)
                         arrayProject.push(newProject)
+
+                        
+                        // if (index === (specsArr.length-1)) {
+                        //     setTimeout(()=> {  
+                        //         setIsLoadingSum(false)
+                        //     }, 3000)
+                        // }
+                        
                     }   
                 })
             })
 
-            const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
-            console.log("tempArr: ", tempArr)
-            tempArr.map((item)=> {
-                if (item.smeta ) {
-                    console.log("смета: ", item.smeta)
-                    tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
-                }   
-                console.log("tempSum: ", tempSum)
-            })
+            //setTimeout(()=> {    
+                const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
+                console.log("tempArr: ", tempArr)
 
-            setSumma(tempSum)
-            setIsLoadingSum(false)
+            
+                tempArr.map((item)=> {
+                    if (item.smeta ) {
+                        console.log("смета: ", item.smeta)
+                        tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
+                    }   
+
+                    //tempSum = tempSum + item.stavka
+                    console.log("tempSum: ", tempSum)
+                })
+
+            
+                setSumma(tempSum)
+                setIsLoadingSum(false)
+            //}, 15000)
+            
 
             setProjects2(arrayProject)     
             setIsPostsLoading(false)          
@@ -601,9 +626,6 @@ const ProfilePage = () => {
                             <div className='rectangle-kompeten'></div>
                             <div className='rectangle-kompeten2'></div>
                             <div className='rectangle-kompeten3'></div>
-                            {/* <div className='rec1'></div>
-                            <div className='rec2'></div>
-                            <div className='rec3'></div> */}
                             <div className='kompetencii-title' onClick={clickKompeten}>
                                 <p className='text-kompetencii' >Компетенции</p>
                                 <img className='vector-icon' src={VectorUp} alt=''/>
@@ -625,9 +647,8 @@ const ProfilePage = () => {
                             <div className='rectangle-dohod'></div>
                             <div className='rectangle-dohod2'></div>
                             <div className='rectangle-dohod3'></div>
-                                {/* <img src={Dohod} alt='' /> */}
                             <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
-                            <p className='summa-dohod'>{isLoadingSum ? <Loader2 /> : (isNaN(summa) ? "0" : parseInt(summa).toLocaleString())+".00"}</p>
+                            <p className='summa-dohod'>{isLoadingSum ? <Loader2 /> : (isNaN(dohod) ? "0" : parseInt(dohod).toLocaleString())+".00"}</p>
                         </article>
                     </div> 
                 </div>
@@ -640,7 +661,7 @@ const ProfilePage = () => {
                 
                 <article className='block-dohod-open' onClick={clickDohod} style={{display: showDohod ? 'block' : 'none'}}>
                     <div style={{display: 'flex', justifyContent: 'space-between'}}><p>Доход</p><img className='vector-icon2' src={Vector} alt=''/></div> 
-                    <p className='summa-dohod2'>{isLoadingSum ? <Loader2 /> : parseInt(summa).toLocaleString()+".00"}</p>
+                    <p className='summa-dohod2'>{isLoadingSum ? <Loader2 /> : (isNaN(summa) ? "0" : parseInt(summa).toLocaleString())+".00"}</p>
                 </article>
 
                 <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}}> 

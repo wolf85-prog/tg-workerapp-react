@@ -21,7 +21,7 @@ import RangeSlider from '../UI/RangeSlider/RangeSlider';
 
 const ProjectItem = (props) => {
 
-    const {specId} = useUsersContext();
+    const {specId, dohod, setDohod} = useUsersContext();
 
     const [statusMoney, setStatusMoney] = useState("")
     const [stavka, setStavka] = useState()
@@ -96,7 +96,7 @@ const ProjectItem = (props) => {
             //если кэш пуст
             if (!res0) {
                 const res = await getStavka(props.post.id, props.post.specs.rowId) //API
-                //console.log(res)
+                
 
                 //сохранить в бд предварительную ставку
                 const res_add = await addStavka(specId, props.post.id, res ? res.payment : 0, props.post.specs.date) 
@@ -140,7 +140,12 @@ const ProjectItem = (props) => {
 
     //сумма денег для показа при движении фейдера
     useEffect(()=> {
+        console.log("stavka: ", stavka)
+        console.log("dohod: ", dohod)
         setStavkaPlus(stavka)
+        let sum = dohod + isNaN(stavka) ? 0 : stavka
+        console.log("sum: ", sum)
+        setDohod(sum)
     }, [stavka])
     
 

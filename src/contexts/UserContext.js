@@ -27,6 +27,7 @@ const UserProvider = ({ children }) => {
 	const [specId, setSpecId] = useState('');
 	const [workerhub, setWorkerhub] = useState([]);
 	const [summa, setSumma] = useState(0);
+	const [dohod, setDohod] = useState(0);
 
 	//статус регистрации
 	const [flag, setFlag] = useState("NOREG") // NOREG, ONLY_REG, REG
@@ -53,7 +54,7 @@ const UserProvider = ({ children }) => {
     useEffect(() => {
 
         const fetchData = async() => {
-            const worker = await getWorkerId(user?.id) //user?.id '805436270' '1408579113'
+            const worker = await getWorkerId('1408579113') //user?.id '805436270' '1408579113'
             console.log("worker context: ", worker)
             setWorkerhub(worker)
         }
@@ -121,6 +122,8 @@ const UserProvider = ({ children }) => {
 			setStr,
 			friend,
 			setFriend,
+			dohod,
+			setDohod
 		}}>
 			{children}
 		</UserContext.Provider>
