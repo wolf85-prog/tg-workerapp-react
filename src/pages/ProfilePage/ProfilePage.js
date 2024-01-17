@@ -109,7 +109,7 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
             //console.log("worker: ", worker.length) 
             //console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -627,7 +627,7 @@ const ProfilePage = () => {
                             <div className='rectangle-dohod3'></div>
                                 {/* <img src={Dohod} alt='' /> */}
                             <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
-                            <p className='summa-dohod'>{isLoadingSum ? <Loader2 /> : parseInt(summa).toLocaleString()+".00"}</p>
+                            <p className='summa-dohod'>{isLoadingSum ? <Loader2 /> : (isNaN(summa) ? "0" : parseInt(summa).toLocaleString())+".00"}</p>
                         </article>
                     </div> 
                 </div>
