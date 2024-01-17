@@ -220,7 +220,7 @@ const ProjectItem = (props) => {
 
                 <div className='card-footer'>
                     {/* деньги */}
-                    <p className='project_money'>{isLoading ? <Loader /> : (stavka ? parseInt(stavkaPlus ? stavkaPlus : stavka).toLocaleString()+".00" : '0')}</p>
+                    <p className='project_money'>{isLoading ? <Loader /> : (stavka ? (isNaN(stavka) ? "0" : parseInt(stavkaPlus ? stavkaPlus : stavka).toLocaleString())+".00" : '0.00')}</p>
                     {/* кнопка Чат */}
                     {props.post.tgURL_chat && <div onClick={goToChat} className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>}
                 </div>
