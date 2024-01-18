@@ -185,25 +185,13 @@ useEffect(()=> {
                         }
                         console.log(newProject)
                         arrayProject.push(newProject)
-
                     }   
                 })
             })
   
-            const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
+            // const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
             
-            tempArr.map((item)=> {
-                if (item.smeta ) {
-                    console.log("смета: ", item.smeta)
-                    tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
-                }   
-
-                tempSum = tempSum + item.stavka
-                console.log("tempSum: ", tempSum)
-            })
-
             
-            setSumma(summa + tempSum)
             //setIsLoadingSum(false)
             
 
@@ -221,45 +209,45 @@ useEffect(()=> {
             setIsLoadingSum(true)
             
             const projects = await getProjectsCash();
+            const smets = await getSmetaCash();
 
             let tempSum = 0
             projects.map((project, index)=> {
+
+                let smetaObject = smets.find((proj) => proj.projectId === project.id)
+
                 const specsArr = JSON.parse(project.specs)
+
                 specsArr.map(async(spec, index) => {
                     if (spec.id === workerId) {
-
                         const newProject = {
                             id: project.id,
-                            title: project.title,
-                            date_start: project.dateStart,
-                            date_end: project.dateEnd,
-                            tgURL_chat: project.tgURLchat,
-                            status: JSON.parse(project.status),
                             specs: spec, 
-                            //smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
-                            //finalSmeta: smetaObject ? smetaObject?.final : "",
-                            //statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1,
+                            smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
+                            finalSmeta: smetaObject ? smetaObject?.final : "",
+                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1,
                         }
-                        //console.log(newProject)
                         arrayProject.push(newProject)
-
                     }   
-                })
-                
+                })   
             })
     
-            const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
-            console.log("tempArr2: ", tempArr)
+            const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) 
             
             tempArr.map(async(item, index)=> {
-                //получить предварительную ставку
-                const res = await getStavka(item.id, item.specs.rowId) //API
-                console.log("res stavka: ", res?.payment)
+                if (item.smeta ) {
+                    console.log("смета: ", item.smeta)
+                    tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
+                } else {
+                    //получить предварительную ставку
+                    const res = await getStavka(item.id, item.specs.rowId) //API
+                    console.log("res stavka: ", res?.payment)
 
-                let payment = isNaN(res?.payment) ? 0 : res?.payment
-                tempSum = tempSum + payment
+                    let payment = isNaN(res?.payment) ? 0 : res?.payment
+                    tempSum = tempSum + payment
 
-                console.log("tempSum2: ", tempSum)
+                    console.log("tempSum2: ", tempSum)
+                }
 
                 if (index === tempArr.length-1) {
                     setTimeout(()=> {
