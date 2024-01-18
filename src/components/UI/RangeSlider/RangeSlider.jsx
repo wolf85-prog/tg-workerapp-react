@@ -12,29 +12,45 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
 
     useEffect(()=> {
         const range = max - min;
-        const distance = sliderRef.current.value - min; //
+        const distance = value - min; //
         const percentage = (distance / range) * 100;
 
+        setShowNumber(percentage)
         setSliderRange(percentage)
         setInputValue(value)
     })
 
     function handleSliderInput() {
         const range = max - min;
-        const distance = sliderRef.current.value - min; //
-        const percentage = (distance / range) * 100;
+        //console.log(sliderRef.current.value)
 
-        setShowNumber(percentage)
-    
-        if (percentage === 0) {
-            setStavka(percentage)  
-        } else {
-            let sum = Number(stavka) + Number(distance)
-            setStavka(sum)
-        }
+        let percentage = 0
+        let distance = 0
 
-        setSliderRange(percentage)
-        setInputValue(sliderRef.current.value)
+        // if (sliderRef.current.value === 0 ) {
+        //     distance = value - min; //
+        //     percentage = (distance / range) * 100;
+
+        //     setShowNumber(percentage)
+
+        //     setSliderRange(percentage)
+        //     setInputValue(value)
+        // } else {
+            distance = sliderRef.current.value - min; //
+            percentage = (distance / range) * 100;
+        
+            setShowNumber(percentage)
+        
+            if (percentage === 0) {
+                setStavka(percentage)  
+            } else {
+                let sum = Number(stavka) + Number(distance)
+                setStavka(sum)
+            }
+
+            setSliderRange(percentage)
+            setInputValue(sliderRef.current.value)
+       // }
     }
 
     function handleSliderInput2() {
