@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {Link} from "react-router-dom";
 import './ProjectList.css';
 import ProjectItem from "../ProjectItem/ProjectItem";
@@ -7,7 +7,7 @@ import btnChat from "../../image/new/btn_chat.svg"
 import Vector from "../../image/new/vector.svg"
 import MyModal from "../../components/MyModal/MyModal";
 
-const ProjectList = ({posts, title, workerId, remove, width}) => {
+const ProjectList = ({posts, title, width, shkala}) => {
 
     const [showInfoChat, setShowInfoChat] = useState(false)
     const [showInfoProj, setShowInfoProj] = useState(false)
@@ -35,16 +35,12 @@ const ProjectList = ({posts, title, workerId, remove, width}) => {
                     <div onClick={clickShowInfoProj}>
                         <div className='project-text'>
                             <p className="project_title">Здесь будут ваши проекты</p>
-                            {/* <p className="project_subtitle">06.12.2023 | 20:00</p> */}
                             
                             <p className='project_money2'>0.00</p>
                         </div>
                         <img className='vector' src={Vector} alt=''/>  
                     </div>
 
-                    {/* <div className='progress'>
-                        <img className='shkala' src={Progress0} alt=''/>
-                    </div> */}
                     
                     <div className='card-footer'>
                         <div></div>
@@ -96,7 +92,7 @@ const ProjectList = ({posts, title, workerId, remove, width}) => {
                      
 
             {posts.map((post, index) =>
-                <ProjectItem number={index + 1} post={post} key={post.id + index} width={width}/>    
+                <ProjectItem number={index + 1} post={post} key={post.id + index} width={width} />    
             )}
             
         </div>

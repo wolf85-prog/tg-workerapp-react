@@ -1,17 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './RangeSlider.css'
-import { useUsersContext } from "../../../contexts/UserContext";
 import begunok from "../../../image/new/begunok.png"
 
 const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
     const [systemIOS, setSystemIOS] = useState(false)
     const [sliderRange, setSliderRange] = useState(0)
-    const [inputValue, setInputValue] = useState(value)
+    const [inputValue, setInputValue] = useState(0)
     const sliderRef = useRef(null)
 
     const [showNumber, setShowNumber] = useState(0)
 
-    //const {setStavkaPlus} = useUsersContext();
+    useEffect(()=> {
+        const range = max - min;
+        const distance = sliderRef.current.value - min; //
+        const percentage = (distance / range) * 100;
+
+        setSliderRange(percentage)
+        setInputValue(value)
+    })
 
     function handleSliderInput() {
         const range = max - min;
@@ -19,9 +25,7 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
         const percentage = (distance / range) * 100;
 
         setShowNumber(percentage)
-        
-        // console.log("percentage: ", percentage)
-        // console.log("stavka: ", Number(stavka) + Number(distance))
+    
         if (percentage === 0) {
             setStavka(percentage)  
         } else {

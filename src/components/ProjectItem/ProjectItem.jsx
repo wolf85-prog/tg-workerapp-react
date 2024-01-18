@@ -34,16 +34,13 @@ const ProjectItem = (props) => {
     const [widthCard, setWidthCard] = useState(0);
     
 
-    const [valueShkala, setValueShkala] = useState(1650);
+    const [valueShkala, setValueShkala] = useState(0);
 
     const [formatted, setFormatted] = useState("")
     const [formattime, setFormattime] = useState("")
     const [fact, setFact] = useState()
 
     const [showInfo, setShowInfo] = useState(false)
-
-    const [touchStart, setTouchStart] = useState(0);
-    const [touchEnd, setTouchEnd] = useState(0);
 
     const [stavkaPlus, setStavkaPlus] = useState(0);
 
@@ -74,7 +71,41 @@ const ProjectItem = (props) => {
         const formattime = `${chas}:${minut}`
         setFormatted(formatted)
         setFormattime(formattime)
-    })
+        
+    }, [])
+
+    useEffect(()=> {
+
+        //1
+        if (props.post.statusMoney === 1) {
+            setStatusMoney('Предварительно')
+
+            setValueShkala(1650) //1
+        } 
+        //2
+        else if(props.post.statusMoney === 2) {
+            setStatusMoney('Фактически')
+
+            setValueShkala(3800) 
+        } 
+        //4
+        else if(props.post.statusMoney === 4) {
+            setStatusMoney('На оплате')
+            setValueShkala(8400)
+        }
+        //5
+        else if(props.post.statusMoney === 5) {
+            setStatusMoney('Оплачено')
+            setValueShkala(10000)
+        }
+        
+        //3
+        if (props.post.finalSmeta === 'Подтверждена') {
+            setStatusMoney('Подтверждено')
+
+            setValueShkala(6100)
+        }
+    }, [])
 
     useEffect(()=> {
         //сохранить в бд фактическую ставку
@@ -95,8 +126,7 @@ const ProjectItem = (props) => {
 
             //если кэш пуст
             if (!res0) {
-                const res = await getStavka(props.post.id, props.post.specs.rowId) //API
-                
+                const res = await getStavka(props.post.id, props.post.specs.rowId) //API        
 
                 //сохранить в бд предварительную ставку
                 const res_add = await addStavka(specId, props.post.id, res ? res.payment : 0, props.post.specs.date) 
@@ -140,60 +170,9 @@ const ProjectItem = (props) => {
 
     //сумма денег для показа при движении фейдера
     useEffect(()=> {
-        //console.log("stavka: ", props.dohod)
-        
         setStavkaPlus(stavka)
-
-        // let sum = 0
-        // if (!isNaN(stavka)) {
-        //   sum = props.dohod + Number(stavka)  
-        // }
-        
-        //console.log("sum: ", sum)
-        //setDohod(sum)
-
-        //const arr = [...dohod]
-        //console.log("arr: ", arr)
-        //arr.push(isNaN(stavka) ? 0 : Number(stavka))
-        //setDohod(arr.push(isNaN(stavka) ? 0 : Number(stavka)))
-        //console.log("dohod: ", dohod)
     }, [stavka])
     
-
-
-    useEffect(()=> {
-        console.log("Статус: ", props.post.statusMoney)
-        //1
-        if (props.post.statusMoney === 1) {
-            setStatusMoney('Предварительно')
-
-            setValueShkala(1650) //1
-        } 
-        //2
-        else if(props.post.statusMoney === 2) {
-            setStatusMoney('Фактически')
-
-            setValueShkala(3800) 
-        } 
-        //4
-        else if(props.post.statusMoney === 4) {
-            setStatusMoney('На оплате')
-            setValueShkala(8400)
-        }
-        //5
-        else if(props.post.statusMoney === 5) {
-            setStatusMoney('Оплачено')
-            setValueShkala(10000)
-        }
-        
-        //3
-        if (props.post.finalSmeta === 'Подтверждена') {
-            setStatusMoney('Подтверждено')
-
-            setValueShkala(6100)
-        }
-        
-    }, [])
     
     const goToChat = (e) => {
         e.stopPropagation();

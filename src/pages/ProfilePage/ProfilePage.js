@@ -111,11 +111,11 @@ const ProfilePage = () => {
 
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
-        setDohod(0)
+        //setDohod(0)
 
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
             //console.log("worker: ", worker.length) 
             //console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -146,7 +146,8 @@ const ProfilePage = () => {
     }, []);
 
 //---------------------------------------------------------------------
-    useEffect(()=> {
+//1  
+useEffect(()=> {
         const fetchDataProjects = async () => {
             const arrayProject = []
             setIsPostsLoading(true)
@@ -166,16 +167,9 @@ const ProfilePage = () => {
                 let smetaObject = smets.find((proj) => proj.projectId === project.id)
 
                 const specsArr = JSON.parse(project.specs)
-                //console.log("specsArr: ", specsArr)
 
                 specsArr.map(async(spec, index) => {
                     if (spec.id === workerId) {
-
-                        //получить предварительную ставку
-                        //const res = await getStavka(project.id, spec.rowId) //API
-                        //console.log("res stavka: ", res?.payment)
-
-                        //tempSum = tempSum + item.stavka
 
                         const newProject = {
                             id: project.id,
@@ -188,41 +182,29 @@ const ProfilePage = () => {
                             smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
                             finalSmeta: smetaObject ? smetaObject?.final : "",
                             statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1,
-                            //stavka: res?.payment
                         }
                         console.log(newProject)
                         arrayProject.push(newProject)
 
-                        
-                        //if (index === (specsArr.length-1)) {
-                            //setTimeout(()=> {  
-                                //setIsLoadingSum(false)
-                            //}, 3000)
-                        //}
-                        
                     }   
                 })
             })
+  
+            const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
+            
+            tempArr.map((item)=> {
+                if (item.smeta ) {
+                    console.log("смета: ", item.smeta)
+                    tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
+                }   
 
-            //setTimeout(()=> {    
-                const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
-                //console.log("tempArr: ", tempArr)
+                tempSum = tempSum + item.stavka
+                console.log("tempSum: ", tempSum)
+            })
 
             
-                tempArr.map((item)=> {
-                    if (item.smeta ) {
-                        console.log("смета: ", item.smeta)
-                        //tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
-                    }   
-
-                    //tempSum = tempSum + item.stavka
-                    //console.log("tempSum: ", tempSum)
-                })
-
-            
-                //setSumma(tempSum)
-                //setIsLoadingSum(false)
-            //}, 15000)
+            setSumma(summa + tempSum)
+            //setIsLoadingSum(false)
             
 
             setProjects2(arrayProject)     
@@ -232,7 +214,7 @@ const ProfilePage = () => {
         fetchDataProjects()                    
     }, [workerId])
 
-
+//2
     useEffect(()=> {
         const fetchDataProjects = async () => {
             const arrayProject = []
@@ -242,42 +224,50 @@ const ProfilePage = () => {
 
             let tempSum = 0
             projects.map((project, index)=> {
-
                 const specsArr = JSON.parse(project.specs)
-                //console.log("specsArr: ", specsArr)
-
                 specsArr.map(async(spec, index) => {
-                    //console.log("arr spec index: ", index)
+                    if (spec.id === workerId) {
 
-                    if (spec.id === workerId) { 
-                        
-                  
-                        if (index === (specsArr.length-1)) {
-                            //setTimeout(()=> {  
-
-                                //setSumma(tempSum)
-                                setIsLoadingSum(false)
-                            //}, 3000)
+                        const newProject = {
+                            id: project.id,
+                            title: project.title,
+                            date_start: project.dateStart,
+                            date_end: project.dateEnd,
+                            tgURL_chat: project.tgURLchat,
+                            status: JSON.parse(project.status),
+                            specs: spec, 
+                            //smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
+                            //finalSmeta: smetaObject ? smetaObject?.final : "",
+                            //statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1,
                         }
-                        
+                        //console.log(newProject)
+                        arrayProject.push(newProject)
+
                     }   
                 })
+                
             })
     
             const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
-            console.log("tempArr: ", tempArr)
+            console.log("tempArr2: ", tempArr)
             
-            tempArr.map(async(item)=> {
+            tempArr.map(async(item, index)=> {
                 //получить предварительную ставку
-                const res = await getStavka(item.id, item.rowId) //API
+                const res = await getStavka(item.id, item.specs.rowId) //API
                 console.log("res stavka: ", res?.payment)
 
                 let payment = isNaN(res?.payment) ? 0 : res?.payment
                 tempSum = tempSum + payment
 
-                console.log("tempSum: ", tempSum)
-            })
-                
+                console.log("tempSum2: ", tempSum)
+
+                if (index === tempArr.length-1) {
+                    setTimeout(()=> {
+                        setSumma(tempSum)
+                        setIsLoadingSum(false)
+                    }, 5000)        
+                }
+            })     
         }
 
         fetchDataProjects()                    
@@ -714,7 +704,7 @@ const ProfilePage = () => {
                             <div className='rectangle-dohod2'></div>
                             <div className='rectangle-dohod3'></div>
                             <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
-                            <p className='summa-dohod'>{isLoadingSum ? <Loader2 /> : (isNaN(dohod) ? "0" : parseInt(dohod).toLocaleString())+".00"}</p>
+                            <p className='summa-dohod'>{isLoadingSum ? <Loader2 /> : (isNaN(summa) ? "0" : parseInt(summa).toLocaleString())+".00"}</p>
                         </article>
                     </div> 
                 </div>
@@ -750,7 +740,7 @@ const ProfilePage = () => {
 
                     {isPostsLoading
                         ? <div style={{width: '100vw', display: 'flex', justifyContent: 'center'}}><Loader/></div>
-                        : <ProjectList posts={sortProject} title="" width={width} setDohod={setDohod} dohod={dohod}/>
+                        : <ProjectList posts={sortProject} title="" width={width} />
                     }
                 </div> 
             </div>
