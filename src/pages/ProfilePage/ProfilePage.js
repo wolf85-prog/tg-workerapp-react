@@ -150,6 +150,7 @@ const ProfilePage = () => {
         const fetchDataProjects = async () => {
             const arrayProject = []
             setIsPostsLoading(true)
+            //setIsLoadingSum(true)
             
             //dohod = []
             console.log("Начинаю загружать проекты...")
@@ -193,11 +194,11 @@ const ProfilePage = () => {
                         arrayProject.push(newProject)
 
                         
-                        // if (index === (specsArr.length-1)) {
-                        //     setTimeout(()=> {  
-                        //         setIsLoadingSum(false)
-                        //     }, 3000)
-                        // }
+                        //if (index === (specsArr.length-1)) {
+                            //setTimeout(()=> {  
+                                //setIsLoadingSum(false)
+                            //}, 3000)
+                        //}
                         
                     }   
                 })
@@ -205,27 +206,78 @@ const ProfilePage = () => {
 
             //setTimeout(()=> {    
                 const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
-                console.log("tempArr: ", tempArr)
+                //console.log("tempArr: ", tempArr)
 
             
                 tempArr.map((item)=> {
                     if (item.smeta ) {
                         console.log("смета: ", item.smeta)
-                        tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
+                        //tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
                     }   
 
                     //tempSum = tempSum + item.stavka
-                    console.log("tempSum: ", tempSum)
+                    //console.log("tempSum: ", tempSum)
                 })
 
             
-                setSumma(tempSum)
-                setIsLoadingSum(false)
+                //setSumma(tempSum)
+                //setIsLoadingSum(false)
             //}, 15000)
             
 
             setProjects2(arrayProject)     
             setIsPostsLoading(false)          
+        }
+
+        fetchDataProjects()                    
+    }, [workerId])
+
+
+    useEffect(()=> {
+        const fetchDataProjects = async () => {
+            const arrayProject = []
+            setIsLoadingSum(true)
+            
+            const projects = await getProjectsCash();
+
+            let tempSum = 0
+            projects.map((project, index)=> {
+
+                const specsArr = JSON.parse(project.specs)
+                //console.log("specsArr: ", specsArr)
+
+                specsArr.map(async(spec, index) => {
+                    //console.log("arr spec index: ", index)
+
+                    if (spec.id === workerId) { 
+                        
+                  
+                        if (index === (specsArr.length-1)) {
+                            //setTimeout(()=> {  
+
+                                //setSumma(tempSum)
+                                setIsLoadingSum(false)
+                            //}, 3000)
+                        }
+                        
+                    }   
+                })
+            })
+    
+            const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
+            console.log("tempArr: ", tempArr)
+            
+            tempArr.map(async(item)=> {
+                //получить предварительную ставку
+                const res = await getStavka(item.id, item.rowId) //API
+                console.log("res stavka: ", res?.payment)
+
+                let payment = isNaN(res?.payment) ? 0 : res?.payment
+                tempSum = tempSum + payment
+
+                console.log("tempSum: ", tempSum)
+            })
+                
         }
 
         fetchDataProjects()                    
