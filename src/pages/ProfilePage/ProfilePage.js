@@ -11,7 +11,7 @@ import { useUsersContext } from "../../contexts/UserContext";
 import {useProjects} from "../../hooks/useProjects"
 import './ProfilePage.css';
 import { getWorkerId, getProjectsCash, getSmetaCash } from '../../http/chatAPI';
-import { getStavka } from '../../http/stavkaAPI';
+import { getStavka, getSpecStavka } from '../../http/stavkaAPI';
 
 import MyModal from "../../components/MyModal/MyModal";
 import Loader from "../../components/UI/Loader/Loader";
@@ -115,7 +115,7 @@ const ProfilePage = () => {
 
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('6143011220') //'805436270' '1408579113' user?.id '6143011220'
             //console.log("worker: ", worker.length) 
             //console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -187,13 +187,7 @@ useEffect(()=> {
                         arrayProject.push(newProject)
                     }   
                 })
-            })
-  
-            // const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
-            
-            
-            //setIsLoadingSum(false)
-            
+            })       
 
             setProjects2(arrayProject)     
             setIsPostsLoading(false)          
@@ -233,12 +227,19 @@ useEffect(()=> {
             })
     
             const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) 
+
+            console.log("tempArr2: ", tempArr)
             
             tempArr.map(async(item, index)=> {
-                if (item.smeta ) {
+                if (item.smeta) {
                     console.log("смета: ", item.smeta)
                     tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
                 } else {
+                    console.log("Получить предварительную ставку...")
+                    //кэш
+                    const res0 = await getSpecStavka(workerId, item.id, item.specs.date)
+                    console.log("res0: ", res0)
+
                     //получить предварительную ставку
                     const res = await getStavka(item.id, item.specs.rowId) //API
                     console.log("res stavka: ", res?.payment)
