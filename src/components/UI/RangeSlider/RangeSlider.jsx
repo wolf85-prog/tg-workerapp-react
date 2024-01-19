@@ -146,8 +146,8 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
                     type="range" 
                     value={inputValue}
                     onChange={handleSliderInput}
-                    className='slider'
-                    // className={systemIOS ? 'slider2' : 'slider'}
+                    // className='slider'
+                    className={systemIOS ? 'slider2' : 'slider'}
                     min={min}
                     max={max}
                     ref={sliderRef}

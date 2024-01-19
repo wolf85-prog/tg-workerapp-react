@@ -53,6 +53,7 @@ input[type="range"]::-webkit-slider-thumb {
   } 
 
 
+  /* Android */
 .slider {
     /* -webkit-appearance: none;
     -moz-appearance: none;
@@ -60,39 +61,17 @@ input[type="range"]::-webkit-slider-thumb {
     width: 100%;
     height: 1px;
     outline: none;
-    /* cursor: pointer; */
 }
 
-/* .slider ::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
-    background: #ff4500;
-    z-index: 3;
-    position: relative;
-} */
 
-.slider2 {
+  /* iOS */
+.slider2  {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     width: 100%;
     height: 1px;
     outline: none;
-    box-shadow: 
-        inset 3px 3px 6 px #000,
-        1px 1px 1px #909090;
-    cursor: pointer;
-}
-
-.slider2 ::-webkit-slider-thumb {
-    height: 30px;
-    width: 30px;
-    z-index: 3;
-    position: relative;
 }
 
 
