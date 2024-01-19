@@ -148,139 +148,67 @@ const ProfilePage = () => {
 //---------------------------------------------------------------------
 //1  загружаем проекты
 useEffect(()=> {
-        const fetchDataProjects = async () => {
-            const arrayProject = []
-            setIsPostsLoading(true)
-            
-            console.log("Начинаю загружать проекты...")
-            const projects = await getProjectsCash();
-            console.log("projects: ", projects)
+    const fetchDataProjects = async () => {
+        const arrayProject = []
+        setIsPostsLoading(true)
+               
+        console.log("Начинаю загружать проекты...")
+        const projects = await getProjectsCash();
+        console.log("projects: ", projects)
 
-            console.log("Начинаю загружать сметы...")
-            const smets = await getSmetaCash();
-            console.log("smets: ", smets)
+        console.log("Начинаю загружать сметы...")
+        const smets = await getSmetaCash();
+        console.log("smets: ", smets)
 
-            let tempSum = 0
-            projects.map((project, index)=> {
-                let smetaObject = smets.find((proj) => proj.projectId === project.id)
+        let tempSum = 0
+        projects.map((project, index)=> {
+            let smetaObject = smets.find((proj) => proj.projectId === project.id)
 
-                const specsArr = JSON.parse(project.specs)
+            const specsArr = JSON.parse(project.specs)
+            //console.log("specsArr: ", specsArr)
 
-                specsArr.map(async(spec, index) => {
-                    if (spec.id === workerId) {
-
-                        const newProject = {
-                            id: project.id,
-                            title: project.title,
-                            date_start: project.dateStart,
-                            date_end: project.dateEnd,
-                            tgURL_chat: project.tgURLchat,
-                            status: JSON.parse(project.status),
-                            specs: spec, 
-                            smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
-                            finalSmeta: smetaObject ? smetaObject?.final : "",
-                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1,
-                        }
-                        //console.log(newProject)
-                        arrayProject.push(newProject)
-                    }   
-                })
-            })       
-
-            setProjects2(arrayProject)     
-            setIsPostsLoading(false)          
-        }
-
-        fetchDataProjects()                    
-    }, [workerId])
-
-//2 загружаем предварительные сметы
-    useEffect(()=> {
-        const fetchDataProjects = async () => {
-            const arrayProject = []
-            setIsLoadingSum(true)
-            
-            const projects = await getProjectsCash();
-            const smets = await getSmetaCash();
-
-            let tempSum = 0
-            projects.map((project, index)=> {
-
-                let smetaObject = smets.find((proj) => proj.projectId === project.id)
-
-                const specsArr = JSON.parse(project.specs)
-
-                specsArr.map(async(spec, index) => {
-                    if (spec.id === workerId) {
-                        const newProject = {
-                            id: project.id,
-                            specs: spec, 
-                            smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
-                            finalSmeta: smetaObject ? smetaObject?.final : "",
-                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1,
-                        }
-                        arrayProject.push(newProject)
-                    }   
-                })   
-            })
-    
-            const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) 
-
-            console.log("tempArr2: ", tempArr)
-            
-            tempArr.map(async(item, index)=> {
-                // if (item.smeta) {
-                //     console.log("смета: ", item.smeta)
-                //     tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
-                // } else {
-                    console.log("Получить предварительную ставку...")
-                    //кэш
-                    const res0 = await getSpecStavka(workerId, item.id, item.specs.date)
-                    //console.log("res0: ", res0)
-
-                    //если кэш пуст
-                    if (!res0) {
-                        //получить предварительную ставку
-                        const res = await getStavka(item.id, item.specs.rowId) //API
-                        console.log("stavka: ", res?.payment)
-
-                        let payment = isNaN(res?.payment) ? 0 : res?.payment
-                        tempSum = tempSum + Number(payment)
-                    } else {
-                        if (res0.factStavka) { 
-                            if (res0.podtverStavka) {
-                                //setStavka(res0.podtverStavka)
-                                console.log("stavka: ", res0.podtverStavka)
-                                let payment = isNaN(res0.podtverStavka) ? 0 : res0.podtverStavka
-                                tempSum = tempSum + Number(payment)
-                            } else {
-                                //setStavka(res0.factStavka)
-                                console.log("stavka: ", res0.factStavka)
-                                let payment = isNaN(res0.factStavka) ? 0 : res0.factStavka
-                                tempSum = tempSum + Number(payment)
-                            }
-                        } else {
-                            //setStavka(res0.predStavka)
-                            console.log("stavka: ", res0.predStavka)
-                            let payment = isNaN(res0.predStavka) ? 0 : res0.predStavka
-                            tempSum = tempSum + Number(payment)
-                        }
+            specsArr.map((spec, index) => {
+                if (spec.id === workerId) {
+                    const newProject = {
+                        id: project.id,
+                        title: project.title,
+                        date_start: project.dateStart,
+                        date_end: project.dateEnd,
+                        tgURL_chat: project.tgURLchat,
+                        status: JSON.parse(project.status),
+                        specs: spec, 
+                        smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
+                        finalSmeta: smetaObject ? smetaObject?.final : "",
+                        statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
                     }
-                //}
+                    console.log(newProject)
+                    arrayProject.push(newProject)
+                }   
+            })
+        })
 
-                console.log("tempSum2: ", tempSum)
+        const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
+        console.log("tempArr: ", tempArr)
+        tempArr.map((item)=> {
+            if (item.smeta ) {
+                console.log("смета: ", item.smeta)
+                let stavka =  item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
+                tempSum = tempSum + stavka
+                console.log("Ставка: ", stavka)
+            }   
+            console.log("tempSum: ", tempSum)
+        })
 
-                if (index === tempArr.length-1) {
-                    setTimeout(()=> {
-                        setSumma(tempSum)
-                        setIsLoadingSum(false)
-                    }, 5000)        
-                }
-            })     
-        }
+        setSumma(tempSum)
+        setIsLoadingSum(false)
 
-        fetchDataProjects()                    
-    }, [workerId])
+        setProjects2(arrayProject)     
+        setIsPostsLoading(false)          
+    }
+
+    fetchDataProjects()                    
+}, [workerId])
+
 
     useEffect(()=> {
         const sortArray = []
@@ -687,7 +615,7 @@ useEffect(()=> {
                                 <p className='text-kompetencii' >Компетенции</p>
                                 <img className='vector-icon' src={VectorUp} alt=''/>
                             </div>
-                            <div className='kompet-list'>
+                            <div className='kompet-list' onClick={()=>setShowInfo(true)}>
                                 <ul>
                                     {workerhub[0]?.skill.map((worker, index) => index < 6
                                     ?   <li className="bullet-title">{worker.name} </li>
