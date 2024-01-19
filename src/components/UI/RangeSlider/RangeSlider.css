@@ -28,11 +28,10 @@
 
 
 /* Input Thumb */
-input[type="range"]::-webkit-slider-thumb {
+/* input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 30px;
     width: 40px;
-    /* border-radius: 50%; */
     background: transparent;
     border: none;
   }
@@ -41,7 +40,6 @@ input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 30px;
     width: 40px;
-    /* border-radius: 50%; */
     background: transparent;
     border: none;
   }
@@ -50,10 +48,9 @@ input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 30px;
     width: 40px;
-    /* border-radius: 50%; */
     background: transparent;
     border: none;
-  } 
+  }  */
 
 
 .slider {

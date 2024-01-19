@@ -139,14 +139,14 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
             <div className='slider-container'>
                 <div className='shkala2'></div> 
 
-                <div className='slider-thumb' style={{ left: `calc(${sliderRange}% - 7.6em)` }}>
+                {/* <div className='slider-thumb' style={{ left: `calc(${sliderRange}% - 7.6em)` }}>
                     <img className='begun' src={begunok} alt='' style={{display: 'block'}}/>
-                </div> 
+                </div>  */}
                 <input 
                     type="range" 
                     value={inputValue}
                     onChange={handleSliderInput}
-                    className='slider'
+                    // className='slider'
                     // className={systemIOS ? 'slider2' : 'slider'}
                     min={min}
                     max={max}
@@ -161,7 +161,7 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
                     onTouchEnd={()=>handleSliderInput2()} 
                 /> 
                 
-                <div className='progress' style={{ width: `${sliderRange}%` }}></div>
+                {/* <div className='progress' style={{ width: `${sliderRange}%` }}></div> */}
                 
             </div>
         </div>
