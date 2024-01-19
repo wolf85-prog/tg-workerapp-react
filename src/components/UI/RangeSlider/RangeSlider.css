@@ -136,8 +136,6 @@ input[type="range"]::-webkit-slider-thumb {
 .blocks{
     position: absolute;
     width: 90%;
-    height: 37px;
-    /* left: 40px; */
     left: -10px;
     top: -10px;
 }
