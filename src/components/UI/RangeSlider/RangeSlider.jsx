@@ -146,7 +146,7 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
                     type="range" 
                     value={inputValue}
                     onChange={handleSliderInput}
-                    // className='slider'
+                    className='slider'
                     // className={systemIOS ? 'slider2' : 'slider'}
                     min={min}
                     max={max}
@@ -161,7 +161,7 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
                     onTouchEnd={()=>handleSliderInput2()} 
                 /> 
                 
-                {/* <div className='progress' style={{ width: `${sliderRange}%` }}></div> */}
+                <div className='progress' style={{ width: `${sliderRange}%` }}></div>
                 
             </div>
         </div>

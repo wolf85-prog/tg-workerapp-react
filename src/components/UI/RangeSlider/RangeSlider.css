@@ -28,7 +28,7 @@
 
 
 /* Input Thumb */
-/* input[type="range"]::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 30px;
     width: 40px;
@@ -50,7 +50,7 @@
     width: 40px;
     background: transparent;
     border: none;
-  }  */
+  } 
 
 
 .slider {
