@@ -10,15 +10,15 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
 
     const [showNumber, setShowNumber] = useState(0)
 
-    // useEffect(()=> {
-    //     const range = max - min;
-    //     const distance = value - min; //
-    //     const percentage = (distance / range) * 100;
+    useEffect(()=> {
+        const range = max - min;
+        const distance = value - min; //
+        const percentage = (distance / range) * 100;
 
-    //     setShowNumber(percentage)
-    //     setSliderRange(percentage)
-    //     setInputValue(value)
-    // })
+        setShowNumber(percentage)
+        setSliderRange(percentage)
+        setInputValue(value)
+    })
 
     function handleSliderInput() {
         const range = max - min;
