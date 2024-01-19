@@ -208,9 +208,8 @@ const ProjectItem = (props) => {
                 <img onClick={clickProject} className='vector' src={showProject ? VectorUp : Vector} alt=''/>   
                 
                 <div className='shkala-click' onClick={clickShkala} ></div>
-                
 
-                <RangeSlider min={0} max={10000} value={valueShkala} step={5} stavka={stavka} setStavka={setStavkaPlus} />
+                <RangeSlider min={0} max={10000} value={valueShkala} step={5} stavka={stavka} setStavka={setStavkaPlus} range={10000} distance={valueShkala} percentage={valueShkala/100}/>
                 
 
                 <div className='card-footer'>

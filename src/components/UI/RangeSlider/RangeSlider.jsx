@@ -2,17 +2,24 @@ import React, { useEffect, useRef, useState } from 'react';
 import './RangeSlider.css'
 import begunok from "../../../image/new/begunok.png"
 
-const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
-    const range = max - min;
-    const distance = value - min; //
-    const percentage = (distance / range) * 100;
+const RangeSlider = ({min, max, value, step, stavka, setStavka, percentage}) => {
 
     const [systemIOS, setSystemIOS] = useState(false)
-    const [sliderRange, setSliderRange] = useState(percentage)
-    const [inputValue, setInputValue] = useState(value)
+    const [sliderRange, setSliderRange] = useState(0)
+    const [inputValue, setInputValue] = useState(0)
     const sliderRef = useRef(null)
 
-    const [showNumber, setShowNumber] = useState(percentage)
+    const [showNumber, setShowNumber] = useState(0)
+
+    const [count, setCount] = useState(0)
+
+    useEffect(()=> {
+
+            setShowNumber(percentage)
+            // setSliderRange(percentage)
+            // setInputValue(value)
+        
+    })
 
     function handleSliderInput() {
         const range = max - min;
@@ -133,12 +140,12 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
             <div className='slider-container'>
                 <div className='shkala2'></div> 
 
-                <div className='slider-thumb' style={{ left: `calc(${sliderRange}% - 7.6em)` }}>
+                <div className='slider-thumb' style={{ left: `calc(${sliderRange === 0 ? percentage : sliderRange}% - 7.6em)` }}>
                     <img className='begun' src={begunok} alt='' style={{display: 'block'}}/>
                 </div> 
                 <input 
                     type="range" 
-                    value={inputValue}
+                    value={inputValue === 0 ? value : inputValue}
                     onChange={handleSliderInput}
                     // className='slider'
                     className={systemIOS ? 'slider2' : 'slider'}
@@ -155,7 +162,7 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
                     onTouchEnd={()=>handleSliderInput2()} 
                 /> 
                 
-                <div className='progress' style={{ width: `${sliderRange}%` }}></div>
+                <div className='progress' style={{ width: `${sliderRange === 0 ? percentage : sliderRange}%` }}></div>
                 
             </div>
         </div>
