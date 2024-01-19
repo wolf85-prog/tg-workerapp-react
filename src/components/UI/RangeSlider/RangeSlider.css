@@ -19,10 +19,43 @@
     margin-bottom: 15px;
 }
 
+
+
+/* input[type="range"] {
+    -webkit-appearance: none;
+} */
+
+
+/* Input Thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: transparent;
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: transparent;
+  }
+  
+  input[type="range"]::-ms-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: transparent;
+  } 
+
+
 .slider {
-    /* -webkit-appearance: none;
+    -webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none; */
+    appearance: none;
     width: 100%;
     height: 1px;
     outline: none;
@@ -32,15 +65,17 @@
     cursor: pointer;
 }
 
-.slider ::-webkit-slider-thumb {
-    /* -webkit-appearance: none;
+/* .slider ::-webkit-slider-thumb {
+    -webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none; */
-    height: 30px;
-    width: 30px;
+    appearance: none;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    background: #ff4500;
     z-index: 3;
     position: relative;
-}
+} */
 
 .slider2 {
     -webkit-appearance: none;
@@ -62,21 +97,7 @@
     position: relative;
 }
 
-.progress {
-    width: 0;
-    height: 1px;
-    background: #f3f3f3;
-    border: 1px solid #3392FF;
-    box-shadow: inset 0px 2px 2px #232222;
-    position: absolute;
-    top: -21px;
-    transform: translateY(-50%);
-    left: 0;
-    pointer-events: none;
-    transition-property: box-shadow;
-    transition-duration: 0.2s;
 
-}
 
 .slider-thumb {
     position: absolute;
@@ -91,8 +112,6 @@
 }
 
 
-
-/* Прогресс */
 .shkala {
     position: absolute;
     width: 100%;
@@ -191,8 +210,24 @@
     transform: rotate(-90deg);
 }
 
+.progress {
+    width: 0;
+    height: 1px;
+    background: #f3f3f3;
+    border: 1px solid #3392FF;
+    box-shadow: inset 0px 2px 2px #232222;
+    position: absolute;
+    top: -19px;
+    transform: translateY(-50%);
+    left: 0;
+    pointer-events: none;
+    transition-property: box-shadow;
+    transition-duration: 0.2s;
+    border-radius: 5px;
+}
 
-/* Line 2 */
+
+/* back */
 .shkala2 {
     position: absolute;
     width: 100%;
@@ -202,6 +237,7 @@
     border: 1px solid #1B1E21;
     box-shadow: inset 0px -1px 2px rgba(255, 255, 255, 0.13);
     z-index: 0;
+    border-radius: 5px;
 }
 
 /* Line 3 */

@@ -10,47 +10,36 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
 
     const [showNumber, setShowNumber] = useState(0)
 
-    useEffect(()=> {
-        const range = max - min;
-        const distance = value - min; //
-        const percentage = (distance / range) * 100;
+    // useEffect(()=> {
+    //     const range = max - min;
+    //     const distance = value - min; //
+    //     const percentage = (distance / range) * 100;
 
-        setShowNumber(percentage)
-        setSliderRange(percentage)
-        setInputValue(value)
-    })
+    //     setShowNumber(percentage)
+    //     setSliderRange(percentage)
+    //     setInputValue(value)
+    // })
 
     function handleSliderInput() {
         const range = max - min;
-        //console.log(sliderRef.current.value)
 
         let percentage = 0
         let distance = 0
 
-        // if (sliderRef.current.value === 0 ) {
-        //     distance = value - min; //
-        //     percentage = (distance / range) * 100;
-
-        //     setShowNumber(percentage)
-
-        //     setSliderRange(percentage)
-        //     setInputValue(value)
-        // } else {
-            distance = sliderRef.current.value - min; //
-            percentage = (distance / range) * 100;
+        distance = sliderRef.current.value - min; //
+        percentage = (distance / range) * 100;
         
-            setShowNumber(percentage)
+        setShowNumber(percentage)
         
-            if (percentage === 0) {
-                setStavka(percentage)  
-            } else {
-                let sum = Number(stavka) + Number(distance)
-                setStavka(sum)
-            }
+        if (percentage === 0) {
+            setStavka(percentage)  
+        } else {
+            let sum = Number(stavka) + Number(distance)
+            setStavka(sum)
+        }
 
-            setSliderRange(percentage)
-            setInputValue(sliderRef.current.value)
-       // }
+        setSliderRange(percentage)
+        setInputValue(sliderRef.current.value)
     }
 
     function handleSliderInput2() {
@@ -157,7 +146,8 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
                     type="range" 
                     value={inputValue}
                     onChange={handleSliderInput}
-                    className={systemIOS ? 'slider2' : 'slider'}
+                    className='slider'
+                    // className={systemIOS ? 'slider2' : 'slider'}
                     min={min}
                     max={max}
                     ref={sliderRef}
@@ -169,15 +159,9 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
                     }}
                     onMouseUp={()=>handleSliderInput2()} 
                     onTouchEnd={()=>handleSliderInput2()} 
-                />
-
+                /> 
                 
-                
-                <div 
-                    className='progress'
-                    style={{ width: `${sliderRange}%` }}
-                ></div>
-
+                <div className='progress' style={{ width: `${sliderRange}%` }}></div>
                 
             </div>
         </div>
