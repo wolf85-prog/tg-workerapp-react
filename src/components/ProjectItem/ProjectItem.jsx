@@ -103,7 +103,7 @@ const ProjectItem = (props) => {
         if (props.post.finalSmeta === 'Подтверждена') {
             setStatusMoney('Подтверждено')
 
-            setValueShkala(6100)
+            setValueShkala(5900)
         }
     }, [])
 

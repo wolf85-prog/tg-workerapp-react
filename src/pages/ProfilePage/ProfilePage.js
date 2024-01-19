@@ -102,8 +102,6 @@ const ProfilePage = () => {
 
     const [showBegun, setShowBegun] = useState(false)
 
-    const [allDohod, setAllDohod] = useState(0)
-    const [dohod, setDohod] = useState(0);
 
     const API_URL = process.env.REACT_APP_API_URL
     
