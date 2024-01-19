@@ -115,7 +115,7 @@ const ProfilePage = () => {
 
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const worker = await getWorkerId('6143011220') //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
             //console.log("worker: ", worker.length) 
             //console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -146,14 +146,12 @@ const ProfilePage = () => {
     }, []);
 
 //---------------------------------------------------------------------
-//1  
+//1  загружаем проекты
 useEffect(()=> {
         const fetchDataProjects = async () => {
             const arrayProject = []
             setIsPostsLoading(true)
-            //setIsLoadingSum(true)
             
-            //dohod = []
             console.log("Начинаю загружать проекты...")
             const projects = await getProjectsCash();
             console.log("projects: ", projects)
@@ -183,7 +181,7 @@ useEffect(()=> {
                             finalSmeta: smetaObject ? smetaObject?.final : "",
                             statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1,
                         }
-                        console.log(newProject)
+                        //console.log(newProject)
                         arrayProject.push(newProject)
                     }   
                 })
@@ -196,7 +194,7 @@ useEffect(()=> {
         fetchDataProjects()                    
     }, [workerId])
 
-//2
+//2 загружаем предварительные сметы
     useEffect(()=> {
         const fetchDataProjects = async () => {
             const arrayProject = []
@@ -231,24 +229,46 @@ useEffect(()=> {
             console.log("tempArr2: ", tempArr)
             
             tempArr.map(async(item, index)=> {
-                if (item.smeta) {
-                    console.log("смета: ", item.smeta)
-                    tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
-                } else {
+                // if (item.smeta) {
+                //     console.log("смета: ", item.smeta)
+                //     tempSum = tempSum + item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
+                // } else {
                     console.log("Получить предварительную ставку...")
                     //кэш
                     const res0 = await getSpecStavka(workerId, item.id, item.specs.date)
-                    console.log("res0: ", res0)
+                    //console.log("res0: ", res0)
 
-                    //получить предварительную ставку
-                    const res = await getStavka(item.id, item.specs.rowId) //API
-                    console.log("res stavka: ", res?.payment)
+                    //если кэш пуст
+                    if (!res0) {
+                        //получить предварительную ставку
+                        const res = await getStavka(item.id, item.specs.rowId) //API
+                        console.log("stavka: ", res?.payment)
 
-                    let payment = isNaN(res?.payment) ? 0 : res?.payment
-                    tempSum = tempSum + payment
+                        let payment = isNaN(res?.payment) ? 0 : res?.payment
+                        tempSum = tempSum + Number(payment)
+                    } else {
+                        if (res0.factStavka) { 
+                            if (res0.podtverStavka) {
+                                //setStavka(res0.podtverStavka)
+                                console.log("stavka: ", res0.podtverStavka)
+                                let payment = isNaN(res0.podtverStavka) ? 0 : res0.podtverStavka
+                                tempSum = tempSum + Number(payment)
+                            } else {
+                                //setStavka(res0.factStavka)
+                                console.log("stavka: ", res0.factStavka)
+                                let payment = isNaN(res0.factStavka) ? 0 : res0.factStavka
+                                tempSum = tempSum + Number(payment)
+                            }
+                        } else {
+                            //setStavka(res0.predStavka)
+                            console.log("stavka: ", res0.predStavka)
+                            let payment = isNaN(res0.predStavka) ? 0 : res0.predStavka
+                            tempSum = tempSum + Number(payment)
+                        }
+                    }
+                //}
 
-                    console.log("tempSum2: ", tempSum)
-                }
+                console.log("tempSum2: ", tempSum)
 
                 if (index === tempArr.length-1) {
                     setTimeout(()=> {
