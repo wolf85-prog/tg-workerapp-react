@@ -359,14 +359,6 @@ useEffect(()=> {
 
     }, [widthStr])
 
-
-    useEffect(()=> {
-
-        console.log("dohod: ", dohod)
-        //setDohod(dohod)
-
-    }, [dohod])
-
 //---------------------------------------------------------------------
 
 
@@ -697,12 +689,10 @@ useEffect(()=> {
                             </div>
                             <div className='kompet-list'>
                                 <ul>
-                                    <li>Работа с оборудованием</li>
-                                    <li>Технические навыки</li>
-                                    <li>Визуальное восприятие</li>
-                                    <li>Коммуникация </li>
-                                    <li>Работа со сценарием</li>
-                                </ul>
+                                    {workerhub[0]?.skill.map((worker, index) => index < 6
+                                    ?   <li className="bullet-title">{worker.name} </li>
+                                    : '' )}
+                                </ul>  
                             </div>
                         </article>
 

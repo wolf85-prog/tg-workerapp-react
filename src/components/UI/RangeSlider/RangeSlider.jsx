@@ -3,22 +3,16 @@ import './RangeSlider.css'
 import begunok from "../../../image/new/begunok.png"
 
 const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
+    const range = max - min;
+    const distance = value - min; //
+    const percentage = (distance / range) * 100;
+
     const [systemIOS, setSystemIOS] = useState(false)
-    const [sliderRange, setSliderRange] = useState(0)
-    const [inputValue, setInputValue] = useState(0)
+    const [sliderRange, setSliderRange] = useState(percentage)
+    const [inputValue, setInputValue] = useState(value)
     const sliderRef = useRef(null)
 
-    const [showNumber, setShowNumber] = useState(0)
-
-    useEffect(()=> {
-        const range = max - min;
-        const distance = value - min; //
-        const percentage = (distance / range) * 100;
-
-        setShowNumber(percentage)
-        setSliderRange(percentage)
-        setInputValue(value)
-    })
+    const [showNumber, setShowNumber] = useState(percentage)
 
     function handleSliderInput() {
         const range = max - min;
@@ -54,7 +48,7 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka}) => {
         setStavka(stavka) //установка суммы в исходное состояние
     }
 
-    useEffect(() => {
+    useEffect(() => {  
         handleSliderInput();
     }, [sliderRef])
 
