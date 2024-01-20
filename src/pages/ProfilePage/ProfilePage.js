@@ -350,7 +350,8 @@ useEffect(()=> {
             })
             .catch(console.error)
         } else {
-            setIsShowed(currentIsShowed => !currentIsShowed)
+            //setIsShowed(currentIsShowed => !currentIsShowed)
+            window.AndroidShareHandler.share('https://stackoverflow.com');
         }
     }
 
