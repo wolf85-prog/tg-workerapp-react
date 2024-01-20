@@ -11,15 +11,12 @@ import { useUsersContext } from "../../contexts/UserContext";
 import {useProjects} from "../../hooks/useProjects"
 import './ProfilePage.css';
 import { getWorkerId, getProjectsCash, getSmetaCash } from '../../http/chatAPI';
-import { getStavka, getSpecStavka } from '../../http/stavkaAPI';
 
 import MyModal from "../../components/MyModal/MyModal";
 import Loader from "../../components/UI/Loader/Loader";
 import Loader2 from "../../components/UI/Loader_min/Loader_min"
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
-
-import { BottomSheet } from 'react-spring-bottom-sheet'
 
 import Star from "../../image/new/star.png";
 import StarActive from "../../image/new/star_activ.svg";
@@ -106,6 +103,7 @@ const ProfilePage = () => {
     const [openSheet, setOpenSheet] = useState(false)
 
     const API_URL = process.env.REACT_APP_API_URL
+
     
 //----------------------------------------------------------------------------------
 
@@ -338,12 +336,13 @@ useEffect(()=> {
         return () => clearTimeout(timer)
     }, [isCopied])
   
-    const onShareClick = (e) => {
+    const onShareClick = async(e) => {
         const url="https://t.me/ULEY_Workhub_Bot"
         const title="ULEY Workhub"
         const text="U.L.E.Y | Workhub"
 
         e.preventDefault()
+
         if (navigator.share) {
             navigator.share({
             title: title,
@@ -353,21 +352,9 @@ useEffect(()=> {
             .catch(console.error)
         } else {
             //setIsShowed(currentIsShowed => !currentIsShowed)
-            setOpenSheet(currentIsShowed => !currentIsShowed)
+            //setOpenSheet(currentIsShowed => !currentIsShowed)
         }
     }
-
-    const onFacebookShare = (e) => {
-        const url="https://t.me/ULEY_Workhub_Bot"
-        const title="ULEY Workhub"
-        const text="U.L.E.Y | Workhub"
-        e.preventDefault()
-        window.open(
-          `https://www.facebook.com/sharer/sharer.php?u=${url}`,
-          'facebook-share-dialog',
-          'width=800,height=600'
-        )
-      }
 
     const onCopyToClipboard = (e) => {
         const url="https://t.me/ULEY_Workhub_Bot"
@@ -380,7 +367,7 @@ useEffect(()=> {
             .then(() => setIsCopied(true))
             .catch(console.error)
         }
-      }
+    }
 
 
 
@@ -671,7 +658,7 @@ useEffect(()=> {
                     <p className='summa-dohod2'>{isLoadingSum ? <Loader2 /> : (isNaN(summa) ? "0" : parseInt(summa).toLocaleString())+".00"}</p>
                 </article>
 
-                <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}}> 
+                <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}} onClick={()=>setShowInfo(true)}> 
                     <p className='history-title'>История</p>
                     <div className='dates-history'><p>01.2024</p><p>0.00</p></div>
                     <div className='dates-history2'><p>02.2024</p><p>0.00</p></div>
@@ -731,27 +718,6 @@ useEffect(()=> {
                 <div className='block-modal-button'>
                     <div className='button_info' onClick={clickInfo}>Подробнее</div>
                     <div onClick={onShareClick} className='button_podel'>Поделиться</div>
-                    <BottomSheet open={openSheet}>
-                        <ul>
-                            <li>
-                                <button onClick={onFacebookShare}>Share on facebook</button>
-                            </li>
-                            <li>
-                                <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href={`https://t.me/ULEY_Workhub_Bot`}
-                                >
-                                Share on twitter
-                                </a>
-                            </li>
-                            <li>
-                                <button onClick={onCopyToClipboard}>
-                                {isCopied ? 'Copied' : 'Copy to clipboard'}
-                                </button>
-                            </li>
-                        </ul>
-                    </BottomSheet>
                     
                 </div>
             </MyModal>

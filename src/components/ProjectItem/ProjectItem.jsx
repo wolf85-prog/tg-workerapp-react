@@ -48,7 +48,17 @@ const ProjectItem = (props) => {
 
     let statusMoney2 = 2
 
+    let chasiView
+    let smenaView
+    let stavkaView
+    let pererabotkaView
+
     useEffect(()=> {
+
+        chasiView = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.chasi : ''
+        stavkaView = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.stavka : ''
+        smenaView = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.smena : ''
+        pererabotkaView = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.pererabotka : ''
         
         const dateTemp = props.post.specs.date
 
@@ -71,7 +81,7 @@ const ProjectItem = (props) => {
         const formattime = `${chas}:${minut}`
         setFormatted(formatted)
         setFormattime(formattime)
-        
+
     }, [])
 
     useEffect(()=> {
@@ -189,6 +199,9 @@ const ProjectItem = (props) => {
 
     const clickInfo = () => {
         showInfo ? setShowInfo(false) : setShowInfo(true)
+        setTimeout(()=> {
+            setShowInfo(false)
+        }, 1500)
     }
 
     return (
@@ -227,10 +240,10 @@ const ProjectItem = (props) => {
                         <ul>
                             <li className='item-list'><div>Специальность</div>{props.post.specs.spec}</li>
                             <li className='item-list'><div>Вид работ</div>{props.post.specs.vid}</li>
-                            <li className='item-list'><div>Часы</div>{props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.chasi : ''}</li>
-                            <li className='item-list'><div>Ставка</div>{props.post.smeta ? parseInt(props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.stavka).toLocaleString()+".00" : ''}</li>
-                            <li className='item-list'><div>Смена</div>{props.post.smeta ? parseInt(props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.smena).toLocaleString()+".00" : ''}</li>
-                            <li className='item-list'><div>Переработка</div>{props.post.smeta ? parseInt(props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.pererabotka).toLocaleString()+".00" : ''}</li>
+                            <li className='item-list'><div>Часы</div>{chasiView ? chasiView : "0"}</li>
+                            <li className='item-list'><div>Ставка</div>{(isNaN(stavkaView) ? "0" : parseInt(stavkaView).toLocaleString())+".00"}</li>
+                            <li className='item-list'><div>Смена</div>{isNaN(smenaView) ? "0" : parseInt(stavkaView).toLocaleString()+".00"}</li>
+                            <li className='item-list'><div>Переработка</div>{isNaN(smenaView) ? "0" : parseInt(pererabotkaView).toLocaleString()+".00"}</li>
                             <li className='item-list'><div>Доп. расходы</div></li>
                         </ul>
                     </div>
@@ -276,7 +289,7 @@ const ProjectItem = (props) => {
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <p className='vagno'>Важно</p>
+                    {/* <p className='vagno'>Важно</p> */}
                     <p className='text-vagno'>Функция находится в разработке</p>
                     <div className='button-ok' onClick={()=>setShowInfo(false)}>
                         <div className='rec-button'>Хорошо</div>

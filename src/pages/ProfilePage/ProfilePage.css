@@ -718,15 +718,16 @@ input[id="cb1"] {
     /* Здесь будет Ваш текст */
     position: absolute;
     left: 0;
-    top: 50px;
+    top: 40%;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
     letter-spacing: -0.045em;
     /* ULEY Светлый */
-    color: #E8F1F9;
-    opacity: 0.4;
+    /* color: #E8F1F9; */
+    color: #fff;
+    /* opacity: 0.4; */
     padding: 0 20px;
 }
 

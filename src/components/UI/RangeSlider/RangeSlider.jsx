@@ -3,15 +3,13 @@ import './RangeSlider.css'
 import begunok from "../../../image/new/begunok.png"
 
 const RangeSlider = ({min, max, value, step, stavka, setStavka, percentage}) => {
-
+    const sliderRef = useRef(null)
     const [systemIOS, setSystemIOS] = useState(false)
     const [sliderRange, setSliderRange] = useState(0)
     const [inputValue, setInputValue] = useState(0)
-    const sliderRef = useRef(null)
-
     const [showNumber, setShowNumber] = useState(0)
 
-    const [count, setCount] = useState(0)
+    const [changeRange, setChangeRange] = useState(false)
 
     //useEffect(()=> {
             //setShowNumber(percentage)
@@ -23,6 +21,8 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka, percentage}) => 
     function handleSliderInput() {
         const range = max - min;
 
+        setChangeRange(true)
+
         let percentage2 = 0
         let distance = 0
 
@@ -33,7 +33,7 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka, percentage}) => 
 
         console.log(percentage, percentage2, distance)
         
-        if (percentage2 === 0) {
+        if (percentage2 === 0 && !changeRange) {
             setStavka(percentage2)  
         } else if (percentage < percentage2) {
             let sum = Number(stavka) + Number(distance)
@@ -102,11 +102,11 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka, percentage}) => 
         <div className='range-slider'>
                 <div className="shkala">
                     <div className='blocks'>
-                        <div className={`block1 ${(showNumber === 0 ? percentage : showNumber) > 13 && (showNumber === 0 ? percentage : showNumber) < 30 && `block-active`}`} style={{left: `${20+2}%`}}>1</div>
-                        <div className={`block1 ${(showNumber === 0 ? percentage : showNumber) > 30 && (showNumber === 0 ? percentage : showNumber) < 50 && `block-active`}`} style={{left: `${21*2+1}%`}}>2</div>
-                        <div className={`block1 ${(showNumber === 0 ? percentage : showNumber) > 50 && (showNumber === 0 ? percentage : showNumber) < 70 && `block-active`}`} style={{left: `${21*3+1}%`}}>3</div>
-                        <div className={`block1 ${(showNumber === 0 ? percentage : showNumber) > 70 && (showNumber === 0 ? percentage : showNumber) < 90 && `block-active`}`} style={{left: `${21*4+1}%`}}>4</div>
-                        <div className={`block1 ${(showNumber === 0 ? percentage : showNumber) > 90 && (showNumber === 0 ? percentage : showNumber) < 1000 && `block-active`}`} style={{left: `${21*5+1}%`}}>5</div>
+                        <div className={`block1 ${(showNumber === 0 && !changeRange ? percentage : showNumber) > -1 && (showNumber === 0 && !changeRange ? percentage : showNumber) < 30 && `block-active`}`} style={{left: `${20+2}%`}}>1</div>
+                        <div className={`block1 ${(showNumber === 0 && !changeRange ? percentage : showNumber) > 30 && (showNumber === 0 && !changeRange ? percentage : showNumber) < 50 && `block-active`}`} style={{left: `${21*2+1}%`}}>2</div>
+                        <div className={`block1 ${(showNumber === 0 && !changeRange ? percentage : showNumber) > 50 && (showNumber === 0 && !changeRange ? percentage : showNumber) < 70 && `block-active`}`} style={{left: `${21*3+1}%`}}>3</div>
+                        <div className={`block1 ${(showNumber === 0 && !changeRange ? percentage : showNumber) > 70 && (showNumber === 0 && !changeRange ? percentage : showNumber) < 90 && `block-active`}`} style={{left: `${21*4+1}%`}}>4</div>
+                        <div className={`block1 ${(showNumber === 0 && !changeRange ? percentage : showNumber) > 90 && (showNumber === 0 && !changeRange ? percentage : showNumber) < 1000 && `block-active`}`} style={{left: `${21*5+1}%`}}>5</div>
                     </div>
 
                     <div className='shkala01' style={{left: `${-6}%`}}>
@@ -144,7 +144,7 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka, percentage}) => 
             <div className='slider-container'>
                 <div className='shkala2'></div> 
 
-                <div className='slider-thumb' style={{ left: `calc(${sliderRange === 0 ? percentage : sliderRange}% - 7.6em)` }}>
+                <div className='slider-thumb' style={{ left: `calc(${sliderRange === 0 && !changeRange ? percentage : sliderRange}% - 7.6em)` }}>
                     <img className='begun' src={begunok} alt='' style={{display: 'block'}}/>
                 </div> 
                 <input 
@@ -166,7 +166,7 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka, percentage}) => 
                     onTouchEnd={()=>handleSliderInput2()} 
                 /> 
                 
-                <div className='progress' style={{ width: `${sliderRange === 0 ? percentage : sliderRange}%` }}></div>
+                <div className='progress' style={{ width: `${sliderRange === 0 && !changeRange ? percentage : sliderRange}%` }}></div>
                 
             </div>
         </div>
