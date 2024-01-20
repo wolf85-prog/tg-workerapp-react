@@ -12,16 +12,14 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka, percentage}) => 
     const [changeRange, setChangeRange] = useState(false)
 
     //useEffect(()=> {
-            //setShowNumber(percentage)
+            // setShowNumber(percentage)
             // setSliderRange(percentage)
             // setInputValue(value)
-        
-    //})
+            //console.log("changeRange: ", changeRange)
+    //}, [changeRange])
 
     function handleSliderInput() {
         const range = max - min;
-
-        setChangeRange(true)
 
         let percentage2 = 0
         let distance = 0
@@ -31,14 +29,16 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka, percentage}) => 
         
         setShowNumber(percentage2)
 
-        console.log(percentage, percentage2, distance)
+        //console.log(percentage, percentage2, distance)
         
-        if (percentage2 === 0 && !changeRange) {
-            setStavka(percentage2)  
+        if (percentage2 === 0) {
+            //setStavka(percentage2)  
         } else if (percentage < percentage2) {
+            setChangeRange(true)
             let sum = Number(stavka) + Number(distance)
             setStavka(sum)
         } else if (percentage > percentage2) {
+            setChangeRange(true)
             let sum = Number(stavka) - (Number(stavka) - Number(distance))
             setStavka(sum)
         }
