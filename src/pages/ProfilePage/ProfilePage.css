@@ -695,6 +695,8 @@ input[id="cb1"] {
 .info-card {
     width: 321px;
     height: 174px;
+    display: flex;
+    justify-content: center;
 }
 
 .vagno {
@@ -721,7 +723,7 @@ input[id="cb1"] {
     top: 40%;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 17px;
     letter-spacing: -0.045em;
     /* ULEY Светлый */
@@ -729,6 +731,7 @@ input[id="cb1"] {
     color: #fff;
     /* opacity: 0.4; */
     padding: 0 20px;
+    width: 100%;
 }
 
 .text-vagno2 {

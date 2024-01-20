@@ -48,17 +48,24 @@ const ProjectItem = (props) => {
 
     let statusMoney2 = 2
 
-    let chasiView
-    let smenaView
-    let stavkaView
-    let pererabotkaView
+    const [chasiView, setChasiView] = useState(0);
+    const [smenaView, setSmenaView] = useState(0);
+    const [stavkaView, setStavkaView] = useState(0);
+    const [pererabotkaView, setPererabotkaView] = useState(0);
 
     useEffect(()=> {
 
-        chasiView = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.chasi : ''
-        stavkaView = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.stavka : ''
-        smenaView = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.smena : ''
-        pererabotkaView = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.pererabotka : ''
+        setChasiView(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.chasi : '')
+        setStavkaView(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.stavka : '...')
+        setSmenaView(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.smena : '...')
+        setPererabotkaView(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.pererabotka : '...')
+        
+
+        console.log(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.chasi : '...')
+        console.log(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.stavka : '...')
+        console.log(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.smena : '...')
+        console.log(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.pererabotka : '...')
+        
         
         const dateTemp = props.post.specs.date
 
@@ -199,9 +206,9 @@ const ProjectItem = (props) => {
 
     const clickInfo = () => {
         showInfo ? setShowInfo(false) : setShowInfo(true)
-        setTimeout(()=> {
-            setShowInfo(false)
-        }, 1500)
+        // setTimeout(()=> {
+        //     setShowInfo(false)
+        // }, 1500)
     }
 
     return (
@@ -241,10 +248,10 @@ const ProjectItem = (props) => {
                             <li className='item-list'><div>Специальность</div>{props.post.specs.spec}</li>
                             <li className='item-list'><div>Вид работ</div>{props.post.specs.vid}</li>
                             <li className='item-list'><div>Часы</div>{chasiView ? chasiView : "0"}</li>
-                            <li className='item-list'><div>Ставка</div>{(isNaN(stavkaView) ? "0" : parseInt(stavkaView).toLocaleString())+".00"}</li>
-                            <li className='item-list'><div>Смена</div>{isNaN(smenaView) ? "0" : parseInt(stavkaView).toLocaleString()+".00"}</li>
-                            <li className='item-list'><div>Переработка</div>{isNaN(smenaView) ? "0" : parseInt(pererabotkaView).toLocaleString()+".00"}</li>
-                            <li className='item-list'><div>Доп. расходы</div></li>
+                            <li className='item-list'><div>Ставка</div>{isNaN(stavkaView) ? "0.00" : parseInt(stavkaView).toLocaleString()+".00"}</li>
+                            <li className='item-list'><div>Смена</div>{isNaN(smenaView) ? "0.00" : parseInt(smenaView).toLocaleString()+".00"}</li>
+                            <li className='item-list'><div>Переработка</div>{isNaN(pererabotkaView) ? "0.00" : parseInt(pererabotkaView).toLocaleString()+".00"}</li>
+                            <li className='item-list'><div>Доп. расходы</div>{"0.00"}</li>
                         </ul>
                     </div>
                     <div className='block-button'>
