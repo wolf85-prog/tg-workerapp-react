@@ -705,6 +705,27 @@ useEffect(()=> {
                 <div className='block-modal-button'>
                     <div className='button_info' onClick={clickInfo}>Подробнее</div>
                     <div onClick={onShareClick} className='button_podel'>Поделиться</div>
+                    {isShowed ? (
+                        <ul>
+                        <li>
+                            <button onClick={onFacebookShare}>Share on facebook</button>
+                        </li>
+                        <li>
+                            <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={`https://twitter.com/intent/tweet?url=${url}&text=${title}`}
+                            >
+                            Share on twitter
+                            </a>
+                        </li>
+                        <li>
+                            <button onClick={onCopyToClipboard}>
+                            {isCopied ? 'Copied' : 'Copy to clipboard'}
+                            </button>
+                        </li>
+                        </ul>
+                    ) : null}
                 </div>
             </MyModal>
 
