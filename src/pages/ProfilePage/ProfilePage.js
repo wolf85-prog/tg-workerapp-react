@@ -354,7 +354,30 @@ useEffect(()=> {
         }
     }
 
+    const onFacebookShare = (e) => {
+        const url="https://t.me/ULEY_Workhub_Bot"
+        const title="ULEY Workhub"
+        const text="U.L.E.Y | Workhub"
+        e.preventDefault()
+        window.open(
+          `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+          'facebook-share-dialog',
+          'width=800,height=600'
+        )
+      }
 
+    const onCopyToClipboard = (e) => {
+        const url="https://t.me/ULEY_Workhub_Bot"
+        const title="ULEY Workhub"
+        const text="U.L.E.Y | Workhub"
+        e.preventDefault()
+        if (navigator.clipboard) {
+          navigator.clipboard
+            .writeText(url)
+            .then(() => setIsCopied(true))
+            .catch(console.error)
+        }
+      }
 
 
 
@@ -714,7 +737,7 @@ useEffect(()=> {
                             <a
                             target="_blank"
                             rel="noopener noreferrer"
-                            href={`https://twitter.com/intent/tweet?url=${url}&text=${title}`}
+                            href={`https://t.me/ULEY_Workhub_Bot`}
                             >
                             Share on twitter
                             </a>
