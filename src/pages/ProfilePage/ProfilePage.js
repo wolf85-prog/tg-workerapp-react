@@ -19,6 +19,7 @@ import Loader2 from "../../components/UI/Loader_min/Loader_min"
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 
+import { BottomSheet } from 'react-spring-bottom-sheet'
 
 import Star from "../../image/new/star.png";
 import StarActive from "../../image/new/star_activ.svg";
@@ -102,6 +103,7 @@ const ProfilePage = () => {
 
     const [showBegun, setShowBegun] = useState(false)
 
+    const [openSheet, setOpenSheet] = useState(false)
 
     const API_URL = process.env.REACT_APP_API_URL
     
@@ -351,7 +353,7 @@ useEffect(()=> {
             .catch(console.error)
         } else {
             //setIsShowed(currentIsShowed => !currentIsShowed)
-            window.AndroidShareHandler.share('https://stackoverflow.com');
+            setOpenSheet(currentIsShowed => !currentIsShowed)
         }
     }
 
@@ -729,27 +731,28 @@ useEffect(()=> {
                 <div className='block-modal-button'>
                     <div className='button_info' onClick={clickInfo}>Подробнее</div>
                     <div onClick={onShareClick} className='button_podel'>Поделиться</div>
-                    {isShowed ? (
+                    <BottomSheet open={openSheet}>
                         <ul>
-                        <li>
-                            <button onClick={onFacebookShare}>Share on facebook</button>
-                        </li>
-                        <li>
-                            <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href={`https://t.me/ULEY_Workhub_Bot`}
-                            >
-                            Share on twitter
-                            </a>
-                        </li>
-                        <li>
-                            <button onClick={onCopyToClipboard}>
-                            {isCopied ? 'Copied' : 'Copy to clipboard'}
-                            </button>
-                        </li>
+                            <li>
+                                <button onClick={onFacebookShare}>Share on facebook</button>
+                            </li>
+                            <li>
+                                <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href={`https://t.me/ULEY_Workhub_Bot`}
+                                >
+                                Share on twitter
+                                </a>
+                            </li>
+                            <li>
+                                <button onClick={onCopyToClipboard}>
+                                {isCopied ? 'Copied' : 'Copy to clipboard'}
+                                </button>
+                            </li>
                         </ul>
-                    ) : null}
+                    </BottomSheet>
+                    
                 </div>
             </MyModal>
 
