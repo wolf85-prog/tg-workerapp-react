@@ -218,6 +218,7 @@ const NewWorker = () => {
 
         let str = ''
         str = `${city} | ${dateborn}`
+        console.log("str3: ", str)
 
         let canvas = document.createElement('canvas');
         let ctx = canvas.getContext("2d");

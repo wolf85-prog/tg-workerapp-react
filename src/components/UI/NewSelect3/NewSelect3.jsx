@@ -111,7 +111,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                             )} */}
                             {/* <li ref={myRef} className={classes.listyle}></li> */}
                                 <li 
-                                    value='0'
+                                    value='1970'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1970');
@@ -124,7 +124,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1970
                                 </li>
                                 <li 
-                                    value='1'
+                                    value='1971'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1971');
@@ -137,7 +137,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1971
                                 </li>
                                 <li 
-                                    value='2'
+                                    value='1972'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1972');
@@ -150,7 +150,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1972
                                 </li>
                                 <li 
-                                    value='3'
+                                    value='1973'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1973');
@@ -163,7 +163,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1973
                                 </li>
                                 <li 
-                                    value='4'
+                                    value='1974'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1974');
@@ -176,7 +176,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1974
                                 </li>
                                 <li 
-                                    value='5'
+                                    value='1975'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1975');
@@ -189,7 +189,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1975
                                 </li>
                                 <li 
-                                    value='6'
+                                    value='1976'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1976');
@@ -202,7 +202,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1976
                                 </li>
                                 <li 
-                                    value='7'
+                                    value='1977'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1977');
@@ -215,7 +215,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1977
                                 </li>
                                 <li 
-                                    value='8'
+                                    value='1978'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1978');
@@ -228,7 +228,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1978
                                 </li>
                                 <li 
-                                    value='9'
+                                    value='1979'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1979');
@@ -241,7 +241,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1979
                                 </li>
                                 <li 
-                                    value='10'
+                                    value='1980'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1980');
@@ -255,7 +255,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1980
                                 </li>
                                 <li 
-                                    value='11'
+                                    value='1981'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1981');
@@ -268,7 +268,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1981
                                 </li>
                                 <li 
-                                    value='12'
+                                    value='1982'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1982');
@@ -281,7 +281,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1982
                                 </li>
                                 <li 
-                                    value='13'
+                                    value='1983'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1983');
@@ -294,7 +294,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1983
                                 </li>
                                 <li 
-                                    value='14'
+                                    value='1984'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1984');
@@ -307,7 +307,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1984
                                 </li>
                                 <li 
-                                    value='15'
+                                    value='1985'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1985');
@@ -320,7 +320,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1985
                                 </li>
                                 <li 
-                                    value='16'
+                                    value='1986'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1986');
@@ -333,7 +333,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1986
                                 </li>
                                 <li 
-                                    value='17'
+                                    value='1987'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1987');
@@ -346,7 +346,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1987
                                 </li>
                                 <li 
-                                    value='18'
+                                    value='1988'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1988');
@@ -359,7 +359,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1988
                                 </li>
                                 <li 
-                                    value='19'
+                                    value='1989'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1989');
@@ -372,7 +372,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1989
                                 </li>
                                 <li 
-                                    value='20'
+                                    value='1990'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1990');
@@ -385,7 +385,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1990
                                 </li>
                                 <li 
-                                    value='21'
+                                    value='1991'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1991');
@@ -398,7 +398,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1991
                                 </li>
                                 <li 
-                                    value='22'
+                                    value='1992'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1992');
@@ -411,7 +411,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1992
                                 </li>
                                 <li 
-                                    value='23'
+                                    value='1993'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1993');
@@ -424,7 +424,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1993
                                 </li>
                                 <li 
-                                    value='24'
+                                    value='1994'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1994');
@@ -437,7 +437,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1994
                                 </li>
                                 <li 
-                                    value='25'
+                                    value='1995'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1995');
@@ -450,7 +450,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1995
                                 </li>
                                 <li 
-                                    value='26'
+                                    value='1996'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1996');
@@ -463,7 +463,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1996
                                 </li>
                                 <li 
-                                    value='27'
+                                    value='1997'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1997');
@@ -476,7 +476,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1997
                                 </li>
                                 <li 
-                                    value='28'
+                                    value='1998'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1998');
@@ -489,7 +489,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1998
                                 </li>
                                 <li 
-                                    value='29'
+                                    value='1999'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('1999');
@@ -502,7 +502,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 1999
                                 </li>
                                 <li 
-                                    value='30'
+                                    value='2000'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('2000');
@@ -516,7 +516,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2000
                                 </li>
                                 <li 
-                                    value='31'
+                                    value='2001'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('2001');
@@ -529,7 +529,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2001
                                 </li>
                                 <li 
-                                    value='32'
+                                    value='2002'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('2002');
@@ -542,7 +542,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2002
                                 </li>
                                 <li 
-                                    value='33'
+                                    value='2003'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('2003');
@@ -555,7 +555,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2003
                                 </li>
                                 <li 
-                                    value='34'
+                                    value='2004'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('2004');
@@ -568,7 +568,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2004
                                 </li>
                                 <li 
-                                    value='35'
+                                    value='2005'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('2005');
@@ -581,7 +581,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2005
                                 </li>
                                 <li 
-                                    value='36'
+                                    value='2006'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('2006');
@@ -594,7 +594,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2006
                                 </li>
                                 <li 
-                                    value='37'
+                                    value='2007'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('2007');
@@ -607,7 +607,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2007
                                 </li>
                                 <li 
-                                    value='38'
+                                    value='2008'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('2008');
@@ -620,7 +620,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2008
                                 </li>
                                 <li 
-                                    value='39'
+                                    value='2009'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('2009');
@@ -633,7 +633,7 @@ const NewSelect3 = ({id, options, titleDate, setTitleDate, onChange, disabled}) 
                                    <p style={{fontSize: '5px', marginRight: '10px'}}>&#x25CF;</p> 2009
                                 </li>
                                 <li 
-                                    value='40'
+                                    value='2010'
                                     onClick={(e)=> {
                                             onChange(e)
                                             setSelected('2010');
