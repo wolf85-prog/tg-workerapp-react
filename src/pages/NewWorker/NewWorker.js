@@ -317,7 +317,7 @@ const NewWorker = () => {
             worklist: workers,
             city, 
             dateborn: dateborn.toString(),
-            friend,
+            friend: Number(friend),
             queryId,
         }
 
