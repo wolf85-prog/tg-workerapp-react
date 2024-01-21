@@ -12,6 +12,8 @@ import {useProjects} from "../../hooks/useProjects"
 import './ProfilePage.css';
 import { getWorkerId, getProjectsCash, getSmetaCash } from '../../http/chatAPI';
 
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+
 import MyModal from "../../components/MyModal/MyModal";
 import Loader from "../../components/UI/Loader/Loader";
 import Loader2 from "../../components/UI/Loader_min/Loader_min"
@@ -101,6 +103,14 @@ const ProfilePage = () => {
     const [showBegun, setShowBegun] = useState(false)
 
     const [openSheet, setOpenSheet] = useState(false)
+
+
+    const [state, setState] = useState(false);
+    
+    const toggleDrawer = (open) =>  {  
+        //setState(open);
+        console.log("open: ", open)
+    };
 
     const API_URL = process.env.REACT_APP_API_URL
 
@@ -353,6 +363,8 @@ useEffect(()=> {
         } else {
             //setIsShowed(currentIsShowed => !currentIsShowed)
             //setOpenSheet(currentIsShowed => !currentIsShowed)
+
+            toggleDrawer(true)
         }
     }
 
@@ -718,6 +730,14 @@ useEffect(()=> {
                 <div className='block-modal-button'>
                     <div className='button_info' onClick={clickInfo}>Подробнее</div>
                     <div onClick={onShareClick} className='button_podel'>Поделиться</div>
+                    
+                    <SwipeableDrawer
+                        open={false}
+                        onClose={toggleDrawer(false)}
+                        onOpen={toggleDrawer(true)}
+                    >
+                        {/* {list(anchor)} */}
+                    </SwipeableDrawer>
                     
                 </div>
             </MyModal>

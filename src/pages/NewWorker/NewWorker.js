@@ -634,7 +634,7 @@ const NewWorker = () => {
                     <div style={{position: 'absolute', top: '60px', left: '20px', display: 'flex', alignItems: 'center'}}>
                         {/* <input type="checkbox" id="scales" name="scales" checked /> */}
                         <img src={check ? iconCheck : iconUnCheck} onClick={()=>setCheck(!check)} alt='' width='25px' height='25px'/>
-                        <label style={{marginRight: '10px'}}>Я использую  промокод ID</label>
+                        <label style={{marginRight: '10px', marginLeft: '10px'}}>Я использую  промокод ID</label>
                     </div>
                     <div style={{
                         position: 'absolute',
