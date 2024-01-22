@@ -55,8 +55,8 @@ const ProjectList = ({posts, title, width, shkala}) => {
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <p className='vagno'>Важно</p>
-                    <p className='text-vagno'>Информация о чате</p>
+                    <p className='vagno'></p>
+                    <p className='text-vagno' style={{top:"30%"}}>В твоем будущем проекте эта кнопка направит тебя в чат проекта</p>
                     <div className='button-ok' onClick={()=>setShowInfoChat(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
@@ -65,13 +65,14 @@ const ProjectList = ({posts, title, width, shkala}) => {
             </MyModal>
 
             <MyModal visible={showInfoProj} setVisible={setShowInfoProj}>
-                <div className='info-card'>
+                <div className='info-card' style={{height: '270px'}}>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'>Важно</p>
-                    <p className='text-vagno'>Получить бонус 3 000.00 рублей может каждый, кто напишет</p>
+                    <p className='text-promo'>Чтобы выйти на проект, выбери его в нужной рассылке и нажми кнопку «Принять».
+<br/><br/>Бонус — получи 3000 рублей!  Отправь приглашение трем друзьям и каждый из них тоже получит бонус 3000 рублей! Вместе с приглашением отправь им свой ID!</p>
                     <div className='button-ok' onClick={()=>setShowInfoProj(false)}>
                         <div className='rec-button'>Хорошо</div>
                         

@@ -120,6 +120,7 @@ const ProfilePage = () => {
     const [showPromoId, setShowPromoId] = useState(false)
     const [showKompInfo, setShowKompInfo] = useState(false)
     const [showDohodInfo, setShowDohodInfo] = useState(false)
+    const [showMoreInfo, setShowMoreInfo] = useState(false)
 
     const API_URL = process.env.REACT_APP_API_URL
 
@@ -322,6 +323,10 @@ useEffect(()=> {
 
     const clickInfo = () => {
         showInfo ? setShowInfo(false) : setShowInfo(true)
+    }
+
+    const clickMoreInfo = () => {
+        showMoreInfo ? setShowMoreInfo(false) : setShowMoreInfo(true)
     }
 
 
@@ -803,7 +808,7 @@ useEffect(()=> {
 
                 </div>
                 <div className='block-modal-button'>
-                    <div className='button_info' onClick={clickInfo}>Подробнее</div>
+                    <div className='button_info' onClick={clickMoreInfo}>Подробнее</div>
                     {/* <div onClick={onShareClick} className='button_podel'>Поделиться</div> */}
 
                     <React.Fragment key={'bottom'}>
@@ -896,6 +901,27 @@ useEffect(()=> {
                     <p className='vagno'></p>
                     <p className='text-promo'>Общая сумма дохода за период времени с момента начала календарного месяца. В нее входят только отработанные, но не подтвержденные, и уже подтвержденные заказчиком сметы за проекты. И список выплат за три предыдущих месяца.</p>
                     <div className='button-ok' onClick={()=>setShowDohodInfo(false)}>
+                        <div className='rec-button'>Хорошо</div>
+                        
+                    </div>
+                </div>
+            </MyModal>
+
+             {/* Подробнее текст */}
+             <MyModal visible={showMoreInfo} setVisible={setShowMoreInfo}>
+                <div className='info-card' style={{height: '410px'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <p className='vagno'></p>
+                    <p className='text-promo' style={{top: '25px'}}>Акция «3 000 рублей за троих твоих друзей».
+                    <br/><br/>Скопируй свой ID и вместе с ним отправь приглашения троим друзьям, не подписанным на проекты «U.L..E.Y». 
+<br/><br/>Для этого нажми Workhub внизу экрана, «+» в центре и поделись ссылкой. 
+<br/><br/>В конце регистрации напомни другу внести данные твоего ID.
+<br/><br/>Ты, и каждый приглашенный тобою, получите по 3 000 рублей, как только все друзья отработают по 3 проекта [по 30 часов].
+<br/><br/>❌ Наслаждайся жизнью! Пусть работают другие! ❌</p>
+                    <div className='button-ok' onClick={()=>setShowMoreInfo(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
                     </div>
