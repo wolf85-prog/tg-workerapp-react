@@ -4,6 +4,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import MyModal from "../../components/MyModal/MyModal";
 import Marquee from '../../components/UI/Marquee/Marquee';
 
+
 import WorkerList from "../../components/WorkerList/WorkerList";
 import './NewWorker.css';
 
@@ -81,6 +82,9 @@ const NewWorker = () => {
     const [widthStr3, setWidthStr3] = useState(0)
 
     const [check, setCheck] = useState(false)
+
+
+    const [showInfo, setShowInfo] = useState(false)
 //----------------------------------------------------------------------------------
 
 
@@ -469,15 +473,15 @@ const NewWorker = () => {
 
                 {/*кнопка Добавить*/}
                 <button 
-                    disabled={disabledBtn}
+                    // disabled={disabledBtn}
                     className="image-button-add" 
                     style={{ backgroundImage: `url(${btnSave})`}}
-                    onClick={addNewWorker}
+                    // onClick={addNewWorker}
+                    onClick={()=>setShowInfo(true)}
                 >
                     Добавить
                 </button> 
-            </div>
-                   
+            </div>           
             
             <div style={{display: showBlockFam ? 'block' : 'none', height: '200px'}}>
                 {/* Фамилия */}

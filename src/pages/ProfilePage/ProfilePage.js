@@ -50,6 +50,19 @@ import MarqueeModal from '../../components/UI/MarqueeModal/MarqueeModal';
 
 import WorkerList2 from '../../components/WorkerList2/WorkerList2';
 
+
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+
+
 const ProfilePage = () => {
     const {tg, user, queryId} = useTelegram();
     const navigate = useNavigate();
@@ -107,13 +120,6 @@ const ProfilePage = () => {
     const [showPromoId, setShowPromoId] = useState(false)
     const [showKompInfo, setShowKompInfo] = useState(false)
     const [showDohodInfo, setShowDohodInfo] = useState(false)
-
-    const [state, setState] = useState(false);
-    
-    const toggleDrawer = (open) =>  {  
-        //setState(open);
-        console.log("open: ", open)
-    };
 
     const API_URL = process.env.REACT_APP_API_URL
 
@@ -367,7 +373,6 @@ useEffect(()=> {
             //setIsShowed(currentIsShowed => !currentIsShowed)
             //setOpenSheet(currentIsShowed => !currentIsShowed)
 
-            toggleDrawer(true)
         }
     }
 
@@ -561,6 +566,72 @@ useEffect(()=> {
         setShowPromoId(true)
     }
 
+
+
+    const [state, setState] = React.useState({
+        bottom: false,
+    });
+    
+    const toggleDrawer = (anchor, open) => (event) => {
+        const url="https://t.me/ULEY_Workhub_Bot"
+        const title="ULEY Workhub"
+        const text="U.L.E.Y | Workhub"
+
+        event.preventDefault()
+
+        if (navigator.share) {
+            navigator.share({
+            title: title,
+            text: text,
+            url: url,
+            })
+            .catch(console.error)
+        } else {
+            
+            if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+                return;
+            }
+        
+            setState({ ...state, [anchor]: open });
+        }
+    };
+
+
+    const list = (anchor) => (
+        <Box
+          sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+          role="presentation"
+          onClick={toggleDrawer(anchor, false)}
+          onKeyDown={toggleDrawer(anchor, false)}
+        >
+          <List>
+            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <List>
+            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+    );
+
     //---------------------------------------------------------------------------------------
 
     return (
@@ -733,15 +804,20 @@ useEffect(()=> {
                 </div>
                 <div className='block-modal-button'>
                     <div className='button_info' onClick={clickInfo}>Подробнее</div>
-                    <div onClick={onShareClick} className='button_podel'>Поделиться</div>
-                    
-                    <SwipeableDrawer
-                        open={false}
-                        onClose={toggleDrawer(false)}
-                        onOpen={toggleDrawer(true)}
-                    >
-                        {/* {list(anchor)} */}
-                    </SwipeableDrawer>
+                    {/* <div onClick={onShareClick} className='button_podel'>Поделиться</div> */}
+
+                    <React.Fragment key={'bottom'}>
+                        <div className='button_podel' onClick={toggleDrawer('bottom', true)}>
+                            Поделиться                       
+                        </div>
+                        <Drawer
+                            anchor={'bottom'}
+                            open={state['bottom']}
+                            onClose={toggleDrawer('bottom', false)}
+                        >
+                            {list('bottom')}
+                        </Drawer>
+                    </React.Fragment>
                     
                 </div>
             </MyModal>
