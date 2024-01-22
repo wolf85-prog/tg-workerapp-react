@@ -769,7 +769,7 @@ useEffect(()=> {
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <p className='vagno'>Важно</p>
+                    <p className='vagno'></p>
                     <p className='text-promo'>Мерч — это одежда, аксессуары и любые другие вещи с символикой компании. Мерч предназначен для визуальной идентификации пренадлежности к ... . Получить его можно в офисе компании по предварительной договоренности.</p>
                     <div className='button-ok' onClick={()=>setShowInfo(false)}>
                         <div className='rec-button'>Хорошо</div>
@@ -786,7 +786,7 @@ useEffect(()=> {
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'>Важно</p>
-                    <p className='text-promo'>Отправь свой ID трем друзьям и получи бонус 3 000.00 рублей по условиям акции. Твой ID уже скопирован, осталось только отправить!</p>
+                    <p className='text-promo'>Отправь свой ID трем друзьям и получи бонус 3 000 рублей по условиям акции. Твой ID уже скопирован, осталось только отправить!</p>
                     <div className='button-ok' onClick={()=>setShowPromoId(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
@@ -817,8 +817,8 @@ useEffect(()=> {
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <p className='vagno'>Важно</p>
-                    <p className='text-promo'>Общая сумма дохода за период времени с момента начала календарного месяца. В нее входят только отработанные, но не подтвержденные, и уже подтвержденные заказчиком сметы за проекты. И список выплат за 3 предидущих месяца.</p>
+                    <p className='vagno'></p>
+                    <p className='text-promo'>Общая сумма дохода за период времени с момента начала календарного месяца. В нее входят только отработанные, но не подтвержденные, и уже подтвержденные заказчиком сметы за проекты. И список выплат за три предыдущих месяца.</p>
                     <div className='button-ok' onClick={()=>setShowDohodInfo(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
