@@ -104,6 +104,9 @@ const ProfilePage = () => {
 
     const [openSheet, setOpenSheet] = useState(false)
 
+    const [showPromoId, setShowPromoId] = useState(false)
+    const [showKompInfo, setShowKompInfo] = useState(false)
+    const [showDohodInfo, setShowDohodInfo] = useState(false)
 
     const [state, setState] = useState(false);
     
@@ -554,7 +557,8 @@ useEffect(()=> {
     //скорировать телеграм id в буфер обмена
     const clickCopyID = () => {
         copy(user?.id)
-        alert('ID скопирован!')
+        //alert('ID скопирован!')
+        setShowPromoId(true)
     }
 
     //---------------------------------------------------------------------------------------
@@ -638,7 +642,7 @@ useEffect(()=> {
                                 <p className='text-kompetencii' >Компетенции</p>
                                 <img className='vector-icon' src={VectorUp} alt=''/>
                             </div>
-                            <div className='kompet-list' onClick={()=>setShowInfo(true)}>
+                            <div className='kompet-list' onClick={()=>setShowKompInfo(true)}>
                                 <ul>
                                     {workerhub[0]?.skill.map((worker, index) => index < 6
                                     ?   <li className="bullet-title">{worker.name} </li>
@@ -670,7 +674,7 @@ useEffect(()=> {
                     <p className='summa-dohod2'>{isLoadingSum ? <Loader2 /> : (isNaN(summa) ? "0" : parseInt(summa).toLocaleString())+".00"}</p>
                 </article>
 
-                <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}} onClick={()=>setShowInfo(true)}> 
+                <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}} onClick={()=>setShowDohodInfo(true)}> 
                     <p className='history-title'>История</p>
                     <div className='dates-history'><p>01.2024</p><p>0.00</p></div>
                     <div className='dates-history2'><p>02.2024</p><p>0.00</p></div>
@@ -758,15 +762,64 @@ useEffect(()=> {
                 </div>
             </MyModal>
 
+            {/* мерч */}
             <MyModal visible={showInfo} setVisible={setShowInfo}>
+                <div className='info-card' style={{height: '220px'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <p className='vagno'>Важно</p>
+                    <p className='text-promo'>Мерч — это одежда, аксессуары и любые другие вещи с символикой компании. Мерч предназначен для визуальной идентификации пренадлежности к ... . Получить его можно в офисе компании по предварительной договоренности.</p>
+                    <div className='button-ok' onClick={()=>setShowInfo(false)}>
+                        <div className='rec-button'>Хорошо</div>
+                        
+                    </div>
+                </div>
+            </MyModal>
+
+            {/* promo текст */}
+            <MyModal visible={showPromoId} setVisible={setShowPromoId}>
                 <div className='info-card'>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'>Важно</p>
-                    <p className='text-vagno'></p>
-                    <div className='button-ok' onClick={()=>setShowInfo(false)}>
+                    <p className='text-promo'>Отправь свой ID трем друзьям и получи бонус 3 000.00 рублей по условиям акции. Твой ID уже скопирован, осталось только отправить!</p>
+                    <div className='button-ok' onClick={()=>setShowPromoId(false)}>
+                        <div className='rec-button'>Хорошо</div>
+                        
+                    </div>
+                </div>
+            </MyModal>
+
+            {/* компетенции текст */}
+            <MyModal visible={showKompInfo} setVisible={setShowKompInfo}>
+                <div className='info-card'>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <p className='vagno'>Важно</p>
+                    <p className='text-promo'></p>
+                    <div className='button-ok' onClick={()=>setShowKompInfo(false)}>
+                        <div className='rec-button'>Хорошо</div>
+                        
+                    </div>
+                </div>
+            </MyModal>
+
+            {/* доход текст */}
+            <MyModal visible={showDohodInfo} setVisible={setShowDohodInfo}>
+                <div className='info-card' style={{height: '230px'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <p className='vagno'>Важно</p>
+                    <p className='text-promo'>Общая сумма дохода за период времени с момента начала календарного месяца. В нее входят только отработанные, но не подтвержденные, и уже подтвержденные заказчиком сметы за проекты. И список выплат за 3 предидущих месяца.</p>
+                    <div className='button-ok' onClick={()=>setShowDohodInfo(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
                     </div>
