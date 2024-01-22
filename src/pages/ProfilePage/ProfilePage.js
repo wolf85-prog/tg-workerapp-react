@@ -772,7 +772,7 @@ useEffect(()=> {
             </>
             }
 
-            <div className='footer-block' style={{display: !showFooter ? 'block' : 'none'}}>
+            <div className='footer-block' style={{display: showFooter ? 'block' : 'none'}}>
                 <img onClick={clickPodel} src={Friend} alt='' width='100%' className='btn-friend' />
                 <img src={Footer} alt='' width='100%' className='footer-image' />
                 <div className='footer-rec'></div>
