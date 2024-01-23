@@ -133,7 +133,7 @@ const ProfilePage = () => {
 
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id '6143011220'
             //console.log("worker: ", worker.length) 
             //console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -657,7 +657,7 @@ useEffect(()=> {
                     </div>
                     <div>
                         <p className="profile_fio">{workerhub[0]?.fio}</p>
-                        <div className="card-specs bullet">
+                        <div className="card-specs bullet" onClick={()=>setShowKompInfo(true)}>
                             <ul>
                                 {workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' 
                                 ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={()=>setShowAddSpec(true)} alt='' style={{marginLeft: '20px', width: '12px'}}/>}</li>
