@@ -698,6 +698,7 @@ input[id="cb1"] {
     height: 174px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .vagno {
@@ -726,7 +727,7 @@ input[id="cb1"] {
     font-weight: 400;
     font-size: 16px;
     line-height: 17px;
-    letter-spacing: -0.045em;
+    letter-spacing: 0.045em;
     /* ULEY Светлый */
     /* color: #E8F1F9; */
     color: #fff;
@@ -739,12 +740,12 @@ input[id="cb1"] {
     /* Здесь будет Ваш текст */
     position: absolute;
     left: 0;
-    top: 50px;
+    top: 30px;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    letter-spacing: -0.045em;
+    letter-spacing: 0.045em;
     /* ULEY Светлый */
     /* color: #E8F1F9; */
     color: #fff;

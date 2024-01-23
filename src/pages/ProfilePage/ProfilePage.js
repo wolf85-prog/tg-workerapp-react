@@ -337,11 +337,11 @@ useEffect(()=> {
     const showPopup = () => {   
         setModal(true)
         //setTimeout(()=> {
-            openInNewTab('tel:+74995001411')
+            //openInNewTab('tel:+74995001411')
         //}, 2000)
 
         setTimeout(()=> {
-            setModal(false)       
+            //setModal(false)       
         }, 6000)
     }
 
@@ -833,8 +833,8 @@ useEffect(()=> {
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <p className='vagno'>Важно</p>
-                    <p className='text-vagno'>Рекомендуемый период времени для связи с менеджером</p>
+                    <p className='vagno'></p>
+                    <p className='text-vagno' style={{top: '30px'}}>Рекомендуемый период времени для связи с менеджером</p>
                     <p className='text-vagno2'>10:00 - 20:00</p>
                     <div className='button-ok' onClick={()=>setModal(false)}>
                         <div className='rec-button'>Хорошо</div>
@@ -909,7 +909,7 @@ useEffect(()=> {
 
              {/* Подробнее текст */}
              <MyModal visible={showMoreInfo} setVisible={setShowMoreInfo}>
-                <div className='info-card' style={{height: '410px'}}>
+                <div className='info-card' style={{height: '455px'}}>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
@@ -963,7 +963,7 @@ useEffect(()=> {
                         />
                     </div>
 
-                    <div style={{position: 'relative', marginRight: '25px'}}>
+                    <div style={{position: 'relative', marginRight: '25px', marginRight: '15px', marginTop: '10px'}}>
                         {/*список работников*/}
                         <div style={{
                             boxSizing: 'border-box', 
@@ -986,12 +986,8 @@ useEffect(()=> {
                             >
                                 Добавить
                             </button>
-                        </div>
-                         
+                        </div>  
                     </div>
-                    {/* <div className='button-ok' onClick={()=>setShowAddSpec(false)}>
-                        <div className='rec-button'>Добавить</div>                     
-                    </div> */}
                 </div>
             </MyModal>
             

@@ -70,9 +70,9 @@ const ProjectList = ({posts, title, width, shkala}) => {
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <p className='vagno'>Важно</p>
+                    <p className='vagno'></p>
                     <p className='text-promo'>Чтобы выйти на проект, выбери его в нужной рассылке и нажми кнопку «Принять».
-<br/><br/>Бонус — получи 3000 рублей!  Отправь приглашение трем друзьям и каждый из них тоже получит бонус 3000 рублей! Вместе с приглашением отправь им свой ID!</p>
+<br/><br/>Бонус — получи 3000 рублей!  Отправь приглашение трем друзьям и каждый из них тоже получит бонус 3 000 рублей! Вместе с приглашением отправь им свой ID!</p>
                     <div className='button-ok' onClick={()=>setShowInfoProj(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
