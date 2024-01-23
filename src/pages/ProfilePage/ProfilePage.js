@@ -133,7 +133,7 @@ const ProfilePage = () => {
 
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
             //console.log("worker: ", worker.length) 
             //console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -337,11 +337,11 @@ useEffect(()=> {
     const showPopup = () => {   
         setModal(true)
         //setTimeout(()=> {
-            //openInNewTab('tel:+74995001411')
+            openInNewTab('tel:+74995001411')
         //}, 2000)
 
         setTimeout(()=> {
-            //setModal(false)       
+            setModal(false)       
         }, 6000)
     }
 
@@ -572,6 +572,12 @@ useEffect(()=> {
     }
 
 
+    const clickAddSpec = () => {
+        setShowKompInfo(false)
+        setShowAddSpec(true)  
+    }
+
+
 
     const [state, setState] = React.useState({
         bottom: false,
@@ -637,6 +643,7 @@ useEffect(()=> {
         </Box>
     );
 
+
     //---------------------------------------------------------------------------------------
 
     return (
@@ -657,10 +664,10 @@ useEffect(()=> {
                     </div>
                     <div>
                         <p className="profile_fio">{workerhub[0]?.fio}</p>
-                        <div className="card-specs bullet" onClick={()=>setShowKompInfo(true)}>
-                            <ul>
+                        <div className="card-specs bullet">
+                            <ul onClick={()=>setShowKompInfo(true)}>
                                 {workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' 
-                                ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={()=>setShowAddSpec(true)} alt='' style={{marginLeft: '20px', width: '12px'}}/>}</li>
+                                ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={clickAddSpec} alt='' style={{marginLeft: '20px', width: '12px'}}/> }</li>
                                 : '' )}
                             </ul>   
                         </div>     
@@ -828,14 +835,15 @@ useEffect(()=> {
             </MyModal>
 
             <MyModal visible={modal} setVisible={setModal}>
-            <div className='info-card'>
+            <div className='info-card' style={{height: '185px'}}>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'></p>
                     <p className='text-vagno' style={{top: '30px'}}>Рекомендуемый период времени для связи с менеджером</p>
-                    <p className='text-vagno2'>10:00 - 20:00</p>
+                    <p className='text-vagno2'>Понедельник — Пятница
+                    <br/>10:00 - 20:00</p>
                     <div className='button-ok' onClick={()=>setModal(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
@@ -861,13 +869,13 @@ useEffect(()=> {
 
             {/* promo текст */}
             <MyModal visible={showPromoId} setVisible={setShowPromoId}>
-                <div className='info-card'>
+                <div className='info-card' style={{height: '200px'}}>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'>Важно</p>
-                    <p className='text-promo'>Отправь свой ID трем друзьям и получи бонус 3 000 рублей по условиям акции. Твой ID уже скопирован, осталось только отправить!</p>
+                    <p className='text-promo' style={{top: '50px'}}>Отправь свой ID трем друзьям и получи бонус 3 000 рублей по условиям акции. Твой ID уже скопирован, осталось только отправить!</p>
                     <div className='button-ok' onClick={()=>setShowPromoId(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
@@ -935,7 +943,7 @@ useEffect(()=> {
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <img onClick={()=>setShowAddSpec(false)} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
+                    <img onClick={()=>{setShowAddSpec(false); setShowKompInfo(false)}} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
 
                     <p className='vagno'>Добавить специальность</p>
                     <div style={{position: 'relative', marginTop: '60px', marginLeft: '25px', marginRight: '25px'}}>
