@@ -665,7 +665,7 @@ useEffect(()=> {
                     <div style={{marginRight: '10px'}}>
                         <VKShareButton
                             url={shareUrl}
-                            image={`${String(window.location)}/${exampleImage}`}
+                            // image={`${String(window.location)}/${exampleImage}`}
                             className="Demo__some-network__share-button"
                         >
                         <VKIcon size={44} />
@@ -675,7 +675,7 @@ useEffect(()=> {
                     <div style={{marginRight: '10px'}}>
                         <OKShareButton
                             url={shareUrl}
-                            image={`${String(window.location)}/${exampleImage}`}
+                            // image={`${String(window.location)}/${exampleImage}`}
                             className="Demo__some-network__share-button"
                         >
                         <OKIcon size={44} />
