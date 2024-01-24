@@ -63,6 +63,21 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
 
+import {
+    EmailShareButton,
+    MailruShareButton,
+    OKShareButton,
+    TelegramShareButton,
+    VKShareButton,
+    ViberIcon,
+    ViberShareButton,
+    VKIcon,
+    WhatsappShareButton,
+    WhatsappIcon,
+    TelegramIcon,
+  } from "react-share";
+
+
 const ProfilePage = () => {
     const {tg, user, queryId} = useTelegram();
     const navigate = useNavigate();
@@ -124,7 +139,10 @@ const ProfilePage = () => {
 
     const API_URL = process.env.REACT_APP_API_URL
 
-    
+
+    const shareUrl="https://t.me/ULEY_Workhub_Bot"
+    const title="ULEY Workhub"
+    const text="U.L.E.Y | Workhub"
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже   
@@ -616,29 +634,45 @@ useEffect(()=> {
           onKeyDown={toggleDrawer(anchor, false)}
         >
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem key={text} disablePadding>
+              <ListItem >
                 <ListItemButton>
                   <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                    <div style={{marginRight: '10px'}}>
+                        <TelegramShareButton
+                            url={shareUrl}
+                            title={title}
+                            className="Demo__some-network__share-button"
+                        >
+                        <TelegramIcon size={32} />
+                        </TelegramShareButton>
+                    </div>
+
+                    <div style={{marginRight: '10px'}}>
+                        <WhatsappShareButton
+                            url={shareUrl}
+                            title={title}
+                            separator=":: "
+                            className="Demo__some-network__share-button"
+                        >
+                        <WhatsappIcon size={32} />
+                        </WhatsappShareButton>
+                    </div>
                   </ListItemIcon>
-                  <ListItemText primary={text} />
+                  <ListItemText />
                 </ListItemButton>
               </ListItem>
-            ))}
           </List>
           <Divider />
           <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                    <InboxIcon />
                   </ListItemIcon>
-                  <ListItemText primary={text} />
+                  Скопировать ссылку
+                  <ListItemText/>
                 </ListItemButton>
               </ListItem>
-            ))}
           </List>
         </Box>
     );
