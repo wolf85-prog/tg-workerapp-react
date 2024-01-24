@@ -36,14 +36,13 @@ const ProjectList = ({posts, title, width, shkala}) => {
                         <div className='project-text'>
                             <p className="project_title">Здесь будут ваши проекты</p>
                             
-                            <p className='project_money2'>0.00</p>
                         </div>
                         <img className='vector' src={Vector} alt=''/>  
                     </div>
 
                     
                     <div className='card-footer'>
-                        <div></div>
+                        <div><p className='project_money2'>0.00</p></div>
                         <div onClick={clickShowInfoChat} className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>
                     </div>
                 </div>

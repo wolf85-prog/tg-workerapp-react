@@ -794,7 +794,7 @@ useEffect(()=> {
                             </div>
                     </article>
 
-                    <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', marginLeft: '10px', flex: '0 0 56%'}}>
+                    <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', flex: '0 0 56%'}}>
                         {/* Компетенции */}
                         <article className='block-kompetencii' style={{display: !showKompet ? 'block' : 'none'}}> 
                             <div className='rectangle-kompeten'></div>
