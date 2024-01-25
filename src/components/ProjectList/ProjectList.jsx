@@ -11,6 +11,7 @@ const ProjectList = ({posts, title, width, shkala}) => {
 
     const [showInfoChat, setShowInfoChat] = useState(false)
     const [showInfoProj, setShowInfoProj] = useState(false)
+    const [showMoreInfo, setShowMoreInfo] = useState(false)
 
     const clickShowInfoChat = () => {
         setShowInfoChat(true)
@@ -18,6 +19,11 @@ const ProjectList = ({posts, title, width, shkala}) => {
 
     const clickShowInfoProj = () => {
         setShowInfoProj(true)
+    }
+
+    const clickAkcia = () => {
+        setShowMoreInfo(false); 
+        setShowInfoProj(false)
     }
     
     if (!posts.length) {
@@ -43,7 +49,7 @@ const ProjectList = ({posts, title, width, shkala}) => {
                     
                     <div className='card-footer'>
                         <div><p className='project_money2'>0.00</p></div>
-                        <div onClick={clickShowInfoChat} className='chat-button' style={{backgroundImage: `url(${btnChat})`}}>Чат</div>
+                        <div onClick={clickShowInfoChat} className='chat-button'>Чат</div>
                     </div>
                 </div>
             </div>
@@ -55,7 +61,7 @@ const ProjectList = ({posts, title, width, shkala}) => {
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'></p>
-                    <p className='text-vagno' style={{top:"30%"}}>В твоем будущем проекте эта кнопка направит тебя в чат проекта</p>
+                    <p className='text-vagno' style={{top:"30%"}}>Эта кнопка добавит тебя в чат актуального проекта</p>
                     <div className='button-ok' onClick={()=>setShowInfoChat(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
@@ -64,15 +70,37 @@ const ProjectList = ({posts, title, width, shkala}) => {
             </MyModal>
 
             <MyModal visible={showInfoProj} setVisible={setShowInfoProj}>
-                <div className='info-card' style={{height: '270px'}}>
+                <div className='info-card' style={{height: '200px'}}>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'></p>
                     <p className='text-promo'>Чтобы выйти на проект, выбери его в нужной рассылке и нажми кнопку «Принять».
-<br/><br/>Бонус — получи 3000 рублей!  Отправь приглашение трем друзьям и каждый из них тоже получит бонус 3 000 рублей! Вместе с приглашением отправь им свой ID!</p>
-                    <div className='button-ok' onClick={()=>setShowInfoProj(false)}>
+<br/><br/>Бонус! «3 000 рублей за троих твоих друзей»</p>
+                    {/* <div className='button-more' onClick={()=>setShowInfoProj(false)}>
+                        <div className='rec-button'>Подробнее</div>         
+                    </div> */}
+                    <div className='button-ok' onClick={()=>setShowMoreInfo(true)}>
+                        <div className='rec-button'>Об акции</div>         
+                    </div>
+                </div>
+            </MyModal>
+
+            <MyModal visible={showMoreInfo} setVisible={setShowMoreInfo}>
+                <div className='info-card' style={{height: '455px'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <p className='vagno'></p>
+                    <p className='text-promo' style={{top: '25px'}}>Акция «3 000 рублей за троих твоих друзей».
+                    <br/><br/>Скопируй свой ID и вместе с ним отправь приглашения троим друзьям, не подписанным на проекты «U.L.E.Y». 
+<br/><br/>Для этого нажми Workhub внизу экрана, «+» в центре и поделись ссылкой. 
+<br/><br/>В конце регистрации напомни другу внести данные твоего ID.
+<br/><br/>Ты, и каждый приглашенный тобою, получите по 3 000 рублей, как только все друзья отработают по 3 проекта [по 30 часов].
+<br/><br/>Дружи выгодно!</p>
+                    <div className='button-ok' onClick={clickAkcia}>
                         <div className='rec-button'>Хорошо</div>
                         
                     </div>

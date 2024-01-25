@@ -752,7 +752,7 @@ input[id="cb1"] {
     /* color: #E8F1F9; */
     color: #fff;
     /* opacity: 0.4; */
-    padding: 0 20px;
+    padding: 0 25px;
     width: 100%;
     text-align: left;
 }
@@ -789,6 +789,23 @@ input[id="cb1"] {
     width: 111px;
     height: 31px;
     right: 20px;
+    bottom: 20px;
+}
+
+.button-more {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    isolation: isolate;
+
+    position: absolute;
+    width: 111px;
+    height: 31px;
+    left: 20px;
     bottom: 20px;
 }
 

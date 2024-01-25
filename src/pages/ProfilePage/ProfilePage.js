@@ -140,6 +140,7 @@ const ProfilePage = () => {
     const [showKompInfo, setShowKompInfo] = useState(false)
     const [showDohodInfo, setShowDohodInfo] = useState(false)
     const [showMoreInfo, setShowMoreInfo] = useState(false)
+    const [showProfileInfo, setShowProfileInfo] = useState(false)
 
     const API_URL = process.env.REACT_APP_API_URL
 
@@ -156,7 +157,7 @@ const ProfilePage = () => {
         const fetchData = async() => { 
             setIsProfileLoading(true)
             const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
-            //console.log("worker: ", worker.length) 
+            console.log("worker: ", worker.length) 
             //console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
             setSpecId(worker[0]?.id)
@@ -194,11 +195,11 @@ useEffect(()=> {
                
         console.log("Начинаю загружать проекты...")
         const projects = await getProjectsCash();
-        console.log("projects: ", projects)
+        //console.log("projects: ", projects)
 
         console.log("Начинаю загружать сметы...")
         const smets = await getSmetaCash();
-        console.log("smets: ", smets)
+        //console.log("smets: ", smets)
 
         let tempSum = 0
         projects.map((project, index)=> {
@@ -221,7 +222,7 @@ useEffect(()=> {
                         finalSmeta: smetaObject ? smetaObject?.final : "",
                         statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
                     }
-                    console.log(newProject)
+                    //console.log(newProject)
                     arrayProject.push(newProject)
                 }   
             })
@@ -231,7 +232,7 @@ useEffect(()=> {
         console.log("tempArr: ", tempArr)
         tempArr.map((item)=> {
             if (item.smeta ) {
-                console.log("смета: ", item.smeta)
+                //console.log("смета: ", item.smeta)
                 let stavka =  item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
                 tempSum = tempSum + stavka
                 console.log("Ставка: ", stavka)
@@ -755,7 +756,7 @@ useEffect(()=> {
                     <div>
                         <p className="profile_fio">{workerhub[0]?.fio}</p>
                         <div className="card-specs bullet">
-                            <ul onClick={()=>setShowKompInfo(true)}>
+                            <ul onClick={()=>setShowProfileInfo(true)}>
                                 {workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' 
                                 ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={clickAddSpec} alt='' style={{marginLeft: '20px', width: '12px'}}/> }</li>
                                 : '' )}
@@ -949,7 +950,7 @@ useEffect(()=> {
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'></p>
-                    <p className='text-promo'>Мерч — это одежда, аксессуары и любые другие вещи с символикой компании. Мерч предназначен для визуальной идентификации пренадлежности к ... . Получить его можно в офисе компании по предварительной договоренности.</p>
+                    <p className='text-promo'>Мерч — это одежда и аксессуары с символикой «U.L.E.Y», которые предназначены для визуальной идентификации принадлежности к компании. Получить мерч можно в офисе по предварительной договоренности.</p>
                     <div className='button-ok' onClick={()=>setShowInfo(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
@@ -966,22 +967,37 @@ useEffect(()=> {
 
                     <p className='vagno'>Важно</p>
                     <p className='text-promo' style={{top: '50px'}}>Отправь свой ID трем друзьям и получи бонус 3 000 рублей по условиям акции. Твой ID уже скопирован, осталось только отправить!</p>
-                    <div className='button-ok' onClick={()=>setShowPromoId(false)}>
-                        <div className='rec-button'>Хорошо</div>
+                    {/* <div className='button-ok' onClick={()=>setShowPromoId(false)}> 
+                        <div className='rec-button'>Отправить</div>    
+                    </div>*/}
+                    <React.Fragment key={'bottom'}>
+                        <div className='button-ok'>
+                            <div className='rec-button' onClick={toggleDrawer('bottom', true)}>
+                                Отправить                       
+                            </div>
+                        </div>
                         
-                    </div>
+                        <Drawer
+                            anchor={'bottom'}
+                            open={state['bottom']}
+                            onClose={toggleDrawer('bottom', false)}
+                        >
+                            {list('bottom')}
+                        </Drawer>
+                    </React.Fragment>
                 </div>
             </MyModal>
 
             {/* компетенции текст */}
             <MyModal visible={showKompInfo} setVisible={setShowKompInfo}>
-                <div className='info-card'>
+                <div className='info-card' style={{height: '190px'}}>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <p className='vagno'>Важно</p>
-                    <p className='text-promo'></p>
+                    <p className='vagno'></p>
+                    <p className='text-promo'>Здесь будут отображены твои навыки, модели пультов и опыт работ с различными видами оборудования. 
+Появляются автоматически, после диалога с менеджером «U.L.E.Y».</p>
                     <div className='button-ok' onClick={()=>setShowKompInfo(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
@@ -991,19 +1007,39 @@ useEffect(()=> {
 
             {/* доход текст */}
             <MyModal visible={showDohodInfo} setVisible={setShowDohodInfo}>
-                <div className='info-card' style={{height: '230px'}}>
+                <div className='info-card' style={{height: '260px'}}>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'></p>
-                    <p className='text-promo'>Общая сумма дохода за период времени с момента начала календарного месяца. В нее входят только отработанные, но не подтвержденные, и уже подтвержденные заказчиком сметы за проекты. И список выплат за три предыдущих месяца.</p>
+                    <p className='text-promo'>Твоя общая сумма дохода за текущий календарный месяц. 
+                    <br/><br/>В эту сумму входят сметы только по отработанным проектам [подтвержденные и неподтвержденные заказчиком].
+<br/><br/>В истории ты видишь свои выплаты за три предыдущих месяца.</p>
                     <div className='button-ok' onClick={()=>setShowDohodInfo(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
                     </div>
                 </div>
             </MyModal>
+
+            {/* профиль текст */}
+            <MyModal visible={showProfileInfo} setVisible={setShowProfileInfo}>
+                <div className='info-card' style={{height: '190px'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <p className='vagno'></p>
+                    <p className='text-promo'>Мой профиль — отредактируй свои данные через «карандаш». 
+Выбери основную специальность и подкатегории, их может быть одна или несколько.</p>
+                    <div className='button-ok' onClick={()=>setShowProfileInfo(false)}>
+                        <div className='rec-button'>Хорошо</div>
+                        
+                    </div>
+                </div>
+            </MyModal>
+
 
              {/* Подробнее текст */}
              <MyModal visible={showMoreInfo} setVisible={setShowMoreInfo}>
@@ -1018,7 +1054,7 @@ useEffect(()=> {
 <br/><br/>Для этого нажми Workhub внизу экрана, «+» в центре и поделись ссылкой. 
 <br/><br/>В конце регистрации напомни другу внести данные твоего ID.
 <br/><br/>Ты, и каждый приглашенный тобою, получите по 3 000 рублей, как только все друзья отработают по 3 проекта [по 30 часов].
-<br/><br/>❌ Наслаждайся жизнью! Пусть работают другие! ❌</p>
+<br/><br/>Дружи выгодно!</p>
                     <div className='button-ok' onClick={()=>setShowMoreInfo(false)}>
                         <div className='rec-button'>Хорошо</div>
                         

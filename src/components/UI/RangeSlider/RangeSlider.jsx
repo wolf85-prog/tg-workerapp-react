@@ -144,7 +144,7 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka, percentage}) => 
             <div className='slider-container'>
                 <div className='shkala2'></div> 
 
-                <div className='slider-thumb' style={{ left: `calc(${sliderRange === 0 && !changeRange ? percentage : sliderRange}% - 7.6em)` }}>
+                <div className='slider-thumb' style={{ left: `calc(${sliderRange === 0 && !changeRange ? percentage : sliderRange}% - 7.4em)` }}>
                     <img className='begun' src={begunok} alt='' style={{display: 'block'}}/>
                 </div> 
                 <input 
