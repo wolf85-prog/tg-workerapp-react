@@ -102,14 +102,14 @@ const RangeSlider = ({min, max, value, step, stavka, setStavka, percentage}) => 
         <div className='range-slider'>
                 <div className="shkala">
                     <div className='blocks'>
-                        <div className={`block1 ${(showNumber === 0 && !changeRange ? percentage : showNumber) > -1 && (showNumber === 0 && !changeRange ? percentage : showNumber) < 30 && `block-active`}`} style={{left: `${20+2}%`}}>1</div>
+                        <div className={`block1 ${(showNumber === 0 && !changeRange ? percentage : showNumber) > -1 && (showNumber === 0 && !changeRange ? percentage : showNumber) < 30 && `block-active`}`} style={{left: `${22.5}%`}}>1</div>
                         <div className={`block1 ${(showNumber === 0 && !changeRange ? percentage : showNumber) > 30 && (showNumber === 0 && !changeRange ? percentage : showNumber) < 50 && `block-active`}`} style={{left: `${21*2+1}%`}}>2</div>
                         <div className={`block1 ${(showNumber === 0 && !changeRange ? percentage : showNumber) > 50 && (showNumber === 0 && !changeRange ? percentage : showNumber) < 70 && `block-active`}`} style={{left: `${21*3+1}%`}}>3</div>
                         <div className={`block1 ${(showNumber === 0 && !changeRange ? percentage : showNumber) > 70 && (showNumber === 0 && !changeRange ? percentage : showNumber) < 90 && `block-active`}`} style={{left: `${21*4+1}%`}}>4</div>
                         <div className={`block1 ${(showNumber === 0 && !changeRange ? percentage : showNumber) > 90 && (showNumber === 0 && !changeRange ? percentage : showNumber) < 1000 && `block-active`}`} style={{left: `${21*5+1}%`}}>5</div>
                     </div>
 
-                    <div className='shkala01' style={{left: `${-6}%`}}>
+                    <div className='shkala01' style={{left: `-15px`}}>
                         <div className='shk-line11'></div>
                         <div className='shk-line12'></div>
                         <div className='shk-line13'></div>

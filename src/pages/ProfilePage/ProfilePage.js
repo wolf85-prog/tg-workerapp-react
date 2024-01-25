@@ -44,8 +44,8 @@ import DohodOpen from "../../image/new/dohodOpen.png";
 import btnSave from "../../image/buttons/btn_add.png"
 
 import specData from "../../data/specData"
-import NewSelect from '../../components/UI/NewSelect/NewSelect';
-import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
+import NewSelect4 from '../../components/UI/NewSelect4/NewSelect4';
+import NewSelect5 from '../../components/UI/NewSelect5/NewSelect5';
 import MarqueeModal from '../../components/UI/MarqueeModal/MarqueeModal';
 
 import WorkerList2 from '../../components/WorkerList2/WorkerList2';
@@ -1014,7 +1014,7 @@ useEffect(()=> {
 
                     <p className='vagno'></p>
                     <p className='text-promo' style={{top: '25px'}}>Акция «3 000 рублей за троих твоих друзей».
-                    <br/><br/>Скопируй свой ID и вместе с ним отправь приглашения троим друзьям, не подписанным на проекты «U.L..E.Y». 
+                    <br/><br/>Скопируй свой ID и вместе с ним отправь приглашения троим друзьям, не подписанным на проекты «U.L.E.Y». 
 <br/><br/>Для этого нажми Workhub внизу экрана, «+» в центре и поделись ссылкой. 
 <br/><br/>В конце регистрации напомни другу внести данные твоего ID.
 <br/><br/>Ты, и каждый приглашенный тобою, получите по 3 000 рублей, как только все друзья отработают по 3 проекта [по 30 часов].
@@ -1028,7 +1028,7 @@ useEffect(()=> {
 
 
             <MyModal visible={showAddSpec} setVisible={setShowAddSpec}>
-                <div className='info-card' style={{height: 'auto'}}>
+                <div className='info-card' style={{height: 'auto', minHeight: '250px', justifyContent: 'flex-start'}}>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
@@ -1038,7 +1038,7 @@ useEffect(()=> {
                     <p className='vagno'>Добавить специальность</p>
                     <div style={{position: 'relative', marginTop: '60px', marginLeft: '25px', marginRight: '25px'}}>
                         <p className='cat-title' style={{display: titleCat ? 'none' : 'block'}}>Категория...</p>  
-                        <NewSelect
+                        <NewSelect5
                             id="category"
                             options={categories}
                             titleCat={titleCat}
@@ -1050,7 +1050,7 @@ useEffect(()=> {
                                 
                     <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px'}}>
                         <p className='spec-title' style={{display: titleSpec ? 'none' : 'block'}}>Специальность...</p> 
-                        <NewSelect2
+                        <NewSelect4
                             disabled={disabled}
                             id="model"
                             options={models}
