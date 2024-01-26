@@ -259,6 +259,7 @@ const NewWorker = () => {
     }
 
     const clickAddFrined = () => {
+        console.log(check)
         //show save button
         setShowMainBtn(true)
 
@@ -321,7 +322,7 @@ const NewWorker = () => {
             worklist: workers,
             city, 
             dateborn: dateborn.toString(),
-            friend: Number(friend),
+            friend: check ? Number(friend) : '',
             queryId,
         }
 
