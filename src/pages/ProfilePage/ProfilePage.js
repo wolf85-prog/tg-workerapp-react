@@ -147,7 +147,7 @@ const ProfilePage = () => {
 
     const shareUrl="https://t.me/ULEY_Workhub_Bot"
     const title="ULEY Workhub"
-    const text="U.L.E.Y | Workhub"
+    const text="U.L.E.Y | Workhub " + "ID: " + user?.id 
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже   
@@ -630,6 +630,30 @@ useEffect(()=> {
         }
     };
 
+    const toggleDrawerId = (anchor, open) => (event) => {
+        const url="https://t.me/ULEY_Workhub_Bot"
+        const title="ULEY Workhub"
+        const text="U.L.E.Y | Workhub" + "ID: " + user?.id
+
+        event.preventDefault()
+
+        if (navigator.share) {
+            navigator.share({
+            title: title,
+            text: text,
+            url: url,
+            })
+            .catch(console.error)
+        } else {
+            
+            if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+                return;
+            }
+        
+            setState({ ...state, [anchor]: open });
+        }
+    };
+
 
     const list = (anchor) => (
         <Box
@@ -972,7 +996,7 @@ useEffect(()=> {
                     </div>*/}
                     <React.Fragment key={'bottom'}>
                         <div className='button-ok'>
-                            <div className='rec-button' onClick={toggleDrawer('bottom', true)}>
+                            <div className='rec-button' onClick={toggleDrawerId('bottom', true)}>
                                 Отправить                       
                             </div>
                         </div>
@@ -1031,7 +1055,7 @@ useEffect(()=> {
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'></p>
-                    <p className='text-promo'>Мой профиль — отредактируй свои данные через «карандаш». 
+                    <p className='text-promo'>Отредактируй свои данные через «карандаш». 
 Выбери основную специальность и подкатегории, их может быть одна или несколько.</p>
                     <div className='button-ok' onClick={()=>setShowProfileInfo(false)}>
                         <div className='rec-button'>Хорошо</div>
