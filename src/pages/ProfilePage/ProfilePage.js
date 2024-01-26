@@ -587,6 +587,10 @@ useEffect(()=> {
     const [state, setState] = React.useState({
         bottom: false,
     });
+
+    const [state2, setState2] = React.useState({
+        bottom: false,
+    });
  
     //поделиться ссылкой
     const toggleDrawer = (anchor, open) => (event) => {
@@ -625,7 +629,7 @@ useEffect(()=> {
 
         setShowPromoId(false)
 
-        if (navigator.share) {
+        //if (navigator.share) {
             // navigator.share({
             // title: title,
             // text: text,
@@ -635,20 +639,20 @@ useEffect(()=> {
             // })
             // .catch(console.error)
 
-            if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-                return;
-            }
+        //     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+        //         return;
+        //     }
         
-            setState({ ...state, [anchor]: open });
+        //     setState2({ ...state2, [anchor]: open });
 
-        } else {
+        // } else {
             
             if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
                 return;
             }
         
-            setState({ ...state, [anchor]: open });
-        }
+            setState2({ ...state, [anchor]: open });
+        //}
     };
 
 
@@ -844,7 +848,7 @@ useEffect(()=> {
                 </ListItemButton>
               </ListItem>
           </List>
-          <Divider />
+          {/* <Divider />
           <List>
               <ListItem key={textId + id} disablePadding>
                 <ListItemButton>
@@ -855,7 +859,7 @@ useEffect(()=> {
                   <ListItemText/>
                 </ListItemButton>
               </ListItem>
-          </List>
+          </List> */}
         </Box>
     );
 
