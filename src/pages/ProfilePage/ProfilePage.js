@@ -147,8 +147,9 @@ const ProfilePage = () => {
 
     const shareUrl="https://t.me/ULEY_Workhub_Bot"
     const title="ULEY Workhub"
-    const text="U.L.E.Y | Workhub"
-    const textId="U.L.E.Y | Workhub " + "ID: " + user?.id 
+    const text="🔵 U.L.E.Y | Workhub"
+    const textId="🔵 Промокод ID: "
+    const id=user?.id
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже   
@@ -383,27 +384,7 @@ useEffect(()=> {
     
         return () => clearTimeout(timer)
     }, [isCopied])
-  
-    const onShareClick = async(e) => {
-        const url="https://t.me/ULEY_Workhub_Bot"
-        const title="ULEY Workhub"
-        const text="U.L.E.Y | Workhub"
 
-        e.preventDefault()
-
-        if (navigator.share) {
-            navigator.share({
-            title: title,
-            text: text,
-            url: url,
-            })
-            .catch(console.error)
-        } else {
-            //setIsShowed(currentIsShowed => !currentIsShowed)
-            //setOpenSheet(currentIsShowed => !currentIsShowed)
-
-        }
-    }
 
     const onCopyToClipboard = (e) => {
         const url="https://t.me/ULEY_Workhub_Bot"
@@ -606,7 +587,8 @@ useEffect(()=> {
     const [state, setState] = React.useState({
         bottom: false,
     });
-    
+ 
+    //поделиться ссылкой
     const toggleDrawer = (anchor, open) => (event) => {
         const url="https://t.me/ULEY_Workhub_Bot"
         const title="ULEY Workhub"
@@ -631,10 +613,13 @@ useEffect(()=> {
         }
     };
 
+    //отправить ID
     const toggleDrawerId = (anchor, open) => (event) => {
         const url="https://t.me/ULEY_Workhub_Bot"
         const title="ULEY Workhub" + " ID: " + user?.id
-        const text="U.L.E.Y | Workhub" + " ID: " + user?.id
+        const text="🔵 U.L.E.Y | Workhub"
+        const textId="🔵 Промокод ID:"
+        const id=user?.id
 
         event.preventDefault()
 
@@ -645,6 +630,8 @@ useEffect(()=> {
             title: title,
             text: text,
             url: url,
+            textId: text,
+            id: id,
             })
             .catch(console.error)
         } else {
@@ -775,7 +762,7 @@ useEffect(()=> {
                     <div style={{marginRight: '10px'}}>
                         <TelegramShareButton
                             url={shareUrl}
-                            title={textId}
+                            title={textId + id}
                             className="Demo__some-network__share-button"
                         >
                         <TelegramIcon size={44} />
@@ -785,7 +772,7 @@ useEffect(()=> {
                     <div style={{marginRight: '10px'}}>
                         <WhatsappShareButton
                             url={shareUrl}
-                            title={textId}
+                            title={textId + id}
                             separator=":: "
                             className="Demo__some-network__share-button"
                         >
@@ -816,7 +803,7 @@ useEffect(()=> {
                     <div style={{marginRight: '10px'}}>
                         <MailruShareButton
                             url={shareUrl}
-                            title={textId}
+                            title={textId + id}
                             className="Demo__some-network__share-button"
                         >
                         <MailruIcon size={44} />
@@ -826,7 +813,7 @@ useEffect(()=> {
                     <div style={{marginRight: '10px'}}>
                         <EmailShareButton
                             url={shareUrl}
-                            subject={textId}
+                            subject={textId + id}
                             body="body"
                             className="Demo__some-network__share-button"
                         >
@@ -837,7 +824,7 @@ useEffect(()=> {
                     <div style={{marginRight: '10px'}}>
                         <ViberShareButton
                             url={shareUrl}
-                            title={textId}
+                            title={textId + id}
                             className="Demo__some-network__share-button"
                         >
                         <ViberIcon size={44} />
