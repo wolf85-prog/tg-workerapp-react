@@ -844,18 +844,18 @@ useEffect(()=> {
                 </ListItemButton>
               </ListItem>
           </List>
-          {/* <Divider />
+          <Divider />
           <List>
               <ListItem key={textId + id} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
                     <InboxIcon />
                   </ListItemIcon>
-                  Скопировать ID
+                  
                   <ListItemText/>
                 </ListItemButton>
               </ListItem>
-          </List> */}
+          </List>
         </Box>
     );
 
