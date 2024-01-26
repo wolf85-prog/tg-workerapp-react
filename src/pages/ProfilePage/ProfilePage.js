@@ -638,6 +638,8 @@ useEffect(()=> {
 
         event.preventDefault()
 
+        setShowPromoId(false)
+
         if (navigator.share) {
             navigator.share({
             title: title,
@@ -1110,7 +1112,7 @@ useEffect(()=> {
                             open={state['bottom']}
                             onClose={toggleDrawerId('bottom', false)}
                         >
-                            {list('bottom')}
+                            {list2('bottom')}
                         </Drawer>
                     </React.Fragment>
                 </div>
