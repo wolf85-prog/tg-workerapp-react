@@ -7,6 +7,8 @@ import btnChat from "../../image/new/btn_chat.svg"
 import Vector from "../../image/new/vector.svg"
 import MyModal from "../../components/MyModal/MyModal";
 
+import Close from "../../image/new/close.svg"
+
 const ProjectList = ({posts, title, width, shkala}) => {
 
     const [showInfoChat, setShowInfoChat] = useState(false)
@@ -26,7 +28,7 @@ const ProjectList = ({posts, title, width, shkala}) => {
         setShowInfoProj(false)
     }
     
-    if (!posts.length) {
+    if (posts.length) {
         return (
             // <h2 style={{textAlign: 'center', paddingTop: '80px', paddingBottom: '80px'}}>
             //     Проекты не найдены
@@ -74,6 +76,8 @@ const ProjectList = ({posts, title, width, shkala}) => {
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
+
+                    <img onClick={()=>setShowInfoProj(false)} src={Close} alt='' style={{position: 'absolute', right: '18px', top: '18px', width: '15px'}}/>
 
                     <p className='vagno'></p>
                     <p className='text-promo'>Чтобы выйти на проект, выбери его в нужной рассылке и нажми кнопку «Принять».

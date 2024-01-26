@@ -761,8 +761,9 @@ useEffect(()=> {
                   <ListItemIcon>
                     <div style={{marginRight: '10px'}}>
                         <TelegramShareButton
-                            url={text + shareUrl}
+                            url={text +" "+ shareUrl}
                             title={textId + id}
+                            separator="\n"
                             className="Demo__some-network__share-button"
                         >
                         <TelegramIcon size={44} />
@@ -771,9 +772,9 @@ useEffect(()=> {
 
                     <div style={{marginRight: '10px'}}>
                         <WhatsappShareButton
-                            url={text + shareUrl}
+                            url={text +" "+ shareUrl}
                             title={textId + id}
-                            separator=":: "
+                            separator="\n"
                             className="Demo__some-network__share-button"
                         >
                         <WhatsappIcon size={44} />
@@ -836,7 +837,7 @@ useEffect(()=> {
                 </ListItemButton>
               </ListItem>
           </List>
-          <Divider />
+          {/* <Divider />
           <List>
               <ListItem key={textId + id} disablePadding>
                 <ListItemButton>
@@ -847,7 +848,7 @@ useEffect(()=> {
                   <ListItemText/>
                 </ListItemButton>
               </ListItem>
-          </List>
+          </List> */}
         </Box>
     );
 
