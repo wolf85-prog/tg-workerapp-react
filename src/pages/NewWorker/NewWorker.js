@@ -476,8 +476,7 @@ const NewWorker = () => {
                     // disabled={disabledBtn}
                     className="image-button-add" 
                     style={{ backgroundImage: `url(${btnSave})`}}
-                    // onClick={addNewWorker}
-                    onClick={()=>setShowInfo(true)}
+                    onClick={addNewWorker}
                 >
                     Добавить
                 </button> 
