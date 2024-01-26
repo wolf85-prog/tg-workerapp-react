@@ -147,7 +147,8 @@ const ProfilePage = () => {
 
     const shareUrl="https://t.me/ULEY_Workhub_Bot"
     const title="ULEY Workhub"
-    const text="U.L.E.Y | Workhub " + "ID: " + user?.id 
+    const text="U.L.E.Y | Workhub"
+    const textId="U.L.E.Y | Workhub " + "ID: " + user?.id 
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже   
@@ -632,8 +633,8 @@ useEffect(()=> {
 
     const toggleDrawerId = (anchor, open) => (event) => {
         const url="https://t.me/ULEY_Workhub_Bot"
-        const title="ULEY Workhub"
-        const text="U.L.E.Y | Workhub" + "ID: " + user?.id
+        const title="ULEY Workhub" + " ID: " + user?.id
+        const text="U.L.E.Y | Workhub" + " ID: " + user?.id
 
         event.preventDefault()
 
@@ -751,6 +752,109 @@ useEffect(()=> {
                     <InboxIcon />
                   </ListItemIcon>
                   Скопировать ссылку
+                  <ListItemText/>
+                </ListItemButton>
+              </ListItem>
+          </List>
+        </Box>
+    );
+
+    const list2 = (anchor) => (
+        <Box
+          sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+          role="presentation"
+          onClick={toggleDrawerId(anchor, false)}
+          onKeyDown={toggleDrawerId(anchor, false)}
+        >
+          <List>
+              <ListItem >
+                <ListItemButton>
+                  <ListItemIcon>
+                    <div style={{marginRight: '10px'}}>
+                        <TelegramShareButton
+                            url={shareUrl}
+                            title={textId}
+                            className="Demo__some-network__share-button"
+                        >
+                        <TelegramIcon size={44} />
+                        </TelegramShareButton>
+                    </div>
+
+                    <div style={{marginRight: '10px'}}>
+                        <WhatsappShareButton
+                            url={shareUrl}
+                            title={textId}
+                            separator=":: "
+                            className="Demo__some-network__share-button"
+                        >
+                        <WhatsappIcon size={44} />
+                        </WhatsappShareButton>
+                    </div>
+
+                    <div style={{marginRight: '10px'}}>
+                        <VKShareButton
+                            url={shareUrl}
+                            // image={`${String(window.location)}/${exampleImage}`}
+                            className="Demo__some-network__share-button"
+                        >
+                        <VKIcon size={44} />
+                        </VKShareButton>
+                    </div>
+
+                    <div style={{marginRight: '10px'}}>
+                        <OKShareButton
+                            url={shareUrl}
+                            // image={`${String(window.location)}/${exampleImage}`}
+                            className="Demo__some-network__share-button"
+                        >
+                        <OKIcon size={44} />
+                        </OKShareButton>
+                    </div>
+
+                    <div style={{marginRight: '10px'}}>
+                        <MailruShareButton
+                            url={shareUrl}
+                            title={textId}
+                            className="Demo__some-network__share-button"
+                        >
+                        <MailruIcon size={44} />
+                        </MailruShareButton>
+                    </div>
+
+                    <div style={{marginRight: '10px'}}>
+                        <EmailShareButton
+                            url={shareUrl}
+                            subject={textId}
+                            body="body"
+                            className="Demo__some-network__share-button"
+                        >
+                        <EmailIcon size={44} />
+                        </EmailShareButton>
+                    </div>
+
+                    <div style={{marginRight: '10px'}}>
+                        <ViberShareButton
+                            url={shareUrl}
+                            title={textId}
+                            className="Demo__some-network__share-button"
+                        >
+                        <ViberIcon size={44} />
+                        </ViberShareButton>
+                    </div>
+
+                  </ListItemIcon>
+                  <ListItemText />
+                </ListItemButton>
+              </ListItem>
+          </List>
+          <Divider />
+          <List>
+              <ListItem key={textId} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <InboxIcon />
+                  </ListItemIcon>
+                  Отправить ID
                   <ListItemText/>
                 </ListItemButton>
               </ListItem>
@@ -1004,7 +1108,7 @@ useEffect(()=> {
                         <Drawer
                             anchor={'bottom'}
                             open={state['bottom']}
-                            onClose={toggleDrawer('bottom', false)}
+                            onClose={toggleDrawerId('bottom', false)}
                         >
                             {list('bottom')}
                         </Drawer>
