@@ -761,7 +761,7 @@ useEffect(()=> {
                   <ListItemIcon>
                     <div style={{marginRight: '10px'}}>
                         <TelegramShareButton
-                            url={shareUrl}
+                            url={text + shareUrl}
                             title={textId + id}
                             className="Demo__some-network__share-button"
                         >
@@ -771,7 +771,7 @@ useEffect(()=> {
 
                     <div style={{marginRight: '10px'}}>
                         <WhatsappShareButton
-                            url={shareUrl}
+                            url={text + shareUrl}
                             title={textId + id}
                             separator=":: "
                             className="Demo__some-network__share-button"
@@ -838,12 +838,12 @@ useEffect(()=> {
           </List>
           <Divider />
           <List>
-              <ListItem key={textId} disablePadding>
+              <ListItem key={textId + id} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
                     <InboxIcon />
                   </ListItemIcon>
-                  Отправить ID
+                  Скопировать ID
                   <ListItemText/>
                 </ListItemButton>
               </ListItem>
