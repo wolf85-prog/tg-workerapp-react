@@ -625,23 +625,23 @@ useEffect(()=> {
 
         setShowPromoId(false)
 
-        if (navigator.share) {
-            navigator.share({
-            title: title,
-            text: text,
-            url: url,
-            textId: text,
-            id: id,
-            })
-            .catch(console.error)
-        } else {
+        // if (navigator.share) {
+        //     navigator.share({
+        //     title: title,
+        //     text: text,
+        //     url: url,
+        //     textId: text,
+        //     id: id,
+        //     })
+        //     .catch(console.error)
+        // } else {
             
             if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
                 return;
             }
         
             setState({ ...state, [anchor]: open });
-        }
+        //}
     };
 
 
