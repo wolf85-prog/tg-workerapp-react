@@ -600,21 +600,21 @@ useEffect(()=> {
 
         event.preventDefault()
 
-        if (navigator.share) {
-            navigator.share({
-            title: title,
-            text: text,
-            url: url,
-            })
-            .catch(console.error)
-        } else {
+        // if (navigator.share) {
+        //     navigator.share({
+        //     title: title,
+        //     text: text,
+        //     url: url,
+        //     })
+        //     .catch(console.error)
+        // } else {
             
             if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
                 return;
             }
         
             setState({ ...state, [anchor]: open });
-        }
+        //}
     };
 
     //отправить ID
@@ -651,7 +651,7 @@ useEffect(()=> {
                 return;
             }
         
-            setState2({ ...state2, [anchor]: open });
+            setState({ ...state, [anchor]: open });
         //}
     };
 
@@ -744,7 +744,7 @@ useEffect(()=> {
                 </ListItemButton>
               </ListItem>
           </List>
-          <Divider />
+          {/* <Divider />
           <List>
               <ListItem key={text} disablePadding>
                 <ListItemButton>
@@ -755,7 +755,7 @@ useEffect(()=> {
                   <ListItemText/>
                 </ListItemButton>
               </ListItem>
-          </List>
+          </List> */}
         </Box>
     );
 
