@@ -688,57 +688,6 @@ useEffect(()=> {
                         </WhatsappShareButton>
                     </div>
 
-                    <div style={{marginRight: '10px'}}>
-                        <VKShareButton
-                            url={shareUrl}
-                            // image={`${String(window.location)}/${exampleImage}`}
-                            className="Demo__some-network__share-button"
-                        >
-                        <VKIcon size={44} />
-                        </VKShareButton>
-                    </div>
-
-                    <div style={{marginRight: '10px'}}>
-                        <OKShareButton
-                            url={shareUrl}
-                            // image={`${String(window.location)}/${exampleImage}`}
-                            className="Demo__some-network__share-button"
-                        >
-                        <OKIcon size={44} />
-                        </OKShareButton>
-                    </div>
-
-                    <div style={{marginRight: '10px'}}>
-                        <MailruShareButton
-                            url={shareUrl}
-                            title={title}
-                            className="Demo__some-network__share-button"
-                        >
-                        <MailruIcon size={44} />
-                        </MailruShareButton>
-                    </div>
-
-                    <div style={{marginRight: '10px'}}>
-                        <EmailShareButton
-                            url={shareUrl}
-                            subject={title}
-                            body="body"
-                            className="Demo__some-network__share-button"
-                        >
-                        <EmailIcon size={44} />
-                        </EmailShareButton>
-                    </div>
-
-                    <div style={{marginRight: '10px'}}>
-                        <ViberShareButton
-                            url={shareUrl}
-                            title={title}
-                            className="Demo__some-network__share-button"
-                        >
-                        <ViberIcon size={44} />
-                        </ViberShareButton>
-                    </div>
-
                   </ListItemIcon>
                   <ListItemText />
                 </ListItemButton>
@@ -790,57 +739,6 @@ useEffect(()=> {
                         >
                         <WhatsappIcon size={44} />
                         </WhatsappShareButton>
-                    </div>
-
-                    <div style={{marginRight: '10px'}}>
-                        <VKShareButton
-                            url={shareUrl}
-                            // image={`${String(window.location)}/${exampleImage}`}
-                            className="Demo__some-network__share-button"
-                        >
-                        <VKIcon size={44} />
-                        </VKShareButton>
-                    </div>
-
-                    <div style={{marginRight: '10px'}}>
-                        <OKShareButton
-                            url={shareUrl}
-                            // image={`${String(window.location)}/${exampleImage}`}
-                            className="Demo__some-network__share-button"
-                        >
-                        <OKIcon size={44} />
-                        </OKShareButton>
-                    </div>
-
-                    <div style={{marginRight: '10px'}}>
-                        <MailruShareButton
-                            url={shareUrl}
-                            title={textId + id}
-                            className="Demo__some-network__share-button"
-                        >
-                        <MailruIcon size={44} />
-                        </MailruShareButton>
-                    </div>
-
-                    <div style={{marginRight: '10px'}}>
-                        <EmailShareButton
-                            url={shareUrl}
-                            subject={textId + id}
-                            body="body"
-                            className="Demo__some-network__share-button"
-                        >
-                        <EmailIcon size={44} />
-                        </EmailShareButton>
-                    </div>
-
-                    <div style={{marginRight: '10px'}}>
-                        <ViberShareButton
-                            url={shareUrl}
-                            title={textId + id}
-                            className="Demo__some-network__share-button"
-                        >
-                        <ViberIcon size={44} />
-                        </ViberShareButton>
                     </div>
 
                   </ListItemIcon>
@@ -1125,7 +1023,7 @@ useEffect(()=> {
                     <div className='rectangle-modal3'></div>
 
                     <p className='vagno'></p>
-                    <p className='text-promo'>Здесь будут отображены твои навыки, модели пультов и опыт работ с различными видами оборудования. 
+                    <p className='text-promo'>Здесь будут отображены твои навыки, модели пультов и опыт работы с различными видами оборудования. 
 Появляются автоматически, после диалога с менеджером «U.L.E.Y».</p>
                     <div className='button-ok' onClick={()=>setShowKompInfo(false)}>
                         <div className='rec-button'>Хорошо</div>
@@ -1161,7 +1059,7 @@ useEffect(()=> {
 
                     <p className='vagno'></p>
                     <p className='text-promo'>Отредактируй свои данные через «карандаш». 
-Выбери основную специальность и подкатегории, их может быть одна или несколько.</p>
+Выбери категорию и специальность, их может быть одна или несколько.</p>
                     <div className='button-ok' onClick={()=>setShowProfileInfo(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
@@ -1183,7 +1081,7 @@ useEffect(()=> {
 <br/><br/>Для этого нажми Workhub внизу экрана, «+» в центре и поделись ссылкой. 
 <br/><br/>В конце регистрации напомни другу внести данные твоего ID.
 <br/><br/>Ты, и каждый приглашенный тобою, получите по 3 000 рублей, как только все друзья отработают по 3 проекта [по 30 часов].
-<br/><br/>Дружи выгодно!</p>
+<br/><br/>Дружи пока молодой!</p>
                     <div className='button-ok' onClick={()=>setShowMoreInfo(false)}>
                         <div className='rec-button'>Хорошо</div>
                         

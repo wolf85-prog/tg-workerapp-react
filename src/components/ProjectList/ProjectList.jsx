@@ -80,7 +80,7 @@ const ProjectList = ({posts, title, width, shkala}) => {
                     <img onClick={()=>setShowInfoProj(false)} src={Close} alt='' style={{position: 'absolute', right: '18px', top: '18px', width: '15px'}}/>
 
                     <p className='vagno'></p>
-                    <p className='text-promo'>Чтобы выйти на проект, выбери его в нужной рассылке и нажми кнопку «Принять».
+                    <p className='text-promo'>Чтобы выйти на работу по проекту, выбери его в нужной рассылке и нажми кнопку «Принять».
 <br/><br/>Бонус! «3 000 рублей за троих твоих друзей»</p>
                     {/* <div className='button-more' onClick={()=>setShowInfoProj(false)}>
                         <div className='rec-button'>Подробнее</div>         
@@ -101,9 +101,9 @@ const ProjectList = ({posts, title, width, shkala}) => {
                     <p className='text-promo' style={{top: '25px'}}>Акция «3 000 рублей за троих твоих друзей».
                     <br/><br/>Скопируй свой ID и вместе с ним отправь приглашения троим друзьям, не подписанным на проекты «U.L.E.Y». 
 <br/><br/>Для этого нажми Workhub внизу экрана, «+» в центре и поделись ссылкой. 
-<br/><br/>В конце регистрации напомни другу внести данные твоего ID.
+<br/><br/>Напомни другу, что в конце регистрации он должен указать твой ID.
 <br/><br/>Ты, и каждый приглашенный тобою, получите по 3 000 рублей, как только все друзья отработают по 3 проекта [по 30 часов].
-<br/><br/>Дружи выгодно!</p>
+<br/><br/>Дружи пока молодой!</p>
                     <div className='button-ok' onClick={clickAkcia}>
                         <div className='rec-button'>Хорошо</div>
                         
