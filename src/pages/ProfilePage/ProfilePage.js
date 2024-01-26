@@ -651,7 +651,7 @@ useEffect(()=> {
                 return;
             }
         
-            setState2({ ...state, [anchor]: open });
+            setState2({ ...state2, [anchor]: open });
         //}
     };
 
