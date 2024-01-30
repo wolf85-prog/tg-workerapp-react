@@ -7,7 +7,8 @@ import { useUsersContext } from "../../contexts/UserContext"
 import { getWorkerId } from '../../http/chatAPI';
 
 import logo_small from '../../image/logo.gif'
-import logo_big from '../../image/logo_Iphone5.gif'
+import logo_mid from '../../image/logo_Iphone5.gif'
+import logo_big from '../../image/logo_Iphone6.gif'
 
 
 const LoadPage = () => {
@@ -76,7 +77,8 @@ const LoadPage = () => {
     return (
         <div className="App" style={{display: 'flex', height: '100vh'}}>
             {isScreenLg && (<img src={logo_big} alt="loading..." width='100%' />)}
-            {isScreenMd && (<img src={logo_small} alt="loading..." width='100%' />)}
+            {isScreenMd && (<img src={logo_mid} alt="loading..." width='100%' />)}
+            {isScreenSm && (<img src={logo_small} alt="loading..." width='100%' />)}
         </div>
     );
 };
