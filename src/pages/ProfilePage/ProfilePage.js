@@ -25,7 +25,7 @@ import StarActive from "../../image/new/star_activ.svg";
 import Edit from "../../image/new/edit.svg"
 import Vector from "../../image/new/vector.svg"
 import VectorUp from "../../image/new/vector_up.svg"
-import Workhub from "../../image/new/wokhub.svg"
+import Workhub from "../../image/new/WorkHub.gif"
 import QRCode from "../../image/new/QR_Code.svg"
 import Close from "../../image/new/close.svg"
 import ClosePress from "../../image/new/close_press.svg"

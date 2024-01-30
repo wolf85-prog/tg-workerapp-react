@@ -6,7 +6,8 @@ import './LoadPage.css';
 import { useUsersContext } from "../../contexts/UserContext"
 import { getWorkerId } from '../../http/chatAPI';
 
-import logo from '../../image/logo.gif'
+import logo_small from '../../image/logo.gif'
+import logo_big from '../../image/logo_Iphone5.gif'
 
 
 const LoadPage = () => {
@@ -19,7 +20,9 @@ const LoadPage = () => {
     const { workerhub: worker, flag, setSpecId } = useUsersContext();
     const [workerId, setWorkerId] = useState('')
 
-    const { width, isScreenSm, isScreenMd, isScreenLg, } = useResize();
+    const { width, isScreenSm, isScreenMd, isScreenLg } = useResize();
+
+    //const [matches, setMatches] = useState(window.matchMedia("(min-width: 768px)").matches)
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже
@@ -72,7 +75,8 @@ const LoadPage = () => {
 
     return (
         <div className="App" style={{display: 'flex', height: '100vh'}}>
-            <img src={logo} alt="loading..." width='100%' />
+            {isScreenLg && (<img src={logo_big} alt="loading..." width='100%' />)}
+            {isScreenMd && (<img src={logo_small} alt="loading..." width='100%' />)}
         </div>
     );
 };
