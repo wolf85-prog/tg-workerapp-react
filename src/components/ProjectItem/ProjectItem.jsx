@@ -56,16 +56,16 @@ const ProjectItem = (props) => {
     useEffect(()=> {
         console.log("props: ", props.post.smeta, specId)
 
-        setChasiView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.chasi : '')
-        setStavkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.stavka : '...')
-        setSmenaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.smena : '...')
-        setPererabotkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.pererabotka : '...')
+        setChasiView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.chasi : '')
+        setStavkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.stavka : '...')
+        setSmenaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.smena : '...')
+        setPererabotkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.pererabotka : '...')
         
 
-        console.log("setChasiView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.chasi : '...')
-        console.log("setStavkaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.stavka : '...')
-        console.log("setSmenaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.smena : '...')
-        console.log("setSmenaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.pererabotka : '...')
+        console.log("setChasiView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.chasi : '...')
+        console.log("setStavkaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.stavka : '...')
+        console.log("setSmenaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.smena : '...')
+        console.log("setSmenaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.pererabotka : '...')
         
         
         const dateTemp = props.post.specs.date
