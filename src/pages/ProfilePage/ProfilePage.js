@@ -578,8 +578,13 @@ useEffect(()=> {
 
 
     const clickAddSpec = () => {
-        setShowKompInfo(false)
+        setShowProfileInfo(false)
         setShowAddSpec(true)  
+    }
+
+    const onClickClose = () => {
+        setShowProfileInfo(false)
+        setShowAddSpec(false)  
     }
 
 
@@ -767,7 +772,7 @@ useEffect(()=> {
     return (
         <div className="App" style={{overflowX: 'hidden'}}>
 
-            <Header header={{title: `${headerName}`, icon: 'false', menu: `${Workhub}`}}/>
+            <Header header={{title: `${headerName}`, icon: 'false', menu: `${Workhub}`}} setShowModal={setShowMoreInfo} showModal={showMoreInfo}/>
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
@@ -1061,8 +1066,7 @@ useEffect(()=> {
                     <p className='text-promo'>Отредактируй свои данные через «карандаш». 
 Выбери категорию и специальность, их может быть одна или несколько.</p>
                     <div className='button-ok' onClick={()=>setShowProfileInfo(false)}>
-                        <div className='rec-button'>Хорошо</div>
-                        
+                        <div className='rec-button'>Хорошо</div>      
                     </div>
                 </div>
             </MyModal>
@@ -1096,7 +1100,7 @@ useEffect(()=> {
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <img onClick={()=>{setShowAddSpec(false); setShowKompInfo(false)}} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
+                    <img onClick={onClickClose} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
 
                     <p className='vagno'>Добавить специальность</p>
                     <div style={{position: 'relative', marginTop: '60px', marginLeft: '25px', marginRight: '25px'}}>

@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 import {useTelegram} from "../../hooks/useTelegram";
 import './Header.css';
-
+import MyModal from "../../components/MyModal/MyModal";
 import Menu from "../../image/new/menu.svg";
 import MenuFilter from "../../image/new/menuFilter.svg";
 
-const Header = ({filter, setFilter, header}) => {
+const Header = ({filter, setFilter, header, setShowModal, showModal}) => {
     // const {user} = useTelegram();
 
     const [showFilter, setShowFilter] = useState(false)
     const [buttonPress, setButtonPress] = useState(false);
+    const [showMoreInfo, setShowMoreInfo] = useState(false)
 
     const onClickFilter = () => {
         showFilter ? setShowFilter(false) : setShowFilter(true)
     } 
+
+    const onClickWorkhub = () => {
+        showModal ? setShowModal(false) : setShowModal(true)
+    }
 
 
     //filter.query
@@ -35,7 +40,7 @@ const Header = ({filter, setFilter, header}) => {
 
             <span className={'username'} >
                 {header.icon !== 'true' ?
-                 <img src = {header.menu} alt="" className='header-icon'/> 
+                 <img src = {header.menu} onClick={onClickWorkhub}  alt="" className='header-icon'/> 
                 : <img src = {Menu} alt="" onClick={onClickFilter} style={{display: showFilter ? 'none' : 'block'}}/>}
             </span>
 
@@ -50,7 +55,9 @@ const Header = ({filter, setFilter, header}) => {
                     </div>  
                 </div>     
             </div>
+
         </div>
+
     );
 };
 
