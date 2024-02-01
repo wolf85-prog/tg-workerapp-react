@@ -54,17 +54,18 @@ const ProjectItem = (props) => {
     const [pererabotkaView, setPererabotkaView] = useState(0);
 
     useEffect(()=> {
+        console.log("props: ", props.post.smeta, specId)
 
-        setChasiView(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.chasi : '')
-        setStavkaView(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.stavka : '...')
-        setSmenaView(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.smena : '...')
-        setPererabotkaView(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.pererabotka : '...')
+        setChasiView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.chasi : '')
+        setStavkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.stavka : '...')
+        setSmenaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.smena : '...')
+        setPererabotkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.pererabotka : '...')
         
 
-        console.log(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.chasi : '...')
-        console.log(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.stavka : '...')
-        console.log(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.smena : '...')
-        console.log(props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === props.post.specs.date)[0]?.pererabotka : '...')
+        console.log("setChasiView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.chasi : '...')
+        console.log("setStavkaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.stavka : '...')
+        console.log("setSmenaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.smena : '...')
+        console.log("setSmenaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && item.date === props.post.specs.date)?.pererabotka : '...')
         
         
         const dateTemp = props.post.specs.date
@@ -248,9 +249,9 @@ const ProjectItem = (props) => {
                             <li className='item-list'><div>Специальность</div>{props.post.specs.spec}</li>
                             <li className='item-list'><div>Вид работ</div>{props.post.specs.vid}</li>
                             <li className='item-list'><div>Часы</div>{chasiView ? chasiView : "0"}</li>
-                            <li className='item-list'><div>Ставка</div>{isNaN(stavkaView) ? "0.00" : parseInt(stavkaView).toLocaleString()+".00"}</li>
-                            <li className='item-list'><div>Смена</div>{isNaN(smenaView) ? "0.00" : parseInt(smenaView).toLocaleString()+".00"}</li>
-                            <li className='item-list'><div>Переработка</div>{isNaN(pererabotkaView) ? "0.00" : parseInt(pererabotkaView).toLocaleString()+".00"}</li>
+                            <li className='item-list'><div>Ставка</div>{isNaN(stavkaView) || stavkaView === null ? "0.00" : parseInt(stavkaView).toLocaleString()+".00"}</li>
+                            <li className='item-list'><div>Смена</div>{isNaN(smenaView)|| stavkaView === null ? "0.00" : parseInt(smenaView).toLocaleString()+".00"}</li>
+                            <li className='item-list'><div>Переработка</div>{isNaN(pererabotkaView)|| stavkaView === null ? "0.00" : parseInt(pererabotkaView).toLocaleString()+".00"}</li>
                             <li className='item-list'><div>Доп. расходы</div>{"0.00"}</li>
                         </ul>
                     </div>

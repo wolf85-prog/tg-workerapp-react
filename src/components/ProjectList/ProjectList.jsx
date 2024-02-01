@@ -28,7 +28,7 @@ const ProjectList = ({posts, title, width, shkala}) => {
         setShowInfoProj(false)
     }
     
-    if (posts.length) {
+    if (!posts.length) {
         return (
             // <h2 style={{textAlign: 'center', paddingTop: '80px', paddingBottom: '80px'}}>
             //     Проекты не найдены
