@@ -232,12 +232,17 @@ useEffect(()=> {
 
         const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
         console.log("tempArr: ", tempArr)
+        
         tempArr.map((item)=> {
             if (item.smeta ) {
-                //console.log("смета: ", item.smeta)
-                let stavka =  item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
-                tempSum = tempSum + stavka
+                console.log("смета: ", item.smeta)
+                const dateTemp = item.specs.date
+                //console.log("date main: ", new Date(dateTemp))
+
+                let stavka =  item.smeta.find((item2) => item2.fio_id === workerId && (new Date(item2.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 2) && new Date(item2.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 2)))?.specialist
+                tempSum = tempSum + (stavka ? stavka : 0)
                 console.log("Ставка: ", stavka)
+                
             }   
             console.log("tempSum: ", tempSum)
         })
