@@ -624,40 +624,40 @@ useEffect(()=> {
 
     //отправить ID
     const toggleDrawerId = (anchor, open) => (event) => {
-        // const url="https://t.me/ULEY_Workhub_Bot"
-        // const title="ULEY Workhub" + " ID: " + user?.id
-        // const text="🔵 U.L.E.Y | Workhub"
-        // const textId="🔵 Промокод ID:"
-        // const id=user?.id
+        const url="https://t.me/ULEY_Workhub_Bot"
+        const title="ULEY Workhub" + " ID: " + user?.id
+        const text="🔵 U.L.E.Y | Workhub"
+        const textId="🔵 Промокод ID:"
+        const id=user?.id
 
         event.preventDefault()
 
         setShowPromoId(false)
 
-        //if (navigator.share) {
-            // navigator.share({
-            // title: title,
-            // text: text,
-            // url: url,
-            // textId: text,
-            // id: id,
-            // })
-            // .catch(console.error)
+        if (navigator.share) {
+            navigator.share({
+            title: title,
+            text: text,
+            url: url,
+            textId: text,
+            id: id,
+            })
+            .catch(console.error)
 
-        //     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-        //         return;
-        //     }
+            // if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            //     return;
+            // }
         
-        //     setState2({ ...state2, [anchor]: open });
+            // setState2({ ...state2, [anchor]: open });
 
-        // } else {
+        } else {
             
             if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
                 return;
             }
         
             setState({ ...state, [anchor]: open });
-        //}
+        }
     };
 
 
