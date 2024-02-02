@@ -639,8 +639,6 @@ useEffect(()=> {
             title: title,
             text: text,
             url: url,
-            textId: text,
-            id: id,
             })
             .catch(console.error)
 
