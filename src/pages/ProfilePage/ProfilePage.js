@@ -727,7 +727,7 @@ useEffect(()=> {
 
                     <div style={{marginRight: '10px'}}>
                         <WhatsappShareButton
-                            url={text +" "+ shareUrl}
+                            url={`tg://msg_url?url=${shareUrl}&text=${text}`}
                             title={textId + id}
                             separator=" "
                             className="Demo__some-network__share-button"
