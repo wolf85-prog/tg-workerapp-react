@@ -625,8 +625,8 @@ useEffect(()=> {
     //отправить ID
     const toggleDrawerId = (anchor, open) => (event) => {
         const url="https://t.me/ULEY_Workhub_Bot"
-        const title="ULEY Workhub" + " ID: " + user?.id
-        const text="🔵 U.L.E.Y | Workhub"
+        const title="ULEY Workhub ID: "
+        const text="🔵 U.L.E.Y | Workhub 🔵 Промокод ID:"
         const textId="🔵 Промокод ID:"
         const id=user?.id
 
@@ -641,15 +641,7 @@ useEffect(()=> {
             url: url,
             })
             .catch(console.error)
-
-            // if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            //     return;
-            // }
-        
-            // setState2({ ...state2, [anchor]: open });
-
-        } else {
-            
+        } else {   
             if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
                 return;
             }
