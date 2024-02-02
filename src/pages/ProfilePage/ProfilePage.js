@@ -626,9 +626,7 @@ useEffect(()=> {
     const toggleDrawerId = (anchor, open) => (event) => {
         const url="https://t.me/ULEY_Workhub_Bot"
         const title="ULEY Workhub ID: "
-        const text="🔵 U.L.E.Y | Workhub \n🔵 Промокод ID: " + user?.id
-        const textId="🔵 Промокод ID:"
-        const id=user?.id
+        const text="🔵 U.L.E.Y | Workhub https://t.me/ULEY_Workhub_Bot \n\n🔵 Промокод ID: " + user?.id
 
         event.preventDefault()
 
