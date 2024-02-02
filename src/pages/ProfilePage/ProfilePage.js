@@ -938,7 +938,7 @@ useEffect(()=> {
                     <div className='button_info' onClick={clickMoreInfo}>Подробнее</div>
                     {/* <div onClick={onShareClick} className='button_podel'>Поделиться</div> */}
 
-                    <React.Fragment key={'bottom'}>
+                    {/* <React.Fragment key={'bottom'}>
                         <div className='button_podel' onClick={toggleDrawer('bottom', true)}>
                             Поделиться                       
                         </div>
@@ -948,6 +948,22 @@ useEffect(()=> {
                             onClose={toggleDrawer('bottom', false)}
                         >
                             {list('bottom')}
+                        </Drawer>
+                    </React.Fragment> */}
+
+                    <React.Fragment key={'bottom'}>
+                        <div className='button-ok'>
+                            <div className='rec-button' onClick={toggleDrawerId('bottom', true)}>
+                                Поделиться                       
+                            </div>
+                        </div>
+                        
+                        <Drawer
+                            anchor={'bottom'}
+                            open={state['bottom']}
+                            onClose={toggleDrawerId('bottom', false)}
+                        >
+                            {list2('bottom')}
                         </Drawer>
                     </React.Fragment>
                     
