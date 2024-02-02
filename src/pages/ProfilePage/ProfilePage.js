@@ -624,30 +624,30 @@ useEffect(()=> {
 
     //отправить ID
     const toggleDrawerId = (anchor, open) => (event) => {
-        // const url="https://t.me/ULEY_Workhub_Bot"
-        // const title="ULEY Workhub ID: "
-        // const text="🔵 U.L.E.Y | Workhub 🔵 Промокод ID:"
-        // const textId="🔵 Промокод ID:"
-        // const id=user?.id
+        const url="https://t.me/ULEY_Workhub_Bot"
+        const title="ULEY Workhub ID: "
+        const text="🔵 U.L.E.Y | Workhub 🔵 Промокод ID:" + user?.id
+        const textId="🔵 Промокод ID:"
+        const id=user?.id
 
         event.preventDefault()
 
         setShowPromoId(false)
 
-        // if (navigator.share) {
-        //     navigator.share({
-        //     title: title,
-        //     text: text,
-        //     url: url,
-        //     })
-        //     .catch(console.error)
-        // } else {   
+        if (navigator.share) {
+            navigator.share({
+            title: title,
+            text: text,
+            //url: url,
+            })
+            .catch(console.error)
+        } else {   
             if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
                 return;
             }
         
             setState({ ...state, [anchor]: open });
-        //}
+        }
     };
 
 
@@ -727,7 +727,7 @@ useEffect(()=> {
 
                     <div style={{marginRight: '10px'}}>
                         <WhatsappShareButton
-                            url={`tg://msg_url?url=${shareUrl}&text=${text}`}
+                            url={text +" "+ shareUrl}
                             title={textId + id}
                             separator=" "
                             className="Demo__some-network__share-button"
