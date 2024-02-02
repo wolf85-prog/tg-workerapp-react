@@ -158,7 +158,7 @@ const ProfilePage = () => {
 
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const worker = await getWorkerId('805436270') //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             //console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -734,6 +734,15 @@ useEffect(()=> {
                         >
                         <WhatsappIcon size={44} />
                         </WhatsappShareButton>
+                    </div>
+
+                    <div style={{marginRight: '10px'}}>
+                        <VKShareButton
+                            url={shareUrl}
+                            className="Demo__some-network__share-button"
+                        >
+                        <VKIcon size={44} />
+                        </VKShareButton>
                     </div>
 
                   </ListItemIcon>
