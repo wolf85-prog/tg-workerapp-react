@@ -55,22 +55,21 @@ const ProjectItem = (props) => {
 
     useEffect(()=> {
         console.log("props: ", props.post.smeta, specId)
+        
+        const dateTemp = props.post.specs.date
 
-        setChasiView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.chasi : '')
-        setStavkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.stavka : '...')
-        setSmenaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.smena : '...')
-        setPererabotkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.pererabotka : '...')
+        setChasiView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.chasi : '')
+        setStavkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.stavka : '...')
+        setSmenaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.smena : '...')
+        setPererabotkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.pererabotka : '...')
         
 
         // console.log("setChasiView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.chasi : '...')
         // console.log("setStavkaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.stavka : '...')
         // console.log("setSmenaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.smena : '...')
         // console.log("setSmenaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.pererabotka : '...')
-        
-        
-        const dateTemp = props.post.specs.date
 
-        const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && item.date === dateTemp)[0]?.specialist : ""
+        const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1))[0]?.specialist : ""
         setFact(fact)
         //console.log("fact: ", fact)
     

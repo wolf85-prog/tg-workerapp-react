@@ -1099,9 +1099,28 @@ useEffect(()=> {
 <br/><br/>Напомни другу, что в конце регистрации он должен указать твой ID.
 <br/><br/>Ты, и каждый приглашенный тобою, получите по 3 000 рублей, как только все друзья отработают по 3 проекта [по 30 часов].
 <br/><br/>Дружи пока молодой!</p>
-                    <div className='button-ok' onClick={()=>setShowMoreInfo(false)}>
-                        <div className='rec-button'>Хорошо</div>
-                        
+                    <div>
+                        {/* <div className='button-ok' onClick={()=>setShowMoreInfo(false)}>
+                            <div className='rec-button'>Отправить</div>
+                        </div>  */}
+                        <React.Fragment key={'bottom'}>
+                            <div className='button-ok'>
+                                <div className='rec-button' onClick={toggleDrawerId('bottom', true)}>
+                                    Отправить                       
+                                </div>
+                            </div>
+                            
+                            <Drawer
+                                anchor={'bottom'}
+                                open={state['bottom']}
+                                onClose={toggleDrawerId('bottom', false)}
+                            >
+                                {list2('bottom')}
+                            </Drawer>
+                        </React.Fragment>
+                        <div className='button-ok' style={{left: '20px'}} onClick={()=>setShowMoreInfo(false)}>
+                            <div className='rec-button'>Понятно</div>
+                        </div>
                     </div>
                 </div>
             </MyModal>
