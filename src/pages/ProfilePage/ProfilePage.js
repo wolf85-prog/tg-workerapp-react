@@ -599,7 +599,7 @@ useEffect(()=> {
  
     //поделиться ссылкой
     const toggleDrawer = (anchor, open) => (event) => {
-        const url="https://t.me/ULEY_Workhub_Bot"
+        const url="🔵 U.L.E.Y | Workhub https://t.me/ULEY_Workhub_Bot"
         const title="ULEY Workhub"
         const text="U.L.E.Y | Workhub"
 
@@ -624,7 +624,7 @@ useEffect(()=> {
 
     //отправить ID
     const toggleDrawerId = (anchor, open) => (event) => {
-        const url="https://t.me/ULEY_Workhub_Bot"
+        const url="🔵 U.L.E.Y | Workhub https://t.me/ULEY_Workhub_Bot"
         const title="ULEY Workhub ID: "
         const text="🔵 U.L.E.Y | Workhub 🔵 Промокод ID:"
         const textId="🔵 Промокод ID:"
