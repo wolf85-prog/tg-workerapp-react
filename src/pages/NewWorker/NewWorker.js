@@ -165,7 +165,7 @@ const NewWorker = () => {
 
         setWorker({...worker, spec: model.name})
         
-        setDisabledBtn(false)
+        //setDisabledBtn(false)
     }
 
 
@@ -197,19 +197,22 @@ const NewWorker = () => {
     }
 
     const addNewWorker2 = (e) => {
-        setShowFIO(true)
-        setShowBlockCity(true)
+        //console.log(phone.length)
+        if (phone.length === 18 && workerFam.length > 3 && workerName.length > 0) {
+            setShowFIO(true)
+            setShowBlockCity(true)
 
-        let str = ''
-        str = `${workerFam} ${workerName} | ${phone}`
-        console.log("str2: ", str)
+            let str = ''
+            str = `${workerFam} ${workerName} | ${phone}`
+            console.log("str2: ", str)
 
-        let canvas = document.createElement('canvas');
-        let ctx = canvas.getContext("2d");
-        ctx.font = "14px Arial";        
-        let widthX = Math.round(ctx.measureText(str).width);
+            let canvas = document.createElement('canvas');
+            let ctx = canvas.getContext("2d");
+            ctx.font = "14px Arial";        
+            let widthX = Math.round(ctx.measureText(str).width);
 
-        setWidthStr2(widthX)
+            setWidthStr2(widthX)
+        }
     }
 
     const editNewWorker2 = (e) => {
@@ -245,7 +248,7 @@ const NewWorker = () => {
         setPhone(e.target.value)
         //console.log(phone.length)
 
-        setDisabledBtn(false)
+        //setDisabledBtn(false)
     }
 
     const onChangeCity = (e) => {
@@ -546,7 +549,7 @@ const NewWorker = () => {
 
                     {!showFIO ? 
                     <button 
-                        disabled={disabledBtn}
+                        disabled={false}
                         className="image-button-add" 
                         style={{ backgroundImage: `url(${btnSave})`}}
                         onClick={addNewWorker2}
@@ -554,7 +557,7 @@ const NewWorker = () => {
                         Добавить
                     </button> 
                     :<button 
-                        disabled={disabledBtn}
+                        disabled={false}
                         className="image-button-add" 
                         style={{ backgroundImage: `url(${btnSave})`}}
                         onClick={editNewWorker2}
