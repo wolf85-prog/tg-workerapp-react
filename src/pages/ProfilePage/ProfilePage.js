@@ -204,29 +204,30 @@ useEffect(()=> {
         //console.log("smets: ", smets)
 
         let tempSum = 0
-        projects.map((project, index)=> {
+        projects.map((project, index)=> {            
             let smetaObject = smets.find((proj) => proj.projectId === project.id)
 
             const specsArr = JSON.parse(project.specs)
             //console.log("specsArr: ", specsArr)
 
             specsArr.map((spec, index) => {
-                if (spec.id === workerId) {
-                    const newProject = {
-                        id: project.id,
-                        title: project.title,
-                        date_start: project.dateStart,
-                        date_end: project.dateEnd,
-                        tgURL_chat: project.tgURLchat,
-                        status: JSON.parse(project.status),
-                        specs: spec, 
-                        smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
-                        finalSmeta: smetaObject ? smetaObject?.final : "",
-                        statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
-                    }
-                    //console.log(newProject)
-                    arrayProject.push(newProject)
-                }   
+                //проекты после 31.01.2024
+                    if (spec.id === workerId && new Date(spec.date).getTime() > new Date(2024, 0, 31).getTime()) {
+                        const newProject = {
+                            id: project.id,
+                            title: project.title,
+                            date_start: project.dateStart,
+                            date_end: project.dateEnd,
+                            tgURL_chat: project.tgURLchat,
+                            status: JSON.parse(project.status),
+                            specs: spec, 
+                            smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
+                            finalSmeta: smetaObject ? smetaObject?.final : "",
+                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
+                        }
+                        //console.log(newProject)
+                        arrayProject.push(newProject)
+                    }   
             })
         })
 
@@ -263,21 +264,23 @@ useEffect(()=> {
         console.log(filter.query)
 
         sortedAndSearchedPosts.map((project)=> {
-            //console.log(project)
-            const newProject = {
-                id: project.id,
-                title: project.title,
-                date_start: project.date_start,
-                date_end: project.date_end,
-                dateMain: project.specs.date, //find(item => item.id === workerId).date,
-                tgURL_chat: project.tgURL_chat,
-                status: project.status,
-                specs: project.specs,
-                smeta: project.smeta,
-                finalSmeta: project.finalSmeta,
-                statusMoney: project.statusMoney,
+            //проекты после 31.01.2024
+            if (new Date(project.specs.date).getTime() > new Date(2024, 0, 31).getTime()) {
+                const newProject = {
+                    id: project.id,
+                    title: project.title,
+                    date_start: project.date_start,
+                    date_end: project.date_end,
+                    dateMain: project.specs.date, //find(item => item.id === workerId).date,
+                    tgURL_chat: project.tgURL_chat,
+                    status: project.status,
+                    specs: project.specs,
+                    smeta: project.smeta,
+                    finalSmeta: project.finalSmeta,
+                    statusMoney: project.statusMoney,
+                }
+                sortArray.push(newProject)
             }
-            sortArray.push(newProject)
         })
         console.log("change: ", sortArray)
 
