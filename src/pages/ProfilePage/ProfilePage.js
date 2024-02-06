@@ -204,40 +204,46 @@ useEffect(()=> {
         //console.log("smets: ", smets)
 
         let tempSum = 0
-        projects.map((project, index)=> {
+        projects.map((project, index)=> {            
             let smetaObject = smets.find((proj) => proj.projectId === project.id)
 
             const specsArr = JSON.parse(project.specs)
             //console.log("specsArr: ", specsArr)
 
             specsArr.map((spec, index) => {
-                if (spec.id === workerId) {
-                    const newProject = {
-                        id: project.id,
-                        title: project.title,
-                        date_start: project.dateStart,
-                        date_end: project.dateEnd,
-                        tgURL_chat: project.tgURLchat,
-                        status: JSON.parse(project.status),
-                        specs: spec, 
-                        smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
-                        finalSmeta: smetaObject ? smetaObject?.final : "",
-                        statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
-                    }
-                    //console.log(newProject)
-                    arrayProject.push(newProject)
-                }   
+                //проекты после 31.01.2024
+                    if (spec.id === workerId && new Date(spec.date).getTime() > new Date(2024, 0, 31).getTime()) {
+                        const newProject = {
+                            id: project.id,
+                            title: project.title,
+                            date_start: project.dateStart,
+                            date_end: project.dateEnd,
+                            tgURL_chat: project.tgURLchat,
+                            status: JSON.parse(project.status),
+                            specs: spec, 
+                            smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
+                            finalSmeta: smetaObject ? smetaObject?.final : "",
+                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
+                        }
+                        //console.log(newProject)
+                        arrayProject.push(newProject)
+                    }   
             })
         })
 
         const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
         console.log("tempArr: ", tempArr)
+        
         tempArr.map((item)=> {
             if (item.smeta ) {
-                //console.log("смета: ", item.smeta)
-                let stavka =  item.smeta.find((item2) => item2.fio_id === workerId)?.specialist
-                tempSum = tempSum + stavka
+                console.log("смета: ", item.smeta)
+                const dateTemp = item.specs.date
+                //console.log("date main: ", new Date(dateTemp))
+
+                let stavka =  item.smeta.find((item2) => item2.fio_id === workerId && (new Date(item2.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 2) && new Date(item2.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 2)))?.specialist
+                tempSum = tempSum + (stavka ? stavka : 0)
                 console.log("Ставка: ", stavka)
+                
             }   
             console.log("tempSum: ", tempSum)
         })
@@ -258,21 +264,23 @@ useEffect(()=> {
         console.log(filter.query)
 
         sortedAndSearchedPosts.map((project)=> {
-            //console.log(project)
-            const newProject = {
-                id: project.id,
-                title: project.title,
-                date_start: project.date_start,
-                date_end: project.date_end,
-                dateMain: project.specs.date, //find(item => item.id === workerId).date,
-                tgURL_chat: project.tgURL_chat,
-                status: project.status,
-                specs: project.specs,
-                smeta: project.smeta,
-                finalSmeta: project.finalSmeta,
-                statusMoney: project.statusMoney,
+            //проекты после 31.01.2024
+            if (new Date(project.specs.date).getTime() > new Date(2024, 0, 31).getTime()) {
+                const newProject = {
+                    id: project.id,
+                    title: project.title,
+                    date_start: project.date_start,
+                    date_end: project.date_end,
+                    dateMain: project.specs.date, //find(item => item.id === workerId).date,
+                    tgURL_chat: project.tgURL_chat,
+                    status: project.status,
+                    specs: project.specs,
+                    smeta: project.smeta,
+                    finalSmeta: project.finalSmeta,
+                    statusMoney: project.statusMoney,
+                }
+                sortArray.push(newProject)
             }
-            sortArray.push(newProject)
         })
         console.log("change: ", sortArray)
 
@@ -952,10 +960,8 @@ useEffect(()=> {
                     </React.Fragment> */}
 
                     <React.Fragment key={'bottom'}>
-                        <div className='button-ok'>
-                            <div className='rec-button' onClick={toggleDrawerId('bottom', true)}>
-                                Поделиться                       
-                            </div>
+                        <div className='button_podel' onClick={toggleDrawerId('bottom', true)}>
+                            Поделиться                       
                         </div>
                         
                         <Drawer
