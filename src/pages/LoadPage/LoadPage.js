@@ -76,9 +76,9 @@ const LoadPage = () => {
 
     return (
         <div className="App" style={{display: 'flex', height: '100vh'}}>
-            {isScreenLg && (<img src={logo_big} alt="loading..." width='100%' />)}
+            {/* {isScreenLg && (<img src={logo_big} alt="loading..." width='100%' />)} */}
             {isScreenMd && (<img src={logo_mid} alt="loading..." width='100%' />)}
-            {isScreenSm && (<img src={logo_small} alt="loading..." width='100%' />)}
+            {/* {isScreenSm && (<img src={logo_small} alt="loading..." width='100%' />)} */}
         </div>
     );
 };
