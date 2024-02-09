@@ -23,6 +23,7 @@ import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 import Star from "../../image/new/star.png";
 import StarActive from "../../image/new/star_activ.svg";
 import Edit from "../../image/new/edit.svg"
+import Edit2 from "../../image/new/edit2.svg"
 import Vector from "../../image/new/vector.svg"
 import VectorUp from "../../image/new/vector_up.svg"
 import Workhub from "../../image/new/WorkHub.gif"
@@ -794,9 +795,10 @@ useEffect(()=> {
                         <p className="profile_fio">{workerhub[0]?.fio}</p>
                         <div className="card-specs bullet">
                             <ul onClick={()=>setShowProfileInfo(true)}>
-                                {workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' 
+                                {workerhub[0]?.spec.length > 0 ? workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' 
                                 ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={clickAddSpec} alt='' style={{marginLeft: '20px', width: '12px'}}/> }</li>
-                                : '' )}
+                                : '')
+                                : <li className="bullet-title" style={{color: 'red', fontWeight: 'bold'}}>Добавь свою специальность <img src={Edit2} onClick={clickAddSpec} alt='' style={{marginLeft: '20px', width: '12px'}}/> </li> }
                             </ul>   
                         </div>     
                     </div>
