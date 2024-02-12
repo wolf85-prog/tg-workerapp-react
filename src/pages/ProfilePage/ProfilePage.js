@@ -142,6 +142,7 @@ const ProfilePage = () => {
     const [showDohodInfo, setShowDohodInfo] = useState(false)
     const [showMoreInfo, setShowMoreInfo] = useState(false)
     const [showProfileInfo, setShowProfileInfo] = useState(false)
+    const [showRazrab, setShowRazrab] = useState(false)
 
     const API_URL = process.env.REACT_APP_API_URL
 
@@ -914,7 +915,7 @@ useEffect(()=> {
             </>
             }
 
-            <div className='footer-block' style={{display: showFooter ? 'block' : 'none'}}>
+            <div className='footer-block' style={{display: !showFooter ? 'block' : 'none'}}>
                 <img onClick={clickPodel} src={Friend} alt='' width='100%' className='btn-friend' />
                 <img src={Footer} alt='' width='100%' className='footer-image' />
                 <div className='footer-rec'></div>
@@ -924,7 +925,8 @@ useEffect(()=> {
                     <img onClick={()=>openInNewTab('https://uley.team/')} src={Web} alt='' width='100%' className='icon-footer' />
                 </div>
                 <div className='footer-icons2'> 
-                    <img onClick={() =>openInNewTab('https://t.me/ULEY_Office_Bot')} src={Telegram} alt='' width='100%' className='icon-footer' />
+                    <img onClick={() =>setShowRazrab(true)} src={Telegram} alt='' width='100%' className='icon-footer' /> 
+                    {/* openInNewTab('https://t.me/ULEY_Office_Bot')  */}
                     <img onClick={()=>openInNewTab('https://vk.com/uley.team')} src={VK} alt='' width='100%' className='icon-footer' />   
                 </div>   
             </div>
@@ -1129,6 +1131,22 @@ useEffect(()=> {
                         <div className='button-ok' style={{left: '20px'}} onClick={()=>setShowMoreInfo(false)}>
                             <div className='rec-button'>Понятно</div>
                         </div>
+                    </div>
+                </div>
+            </MyModal>
+
+
+            <MyModal visible={showRazrab} setVisible={setShowRazrab}>
+                <div className='info-card'>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    {/* <p className='vagno'>Важно</p> */}
+                    <p className='text-vagno'>Функция находится в разработке</p>
+                    <div className='button-ok' onClick={()=>setShowRazrab(false)}>
+                        <div className='rec-button'>Хорошо</div>
+                        
                     </div>
                 </div>
             </MyModal>
