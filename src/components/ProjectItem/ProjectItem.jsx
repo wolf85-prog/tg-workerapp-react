@@ -52,6 +52,8 @@ const ProjectItem = (props) => {
     const [smenaView, setSmenaView] = useState(0);
     const [stavkaView, setStavkaView] = useState(0);
     const [pererabotkaView, setPererabotkaView] = useState(0);
+    const [transportView, setTransportView] = useState(0);
+    const [gsmView, setGsmView] = useState(0);
 
     useEffect(()=> {
         //console.log("props: ", props.post.smeta, specId)
@@ -62,6 +64,8 @@ const ProjectItem = (props) => {
         setStavkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.stavka : '...')
         setSmenaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.smena : '...')
         setPererabotkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.pererabotka : '...')
+        setTransportView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.transport : '...')
+        setGsmView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.gsm : '...')
         
 
         // console.log("setChasiView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.chasi : '...')
@@ -251,7 +255,7 @@ const ProjectItem = (props) => {
                             <li className='item-list'><div>Ставка</div>{isNaN(stavkaView) || stavkaView === null ? "0.00" : parseInt(stavkaView).toLocaleString()+".00"}</li>
                             <li className='item-list'><div>Смена</div>{isNaN(smenaView)|| stavkaView === null ? "0.00" : parseInt(smenaView).toLocaleString()+".00"}</li>
                             <li className='item-list'><div>Переработка</div>{isNaN(pererabotkaView)|| stavkaView === null ? "0.00" : parseInt(pererabotkaView).toLocaleString()+".00"}</li>
-                            <li className='item-list'><div>Доп. расходы</div>{"0.00"}</li>
+                            <li className='item-list'><div>Доп. расходы</div>{isNaN(transportView+gsmView)|| stavkaView === null ? "0.00" : parseInt(transportView+gsmView).toLocaleString()+".00"}</li>
                         </ul>
                     </div>
                     <div className='block-button'>
