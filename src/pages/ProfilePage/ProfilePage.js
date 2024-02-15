@@ -797,7 +797,7 @@ useEffect(()=> {
                         <div className="card-specs bullet">
                             <ul onClick={()=>setShowProfileInfo(true)}>
                                 {workerhub[0]?.spec.length > 0 ? workerhub[0]?.spec.map((worker, index) => index < 8 && worker.name !== 'Blacklist' 
-                                ?   <li className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={clickAddSpec} alt='' style={{marginLeft: '20px', width: '12px'}}/> }</li>
+                                ?   <li key={index} className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={clickAddSpec} alt='' style={{marginLeft: '20px', width: '12px'}}/> }</li>
                                 : '')
                                 : <><li className="bullet-title" style={{color: 'red', fontWeight: 'bold'}}>Добавь свою специальность</li><li> <img src={Edit2} onClick={clickAddSpec} alt='' style={{marginLeft: '90px', width: '25px'}}/> </li></> }
                             </ul>   
