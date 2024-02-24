@@ -160,7 +160,7 @@ const ProfilePage = () => {
 
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('5848941179') //'805436270' '1408579113' user?.id '6143011220'
             console.log("worker: ", worker.length) 
             //console.log(worker[0]?.id)
             setWorkerId(worker[0]?.id)
@@ -199,7 +199,7 @@ useEffect(()=> {
                
         console.log("Начинаю загружать проекты...")
         const projects = await getProjectsCash();
-        //console.log("projects: ", projects)
+        console.log("projects: ", projects)
 
         console.log("Начинаю загружать сметы...")
         const smets = await getSmetaCash();
@@ -210,7 +210,8 @@ useEffect(()=> {
             let smetaObject = smets.find((proj) => proj.projectId === project.id)
 
             const specsArr = JSON.parse(project.specs)
-            //console.log("specsArr: ", specsArr)
+            console.log("specsArr: ", specsArr)
+            console.log("workerId: ", workerId)
 
             specsArr.map((spec, index) => {
                 //проекты после 31.01.2024
@@ -227,7 +228,7 @@ useEffect(()=> {
                             finalSmeta: smetaObject ? smetaObject?.final : "",
                             statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
                         }
-                        //console.log(newProject)
+                        console.log(newProject)
                         arrayProject.push(newProject)
                     }   
             })
@@ -253,6 +254,7 @@ useEffect(()=> {
         setSumma(tempSum)
         setIsLoadingSum(false)
 
+        console.log("arrayProject: ", arrayProject)
         setProjects2(arrayProject)     
         setIsPostsLoading(false)          
     }
@@ -827,8 +829,8 @@ useEffect(()=> {
 
                             <p className='merch-title'>Мерч</p>
                             <div className='perechislenie'>
-                                {workerhub[0]?.merch.map(item=> 
-                                        <p className="">{item.name}</p>
+                                {workerhub[0]?.merch.map((item, index)=> 
+                                        <p key={index} className="">{item.name}</p>
                                 )}
                                 {/* <p className="">Sound</p>
                                 <p className="">Production</p>  */}
