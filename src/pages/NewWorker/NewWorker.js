@@ -353,20 +353,32 @@ const NewWorker = () => {
     }, [onSendData])
 
     useEffect(() => {
-        tg.MainButton.setParams({
-            text: 'Сохранить',
-            color: '#000000' //'#2e2e2e'
-        })
-    }, [])
+        if (showMainBtn) {
+            tg.MainButton.setParams({
+                text: 'Сохранить',
+                color: '#000000' //'#2e2e2e'
+            })
+        } else {
+            tg.MainButton.setParams({
+                text: 'Workhub',
+                color: '#26292c' //'#2e2e2e'
+            })
+        }
+        // tg.MainButton.setParams({
+        //     text: 'Сохранить',
+        //     color: '#000000' //'#2e2e2e'
+        // })
+    }, [showMainBtn])
 
     useEffect(() => {
-        if (showMainBtn) {
-           tg.MainButton.show(); 
-        } else {
-            tg.MainButton.hide();  
-        }
+        tg.MainButton.show();
+        // if (showMainBtn) {
+        //    tg.MainButton.show(); 
+        // } else {
+        //     tg.MainButton.hide();  
+        // }
         
-    }, [showMainBtn])
+    }, [])
 
     //-------------------------------------------------------------------
 
