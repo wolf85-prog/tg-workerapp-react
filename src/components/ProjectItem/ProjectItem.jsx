@@ -238,7 +238,7 @@ const ProjectItem = (props) => {
 
                 <div className='card-footer'>
                     {/* деньги */}
-                    <p className='project_money'>{isLoading ? <Loader /> : (stavka ? (isNaN(stavka) ? "0" : parseInt(stavkaPlus ? stavkaPlus : stavka).toLocaleString())+".00" : '0.00')}</p>
+                    <p className='project_money'>{isLoading ? <Loader /> : (parseInt(stavkaPlus ? stavkaPlus.replace(/\s/g, "").split('.')[0] : stavka.replace(/\s/g, "").split('.')[0]).toLocaleString()+".00")}</p>
                     {/* кнопка Чат */}
                     {props.post.tgURL_chat && <div onClick={goToChat} className='chat-button'>Чат</div>}
                 </div>
@@ -252,10 +252,11 @@ const ProjectItem = (props) => {
                             <li className='item-list'><div>Специальность</div>{props.post.specs.spec}</li>
                             <li className='item-list'><div>Вид работ</div>{props.post.specs.vid}</li>
                             <li className='item-list'><div>Часы</div>{chasiView ? chasiView : "0"}</li>
-                            <li className='item-list'><div>Ставка</div>{isNaN(stavkaView) || stavkaView === null ? "0.00" : parseInt(stavkaView).toLocaleString()+".00"}</li>
-                            <li className='item-list'><div>Смена</div>{isNaN(smenaView)|| stavkaView === null ? "0.00" : parseInt(smenaView).toLocaleString()+".00"}</li>
-                            <li className='item-list'><div>Переработка</div>{isNaN(pererabotkaView)|| stavkaView === null ? "0.00" : parseInt(pererabotkaView).toLocaleString()+".00"}</li>
-                            <li className='item-list'><div>Доп. расходы</div>{isNaN(transportView+gsmView)|| stavkaView === null ? "0.00" : parseInt(transportView+gsmView).toLocaleString()+".00"}</li>
+                            {/* <li className='item-list'><div>Ставка</div>{isNaN(stavkaView) || stavkaView === null ? "0.00" : parseInt(stavkaView).toLocaleString()+".00"}</li> */}
+                            <li className='item-list'><div>Ставка</div>{stavkaView}</li>
+                            <li className='item-list'><div>Смена</div>{smenaView}</li>
+                            <li className='item-list'><div>Переработка</div>{pererabotkaView}</li>
+                            <li className='item-list'><div>Доп. расходы</div>{(transportView ? parseInt(transportView) : 0) + (gsmView ? parseInt(gsmView) : 0) + '.00'}</li>
                         </ul>
                     </div>
                     <div className='block-button'>

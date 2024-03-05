@@ -244,8 +244,9 @@ useEffect(()=> {
                 //console.log("date main: ", new Date(dateTemp))
 
                 let stavka =  item.smeta.find((item2) => item2.fio_id === workerId && (new Date(item2.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 2) && new Date(item2.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 2)))?.specialist
-                tempSum = tempSum + (stavka ? stavka : 0)
-                console.log("Ставка: ", stavka)
+                let stavkaNew = stavka ? stavka.replace(/\s/g, "") : '';
+                tempSum = tempSum + (stavka ? parseInt(stavkaNew.split('.')[0]) : 0)
+                console.log("Ставка: ", stavkaNew)
                 
             }   
             console.log("tempSum: ", tempSum)
