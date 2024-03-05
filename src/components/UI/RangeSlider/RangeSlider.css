@@ -96,9 +96,9 @@ input[type="range"]::-webkit-slider-thumb {
     pointer-events: none;
 }
 
-.range-slider:hover .progress {
+/* .range-slider:hover .progress {
     box-shadow: 0 0 1em #55e0ff;
-}
+} */
 
 
 .shkala {
