@@ -253,9 +253,9 @@ const ProjectItem = (props) => {
                             <li className='item-list'><div>Вид работ</div>{props.post.specs.vid}</li>
                             <li className='item-list'><div>Часы</div>{chasiView ? chasiView : "0"}</li>
                             {/* <li className='item-list'><div>Ставка</div>{isNaN(stavkaView) || stavkaView === null ? "0.00" : parseInt(stavkaView).toLocaleString()+".00"}</li> */}
-                            <li className='item-list'><div>Ставка</div>{stavkaView}</li>
-                            <li className='item-list'><div>Смена</div>{smenaView}</li>
-                            <li className='item-list'><div>Переработка</div>{pererabotkaView}</li>
+                            <li className='item-list'><div>Ставка</div>{stavkaView ? stavkaView : '0.00'}</li>
+                            <li className='item-list'><div>Смена</div>{smenaView ? smenaView : '0.00'}</li>
+                            <li className='item-list'><div>Переработка</div>{pererabotkaView ? pererabotkaView : '0.00'}</li>
                             <li className='item-list'><div>Доп. расходы</div>{(transportView ? parseInt(transportView) : 0) + (gsmView ? parseInt(gsmView) : 0) + '.00'}</li>
                         </ul>
                     </div>
