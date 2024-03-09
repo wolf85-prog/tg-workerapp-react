@@ -114,26 +114,13 @@ const NewStavka = () => {
             <img src={BlackFon} alt='' className='fon-black' />
             <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
 
-
-            {/* <img src={FonGradTop} alt='' className='fon-style-menu1' style={{visibility: showGrad ? "visible": "hidden"}}/>
-            <img src={FonGradBottom} alt='' className='fon-style-menu2' style={{visibility: showGrad2 ? "visible": "hidden"}}/> */}
-
-            <div style={{height: '100vh'}}>
+            <div style={{height: '100vh', marginTop: '50%'}}>
                 <div className='form-edit-stavka'>
-
-                    {/* <div className="edit-send" style={{ backgroundImage: `url(${enterSumma})`}}>
-                        <CurrencyInput 
-                            placeholder='Впиши сюда сумму'
-                            type="text"
-                            value={summaStavki}
-                            onChange={changeSummaStavki}  
-                        />
-                    </div> */}
                     
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
-                        <input
+                        <CurrencyInput
                             className='input-style3'
                             placeholder='Впиши сюда сумму'
                             type="text"
