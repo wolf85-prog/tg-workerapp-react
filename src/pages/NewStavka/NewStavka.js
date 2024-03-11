@@ -79,6 +79,17 @@ const NewStavka = () => {
               
     }, [summaStavki, id])
 
+
+    useEffect(()=>{
+        tg.setHeaderColor('#343A41') // установка цвета хедера
+        tg.setBackgroundColor('#26292c') // установка цвета бэкграунда
+        
+        if (!tg.isExpanded) {
+           tg.expand() //раскрыть приложение на всю высоту 
+        }
+        
+    }, [])
+
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
         return () => {
