@@ -64,6 +64,7 @@ const NewStavka = () => {
             summaStavki,
             id,
             queryId,
+            userId: user?.id,
         }
 
         tg.MainButton.hide();
