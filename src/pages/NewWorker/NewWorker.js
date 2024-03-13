@@ -358,11 +358,13 @@ const NewWorker = () => {
                 text: 'Сохранить',
                 color: '#000000' //'#2e2e2e'
             })
+            tg.MainButton.enable()
         } else {
             tg.MainButton.setParams({
                 text: 'Workhub',
                 color: '#26292c' //'#2e2e2e'
             })
+            tg.MainButton.disable()
         }
         // tg.MainButton.setParams({
         //     text: 'Сохранить',
