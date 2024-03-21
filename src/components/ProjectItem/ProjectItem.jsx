@@ -61,11 +61,11 @@ const ProjectItem = (props) => {
         const dateTemp = props.post.specs.date
 
         setChasiView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.chasi : '')
-        setStavkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.stavka : '0.00')
-        setSmenaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.smena : '0.00')
-        setPererabotkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.pererabotka : '0.00')
-        setTransportView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.transport : '0.00')
-        setGsmView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.gsm : '0.00')
+        setStavkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.stavka.replace(/\s/g, "").split('.')[0] : '0.00')
+        setSmenaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.smena.replace(/\s/g, "").split('.')[0] : '0.00')
+        setPererabotkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.pererabotka.replace(/\s/g, "").split('.')[0] : '0.00')
+        setTransportView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.transport.replace(/\s/g, "").split('.')[0] : '0.00')
+        setGsmView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.gsm.replace(/\s/g, "").split('.')[0] : '0.00')
         
 
         // console.log("setChasiView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.chasi : '...')
@@ -74,7 +74,8 @@ const ProjectItem = (props) => {
         // console.log("setSmenaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.pererabotka : '...')
 
         const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1))[0]?.specialist : ""
-        setFact(fact)
+        console.log("fact: ", fact ? fact.replace(/\s/g, "").split('.')[0] : 0)
+        setFact(fact ? fact.replace(/\s/g, "").split('.')[0] : 0)
         //console.log("fact: ", fact)
     
         let d_end, year2, date2, month2, chas2, minut2;
@@ -191,7 +192,8 @@ const ProjectItem = (props) => {
 
     //сумма денег для показа при движении фейдера
     useEffect(()=> {
-        setStavkaPlus(stavka)
+        setStavkaPlus(stavka ? stavka.replace(/\s/g, "").split('.')[0] : 0)
+        console.log("stavka: ", stavka ? stavka.replace(/\s/g, "").split('.')[0] : 0)
     }, [stavka])
     
     
@@ -238,7 +240,8 @@ const ProjectItem = (props) => {
 
                 <div className='card-footer'>
                     {/* деньги */}
-                    <p className='project_money'>{isLoading ? <Loader /> : (parseInt(stavkaPlus ? stavkaPlus.replace(/\s/g, "").split('.')[0] : stavka.replace(/\s/g, "").split('.')[0]).toLocaleString()+".00")}</p>
+                    <p className='project_money'>{isLoading ? <Loader /> : (stavkaPlus ? parseInt(stavkaPlus).toLocaleString()+".00" : parseInt(stavka).toLocaleString()+".00")}</p>
+                    {/* <p className='project_money'>{isLoading ? <Loader /> : (parseInt(stavkaPlus ? stavkaPlus.replace(/\s/g, "").split('.')[0] : stavka.replace(/\s/g, "").split('.')[0]).toLocaleString()+".00")}</p> */}
                     {/* кнопка Чат */}
                     {props.post.tgURL_chat && <div onClick={goToChat} className='chat-button'>Чат</div>}
                 </div>
