@@ -52,7 +52,7 @@ const specData = [
     },
     {
         id: 5,
-        name: 'Промо',
+        name: 'Промо \/ Кастинг',
         icon: 'Promo',
         models: [
             {id: 1, name: 'Модель',},
@@ -83,7 +83,7 @@ const specData = [
     },
     {
         id: 8,
-        name: 'Граунд',
+        name: 'Риггер \/ Граунд',
         icon: 'StageGround',
         models: [
             {id: 1, name: 'Riggers \/ Ground',},
