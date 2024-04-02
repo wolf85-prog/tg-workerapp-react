@@ -32,7 +32,7 @@ const specData = [
             {id: 1, name: 'Инженер VMix',},
             {id: 2, name: 'Инженер Resolume',},
             {id: 3, name: 'Оператор Zoom',},
-            {id: 4, name: 'Оператор [сameraman]',},
+            {id: 4, name: 'Оператор [cameraman]',},
             {id: 5, name: 'Оператор-постановщик',},
             {id: 6, name: 'Режиссер эфиров',},
             {id: 7, name: 'Техник монтажа',},
@@ -87,13 +87,12 @@ const specData = [
         name: 'Риггер \/ Граунд',
         icon: 'StageGround',
         models: [
-            {id: 1, name: 'Riggers \/ Ground',},
-            {id: 2, name: 'Верхний Риггер',},
-            {id: 3, name: 'Нижний Риггер',},
-            {id: 4, name: 'Монтажник [Ground]',},
-            {id: 5, name: 'Декоратор',},
+            {id: 1, name: 'Верхний Риггер',},
+            {id: 2, name: 'Нижний Риггер',},
+            {id: 3, name: 'Монтажник [Ground]',},
+            {id: 4, name: 'Декоратор',},
         ]
-    }, 
+    },  
     {
         id: 9,
         name: 'Водители',
