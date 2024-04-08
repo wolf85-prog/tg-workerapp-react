@@ -93,7 +93,7 @@ const ProfilePage = () => {
     const { projects, setProjects, specId, setSpecId, flag, summa, setSumma } = useUsersContext();
     const { workerhub, setWorkerhub } = useUsersContext();
     //специалисты
-    //const [workerhub2, setWorkerhub2] = useState([]);
+    const [workerhublist, setWorkerhublist] = useState([]);
 
     const [workerId, setWorkerId] = useState('')
     const [projects2, setProjects2] = useState('')
@@ -156,7 +156,7 @@ const ProfilePage = () => {
     const textId="🔵 Промокод ID: "
     const id=user?.id
 
-    let workerhublist = workerhub[0]?.spec.filter((worker, index)=> index < 8 && worker.name !== 'Blacklist' || index < 8 && worker.name !== '+18')
+    
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже   
@@ -171,8 +171,16 @@ const ProfilePage = () => {
             setWorkerId(worker[0]?.id)
             setSpecId(worker[0]?.id)
 
-
+            let list = []
+            workerhub[0]?.spec.map((worker, index)=> {
+                if (index < 7 && worker.name !== 'Blacklist' && worker.name !== '+18') {
+                    list.push(worker)
+                }   
+            })
             
+            console.log("workerhublist: ", list)
+            setWorkerhublist(list)
+
             setTimeout(()=> {      
                 if (worker.length > 0) {
                     //зарегистрирован
@@ -809,8 +817,8 @@ useEffect(()=> {
                         <p className="profile_fio">{workerhub[0]?.fio}</p>
                         <div className="card-specs bullet">
                             <ul onClick={()=>setShowProfileInfo(true)}>
-                                {workerhub[0]?.spec.length > 0 ? workerhublist.map((worker, index) =>  
-                                    <li key={index} className="bullet-title">{worker.name}  {index === workerhub[0]?.spec.length-1 && <img src={Edit} onClick={clickAddSpec} alt='' style={{marginLeft: '20px', width: '12px'}}/> }</li>
+                                {workerhublist.length > 0 ? workerhublist.map((worker, index) =>  
+                                    <li key={index} className="bullet-title">{worker.name}  {index === workerhublist.length-1 && <img src={Edit} onClick={clickAddSpec} alt='' style={{marginLeft: '20px', width: '12px'}}/> }</li>
                                 )
                                 : <><li className="bullet-title" style={{color: '#3392ff', fontWeight: 'bold'}}>Добавь свою специальность</li><li> <img src={Edit2} onClick={clickAddSpec} alt='' style={{marginLeft: '90px', width: '25px'}}/> </li></> }
                             </ul>   
