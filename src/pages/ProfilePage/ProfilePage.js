@@ -177,6 +177,8 @@ const ProfilePage = () => {
                     list.push(worker)
                 }   
             })
+
+            console.log("workhub: ", workerhub[0]?.spec)
             
             console.log("workerhublist: ", list)
             setWorkerhublist(list)
@@ -203,7 +205,7 @@ const ProfilePage = () => {
         }
 
         fetchData()   
-    }, []);
+    }, [workerhub]);
 
 //---------------------------------------------------------------------
 //1  загружаем проекты
