@@ -74,9 +74,8 @@ const ProjectItem = (props) => {
         // console.log("setSmenaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.pererabotka : '...')
 
         const fact = props.post.smeta ? props.post.smeta.filter((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1))[0]?.specialist : ""
-        console.log("fact: ", fact ? fact.replace(/\s/g, "").split('.')[0] : 0, props.post.title)
+        //console.log("fact: ", fact ? fact.replace(/\s/g, "").split('.')[0] : 0, props.post.title)
         setFact(fact ? fact.replace(/\s/g, "").split('.')[0] : 0)
-        //console.log("fact: ", fact)
     
         let d_end, year2, date2, month2, chas2, minut2;
     
@@ -152,7 +151,7 @@ const ProjectItem = (props) => {
 
                 //сохранить в бд предварительную ставку
                 const res_add = await addStavka(specId, props.post.id, res ? res.payment : 0, props.post.specs.date) 
-                console.log("pred stavka cash: ", res_add)
+                //console.log("pred stavka cash: ", res_add)
 
                 const res2 = await getSpecStavka(specId, props.post.id, props.post.specs.date)
                 setCashStavka(res2) 
@@ -193,7 +192,7 @@ const ProjectItem = (props) => {
     //сумма денег для показа при движении фейдера
     useEffect(()=> {
         setStavkaPlus(stavka ? stavka.replace(/\s/g, "").split('.')[0] : 0)
-        console.log("stavka: ", stavka ? stavka.replace(/\s/g, "").split('.')[0] : 0, props.post.title)
+        //console.log("stavka: ", stavka ? stavka.replace(/\s/g, "").split('.')[0] : 0, props.post.title)
     }, [stavka])
     
     

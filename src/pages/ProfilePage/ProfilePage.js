@@ -178,9 +178,9 @@ const ProfilePage = () => {
                 }   
             })
 
-            console.log("workhub: ", workerhub[0]?.spec)
-            
-            console.log("workerhublist: ", list)
+            //console.log("workhub: ", workerhub[0]?.spec)
+            //console.log("workerhublist: ", list)
+
             setWorkerhublist(list)
 
             setTimeout(()=> {      
@@ -227,7 +227,7 @@ useEffect(()=> {
             let smetaObject = smets.find((proj) => proj.projectId === project.id)
 
             const specsArr = JSON.parse(project.specs)
-            console.log("specsArr: ", specsArr)
+            console.log("specsArr: ", specsArr, project.title)
             console.log("workerId: ", workerId)
 
             specsArr.map((spec, index) => {
@@ -243,9 +243,9 @@ useEffect(()=> {
                             specs: spec, 
                             smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
                             finalSmeta: smetaObject ? smetaObject?.final : "",
-                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId)?.specialist ? 2 : 1) : 1
+                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId && item.date === spec.date)?.specialist ? 2 : 1) : 1
                         }
-                        console.log(newProject)
+                        //console.log(newProject)
                         arrayProject.push(newProject)
                     }   
             })
@@ -256,14 +256,14 @@ useEffect(()=> {
         
         tempArr.map((item)=> {
             if (item.smeta ) {
-                console.log("смета: ", item.smeta)
+                //console.log("смета: ", item.smeta)
                 const dateTemp = item.specs.date
                 //console.log("date main: ", new Date(dateTemp))
 
                 let stavka =  item.smeta.find((item2) => item2.fio_id === workerId && (new Date(item2.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 2) && new Date(item2.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 2)))?.specialist
                 let stavkaNew = stavka ? stavka.replace(/\s/g, "") : '';
                 tempSum = tempSum + (stavka ? parseInt(stavkaNew.split('.')[0]) : 0)
-                console.log("Ставка: ", stavkaNew)
+                //console.log("Ставка: ", stavkaNew)
                 
             }   
             console.log("tempSum: ", tempSum)
