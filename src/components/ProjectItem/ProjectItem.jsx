@@ -143,7 +143,7 @@ const ProjectItem = (props) => {
     
     useEffect(()=> {
         const fetch = async() => {
-            console.log("payment api: ", props.post.id, props.post.specs.rowId, props.post.title)
+            //console.log("payment api: ", props.post.id, props.post.specs.rowId, props.post.title)
             const res0 = await getSpecStavka(specId, props.post.id, props.post.specs.date)
 
             //если кэш пуст
@@ -257,10 +257,10 @@ const ProjectItem = (props) => {
                             <li className='item-list'><div>Вид работ</div>{props.post.specs.vid}</li>
                             <li className='item-list'><div>Часы</div>{chasiView ? chasiView : "0"}</li>
                             {/* <li className='item-list'><div>Ставка</div>{isNaN(stavkaView) || stavkaView === null ? "0.00" : parseInt(stavkaView).toLocaleString()+".00"}</li> */}
-                            <li className='item-list'><div>Ставка</div>{stavkaView ? stavkaView : '0.00'}</li>
-                            <li className='item-list'><div>Смена</div>{smenaView ? smenaView : '0.00'}</li>
-                            <li className='item-list'><div>Переработка</div>{pererabotkaView ? pererabotkaView : '0.00'}</li>
-                            <li className='item-list'><div>Доп. расходы</div>{(transportView ? parseInt(transportView) : 0) + (gsmView ? parseInt(gsmView) : 0) + '.00'}</li>
+                            <li className='item-list'><div>Ставка</div>{stavkaView ? (parseInt(stavkaView).toLocaleString()+ '.00') : '0.00'}</li>
+                            <li className='item-list'><div>Смена</div>{smenaView ? (parseInt(smenaView).toLocaleString()+ '.00') : '0.00'}</li>
+                            <li className='item-list'><div>Переработка</div>{pererabotkaView ? (parseInt(pererabotkaView).toLocaleString()+ '.00') : '0.00'}</li>
+                            <li className='item-list'><div>Доп. расходы</div>{parseInt((transportView ? transportView : 0) + (gsmView ? gsmView : 0)).toLocaleString() + '.00'}</li>
                         </ul>
                     </div>
                     <div className='block-button'>
