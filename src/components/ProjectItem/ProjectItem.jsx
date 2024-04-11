@@ -143,11 +143,12 @@ const ProjectItem = (props) => {
     
     useEffect(()=> {
         const fetch = async() => {
+            console.log("payment api: ", props.post.id, props.post.specs.rowId, props.post.title)
             const res0 = await getSpecStavka(specId, props.post.id, props.post.specs.date)
 
             //если кэш пуст
             if (!res0) {
-                const res = await getStavka(props.post.id, props.post.specs.rowId) //API  
+                const res = await getStavka(props.post.id, props.post.specs.rowId) //API 
                 console.log("Предварительная ставка: ", res, props.post.title)      
 
                 //сохранить в бд предварительную ставку
