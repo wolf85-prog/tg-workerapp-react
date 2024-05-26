@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getWorkerId } from './../http/chatAPI';
+import { getWorkerId, getWorkerIdBD } from './../http/chatAPI';
 import {useTelegram} from "./../hooks/useTelegram";
 
 const UserContext = createContext();
@@ -55,8 +55,15 @@ const UserProvider = ({ children }) => {
     useEffect(() => {
 
         const fetchData = async() => {
-            const worker = await getWorkerId(user?.id) //user?.id '805436270' '1408579113'
+
+			//получать данные из Notion
+            //const worker = await getWorkerId(user?.id) //user?.id '805436270' '1408579113'
+
+			//получить данные из БД
+			const worker = await getWorkerIdBD(user?.id)
+
             console.log("worker context: ", worker)
+
             setWorkerhub(worker)
         }
 

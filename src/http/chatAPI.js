@@ -10,9 +10,21 @@ export const sendMyMessage = async (id) =>{
     }
 }
 
+//получить данные из Notion
 export const getWorkerId = async (id) =>{
     try {
        let response = await $host.get(`api/workers/${id}`);
+       //console.log(response);
+       return response.data;
+    } catch (error) {
+        console.log("error while calling getWorkerId api", error.message);
+    }
+}
+
+//получить данные из БД
+export const getWorkerIdBD = async (id) =>{
+    try {
+       let response = await $host_upload.get(`api/workers/get/${id}`);
        //console.log(response);
        return response.data;
     } catch (error) {
