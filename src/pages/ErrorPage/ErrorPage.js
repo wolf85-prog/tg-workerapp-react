@@ -11,7 +11,7 @@ import BlackFon from "../../image/new/fon_grad.svg";
 const API_URL = process.env.REACT_APP_API_URL
 
 const ErrorPage = () => {
-    const {tg, queryId, user} = useTelegram();
+    const {tg, queryId, user, onClose} = useTelegram();
     const navigate = useNavigate();
 
     const [widthD, setWidthD] = useState(0)
@@ -20,6 +20,17 @@ const ErrorPage = () => {
     const [headerName, setHeaderName] = useState('Мой профиль');
 
 //----------------------------------------------------------------------------------
+
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", onClose)
+        return () => {
+            tg.offEvent('backButtonClicked', onClose)
+        }
+    }, [onClose])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
     
     return (
         <div className="App">
