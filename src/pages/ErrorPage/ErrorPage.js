@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import MyModal from "../../components/MyModal/MyModal";
+import Header from "../../components/Header/Header";
 
 import './ErrorPage.css';
 
@@ -16,21 +17,19 @@ const ErrorPage = () => {
     const [widthD, setWidthD] = useState(0)
 
     const [showModal, setShowModal] = useState(true)
+    const [headerName, setHeaderName] = useState('Мой профиль');
 
 //----------------------------------------------------------------------------------
     
     return (
         <div className="App">
 
+            <Header header={{title: `${headerName}`, icon: 'false'}} />
+
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
             {/* <img src={BlackFon} alt='' className='fon-black' style={{left: `${25 - width}px`, zIndex: '1'}} /> */}
             <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
-
-            {/*Специализация*/}   
-            <p style={{position: 'absolute', top: '25px', left: '25px', fontSize: '17px', color: '#fff', zIndex: '5'}}>
-                Профиль
-            </p>
 
 
             <MyModal visible={showModal} setVisible={setShowModal}>
