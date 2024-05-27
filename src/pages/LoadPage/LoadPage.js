@@ -54,7 +54,8 @@ const LoadPage = () => {
                     else if (flag === 'NOREG') {
                         //не зарегистрирован
                         console.log("Зарегистрируйтесь! NOREG")
-                        navigate("/add-worker")
+                        //navigate("/add-worker")
+                        navigate("/error")
                     }
                 }
             }, 5000)

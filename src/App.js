@@ -27,6 +27,8 @@ import NewStavka from './pages/NewStavka/NewStavka';
 import EditWorker from './pages/EditWorker/EditWorker';
 import LoadPage2 from "./pages/LoadPage2/LoadPage2";
 
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
+
 function App() {
 
   const darkTheme = createTheme({
@@ -49,6 +51,7 @@ function App() {
                   <Route path={'add-worker3'} element={<NewWorker3 />}/>
                   <Route path={'add-worker4'} element={<NewWorker4 />}/>
                   <Route path={'process'} element={<ProcessPage />}/>
+                  <Route path={'error'} element={<ErrorPage />}/>
 
                   <Route path={'anketa'} element={<AnketaPage />}/>
                   <Route path={'add-passport'} element={<NewPassport />}/>
