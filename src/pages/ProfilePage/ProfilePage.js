@@ -161,13 +161,15 @@ const ProfilePage = () => {
 
     // при первой загрузке приложения выполнится код ниже   
     useEffect(() => {
-        //setDohod(0)
 
         const fetchData = async() => { 
             setIsProfileLoading(true)
+            const workerNotion = await getWorkerId('1775583141') //'805436270' '1408579113' user?.id '6143011220'
             const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+
             console.log("worker: ", worker.length) 
-            console.log(worker[0]?.id)
+            console.log("workerNotion: ", workerNotion.length) 
+            
             setWorkerId(worker[0]?.id)
             setSpecId(worker[0]?.id)
 
@@ -178,8 +180,6 @@ const ProfilePage = () => {
                 }   
             })
 
-            //console.log("workhub: ", workerhub[0]?.spec)
-            //console.log("workerhublist: ", list)
 
             setWorkerhublist(list)
 
@@ -188,17 +188,22 @@ const ProfilePage = () => {
                     //зарегистрирован
                     console.log("Зарегистирован", "REG")
                     //setSpecId(worker[0]?.id)
-                    setIsProfileLoading(false)
+                    navigate("/profile")
                 } else  {
                     if (flag === 'ONLY_REG') {
                         //только что зарегистрирован
                         console.log("Только что зарегистировался", flag)
                         navigate("/process")
                     } 
-                    else if (flag === 'NOREG') {
+                    else if (workerNotion.length > 0) {
                         //не зарегистрирован
                         console.log("Зарегистрируйтесь! NOREG")
                         navigate("/add-worker")
+                    }
+                    else {
+                        //ошибка
+                        console.log("Ошибка")
+                        navigate("/error")
                     }
                 }
             }, 2000)
