@@ -165,7 +165,7 @@ const ProfilePage = () => {
         const fetchData = async() => { 
             setIsProfileLoading(true)
             const workerNotion = await getWorkerId('1775583141') //'805436270' '1408579113' user?.id '6143011220'
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            const worker = await getWorkerId('1408579113') //'805436270' '1408579113' user?.id '6143011220'
 
             console.log("worker: ", worker.length) 
             console.log("workerNotion: ", workerNotion.length) 
@@ -183,12 +183,14 @@ const ProfilePage = () => {
 
             setWorkerhublist(list)
 
+            setIsProfileLoading(false)  
+
             setTimeout(()=> {      
                 if (worker.length > 0) {
                     //зарегистрирован
                     console.log("Зарегистирован", "REG")
                     //setSpecId(worker[0]?.id)
-                    navigate("/profile")
+                    //navigate("/profile")
                 } else  {
                     if (flag === 'ONLY_REG') {
                         //только что зарегистрирован
@@ -279,7 +281,7 @@ useEffect(()=> {
 
         console.log("arrayProject: ", arrayProject)
         setProjects2(arrayProject)     
-        setIsPostsLoading(false)          
+        setIsPostsLoading(false)        
     }
 
     if (workerId) {
