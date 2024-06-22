@@ -10,7 +10,7 @@ import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { useUsersContext } from "../../contexts/UserContext";
 import {useProjects} from "../../hooks/useProjects"
 import './ProfilePage.css';
-import { getWorkerId, getProjectsCash, getSmetaCash } from '../../http/chatAPI';
+import { getWorkerId, getProjectsCash, getSmetaCash, getWorkerIdBD } from '../../http/chatAPI';
 
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
@@ -164,11 +164,14 @@ const ProfilePage = () => {
 
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const workerNotion = await getWorkerId('1775583141') //'805436270' '1408579113' user?.id '6143011220'
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            //const workerNotion = await getWorkerId('1775583141') //'805436270' '1408579113' user?.id '6143011220'
+            //const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+
+            //получить данные из БД
+			const worker = await getWorkerIdBD(user?.id)
 
             console.log("worker: ", worker.length) 
-            console.log("workerNotion: ", workerNotion.length) 
+            //console.log("workerNotion: ", workerNotion.length) 
             
             setWorkerId(worker[0]?.id)
             setSpecId(worker[0]?.id)
@@ -197,7 +200,8 @@ const ProfilePage = () => {
                         console.log("Только что зарегистировался", flag)
                         navigate("/process")
                     } 
-                    else if (workerNotion.length > 0) {
+                    //else if (workerNotion.length > 0) {
+                    else if (worker.length > 0) {
                         //не зарегистрирован
                         console.log("Зарегистрируйтесь! NOREG")
                         navigate("/add-worker")

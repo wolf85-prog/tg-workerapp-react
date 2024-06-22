@@ -60,7 +60,7 @@ const UserProvider = ({ children }) => {
             //const worker = await getWorkerId(user?.id) //user?.id '805436270' '1408579113'
 
 			//получить данные из БД
-			const worker = await getWorkerIdBD(user?.id)
+			const worker = await getWorkerIdBD(user?.id )
 
             console.log("worker context: ", worker)
 
