@@ -651,7 +651,7 @@ const NewWorker = () => {
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <p className='vagno'>Важно</p>
+                    <p className='vagno'>Получил промокод ID от друга?</p>
                     {/* <p className='text-vagno' style={{marginTop: '25px'}}>Добро пожаловать на борт!</p> */}
                     <div style={{position: 'absolute', top: '60px', left: '20px', display: 'flex', alignItems: 'center'}}>
                         {/* <input type="checkbox" id="scales" name="scales" checked /> */}
@@ -681,7 +681,7 @@ const NewWorker = () => {
                         /> 
                     </div>
                     <div className='button-ok' onClick={clickAddFrined}>
-                        <div className='rec-button'>{check ? "Добавить" : "Хорошо"}</div>        
+                        <div className='rec-button'>{check ? "Применить" : "Применить"}</div>        
                     </div>
                 </div>
             </MyModal>
