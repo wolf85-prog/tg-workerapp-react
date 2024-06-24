@@ -223,6 +223,7 @@ const NewWorker = () => {
     const editNewWorker2 = (e) => {
         setShowFIO(false)
         setDisabledFIO(false)
+        setShowBlockCity(false)
     }
 
     const addNewWorker3 = () => {
