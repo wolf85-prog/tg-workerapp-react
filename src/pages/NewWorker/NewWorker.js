@@ -60,6 +60,7 @@ const NewWorker = () => {
     const [selectedElement, setSelectedElement] = useState("")
     const [disabledBtn, setDisabledBtn] = useState(true)
     const [disabledBtn2, setDisabledBtn2] = useState(true)
+    const [disabledFIO, setDisabledFIO] = useState(false)
     const [disabled, setDisabled] = useState(true)
     const [titleCat, setTitleCat] = useState(false)
     const [titleSpec, setTitleSpec] = useState(false)
@@ -165,7 +166,7 @@ const NewWorker = () => {
 
         setWorker({...worker, spec: model.name})
         
-        //setDisabledBtn(false)
+        setDisabledBtn(false)
     }
 
 
@@ -196,6 +197,8 @@ const NewWorker = () => {
         setWorkers(workers.filter(p => p.id !== worker.id))
     }
 
+
+    //добавить данные ФИО и телефон
     const addNewWorker2 = (e) => {
         //console.log(phone.length)
         if (phone.length === 18 && workerFam.length > 3 && workerName.length > 0) {
@@ -212,11 +215,14 @@ const NewWorker = () => {
             let widthX = Math.round(ctx.measureText(str).width);
 
             setWidthStr2(widthX)
+
+            setDisabledFIO(true)
         }
     }
 
     const editNewWorker2 = (e) => {
         setShowFIO(false)
+        setDisabledFIO(false)
     }
 
     const addNewWorker3 = () => {
@@ -491,7 +497,7 @@ const NewWorker = () => {
 
                 {/*кнопка Добавить*/}
                 <button 
-                    // disabled={disabledBtn}
+                    disabled={disabledBtn}
                     className="image-button-add" 
                     style={{ backgroundImage: `url(${btnSave})`}}
                     onClick={addNewWorker}
@@ -513,6 +519,7 @@ const NewWorker = () => {
                         variant="filled"
                         onChange={onChangeFamily}
                         value={workerFam}
+                        disabled={disabledFIO}
                     />
                 </div>
 
@@ -527,6 +534,7 @@ const NewWorker = () => {
                         id="worker_name"
                         onChange={onChangeName}
                         value={workerName}
+                        disabled={disabledFIO}
                     /> 
                 </div>         
 
@@ -538,7 +546,7 @@ const NewWorker = () => {
                     <InputMask
                         className='input-style3'
                         mask="+7 (999) 999-99-99"
-                        disabled={false}
+                        disabled={disabledFIO}
                         maskChar=""
                         onChange={handlePhone} 
                         value={phone}
