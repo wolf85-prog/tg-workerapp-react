@@ -4,7 +4,7 @@ import { useResize } from './../../hooks/useResize';
 import { useTelegram } from "../../hooks/useTelegram";
 import './LoadPage.css';
 import { useUsersContext } from "../../contexts/UserContext"
-import { getWorkerId } from '../../http/chatAPI';
+import { getWorkerId, getWorkerIdBD } from '../../http/chatAPI';
 
 import logo_small from '../../image/logo.gif'
 import logo_mid from '../../image/logo_Iphone5.gif'
@@ -35,6 +35,28 @@ const LoadPage = () => {
        const fetchData = async() => { 
             const workerNotion = await getWorkerId('1775583141') //'805436270' '1408579113' user?.id '6143011220'
             const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+
+            // const worker1 = await getWorkerIdBD(user?.id )
+
+            // let worker = []
+            // const obj = {
+            //         id: worker1.id,
+            //         fio: worker1.userfamily + ' '+ worker1.username,
+            //         tgId: worker1.chatId,
+            //         phone: worker1.phone,
+            //         age: worker1.dateborn,
+            //         city: worker1.city,
+            //         newcity: worker1.newcity,
+            //         spec: JSON.parse(worker1.worklist),
+            //         comment: worker1.comment,
+            //         reyting: '',
+            //         merch: '',
+            //         comteg: '',
+            //         rank: worker1.rank,
+            //         passport: '',
+            //         skill: '',
+            // }
+            // worker.push(obj)
             
             console.log("worker: ", worker.length) 
             console.log("workerNotion: ", workerNotion.length) 

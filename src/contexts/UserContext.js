@@ -60,7 +60,26 @@ const UserProvider = ({ children }) => {
             const worker = await getWorkerId(user?.id) //user?.id '805436270' '1408579113'
 
 			//получить данные из БД
-			//const worker = await getWorkerIdBD(user?.id )
+			// const worker1 = await getWorkerIdBD(user?.id )
+			// let worker = []
+            // const obj = {
+            //         id: worker1.id,
+            //         fio: worker1.userfamily + ' '+ worker1.username,
+            //         tgId: worker1.chatId,
+            //         phone: worker1.phone,
+            //         age: worker1.dateborn,
+            //         city: worker1.city,
+            //         newcity: worker1.newcity,
+            //         spec: JSON.parse(worker1.worklist),
+            //         comment: worker1.comment,
+            //         reyting: '',
+            //         merch: '',
+            //         comteg: '',
+            //         rank: worker1.rank,
+            //         passport: '',
+            //         skill: '',
+            // }
+            // worker.push(obj)
 
             console.log("worker context: ", worker)
 

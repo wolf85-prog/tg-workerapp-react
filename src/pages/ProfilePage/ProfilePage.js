@@ -168,10 +168,31 @@ const ProfilePage = () => {
             const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
 
             //получить данные из БД
-			//const worker = await getWorkerIdBD(user?.id)
+			// const worker1 = await getWorkerIdBD('1408579113')
 
-            console.log("worker: ", worker.length) 
-            //console.log("workerNotion: ", workerNotion.length) 
+            // let worker = []
+            // const obj = {
+            //         id: worker1.id,
+            //         fio: worker1.userfamily + ' '+ worker1.username,
+            //         tgId: worker1.chatId,
+            //         phone: worker1.phone,
+            //         age: worker1.dateborn,
+            //         city: worker1.city,
+            //         newcity: worker1.newcity,
+            //         spec: JSON.parse(worker1.worklist),
+            //         comment: worker1.comment,
+            //         reyting: '',
+            //         merch: '',
+            //         comteg: '',
+            //         rank: worker1.rank,
+            //         passport: '',
+            //         skill: '',
+            // }
+            // worker.push(obj)
+            
+            //console.log("worker arr: ", obj) 
+
+            console.log("workerNotion: ", workerNotion.length) 
             
             setWorkerId(worker[0]?.id)
             setSpecId(worker[0]?.id)

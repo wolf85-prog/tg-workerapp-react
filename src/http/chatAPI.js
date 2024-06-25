@@ -25,7 +25,7 @@ export const getWorkerId = async (id) =>{
 export const getWorkerIdBD = async (id) =>{
     try {
        let response = await $host_upload.get(`api/workers/get/${id}`);
-       //console.log(response);
+       //console.log("id: ", id);
        return response.data;
     } catch (error) {
         console.log("error while calling getWorkerId api", error.message);
