@@ -4,6 +4,8 @@ import {useTelegram} from "../../hooks/useTelegram";
 import MyModal from "../../components/MyModal/MyModal";
 import Marquee from '../../components/UI/Marquee/Marquee';
 
+import Autocomplete from '@mui/material/Autocomplete';
+
 
 import WorkerList from "../../components/WorkerList/WorkerList";
 import './NewWorker.css';
@@ -34,6 +36,8 @@ const NewWorker = () => {
     const {worker, setWorker, workers, setWorkers, widthStr, setWidthStr, str} = useUsersContext();
     const { workerFam, setWorkerFam, workerName, setWorkerName, phone, setPhone } = useUsersContext();
     const {city, setCity, dateborn, setDateborn, friend, setFriend} = useUsersContext();
+
+    const options = ['Option 1', 'Option 2'];
 
     //даты
     const [dates, setDates] = useState([]);
@@ -597,15 +601,40 @@ const NewWorker = () => {
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
-                    <input
+                    {/* <input
                         className='input-style3'
                         placeholder='Город'
                         id="worker_name"
                         onChange={onChangeCity}
                         value={city}
-                    /> 
+                    />  */}
+                    <Autocomplete
+                        sx={{
+                            display: 'inline-block',
+                            '& input': {zIndex: '25',
+                                width: '100%',
+                                margin: '0 0',
+                                border: 'none',
+                                height: '43px',
+                                padding: '0 20px',
+                                color: '#fff',
+                                borderRadius: '30px',
+                                marginBottom: '20px',
+                            }
+                        }}
+                        id="custom-input-demo"
+                        options={options}
+                        renderInput={(params) => (
+                        <div ref={params.InputProps.ref} style={{position: 'relative'}}>
+                            <input type="text" {...params.inputProps} />
+                        </div>
+                        )}
+                    />
                 </div>
-                            
+
+                
+
+            
                 {/*Год рождения*/}
                 <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px', zIndex: '99'}}>
                 <p className='cat-title' style={{display: titleDate ? 'none' : 'block'}}>Год рождения</p>   
