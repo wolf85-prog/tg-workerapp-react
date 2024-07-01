@@ -6,7 +6,6 @@ import Marquee from '../../components/UI/Marquee/Marquee';
 
 import Autocomplete from '@mui/material/Autocomplete';
 
-
 import WorkerList from "../../components/WorkerList/WorkerList";
 import './NewWorker.css';
 
@@ -21,6 +20,7 @@ import NewSelect2 from '../../components/UI/NewSelect2/NewSelect2';
 import NewSelect3 from '../../components/UI/NewSelect3/NewSelect3';
 
 import specData from "../../data/specData"
+import cityData from '../../data/cityData';
 import { useUsersContext } from "./../../contexts/UserContext";
 import { sendMyMessage } from '../../http/chatAPI';
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
@@ -623,10 +623,11 @@ const NewWorker = () => {
                             }
                         }}
                         id="custom-input-demo"
-                        options={options}
+                        options={cityData}
+                        style={{width: '100%'}}
                         renderInput={(params) => (
                         <div ref={params.InputProps.ref} style={{position: 'relative'}}>
-                            <input type="text" {...params.inputProps} />
+                            <input type="text" {...params.inputProps} placeholder='Город'/>
                         </div>
                         )}
                     />
