@@ -263,6 +263,7 @@ const NewWorker = () => {
     }
 
     const onChangeCity = (e) => {
+        console.log(e.target.value)
         setCity(e.target.value)
     }
 
@@ -625,13 +626,19 @@ const NewWorker = () => {
                         id="custom-input-demo"
                         options={cityData}
                         style={{width: '100%'}}
+                        onInputChange={onChangeCity}
+                        onChange={(event, newValue) => {
+                            setCity(newValue);
+                        }}
+                        value={city}
+                        inputValue={city}
                         renderInput={(params) => (
                         <div ref={params.InputProps.ref} style={{position: 'relative'}}>
                             <input 
                                 type="text" {...params.inputProps} 
                                 placeholder='Город'
-                                onChange={onChangeCity}
-                                value={city}
+                                //onChange={onChangeCity}
+                                // value={city}
                             />
                         </div>
                         )}
