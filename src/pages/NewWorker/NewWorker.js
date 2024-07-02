@@ -627,7 +627,12 @@ const NewWorker = () => {
                         style={{width: '100%'}}
                         renderInput={(params) => (
                         <div ref={params.InputProps.ref} style={{position: 'relative'}}>
-                            <input type="text" {...params.inputProps} placeholder='Город'/>
+                            <input 
+                                type="text" {...params.inputProps} 
+                                placeholder='Город'
+                                onChange={onChangeCity}
+                                value={city}
+                            />
                         </div>
                         )}
                     />
