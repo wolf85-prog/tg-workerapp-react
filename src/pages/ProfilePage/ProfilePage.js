@@ -275,7 +275,7 @@ useEffect(()=> {
                             specs: spec, 
                             smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
                             finalSmeta: smetaObject ? smetaObject?.final : "",
-                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId && item.date === spec.date)?.specialist ? 2 : 1) : 1
+                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId && item.date === spec.date)?.specialist !== '0.00' ? 2 : 1) : 1
                         }
                         //console.log(newProject)
                         arrayProject.push(newProject)

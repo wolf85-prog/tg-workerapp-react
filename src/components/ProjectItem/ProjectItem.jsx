@@ -54,6 +54,8 @@ const ProjectItem = (props) => {
     const [pererabotkaView, setPererabotkaView] = useState(0);
     const [transportView, setTransportView] = useState(0);
     const [gsmView, setGsmView] = useState(0);
+    const [taxiView, setTaxiView] = useState(0);
+    const [comtag, setComtag] = useState([]);
 
     useEffect(()=> {
         //console.log("props: ", props.post.smeta, specId)
@@ -66,7 +68,9 @@ const ProjectItem = (props) => {
         setPererabotkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.pererabotka.replace(/\s/g, "").split('.')[0] : '0.00')
         setTransportView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.transport.replace(/\s/g, "").split('.')[0] : '0.00')
         setGsmView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.gsm.replace(/\s/g, "").split('.')[0] : '0.00')
+        setTaxiView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.taxi.replace(/\s/g, "").split('.')[0] : '0.00')
         
+        setComtag(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.comtag : [])
 
         // console.log("setChasiView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.chasi : '...')
         // console.log("setStavkaView: ", props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() - 1) && new Date(item.date).getTime() < new Date(props.post.specs.date).setHours(new Date(props.post.specs.date).getHours() + 1) )?.stavka : '...')
@@ -260,7 +264,7 @@ const ProjectItem = (props) => {
                             <li className='item-list'><div>Ставка</div>{stavkaView ? (parseInt(stavkaView).toLocaleString()+ '.00') : '0.00'}</li>
                             <li className='item-list'><div>Смена</div>{smenaView ? (parseInt(smenaView).toLocaleString()+ '.00') : '0.00'}</li>
                             <li className='item-list'><div>Переработка</div>{pererabotkaView ? (parseInt(pererabotkaView).toLocaleString()+ '.00') : '0.00'}</li>
-                            <li className='item-list'><div>Доп. расходы</div>{parseInt((transportView ? transportView : 0) + (gsmView ? gsmView : 0)).toLocaleString() + '.00'}</li>
+                            <li className='item-list'><div>Доп. расходы</div>{parseInt((transportView ? transportView : 0) + (gsmView ? gsmView : 0) + (taxiView ? (comtag.find(item => item.name === 'Такси [корпоративное]') ? 0 : taxiView) : 0)).toLocaleString() + '.00'}</li>
                         </ul>
                     </div>
                     <div className='block-button'>
