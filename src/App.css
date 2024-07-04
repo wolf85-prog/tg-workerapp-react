@@ -605,3 +605,22 @@ input {
   color: #fff;
   font-size: 16px;
 }
+
+.pulse-button {
+  -webkit-animation: animPulse 1s linear infinite;
+  animation: animPulse 1s linear infinite;
+}
+
+@keyframes animPulse {
+  0% {
+    transform: scale(0.95, 0.95);
+  }
+ 
+  50% {
+    transform: scale(1.05, 1.05);
+  }
+
+  100% {
+    transform: scale(0.95, 0.95);
+  }
+}

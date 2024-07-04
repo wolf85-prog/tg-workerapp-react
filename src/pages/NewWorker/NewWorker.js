@@ -53,6 +53,8 @@ const NewWorker = () => {
     
     const [showBlockFam, setShowBlockFam] = useState(false)
     const [showBlockCity, setShowBlockCity] = useState(false)
+    const [showBlockCancel, setShowBlockCancel] = useState(false)
+    const [showPulse, setShowPulse] = useState(true)
 
     const [showFIO, setShowFIO] = useState(false)
     const [showDate, setShowDate] = useState(false)
@@ -87,6 +89,7 @@ const NewWorker = () => {
     const [widthStr3, setWidthStr3] = useState(0)
 
     const [check, setCheck] = useState(false)
+    const [check2, setCheck2] = useState(false)
 
 
     const [showInfo, setShowInfo] = useState(false)
@@ -276,9 +279,11 @@ const NewWorker = () => {
     const clickAddFrined = () => {
         console.log(check)
         //show save button
-        setShowMainBtn(true)
+        //setShowMainBtn(true)
 
         setShowModal(false)
+
+        setShowBlockCancel(true)
     }
 
     const onChangeTime = (e) => {
@@ -306,6 +311,13 @@ const NewWorker = () => {
         }
 
         console.log(data)
+
+        setShowPulse(false)
+    }
+
+    const clickCheck = () => {
+        setCheck2(!check2)
+        setShowMainBtn(true)
     }
 
 
@@ -684,7 +696,7 @@ const NewWorker = () => {
                     </button> 
                     :<button 
                         disabled={disabledBtn2}
-                        className="image-button-add" 
+                        className={showPulse ? 'image-button-add pulse-button' : 'image-button-add'} 
                         style={{ backgroundImage: `url(${btnSave})`}}
                         onClick={clickApply}
                     >
@@ -692,6 +704,14 @@ const NewWorker = () => {
                     </button> }
 
                     
+                </div>
+
+            </div>
+
+            <div style={{position: 'relative', display: showBlockCancel ? 'block' : 'none',}}>
+                <div style={{position: 'absolute', top: '60px', left: '20px', display: 'flex', alignItems: 'center'}}>
+                    <img src={check2 ? iconCheck : iconUnCheck} onClick={clickCheck} alt='' width='20px' height='20px'/>
+                    <label style={{marginRight: '10px', marginLeft: '15px', fontSize: '13px'}}>Согласен на передачу личных данных</label>
                 </div>
             </div>
 
