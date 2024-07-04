@@ -317,7 +317,7 @@ const NewWorker = () => {
 
     const clickCheck = () => {
         setCheck2(!check2)
-        setShowMainBtn(true)
+        setShowMainBtn(!showMainBtn)
     }
 
 
@@ -709,9 +709,9 @@ const NewWorker = () => {
             </div>
 
             <div style={{position: 'relative', display: showBlockCancel ? 'block' : 'none',}}>
-                <div style={{position: 'absolute', top: '60px', left: '20px', display: 'flex', alignItems: 'center'}}>
+                <div style={{position: 'absolute', top: '20px', left: '20px', display: 'flex', alignItems: 'center'}}>
                     <img src={check2 ? iconCheck : iconUnCheck} onClick={clickCheck} alt='' width='20px' height='20px'/>
-                    <label style={{marginRight: '10px', marginLeft: '15px', fontSize: '13px'}}>Согласен на передачу личных данных</label>
+                    <label style={{marginRight: '10px', marginLeft: '15px', fontSize: '12px'}}>Согласен на передачу личных данных</label>
                 </div>
             </div>
 
