@@ -708,10 +708,10 @@ const NewWorker = () => {
 
             </div>
 
-            <div style={{position: 'relative', display: showBlockCancel ? 'block' : 'none',}}>
+            <div style={{position: 'relative', display: showBlockCancel ? 'block' : 'none', zIndex: '10'}}>
                 <div style={{position: 'absolute', top: '20px', left: '20px', display: 'flex', alignItems: 'center'}}>
                     <img src={check2 ? iconCheck : iconUnCheck} onClick={clickCheck} alt='' width='20px' height='20px'/>
-                    <label style={{marginRight: '10px', marginLeft: '15px', fontSize: '12px'}}>Согласен на передачу личных данных</label>
+                    <p style={{marginRight: '10px', marginLeft: '15px', fontSize: '12px'}}>Согласен на передачу личных данных</p>
                 </div>
             </div>
 
