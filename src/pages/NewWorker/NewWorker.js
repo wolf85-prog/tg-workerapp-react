@@ -55,6 +55,7 @@ const NewWorker = () => {
     const [showBlockCity, setShowBlockCity] = useState(false)
     const [showBlockCancel, setShowBlockCancel] = useState(false)
     const [showPulse, setShowPulse] = useState(true)
+    const [showPulse2, setShowPulse2] = useState(false)
 
     const [showFIO, setShowFIO] = useState(false)
     const [showDate, setShowDate] = useState(false)
@@ -260,6 +261,8 @@ const NewWorker = () => {
 
     const handlePhone = (e)=>{
         setPhone(e.target.value)
+
+        setShowPulse2(true)
         //console.log(phone.length)
 
         //setDisabledBtn(false)
@@ -590,7 +593,7 @@ const NewWorker = () => {
                     {!showFIO ? 
                     <button 
                         disabled={false}
-                        className="image-button-add" 
+                        className={showPulse2 ? 'image-button-add pulse-button' : 'image-button-add'}
                         style={{ backgroundImage: `url(${btnSave})`}}
                         onClick={addNewWorker2}
                     >
