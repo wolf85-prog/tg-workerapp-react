@@ -271,7 +271,7 @@ const NewWorker = () => {
 
     const onChangeCity = (e) => {
         console.log(e.target.value)
-        setCity(e.target.value)
+        setCity(e.target.value)    
     }
 
     const onChangeFriend = (e) => {
@@ -462,11 +462,11 @@ const NewWorker = () => {
 
     }, [widthStr3])
 
-    const clickCity = (event)=> {
-        //console.log("event: ", event)
+    const clickCity = (event, newValue)=> {
+        console.log("event: ", event)
         if (event.length > 0) {
             setCity(event);
-        }     
+        }    
     }
 
     
@@ -650,7 +650,12 @@ const NewWorker = () => {
                         options={cityData}
                         style={{width: '100%'}}
                         onInputChange={onChangeCity}
-                        onChange={(e)=>clickCity(e)}
+                        //onInputChange={(e)=>clickCity(e)}
+                        onChange={(event, newValue) => {
+                            if (newValue && newValue.length) {
+                                setCity(newValue);
+                            }  
+                        }}
                         value={city}
                         inputValue={city}
                         renderInput={(params) => (
