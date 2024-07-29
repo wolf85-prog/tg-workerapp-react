@@ -461,6 +461,13 @@ const NewWorker = () => {
 
     }, [widthStr3])
 
+    const clickCity = (event)=> {
+        //console.log("event: ", event)
+        if (event.length > 0) {
+            setCity(event);
+        }     
+    }
+
     
     return (
         <div className="App">
@@ -642,9 +649,7 @@ const NewWorker = () => {
                         options={cityData}
                         style={{width: '100%'}}
                         onInputChange={onChangeCity}
-                        onChange={(event, newValue) => {
-                            setCity(newValue);
-                        }}
+                        onChange={(e)=>clickCity(e)}
                         value={city}
                         inputValue={city}
                         renderInput={(params) => (
