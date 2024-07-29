@@ -543,13 +543,12 @@ const NewWorker = () => {
                     <div className='rec3-input'></div>
                     <input
                         className='input-style3'
-                        placeholder='Никнейм (необязательно)'
-                        id="worker_soname"
-                        variant="filled"
-                        onChange={onChangeFamily}
-                        value={workerFam}
+                        placeholder='Имя'
+                        id="worker_name"
+                        onChange={onChangeName}
+                        value={workerName}
                         disabled={disabledFIO}
-                    />
+                    /> 
                 </div>
 
                 {/* Имя */}
@@ -559,12 +558,13 @@ const NewWorker = () => {
                     <div className='rec3-input'></div>
                     <input
                         className='input-style3'
-                        placeholder='Имя'
-                        id="worker_name"
-                        onChange={onChangeName}
-                        value={workerName}
+                        placeholder='Никнейм / Псевдоним [необязательно]'
+                        id="worker_soname"
+                        variant="filled"
+                        onChange={onChangeFamily}
+                        value={workerFam}
                         disabled={disabledFIO}
-                    /> 
+                    />
                 </div>         
 
                 {/* Номер телефона */}
@@ -708,14 +708,14 @@ const NewWorker = () => {
                     >
                         Добавить
                     </button> 
-                    :<button 
-                        disabled={disabledBtn2}
-                        className={showPulse ? 'image-button-add pulse-button' : 'image-button-add'} 
-                        style={{ backgroundImage: `url(${btnSave})`}}
-                        onClick={clickApply}
-                    >
-                        Подтвердить
-                    </button> }
+                    :  <button 
+                            disabled={disabledBtn2}
+                            className={`image-button-add ${showPulse ? 'pulse-button button-accept' : ''}`} 
+                            style={{ backgroundImage: `url(${btnSave})`}}
+                            onClick={clickApply}
+                        >
+                            Подтвердить
+                        </button> }
 
                     
                 </div>
@@ -766,7 +766,7 @@ const NewWorker = () => {
                         /> 
                     </div>
                     <div className='button-ok' onClick={clickAddFrined}>
-                        <div className='rec-button'>{check ? "Применить" : "Применить"}</div>        
+                        <div className='rec-button'>{check ? "Применить" : "Пропустить"}</div>        
                     </div>
                 </div>
             </MyModal>
