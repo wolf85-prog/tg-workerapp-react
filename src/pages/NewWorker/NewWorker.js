@@ -535,9 +535,9 @@ const NewWorker = () => {
                 </button> 
             </div>           
             
-            <div style={{display: showBlockFam ? 'block' : 'none', height: '200px'}}>
+            <div style={{display: showBlockFam ? 'block' : 'none', height: '160px'}}>
                 {/* Фамилия */}
-                <div style={{position: 'relative', marginTop: '40px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
+                <div style={{position: 'relative', marginTop: '50px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
@@ -621,7 +621,7 @@ const NewWorker = () => {
 
             <div style={{display: showBlockCity ? 'block' : 'none', height: '200px'}}>
                     {/*Город*/}
-                <div style={{position: 'relative', marginTop: '50px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
+                <div style={{position: 'relative', marginTop: '25px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
@@ -670,7 +670,7 @@ const NewWorker = () => {
 
             
                 {/*Год рождения*/}
-                <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px', zIndex: '99'}}>
+                <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px', marginBottom: '-10px', zIndex: '99'}}>
                 <p className='cat-title' style={{display: titleDate ? 'none' : 'block'}}>Год рождения</p>   
                     <NewSelect3
                         id="dateborn"
