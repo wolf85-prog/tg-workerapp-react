@@ -209,12 +209,14 @@ const NewWorker = () => {
     //добавить данные ФИО и телефон
     const addNewWorker2 = (e) => {
         //console.log(phone.length)
-        if (phone.length === 18 && workerFam.length > 3 && workerName.length > 0) {
+        //if (phone.length === 18 && workerFam.length > 3 && workerName.length > 0) {
+        if (workerName.length > 0) {
             setShowFIO(true)
             setShowBlockCity(true)
 
             let str = ''
-            str = `${workerFam} ${workerName} | ${phone}`
+            //str = `${workerFam} ${workerName} | ${phone}`
+            str = `${workerFam} ${workerName}`
             //console.log("str2: ", str)
 
             let canvas = document.createElement('canvas');
@@ -257,15 +259,14 @@ const NewWorker = () => {
 
     const onChangeName = (e) => {
         setWorkerName(e.target.value)
+
+        setShowPulse2(true)
     }
 
     const handlePhone = (e)=>{
         setPhone(e.target.value)
 
         setShowPulse2(true)
-        //console.log(phone.length)
-
-        //setDisabledBtn(false)
     }
 
     const onChangeCity = (e) => {
@@ -542,7 +543,7 @@ const NewWorker = () => {
                     <div className='rec3-input'></div>
                     <input
                         className='input-style3'
-                        placeholder='Фамилия'
+                        placeholder='Никнейм (необязательно)'
                         id="worker_soname"
                         variant="filled"
                         onChange={onChangeFamily}
@@ -567,7 +568,7 @@ const NewWorker = () => {
                 </div>         
 
                 {/* Номер телефона */}
-                <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
+                {/* <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
@@ -581,7 +582,7 @@ const NewWorker = () => {
                         placeholder='Номер телефона'
                     >
                     </InputMask>
-                </div>
+                </div> */}
 
                 <div style={{position: 'relative', marginTop: '10px', marginRight: '25px', textAlign: 'left'}}>
                     {/* <p className='fio-text' style={{display: showFIO ? 'block' : 'none'}}>{workerFam} {workerName} | {phone}</p> */}
@@ -593,7 +594,7 @@ const NewWorker = () => {
                             marginLeft: '25px', 
                             display: showFIO ? 'block' : 'none',
                             whiteSpace: 'nowrap'
-                        }}>{workerFam} {workerName} | {phone}</p>
+                        }}>{workerFam} {workerName}</p>
                     }
 
 
