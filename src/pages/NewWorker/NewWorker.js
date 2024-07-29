@@ -646,6 +646,7 @@ const NewWorker = () => {
                                 marginBottom: '20px',
                             }
                         }}
+                        openOnFocus
                         id="custom-input-demo"
                         options={cityData}
                         style={{width: '100%'}}
@@ -724,8 +725,15 @@ const NewWorker = () => {
 
             <div style={{position: 'relative', display: showBlockCancel ? 'block' : 'none', zIndex: '10'}}>
                 <div style={{position: 'absolute', bottom: '10px', left: '20px', display: 'flex', alignItems: 'center'}}>
-                    <img src={check2 ? iconCheck : iconUnCheck} onClick={clickCheck} alt='' width='20px' height='20px'/>
-                    <p style={{marginRight: '10px', marginLeft: '15px', fontSize: '12px'}}>Согласен на передачу личных данных</p>
+                    <img 
+                        src={check2 ? iconCheck : iconUnCheck} 
+                        onClick={clickCheck} 
+                        alt='' 
+                        width='20px' 
+                        height='20px'
+                        style={{border: '2px solid #1645c7', borderRadius: '5.5px'}}
+                    />
+                    <p style={{marginRight: '10px', marginLeft: '15px', fontSize: '12px'}}>Согласие на передачу и обработку данных</p>
                 </div>
             </div>
 
