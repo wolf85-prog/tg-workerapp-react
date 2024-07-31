@@ -731,8 +731,8 @@ const NewWorker = () => {
                         alt='' 
                         width='25px' 
                         height='25px'
-                        className='pulse-button'
-                        style={{border: '2px solid #1645c7', borderRadius: '5.5px'}}
+                        className={`${!check2 ? 'pulse-check' : ''}`}
+                        style={{border: !check2 ? '2px solid #1645c7' : '', borderRadius: '5.5px'}}
                     />
                     <p style={{marginRight: '10px', marginLeft: '15px', fontSize: '12px'}}>Согласие на передачу и обработку данных</p>
                 </div>
