@@ -307,10 +307,10 @@ const NewWorker = () => {
 
         const data = {
             workerfamily: workerFam,
-            workerName, 
-            phone,
+            workerName: workerName, 
+            phone: phone,
             worklist: workers,
-            city, 
+            city: city.trim(), 
             dateborn: dateborn.toString(), 
         }
 
