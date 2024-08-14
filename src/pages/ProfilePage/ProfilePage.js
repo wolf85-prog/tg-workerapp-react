@@ -257,10 +257,11 @@ useEffect(()=> {
         let tempSum = 0
         projects.map((project, index)=> {            
             let smetaObject = smets.find((proj) => proj.projectId === project.id)
+            console.log("smetaObject: ", smetaObject, project.title)
 
             const specsArr = JSON.parse(project.specs)
-            console.log("specsArr: ", specsArr, project.title)
-            console.log("workerId: ", workerId)
+            //console.log("specsArr: ", specsArr, project.title)
+            //console.log("workerId: ", workerId)
 
             specsArr.map((spec, index) => {
                 //проекты после 31.01.2024
@@ -275,7 +276,7 @@ useEffect(()=> {
                             specs: spec, 
                             smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
                             finalSmeta: smetaObject ? smetaObject?.final : "",
-                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId && item.date === spec.date)?.specialist !== '0.00' ? 2 : 1) : 1
+                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId && item.date === spec.date) ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId && item.date === spec.date)?.specialist !== '0.00' ? 2 : 1) : 1) : 1
                         }
                         //console.log(newProject)
                         arrayProject.push(newProject)
@@ -284,7 +285,7 @@ useEffect(()=> {
         })
 
         const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
-        console.log("tempArr: ", tempArr)
+        //console.log("tempArr: ", tempArr)
         
         tempArr.map((item)=> {
             if (item.smeta ) {
