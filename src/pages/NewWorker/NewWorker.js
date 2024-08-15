@@ -216,7 +216,7 @@ const NewWorker = () => {
 
             let str = ''
             //str = `${workerFam} ${workerName} | ${phone}`
-            str = `${workerFam} ${workerName}`
+            str = `${workerName}`
             //console.log("str2: ", str)
 
             let canvas = document.createElement('canvas');
@@ -252,22 +252,21 @@ const NewWorker = () => {
         setWidthStr3(widthX)
     }
 
-
-    const onChangeFamily = (e) => {
-        setWorkerFam(e.target.value)
-    }
-
     const onChangeName = (e) => {
         setWorkerName(e.target.value)
 
         setShowPulse2(true)
     }
 
-    const handlePhone = (e)=>{
-        setPhone(e.target.value)
+    // const onChangeFamily = (e) => {
+    //     setWorkerFam(e.target.value)
+    // }
 
-        setShowPulse2(true)
-    }
+    // const handlePhone = (e)=>{
+    //     setPhone(e.target.value)
+
+    //     setShowPulse2(true)
+    // }
 
     const onChangeCity = (e) => {
         console.log(e.target.value)
@@ -306,11 +305,9 @@ const NewWorker = () => {
         setShowModal(true)
 
         const data = {
-            workerfamily: workerFam,
             workerName: workerName, 
-            phone: phone,
             worklist: workers,
-            city: city.trim(), 
+            city: city, 
             dateborn: dateborn.toString(), 
         }
 
@@ -347,11 +344,11 @@ const NewWorker = () => {
      const onSendData = useCallback(() => {
 
         const data = {
-            workerfamily: workerFam.trim(),
+            //workerfamily: workerFam.trim(),
             workerName: workerName.trim(), 
-            phone,
+            //phone,
             worklist: workers,
-            city, 
+            city: city.trim(),
             dateborn: dateborn.toString(),
             friend: check ? Number(friend) : 0,
             queryId,
@@ -552,7 +549,7 @@ const NewWorker = () => {
                 </div>
 
                 {/* Имя */}
-                <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
+                {/* <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
                     <div className='rec2-input'></div>
                     <div className='rec3-input'></div>
@@ -565,7 +562,7 @@ const NewWorker = () => {
                         value={workerFam}
                         disabled={disabledFIO}
                     />
-                </div>         
+                </div> */}        
 
                 {/* Номер телефона */}
                 {/* <div style={{position: 'relative', marginTop: '20px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
