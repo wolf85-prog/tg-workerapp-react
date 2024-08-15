@@ -344,7 +344,7 @@ const NewWorker = () => {
      const onSendData = useCallback(() => {
 
         const data = {
-            //workerfamily: workerFam.trim(),
+            workerfamily: workerFam,
             workerName: workerName.trim(), 
             //phone,
             worklist: workers,
