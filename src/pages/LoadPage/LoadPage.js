@@ -90,7 +90,9 @@ const LoadPage = () => {
             }, 5000)
         }
 
-        fetchData()  
+        //fetchData() 
+        
+        navigate("/error")
     }, []);
 
     useEffect(()=>{

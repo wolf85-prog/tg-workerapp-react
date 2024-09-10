@@ -42,9 +42,8 @@ function App() {
       <ThemeProvider theme={darkTheme}>
           <CssBaseline />
               <Routes>
-                  <Route index element={<ErrorPage />}/>
-                  {/* <Route index element={<LoadPage />}/>
-                  <Route path={'load'} element={<LoadPage2 />}/>
+                  <Route index element={<LoadPage />}/>
+                  {/* <Route path={'load'} element={<LoadPage2 />}/>
                   <Route path={'hello'} element={<HelloPage />}/>
                   <Route path={'menu'} element={<MenuPage />}/>
                   <Route path={'add-worker'} element={<NewWorker />}/>
@@ -59,6 +58,7 @@ function App() {
                   <Route path={'add-passport2'} element={<NewPassport2 />}/>
                   <Route path={'add-passport3'} element={<NewPassport3 />}/> */}
 
+                  <Route path={'error'} element={<ErrorPage />}/>
                   <Route path={'profile'} element={<ErrorPage />}/>
                   {/* <Route path={'projects'} element={<ProjectPage />}/>
                   <Route path={'smeta'} element={<SmetaPage />}/>
