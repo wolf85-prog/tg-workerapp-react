@@ -53,7 +53,7 @@ const ErrorPage = () => {
                     <p className='text-vagno3'>Ведутся технические работы! Задайте ваш вопрос менеджеру через чат</p>
                 
                     <div className='button-ok'>
-                        <div className='rec-button' onClick={onClose}>Чат</div>        
+                        <div className='rec-button'>Чат</div>        
                     </div>
                 </div>
             </MyModal>
