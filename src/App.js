@@ -42,7 +42,8 @@ function App() {
       <ThemeProvider theme={darkTheme}>
           <CssBaseline />
               <Routes>
-                  <Route index element={<LoadPage />}/>
+                  <Route index element={<ErrorPage />}/>
+                  {/* <Route index element={<LoadPage />}/>
                   <Route path={'load'} element={<LoadPage2 />}/>
                   <Route path={'hello'} element={<HelloPage />}/>
                   <Route path={'menu'} element={<MenuPage />}/>
@@ -70,7 +71,7 @@ function App() {
 
                   <Route path={'add-stavka/:id'} element={<NewStavka />}/>
 
-                  <Route path={'edit-worker'} element={<EditWorker />}/>
+                  <Route path={'edit-worker'} element={<EditWorker />}/> */}
               </Routes>
       </ThemeProvider>
   );

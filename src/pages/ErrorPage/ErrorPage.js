@@ -35,12 +35,11 @@ const ErrorPage = () => {
     return (
         <div className="App">
 
-            <Header header={{title: `${headerName}`, icon: 'false'}} />
+            {/* <Header header={{title: `${headerName}`, icon: 'false'}} /> */}
 
             {/* темный фон */}
-            <img src={BlackFon} alt='' className='fon-black' />
-            {/* <img src={BlackFon} alt='' className='fon-black' style={{left: `${25 - width}px`, zIndex: '1'}} /> */}
-            <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
+            {/* <img src={BlackFon} alt='' className='fon-black' />
+            <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} /> */}
 
 
             <MyModal visible={showModal} setVisible={setShowModal}>
@@ -54,7 +53,7 @@ const ErrorPage = () => {
                     <p className='text-vagno3'>Ведутся технические работы! Задайте ваш вопрос менеджеру через чат</p>
                 
                     <div className='button-ok'>
-                        <div className='rec-button' onClick={()=>setShowModal(false)}>Ок</div>        
+                        <div className='rec-button' onClick={()=>onClose}>Чат</div>        
                     </div>
                 </div>
             </MyModal>
