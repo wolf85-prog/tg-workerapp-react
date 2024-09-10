@@ -51,7 +51,7 @@ const ErrorPage = () => {
 
                     <p className='vagno'>Внимание</p>
 
-                    <p className='text-vagno3'>Ведуться технические работы! Попробуйте зайти позже</p>
+                    <p className='text-vagno3'>Ведутся технические работы! Задайте ваш вопрос менеджеру через чат</p>
                 
                     <div className='button-ok'>
                         <div className='rec-button' onClick={()=>setShowModal(false)}>Ок</div>        
