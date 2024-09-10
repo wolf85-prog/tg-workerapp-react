@@ -57,10 +57,10 @@ function App() {
                   <Route path={'anketa'} element={<AnketaPage />}/>
                   <Route path={'add-passport'} element={<NewPassport />}/>
                   <Route path={'add-passport2'} element={<NewPassport2 />}/>
-                  <Route path={'add-passport3'} element={<NewPassport3 />}/>
+                  <Route path={'add-passport3'} element={<NewPassport3 />}/> */}
 
-                  <Route path={'profile'} element={<ProfilePage />}/>
-                  <Route path={'projects'} element={<ProjectPage />}/>
+                  <Route path={'profile'} element={<ErrorPage />}/>
+                  {/* <Route path={'projects'} element={<ProjectPage />}/>
                   <Route path={'smeta'} element={<SmetaPage />}/>
                   <Route path={'page3'} element={<Page3 />}/>
                   <Route path={'contacts'} element={<ContactPage />}/>
