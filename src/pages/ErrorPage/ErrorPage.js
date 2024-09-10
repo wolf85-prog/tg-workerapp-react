@@ -35,11 +35,11 @@ const ErrorPage = () => {
     return (
         <div className="App">
 
-            {/* <Header header={{title: `${headerName}`, icon: 'false'}} /> */}
+            <Header header={{title: `${headerName}`, icon: 'false'}} />
 
             {/* темный фон */}
-            {/* <img src={BlackFon} alt='' className='fon-black' />
-            <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} /> */}
+            <img src={BlackFon} alt='' className='fon-black' />
+            <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
 
 
             <MyModal visible={showModal} setVisible={setShowModal}>
