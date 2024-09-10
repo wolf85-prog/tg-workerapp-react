@@ -236,8 +236,7 @@ const ProfilePage = () => {
             }, 2000)
         }
 
-        //fetchData()   
-        navigate("/error")
+        fetchData()   
     }, [workerhub]);
 
 //---------------------------------------------------------------------
