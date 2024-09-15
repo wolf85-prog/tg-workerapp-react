@@ -57,7 +57,8 @@ const UserProvider = ({ children }) => {
         const fetchData = async() => {
 
 			//получать данные из Notion
-            const worker = await getWorkerId(user?.id) //user?.id '805436270' '1408579113'
+            //const worker = await getWorkerId(user?.id) //user?.id '805436270' '1408579113'
+			const worker = await getWorkerIdBD(user?.id)
 
 			//получить данные из БД
 			// const worker1 = await getWorkerIdBD(user?.id )

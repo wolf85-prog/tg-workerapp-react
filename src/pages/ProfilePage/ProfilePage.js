@@ -164,8 +164,10 @@ const ProfilePage = () => {
 
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const workerNotion = await getWorkerId('1775583141') //'805436270' '1408579113' user?.id '6143011220'
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220' '1853131218'
+            //const workerNotion = await getWorkerId('1775583141') //'805436270' '1408579113' user?.id '6143011220'
+            //const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220' '1853131218'
+            
+            const worker = await getWorkerIdBD(user?.id)
 
             //получить данные из БД
 			// const worker1 = await getWorkerIdBD('1408579113')
@@ -192,7 +194,7 @@ const ProfilePage = () => {
             
             //console.log("worker arr: ", obj) 
 
-            console.log("workerNotion: ", workerNotion.length) 
+            //console.log("workerNotion: ", workerNotion.length) 
             
             setWorkerId(worker[0]?.id)
             setSpecId(worker[0]?.id)
@@ -213,16 +215,16 @@ const ProfilePage = () => {
                 if (worker.length > 0) {
                     //зарегистрирован
                     console.log("Зарегистирован", "REG")
-                    //setSpecId(worker[0]?.id)
-                    //navigate("/profile")
+                    setSpecId(worker[0]?.id)
+                    navigate("/profile")
                 } else  {
                     if (flag === 'ONLY_REG') {
                         //только что зарегистрирован
                         console.log("Только что зарегистировался", flag)
                         navigate("/process")
                     } 
-                    else if (workerNotion.length > 0) {
-                    //else if (worker.length > 0) {
+                    //else if (workerNotion.length > 0) {
+                    else if (worker.length > 0) {
                         //не зарегистрирован
                         console.log("Зарегистрируйтесь! NOREG")
                         navigate("/add-worker")
