@@ -168,39 +168,15 @@ const ProfilePage = () => {
             //const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220' '1853131218'
             
             const worker = await getWorkerIdBD(user?.id)
-
-            //получить данные из БД
-			// const worker1 = await getWorkerIdBD('1408579113')
-
-            // let worker = []
-            // const obj = {
-            //         id: worker1.id,
-            //         fio: worker1.userfamily + ' '+ worker1.username,
-            //         tgId: worker1.chatId,
-            //         phone: worker1.phone,
-            //         age: worker1.dateborn,
-            //         city: worker1.city,
-            //         newcity: worker1.newcity,
-            //         spec: JSON.parse(worker1.worklist),
-            //         comment: worker1.comment,
-            //         reyting: '',
-            //         merch: '',
-            //         comteg: '',
-            //         rank: worker1.rank,
-            //         passport: '',
-            //         skill: '',
-            // }
-            // worker.push(obj)
             
-            //console.log("worker arr: ", obj) 
+            console.log("worker profile: ", worker) 
 
             //console.log("workerNotion: ", workerNotion.length) 
-            
-            setWorkerId(worker[0]?.id)
-            setSpecId(worker[0]?.id)
+            setWorkerId(worker?.id)
+            setSpecId(worker?.id)
 
             let list = []
-            workerhub[0]?.spec.map((worker, index)=> {
+            workerhub[0] && JSON.parse(workerhub[0]?.specialization).map((worker, index)=> {
                 if (worker.name !== 'Blacklist' && worker.name !== '+18') {
                     list.push(worker)
                 }   
@@ -209,13 +185,14 @@ const ProfilePage = () => {
 
             setWorkerhublist(list)
 
-            setIsProfileLoading(false)  
+            setIsProfileLoading(false) 
 
             setTimeout(()=> {      
-                if (worker.length > 0) {
+                if (worker !== null) {
                     //зарегистрирован
                     console.log("Зарегистирован", "REG")
-                    setSpecId(worker[0]?.id)
+                    setSpecId(worker?.id)
+
                     navigate("/profile")
                 } else  {
                     if (flag === 'ONLY_REG') {
@@ -224,16 +201,16 @@ const ProfilePage = () => {
                         navigate("/process")
                     } 
                     //else if (workerNotion.length > 0) {
-                    else if (worker.length > 0) {
+                    else if (!worker) {
                         //не зарегистрирован
                         console.log("Зарегистрируйтесь! NOREG")
                         navigate("/add-worker")
-                    }
-                    else {
-                        //ошибка
-                        console.log("Ошибка")
-                        navigate("/error")
-                    }
+                    //}
+                    // else {
+                    //     //ошибка
+                    //     console.log("Ошибка")
+                    //     navigate("/error")
+                 }
                 }
             }, 2000)
         }
