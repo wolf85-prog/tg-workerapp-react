@@ -25,7 +25,7 @@ const UserProvider = ({ children }) => {
 
 	const [projects, setProjects] = useState([]);
 	const [specId, setSpecId] = useState('');
-	const [workerhub, setWorkerhub] = useState([]);
+	const [workerhub, setWorkerhub] = useState();
 	const [summa, setSumma] = useState(0);
 	
 	//let dohod = []
