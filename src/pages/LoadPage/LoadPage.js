@@ -64,7 +64,7 @@ const LoadPage = () => {
             setWorkerId(worker[0]?.id)
             setSpecId(worker[0]?.id)
             
-            setTimeout(()=> {      
+            //setTimeout(()=> {      
                 if (worker.length > 0) {
                     //зарегистрирован
                     console.log("Зарегистирован", "REG")
@@ -87,7 +87,7 @@ const LoadPage = () => {
                         navigate("/error")
                     }
                 }
-            }, 5000)
+            //}, 5000)
         }
 
         fetchData() 
@@ -108,7 +108,7 @@ const LoadPage = () => {
     return (
         <div className="App" style={{display: 'flex', height: '100vh'}}>
             {/* {isScreenLg && (<img src={logo_big} alt="loading..." width='100%' />)} */}
-            <img src={logo_mid} alt="loading..." width='100%' />
+            {/* <img src={logo_mid} alt="loading..." width='100%' /> */}
             {/* {isScreenSm && (<img src={logo_small} alt="loading..." width='100%' />)} */}
         </div>
     );
