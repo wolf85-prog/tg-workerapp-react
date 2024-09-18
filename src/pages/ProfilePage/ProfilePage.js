@@ -164,56 +164,43 @@ const ProfilePage = () => {
 
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const workerNotion = await getWorkerId('1775583141') //'805436270' '1408579113' user?.id '6143011220'
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220' '1853131218'
-
-            //получить данные из БД
-			// const worker1 = await getWorkerIdBD('1408579113')
-
-            // let worker = []
-            // const obj = {
-            //         id: worker1.id,
-            //         fio: worker1.userfamily + ' '+ worker1.username,
-            //         tgId: worker1.chatId,
-            //         phone: worker1.phone,
-            //         age: worker1.dateborn,
-            //         city: worker1.city,
-            //         newcity: worker1.newcity,
-            //         spec: JSON.parse(worker1.worklist),
-            //         comment: worker1.comment,
-            //         reyting: '',
-            //         merch: '',
-            //         comteg: '',
-            //         rank: worker1.rank,
-            //         passport: '',
-            //         skill: '',
-            // }
-            // worker.push(obj)
+            //const workerNotion = await getWorkerId('1775583141') //'805436270' '1408579113' user?.id '6143011220'
+            //const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220' '1853131218'
             
-            //console.log("worker arr: ", obj) 
-
-            console.log("workerNotion: ", workerNotion.length) 
+            const worker = await getWorkerIdBD(user?.id)
             
-            setWorkerId(worker[0]?.id)
-            setSpecId(worker[0]?.id)
+            console.log("worker profile: ", worker) 
+
+            //console.log("workerNotion: ", workerNotion.length) 
+            setWorkerId(worker?.id)
+            setSpecId(worker?.id)
 
             let list = []
-            workerhub[0]?.spec.map((worker, index)=> {
-                if (worker.name !== 'Blacklist' && worker.name !== '+18') {
+            workerhub && JSON.parse(workerhub?.specialization).map((worker, index)=> {
+                if (worker.spec !== 'Blacklist' && worker.spec !== '+18') {
                     list.push(worker)
                 }   
             })
+            //console.log("list: ", list)
 
+            //skill
+            // let list2 = []
+            // workerhub && JSON.parse(workerhub?.skill).map((worker, index)=> {
+            //     //if (worker.spec !== 'Blacklist' && worker.spec !== '+18') {
+            //         list2.push(worker)
+            //     //}   
+            // })
 
             setWorkerhublist(list)
 
-            setIsProfileLoading(false)  
+            //
 
-            setTimeout(()=> {      
-                if (worker.length > 0) {
+            //setTimeout(()=> {      
+                if (worker !== null) {
                     //зарегистрирован
                     console.log("Зарегистирован", "REG")
-                    //setSpecId(worker[0]?.id)
+                    setSpecId(worker?.id)
+                    setIsProfileLoading(false) 
                     //navigate("/profile")
                 } else  {
                     if (flag === 'ONLY_REG') {
@@ -221,19 +208,19 @@ const ProfilePage = () => {
                         console.log("Только что зарегистировался", flag)
                         navigate("/process")
                     } 
-                    else if (workerNotion.length > 0) {
-                    //else if (worker.length > 0) {
+                    //else if (workerNotion.length > 0) {
+                    else if (!worker) {
                         //не зарегистрирован
                         console.log("Зарегистрируйтесь! NOREG")
                         navigate("/add-worker")
-                    }
-                    else {
-                        //ошибка
-                        console.log("Ошибка")
-                        navigate("/error")
-                    }
+                    //}
+                    // else {
+                    //     //ошибка
+                    //     console.log("Ошибка")
+                    //     navigate("/error")
+                 }
                 }
-            }, 2000)
+            //}, 2000)
         }
 
         fetchData()   
@@ -243,72 +230,72 @@ const ProfilePage = () => {
 //1  загружаем проекты
 useEffect(()=> {
     const fetchDataProjects = async () => {
-        const arrayProject = []
-        setIsPostsLoading(true)
+        // const arrayProject = []
+        // setIsPostsLoading(true)
                
-        console.log("Начинаю загружать проекты...")
-        const projects = await getProjectsCash();
-        console.log("projects: ", projects)
+        // console.log("Начинаю загружать проекты...")
+        // const projects = await getProjectsCash();
+        // console.log("projects: ", projects)
 
-        console.log("Начинаю загружать сметы...")
-        const smets = await getSmetaCash();
-        //console.log("smets: ", smets)
+        // console.log("Начинаю загружать сметы...")
+        // const smets = await getSmetaCash();
+        // //console.log("smets: ", smets)
 
-        let tempSum = 0
-        projects.map((project, index)=> {            
-            let smetaObject = smets.find((proj) => proj.projectId === project.id)
-            console.log("smetaObject: ", smetaObject, project.title)
+        // let tempSum = 0
+        // projects.map((project, index)=> {            
+        //     let smetaObject = smets.find((proj) => proj.projectId === project.id)
+        //     console.log("smetaObject: ", smetaObject, project.title)
 
-            const specsArr = JSON.parse(project.specs)
-            //console.log("specsArr: ", specsArr, project.title)
-            //console.log("workerId: ", workerId)
+        //     const specsArr = JSON.parse(project.specs)
+        //     //console.log("specsArr: ", specsArr, project.title)
+        //     //console.log("workerId: ", workerId)
 
-            specsArr.map((spec, index) => {
-                //проекты после 31.01.2024
-                    if (spec.id === workerId && new Date(spec.date).getTime() > new Date(2024, 0, 31).getTime()) {
-                        const newProject = {
-                            id: project.id,
-                            title: project.title,
-                            date_start: project.dateStart,
-                            date_end: project.dateEnd,
-                            tgURL_chat: project.tgURLchat,
-                            status: JSON.parse(project.status),
-                            specs: spec, 
-                            smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
-                            finalSmeta: smetaObject ? smetaObject?.final : "",
-                            statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId && item.date === spec.date) ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId && item.date === spec.date)?.specialist !== '0.00' ? 2 : 1) : 1) : 1
-                        }
-                        //console.log(newProject)
-                        arrayProject.push(newProject)
-                    }   
-            })
-        })
+        //     specsArr.map((spec, index) => {
+        //         //проекты после 31.01.2024
+        //             if (spec.id === workerId && new Date(spec.date).getTime() > new Date(2024, 0, 31).getTime()) {
+        //                 const newProject = {
+        //                     id: project.id,
+        //                     title: project.title,
+        //                     date_start: project.dateStart,
+        //                     date_end: project.dateEnd,
+        //                     tgURL_chat: project.tgURLchat,
+        //                     status: JSON.parse(project.status),
+        //                     specs: spec, 
+        //                     smeta: smetaObject ? JSON.parse(smetaObject?.dop) : "",
+        //                     finalSmeta: smetaObject ? smetaObject?.final : "",
+        //                     statusMoney: smetaObject ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId && item.date === spec.date) ? (JSON.parse(smetaObject?.dop).find((item) => item.fio_id === workerId && item.date === spec.date)?.specialist !== '0.00' ? 2 : 1) : 1) : 1
+        //                 }
+        //                 //console.log(newProject)
+        //                 arrayProject.push(newProject)
+        //             }   
+        //     })
+        // })
 
-        const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
-        //console.log("tempArr: ", tempArr)
+        // const tempArr = [...arrayProject].filter(post=> post.specs.id === workerId) //find(item => item.id === workerId))
+        // //console.log("tempArr: ", tempArr)
         
-        tempArr.map((item)=> {
-            if (item.smeta ) {
-                //console.log("смета: ", item.smeta)
-                const dateTemp = item.specs.date
-                //console.log("date main: ", new Date(dateTemp))
+        // tempArr.map((item)=> {
+        //     if (item.smeta ) {
+        //         //console.log("смета: ", item.smeta)
+        //         const dateTemp = item.specs.date
+        //         //console.log("date main: ", new Date(dateTemp))
 
-                //доход за текущий месяц
-                let stavka =  item.smeta.find((item2) => item2.fio_id === workerId && (new Date(item2.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 2) && new Date(item2.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 2)) && new Date(item2.date).getMonth() === new Date().getMonth())?.specialist
-                let stavkaNew = stavka ? stavka.replace(/\s/g, "") : '';
-                tempSum = tempSum + (stavka ? parseInt(stavkaNew.split('.')[0]) : 0)
-                //console.log("Ставка: ", stavkaNew)
+        //         //доход за текущий месяц
+        //         let stavka =  item.smeta.find((item2) => item2.fio_id === workerId && (new Date(item2.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 2) && new Date(item2.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 2)) && new Date(item2.date).getMonth() === new Date().getMonth())?.specialist
+        //         let stavkaNew = stavka ? stavka.replace(/\s/g, "") : '';
+        //         tempSum = tempSum + (stavka ? parseInt(stavkaNew.split('.')[0]) : 0)
+        //         //console.log("Ставка: ", stavkaNew)
                 
-            }   
-            //console.log("tempSum: ", tempSum)
-        })
+        //     }   
+        //     //console.log("tempSum: ", tempSum)
+        // })
 
-        setSumma(tempSum)
+        // setSumma(tempSum)
         setIsLoadingSum(false)
 
-        console.log("arrayProject: ", arrayProject)
-        setProjects2(arrayProject)     
-        setIsPostsLoading(false)        
+        //console.log("arrayProject: ", arrayProject)
+        //setProjects2(arrayProject)     
+        //setIsPostsLoading(false)        
     }
 
     if (workerId) {
@@ -318,62 +305,62 @@ useEffect(()=> {
 }, [workerId])
 
 
-    useEffect(()=> {
-        const sortArray = []
-        console.log(filter.query)
+    // useEffect(()=> {
+    //     const sortArray = []
+    //     console.log(filter.query)
 
-        sortedAndSearchedPosts.map((project)=> {
-            //проекты после 31.01.2024
-            if (new Date(project.specs.date).getTime() > new Date(2024, 0, 31).getTime()) {
-                const newProject = {
-                    id: project.id,
-                    title: project.title,
-                    date_start: project.date_start,
-                    date_end: project.date_end,
-                    dateMain: project.specs.date, //find(item => item.id === workerId).date,
-                    tgURL_chat: project.tgURL_chat,
-                    status: project.status,
-                    specs: project.specs,
-                    smeta: project.smeta,
-                    finalSmeta: project.finalSmeta,
-                    statusMoney: project.statusMoney,
-                }
-                sortArray.push(newProject)
-            }
-        })
-        console.log("change: ", sortArray)
+    //     sortedAndSearchedPosts.map((project)=> {
+    //         //проекты после 31.01.2024
+    //         if (new Date(project.specs.date).getTime() > new Date(2024, 0, 31).getTime()) {
+    //             const newProject = {
+    //                 id: project.id,
+    //                 title: project.title,
+    //                 date_start: project.date_start,
+    //                 date_end: project.date_end,
+    //                 dateMain: project.specs.date, //find(item => item.id === workerId).date,
+    //                 tgURL_chat: project.tgURL_chat,
+    //                 status: project.status,
+    //                 specs: project.specs,
+    //                 smeta: project.smeta,
+    //                 finalSmeta: project.finalSmeta,
+    //                 statusMoney: project.statusMoney,
+    //             }
+    //             sortArray.push(newProject)
+    //         }
+    //     })
+    //     console.log("change: ", sortArray)
 
-        const currentDate = new Date()
+    //     const currentDate = new Date()
 
-        if (filter.query === 'Старые') {
-            const newArray = [...sortArray].sort((a, b) => {
-                var dateA = new Date(a['dateMain']), dateB = new Date(b['dateMain'])                    
-                //return dateA-dateB  //сортировка по возрастающей дате     
-                return dateB-dateA  //сортировка по убывающей дате  
-            })
-            setSortProject(newArray.filter(item => new Date(item.dateMain).getTime() < currentDate.getTime()))
+    //     if (filter.query === 'Старые') {
+    //         const newArray = [...sortArray].sort((a, b) => {
+    //             var dateA = new Date(a['dateMain']), dateB = new Date(b['dateMain'])                    
+    //             //return dateA-dateB  //сортировка по возрастающей дате     
+    //             return dateB-dateA  //сортировка по убывающей дате  
+    //         })
+    //         setSortProject(newArray.filter(item => new Date(item.dateMain).getTime() < currentDate.getTime()))
         
-        } else if (filter.query === 'Новые') {
+    //     } else if (filter.query === 'Новые') {
 
-            const newArray = [...sortArray].sort((a, b) => {
-                var dateA = new Date(a['dateMain']), dateB = new Date(b['dateMain'])                    
-                return dateA-dateB  //сортировка по возрастающей дате     
-                //return dateB-dateA  //сортировка по убывающей дате  
-            })
-            //console.log("date: ", new Date(newArray[0].dateMain).getTime())
-            setSortProject(newArray.filter(item => new Date(item.dateMain).getTime() > currentDate.getTime()))
+    //         const newArray = [...sortArray].sort((a, b) => {
+    //             var dateA = new Date(a['dateMain']), dateB = new Date(b['dateMain'])                    
+    //             return dateA-dateB  //сортировка по возрастающей дате     
+    //             //return dateB-dateA  //сортировка по убывающей дате  
+    //         })
+    //         //console.log("date: ", new Date(newArray[0].dateMain).getTime())
+    //         setSortProject(newArray.filter(item => new Date(item.dateMain).getTime() > currentDate.getTime()))
         
-        } else if (filter.query === 'Все') {
-            const newArray = [...sortArray].sort((a, b) => {
-                var dateA = new Date(a['dateMain']), dateB = new Date(b['dateMain'])                    
-                //return dateA-dateB  //сортировка по возрастающей дате     
-                return dateB-dateA  //сортировка по убывающей дате  
-            })
+    //     } else if (filter.query === 'Все') {
+    //         const newArray = [...sortArray].sort((a, b) => {
+    //             var dateA = new Date(a['dateMain']), dateB = new Date(b['dateMain'])                    
+    //             //return dateA-dateB  //сортировка по возрастающей дате     
+    //             return dateB-dateA  //сортировка по убывающей дате  
+    //         })
 
-            setSortProject(newArray)
-        } 
+    //         setSortProject(newArray)
+    //     } 
 
-    }, [sortedAndSearchedPosts])
+    // }, [sortedAndSearchedPosts])
 
 
     const [widthD, setWidthD] = useState(0)
@@ -850,11 +837,11 @@ useEffect(()=> {
                     <div className="rectangle"><div className="rectangle2"><div className="rectangle3"></div></div>
                     </div>
                     <div>
-                        <p className="profile_fio">{workerhub[0]?.fio}</p>
+                        <p className="profile_fio">{workerhub?.fio}</p>
                         <div className="card-specs bullet">
                             <ul onClick={()=>setShowProfileInfo(true)}>
                                 {workerhublist.length > 0 ? workerhublist.map((worker, index) => index < 8 
-                                  ?  <li key={index} className="bullet-title">{worker.name}  {index === workerhublist.length-1 && <img src={Edit} onClick={clickAddSpec} alt='' style={{marginLeft: '20px', width: '12px'}}/> }</li>
+                                  ?  <li key={index} className="bullet-title">{worker.spec}  {index === workerhublist.length-1 && <img src={Edit} onClick={clickAddSpec} alt='' style={{marginLeft: '20px', width: '12px'}}/> }</li>
                                   : '')
                                 : <><li className="bullet-title" style={{color: '#3392ff', fontWeight: 'bold'}}>Добавь свою специальность</li><li> <img src={Edit2} onClick={clickAddSpec} alt='' style={{marginLeft: '90px', width: '25px'}}/> </li></> }
                             </ul>   
@@ -865,7 +852,7 @@ useEffect(()=> {
                         <img className='star-icon' src={StarActive} alt='' /> 
                         <img className='star-icon' src={StarActive} alt='' />
                         <img className='star-icon' src={StarActive} alt='' />
-                        <img className='star-icon' src={Star} alt='' />
+                        <img className='star-icon' src={StarActive} alt='' />
                         <img className='star-icon' src={Star} alt='' />
                     </div>
                     <div className='block-id' onClick={clickCopyID}> ID {user?.id}</div>
@@ -879,16 +866,14 @@ useEffect(()=> {
                             <div className='rectangle-merch3'></div> 
 
                             <div className='rectangle-circle'>
-                                <div className={workerhub[0]?.merch.length > 0 ? 'rectangle-circle-on' : 'rectangle-circle-off'}></div>
+                                <div className={workerhub?.merch && JSON.parse(workerhub?.merch).length > 0 ? 'rectangle-circle-on' : 'rectangle-circle-off'}></div>
                             </div>
 
                             <p className='merch-title'>Мерч</p>
                             <div className='perechislenie'>
-                                {workerhub[0]?.merch.map((item, index)=> 
+                                {workerhub?.merch && JSON.parse(workerhub?.merch).map((item, index)=> 
                                         <p key={index} className="">{item.name}</p>
                                 )}
-                                {/* <p className="">Sound</p>
-                                <p className="">Production</p>  */}
                             </div>
                     </article>
 
@@ -915,7 +900,7 @@ useEffect(()=> {
                             </div>
                             <div className='kompet-list' onClick={()=>setShowKompInfo(true)}>
                                 <ul>
-                                    {workerhub[0]?.skill.map((worker, index) => index < 6
+                                    {workerhub?.skill && JSON.parse(workerhub?.skill).map((worker, index) => index < 6
                                     ?   <li className="bullet-title">{worker.name} </li>
                                     : '' )}
                                 </ul>  

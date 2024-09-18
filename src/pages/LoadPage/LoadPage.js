@@ -33,39 +33,18 @@ const LoadPage = () => {
        // setTimeout(() =>  navigate("/profile"), 7000)
 
        const fetchData = async() => { 
-            const workerNotion = await getWorkerId('1775583141') //'805436270' '1408579113' user?.id '6143011220'
-            const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
+            //const workerNotion = await getWorkerId('1775583141') //'805436270' '1408579113' user?.id '6143011220'
+            //const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220'
 
-            // const worker1 = await getWorkerIdBD(user?.id )
-
-            // let worker = []
-            // const obj = {
-            //         id: worker1.id,
-            //         fio: worker1.userfamily + ' '+ worker1.username,
-            //         tgId: worker1.chatId,
-            //         phone: worker1.phone,
-            //         age: worker1.dateborn,
-            //         city: worker1.city,
-            //         newcity: worker1.newcity,
-            //         spec: JSON.parse(worker1.worklist),
-            //         comment: worker1.comment,
-            //         reyting: '',
-            //         merch: '',
-            //         comteg: '',
-            //         rank: worker1.rank,
-            //         passport: '',
-            //         skill: '',
-            // }
-            // worker.push(obj)
+            const worker = await getWorkerIdBD(user?.id)
             
-            console.log("worker: ", worker.length) 
-            console.log("workerNotion: ", workerNotion.length) 
+            console.log("worker: ", worker) 
 
-            setWorkerId(worker[0]?.id)
-            setSpecId(worker[0]?.id)
+            setWorkerId(worker?.id)
+            setSpecId(worker?.id)
             
             //setTimeout(()=> {      
-                if (worker.length > 0) {
+                if (worker !== null) {
                     //зарегистрирован
                     console.log("Зарегистирован", "REG")
                     //setSpecId(worker[0]?.id)
@@ -76,16 +55,17 @@ const LoadPage = () => {
                         console.log("Только что зарегистировался", flag)
                         navigate("/process")
                     } 
-                    else if (workerNotion.length > 0) {
+                    //else if (workerNotion.length > 0) {
+                    else if (!worker) {
                         //не зарегистрирован
                         console.log("Зарегистрируйтесь! NOREG")
                         navigate("/add-worker")
                     }
-                    else {
-                        //ошибка
-                        console.log("Ошибка")
-                        navigate("/error")
-                    }
+                    // else {
+                    //     //ошибка
+                    //     console.log("Ошибка")
+                    //     navigate("/error")
+                    // }
                 }
             //}, 5000)
         }

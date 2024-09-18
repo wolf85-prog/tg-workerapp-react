@@ -59,7 +59,7 @@ function App() {
                   <Route path={'add-passport3'} element={<NewPassport3 />}/>
 
                   <Route path={'error'} element={<ErrorPage />}/>
-                  <Route path={'profile'} element={<ErrorPage />}/>
+                  <Route path={'profile'} element={<ProfilePage />}/>
                   <Route path={'projects'} element={<ProjectPage />}/>
                   <Route path={'smeta'} element={<SmetaPage />}/>
                   <Route path={'page3'} element={<Page3 />}/>
