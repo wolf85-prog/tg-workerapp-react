@@ -193,15 +193,15 @@ const ProfilePage = () => {
 
             setWorkerhublist(list)
 
-            setIsProfileLoading(false) 
+            //
 
-            setTimeout(()=> {      
+            //setTimeout(()=> {      
                 if (worker !== null) {
                     //зарегистрирован
                     console.log("Зарегистирован", "REG")
                     setSpecId(worker?.id)
-
-                    navigate("/profile")
+                    setIsProfileLoading(false) 
+                    //navigate("/profile")
                 } else  {
                     if (flag === 'ONLY_REG') {
                         //только что зарегистрирован
@@ -220,7 +220,7 @@ const ProfilePage = () => {
                     //     navigate("/error")
                  }
                 }
-            }, 2000)
+            //}, 2000)
         }
 
         fetchData()   
