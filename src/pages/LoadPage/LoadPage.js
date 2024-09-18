@@ -56,7 +56,7 @@ const LoadPage = () => {
                         navigate("/process")
                     } 
                     //else if (workerNotion.length > 0) {
-                    else if (worker) {
+                    else if (!worker) {
                         //не зарегистрирован
                         console.log("Зарегистрируйтесь! NOREG")
                         navigate("/add-worker")
