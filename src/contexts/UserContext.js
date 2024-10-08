@@ -58,7 +58,7 @@ const UserProvider = ({ children }) => {
 
 			//получать данные из Notion
             //const worker = await getWorkerId(user?.id) //user?.id '805436270' '1408579113'
-			const worker = await getWorkerIdBD('256230095256230095')
+			const worker = await getWorkerIdBD(user?.id)
 
             console.log("worker context: ", worker)
 

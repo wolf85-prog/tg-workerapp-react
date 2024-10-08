@@ -167,7 +167,7 @@ const ProfilePage = () => {
             //const workerNotion = await getWorkerId('1775583141') //'805436270' '1408579113' user?.id '6143011220'
             //const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220' '1853131218'
             
-            const worker = await getWorkerIdBD('256230095')
+            const worker = await getWorkerIdBD(user?.id)
             
             console.log("worker profile: ", worker) 
 
