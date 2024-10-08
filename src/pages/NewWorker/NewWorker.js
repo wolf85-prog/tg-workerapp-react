@@ -532,7 +532,7 @@ const NewWorker = () => {
                 </button> 
             </div>           
             
-            <div style={{display: showBlockFam ? 'block' : 'none', height: '160px'}}>
+            <div style={{display: showBlockFam ? 'block' : 'none', height: '100px'}}>
                 {/* Фамилия */}
                 <div style={{position: 'relative', marginTop: '50px', marginLeft: '25px', marginRight: '25px', height: '43px', zIndex: '3'}}>
                     <div className='rec1-input'></div>
