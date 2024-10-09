@@ -198,10 +198,15 @@ const ProfilePage = () => {
             //setTimeout(()=> {      
                 if (worker !== null) {
                     //зарегистрирован
-                    console.log("Зарегистирован", "REG")
-                    setSpecId(worker?.id)
-                    setIsProfileLoading(false) 
-                    //navigate("/profile")
+                    if (worker?.specialization.includes('NoTag')) {
+                        console.log("Зарегистирован как Неизвестный", "REG")
+                        navigate("/add-worker")
+                    } else {
+                        console.log("Зарегистирован", "REG")
+                        setSpecId(worker?.id)
+                        setIsProfileLoading(false) 
+                        //navigate("/profile") 
+                    }               
                 } else  {
                     if (flag === 'ONLY_REG') {
                         //только что зарегистрирован

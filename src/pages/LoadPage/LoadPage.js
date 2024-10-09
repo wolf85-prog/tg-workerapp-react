@@ -46,9 +46,13 @@ const LoadPage = () => {
             //setTimeout(()=> {      
                 if (worker !== null) {
                     //зарегистрирован
-                    console.log("Зарегистирован", "REG")
-                    //setSpecId(worker[0]?.id)
-                    navigate("/profile")
+                    if (worker?.specialization.includes('NoTag')) {
+                        navigate("/add-worker")
+                    } else {
+                        console.log("Зарегистирован", "REG")
+                        //setSpecId(worker[0]?.id)
+                        navigate("/profile") 
+                    }      
                 } else  {
                     if (flag === 'ONLY_REG') {
                         //только что зарегистрирован
