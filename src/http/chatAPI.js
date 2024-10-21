@@ -24,7 +24,7 @@ export const getWorkerId = async (id) =>{
 //получить данные из БД
 export const getWorkerIdBD = async (id) =>{
     try {
-       let response = await $host_upload.get(`api/specialist/${id}`);
+       let response = await $host_upload.get(`api/specialist/chat/${id}`);
        //console.log("id: ", id);
        return response.data;
     } catch (error) {
