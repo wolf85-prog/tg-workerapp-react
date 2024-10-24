@@ -36,7 +36,7 @@ import Footer from "../../image/new/footer2.png"
 import VK from "../../image/new/basil_vk-outline.svg"
 import Phone from "../../image/new/ph_phone-call.svg"
 import Web from "../../image/new/dashicons_admin-site-alt3.svg"
-import Telegram from "../../image/new/basil_telegram-outline.svg"
+import Telegram from "../../image/tg.png"
 
 import Friend from "../../image/new/button_plus.png"
 import callPoster from "../../image/call_poster.png"
@@ -969,12 +969,12 @@ useEffect(()=> {
                 
                 <div className='footer-icons'>
                     <img onClick={()=>showPopup()} src={Phone} alt='' width='100%' className='icon-footer' />
-                    <img onClick={()=>openInNewTab('https://uley.team/')} src={Web} alt='' width='100%' className='icon-footer' />
+                    <img onClick={()=>openInNewTab('https://vk.com/uley.team')} src={VK} alt='' width='100%' className='icon-footer' />  
                 </div>
                 <div className='footer-icons2'> 
                     <img onClick={() =>setShowRazrab(true)} src={Telegram} alt='' width='100%' className='icon-footer' /> 
                     {/* openInNewTab('https://t.me/ULEY_Office_Bot')  */}
-                    <img onClick={()=>openInNewTab('https://vk.com/uley.team')} src={VK} alt='' width='100%' className='icon-footer' />   
+                    <img onClick={()=>openInNewTab('https://uley.team/')} src={Web} alt='' width='100%' className='icon-footer' /> 
                 </div>   
             </div>
 
