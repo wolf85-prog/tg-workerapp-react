@@ -167,7 +167,7 @@ const ProfilePage = () => {
             //const workerNotion = await getWorkerId('1775583141') //'805436270' '1408579113' user?.id '6143011220'
             //const worker = await getWorkerId(user?.id) //'805436270' '1408579113' user?.id '6143011220' '1853131218'
             
-            const worker = await getWorkerIdBD('1408579113')
+            const worker = await getWorkerIdBD(user?.id)
             
             console.log("worker profile: ", worker) 
 
@@ -842,7 +842,7 @@ useEffect(()=> {
                     <div className="rectangle"><div className="rectangle2"><div className="rectangle3"></div></div>
                     </div>
                     <div>
-                        <p className="profile_fio">{workerhub?.fio.replace(/\[.+\]/,'')}</p>
+                        <p className="profile_fio">{workerhub?.fio.replace(/\[.+\]./,'')}</p>
                         <div className="card-specs bullet">
                             <ul onClick={()=>setShowProfileInfo(true)}>
                                 {workerhublist.length > 0 ? workerhublist.map((worker, index) => index < 8 
