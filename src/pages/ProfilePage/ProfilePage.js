@@ -842,7 +842,7 @@ useEffect(()=> {
                     <div className="rectangle"><div className="rectangle2"><div className="rectangle3"></div></div>
                     </div>
                     <div>
-                        <p className="profile_fio">{workerhub?.fio.replace(/\[.+\]./,'')}</p>
+                        <p className="profile_fio">{workerhub?.fio.replace(/\[.+\]/,'')}</p>
                         <div className="card-specs bullet">
                             <ul onClick={()=>setShowProfileInfo(true)}>
                                 {workerhublist.length > 0 ? workerhublist.map((worker, index) => index < 8 
