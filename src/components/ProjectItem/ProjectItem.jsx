@@ -19,12 +19,14 @@ import ClosePress from "../../image/new/close_press.svg"
 
 import RangeSlider from '../UI/RangeSlider/RangeSlider';
 
-const ProjectItem = (props) => {
+import { useTelegram } from "../../hooks/useTelegram";
 
+const ProjectItem = (props) => {
     const {specId} = useUsersContext();
+    const {tg, user, queryId} = useTelegram();
 
     const [statusMoney, setStatusMoney] = useState("")
-    const [stavka, setStavka] = useState()
+    const [stavka, setStavka] = useState('1000')
     const [cashStavka, setCashStavka] = useState({})
 
     const [isLoading, setIsLoading] = useState(true);
@@ -42,7 +44,7 @@ const ProjectItem = (props) => {
 
     const [showInfo, setShowInfo] = useState(false)
 
-    const [stavkaPlus, setStavkaPlus] = useState(0);
+    const [stavkaPlus, setStavkaPlus] = useState('1000');
 
     const sliderRef = useRef(null)
 
@@ -151,44 +153,51 @@ const ProjectItem = (props) => {
             const res0 = await getSpecStavka(specId, props.post.id, props.post.specs.date)
 
             //если кэш пуст
-            if (!res0) {
-                const res = await getStavka(props.post.id, props.post.specs.rowId) //API 
-                console.log("Предварительная ставка: ", res, props.post.title)      
+            if (user?.id === '1408579113') {
+                setStavka('3000') 
+                setIsLoading(false) 
+            } else {
+                if (!res0) {
+                    const res = await getStavka(props.post.id, props.post.specs.rowId) //API 
+                    console.log("Предварительная ставка: ", res, props.post.title)      
 
-                //сохранить в бд предварительную ставку
-                const res_add = await addStavka(specId, props.post.id, res ? res.payment : 0, props.post.specs.date) 
-                //console.log("pred stavka cash: ", res_add)
+                    //сохранить в бд предварительную ставку
+                    const res_add = await addStavka(specId, props.post.id, res ? res.payment : 0, props.post.specs.date) 
+                    //console.log("pred stavka cash: ", res_add)
 
-                const res2 = await getSpecStavka(specId, props.post.id, props.post.specs.date)
-                setCashStavka(res2) 
+                    const res2 = await getSpecStavka(specId, props.post.id, props.post.specs.date)
+                    setCashStavka(res2) 
 
-                if (res2.factStavka) { 
-                    if (res2.podtverStavka) {
-                        setStavka(res2.podtverStavka)
+                    if (res2.factStavka) { 
+                        if (res2.podtverStavka) {
+                            setStavka(res2.podtverStavka)
+                        } else {
+                            setStavka(res2.factStavka)
+                        }
                     } else {
-                        setStavka(res2.factStavka)
+                        setStavka(res2.predStavka)
                     }
-                } else {
-                    setStavka(res2.predStavka)
-                }
 
-                setIsLoading(false)
-                    
-            } else {                
-                setCashStavka(res0) // данные из кэша
- 
-                if (res0.factStavka) { 
-                    if (res0.podtverStavka) {
-                        setStavka(res0.podtverStavka)
+                    setIsLoading(false)
+                        
+                } else {                
+                    setCashStavka(res0) // данные из кэша
+    
+                    if (res0.factStavka) { 
+                        if (res0.podtverStavka) {
+                            setStavka(res0.podtverStavka)
+                        } else {
+                            setStavka(res0.factStavka)
+                        }
                     } else {
-                        setStavka(res0.factStavka)
+                        setStavka(res0.predStavka)
                     }
-                } else {
-                    setStavka(res0.predStavka)
-                }
 
-                setIsLoading(false)
-            }      
+                    setIsLoading(false)
+                }  
+            }
+            
+              
         }
 
         fetch()
@@ -245,6 +254,7 @@ const ProjectItem = (props) => {
 
                 <div className='card-footer'>
                     {/* деньги */}
+                    {/* <p className='project_money'>{isLoading ? <Loader /> : "3 000.00"}</p> */}
                     <p className='project_money'>{isLoading ? <Loader /> : (stavkaPlus ? parseInt(stavkaPlus).toLocaleString()+".00" : parseInt(stavka).toLocaleString()+".00")}</p>
                     {/* <p className='project_money'>{isLoading ? <Loader /> : (parseInt(stavkaPlus ? stavkaPlus.replace(/\s/g, "").split('.')[0] : stavka.replace(/\s/g, "").split('.')[0]).toLocaleString()+".00")}</p> */}
                     {/* кнопка Чат */}
