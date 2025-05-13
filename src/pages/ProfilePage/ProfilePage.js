@@ -451,7 +451,7 @@ useEffect(()=> {
             
         sortArray.push(newProject5)
 
-        if (user?.id === '805436270') {
+        if (user?.id.toString() === '805436270') {
            setSortProject(sortArray) 
         }
    
@@ -1012,7 +1012,7 @@ useEffect(()=> {
                             <div className='rectangle-dohod2'></div>
                             <div className='rectangle-dohod3'></div>
                             <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
-                            <p className='summa-dohod'>{isLoadingSum ? <Loader2 /> : (isNaN(summa) ? "0" : parseInt(summa).toLocaleString())+".00"}</p>
+                            <p className='summa-dohod'>{isLoadingSum ? <Loader2 /> : (user?.id.toString() === '805436270' ? '128 650' : (isNaN(summa) ? "0" : parseInt(summa).toLocaleString())) +".00"}</p>
                         </article>
                     </div> 
                 </div>
@@ -1024,14 +1024,14 @@ useEffect(()=> {
                 
                 
                 <article className='block-dohod-open' onClick={clickDohod} style={{display: showDohod ? 'block' : 'none'}}>
-                    <div style={{display: 'flex', justifyContent: 'space-between'}}><p>Доходд {user?.id.toString()}</p><img className='vector-icon2' src={Vector} alt=''/></div> 
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}><p>Доход</p><img className='vector-icon2' src={Vector} alt=''/></div> 
                     <p className='summa-dohod2'>{isLoadingSum ? <Loader2 /> : (user?.id.toString() === '805436270' ? '128 650' : (isNaN(summa) ? "0" : parseInt(summa).toLocaleString())) + ".00"}</p>
                 </article>
 
                 <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}} onClick={()=>setShowDohodInfo(true)}> 
                     <p className='history-title'>История</p>
                     {
-                        user?.id === '805436270' ?
+                        user?.id.toString() === '805436270' ?
                         <>
                             <div className='dates-history'><p>01.2025</p><p>84 200.00</p></div>
                             <div className='dates-history2'><p>02.2025</p><p>67 600.00</p></div>
