@@ -1025,7 +1025,7 @@ useEffect(()=> {
                 
                 <article className='block-dohod-open' onClick={clickDohod} style={{display: showDohod ? 'block' : 'none'}}>
                     <div style={{display: 'flex', justifyContent: 'space-between'}}><p>Доход</p><img className='vector-icon2' src={Vector} alt=''/></div> 
-                    <p className='summa-dohod2'>{isLoadingSum ? <Loader2 /> : (user?.id === '805436270' ? '128 650' : (isNaN(summa) ? "0" : parseInt(summa).toLocaleString())) + ".00"}</p>
+                    <p className='summa-dohod2'>{isLoadingSum ? <Loader2 /> : (user?.id.toString() === '805436270' ? '128 650' : (isNaN(summa) ? "0" : parseInt(summa).toLocaleString())) + ".00"}</p>
                 </article>
 
                 <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}} onClick={()=>setShowDohodInfo(true)}> 
