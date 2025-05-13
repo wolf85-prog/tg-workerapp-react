@@ -153,7 +153,7 @@ const ProjectItem = (props) => {
             const res0 = await getSpecStavka(specId, props.post.id, props.post.specs.date)
 
             //если кэш пуст
-            if (user?.id.toString() === '805436270') {
+            if (user?.id.toString() === '1408579113') {
                 setStavka('3000') 
                 setIsLoading(false) 
             } else {
