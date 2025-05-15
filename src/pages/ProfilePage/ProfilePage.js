@@ -414,7 +414,7 @@ useEffect(()=> {
             dateMain: '',
             tgURL_chat: '',
             status: '',
-            specs: {date: '2025-04-20 12:00:45.295 +0300', spec: 'Звукорежессер', vid: 'Монтаж',  },
+            specs: {date: '2025-04-20T12:00:45.295', spec: 'Звукорежессер', vid: 'Монтаж',  },
             smeta: '',
             finalSmeta: '',
             statusMoney: 4,
@@ -431,7 +431,7 @@ useEffect(()=> {
             dateMain: '',
             tgURL_chat: '',
             status: '',
-            specs: {date: '2025-04-18 08:00:45.295 +0300' },
+            specs: {date: '2025-04-18T08:00:45.295' },
             smeta: '',
             finalSmeta: '',
             statusMoney: 1,
@@ -443,12 +443,12 @@ useEffect(()=> {
         const newProject5 = {
             id: 5,
             title: 'МТС Арена',
-            date_start: '2024-09-15 14:57:45.295 +0300',
-            date_end: '2024-09-16 14:57:45.295 +0300',
-            dateMain: '2024-09-15 14:57:45.295 +0300',
+            date_start: '2024-09-15T14:57:45.295 +0300',
+            date_end: '2024-09-16T14:57:45.295 +0300',
+            dateMain: '2024-09-15T14:57:45.295 +0300',
             tgURL_chat: '',
             status: '',
-            specs: {date: '2025-04-15 10:00:45.295 +0300' },
+            specs: {date: '2025-04-15T10:00:45.295' },
             smeta: '',
             finalSmeta: '',
             statusMoney: 3,
@@ -457,7 +457,7 @@ useEffect(()=> {
             
         sortArray.push(newProject5)
 
-        if (user?.id.toString() === '1408579113') {
+        if (user?.id.toString() === '805436270') {
            setSortProject(sortArray) 
         }
    
