@@ -118,7 +118,7 @@ const ProjectItem = (props) => {
         //4
         else if(props.post.statusMoney === 4) {
             setStatusMoney('На оплате')
-            setValueShkala(8400)
+            setValueShkala(8000)
         }
         //5
         else if(props.post.statusMoney === 5) {
@@ -128,6 +128,12 @@ const ProjectItem = (props) => {
         
         //3
         if (props.post.finalSmeta === 'Подтверждена') {
+            setStatusMoney('Подтверждено')
+
+            setValueShkala(5900)
+        }
+
+        if (props.post.statusMoney === 3) {
             setStatusMoney('Подтверждено')
 
             setValueShkala(5900)
@@ -154,7 +160,7 @@ const ProjectItem = (props) => {
 
             //если кэш пуст
             if (user?.id.toString() === '1408579113') {
-                setStavka('3000') 
+                setStavka(props.post.stavka) 
                 setIsLoading(false) 
             } else {
                 if (!res0) {

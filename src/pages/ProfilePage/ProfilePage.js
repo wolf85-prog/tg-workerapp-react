@@ -368,85 +368,91 @@ useEffect(()=> {
     // }, [sortedAndSearchedPosts])
 
 
+
     useEffect(()=> {
         const sortArray = []
 
         const newProject = {
             id: 1,
-            title: 'Проект №1',
+            title: 'Большой Театр',
             date_start: '01.01.2025',
             date_end: '02.01.2025',
             dateMain: '',
             tgURL_chat: '',
             status: '',
-            specs: {date: '2024-01-01 10:15:45.295 +0300' },
+            specs: {date: '2025-04-28 08:00:45.295 +0300' },
             smeta: '',
             finalSmeta: '',
-            statusMoney: 1,
+            statusMoney: 3,
+            stavka: '12000',
         }
             
         sortArray.push(newProject)
 
         const newProject2 = {
-            id: 1,
-            title: 'Проект №2',
+            id: 2,
+            title: 'Little Big Show',
             date_start: '01.02.2025',
             date_end: '02.02.2025',
             dateMain: '',
             tgURL_chat: '',
             status: '',
-            specs: {date: '2024-02-01 14:23:45.295 +0300' },
+            specs: {date: '2025-04-22 10:00:45.295 +0300' },
             smeta: '',
             finalSmeta: '',
-            statusMoney: 1,
+            statusMoney: 2,
+            stavka: '18000',
         }
             
         sortArray.push(newProject2)
 
         const newProject3 = {
-            id: 1,
-            title: 'Проект №3',
+            id: 3,
+            title: 'Лужники',
             date_start: '01.03.2025',
             date_end: '02.03.2025',
             dateMain: '',
             tgURL_chat: '',
             status: '',
-            specs: {date: '2024-03-01 09:37:45.295 +0300' },
+            specs: {date: '2025-04-20 12:00:45.295 +0300' },
             smeta: '',
             finalSmeta: '',
-            statusMoney: 1,
+            statusMoney: 4,
+            stavka: '10000',
         }
             
         sortArray.push(newProject3)
 
         const newProject4 = {
-            id: 1,
-            title: 'Проект №4',
+            id: 4,
+            title: 'Останкино',
             date_start: '01.04.2025',
             date_end: '02.04.2025',
             dateMain: '',
             tgURL_chat: '',
             status: '',
-            specs: {date: '2024-04-01 11:50:45.295 +0300' },
+            specs: {date: '2025-04-18 08:00:45.295 +0300' },
             smeta: '',
             finalSmeta: '',
             statusMoney: 1,
+            stavka: '22000',
         }
             
         sortArray.push(newProject4)
 
         const newProject5 = {
-            id: 1,
-            title: 'Проект №5',
+            id: 5,
+            title: 'МТС Арена',
             date_start: '2024-09-15 14:57:45.295 +0300',
             date_end: '2024-09-16 14:57:45.295 +0300',
             dateMain: '2024-09-15 14:57:45.295 +0300',
             tgURL_chat: '',
             status: '',
-            specs: {date: '2024-05-01 14:57:45.295 +0300' },
+            specs: {date: '2025-04-15 10:00:45.295 +0300' },
             smeta: '',
             finalSmeta: '',
-            statusMoney: 1,
+            statusMoney: 3,
+            stavka: '8000',
         }
             
         sortArray.push(newProject5)
