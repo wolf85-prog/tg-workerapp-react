@@ -64,11 +64,11 @@ const ProjectItem = (props) => {
         
         const dateTemp = props.post.specs.date
 
-        setChasiView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.chasi : '10')
-        setStavkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.stavka.replace(/\s/g, "").split('.')[0] : '10 000.00')
-        setSmenaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.smena.replace(/\s/g, "").split('.')[0] : '10 000.00')
+        setChasiView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.chasi : '')
+        setStavkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.stavka.replace(/\s/g, "").split('.')[0] : '0.00')
+        setSmenaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.smena.replace(/\s/g, "").split('.')[0] : '0.00')
         setPererabotkaView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.pererabotka.replace(/\s/g, "").split('.')[0] : '0.00')
-        setTransportView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.transport.replace(/\s/g, "").split('.')[0] : '1 000.00')
+        setTransportView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.transport.replace(/\s/g, "").split('.')[0] : '0.00')
         setGsmView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.gsm.replace(/\s/g, "").split('.')[0] : '0.00')
         setTaxiView(props.post.smeta ? props.post.smeta.find((item) => item.fio_id === specId && new Date(item.date).getTime() > new Date(dateTemp).setHours(new Date(dateTemp).getHours() - 1) && new Date(item.date).getTime() < new Date(dateTemp).setHours(new Date(dateTemp).getHours() + 1) )?.taxi.replace(/\s/g, "").split('.')[0] : '0.00')
         
@@ -159,7 +159,7 @@ const ProjectItem = (props) => {
             const res0 = await getSpecStavka(specId, props.post.id, props.post.specs.date)
 
             //если кэш пуст
-            if (user?.id.toString() === '805436270') {
+            if (user?.id.toString() === '1408579113') {
                 setStavka(props.post.stavka) 
                 setIsLoading(false) 
             } else {
@@ -272,15 +272,24 @@ const ProjectItem = (props) => {
                 <div className='smeta' style={{display: showProject ? 'block' : 'none'}}>
                     <div className='line3'></div>
                     <div className='smeta-text'>
-                        <ul>
+                        {/* <ul>
                             <li className='item-list'><div>Специальность</div>{props.post.specs.spec}</li>
                             <li className='item-list'><div>Вид работ</div>{props.post.specs.vid}</li>
                             <li className='item-list'><div>Часы</div>{chasiView ? chasiView : "0"}</li>
-                            {/* <li className='item-list'><div>Ставка</div>{isNaN(stavkaView) || stavkaView === null ? "0.00" : parseInt(stavkaView).toLocaleString()+".00"}</li> */}
                             <li className='item-list'><div>Ставка</div>{stavkaView ? (parseInt(stavkaView).toLocaleString()+ '.00') : '0.00'}</li>
                             <li className='item-list'><div>Смена</div>{smenaView ? (parseInt(smenaView).toLocaleString()+ '.00') : '0.00'}</li>
                             <li className='item-list'><div>Переработка</div>{pererabotkaView ? (parseInt(pererabotkaView).toLocaleString()+ '.00') : '0.00'}</li>
                             <li className='item-list'><div>Доп. расходы</div>{parseInt((transportView ? transportView : 0) + (gsmView ? gsmView : 0) + (taxiView ? (comtag.find(item => item.name === 'Такси [корпоративное]') ? 0 : taxiView) : 0)).toLocaleString() + '.00'}</li>
+                        </ul> */}
+                        <ul>
+                            <li className='item-list'><div>Специальность</div>{props.post.specs.spec}</li>
+                            <li className='item-list'><div>Вид работ</div>{props.post.specs.vid}</li>
+                            <li className='item-list'><div>Часы</div>10</li>
+                            {/* <li className='item-list'><div>Ставка</div>{isNaN(stavkaView) || stavkaView === null ? "0.00" : parseInt(stavkaView).toLocaleString()+".00"}</li> */}
+                            <li className='item-list'><div>Ставка</div>10 000.00</li>
+                            <li className='item-list'><div>Смена</div>10 000.00</li>
+                            <li className='item-list'><div>Переработка</div>{pererabotkaView ? (parseInt(pererabotkaView).toLocaleString()+ '.00') : '0.00'}</li>
+                            <li className='item-list'><div>Доп. расходы</div>0.00</li>
                         </ul>
                     </div>
                     <div className='block-button'>
