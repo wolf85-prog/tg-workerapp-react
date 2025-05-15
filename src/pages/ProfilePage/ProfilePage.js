@@ -414,7 +414,7 @@ useEffect(()=> {
             dateMain: '',
             tgURL_chat: '',
             status: '',
-            specs: {date: '2025-04-20 12:00:45.295 +0300' },
+            specs: {date: '2025-04-20 12:00:45.295 +0300', spec: 'Звукорежессер', vid: 'Монтаж',  },
             smeta: '',
             finalSmeta: '',
             statusMoney: 4,
