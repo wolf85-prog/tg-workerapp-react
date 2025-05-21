@@ -20,7 +20,16 @@ const CalendarPage = () => {
 
     const [showModal, setShowModal] = useState(true)
     const [headerName, setHeaderName] = useState('Мой профиль');
-    const [comteg, setComteg] = useState([]);
+    const [comteg, setComteg] = useState(["Все"]);
+
+    const filterData = [
+        {
+            label: 'Все',
+            name: 'Все',
+            value: '1',
+            color: '#1E90FF'
+        },
+    ]
 
 //----------------------------------------------------------------------------------
 
@@ -97,12 +106,20 @@ const CalendarPage = () => {
                 <div className="text-field"> 
                     <DropdownClient
                         style={{backgroundColor: '#282b2e', left: '186px'}}
-                        options={comtegs}
+                        options={filterData}
                         tags={comteg}
                         setTags={setComteg}
                     />
                 </div>
+
+                <div style={{width: '100%', padding: '7px', height: '40px', border: '1px solid green', borderRadius: '10px'}}>
+                    <span style={{fontSize: '16px', color: 'green'}}>
+                        Применить
+                    </span>
+                </div>
             </div>
+
+            
 
         </div>
     );
