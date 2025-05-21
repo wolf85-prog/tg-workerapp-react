@@ -29,6 +29,8 @@ import LoadPage2 from "./pages/LoadPage2/LoadPage2";
 
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
+import CalendarPage from "./pages/CalendarPage/CalendarPage";
+
 function App() {
 
   const darkTheme = createTheme({
@@ -72,6 +74,8 @@ function App() {
                   <Route path={'add-stavka/:id'} element={<NewStavka />}/>
 
                   <Route path={'edit-worker'} element={<EditWorker />}/>
+
+                  <Route path={'calendar'} element={<CalendarPage />}/>
               </Routes>
       </ThemeProvider>
   );
