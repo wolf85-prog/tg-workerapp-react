@@ -4,6 +4,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import MyModal from "../../components/MyModal/MyModal";
 import Header from "../../components/Header/Header";
 import DropdownClient from '../../components/DropdownClient/DropdownClient';
+import Calendar from '../../components/Calendar/Calendar'
 import comtegs from './../../data/comtegs';
 
 import './CalendarPage.css';
@@ -21,6 +22,8 @@ const CalendarPage = () => {
     const [showModal, setShowModal] = useState(true)
     const [headerName, setHeaderName] = useState('Мой профиль');
     const [comteg, setComteg] = useState(["Все"]);
+
+    const [height, setHeight] = useState(200)
 
     const filterData = [
         {
@@ -55,7 +58,7 @@ const CalendarPage = () => {
 
             <div style={{zIndex: '10', position: 'relative', padding: '15px', textAlign: '-webkit-center'}}>
 
-                <p>Компания</p>
+                <p className="label-calendar">Компания</p>
                 <div className="text-field">
                     <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
                         style={{
@@ -68,7 +71,7 @@ const CalendarPage = () => {
 
                 <div style={{display: 'flex', justifyContent: 'space-between'}}>
                     <div style={{width: '47%'}}>
-                        <p>Проекты</p>
+                        <p className="label-calendar">Проекты</p>
                         <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
                             style={{
                                 backgroundColor: 'transparent', 
@@ -78,7 +81,7 @@ const CalendarPage = () => {
                         </div>
                     </div>
                     <div style={{width: '47%'}}>
-                        <p>Период</p>
+                        <p className="label-calendar">Период</p>
                         <div className="text-field">
                             <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
                                 style={{
@@ -91,7 +94,7 @@ const CalendarPage = () => {
                     </div>                      
                 </div>
 
-                <p>ФИО</p>
+                <p className="label-calendar">ФИО</p>
                 <div className="text-field">
                     <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
                         style={{
@@ -102,7 +105,7 @@ const CalendarPage = () => {
                     </div>
                 </div>
 
-                <p className="reyting_subtitle">Комтег</p>
+                <p className="label-calendar">Комтег</p>
                 <div className="text-field"> 
                     <DropdownClient
                         style={{backgroundColor: '#282b2e', left: '186px'}}
@@ -112,7 +115,17 @@ const CalendarPage = () => {
                     />
                 </div>
 
-                <div style={{width: '100%', padding: '7px', height: '40px', border: '1px solid green', borderRadius: '10px'}}>
+                <Calendar 
+                    // openProject={openProject} 
+                    // showSidebar={showSidebar} 
+                    // setShowSidebar={setShowSidebar} 
+                    // setShowProject={setShowProject} 
+                    // setShowCalendar={setShowCalendar} 
+                    // setShowCalendar2={setShowCalendar2} 
+                    setHeight={setHeight}
+                />
+
+                <div style={{width: '100%', padding: '7px', height: '40px', border: '1px solid green', borderRadius: '10px', marginTop: '270px'}}>
                     <span style={{fontSize: '16px', color: 'green'}}>
                         Применить
                     </span>
