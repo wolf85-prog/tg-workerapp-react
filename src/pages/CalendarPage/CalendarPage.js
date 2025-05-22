@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import MyModal from "../../components/MyModal/MyModal";
 import Header from "../../components/Header/Header";
@@ -14,6 +14,7 @@ import BlackFon from "../../image/new/fon_grad.svg";
 const API_URL = process.env.REACT_APP_API_URL
 
 const CalendarPage = () => {
+    const { id } = useParams();
     const {tg, queryId, user, onClose} = useTelegram();
     const navigate = useNavigate();
 
@@ -65,7 +66,7 @@ const CalendarPage = () => {
                             backgroundColor: 'transparent', 
                             color: '#fff',
                             border: '1px solid #4f4f55'
-                        }}>fsfsdfsdf
+                        }}>Название
                     </div>
                 </div>
 

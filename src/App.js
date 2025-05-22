@@ -75,7 +75,7 @@ function App() {
 
                   <Route path={'edit-worker'} element={<EditWorker />}/>
 
-                  <Route path={'calendar'} element={<CalendarPage />}/>
+                  <Route path={'calendar/:id'} element={<CalendarPage />}/>
               </Routes>
       </ThemeProvider>
   );
