@@ -157,8 +157,12 @@ export default function Calendar({openProject, setHeight, showSidebar, setShowSi
             {
                 currentDays.map((day, index) => {
                     return (
-                        <div key={index} className='day' style={{marginBottom: showProject2[index] ? '120px' : '20px'}} onMouseOver={()=>overDay(index)} onMouseOut={()=>outDay(index)}>
-                            <p className='date-day' style={{color: project[index] ? '#1555f5' : ''}}>{String(day.number).padStart(2, "0") + '.'+ String(day.month+1).padStart(2, "0")}</p>
+                        <div key={index} className='day' style={{marginBottom: showProject2[index] ? '120px' : '20px', border: day.month !== new Date().getMonth() ? '1px solid #474646' : ''  }}>
+                            <strong>
+                                <p className='date-day' style={{color: project[index] ? '#1555f5' : (day.month !== new Date().getMonth() ? '#474646' : '')}}>
+                                    {String(day.number).padStart(2, "0") + '.'+ String(day.month+1).padStart(2, "0")}
+                                </p>
+                            </strong>
 
                             {project[index] ? 
                                 <div className='viewProject' onClick={()=>openProject(index)}>
