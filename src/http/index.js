@@ -8,11 +8,15 @@ const $host_stavka = axios.create({
     baseURL: process.env.REACT_APP_API_URL_STAVKA
 })
 
+const $host_person = axios.create({
+    baseURL: process.env.REACT_APP_API_URL_PERSONAL
+})
+
 const $host_upload = axios.create({
     baseURL: process.env.REACT_APP_API_URL_UPLOAD
 })
 
 
 export {
-    $host, $host_upload, $host_stavka,
+    $host, $host_upload, $host_stavka, $host_person,
 }

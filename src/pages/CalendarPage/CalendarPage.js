@@ -6,6 +6,10 @@ import Header from "../../components/Header/Header";
 import DropdownClient from '../../components/DropdownClient/DropdownClient';
 import Calendar from '../../components/Calendar/Calendar'
 import comtegs from './../../data/comtegs';
+import { getCompanyProfId } from './../../http/companyAPI'
+import { getProjects } from './../../http/projectAPI'
+import { getWorker } from './../../http/workerAPI'
+
 
 import './CalendarPage.css';
 
@@ -23,7 +27,9 @@ const CalendarPage = () => {
     const [showModal, setShowModal] = useState(true)
     const [headerName, setHeaderName] = useState('Мой профиль');
     const [comteg, setComteg] = useState(["Все"]);
-
+    const [nameCompany, setNameCompany] = useState('');
+    const [fioSpec, setFioSpec] = useState('');
+    const [projects, setProjects] = useState([]);
     const [height, setHeight] = useState(200)
 
     const filterData = [
@@ -36,6 +42,25 @@ const CalendarPage = () => {
     ]
 
 //----------------------------------------------------------------------------------
+
+    useEffect(() => {
+        console.log("Загрузка данных...", id)
+
+        const fetch = async()=> {
+            const res = await getCompanyProfId(id)
+            console.log("res: ", res)
+            setNameCompany(res?.title)
+
+            const res2 = await getProjects(id)
+            console.log("res2: ", res)        
+            setProjects(res2)
+
+            const res3 = await getWorker(175)
+            setFioSpec(res3?.fio)
+        }
+        fetch()
+        
+    }, [])
 
     useEffect(() => {
         tg.onEvent("backButtonClicked", onClose)
@@ -66,7 +91,7 @@ const CalendarPage = () => {
                             backgroundColor: 'transparent', 
                             color: '#fff',
                             border: '1px solid #4f4f55'
-                        }}>Название
+                        }}>{nameCompany ? nameCompany : 'Название'}
                     </div>
                 </div>
 
@@ -78,7 +103,7 @@ const CalendarPage = () => {
                                 backgroundColor: 'transparent', 
                                 color: '#fff',
                                 border: '1px solid #4f4f55'
-                            }}>22
+                            }}>{projects.length}
                         </div>
                     </div>
                     <div style={{width: '47%'}}>
@@ -102,7 +127,7 @@ const CalendarPage = () => {
                             backgroundColor: 'transparent', 
                             color: '#fff',
                             border: '1px solid #4f4f55'
-                        }}>Иванов Иван Иванович
+                        }}>{fioSpec ? fioSpec : 'Иванов Иван Иванович'}
                     </div>
                 </div>
 
@@ -126,7 +151,7 @@ const CalendarPage = () => {
                     setHeight={setHeight}
                 />
 
-                <div style={{width: '100%', padding: '7px', height: '40px', border: '1px solid green', borderRadius: '10px', marginTop: '270px'}}>
+                <div style={{width: '100%', padding: '7px', height: '40px', border: '1px solid green', borderRadius: '10px', marginTop: '285px'}}>
                     <span style={{fontSize: '16px', color: 'green'}}>
                         Применить
                     </span>
