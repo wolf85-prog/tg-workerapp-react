@@ -65,8 +65,13 @@ const CalendarPage = () => {
                 const newArr = item.fio
                 return newArr
             })
-            
-            setSortedWorkers(newWorkers)
+
+            const sorted = newWorkers.sort((a, b) => {       
+                var cityA = a, cityB = b
+                return (cityA < cityB) ? -1 : (cityA > cityB) ? 1 : 0;  //сортировка по возрастанию 
+            })
+                    
+            setSortedWorkers(sorted)
             setWorker(res3[0]?.fio)
         }
         fetch()
