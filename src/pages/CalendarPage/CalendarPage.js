@@ -8,8 +8,8 @@ import Calendar from '../../components/Calendar/Calendar'
 import comtegs from './../../data/comtegs';
 import { getCompanyProfId } from './../../http/companyAPI'
 import { getProjects } from './../../http/projectAPI'
-import { getWorker } from './../../http/workerAPI'
-
+import { getWorkers } from './../../http/workerAPI'
+import Autocomplete from '@mui/material/Autocomplete';
 
 import './CalendarPage.css';
 
@@ -31,6 +31,9 @@ const CalendarPage = () => {
     const [fioSpec, setFioSpec] = useState('');
     const [projects, setProjects] = useState([]);
     const [height, setHeight] = useState(200)
+    const [worker, setWorker] = useState('');
+    const [workers, setWorkers] = useState([]);
+    const [sortedWorkers, setSortedWorkers] = useState([])
 
     const filterData = [
         {
@@ -55,8 +58,16 @@ const CalendarPage = () => {
             console.log("res2: ", res)        
             setProjects(res2)
 
-            const res3 = await getWorker(175)
-            setFioSpec(res3?.fio)
+            const res3 = await getWorkers(67)
+            console.log("res3: ", res3)
+
+            const newWorkers = res3.map((item)=> { 
+                const newArr = item.fio
+                return newArr
+            })
+            
+            setSortedWorkers(newWorkers)
+            setWorker(res3[0]?.fio)
         }
         fetch()
         
@@ -122,19 +133,69 @@ const CalendarPage = () => {
 
                 <p className="label-calendar">ФИО</p>
                 <div className="text-field">
-                    <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
+                    {/* <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
                         style={{
                             backgroundColor: 'transparent', 
                             color: '#fff',
                             border: '1px solid #4f4f55'
                         }}>{fioSpec ? fioSpec : 'Иванов Иван Иванович'}
-                    </div>
+                    </div> */}
+                    <Autocomplete
+                        sx={{
+                            display: 'inline-block',
+                            '& input': {zIndex: '25',
+                                width: '100%',
+                                border: 'none',
+                                height: '40px',
+                                padding: '5px 4px',
+                                fontFamily: 'inherit',
+                                fontSize: '14px',
+                                fontWeight: '700',
+                                lineHeight: '1.5',
+                                textAlign: 'center',
+                                color: '#ffffff',
+                                backgroundColor: 'transparent', 
+                            }
+                        }}
+                        className="text-field__input" 
+                        openOnFocus
+                        id="custom-input-demo"
+                        options={sortedWorkers}
+                        noOptionsText={'Пусто'}
+                        style={{
+                            width: '100%', 
+                            padding: '0',
+                            color: '#ebeff3',
+                            backgroundColor: 'transparent',
+                            border: '1px solid #4f4f55',
+                        }}
+                        isOptionEqualToValue={(option, value) => option.value === value.value}
+                        onInputChange={(e)=>setWorker(e.target.value)}
+                        onChange={(event, newValue) => {
+                        if (newValue && newValue.length) {                                                      
+                            setWorker(newValue)
+                        }  
+                        }}
+                        value={worker} 
+                        inputValue={worker}
+                        renderInput={(params) => (
+                        <div ref={params.InputProps.ref} style={{position: 'relative'}}>
+                            <input 
+                                className="text-field__input" 
+                                type="text" {...params.inputProps} 
+                                placeholder=''
+                                style={{backgroundColor: 'transparent!important'}}
+                            />
+                        </div>
+                        )}
+                    />
+                    
                 </div>
 
                 <p className="label-calendar">Комтег</p>
                 <div className="text-field"> 
                     <DropdownClient
-                        style={{backgroundColor: '#282b2e', left: '186px'}}
+                        style={{backgroundColor: '#282b2e', position: 'absolute', left: '50%', width: '100%'}}
                         options={filterData}
                         tags={comteg}
                         setTags={setComteg}
