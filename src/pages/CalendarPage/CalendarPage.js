@@ -27,6 +27,7 @@ const CalendarPage = () => {
     const [showModal, setShowModal] = useState(true)
     const [headerName, setHeaderName] = useState('Мой профиль');
     const [comteg, setComteg] = useState(["Все"]);
+    const [period, setPeriod] = useState(["06.2025"]);
     const [nameCompany, setNameCompany] = useState('');
     const [fioSpec, setFioSpec] = useState('');
     const [projects, setProjects] = useState([]);
@@ -41,6 +42,51 @@ const CalendarPage = () => {
             label: 'Все',
             name: 'Все',
             value: '1',
+            color: '#1E90FF'
+        },
+    ]
+
+    const periodData = [
+        {
+            label: '06.2025',
+            name: '06.2025',
+            value: '6',
+            color: '#1E90FF'
+        },
+        {
+            label: '07.2025',
+            name: '07.2025',
+            value: '7',
+            color: '#1E90FF'
+        },
+        {
+            label: '08.2025',
+            name: '08.2025',
+            value: '8',
+            color: '#1E90FF'
+        },
+        {
+            label: '09.2025',
+            name: '09.2025',
+            value: '9',
+            color: '#1E90FF'
+        },
+        {
+            label: '10.2025',
+            name: '10.2025',
+            value: '10',
+            color: '#1E90FF'
+        },
+        {
+            label: '11.2025',
+            name: '11.2025',
+            value: '11',
+            color: '#1E90FF'
+        },
+        {
+            label: '12.2025',
+            name: '12.2025',
+            value: '12',
             color: '#1E90FF'
         },
     ]
@@ -132,13 +178,19 @@ const CalendarPage = () => {
                     <div style={{width: '47%'}}>
                         <p className="label-calendar">Период</p>
                         <div className="text-field">
-                            <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
+                            {/* <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
                                 style={{
                                     backgroundColor: 'transparent', 
                                     color: '#fff',
                                     border: '1px solid #4f4f55'
                                 }}>06.2025
-                            </div>
+                            </div> */}
+                            <DropdownClient
+                                style={{backgroundColor: '#282b2e', position: 'absolute', left: '50%', width: '100%'}}
+                                options={periodData}
+                                tags={period}
+                                setTags={setPeriod}
+                            />
                         </div>
                     </div>                      
                 </div>

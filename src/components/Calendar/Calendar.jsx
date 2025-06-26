@@ -1,5 +1,6 @@
 import { React, useEffect, useState, useRef } from 'react'
 import './Calendar.css'
+import statusData from "./../../data/statusData";
 
 export default function Calendar({openProject, setHeight, projects, showSidebar, setShowSidebar, setShowProject, setShowCalendar, setShowCalendar2}) {
 
@@ -85,7 +86,7 @@ export default function Calendar({openProject, setHeight, projects, showSidebar,
             } else {
                 arr2.push({})
             }
-            console.log("arr2: ", arr2)
+            //console.log("arr2: ", arr2)
             setProject(arr2)
         
             arr.push(calendarDay);
