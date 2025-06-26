@@ -35,7 +35,7 @@
 }
 
 .day {
-    width: 14.286%;
+    width: 51px;
     height: 51px;
     display: flex;
     align-items: center;
@@ -55,13 +55,6 @@
   font-size: 15px;
 }
 
-.time-project {
-  position: absolute;
-  bottom: -16px;
-  right: 5px;
-  color: #777777;
-  font-size: 16px;
-}
 
 .joinBtn {
   cursor: pointer;
@@ -77,13 +70,27 @@
 }
 
 .viewProject {
-  width: 180px;
-  height: 60px;
-  border-radius: 6px;
-  /* border: 1px solid #1555f5; */
-  text-align: center;
-  padding-top: 26px;
+  width: 51px;
+  height: 51px;
+  border-radius: 12px;
+  border: 1px solid #1555f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
+
+.date-proj-day {
+  /* position: absolute;
+  top: 0px;
+  left: 0px; */
+  color: #1555f5;
+  z-index: 9;
+}
+
 
 .viewStatus {
   /* color: #1555f5; */

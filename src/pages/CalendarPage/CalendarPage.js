@@ -30,6 +30,7 @@ const CalendarPage = () => {
     const [nameCompany, setNameCompany] = useState('');
     const [fioSpec, setFioSpec] = useState('');
     const [projects, setProjects] = useState([]);
+    const [projectsSort, setProjectsSort] = useState([]);
     const [height, setHeight] = useState(200)
     const [worker, setWorker] = useState('');
     const [workers, setWorkers] = useState([]);
@@ -54,9 +55,14 @@ const CalendarPage = () => {
             console.log("res: ", res)
             setNameCompany(res?.title)
 
-            const res2 = await getProjects(id)
-            console.log("res2: ", res)        
-            setProjects(res2)
+            const resProjects = await getProjects(id)
+            console.log("resProjects: ", resProjects)  
+
+            const filterProject = resProjects.filter((item)=> item.dateStart.split('-')[1] === '06') 
+            console.log("filterProject: ", filterProject, filterProject[0].dateStart.split('T')[0] )  
+
+            setProjects(filterProject)
+            setProjectsSort(filterProject)
 
             const res3 = await getWorkers(67)
             console.log("res3: ", res3)
@@ -73,6 +79,7 @@ const CalendarPage = () => {
                     
             setSortedWorkers(sorted)
             setWorker(res3[0]?.fio)
+
         }
         fetch()
         
@@ -130,7 +137,7 @@ const CalendarPage = () => {
                                     backgroundColor: 'transparent', 
                                     color: '#fff',
                                     border: '1px solid #4f4f55'
-                                }}>02.2025
+                                }}>06.2025
                             </div>
                         </div>
                     </div>                      
@@ -214,6 +221,7 @@ const CalendarPage = () => {
                     // setShowProject={setShowProject} 
                     // setShowCalendar={setShowCalendar} 
                     // setShowCalendar2={setShowCalendar2} 
+                    projects={projectsSort}
                     setHeight={setHeight}
                 />
 
