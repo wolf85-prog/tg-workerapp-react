@@ -34,8 +34,8 @@ const AnketaPage = () => {
         
         const fetch = async() => {
            const worker = await getWorkerId(user?.id) //user?.id '1408579113'
-            console.log(worker?.fio.split(' ')[1])
-            setWorkerName(worker?.fio.split(' ')[1]) 
+            console.log(worker?.fio.replace(/\[.+\]/,'').replace(/\s+/g, ' ').split(' ')[1])
+            setWorkerName(worker?.fio.replace(/\[.+\]/,'').replace(/\s+/g, ' ').split(' ')[1]) 
         }
         
         fetch()      
