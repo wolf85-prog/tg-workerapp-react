@@ -32,6 +32,7 @@ export default function Calendar({openProject, setHeight, projects, showSidebar,
     const [currentDays, setCurrentDays] = useState([]);
 
     const [project, setProject] = useState([])
+    const [statusProject, setStatusProjec] = useState([])
 
     const ref = useRef(null)
 
@@ -53,12 +54,28 @@ export default function Calendar({openProject, setHeight, projects, showSidebar,
         
         let arr = []
         let arr2 = []
+        let arrStatus = []
+        let arrProject = []
         let countDay = 35
         if (weekdayOfFirstDay > 5 ) {
             countDay = 42
         } else {
             countDay = 35
         }
+        // for (let day = 0; day < countDay; day++) {
+        //     projects.map((item)=> {
+        //         if ('2025-06-01' === item?.dateStart.split('T')[0]) {
+        //             //arrProject.push(item)
+        //             //console.log(item?.dateStart.split('T')[0])
+        //         } else {
+        //             //arrProject.push({})
+        //             //console.log("...")
+        //         }          
+        //     })  
+        //     arrProject.push(projects[0])
+        //     console.log("arrProject: ", arrProject)
+        // }
+
         for (let day = 0; day < countDay; day++) {
             if (day === 0 && weekdayOfFirstDay === 0) {
                 firstDayOfMonth.setDate(firstDayOfMonth.getDate() - 7);
@@ -81,19 +98,37 @@ export default function Calendar({openProject, setHeight, projects, showSidebar,
             }
 
             const dateCalendar = firstDayOfMonth.getFullYear() + "-" + String(firstDayOfMonth.getMonth()+1).padStart(2, "0") + "-" + String(firstDayOfMonth.getDate()).padStart(2, "0")
+
+
+
             if (dateCalendar === projects[0]?.dateStart.split('T')[0]) {
-                arr2.push(projects[0])
+                 arr2.push(projects[0])
+                const status = statusData.find(item2 => item2.label === projects[0].status)
+                arrStatus.push(status)
             } else {
-                arr2.push({})
+                //arr2.push({})
+                //arrStatus.push({})
             }
-            //console.log("arr2: ", arr2)
+
+            if (dateCalendar === projects[1]?.dateStart.split('T')[0]) {
+                 arr2.push(projects[1])
+                const status = statusData.find(item2 => item2.label === projects[1].status)
+                arrStatus.push(status)
+            } else {
+                //arr2.push({})
+                //arrStatus.push({})
+            }
+
+            console.log("arrStatus: ", arrStatus)   
+            
             setProject(arr2)
+            setStatusProjec(arrStatus)
         
             arr.push(calendarDay);
             setCurrentDays(arr)
             //console.log(firstDayOfMonth.getFullYear() + "-" + String(arr[0].month+1).padStart(2, "0") + "-" + String(arr[0].number).padStart(2, "0") )
         }
-    }, [date]);
+    }, [date, projects]);
 //----------------------------------------------------------------------
     // function getStartDayOfMonth(date) {
     //     return new Date(date.getFullYear(), date.getMonth(), 1).getDay();
@@ -141,10 +176,10 @@ export default function Calendar({openProject, setHeight, projects, showSidebar,
                                 </p>
                             </strong>
 
-                            {Object.keys(project[index]).length !== 0 ? 
-                                <div className='viewProject' onClick={()=>openProject(index)}>
+                            {project[index] && Object.keys(project[index]).length !== 0 ? 
+                                <div className='viewProject' onClick={()=>openProject(index)} style={{borderColor: statusProject[index] ? statusProject[index].color : ''}}>
                                     <strong>
-                                        <p className='date-proj-day' style={{color: project[index] ? '#1555f5' : ''}}>
+                                        <p className='date-proj-day' style={{color: statusProject[index] ? statusProject[index].color : ''}}>
                                             {String(day.number).padStart(2, "0") + '.'+ String(day.month+1).padStart(2, "0")}
                                         </p>
                                     </strong>

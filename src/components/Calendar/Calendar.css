@@ -79,8 +79,8 @@
   justify-content: center;
 
   position: absolute;
-  top: 0px;
-  left: 0px;
+  /* top: 0px;
+  left: 0px; */
 }
 
 .date-proj-day {
@@ -89,6 +89,7 @@
   left: 0px; */
   color: #1555f5;
   z-index: 9;
+  font-size: 15px;
 }
 
 

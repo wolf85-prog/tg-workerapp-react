@@ -111,7 +111,7 @@ const CalendarPage = () => {
             setProjectsSort(filterProject)
 
             const res3 = await getWorkers(67)
-            console.log("res3: ", res3)
+            console.log("workers id 67: ", res3)
 
             const newWorkers = res3.map((item)=> { 
                 const newArr = item.fio
