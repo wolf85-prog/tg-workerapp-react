@@ -27,7 +27,7 @@ const CalendarPage = () => {
     const [showModal, setShowModal] = useState(true)
     const [headerName, setHeaderName] = useState('Мой профиль');
     const [comteg, setComteg] = useState(["Все"]);
-    const [period, setPeriod] = useState(["06.2025"]);
+    const [period, setPeriod] = useState(["07.2025"]);
     const [nameCompany, setNameCompany] = useState('');
     const [fioSpec, setFioSpec] = useState('');
     const [projects, setProjects] = useState([]);
@@ -104,7 +104,7 @@ const CalendarPage = () => {
             const resProjects = await getProjects(id)
             console.log("resProjects: ", resProjects)  
 
-            const filterProject = resProjects.filter((item)=> item.dateStart.split('-')[1] === '06') 
+            const filterProject = resProjects.filter((item)=> item.dateStart.split('-')[1] === '07') 
             console.log("filterProject: ", filterProject, filterProject[0].dateStart.split('T')[0] )  
 
             setProjects(filterProject)

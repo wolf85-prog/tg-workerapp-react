@@ -100,28 +100,26 @@ export default function Calendar({openProject, setHeight, projects, showSidebar,
             const dateCalendar = firstDayOfMonth.getFullYear() + "-" + String(firstDayOfMonth.getMonth()+1).padStart(2, "0") + "-" + String(firstDayOfMonth.getDate()).padStart(2, "0")
 
 
+            projects.map((item, index)=> {
+                if (dateCalendar === item?.dateStart.split('T')[0]) {
+                    arr2.push(item)
+                    const status = statusData.find(item2 => item2.label === item.status)
+                    arrStatus.push(status)
+                } 
+                if (index === projects.length-1) {
+                    if (arr2.length === 0) {
+                        arrStatus.push({})
+                    } else {
+                        arr2 = []
+                    }
+                }
+            })
+            
 
-            if (dateCalendar === projects[0]?.dateStart.split('T')[0]) {
-                 arr2.push(projects[0])
-                const status = statusData.find(item2 => item2.label === projects[0].status)
-                arrStatus.push(status)
-            } else {
-                //arr2.push({})
-                //arrStatus.push({})
-            }
-
-            if (dateCalendar === projects[1]?.dateStart.split('T')[0]) {
-                 arr2.push(projects[1])
-                const status = statusData.find(item2 => item2.label === projects[1].status)
-                arrStatus.push(status)
-            } else {
-                //arr2.push({})
-                //arrStatus.push({})
-            }
-
+            //console.log("arr2: ", arr2)  
             console.log("arrStatus: ", arrStatus)   
             
-            setProject(arr2)
+            setProject(arrStatus)
             setStatusProjec(arrStatus)
         
             arr.push(calendarDay);
