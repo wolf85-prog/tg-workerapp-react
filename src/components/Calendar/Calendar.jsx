@@ -2,7 +2,7 @@ import { React, useEffect, useState, useRef } from 'react'
 import './Calendar.css'
 import statusData from "./../../data/statusData";
 
-export default function Calendar({openProject, setHeight, projects, showSidebar, setShowSidebar, setShowProject, setShowCalendar, setShowCalendar2}) {
+export default function Calendar({openProject, setHeight, projects, setShowProject, setShowCalendar, setShowCalendar2}) {
 
     const DAYS_OF_THE_WEEK = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
     const MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];

@@ -39,6 +39,8 @@ const CalendarPage = () => {
     const [projectName, setProjectName] = useState('');
     const [projectDate, setProjectDate] = useState('01.01.2025');
     const [projectManager, setProjectManager] = useState('Старший');
+    const [project, setProject] = useState([])
+    const [projectCount, setProjectCount] = useState(0)
 
     const filterData = [
         {
@@ -128,7 +130,7 @@ const CalendarPage = () => {
             })
                     
             setSortedWorkers(sorted)
-            setWorker(res3[0]?.fio)
+            setWorker(sorted[0])
 
         }
         fetch()
@@ -155,6 +157,7 @@ const CalendarPage = () => {
 
             console.log("arrTempProjects: ", arrTempProjects)
             setProjectsSort(arrTempProjects)
+            setProjectCount(arrTempProjects.length)
         }
 
         fetch()
@@ -184,7 +187,7 @@ const CalendarPage = () => {
 
         const resManager = await getManagerId(filterProject.managerId)
         console.log("resManager: ", resManager)
-        //setProjectManager(resManager)
+        setProjectManager(resManager?.fio)
     }
     
     return (
@@ -217,7 +220,7 @@ const CalendarPage = () => {
                                 backgroundColor: 'transparent', 
                                 color: '#fff',
                                 border: '1px solid #4f4f55'
-                            }}>{projects.length}
+                            }}>{projectCount}
                         </div>
                     </div>
                     <div style={{width: '47%'}}>
