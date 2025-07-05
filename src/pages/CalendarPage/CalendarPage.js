@@ -38,6 +38,7 @@ const CalendarPage = () => {
     const [sortedWorkers, setSortedWorkers] = useState([])
     const [projectName, setProjectName] = useState('');
     const [projectDate, setProjectDate] = useState('01.01.2025');
+    const [projectTime, setProjectTime] = useState('00:00');
     const [projectManager, setProjectManager] = useState('Старший');
     const [project, setProject] = useState([])
     const [projectCount, setProjectCount] = useState(0)
@@ -184,6 +185,10 @@ const CalendarPage = () => {
         const filterProject = projects.find((item)=> item.id === index.id) 
         console.log("filterProject: ", filterProject)  
         setProjectName(filterProject?.name)
+
+        const data = filterProject?.dateStart
+        setProjectDate(`${data.split('T')[0].split('-')[2]}.${data.split('T')[0].split('-')[1]}.${data.split('T')[0].split('-')[0]}`)
+        setProjectTime(`${data.split('T')[1].split(':')[0]}:${data.split('T')[1].split(':')[1]}`)
 
         const resManager = await getManagerId(filterProject.managerId)
         console.log("resManager: ", resManager)
@@ -339,7 +344,7 @@ const CalendarPage = () => {
                                 <div className='rectangle-modal3'></div>
             
                                 <p className='vagno'>{projectName}</p>
-                                <p className='vagno' style={{marginTop: '25px'}}>{projectDate}</p>
+                                <p className='vagno' style={{marginTop: '25px'}}>{projectDate} {projectTime}</p>
 
                                 <p className='vagno' style={{marginTop: '60px'}}>{projectManager}</p>
 
