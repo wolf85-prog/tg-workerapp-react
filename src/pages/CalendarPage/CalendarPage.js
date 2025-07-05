@@ -7,7 +7,7 @@ import DropdownClient from '../../components/DropdownClient/DropdownClient';
 import Calendar from '../../components/Calendar/Calendar'
 import comtegs from './../../data/comtegs';
 import { getCompanyProfId } from './../../http/companyAPI'
-import { getProjects } from './../../http/projectAPI'
+import { getProjects, getProjectsMainSpec, getManagerId } from './../../http/projectAPI'
 import { getWorkers } from './../../http/workerAPI'
 import Autocomplete from '@mui/material/Autocomplete';
 
@@ -24,7 +24,7 @@ const CalendarPage = () => {
 
     const [widthD, setWidthD] = useState(0)
 
-    const [showModal, setShowModal] = useState(true)
+    const [showProject, setShowProject] = useState(false)
     const [headerName, setHeaderName] = useState('Мой профиль');
     const [comteg, setComteg] = useState(["Все"]);
     const [period, setPeriod] = useState(["07.2025"]);
@@ -36,6 +36,9 @@ const CalendarPage = () => {
     const [worker, setWorker] = useState('');
     const [workers, setWorkers] = useState([]);
     const [sortedWorkers, setSortedWorkers] = useState([])
+    const [projectName, setProjectName] = useState('');
+    const [projectDate, setProjectDate] = useState('01.01.2025');
+    const [projectManager, setProjectManager] = useState('Старший');
 
     const filterData = [
         {
@@ -112,6 +115,7 @@ const CalendarPage = () => {
 
             const res3 = await getWorkers(67)
             console.log("workers id 67: ", res3)
+            setWorkers(res3)
 
             const newWorkers = res3.map((item)=> { 
                 const newArr = item.fio
@@ -132,6 +136,33 @@ const CalendarPage = () => {
     }, [])
 
     useEffect(() => {
+        console.log("worker: ", worker)
+
+        const resWorker = workers.find(item=> item.fio === worker)
+        console.log(resWorker)
+
+        const fetch = async()=> {
+            let arrTempProjects = []
+            const maninSpecId = await getProjectsMainSpec(67, resWorker?.id)
+            console.log("maninSpecId: ", maninSpecId)
+
+            projects.map(proj=> {
+                maninSpecId.map((item)=> {
+                    if (proj.id.toString() === item.projectId)
+                        arrTempProjects.push(proj)
+                })
+            })  
+
+            console.log("arrTempProjects: ", arrTempProjects)
+            setProjectsSort(arrTempProjects)
+        }
+
+        fetch()
+
+        
+    }, [worker, projects])
+
+    useEffect(() => {
         tg.onEvent("backButtonClicked", onClose)
         return () => {
             tg.offEvent('backButtonClicked', onClose)
@@ -141,6 +172,20 @@ const CalendarPage = () => {
     useEffect(() => {
         tg.BackButton.show();
     }, [])
+
+
+    const openProject = async(index) => {
+        console.log("project: ", index)
+        setShowProject(true)
+
+        const filterProject = projects.find((item)=> item.id === index.id) 
+        console.log("filterProject: ", filterProject)  
+        setProjectName(filterProject?.name)
+
+        const resManager = await getManagerId(filterProject.managerId)
+        console.log("resManager: ", resManager)
+        //setProjectManager(resManager)
+    }
     
     return (
         <div className="App">
@@ -267,10 +312,10 @@ const CalendarPage = () => {
                 </div>
 
                 <Calendar 
-                    // openProject={openProject} 
+                    openProject={openProject} 
                     // showSidebar={showSidebar} 
                     // setShowSidebar={setShowSidebar} 
-                    // setShowProject={setShowProject} 
+                    //setShowProject={setShowProject} 
                     // setShowCalendar={setShowCalendar} 
                     // setShowCalendar2={setShowCalendar2} 
                     projects={projectsSort}
@@ -284,7 +329,25 @@ const CalendarPage = () => {
                 </div>
             </div>
 
+            <MyModal visible={showProject} setVisible={setShowProject}>
+                            <div className='info-card'>
+                                <div className='rectangle-modal'></div>
+                                <div className='rectangle-modal2'></div>
+                                <div className='rectangle-modal3'></div>
             
+                                <p className='vagno'>{projectName}</p>
+                                <p className='vagno' style={{marginTop: '25px'}}>{projectDate}</p>
+
+                                <p className='vagno' style={{marginTop: '60px'}}>{projectManager}</p>
+
+                                <div className='text-vagno' style={{textAlign: 'left'}}>
+
+                                </div>
+                                <div className='button-ok' onClick={()=>setShowProject(false)}>
+                                    <div className='rec-button'>ОК</div>     
+                                </div>
+                            </div>
+            </MyModal>
 
         </div>
     );

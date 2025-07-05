@@ -62,19 +62,6 @@ export default function Calendar({openProject, setHeight, projects, showSidebar,
         } else {
             countDay = 35
         }
-        // for (let day = 0; day < countDay; day++) {
-        //     projects.map((item)=> {
-        //         if ('2025-06-01' === item?.dateStart.split('T')[0]) {
-        //             //arrProject.push(item)
-        //             //console.log(item?.dateStart.split('T')[0])
-        //         } else {
-        //             //arrProject.push({})
-        //             //console.log("...")
-        //         }          
-        //     })  
-        //     arrProject.push(projects[0])
-        //     console.log("arrProject: ", arrProject)
-        // }
 
         for (let day = 0; day < countDay; day++) {
             if (day === 0 && weekdayOfFirstDay === 0) {
@@ -105,10 +92,12 @@ export default function Calendar({openProject, setHeight, projects, showSidebar,
                     arr2.push(item)
                     const status = statusData.find(item2 => item2.label === item.status)
                     arrStatus.push(status)
+                    arrProject.push(item)
                 } 
                 if (index === projects.length-1) {
                     if (arr2.length === 0) {
                         arrStatus.push({})
+                        arrProject.push({})
                     } else {
                         arr2 = []
                     }
@@ -116,10 +105,10 @@ export default function Calendar({openProject, setHeight, projects, showSidebar,
             })
             
 
-            //console.log("arr2: ", arr2)  
-            console.log("arrStatus: ", arrStatus)   
+            //console.log("arrProject: ", arrProject)  
+            //console.log("arrStatus: ", arrStatus)   
             
-            setProject(arrStatus)
+            setProject(arrProject)
             setStatusProjec(arrStatus)
         
             arr.push(calendarDay);
@@ -175,7 +164,7 @@ export default function Calendar({openProject, setHeight, projects, showSidebar,
                             </strong>
 
                             {project[index] && Object.keys(project[index]).length !== 0 ? 
-                                <div className='viewProject' onClick={()=>openProject(index)} style={{borderColor: statusProject[index] ? statusProject[index].color : ''}}>
+                                <div className='viewProject' onClick={()=>openProject(project[index])} style={{borderColor: statusProject[index] ? statusProject[index].color : ''}}>
                                     <strong>
                                         <p className='date-proj-day' style={{color: statusProject[index] ? statusProject[index].color : ''}}>
                                             {String(day.number).padStart(2, "0") + '.'+ String(day.month+1).padStart(2, "0")}
